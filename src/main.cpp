@@ -1,116 +1,54 @@
 #include "main.h"
 
-static void scroll_event_v2(lv_event_t* e)
-{
-    lv_obj_t* container = lv_event_get_target(e);
-
-    lv_area_t container_area;
-    lv_obj_get_coords(container, &container_area);
-    lv_coord_t container_y_center = container_area.y1 + (lv_area_get_height(&container_area) >> 1);
-
-    lv_coord_t radius = lv_obj_get_height(container) * 7 / 10;
-    uint32_t child_count = lv_obj_get_child_cnt(container);
-    for(uint32_t i = 0; i < child_count; i++)
-    {
-        lv_obj_t* child = lv_obj_get_child(container, i);
-        lv_area_t child_area;
-        lv_obj_get_coords(child, &child_area);
-
-        lv_coord_t child_y_center = child_area.y1 + (lv_area_get_height(&child_area) >> 1);
-
-        lv_coord_t diff_y = LV_ABS(child_y_center - container_y_center);
-
-        /*Get the x of diff_y on a circle.*/
-        lv_coord_t x = radius;
-        if (diff_y < radius)
-        {
-            /*Use Pythagoras theorem to get x from radius and y*/
-            lv_sqrt_res_t res;
-            lv_sqrt(radius * radius - diff_y * diff_y, &res, 0x8000);   /*Use lvgl's built in sqrt root function*/
-            x -= res.i;
-        }
-
-        /*Translate the item by the calculated X coordinate*/
-        lv_obj_set_style_translate_x(child, x, 0);
-    }
-}
-
-static void scroll_event_cb(lv_event_t * e)
-{
-    lv_obj_t* cont = lv_event_get_target(e);
-
-    lv_area_t cont_a;
-    lv_obj_get_coords(cont, &cont_a);
-    lv_coord_t cont_y_center = cont_a.y1 + lv_area_get_height(&cont_a) / 2;
-
-    lv_coord_t r = lv_obj_get_height(cont) * 7 / 10;
-    uint32_t i;
-    uint32_t child_cnt = lv_obj_get_child_cnt(cont);
-    for(i = 0; i < child_cnt; i++) {
-        lv_obj_t * child = lv_obj_get_child(cont, i);
-        lv_area_t child_a;
-        lv_obj_get_coords(child, &child_a);
-
-        lv_coord_t child_y_center = child_a.y1 + lv_area_get_height(&child_a) / 2;
-
-        lv_coord_t diff_y = child_y_center - cont_y_center;
-        diff_y = LV_ABS(diff_y);
-
-        /*Get the x of diff_y on a circle.*/
-        lv_coord_t x;
-        /*If diff_y is out of the circle use the last point of the circle (the radius)*/
-        if(diff_y >= r) {
-            x = r;
-        }
-        else {
-            /*Use Pythagoras theorem to get x from radius and y*/
-            uint32_t x_sqr = r * r - diff_y * diff_y;
-            lv_sqrt_res_t res;
-            lv_sqrt(x_sqr, &res, 0x8000);   /*Use lvgl's built in sqrt root function*/
-            x = r - res.i;
-        }
-
-        /*Translate the item by the calculated X coordinate*/
-        lv_obj_set_style_translate_x(child, x, 0);
-
-        /*Use some opacity with larger translations*/
-        /*
-        lv_opa_t opa = lv_map(x, 0, r, LV_OPA_TRANSP, LV_OPA_COVER);
-        lv_obj_set_style_opa(child, LV_OPA_COVER - opa, 0);
-        */
-    }
-}
-
 /**
- * Translate the object as they scroll
+ * Show an example to scroll snap
  */
-void lv_example_scroll_6(void)
+void lv_example_scroll_2(void)
 {
-    lv_obj_t* container = lv_obj_create(lv_scr_act());
-    lv_obj_set_size(container, 200, 200);
-    lv_obj_center(container);
-    lv_obj_set_flex_flow(container, LV_FLEX_FLOW_COLUMN);
-    lv_obj_add_event_cb(container, scroll_event_v2, LV_EVENT_SCROLL, NULL);
-    lv_obj_set_style_radius(container, LV_RADIUS_CIRCLE, 0);
-    lv_obj_set_style_clip_corner(container, true, 0);
-    lv_obj_set_scroll_dir(container, LV_DIR_VER);
-    lv_obj_set_scroll_snap_y(container, LV_SCROLL_SNAP_CENTER);
-    lv_obj_set_scrollbar_mode(container, LV_SCROLLBAR_MODE_OFF);
+    lv_obj_t* panel = lv_obj_create(lv_scr_act());
+    lv_obj_set_size(panel, 480, 120);
+    lv_obj_set_style_bg_color(panel, lv_color_black(), 0);
+    lv_obj_set_style_border_color(panel, lv_color_black(), 0);
+    lv_obj_refresh_style(panel, LV_PART_MAIN, LV_STYLE_BG_COLOR);
+    lv_obj_refresh_style(panel, LV_PART_MAIN, LV_STYLE_BORDER_COLOR);
+    lv_obj_set_scroll_snap_x(panel, LV_SCROLL_SNAP_CENTER);
+    lv_obj_set_flex_flow(panel, LV_FLEX_FLOW_ROW);
+    lv_obj_set_scrollbar_mode(panel, LV_SCROLLBAR_MODE_OFF);
+    lv_obj_align(panel, LV_ALIGN_BOTTOM_MID, 0, 0);
 
-    for(int i = 0; i < 10; i++)
+    int button_width = 150;
+    for(uint32_t i = 0; i < 10; i++)
     {
-        lv_obj_t * btn = lv_btn_create(container);
-        lv_obj_set_width(btn, lv_pct(100));
+        lv_obj_t* btn = lv_btn_create(panel);
+        lv_obj_set_size(btn, button_width, lv_pct(100));
 
         lv_obj_t * label = lv_label_create(btn);
-        lv_label_set_text_fmt(label, "Button %d", i);
+        lv_label_set_text_fmt(label, "Panel %" LV_PRIu32, i);
+
+        lv_obj_center(label);
     }
 
-    // Update the buttons position manually for starting position
-    lv_event_send(container, LV_EVENT_SCROLL, NULL);
+    lv_obj_update_snap(panel, LV_ANIM_OFF);
 
-    // Be sure the first button is in the middle
-    lv_obj_scroll_to_view(lv_obj_get_child(container, 0), LV_ANIM_OFF);
+    int currentScroll = lv_obj_get_scroll_x(panel);
+    lv_obj_t* btn = lv_obj_get_child(panel, 0);
+    int scrollWidth = lv_obj_get_width(btn) + (lv_obj_get_style_pad_left(btn, 0) >> 1);
+    int minScroll = -scrollWidth;
+    int maxScroll = scrollWidth * (lv_obj_get_child_cnt(panel) - 1);
+    while (true)
+    {
+        if (pros::c::controller_get_digital_new_press(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_DIGITAL_LEFT))
+        {
+            currentScroll = std::max(minScroll, currentScroll - scrollWidth);
+            lv_obj_scroll_to_x(panel, currentScroll, LV_ANIM_ON);
+        }
+        else if (pros::c::controller_get_digital_new_press(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_DIGITAL_RIGHT))
+        {
+            currentScroll = std::min(maxScroll, currentScroll + scrollWidth);
+            lv_obj_scroll_to_x(panel, currentScroll, LV_ANIM_ON);
+        }
+        pros::delay(50);
+    }
 }
 
 /**
@@ -125,7 +63,7 @@ void initialize()
     lv_obj_set_style_bg_color(lv_scr_act(), lv_color_black(), 0);
     lv_obj_refresh_style(lv_scr_act(), LV_PART_MAIN, LV_STYLE_BG_COLOR);
 
-    lv_example_scroll_6();
+    lv_example_scroll_2();
 }
 
 /**
