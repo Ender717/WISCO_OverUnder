@@ -16,6 +16,15 @@ namespace menu
             }
         }
 
+        Alliance to_alliance(std::string string)
+        {
+            Alliance alliance = Alliance::COUNT;
+            for (int i = 0; i < types::get_count<types::Alliance>(); i++)
+                if (string == types::to_string(static_cast<types::Alliance>(i)))
+                    alliance = static_cast<types::Alliance>(i);
+            return alliance;
+        }
+
         std::string to_string(Autonomous autonomous)
         {
             switch (autonomous)
@@ -30,6 +39,15 @@ namespace menu
             }
         }
 
+        Autonomous to_autonomous(std::string string)
+        {
+            Autonomous autonomous = Autonomous::COUNT;
+            for (int i = 0; i < types::get_count<types::Autonomous>(); i++)
+                if (string == types::to_string(static_cast<types::Autonomous>(i)))
+                    autonomous = static_cast<types::Autonomous>(i);
+            return autonomous;
+        }
+
         std::string to_string(Configuration configuration)
         {
             switch (configuration)
@@ -38,6 +56,15 @@ namespace menu
                 case Configuration::ORANGE: { return "ORANGE"; }
                 default: { return "INVALID CONFIGURATION"; }
             }
+        }
+
+        Configuration to_configuration(std::string string)
+        {
+            Configuration configuration = Configuration::COUNT;
+            for (int i = 0; i < types::get_count<types::Configuration>(); i++)
+                if (string == types::to_string(static_cast<types::Configuration>(i)))
+                    configuration = static_cast<types::Configuration>(i);
+            return configuration;
         }
 
         std::string to_string(Profile profile)
@@ -49,6 +76,15 @@ namespace menu
                 case Profile::NATHAN: { return "NATHAN"; }
                 default: { return "INVALID PROFILE"; }
             }
+        }
+
+        Profile to_profile(std::string string)
+        {
+            Profile profile = Profile::COUNT;
+            for (int i = 0; i < types::get_count<types::Profile>(); i++)
+                if (string == types::to_string(static_cast<types::Profile>(i)))
+                    profile = static_cast<types::Profile>(i);
+            return profile;
         }
     } // End namespace types
 } // End namespace menu

@@ -20,6 +20,7 @@ namespace menu
             COUNT
         };
         extern std::string to_string(Alliance alliance);
+        extern Alliance to_alliance(std::string string);
 
         /**
          * The available autonomous routines for menu selection
@@ -35,6 +36,7 @@ namespace menu
             COUNT
         };
         extern std::string to_string(Autonomous autonomous);
+        extern Autonomous to_autonomous(std::string string);
 
         /**
          * The available configurations for menu selection
@@ -46,6 +48,7 @@ namespace menu
             COUNT
         };
         extern std::string to_string(Configuration configuration);
+        extern Configuration to_configuration(std::string string);
 
         /**
          * The available profiles for menu selection
@@ -58,8 +61,12 @@ namespace menu
             COUNT
         };
         extern std::string to_string(Profile profile);
+        extern Profile to_profile(std::string string);
 
-        // Gets the count for any enum type
+        /**
+         * Gets the count for any enum type
+         * @param t The enum type being counted
+         */
         template<class t>
         int get_count() { return static_cast<int>(t::COUNT); }
     } // End namespace types
