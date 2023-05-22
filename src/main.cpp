@@ -1,5 +1,7 @@
 #include "main.h"
 
+#include "menu/MenuTypes.hpp"
+
 /**
  * Runs initialization code. This occurs as soon as the program is started.
  *
@@ -11,6 +13,8 @@ void initialize()
     pros::delay(50);
     lv_obj_set_style_bg_color(lv_scr_act(), lv_color_black(), 0);
     lv_obj_refresh_style(lv_scr_act(), LV_PART_MAIN, LV_STYLE_BG_COLOR);
+    pros::delay(50);
+
 }
 
 /**
