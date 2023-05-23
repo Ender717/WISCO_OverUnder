@@ -270,6 +270,9 @@ LV_FONT_DECLARE(pros_font_dejavu_mono_40);
 #if USE_PROS_FONT_DEJAVU_MONO_40_LATIN_SUP
 LV_FONT_DECLARE(pros_font_dejavu_mono_40_latin_sup);
 #endif
+#if USE_FONT_BLADERUNNER_30
+LV_FONT_DECLARE(font_bladerunner_30);
+#endif
 
 /**
  * Just a wrapper around LV_FONT_DEFAULT because it might be more convenient to use a function in some cases

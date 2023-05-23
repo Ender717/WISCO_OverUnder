@@ -1,0 +1,42 @@
+// Inclusion guard
+#ifndef MENU_SCREEN_HPP
+#define MENU_SCREEN_HPP
+
+// Included external library headers
+#include "liblvgl/lvgl.h"
+#include "main.h"
+
+// Included internal headers
+#include "menu/MenuData.hpp"
+
+namespace menu
+{
+    namespace screen
+    {
+        /**
+         * Event handler function for the start button
+         * @param event The event data
+         */
+        extern void startButtonEventHandler(lv_event_t* event);
+
+        /**
+         * Event handler function for the settings button
+         * @param event The event data
+         */
+        extern void settingsButtonEventHandler(lv_event_t* event);
+
+        /**
+         * Draws the main menu screen
+         * @param data The current menu selection data
+         */
+        extern void drawMainMenu(Data* data);
+
+        /**
+         * Draws the settings menu screen
+         * @param data The current menu selection data
+         */
+        extern void drawSettingsMenu(Data* data);
+    } // End namespace screen
+} // End namespace menu
+
+#endif
