@@ -11,12 +11,7 @@
 void initialize()
 {
     pros::delay(50);
-    menu::Data data;
-    data.setAlliance(menu::types::Alliance::BLUE);
-    data.setAutonomous(menu::types::Autonomous::BLUE_DEFENSIVE);
-    data.setConfiguration(menu::types::Configuration::BLUE);
-    data.setProfile(menu::types::Profile::HENRY);
-    menu::screen::drawMainMenu(&data);
+    menu::screen::drawMainMenu(nullptr);
 }
 
 /**

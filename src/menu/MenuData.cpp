@@ -91,19 +91,19 @@ namespace menu
         mutex.take();
 
         // Read the alliance
-        file >> input;
+        std::getline(file, input);
         alliance = types::to_alliance(input);
 
         // Read the autonomous
-        file >> input;
+        std::getline(file, input);
         autonomous = types::to_autonomous(input);
 
         // Read the configuration
-        file >> input;
+        std::getline(file, input);
         configuration = types::to_configuration(input);
 
         // Read the profile
-        file >> input;
+        std::getline(file, input);
         profile = types::to_profile(input);
 
         mutex.give();

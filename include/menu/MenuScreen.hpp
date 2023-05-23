@@ -14,16 +14,27 @@ namespace menu
     namespace screen
     {
         /**
-         * Event handler function for the start button
+         * The file name for data writing
+         */
+        static const std::string FILENAME = "/usd/MenuData.txt";
+
+        /**
+         * Event handler function for the start button in the main menu
          * @param event The event data
          */
         extern void startButtonEventHandler(lv_event_t* event);
 
         /**
-         * Event handler function for the settings button
+         * Event handler function for the settings button in the main menu
          * @param event The event data
          */
         extern void settingsButtonEventHandler(lv_event_t* event);
+
+        /**
+         * Event handler function for the back button in the settings menu
+         * @param event The event data
+         */
+        extern void settingsBackButtonEventHandler(lv_event_t* event);
 
         /**
          * Draws the main menu screen
