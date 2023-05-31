@@ -1,12 +1,68 @@
 // Included header
 #include "menu/MenuScreen.hpp"
 #include "liblvgl/core/lv_event.h"
+#include "liblvgl/core/lv_obj.h"
+#include "liblvgl/core/lv_obj_style.h"
+#include "liblvgl/extra/layouts/flex/lv_flex.h"
+#include "liblvgl/extra/widgets/menu/lv_menu.h"
 #include "liblvgl/font/lv_font.h"
 
 namespace menu
 {
     namespace screen
     {
+        void initializeStyles()
+        {
+            #ifndef MENU_SCREEN_STYLES
+            #define MENU_SCREEN_STYLES
+            // Create the default button style
+            lv_style_init(&button_default_style);
+            lv_style_set_radius(&button_default_style, 5);
+            lv_style_set_bg_opa(&button_default_style, LV_OPA_100);
+            lv_style_set_bg_color(&button_default_style, lv_color_make(192, 192, 192));
+            lv_style_set_bg_grad_color(&button_default_style, lv_color_darken(lv_color_make(192, 192, 192), 8));
+            lv_style_set_border_opa(&button_default_style, LV_OPA_100);
+            lv_style_set_border_width(&button_default_style, 2);
+            lv_style_set_border_color(&button_default_style, lv_color_black());
+            lv_style_set_text_color(&button_default_style, lv_color_black());
+            lv_style_set_text_font(&button_default_style, &lv_font_montserrat_20);
+
+            // Create the pressed button style
+            lv_style_init(&button_pressed_style);
+            lv_style_set_radius(&button_pressed_style, 5);
+            lv_style_set_bg_opa(&button_pressed_style, LV_OPA_100);
+            lv_style_set_translate_y(&button_pressed_style, 3);
+            lv_style_set_shadow_ofs_y(&button_pressed_style, 3);
+            lv_style_set_bg_color(&button_pressed_style, lv_color_darken(lv_color_make(192, 192, 192), 16));
+            lv_style_set_bg_grad_color(&button_pressed_style, lv_color_darken(lv_color_make(192, 192, 192), 24));
+            lv_style_set_border_opa(&button_pressed_style, LV_OPA_100);
+            lv_style_set_border_width(&button_pressed_style, 2);
+            lv_style_set_border_color(&button_pressed_style, lv_color_black());
+            lv_style_set_text_color(&button_pressed_style, lv_color_black());
+            lv_style_set_text_font(&button_pressed_style, &lv_font_montserrat_20);
+
+            // Create the default container style
+            lv_style_init(&container_default_style);
+            lv_style_set_radius(&container_default_style, 0);
+            lv_style_set_bg_opa(&container_default_style, LV_OPA_100);
+            lv_style_set_bg_color(&container_default_style, lv_color_make(0, 104, 179));
+            lv_style_set_border_width(&container_pressed_style, 0);
+            lv_style_set_text_color(&container_default_style, lv_color_white());
+            lv_style_set_text_align(&container_default_style, LV_TEXT_ALIGN_CENTER);
+            lv_style_set_pad_ver(&container_default_style, 10);
+
+            // Create the pressed container style
+            lv_style_init(&container_pressed_style);
+            lv_style_set_radius(&container_pressed_style, 0);
+            lv_style_set_bg_opa(&container_pressed_style, LV_OPA_100);
+            lv_style_set_bg_color(&container_pressed_style, lv_color_make(244, 115, 33));
+            lv_style_set_border_width(&container_pressed_style, 0);
+            lv_style_set_text_color(&container_pressed_style, lv_color_black());
+            lv_style_set_text_align(&container_pressed_style, LV_TEXT_ALIGN_CENTER);
+            lv_style_set_pad_ver(&container_default_style, 10);
+            #endif
+        }
+
         void startButtonEventHandler(lv_event_t *event)
         {
             lv_obj_clean(lv_scr_act());
@@ -28,7 +84,7 @@ namespace menu
             lv_obj_t * menu = (lv_obj_t*)(user_data[0]);
             Data* data = (Data*)(user_data[1]);
 
-            if(lv_menu_back_btn_is_root(menu, obj))
+            if(obj == lv_menu_get_sidebar_header_back_btn(menu))
             {
                 lv_obj_clean(lv_scr_act());
                 drawMainMenu(data);
@@ -37,6 +93,8 @@ namespace menu
 
         void drawMainMenu(Data* data)
         {
+            initializeStyles();
+
             // Verify data
             if (data == nullptr)
             {
@@ -123,34 +181,10 @@ namespace menu
             lv_obj_align(status_label, LV_ALIGN_TOP_LEFT, 20, 100);
 
             // Add the start button
-            static lv_style_t start_button_default_style;
-            lv_style_init(&start_button_default_style);
-            lv_style_set_radius(&start_button_default_style, 5);
-            lv_style_set_bg_opa(&start_button_default_style, LV_OPA_100);
-            lv_style_set_bg_color(&start_button_default_style, lv_color_make(192, 192, 192));
-            lv_style_set_bg_grad_color(&start_button_default_style, lv_color_darken(lv_color_make(192, 192, 192), 8));
-            lv_style_set_border_opa(&start_button_default_style, LV_OPA_100);
-            lv_style_set_border_width(&start_button_default_style, 2);
-            lv_style_set_border_color(&start_button_default_style, lv_color_black());
-            lv_style_set_text_color(&start_button_default_style, lv_color_black());
-            lv_style_set_text_font(&start_button_default_style, &pros_font_dejavu_mono_18);
-            static lv_style_t start_button_pressed_style;
-            lv_style_init(&start_button_pressed_style);
-            lv_style_set_radius(&start_button_pressed_style, 5);
-            lv_style_set_bg_opa(&start_button_pressed_style, LV_OPA_100);
-            lv_style_set_translate_y(&start_button_pressed_style, 3);
-            lv_style_set_shadow_ofs_y(&start_button_pressed_style, 3);
-            lv_style_set_bg_color(&start_button_pressed_style, lv_color_darken(lv_color_make(192, 192, 192), 16));
-            lv_style_set_bg_grad_color(&start_button_pressed_style, lv_color_darken(lv_color_make(192, 192, 192), 24));
-            lv_style_set_border_opa(&start_button_pressed_style, LV_OPA_100);
-            lv_style_set_border_width(&start_button_pressed_style, 2);
-            lv_style_set_border_color(&start_button_pressed_style, lv_color_black());
-            lv_style_set_text_color(&start_button_pressed_style, lv_color_black());
-            lv_style_set_text_font(&start_button_pressed_style, &pros_font_dejavu_mono_18);
             lv_obj_t * start_button = lv_btn_create(lv_scr_act());
             lv_obj_remove_style_all(start_button);
-            lv_obj_add_style(start_button, &start_button_default_style, 0);
-            lv_obj_add_style(start_button, &start_button_pressed_style, LV_STATE_PRESSED);
+            lv_obj_add_style(start_button, &button_default_style, 0);
+            lv_obj_add_style(start_button, &button_pressed_style, LV_STATE_PRESSED);
             lv_obj_set_size(start_button, 160, 70);
             lv_obj_align(start_button, LV_ALIGN_TOP_LEFT, 20, 15);
             lv_obj_add_event_cb(start_button, startButtonEventHandler, LV_EVENT_CLICKED, data);
@@ -159,34 +193,10 @@ namespace menu
             lv_obj_center(start_button_label);
 
             // Add the settings button
-            static lv_style_t settings_button_default_style;
-            lv_style_init(&settings_button_default_style);
-            lv_style_set_radius(&settings_button_default_style, 5);
-            lv_style_set_bg_opa(&settings_button_default_style, LV_OPA_100);
-            lv_style_set_bg_color(&settings_button_default_style, lv_color_make(192, 192, 192));
-            lv_style_set_bg_grad_color(&settings_button_default_style, lv_color_darken(lv_color_make(192, 192, 192), 8));
-            lv_style_set_border_opa(&settings_button_default_style, LV_OPA_100);
-            lv_style_set_border_width(&settings_button_default_style, 2);
-            lv_style_set_border_color(&settings_button_default_style, lv_color_black());
-            lv_style_set_text_color(&settings_button_default_style, lv_color_black());
-            lv_style_set_text_font(&settings_button_default_style, &lv_font_montserrat_20);
-            static lv_style_t settings_button_pressed_style;
-            lv_style_init(&settings_button_pressed_style);
-            lv_style_set_radius(&settings_button_pressed_style, 5);
-            lv_style_set_bg_opa(&settings_button_pressed_style, LV_OPA_100);
-            lv_style_set_translate_y(&settings_button_pressed_style, 3);
-            lv_style_set_shadow_ofs_y(&settings_button_pressed_style, 3);
-            lv_style_set_bg_color(&settings_button_pressed_style, lv_color_darken(lv_color_make(192, 192, 192), 16));
-            lv_style_set_bg_grad_color(&settings_button_pressed_style, lv_color_darken(lv_color_make(192, 192, 192), 24));
-            lv_style_set_border_opa(&settings_button_pressed_style, LV_OPA_100);
-            lv_style_set_border_width(&settings_button_pressed_style, 2);
-            lv_style_set_border_color(&settings_button_pressed_style, lv_color_black());
-            lv_style_set_text_color(&settings_button_pressed_style, lv_color_black());
-            lv_style_set_text_font(&settings_button_pressed_style, &lv_font_montserrat_20);
             lv_obj_t * settings_button = lv_btn_create(lv_scr_act());
             lv_obj_remove_style_all(settings_button);
-            lv_obj_add_style(settings_button, &settings_button_default_style, 0);
-            lv_obj_add_style(settings_button, &settings_button_pressed_style, LV_STATE_PRESSED);
+            lv_obj_add_style(settings_button, &button_default_style, 0);
+            lv_obj_add_style(settings_button, &button_pressed_style, LV_STATE_PRESSED);
             lv_obj_set_size(settings_button, 70, 70);
             lv_obj_align(settings_button, LV_ALIGN_TOP_LEFT, 190, 15);
             lv_obj_add_event_cb(settings_button, settingsButtonEventHandler, LV_EVENT_CLICKED, data);
@@ -197,79 +207,115 @@ namespace menu
 
         void drawSettingsMenu(Data* data)
         {
-            lv_obj_t * menu = lv_menu_create(lv_scr_act());
+            initializeStyles();
 
-            // Create the back button
-            static lv_style_t back_button_style;
-            lv_style_init(&back_button_style);
-            lv_style_set_radius(&back_button_style, 5);
-            lv_style_set_border_opa(&back_button_style, LV_OPA_100);
-            lv_style_set_border_width(&back_button_style, 2);
-            lv_style_set_border_color(&back_button_style, lv_color_make(0, 104, 179));
+            // Verify data
+            if (data == nullptr)
+            {
+                data = new Data;
+                data->readFile(FILENAME);
+            }
+
+            // Create the menu
+            lv_obj_t * menu = lv_menu_create(lv_scr_act());
             lv_menu_set_mode_root_back_btn(menu, LV_MENU_ROOT_BACK_BTN_ENABLED);
-            lv_obj_t * back_btn = lv_menu_get_main_header_back_btn(menu);
-            lv_obj_add_style(back_btn, &back_button_style, 0);
-            lv_obj_t * back_btn_label = lv_label_create(back_btn);
-            lv_label_set_text(back_btn_label, "Back");
-            static void* user_data[] = { nullptr, nullptr };
-            user_data[0] = menu;
-            user_data[1] = data;
-            lv_obj_add_event_cb(menu, settingsBackButtonEventHandler, LV_EVENT_CLICKED, user_data);
+            lv_obj_set_style_bg_color(menu, lv_color_make(0, 104, 179), 0);
             lv_obj_set_size(menu, lv_disp_get_hor_res(NULL), lv_disp_get_ver_res(NULL));
             lv_obj_center(menu);
 
             // Create the alliance settings page
             lv_obj_t * alliance_page = lv_menu_page_create(menu, NULL);
-            lv_obj_t* alliance_page_container = lv_menu_cont_create(alliance_page);
-            lv_obj_t* alliance_menu_label = lv_label_create(alliance_page_container);
-            lv_label_set_text(alliance_menu_label, "Alliance selection");
+            lv_obj_set_style_pad_hor(alliance_page, lv_obj_get_style_pad_left(lv_menu_get_main_header(menu), 0), 0);
+            lv_menu_separator_create(alliance_page);
+            lv_obj_t* alliance_page_section = lv_menu_section_create(alliance_page);
+            lv_obj_set_style_bg_color(alliance_page_section, lv_color_make(173, 205, 234), 0);
+            lv_obj_set_size(alliance_page_section, 300, 220);
 
             // Create the autonomous settings page
             lv_obj_t * autonomous_page = lv_menu_page_create(menu, NULL);
-            lv_obj_t* autonomous_page_container = lv_menu_cont_create(autonomous_page);
-            lv_obj_t* autonomous_menu_label = lv_label_create(autonomous_page_container);
-            lv_label_set_text(autonomous_menu_label, "Autonomous selection");
+            lv_obj_set_style_pad_hor(autonomous_page, lv_obj_get_style_pad_left(lv_menu_get_main_header(menu), 0), 0);
+            lv_menu_separator_create(autonomous_page);
+            lv_obj_t* autonomous_page_section = lv_menu_section_create(autonomous_page);
+            lv_obj_set_style_bg_color(autonomous_page_section, lv_color_make(173, 205, 234), 0);
+            lv_obj_set_size(autonomous_page_section, 300, 220);
 
             // Create the configuration settings page
             lv_obj_t * configuration_page = lv_menu_page_create(menu, NULL);
-            lv_obj_t* configuration_page_container = lv_menu_cont_create(configuration_page);
-            lv_obj_t* configuration_menu_label = lv_label_create(configuration_page_container);
-            lv_label_set_text(configuration_menu_label, "Configuration selection");
+            lv_obj_set_style_pad_hor(configuration_page, lv_obj_get_style_pad_left(lv_menu_get_main_header(menu), 0), 0);
+            lv_menu_separator_create(configuration_page);
+            lv_obj_t* configuration_page_section = lv_menu_section_create(configuration_page);
+            lv_obj_set_style_bg_color(configuration_page_section, lv_color_make(173, 205, 234), 0);
+            lv_obj_set_size(configuration_page_section, 300, 220);
 
             // Create the profile settings page
             lv_obj_t * profile_page = lv_menu_page_create(menu, NULL);
-            lv_obj_t* profile_page_container = lv_menu_cont_create(profile_page);
-            lv_obj_t* profile_menu_label = lv_label_create(profile_page_container);
-            lv_label_set_text(profile_menu_label, "Profile selection");
+            lv_obj_set_style_pad_hor(profile_page, lv_obj_get_style_pad_left(lv_menu_get_main_header(menu), 0), 0);
+            lv_menu_separator_create(profile_page);
+            lv_obj_t* profile_page_section = lv_menu_section_create(profile_page);
+            lv_obj_set_style_bg_color(profile_page_section, lv_color_make(173, 205, 234), 0);
+            lv_obj_set_size(profile_page_section, 300, 220);
 
-            // Create the main selection page
-            lv_obj_t * main_page = lv_menu_page_create(menu, NULL);
+            // Create a root page
+            lv_obj_t* root_page = lv_menu_page_create(menu, NULL);
+            lv_obj_set_style_pad_hor(root_page, lv_obj_get_style_pad_left(lv_menu_get_main_header(menu), 0), 0);
+            lv_obj_t* section = lv_menu_section_create(root_page);
+            lv_menu_set_sidebar_page(menu, root_page);
+
+            // Create the back button
+            lv_obj_t * back_btn = lv_menu_get_sidebar_header_back_btn(menu);
+            lv_obj_remove_style_all(back_btn);
+            lv_obj_add_style(back_btn, &button_default_style, 0);
+            lv_obj_add_style(back_btn, &button_pressed_style, LV_STATE_PRESSED);
+            lv_obj_set_style_text_font(back_btn, &lv_font_montserrat_14, 0);
+            lv_obj_set_style_text_font(back_btn, &lv_font_montserrat_14, LV_STATE_PRESSED);
+            lv_obj_set_style_pad_all(back_btn, 3, 0);
+            lv_obj_set_style_pad_all(back_btn, 3, LV_STATE_PRESSED);
+            lv_obj_set_style_translate_y(back_btn, 0, LV_STATE_PRESSED);
+            lv_obj_set_style_shadow_ofs_y(back_btn, 0, LV_STATE_PRESSED);
+            lv_obj_t * back_btn_label = lv_label_create(back_btn);
+            lv_label_set_text(back_btn_label, "   Back");
+            static void* user_data[] = { nullptr, nullptr };
+            user_data[0] = menu;
+            user_data[1] = data;
+            lv_obj_add_event_cb(menu, settingsBackButtonEventHandler, LV_EVENT_CLICKED, user_data);
 
             // Add a container for the alliance menu
-            lv_obj_t* alliance_menu_container = lv_menu_cont_create(main_page);
-            lv_obj_t* alliance_container_label = lv_label_create(alliance_menu_container);
-            lv_label_set_text(alliance_container_label, "Alliance menu");
+            lv_obj_t* alliance_menu_container = lv_menu_cont_create(section);
+            lv_obj_remove_style_all(alliance_menu_container);
+            lv_obj_add_style(alliance_menu_container, &container_default_style, 0);
+            lv_obj_add_style(alliance_menu_container, &container_pressed_style, LV_STATE_CHECKED);
+            lv_obj_t* alliance_menu_container_label = lv_label_create(alliance_menu_container);
+            lv_label_set_text(alliance_menu_container_label, "Alliance");
             lv_menu_set_load_page_event(menu, alliance_menu_container, alliance_page);
 
             // Add a container for the autonomous menu
-            lv_obj_t* autonomous_menu_container = lv_menu_cont_create(main_page);
-            lv_obj_t* autonomous_container_label = lv_label_create(autonomous_menu_container);
-            lv_label_set_text(autonomous_container_label, "Autonomous menu");
+            lv_obj_t* autonomous_menu_container = lv_menu_cont_create(section);
+            lv_obj_remove_style_all(autonomous_menu_container);
+            lv_obj_add_style(autonomous_menu_container, &container_default_style, 0);
+            lv_obj_add_style(autonomous_menu_container, &container_pressed_style, LV_STATE_CHECKED);
+            lv_obj_t* autonomous_menu_container_label = lv_label_create(autonomous_menu_container);
+            lv_label_set_text(autonomous_menu_container_label, "Auton");
             lv_menu_set_load_page_event(menu, autonomous_menu_container, autonomous_page);
 
             // Add a container for the configuration menu
-            lv_obj_t* configuration_menu_container = lv_menu_cont_create(main_page);
-            lv_obj_t* configuration_container_label = lv_label_create(configuration_menu_container);
-            lv_label_set_text(configuration_container_label, "Configuration menu");
+            lv_obj_t* configuration_menu_container = lv_menu_cont_create(section);
+            lv_obj_remove_style_all(configuration_menu_container);
+            lv_obj_add_style(configuration_menu_container, &container_default_style, 0);
+            lv_obj_add_style(configuration_menu_container, &container_pressed_style, LV_STATE_CHECKED);
+            lv_obj_t* configuration_menu_container_label = lv_label_create(configuration_menu_container);
+            lv_label_set_text(configuration_menu_container_label, "Config");
             lv_menu_set_load_page_event(menu, configuration_menu_container, configuration_page);
 
             // Add a container for the profile menu
-            lv_obj_t* profile_menu_container = lv_menu_cont_create(main_page);
-            lv_obj_t* profile_container_label = lv_label_create(profile_menu_container);
-            lv_label_set_text(profile_container_label, "Profile menu");
+            lv_obj_t* profile_menu_container = lv_menu_cont_create(section);
+            lv_obj_remove_style_all(profile_menu_container);
+            lv_obj_add_style(profile_menu_container, &container_default_style, 0);
+            lv_obj_add_style(profile_menu_container, &container_pressed_style, LV_STATE_CHECKED);
+            lv_obj_t* profile_menu_container_label = lv_label_create(profile_menu_container);
+            lv_label_set_text(profile_menu_container_label, "Profile");
             lv_menu_set_load_page_event(menu, profile_menu_container, profile_page);
 
-            lv_menu_set_page(menu, main_page);
+            lv_event_send(lv_obj_get_child(lv_obj_get_child(lv_menu_get_cur_sidebar_page(menu), 0), 0), LV_EVENT_CLICKED, NULL);
         }
     } // End namespace screen
 } // End namespace menu

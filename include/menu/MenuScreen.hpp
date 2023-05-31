@@ -19,6 +19,19 @@ namespace menu
         static const std::string FILENAME = "/usd/MenuData.txt";
 
         /**
+         * LVGL styles
+         */
+        static lv_style_t button_default_style;
+        static lv_style_t button_pressed_style;
+        static lv_style_t container_default_style;
+        static lv_style_t container_pressed_style;
+
+        /**
+         * Initializes the styles
+         */
+        extern void initializeStyles();
+
+        /**
          * Event handler function for the start button in the main menu
          * @param event The event data
          */
