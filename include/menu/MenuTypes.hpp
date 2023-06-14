@@ -64,6 +64,20 @@ namespace menu
         extern Profile to_profile(std::string string);
 
         /**
+         * The available settings in menu selection
+         */
+        enum class Setting
+        {
+            ALLIANCE,
+            AUTONOMOUS,
+            CONFIGURATION,
+            PROFILE,
+            COUNT
+        };
+        extern std::string to_string(Setting setting);
+        extern Setting to_setting(std::string string);
+
+        /**
          * Gets the count for any enum type
          * @param t The enum type being counted
          */

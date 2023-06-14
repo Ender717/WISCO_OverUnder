@@ -450,8 +450,6 @@ typedef void * lv_indev_drv_user_data_t;            /*Type of user data in the i
 
 #define USE_PROS_FONT_DEJAVU_MONO_40 0
 
-#define USE_FONT_BLADERUNNER_30 0
-
 #endif
 
 /*Declare the type of the user data of fonts (can be e.g. `void *`, `int`, `struct`)*/

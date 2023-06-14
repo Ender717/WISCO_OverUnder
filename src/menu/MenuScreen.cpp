@@ -1,11 +1,13 @@
 // Included header
 #include "menu/MenuScreen.hpp"
+#include "MenuTypes.hpp"
 #include "liblvgl/core/lv_event.h"
 #include "liblvgl/core/lv_obj.h"
 #include "liblvgl/core/lv_obj_style.h"
 #include "liblvgl/extra/layouts/flex/lv_flex.h"
 #include "liblvgl/extra/widgets/menu/lv_menu.h"
 #include "liblvgl/font/lv_font.h"
+#include "liblvgl/widgets/lv_btnmatrix.h"
 
 namespace menu
 {
@@ -60,6 +62,15 @@ namespace menu
             lv_style_set_text_color(&container_pressed_style, lv_color_black());
             lv_style_set_text_align(&container_pressed_style, LV_TEXT_ALIGN_CENTER);
             lv_style_set_pad_ver(&container_default_style, 10);
+
+            // Create the button matrix main style
+            lv_style_init(&button_matrix_main_style);
+            lv_style_set_bg_color(&button_matrix_main_style, lv_color_make(173, 205, 234));
+            lv_style_set_border_width(&button_matrix_main_style, 0);
+
+            // Create the button matrix items style
+            lv_style_init(&button_matrix_items_style);
+
             #endif
         }
 
@@ -88,6 +99,23 @@ namespace menu
             {
                 lv_obj_clean(lv_scr_act());
                 drawMainMenu(data);
+            }
+        }
+
+        void settingsButtonMatrixEventHandler(lv_event_t *event)
+        {
+            lv_obj_t* obj = lv_event_get_target(event);
+            uint32_t button_id = lv_btnmatrix_get_selected_btn(obj);
+            void** user_data = (void**)lv_event_get_user_data(event);
+            types::Setting* setting = (types::Setting*)(user_data[0]);
+            Data* data = (Data*)(user_data[1]);
+            switch(*setting)
+            {
+                case types::Setting::ALLIANCE: { data->setAlliance(static_cast<types::Alliance>(button_id)); }
+                case types::Setting::AUTONOMOUS: { data->setAutonomous(static_cast<types::Autonomous>(button_id)); }
+                case types::Setting::CONFIGURATION: { data->setConfiguration(static_cast<types::Configuration>(button_id)); }
+                case types::Setting::PROFILE: { data->setProfile(static_cast<types::Profile>(button_id)); }
+                case types::Setting::COUNT: {}
             }
         }
 
@@ -154,11 +182,7 @@ namespace menu
             // Add the WISCOBOTS text
             static lv_style_t team_name_label_style;
             lv_style_init(&team_name_label_style);
-            #if USE_FONT_BLADERUNNER_30
-            lv_style_set_text_font(&team_name_label_style, &font_bladerunner_30);
-            #else
             lv_style_set_text_font(&team_name_label_style, &pros_font_dejavu_mono_30);
-            #endif
             lv_style_set_text_color(&team_name_label_style, lv_color_make(244, 115, 33));
             lv_obj_t* team_name_label = lv_label_create(lv_scr_act());
             lv_obj_add_style(team_name_label, &team_name_label_style, 0);
@@ -227,33 +251,77 @@ namespace menu
             lv_obj_t * alliance_page = lv_menu_page_create(menu, NULL);
             lv_obj_set_style_pad_hor(alliance_page, lv_obj_get_style_pad_left(lv_menu_get_main_header(menu), 0), 0);
             lv_menu_separator_create(alliance_page);
-            lv_obj_t* alliance_page_section = lv_menu_section_create(alliance_page);
-            lv_obj_set_style_bg_color(alliance_page_section, lv_color_make(173, 205, 234), 0);
-            lv_obj_set_size(alliance_page_section, 300, 220);
+
+            // Create the alliance button matrix
+            static const char* alliance_button_matrix_map[] = { "BLUE", "RED", "\n", "SKILLS", "" };
+            lv_obj_t* alliance_button_matrix = lv_btnmatrix_create(alliance_page);
+            lv_btnmatrix_set_map(alliance_button_matrix, alliance_button_matrix_map);
+            lv_btnmatrix_set_one_checked(alliance_button_matrix, true);
+            lv_btnmatrix_set_btn_ctrl_all(alliance_button_matrix, LV_BTNMATRIX_CTRL_CHECKABLE);
+            lv_btnmatrix_set_btn_ctrl(alliance_button_matrix, static_cast<int>(data->getAlliance()), LV_BTNMATRIX_CTRL_CHECKED);
+            lv_obj_add_style(alliance_button_matrix, &button_matrix_main_style, LV_PART_MAIN);
+            lv_obj_set_size(alliance_button_matrix, 300, 220);
+            static void* alliance_user_data[] = { nullptr, nullptr };
+            alliance_user_data[0] = (void*)&ALLIANCE_SETTING;
+            alliance_user_data[1] = data;
+            lv_obj_add_event_cb(alliance_button_matrix, settingsButtonMatrixEventHandler, LV_EVENT_VALUE_CHANGED, alliance_user_data);
 
             // Create the autonomous settings page
             lv_obj_t * autonomous_page = lv_menu_page_create(menu, NULL);
             lv_obj_set_style_pad_hor(autonomous_page, lv_obj_get_style_pad_left(lv_menu_get_main_header(menu), 0), 0);
             lv_menu_separator_create(autonomous_page);
-            lv_obj_t* autonomous_page_section = lv_menu_section_create(autonomous_page);
-            lv_obj_set_style_bg_color(autonomous_page_section, lv_color_make(173, 205, 234), 0);
-            lv_obj_set_size(autonomous_page_section, 300, 220);
+
+            // Create the autonomous button matrix
+            static const char* autonomous_button_matrix_map[] = { "BLUE DEFENSIVE", "BLUE OFFENSIVE", "\n", "RED DEFENSIVE", "RED OFFENSIVE", "\n", "SKILLS DEFENSIVE", "SKILLS OFFENSIVE", "" };
+            lv_obj_t* autonomous_button_matrix = lv_btnmatrix_create(autonomous_page);
+            lv_btnmatrix_set_map(autonomous_button_matrix, autonomous_button_matrix_map);
+            lv_btnmatrix_set_one_checked(autonomous_button_matrix, true);
+            lv_btnmatrix_set_btn_ctrl_all(autonomous_button_matrix, LV_BTNMATRIX_CTRL_CHECKABLE);
+            lv_btnmatrix_set_btn_ctrl(autonomous_button_matrix, static_cast<int>(data->getAutonomous()), LV_BTNMATRIX_CTRL_CHECKED);
+            lv_obj_add_style(autonomous_button_matrix, &button_matrix_main_style, LV_PART_MAIN);
+            lv_obj_set_size(autonomous_button_matrix, 300, 220);
+            static void* autonomous_user_data[] = { nullptr, nullptr };
+            autonomous_user_data[0] = (void*)&AUTONOMOUS_SETTING;
+            autonomous_user_data[1] = data;
+            lv_obj_add_event_cb(autonomous_button_matrix, settingsButtonMatrixEventHandler, LV_EVENT_VALUE_CHANGED, autonomous_user_data);
 
             // Create the configuration settings page
             lv_obj_t * configuration_page = lv_menu_page_create(menu, NULL);
             lv_obj_set_style_pad_hor(configuration_page, lv_obj_get_style_pad_left(lv_menu_get_main_header(menu), 0), 0);
             lv_menu_separator_create(configuration_page);
-            lv_obj_t* configuration_page_section = lv_menu_section_create(configuration_page);
-            lv_obj_set_style_bg_color(configuration_page_section, lv_color_make(173, 205, 234), 0);
-            lv_obj_set_size(configuration_page_section, 300, 220);
+
+            // Create the configuration button matrix
+            static const char* configuration_button_matrix_map[] = { "BLUE", "ORANGE", "" };
+            lv_obj_t* configuration_button_matrix = lv_btnmatrix_create(configuration_page);
+            lv_btnmatrix_set_map(configuration_button_matrix, configuration_button_matrix_map);
+            lv_btnmatrix_set_one_checked(configuration_button_matrix, true);
+            lv_btnmatrix_set_btn_ctrl_all(configuration_button_matrix, LV_BTNMATRIX_CTRL_CHECKABLE);
+            lv_btnmatrix_set_btn_ctrl(configuration_button_matrix, static_cast<int>(data->getConfiguration()), LV_BTNMATRIX_CTRL_CHECKED);
+            lv_obj_add_style(configuration_button_matrix, &button_matrix_main_style, LV_PART_MAIN);
+            lv_obj_set_size(configuration_button_matrix, 300, 220);
+            static void* configuration_user_data[] = { nullptr, nullptr };
+            configuration_user_data[0] = (void*)&CONFIGURATION_SETTING;
+            configuration_user_data[1] = data;
+            lv_obj_add_event_cb(configuration_button_matrix, settingsButtonMatrixEventHandler, LV_EVENT_VALUE_CHANGED, configuration_user_data);
 
             // Create the profile settings page
             lv_obj_t * profile_page = lv_menu_page_create(menu, NULL);
             lv_obj_set_style_pad_hor(profile_page, lv_obj_get_style_pad_left(lv_menu_get_main_header(menu), 0), 0);
             lv_menu_separator_create(profile_page);
-            lv_obj_t* profile_page_section = lv_menu_section_create(profile_page);
-            lv_obj_set_style_bg_color(profile_page_section, lv_color_make(173, 205, 234), 0);
-            lv_obj_set_size(profile_page_section, 300, 220);
+
+            // Create the profile button matrix
+            static const char* profile_button_matrix_map[] = { "HENRY", "JOHN", "\n", "NATHAN", "" };
+            lv_obj_t* profile_button_matrix = lv_btnmatrix_create(profile_page);
+            lv_btnmatrix_set_map(profile_button_matrix, profile_button_matrix_map);
+            lv_btnmatrix_set_one_checked(profile_button_matrix, true);
+            lv_btnmatrix_set_btn_ctrl_all(profile_button_matrix, LV_BTNMATRIX_CTRL_CHECKABLE);
+            lv_btnmatrix_set_btn_ctrl(profile_button_matrix, static_cast<int>(data->getProfile()), LV_BTNMATRIX_CTRL_CHECKED);
+            lv_obj_add_style(profile_button_matrix, &button_matrix_main_style, LV_PART_MAIN);
+            lv_obj_set_size(profile_button_matrix, 300, 220);
+            static void* profile_user_data[] = { nullptr, nullptr };
+            profile_user_data[0] = (void*)&PROFILE_SETTING;
+            profile_user_data[1] = data;
+            lv_obj_add_event_cb(profile_button_matrix, settingsButtonMatrixEventHandler, LV_EVENT_VALUE_CHANGED, profile_user_data);
 
             // Create a root page
             lv_obj_t* root_page = lv_menu_page_create(menu, NULL);
@@ -274,10 +342,10 @@ namespace menu
             lv_obj_set_style_shadow_ofs_y(back_btn, 0, LV_STATE_PRESSED);
             lv_obj_t * back_btn_label = lv_label_create(back_btn);
             lv_label_set_text(back_btn_label, "   Back");
-            static void* user_data[] = { nullptr, nullptr };
-            user_data[0] = menu;
-            user_data[1] = data;
-            lv_obj_add_event_cb(menu, settingsBackButtonEventHandler, LV_EVENT_CLICKED, user_data);
+            static void* back_user_data[] = { nullptr, nullptr };
+            back_user_data[0] = menu;
+            back_user_data[1] = data;
+            lv_obj_add_event_cb(menu, settingsBackButtonEventHandler, LV_EVENT_CLICKED, back_user_data);
 
             // Add a container for the alliance menu
             lv_obj_t* alliance_menu_container = lv_menu_cont_create(section);
@@ -285,7 +353,7 @@ namespace menu
             lv_obj_add_style(alliance_menu_container, &container_default_style, 0);
             lv_obj_add_style(alliance_menu_container, &container_pressed_style, LV_STATE_CHECKED);
             lv_obj_t* alliance_menu_container_label = lv_label_create(alliance_menu_container);
-            lv_label_set_text(alliance_menu_container_label, "Alliance");
+            lv_label_set_text(alliance_menu_container_label, " Alliance");
             lv_menu_set_load_page_event(menu, alliance_menu_container, alliance_page);
 
             // Add a container for the autonomous menu
@@ -294,7 +362,7 @@ namespace menu
             lv_obj_add_style(autonomous_menu_container, &container_default_style, 0);
             lv_obj_add_style(autonomous_menu_container, &container_pressed_style, LV_STATE_CHECKED);
             lv_obj_t* autonomous_menu_container_label = lv_label_create(autonomous_menu_container);
-            lv_label_set_text(autonomous_menu_container_label, "Auton");
+            lv_label_set_text(autonomous_menu_container_label, " Auton");
             lv_menu_set_load_page_event(menu, autonomous_menu_container, autonomous_page);
 
             // Add a container for the configuration menu
@@ -303,7 +371,7 @@ namespace menu
             lv_obj_add_style(configuration_menu_container, &container_default_style, 0);
             lv_obj_add_style(configuration_menu_container, &container_pressed_style, LV_STATE_CHECKED);
             lv_obj_t* configuration_menu_container_label = lv_label_create(configuration_menu_container);
-            lv_label_set_text(configuration_menu_container_label, "Config");
+            lv_label_set_text(configuration_menu_container_label, " Config");
             lv_menu_set_load_page_event(menu, configuration_menu_container, configuration_page);
 
             // Add a container for the profile menu
@@ -312,7 +380,7 @@ namespace menu
             lv_obj_add_style(profile_menu_container, &container_default_style, 0);
             lv_obj_add_style(profile_menu_container, &container_pressed_style, LV_STATE_CHECKED);
             lv_obj_t* profile_menu_container_label = lv_label_create(profile_menu_container);
-            lv_label_set_text(profile_menu_container_label, "Profile");
+            lv_label_set_text(profile_menu_container_label, " Profile");
             lv_menu_set_load_page_event(menu, profile_menu_container, profile_page);
 
             lv_event_send(lv_obj_get_child(lv_obj_get_child(lv_menu_get_cur_sidebar_page(menu), 0), 0), LV_EVENT_CLICKED, NULL);

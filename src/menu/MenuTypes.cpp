@@ -86,5 +86,26 @@ namespace menu
                     profile = static_cast<types::Profile>(i);
             return profile;
         }
+
+        std::string to_string(Setting setting)
+        {
+            switch (setting)
+            {
+                case Setting::ALLIANCE: { return "ALLIANCE"; }
+                case Setting::AUTONOMOUS: { return "AUTONOMOUS"; }
+                case Setting::CONFIGURATION: { return "CONFIGURATION"; }
+                case Setting::PROFILE: { return "PROFILE"; }
+                default: { return "INVALID SETTING"; }
+            }
+        }
+
+        Setting to_setting(std::string string)
+        {
+            Setting setting = Setting::COUNT;
+            for (int i = 0; i < types::get_count<types::Setting>(); i++)
+                if (string == types::to_string(static_cast<types::Setting>(i)))
+                    setting = static_cast<types::Setting>(i);
+            return setting;
+        }
     } // End namespace types
 } // End namespace menu
