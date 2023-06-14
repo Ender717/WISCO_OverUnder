@@ -49,18 +49,6 @@ namespace menu
         extern void initializeStyles();
 
         /**
-         * Event handler function for the start button in the main menu
-         * @param event The event data
-         */
-        extern void startButtonEventHandler(lv_event_t* event);
-
-        /**
-         * Event handler function for the settings button in the main menu
-         * @param event The event data
-         */
-        extern void settingsButtonEventHandler(lv_event_t* event);
-
-        /**
          * Event handler function for the back button in the settings menu
          * @param event The event data
          */

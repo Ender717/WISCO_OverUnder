@@ -67,20 +67,6 @@ namespace menu
             #endif
         }
 
-        void startButtonEventHandler(lv_event_t *event)
-        {
-            lv_obj_clean(lv_scr_act());
-            Data* data = (Data*)lv_event_get_user_data(event);
-            data->write();
-        }
-
-        void settingsButtonEventHandler(lv_event_t *event)
-        {
-            lv_obj_clean(lv_scr_act());
-            Data* data = (Data*)lv_event_get_user_data(event);
-            drawSettingsMenu(data);
-        }
-
         void settingsBackButtonEventHandler(lv_event_t* event)
         {
             lv_obj_t * obj = lv_event_get_target(event);
@@ -204,7 +190,14 @@ namespace menu
             lv_obj_add_style(start_button, &button_pressed_style, LV_STATE_PRESSED);
             lv_obj_set_size(start_button, 160, 70);
             lv_obj_align(start_button, LV_ALIGN_TOP_LEFT, 20, 15);
-            lv_obj_add_event_cb(start_button, startButtonEventHandler, LV_EVENT_CLICKED, data);
+            lv_obj_add_event_cb(start_button,
+                                [](lv_event_t* event)
+                                {
+                                    lv_obj_clean(lv_scr_act());
+                                    Data* data = (Data*)lv_event_get_user_data(event);
+                                    data->write();
+                                },
+                                LV_EVENT_CLICKED, data);
             lv_obj_t * start_button_label = lv_label_create(start_button);
             lv_label_set_text(start_button_label, "START");
             lv_obj_center(start_button_label);
@@ -216,7 +209,14 @@ namespace menu
             lv_obj_add_style(settings_button, &button_pressed_style, LV_STATE_PRESSED);
             lv_obj_set_size(settings_button, 70, 70);
             lv_obj_align(settings_button, LV_ALIGN_TOP_LEFT, 190, 15);
-            lv_obj_add_event_cb(settings_button, settingsButtonEventHandler, LV_EVENT_CLICKED, data);
+            lv_obj_add_event_cb(settings_button,
+                                [](lv_event_t* event)
+                                {
+                                    lv_obj_clean(lv_scr_act());
+                                    Data* data = (Data*)lv_event_get_user_data(event);
+                                    drawSettingsMenu(data);
+                                },
+                                LV_EVENT_CLICKED, data);
             lv_obj_t * settings_button_label = lv_label_create(settings_button);
             lv_label_set_text(settings_button_label, LV_SYMBOL_SETTINGS);
             lv_obj_center(settings_button_label);

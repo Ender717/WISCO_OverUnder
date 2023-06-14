@@ -12,8 +12,7 @@
  */
 namespace menu
 {
-    #pragma pack(push)
-    #pragma pack(1)
+    #pragma pack(push, 1)
     /**
      * @brief Holds the data for menu selection in a packed format
      *
@@ -51,7 +50,7 @@ namespace menu
          */
         void write() const
         {
-            std::ofstream output{"menu_data.bin", std::ios::binary};
+            std::ofstream output{"/usd/menu_data.bin", std::ios::binary};
             output.write((char*)this, sizeof(Data));
             output.close();
         }
@@ -62,7 +61,7 @@ namespace menu
          */
         void read()
         {
-            std::ifstream input{"menu_data.bin", std::ios::binary};
+            std::ifstream input{"/usd/menu_data.bin", std::ios::binary};
             input.read((char*)this, sizeof(Data));
             input.close();
         }
