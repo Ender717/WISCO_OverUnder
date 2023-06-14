@@ -1,89 +1,129 @@
-// Inclusion guard
 #ifndef MENU_TYPES_HPP
 #define MENU_TYPES_HPP
 
-// Included standard libraries
+#include <cstdint>
 #include <string>
 
+/**
+ * @brief Program data related to the menu system
+ *
+ * @author Nathan Sandvig
+ */
 namespace menu
 {
+    /**
+     * @brief The enumerated types used in the menu system
+     *
+     * @author Nathan Sandvig
+     */
     namespace types
     {
         /**
-         * The available alliances for menu selection
+         * @brief The alliances available for selection in the menu
+         *
          */
-        enum class Alliance
+        enum class Alliance : uint8_t
         {
             BLUE,
             RED,
-            SKILLS,
-            COUNT
+            SKILLS
         };
-        extern std::string to_string(Alliance alliance);
-        extern Alliance to_alliance(std::string string);
 
         /**
-         * The available autonomous routines for menu selection
+         * @brief The string form of the Alliance enumerated values
+         *
          */
-        enum class Autonomous
+        constexpr const char* ALLIANCE_STRINGS[] = { "BLUE", "RED", "SKILLS" };
+
+        /**
+         * @brief The number of Alliance values
+         *
+         */
+        constexpr int ALLIANCE_COUNT = 3;
+
+        /**
+         * @brief The autonomous routines available for selection in the menu
+         *
+         */
+        enum class Autonomous : uint8_t
         {
             BLUE_DEFENSIVE,
             BLUE_OFFENSIVE,
             RED_DEFENSIVE,
             RED_OFFENSIVE,
             SKILLS_DEFENSIVE,
-            SKILLS_OFFENSIVE,
-            COUNT
+            SKILLS_OFFENSIVE
         };
-        extern std::string to_string(Autonomous autonomous);
-        extern Autonomous to_autonomous(std::string string);
 
         /**
-         * The available configurations for menu selection
+         * @brief The string form of the Autonomous enumerated values
+         *
          */
-        enum class Configuration
+        constexpr const char* AUTONOMOUS_STRINGS[] = { "BLUE DEFENSIVE", "BLUE OFFENSIVE", "RED DEFENSIVE", "RED OFFENSIVE", "SKILLS DEFENSIVE", "SKILLS OFFENSIVE" };
+
+        /**
+         * @brief The number of Autonomous values
+         *
+         */
+        constexpr int AUTONOMOUS_COUNT = 6;
+
+        /**
+         * @brief The configurations available for selection in the menu
+         *
+         */
+        enum class Configuration : uint8_t
         {
             BLUE,
-            ORANGE,
-            COUNT
+            ORANGE
         };
-        extern std::string to_string(Configuration configuration);
-        extern Configuration to_configuration(std::string string);
 
         /**
-         * The available profiles for menu selection
+         * @brief The string form of the Configuration enumerated values
+         *
          */
-        enum class Profile
+        constexpr const char* CONFIGURATION_STRINGS[] = { "BLUE", "ORANGE" };
+
+        /**
+         * @brief The number of Configuration values
+         *
+         */
+        constexpr int CONFIGURATION_COUNT = 2;
+
+        /**
+         * @brief The profiles available for selection in the menu
+         *
+         */
+        enum class Profile : uint8_t
         {
             HENRY,
             JOHN,
-            NATHAN,
-            COUNT
+            NATHAN
         };
-        extern std::string to_string(Profile profile);
-        extern Profile to_profile(std::string string);
 
         /**
-         * The available settings in menu selection
+         * @brief The string form of the Profile enumerated values
+         *
+         */
+        constexpr const char* PROFILE_STRINGS[] = { "HENRY", "JOHN", "NATHAN" };
+
+        /**
+         * @brief The number of Profile values
+         *
+         */
+        constexpr int PROFILE_COUNT = 3;
+
+        /**
+         * @brief The available settings in the menu system
+         *
          */
         enum class Setting
         {
             ALLIANCE,
             AUTONOMOUS,
             CONFIGURATION,
-            PROFILE,
-            COUNT
+            PROFILE
         };
-        extern std::string to_string(Setting setting);
-        extern Setting to_setting(std::string string);
-
-        /**
-         * Gets the count for any enum type
-         * @param t The enum type being counted
-         */
-        template<class t>
-        int get_count() { return static_cast<int>(t::COUNT); }
-    } // End namespace types
-} // End namespace menu
+    } // namespace types
+} // namespace menu
 
 #endif
