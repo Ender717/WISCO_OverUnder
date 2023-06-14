@@ -4,23 +4,25 @@
 
 // Included external library headers
 #include "liblvgl/lvgl.h"
+#include "pros/rtos.h"
 
 // Included internal headers
 #include "menu/MenuData.hpp"
 
+/**
+ * @brief Program data related to the menu system
+ *
+ * @author Nathan Sandvig
+ */
 namespace menu
 {
     namespace screen
     {
         /**
-         * The file name for data writing
+         * @brief The number of buttons to display on a line
+         *
          */
-        static const std::string FILENAME = "/usd/MenuData.txt";
-
-        /**
-         * The number of buttons to display on a line
-         */
-        static const int BUTTONS_PER_LINE = 2;
+        static constexpr int BUTTONS_PER_LINE = 2;
 
         /**
          * LVGL styles
@@ -81,7 +83,7 @@ namespace menu
          * @param data The current menu selection data
          */
         extern void drawSettingsMenu(Data* data);
-    } // End namespace screen
-} // End namespace menu
+    } // namespace screen
+} // namespace menu
 
 #endif

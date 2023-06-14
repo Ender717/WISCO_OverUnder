@@ -1,13 +1,6 @@
 // Included header
 #include "menu/MenuScreen.hpp"
 #include "MenuTypes.hpp"
-#include "liblvgl/core/lv_event.h"
-#include "liblvgl/core/lv_obj.h"
-#include "liblvgl/core/lv_obj_style.h"
-#include "liblvgl/extra/layouts/flex/lv_flex.h"
-#include "liblvgl/extra/widgets/menu/lv_menu.h"
-#include "liblvgl/font/lv_font.h"
-#include "liblvgl/widgets/lv_btnmatrix.h"
 
 namespace menu
 {
@@ -78,7 +71,7 @@ namespace menu
         {
             lv_obj_clean(lv_scr_act());
             Data* data = (Data*)lv_event_get_user_data(event);
-            data->writeFile(FILENAME);
+            data->write();
         }
 
         void settingsButtonEventHandler(lv_event_t *event)
@@ -111,10 +104,10 @@ namespace menu
             Data* data = (Data*)(user_data[1]);
             switch(*setting)
             {
-                case types::Setting::ALLIANCE: { data->setAlliance(static_cast<types::Alliance>(button_id)); }
-                case types::Setting::AUTONOMOUS: { data->setAutonomous(static_cast<types::Autonomous>(button_id)); }
-                case types::Setting::CONFIGURATION: { data->setConfiguration(static_cast<types::Configuration>(button_id)); }
-                case types::Setting::PROFILE: { data->setProfile(static_cast<types::Profile>(button_id)); }
+                case types::Setting::ALLIANCE: { data->alliance = static_cast<types::Alliance>(button_id); }
+                case types::Setting::AUTONOMOUS: { data->autonomous = static_cast<types::Autonomous>(button_id); }
+                case types::Setting::CONFIGURATION: { data->configuration = static_cast<types::Configuration>(button_id); }
+                case types::Setting::PROFILE: { data->profile = static_cast<types::Profile>(button_id); }
                 case types::Setting::COUNT: {}
             }
         }
@@ -127,13 +120,13 @@ namespace menu
             if (data == nullptr)
             {
                 data = new Data;
-                data->readFile(FILENAME);
+                data->read();
             }
 
             // Set the background color to light blue
             lv_obj_set_style_bg_color(lv_scr_act(), lv_color_make(173, 205, 234), 0);
             lv_obj_refresh_style(lv_scr_act(), LV_PART_MAIN, LV_STYLE_BG_COLOR);
-            pros::delay(50);
+            pros::c::delay(50);
 
             // Create the big line at the bottom
             static lv_point_t big_line_points[] = { {0, 205}, {480, 205} };
@@ -198,10 +191,10 @@ namespace menu
             lv_obj_t* status_label = lv_label_create(lv_scr_act());
             lv_obj_add_style(status_label, &status_label_style, 0);
             lv_label_set_text_fmt(status_label, "ALLIANCE: %s\nAUTONOMOUS: %s\nCONFIGURATION: %s\nPROFILE: %s",
-                                                menu::types::to_string(data->getAlliance()).c_str(),
-                                                menu::types::to_string(data->getAutonomous()).c_str(),
-                                                menu::types::to_string(data->getConfiguration()).c_str(),
-                                                menu::types::to_string(data->getProfile()).c_str());
+                                                menu::types::to_string(data->alliance).c_str(),
+                                                menu::types::to_string(data->autonomous).c_str(),
+                                                menu::types::to_string(data->configuration).c_str(),
+                                                menu::types::to_string(data->profile).c_str());
             lv_obj_align(status_label, LV_ALIGN_TOP_LEFT, 20, 100);
 
             // Add the start button
@@ -237,7 +230,7 @@ namespace menu
             if (data == nullptr)
             {
                 data = new Data;
-                data->readFile(FILENAME);
+                data->read();
             }
 
             // Create the menu
@@ -258,7 +251,7 @@ namespace menu
             lv_btnmatrix_set_map(alliance_button_matrix, alliance_button_matrix_map);
             lv_btnmatrix_set_one_checked(alliance_button_matrix, true);
             lv_btnmatrix_set_btn_ctrl_all(alliance_button_matrix, LV_BTNMATRIX_CTRL_CHECKABLE);
-            lv_btnmatrix_set_btn_ctrl(alliance_button_matrix, static_cast<int>(data->getAlliance()), LV_BTNMATRIX_CTRL_CHECKED);
+            lv_btnmatrix_set_btn_ctrl(alliance_button_matrix, static_cast<int>(data->alliance), LV_BTNMATRIX_CTRL_CHECKED);
             lv_obj_add_style(alliance_button_matrix, &button_matrix_main_style, LV_PART_MAIN);
             lv_obj_set_size(alliance_button_matrix, 300, 220);
             static void* alliance_user_data[] = { nullptr, nullptr };
@@ -277,7 +270,7 @@ namespace menu
             lv_btnmatrix_set_map(autonomous_button_matrix, autonomous_button_matrix_map);
             lv_btnmatrix_set_one_checked(autonomous_button_matrix, true);
             lv_btnmatrix_set_btn_ctrl_all(autonomous_button_matrix, LV_BTNMATRIX_CTRL_CHECKABLE);
-            lv_btnmatrix_set_btn_ctrl(autonomous_button_matrix, static_cast<int>(data->getAutonomous()), LV_BTNMATRIX_CTRL_CHECKED);
+            lv_btnmatrix_set_btn_ctrl(autonomous_button_matrix, static_cast<int>(data->autonomous), LV_BTNMATRIX_CTRL_CHECKED);
             lv_obj_add_style(autonomous_button_matrix, &button_matrix_main_style, LV_PART_MAIN);
             lv_obj_set_size(autonomous_button_matrix, 300, 220);
             static void* autonomous_user_data[] = { nullptr, nullptr };
@@ -296,7 +289,7 @@ namespace menu
             lv_btnmatrix_set_map(configuration_button_matrix, configuration_button_matrix_map);
             lv_btnmatrix_set_one_checked(configuration_button_matrix, true);
             lv_btnmatrix_set_btn_ctrl_all(configuration_button_matrix, LV_BTNMATRIX_CTRL_CHECKABLE);
-            lv_btnmatrix_set_btn_ctrl(configuration_button_matrix, static_cast<int>(data->getConfiguration()), LV_BTNMATRIX_CTRL_CHECKED);
+            lv_btnmatrix_set_btn_ctrl(configuration_button_matrix, static_cast<int>(data->configuration), LV_BTNMATRIX_CTRL_CHECKED);
             lv_obj_add_style(configuration_button_matrix, &button_matrix_main_style, LV_PART_MAIN);
             lv_obj_set_size(configuration_button_matrix, 300, 220);
             static void* configuration_user_data[] = { nullptr, nullptr };
@@ -315,7 +308,7 @@ namespace menu
             lv_btnmatrix_set_map(profile_button_matrix, profile_button_matrix_map);
             lv_btnmatrix_set_one_checked(profile_button_matrix, true);
             lv_btnmatrix_set_btn_ctrl_all(profile_button_matrix, LV_BTNMATRIX_CTRL_CHECKABLE);
-            lv_btnmatrix_set_btn_ctrl(profile_button_matrix, static_cast<int>(data->getProfile()), LV_BTNMATRIX_CTRL_CHECKED);
+            lv_btnmatrix_set_btn_ctrl(profile_button_matrix, static_cast<int>(data->profile), LV_BTNMATRIX_CTRL_CHECKED);
             lv_obj_add_style(profile_button_matrix, &button_matrix_main_style, LV_PART_MAIN);
             lv_obj_set_size(profile_button_matrix, 300, 220);
             static void* profile_user_data[] = { nullptr, nullptr };

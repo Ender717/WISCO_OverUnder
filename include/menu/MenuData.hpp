@@ -1,129 +1,73 @@
-// Inclusion guard
 #ifndef MENU_DATA_HPP
 #define MENU_DATA_HPP
 
-// Included standard library headers
 #include <fstream>
 
-// Included external library headers
-#include "pros/rtos.hpp"
-
-// Included internal headers
 #include "menu/MenuTypes.hpp"
 
+/**
+ * @brief Program data related to the menu system
+ *
+ * @author Nathan Sandvig
+ */
 namespace menu
 {
+    #pragma pack(push)
+    #pragma pack(1)
     /**
-     * This class manages the data for the menu system
+     * @brief Holds the data for menu selection in a packed format
+     *
      * @author Nathan Sandvig
      */
-    class Data
+    struct Data
     {
-    private:
         /**
-         * The mutex to keep the data thread safe
-         */
-        pros::Mutex mutex;
-
-        /**
-         * The selected alliance
+         * @brief The alliance selection
+         *
          */
         types::Alliance alliance;
 
         /**
-         * The selected autonomous
+         * @brief The autonomous selection
+         *
          */
         types::Autonomous autonomous;
 
         /**
-         * The selected configuration
+         * @brief The configuration selection
+         *
          */
         types::Configuration configuration;
 
         /**
-         * The selected profile
+         * @brief The profile selection
+         *
          */
         types::Profile profile;
 
-    public:
         /**
-         * Default constructor
+         * @brief Writes the selection data to a binary file
+         *
          */
-        Data();
+        void write() const
+        {
+            std::ofstream output{"menu_data.bin", std::ios::binary};
+            output.write((char*)this, sizeof(Data));
+            output.close();
+        }
 
         /**
-         * Copy constructor
-         * @param copy The Data object being copied
+         * @brief Reads the selection data from a binary file
+         *
          */
-        Data(const Data& copy);
-
-        /**
-         * Sets the alliance selection
-         * @param _alliance The new alliance selection
-         */
-        void setAlliance(types::Alliance _alliance);
-
-        /**
-         * Gets the alliance selection
-         * @return The current alliance selection
-         */
-        types::Alliance getAlliance();
-
-        /**
-         * Sets the autonomous selection
-         * @param _autonomous The new autonomous selection
-         */
-        void setAutonomous(types::Autonomous _autonomous);
-
-        /**
-         * Gets the autonomous selection
-         * @return The current autonomous selection
-         */
-        types::Autonomous getAutonomous();
-
-        /**
-         * Sets the configuration selection
-         * @param _configuration The new configuration selection
-         */
-        void setConfiguration(types::Configuration _configuration);
-
-        /**
-         * Gets the configuration selection
-         * @return The current configuration selection
-         */
-        types::Configuration getConfiguration();
-
-        /**
-         * Sets the profile selection
-         * @param _profile The new profile selection
-         */
-        void setProfile(types::Profile _profile);
-
-        /**
-         * Gets the profile selection
-         * @return The current profile selection
-         */
-        types::Profile getProfile();
-
-        /**
-         * Reads selection data from a file
-         * @param filename The name of the file
-         */
-        void readFile(std::string filename);
-
-        /**
-         * Writes selection data to a file
-         * @param filename The name of the file
-         */
-        void writeFile(std::string filename);
-
-        /**
-         * Assignment operator overload
-         * @param rhs The Data object on the right hand side of the operator
-         * @return This Data object with the assigned values
-         */
-        Data& operator=(const Data& rhs);
+        void read()
+        {
+            std::ifstream input{"menu_data.bin", std::ios::binary};
+            input.read((char*)this, sizeof(Data));
+            input.close();
+        }
     };
-} // end namespace menu
+    #pragma pack(pop)
+} // namespace menu
 
 #endif
