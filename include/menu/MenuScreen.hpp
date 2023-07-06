@@ -1,12 +1,8 @@
-// Inclusion guard
 #ifndef MENU_SCREEN_HPP
 #define MENU_SCREEN_HPP
 
-// Included external library headers
 #include "liblvgl/lvgl.h"
-#include "pros/rtos.h"
 
-// Included internal headers
 #include "menu/MenuData.hpp"
 
 /**
@@ -16,32 +12,54 @@
  */
 namespace menu
 {
+    /**
+     * @brief Screen management for the menu system
+     *
+     * @author Nathan Sandvig
+     */
     namespace screen
     {
         /**
          * @brief The number of buttons to display on a line
          *
          */
-        static constexpr int BUTTONS_PER_LINE = 2;
+        constexpr int BUTTONS_PER_LINE = 2;
 
         /**
-         * LVGL styles
+         * @brief The default style for a button
+         *
          */
         static lv_style_t button_default_style;
-        static lv_style_t button_pressed_style;
-        static lv_style_t container_default_style;
-        static lv_style_t container_pressed_style;
-        static lv_style_t button_matrix_main_style;
-        static lv_style_t button_matrix_items_style;
 
         /**
-         * Available settings
-         * USED FOR MEMORY ADDRESS
+         * @brief The pressed style for a button
+         *
          */
-        static const types::Setting ALLIANCE_SETTING = types::Setting::ALLIANCE;
-        static const types::Setting AUTONOMOUS_SETTING = types::Setting::AUTONOMOUS;
-        static const types::Setting CONFIGURATION_SETTING = types::Setting::CONFIGURATION;
-        static const types::Setting PROFILE_SETTING = types::Setting::PROFILE;
+        static lv_style_t button_pressed_style;
+
+        /**
+         * @brief The default style for a container
+         *
+         */
+        static lv_style_t container_default_style;
+
+        /**
+         * @brief The pressed style for a container
+         *
+         */
+        static lv_style_t container_pressed_style;
+
+        /**
+         * @brief The background style for a button matrix
+         *
+         */
+        static lv_style_t button_matrix_main_style;
+
+        /**
+         * @brief The button style for a button matrix
+         *
+         */
+        static lv_style_t button_matrix_items_style;
 
         /**
          * Initializes the styles

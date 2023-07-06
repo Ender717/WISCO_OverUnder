@@ -12,6 +12,12 @@
  */
 namespace menu
 {
+    /**
+     * @brief The name of the file for data storage
+     *
+     */
+    constexpr const char* DATA_FILENAME = "/usd/menu_data.bin";
+
     #pragma pack(push, 1)
     /**
      * @brief Holds the data for menu selection in a packed format
@@ -24,25 +30,25 @@ namespace menu
          * @brief The alliance selection
          *
          */
-        types::Alliance alliance;
+        types::Alliance alliance{types::Alliance::BLUE};
 
         /**
          * @brief The autonomous selection
          *
          */
-        types::Autonomous autonomous;
+        types::Autonomous autonomous{types::Autonomous::BLUE_DEFENSIVE};
 
         /**
          * @brief The configuration selection
          *
          */
-        types::Configuration configuration;
+        types::Configuration configuration{types::Configuration::BLUE};
 
         /**
          * @brief The profile selection
          *
          */
-        types::Profile profile;
+        types::Profile profile{types::Profile::HENRY};
 
         /**
          * @brief Writes the selection data to a binary file
@@ -50,7 +56,7 @@ namespace menu
          */
         void write() const
         {
-            std::ofstream output{"/usd/menu_data.bin", std::ios::binary};
+            std::ofstream output{DATA_FILENAME, std::ios::binary};
             output.write((char*)this, sizeof(Data));
             output.close();
         }
@@ -61,7 +67,7 @@ namespace menu
          */
         void read()
         {
-            std::ifstream input{"/usd/menu_data.bin", std::ios::binary};
+            std::ifstream input{DATA_FILENAME, std::ios::binary};
             input.read((char*)this, sizeof(Data));
             input.close();
         }

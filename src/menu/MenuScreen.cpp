@@ -94,7 +94,6 @@ namespace menu
                 case types::Setting::AUTONOMOUS: { data->autonomous = static_cast<types::Autonomous>(button_id); }
                 case types::Setting::CONFIGURATION: { data->configuration = static_cast<types::Configuration>(button_id); }
                 case types::Setting::PROFILE: { data->profile = static_cast<types::Profile>(button_id); }
-                case types::Setting::COUNT: {}
             }
         }
 
@@ -112,7 +111,6 @@ namespace menu
             // Set the background color to light blue
             lv_obj_set_style_bg_color(lv_scr_act(), lv_color_make(173, 205, 234), 0);
             lv_obj_refresh_style(lv_scr_act(), LV_PART_MAIN, LV_STYLE_BG_COLOR);
-            pros::c::delay(50);
 
             // Create the big line at the bottom
             static lv_point_t big_line_points[] = { {0, 205}, {480, 205} };
@@ -177,10 +175,10 @@ namespace menu
             lv_obj_t* status_label = lv_label_create(lv_scr_act());
             lv_obj_add_style(status_label, &status_label_style, 0);
             lv_label_set_text_fmt(status_label, "ALLIANCE: %s\nAUTONOMOUS: %s\nCONFIGURATION: %s\nPROFILE: %s",
-                                                menu::types::to_string(data->alliance).c_str(),
-                                                menu::types::to_string(data->autonomous).c_str(),
-                                                menu::types::to_string(data->configuration).c_str(),
-                                                menu::types::to_string(data->profile).c_str());
+                                                menu::types::ALLIANCE_STRINGS[static_cast<uint8_t>(data->alliance)],
+                                                menu::types::AUTONOMOUS_STRINGS[static_cast<uint8_t>(data->autonomous)],
+                                                menu::types::CONFIGURATION_STRINGS[static_cast<uint8_t>(data->configuration)],
+                                                menu::types::PROFILE_STRINGS[static_cast<uint8_t>(data->profile)]);
             lv_obj_align(status_label, LV_ALIGN_TOP_LEFT, 20, 100);
 
             // Add the start button
