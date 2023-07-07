@@ -1,5 +1,5 @@
-#ifndef HEADING_TRACKER_H
-#define HEADING_TRACKER_H
+#ifndef I_HEADING_TRACKER_H
+#define I_HEADING_TRACKER_H
 
 namespace devices
 {
@@ -8,14 +8,14 @@ namespace devices
      *
      * @author Nathan Sandvig
      */
-    class HeadingTracker
+    class IHeadingTracker
     {
     public:
         /**
          * @brief Destroy the Heading Tracker object
          *
          */
-        virtual ~HeadingTracker() = default;
+        virtual ~IHeadingTracker() = default;
 
         /**
          * @brief Get the Heading

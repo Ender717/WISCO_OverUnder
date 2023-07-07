@@ -1,5 +1,5 @@
-#ifndef ROTATION_TRACKER_H
-#define ROTATION_TRACKER_H
+#ifndef I_ROTATION_TRACKER_H
+#define I_ROTATION_TRACKER_H
 
 namespace devices
 {
@@ -8,14 +8,14 @@ namespace devices
      *
      * @author Nathan Sandvig
      */
-    class RotationTracker
+    class IRotationTracker
     {
     public:
         /**
          * @brief Destroy the Rotation Tracker object
          *
          */
-        virtual ~RotationTracker() = default;
+        virtual ~IRotationTracker() = default;
 
         /**
          * @brief Get the Rotation

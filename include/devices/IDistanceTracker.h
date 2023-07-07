@@ -1,5 +1,5 @@
-#ifndef DISTANCE_TRACKER_H
-#define DISTANCE_TRACKER_H
+#ifndef I_DISTANCE_TRACKER_H
+#define I_DISTANCE_TRACKER_H
 
 namespace devices
 {
@@ -8,14 +8,14 @@ namespace devices
      *
      * @author Nathan Sandvig
      */
-    class DistanceTracker
+    class IDistanceTracker
     {
     public:
         /**
          * @brief Destroy the Distance Tracker object
          *
          */
-        virtual ~DistanceTracker() = default;
+        virtual ~IDistanceTracker() = default;
 
         /**
          * @brief Get the Distance

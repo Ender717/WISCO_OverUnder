@@ -4,7 +4,7 @@
 #include <cmath>
 
 #include "devices/vex/RotationSensor.h"
-#include "devices/RotationTracker.h"
+#include "devices/IRotationTracker.h"
 
 namespace devices
 {
@@ -15,7 +15,7 @@ namespace devices
          *
          * @author Nathan Sandvig
          */
-        class VexRotationTracker : public RotationTracker
+        class VexRotationTracker : public IRotationTracker
         {
         private:
             /**

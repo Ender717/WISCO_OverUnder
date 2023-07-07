@@ -3,8 +3,8 @@
 
 #include <memory>
 
-#include "devices/DistanceTracker.h"
-#include "devices/RotationTracker.h"
+#include "devices/IDistanceTracker.h"
+#include "devices/IRotationTracker.h"
 
 namespace devices
 {
@@ -15,14 +15,14 @@ namespace devices
          *
          * @author Nathan Sandvig
          */
-        class TrackingWheel : public DistanceTracker
+        class TrackingWheel : public IDistanceTracker
         {
         private:
             /**
              * @brief The rotation tracker on the wheel
              *
              */
-            std::unique_ptr<RotationTracker> rotationTracker{nullptr};
+            std::unique_ptr<IRotationTracker> rotationTracker{nullptr};
 
             /**
              * @brief The radius of the wheel
@@ -37,7 +37,7 @@ namespace devices
              * @param rotationTracker The rotation tracker on the wheel
              * @param radius The radius of the wheel
              */
-            TrackingWheel(std::unique_ptr<RotationTracker>& rotationTracker, double radius);
+            TrackingWheel(std::unique_ptr<IRotationTracker>& rotationTracker, double radius);
 
             /**
              * @brief Get the Distance

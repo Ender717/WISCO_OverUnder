@@ -14,14 +14,14 @@ namespace subsystems
              *
              * @author Nathan Sandvig
              */
-            class PositionTracker
+            class IPositionTracker
             {
             public:
                 /**
                  * @brief Destroy the Position Tracker object
                  *
                  */
-                virtual ~PositionTracker() = default;
+                virtual ~IPositionTracker() = default;
 
                 /**
                  * @brief Get the Position
@@ -29,6 +29,13 @@ namespace subsystems
                  * @return Position The position
                  */
                 virtual Position getPosition() = 0;
+
+                /**
+                 * @brief Set the Position
+                 *
+                 * @param position The new position
+                 */
+                virtual void setPosition(Position position) = 0;
             };
         } // namespace position
     } // namespace drive
