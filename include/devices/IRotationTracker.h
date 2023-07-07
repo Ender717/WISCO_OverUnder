@@ -3,34 +3,34 @@
 
 namespace devices
 {
+/**
+ * @brief An interface for devices which track rotation in radians
+ *
+ * @author Nathan Sandvig
+ */
+class IRotationTracker
+{
+public:
     /**
-     * @brief An interface for devices which track rotation in radians
+     * @brief Destroy the Rotation Tracker object
      *
-     * @author Nathan Sandvig
      */
-    class IRotationTracker
-    {
-    public:
-        /**
-         * @brief Destroy the Rotation Tracker object
-         *
-         */
-        virtual ~IRotationTracker() = default;
+    virtual ~IRotationTracker() = default;
 
-        /**
-         * @brief Get the Rotation
-         *
-         * @return double The rotation
-         */
-        virtual double getRotation() = 0;
+    /**
+     * @brief Get the Rotation
+     *
+     * @return double The rotation
+     */
+    virtual double getRotation() = 0;
 
-        /**
-         * @brief Set the Rotation
-         *
-         * @param rotation The new rotation
-         */
-        virtual void setRotation(double rotation) = 0;
-    };
+    /**
+     * @brief Set the Rotation
+     *
+     * @param rotation The new rotation
+     */
+    virtual void setRotation(double rotation) = 0;
+};
 } // namespace devices
 
 #endif

@@ -2,22 +2,22 @@
 
 namespace devices
 {
-    namespace modules
-    {
-        TrackingWheel::TrackingWheel(std::unique_ptr<IRotationTracker>& rotationTracker, double radius) :
-            rotationTracker{std::move(rotationTracker)}, radius{radius}
-        {
+namespace modules
+{
+TrackingWheel::TrackingWheel(std::unique_ptr<IRotationTracker>& rotationTracker, double radius) :
+    rotationTracker{std::move(rotationTracker)}, radius{radius}
+{
 
-        }
+}
 
-        double TrackingWheel::getDistance()
-        {
-            return rotationTracker->getRotation() * radius;
-        }
+double TrackingWheel::getDistance()
+{
+    return rotationTracker->getRotation() * radius;
+}
 
-        void TrackingWheel::setDistance(double distance)
-        {
-            rotationTracker->setRotation(distance / radius);
-        }
-    }
+void TrackingWheel::setDistance(double distance)
+{
+    rotationTracker->setRotation(distance / radius);
+}
+}
 }

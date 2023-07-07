@@ -3,26 +3,26 @@
 
 namespace subsystems
 {
+/**
+ * @brief An interface for subsystems that can be run in the background
+ *
+ * @author Nathan Sandvig
+ */
+class IRunnable
+{
+public:
     /**
-     * @brief An interface for subsystems that can be run in the background
+     * @brief Destroy the IRunnable object
      *
-     * @author Nathan Sandvig
      */
-    class IRunnable
-    {
-    public:
-        /**
-         * @brief Destroy the IRunnable object
-         *
-         */
-        virtual ~IRunnable() = default;
+    virtual ~IRunnable() = default;
 
-        /**
-         * @brief Run the runnable object
-         *
-         */
-        virtual void run() = 0;
-    };
+    /**
+     * @brief Run the runnable object
+     *
+     */
+    virtual void run() = 0;
+};
 } // namespace subsystems
 
 #endif

@@ -3,27 +3,27 @@
 
 namespace devices
 {
+/**
+ * @brief An interface for devices that track heading in radians
+ *
+ * @author Nathan Sandvig
+ */
+class IHeadingTracker
+{
+public:
     /**
-     * @brief An interface for devices that track heading in radians
+     * @brief Destroy the Heading Tracker object
      *
-     * @author Nathan Sandvig
      */
-    class IHeadingTracker
-    {
-    public:
-        /**
-         * @brief Destroy the Heading Tracker object
-         *
-         */
-        virtual ~IHeadingTracker() = default;
+    virtual ~IHeadingTracker() = default;
 
-        /**
-         * @brief Get the Heading
-         *
-         * @return double The heading
-         */
-        virtual double getHeading() = 0;
-    };
+    /**
+     * @brief Get the Heading
+     *
+     * @return double The heading
+     */
+    virtual double getHeading() = 0;
+};
 } // namespace devices
 
 #endif
