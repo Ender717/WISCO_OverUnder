@@ -1,5 +1,7 @@
-#include "robot/Robot.hpp"
+#include "wisco/robot/Robot.hpp"
 
+namespace wisco
+{
 namespace robot
 {
 void Robot::addSubsystem(std::unique_ptr<ASubsystem>& subsystem)
@@ -56,4 +58,5 @@ void* Robot::getState(std::string subsystem_name, std::string state_name)
 	}
 	return state;
 }
-}
+} // namespace robot
+} // namespace wisco

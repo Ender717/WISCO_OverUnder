@@ -3,7 +3,7 @@
 
 #include "liblvgl/lvgl.h"
 
-#include "menu/MenuData.hpp"
+#include "wisco/menu/MenuData.hpp"
 
 /**
  * @brief Program data related to the menu system
@@ -82,7 +82,7 @@ namespace screen
      * Draws the main menu screen
      * @param data The current menu selection data
      */
-    extern void drawMainMenu(Data* data);
+    extern void drawMainMenu(Data* data = nullptr);
 
     /**
      * Draws the settings menu screen

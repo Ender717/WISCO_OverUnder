@@ -1,7 +1,15 @@
-#ifndef A_SUBSYSTEM_HPP
-#define A_SUBSYSTEM_HPP
+#ifndef WISCO_ROBOT_A_SUBSYSTEM_HPP
+#define WISCO_ROBOT_A_SUBSYSTEM_HPP
 
 #include <string>
+
+/**
+ * @brief Namespace for all library code
+ * @author Nathan Sandvig
+ *
+ */
+namespace wisco
+{
 
 /**
  * @brief The namespace that holds all robot classes
@@ -104,6 +112,7 @@ public:
 	 */
 	ASubsystem& operator=(ASubsystem&& rhs) = default;
 };
-}
+} // namespace robot
+} // namespace wisco
 
 #endif

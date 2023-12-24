@@ -1,10 +1,18 @@
-#ifndef ROBOT_HPP
-#define ROBOT_HPP
+#ifndef WISCO_ROBOT_ROBOT_HPP
+#define WISCO_ROBOT_ROBOT_HPP
 
 #include <memory>
 #include <vector>
 
 #include "ASubsystem.hpp"
+
+/**
+ * @brief Namespace for all library code
+ * @author Nathan Sandvig
+ *
+ */
+namespace wisco
+{
 
 /**
  * @brief The namespace that holds all robot classes
@@ -69,6 +77,7 @@ public:
 	 */
 	void* getState(std::string subsystem_name, std::string state_name);
 };
-}
+} // namespace robot
+} // namespace wisco
 
 #endif

@@ -3,7 +3,7 @@
 
 #include <fstream>
 
-#include "menu/MenuTypes.hpp"
+#include "wisco/menu/MenuTypes.hpp"
 
 /**
  * @brief Program data related to the menu system

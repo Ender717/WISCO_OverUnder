@@ -1,6 +1,6 @@
 // Included header
-#include "menu/MenuScreen.hpp"
-#include "MenuTypes.hpp"
+#include "wisco/menu/MenuScreen.hpp"
+#include "wisco/menu/MenuTypes.hpp"
 
 namespace menu
 {

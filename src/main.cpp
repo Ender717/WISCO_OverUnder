@@ -1,5 +1,4 @@
 #include "main.h"
-#include "menu/MenuScreen.hpp"
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -9,8 +8,7 @@
  */
 void initialize()
 {
-    pros::delay(50);
-    menu::screen::drawMainMenu(nullptr);
+    wisco::MatchController::initialize();
 }
 
 /**
@@ -20,7 +18,7 @@ void initialize()
  */
 void disabled()
 {
-
+	wisco::MatchController::disabled();
 }
 
 /**
@@ -34,7 +32,7 @@ void disabled()
  */
 void competition_initialize()
 {
-
+	wisco::MatchController::competitionInitialize();
 }
 
 /**
@@ -50,7 +48,7 @@ void competition_initialize()
  */
 void autonomous()
 {
-
+	wisco::MatchController::autonomous();
 }
 
 /**
@@ -68,5 +66,5 @@ void autonomous()
  */
 void opcontrol()
 {
-
+	wisco::MatchController::operatorControl();
 }
