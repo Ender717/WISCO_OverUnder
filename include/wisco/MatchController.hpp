@@ -1,6 +1,10 @@
 #ifndef WISCO_MATCH_CONTROLLER_HPP
 #define WISCO_MATCH_CONTROLLER_HPP
 
+#include "AutonomousManager.hpp"
+#include "IMenu.hpp"
+#include "hal/rtos/delay.hpp"
+
 /**
  * @brief Namespace for all library code
  * @author Nathan Sandvig
@@ -17,6 +21,23 @@ namespace wisco
 class MatchController
 {
 private:
+	/**
+	 * @brief The number of milliseconds to wait to check the menu
+	 *
+	 */
+	static constexpr uint32_t MENU_DELAY{10};
+
+	/**
+	 * @brief The autonomous management object
+	 *
+	 */
+	static AutonomousManager autonomous_manager;
+
+	/**
+	 * @brief The robot being controlled
+	 *
+	 */
+	static std::shared_ptr<robot::Robot> robot;
 
 public:
 	/**
