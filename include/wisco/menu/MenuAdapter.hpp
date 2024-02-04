@@ -5,6 +5,8 @@
 
 #include "wisco/IMenu.hpp"
 
+#include "LvglMenu.hpp"
+
 /**
  * @brief Namespace for all library code
  * @author Nathan Sandvig
@@ -28,6 +30,15 @@ class MenuAdapter : public IMenu
 {
 private:
     /**
+     * @brief The option names
+     * 
+     */
+    static constexpr char ALLIANCE_OPTION_NAME[]{"ALLIANCE"};
+    static constexpr char AUTONOMOUS_OPTION_NAME[]{"AUTONOMOUS"};
+    static constexpr char CONFIGURATION_OPTION_NAME[]{"CONFIGURATION"};
+    static constexpr char PROFILE_OPTION_NAME[]{"PROFILE"};
+
+    /**
      * @brief The alliances available in the menu system
      * 
      */
@@ -50,6 +61,12 @@ private:
      * 
      */
     std::vector<std::unique_ptr<IProfile>> driver_profiles{};
+
+    /**
+     * @brief The lvgl menu being adapted
+     * 
+     */
+    LvglMenu lvgl_menu{};
 
 public:
     /**

@@ -32,7 +32,7 @@ private:
 	 * @brief The menu system
 	 * 
 	 */
-	static std::unique_ptr<IMenu> menu;
+	static std::unique_ptr<IMenu> m_menu;
 
 	/**
 	 * @brief The autonomous management object
@@ -47,6 +47,13 @@ private:
 	static std::shared_ptr<robot::Robot> robot;
 
 public:
+	/**
+	 * @brief Set the menu system
+	 * 
+	 * @param menu The menu system
+	 */
+	static void setMenu(std::unique_ptr<IMenu>& menu);
+
 	/**
 	 * @brief Runs the robot initialization code
 	 *

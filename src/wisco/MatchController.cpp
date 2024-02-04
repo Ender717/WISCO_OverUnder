@@ -4,21 +4,29 @@
 namespace wisco
 {
 
-std::unique_ptr<IMenu> MatchController::menu{std::make_unique<menu::MenuAdapter>()};
+std::unique_ptr<IMenu> MatchController::m_menu{};
 AutonomousManager MatchController::autonomous_manager{};
 std::shared_ptr<robot::Robot> MatchController::robot{};
 
+void MatchController::setMenu(std::unique_ptr<IMenu>& menu)
+{
+	m_menu = std::move(menu);
+}
+
 void MatchController::initialize()
 {
-	menu->display();
-	while (!menu->isStarted())
-		hal::rtos::delay(MENU_DELAY);
+	if (m_menu)
+	{
+		m_menu->display();
+		while (!m_menu->isStarted())
+			hal::rtos::delay(MENU_DELAY);
+	}
 
-	SystemConfiguration system_configuration{menu->getSystemConfiguration()};
+	SystemConfiguration system_configuration{m_menu->getSystemConfiguration()};
 	autonomous_manager.setAutonomous(system_configuration.autonomous);
 	robot = system_configuration.configuration->buildRobot();
-
-	autonomous_manager.initializeAutonomous(robot);
+	if (robot)
+		autonomous_manager.initializeAutonomous(robot);
 }
 
 void MatchController::disabled()
@@ -33,7 +41,8 @@ void MatchController::competitionInitialize()
 
 void MatchController::autonomous()
 {
-	autonomous_manager.runAutonomous(robot);
+	if (robot)
+		autonomous_manager.runAutonomous(robot);
 }
 
 void MatchController::operatorControl()
