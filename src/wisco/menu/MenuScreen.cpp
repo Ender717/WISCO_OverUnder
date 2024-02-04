@@ -2,6 +2,8 @@
 #include "wisco/menu/MenuScreen.hpp"
 #include "wisco/menu/MenuTypes.hpp"
 
+namespace wisco
+{
 namespace menu
 {
 namespace screen
@@ -72,12 +74,11 @@ void settingsBackButtonEventHandler(lv_event_t* event)
     lv_obj_t * obj = lv_event_get_target(event);
     void** user_data = (void**)lv_event_get_user_data(event);
     lv_obj_t * menu = (lv_obj_t*)(user_data[0]);
-    Data* data = (Data*)(user_data[1]);
 
     if(obj == lv_menu_get_sidebar_header_back_btn(menu))
     {
         lv_obj_clean(lv_scr_act());
-        drawMainMenu(data);
+        drawMainMenu();
     }
 }
 
@@ -87,7 +88,6 @@ void settingsButtonMatrixEventHandler(lv_event_t *event)
     uint32_t button_id = lv_btnmatrix_get_selected_btn(obj);
     void** user_data = (void**)lv_event_get_user_data(event);
     types::Setting* setting = (types::Setting*)(user_data[0]);
-    Data* data = (Data*)(user_data[1]);
     switch(*setting)
     {
         case types::Setting::ALLIANCE: { data->alliance = static_cast<types::Alliance>(button_id); }
@@ -97,7 +97,7 @@ void settingsButtonMatrixEventHandler(lv_event_t *event)
     }
 }
 
-void drawMainMenu(Data* data)
+void drawMainMenu()
 {
     initializeStyles();
 
@@ -192,7 +192,6 @@ void drawMainMenu(Data* data)
                         [](lv_event_t* event)
                         {
                             lv_obj_clean(lv_scr_act());
-                            Data* data = (Data*)lv_event_get_user_data(event);
                             data->write();
                         },
                         LV_EVENT_CLICKED, data);
@@ -211,8 +210,7 @@ void drawMainMenu(Data* data)
                         [](lv_event_t* event)
                         {
                             lv_obj_clean(lv_scr_act());
-                            Data* data = (Data*)lv_event_get_user_data(event);
-                            drawSettingsMenu(data);
+                            drawSettingsMenu();
                         },
                         LV_EVENT_CLICKED, data);
     lv_obj_t * settings_button_label = lv_label_create(settings_button);
@@ -220,7 +218,7 @@ void drawMainMenu(Data* data)
     lv_obj_center(settings_button_label);
 }
 
-void drawSettingsMenu(Data* data)
+void drawSettingsMenu()
 {
     initializeStyles();
 
@@ -252,9 +250,8 @@ void drawSettingsMenu(Data* data)
     lv_btnmatrix_set_btn_ctrl(alliance_button_matrix, static_cast<int>(data->alliance), LV_BTNMATRIX_CTRL_CHECKED);
     lv_obj_add_style(alliance_button_matrix, &button_matrix_main_style, LV_PART_MAIN);
     lv_obj_set_size(alliance_button_matrix, 300, 220);
-    static void* alliance_user_data[] = { nullptr, nullptr };
+    static void* alliance_user_data[] = { nullptr };
     alliance_user_data[0] = (void*)(new types::Setting{types::Setting::ALLIANCE});
-    alliance_user_data[1] = data;
     lv_obj_add_event_cb(alliance_button_matrix, settingsButtonMatrixEventHandler, LV_EVENT_VALUE_CHANGED, alliance_user_data);
 
     // Create the autonomous settings page
@@ -271,9 +268,8 @@ void drawSettingsMenu(Data* data)
     lv_btnmatrix_set_btn_ctrl(autonomous_button_matrix, static_cast<int>(data->autonomous), LV_BTNMATRIX_CTRL_CHECKED);
     lv_obj_add_style(autonomous_button_matrix, &button_matrix_main_style, LV_PART_MAIN);
     lv_obj_set_size(autonomous_button_matrix, 300, 220);
-    static void* autonomous_user_data[] = { nullptr, nullptr };
+    static void* autonomous_user_data[] = { nullptr };
     autonomous_user_data[0] = (void*)(new types::Setting{types::Setting::AUTONOMOUS});
-    autonomous_user_data[1] = data;
     lv_obj_add_event_cb(autonomous_button_matrix, settingsButtonMatrixEventHandler, LV_EVENT_VALUE_CHANGED, autonomous_user_data);
 
     // Create the configuration settings page
@@ -290,9 +286,8 @@ void drawSettingsMenu(Data* data)
     lv_btnmatrix_set_btn_ctrl(configuration_button_matrix, static_cast<int>(data->configuration), LV_BTNMATRIX_CTRL_CHECKED);
     lv_obj_add_style(configuration_button_matrix, &button_matrix_main_style, LV_PART_MAIN);
     lv_obj_set_size(configuration_button_matrix, 300, 220);
-    static void* configuration_user_data[] = { nullptr, nullptr };
-    configuration_user_data[0] = (void*)(new types::Setting{types::Setting::PROFILE});
-    configuration_user_data[1] = data;
+    static void* configuration_user_data[] = { nullptr };
+    configuration_user_data[0] = (void*)(new types::Setting{types::Setting::CONFIGURATION});
     lv_obj_add_event_cb(configuration_button_matrix, settingsButtonMatrixEventHandler, LV_EVENT_VALUE_CHANGED, configuration_user_data);
 
     // Create the profile settings page
@@ -309,9 +304,8 @@ void drawSettingsMenu(Data* data)
     lv_btnmatrix_set_btn_ctrl(profile_button_matrix, static_cast<int>(data->profile), LV_BTNMATRIX_CTRL_CHECKED);
     lv_obj_add_style(profile_button_matrix, &button_matrix_main_style, LV_PART_MAIN);
     lv_obj_set_size(profile_button_matrix, 300, 220);
-    static void* profile_user_data[] = { nullptr, nullptr };
+    static void* profile_user_data[] = { nullptr };
     profile_user_data[0] = (void*)(new types::Setting{types::Setting::PROFILE});
-    profile_user_data[1] = data;
     lv_obj_add_event_cb(profile_button_matrix, settingsButtonMatrixEventHandler, LV_EVENT_VALUE_CHANGED, profile_user_data);
 
     // Create a root page
@@ -333,9 +327,8 @@ void drawSettingsMenu(Data* data)
     lv_obj_set_style_shadow_ofs_y(back_btn, 0, LV_STATE_PRESSED);
     lv_obj_t * back_btn_label = lv_label_create(back_btn);
     lv_label_set_text(back_btn_label, "   Back");
-    static void* back_user_data[] = { nullptr, nullptr };
+    static void* back_user_data[] = { nullptr };
     back_user_data[0] = menu;
-    back_user_data[1] = data;
     lv_obj_add_event_cb(menu, settingsBackButtonEventHandler, LV_EVENT_CLICKED, back_user_data);
 
     // Add a container for the alliance menu
@@ -376,5 +369,6 @@ void drawSettingsMenu(Data* data)
 
     lv_event_send(lv_obj_get_child(lv_obj_get_child(lv_menu_get_cur_sidebar_page(menu), 0), 0), LV_EVENT_CLICKED, NULL);
 }
-} // End namespace screen
-} // End namespace menu
+} // namespace screen
+} // namespace menu
+} // namespace wisco

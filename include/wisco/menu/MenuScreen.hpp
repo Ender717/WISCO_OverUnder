@@ -6,6 +6,13 @@
 #include "wisco/menu/MenuData.hpp"
 
 /**
+ * @brief Namespace for all library code
+ * @author Nathan Sandvig
+ *
+ */
+namespace wisco
+{
+/**
  * @brief Program data related to the menu system
  *
  * @author Nathan Sandvig
@@ -23,7 +30,7 @@ namespace screen
      * @brief The number of buttons to display on a line
      *
      */
-    constexpr int BUTTONS_PER_LINE = 2;
+    static constexpr int BUTTONS_PER_LINE = 2;
 
     /**
      * @brief The default style for a button
@@ -61,6 +68,8 @@ namespace screen
      */
     static lv_style_t button_matrix_items_style;
 
+    static Data* data{nullptr};
+
     /**
      * Initializes the styles
      */
@@ -82,14 +91,15 @@ namespace screen
      * Draws the main menu screen
      * @param data The current menu selection data
      */
-    extern void drawMainMenu(Data* data = nullptr);
+    extern void drawMainMenu();
 
     /**
      * Draws the settings menu screen
      * @param data The current menu selection data
      */
-    extern void drawSettingsMenu(Data* data);
+    extern void drawSettingsMenu();
 } // namespace screen
 } // namespace menu
+} // namespace wisco
 
 #endif

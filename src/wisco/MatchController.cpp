@@ -1,16 +1,15 @@
 #include "wisco/MatchController.hpp"
-#include "hal/rtos/delay.hpp"
+#include "menu/MenuAdapter.hpp"
 
 namespace wisco
 {
 
+std::unique_ptr<IMenu> MatchController::menu{std::make_unique<menu::MenuAdapter>()};
 AutonomousManager MatchController::autonomous_manager{};
 std::shared_ptr<robot::Robot> MatchController::robot{};
 
 void MatchController::initialize()
 {
-	std::unique_ptr<IMenu> menu{};
-
 	menu->display();
 	while (!menu->isStarted())
 		hal::rtos::delay(MENU_DELAY);

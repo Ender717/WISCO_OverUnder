@@ -4,6 +4,7 @@
 #include "AutonomousManager.hpp"
 #include "IMenu.hpp"
 #include "hal/rtos/delay.hpp"
+#include "menu/MenuAdapter.hpp"
 
 /**
  * @brief Namespace for all library code
@@ -26,6 +27,12 @@ private:
 	 *
 	 */
 	static constexpr uint32_t MENU_DELAY{10};
+
+	/**
+	 * @brief The menu system
+	 * 
+	 */
+	static std::unique_ptr<IMenu> menu;
 
 	/**
 	 * @brief The autonomous management object

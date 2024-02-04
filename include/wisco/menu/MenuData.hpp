@@ -6,6 +6,13 @@
 #include "wisco/menu/MenuTypes.hpp"
 
 /**
+ * @brief Namespace for all library code
+ * @author Nathan Sandvig
+ *
+ */
+namespace wisco
+{
+/**
  * @brief Program data related to the menu system
  *
  * @author Nathan Sandvig
@@ -57,8 +64,11 @@ struct Data
     void write() const
     {
         std::ofstream output{DATA_FILENAME, std::ios::binary};
-        output.write((char*)this, sizeof(Data));
-        output.close();
+        if (!output.fail())
+        {
+            output.write((char*)this, sizeof(Data));
+            output.close();
+        }
     }
 
     /**
@@ -68,11 +78,15 @@ struct Data
     void read()
     {
         std::ifstream input{DATA_FILENAME, std::ios::binary};
-        input.read((char*)this, sizeof(Data));
-        input.close();
+        if (!input.fail())
+        {
+            input.read((char*)this, sizeof(Data));
+            input.close();
+        }
     }
 };
 #pragma pack(pop)
 } // namespace menu
+} // namespace wisco
 
 #endif

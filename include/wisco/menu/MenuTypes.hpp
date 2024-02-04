@@ -2,8 +2,14 @@
 #define MENU_TYPES_HPP
 
 #include <cstdint>
-#include <string>
 
+/**
+ * @brief Namespace for all library code
+ * @author Nathan Sandvig
+ *
+ */
+namespace wisco
+{
 /**
  * @brief Program data related to the menu system
  *
@@ -125,5 +131,6 @@ namespace types
     };
 } // namespace types
 } // namespace menu
+} // namespace wisco
 
 #endif
