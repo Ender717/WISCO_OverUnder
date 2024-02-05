@@ -33,14 +33,14 @@ public:
 	 *
 	 * @return std::string The name of the configuration
 	 */
-	virtual std::string getName();
+	virtual std::string getName() = 0;
 
 	/**
 	 * @brief Build a robot using this configuration
 	 *
 	 * @return robot::Robot The robot built by this configuration
 	 */
-	virtual std::shared_ptr<robot::Robot> buildRobot();
+	virtual std::shared_ptr<robot::Robot> buildRobot() = 0;
 };
 } // namespace wisco
 

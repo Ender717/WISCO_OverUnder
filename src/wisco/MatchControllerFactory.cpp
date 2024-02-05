@@ -22,6 +22,11 @@ MatchController MatchControllerFactory::createMatchController()
     std::unique_ptr<IAutonomous> orange_skills_autonomous{std::make_unique<autons::OrangeSkillsAuton>()};
     menu->addAutonomous(orange_skills_autonomous);
 
+    std::unique_ptr<IConfiguration> blue_configuration{std::make_unique<configs::BlueConfiguration>()};
+    menu->addConfiguration(blue_configuration);
+    std::unique_ptr<IConfiguration> orange_configuration{std::make_unique<configs::OrangeConfiguration>()};
+    menu->addConfiguration(orange_configuration);
+
     return MatchController{menu};
 }
 }

@@ -8,6 +8,8 @@
 #include "autons/BlueSkillsAuton.hpp"
 #include "autons/OrangeMatchAuton.hpp"
 #include "autons/OrangeSkillsAuton.hpp"
+#include "configs/BlueConfiguration.hpp"
+#include "configs/OrangeConfiguration.hpp"
 #include "menu/MenuAdapter.hpp"
 
 #include "MatchController.hpp"
