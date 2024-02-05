@@ -4,6 +4,10 @@
 #include "alliances/BlueAlliance.hpp"
 #include "alliances/RedAlliance.hpp"
 #include "alliances/SkillsAlliance.hpp"
+#include "autons/BlueMatchAuton.hpp"
+#include "autons/BlueSkillsAuton.hpp"
+#include "autons/OrangeMatchAuton.hpp"
+#include "autons/OrangeSkillsAuton.hpp"
 #include "menu/MenuAdapter.hpp"
 
 #include "MatchController.hpp"
