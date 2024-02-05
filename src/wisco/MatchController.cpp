@@ -1,16 +1,10 @@
 #include "wisco/MatchController.hpp"
-#include "menu/MenuAdapter.hpp"
 
 namespace wisco
 {
-
-std::unique_ptr<IMenu> MatchController::m_menu{};
-AutonomousManager MatchController::autonomous_manager{};
-std::shared_ptr<robot::Robot> MatchController::robot{};
-
-void MatchController::setMenu(std::unique_ptr<IMenu>& menu)
+MatchController::MatchController(std::unique_ptr<IMenu>& menu) : m_menu{std::move(menu)}
 {
-	m_menu = std::move(menu);
+
 }
 
 void MatchController::initialize()

@@ -6,35 +6,48 @@ namespace menu
 {
 bool LvglMenu::styles_initialized = false;
 
+void startButtonEventHandler(lv_event_t* event)
+{
+    void** user_data{static_cast<void**>(lv_event_get_user_data(event))};
+    LvglMenu* lvgl_menu{static_cast<LvglMenu*>(user_data[0])};
+
+    lv_obj_clean(lv_scr_act());
+    if (lvgl_menu)
+        lvgl_menu->writeConfiguration();
+}
+
+void settingsButtonEventHandler(lv_event_t* event)
+{
+    void** user_data{static_cast<void**>(lv_event_get_user_data(event))};
+    LvglMenu* lvgl_menu{static_cast<LvglMenu*>(user_data[0])};
+
+    lv_obj_clean(lv_scr_act());
+    if (lvgl_menu)
+        lvgl_menu->drawSettingsMenu();
+}
+
 void settingsBackButtonEventHandler(lv_event_t* event)
 {
-    lv_obj_t * obj = lv_event_get_target(event);
-    void** user_data = (void**)lv_event_get_user_data(event);
-    lv_obj_t * menu = (lv_obj_t*)(user_data[0]);
+    lv_obj_t* obj{lv_event_get_target(event)};
+    void** user_data{static_cast<void**>(lv_event_get_user_data(event))};
+    lv_obj_t* menu{static_cast<lv_obj_t*>(user_data[0])};
+    LvglMenu* lvgl_menu{static_cast<LvglMenu*>(user_data[1])};
 
     if(obj == lv_menu_get_sidebar_header_back_btn(menu))
     {
         lv_obj_clean(lv_scr_act());
-        //drawMainMenu();
+        if (lvgl_menu)
+            lvgl_menu->drawMainMenu();
     }
 }
 
 void settingsButtonMatrixEventHandler(lv_event_t *event)
 {
-    lv_obj_t* obj = lv_event_get_target(event);
-    uint32_t button_id = lv_btnmatrix_get_selected_btn(obj);
-    void** user_data = (void**)lv_event_get_user_data(event);
-
-    /*
-    types::Setting* setting = (types::Setting*)(user_data[0]);
-    switch(*setting)
-    {
-        case types::Setting::ALLIANCE: { data->alliance = static_cast<types::Alliance>(button_id); }
-        case types::Setting::AUTONOMOUS: { data->autonomous = static_cast<types::Autonomous>(button_id); }
-        case types::Setting::CONFIGURATION: { data->configuration = static_cast<types::Configuration>(button_id); }
-        case types::Setting::PROFILE: { data->profile = static_cast<types::Profile>(button_id); }
-    }
-    */
+    lv_obj_t* obj {lv_event_get_target(event)};
+    uint32_t button_id{lv_btnmatrix_get_selected_btn(obj)};
+    void** user_data{static_cast<void**>(lv_event_get_user_data(event))};
+    Option* option{static_cast<Option*>(user_data[0])};
+    option->selected = button_id;
 }
 
 void LvglMenu::initializeStyles()
@@ -98,6 +111,23 @@ void LvglMenu::initializeStyles()
 
     // Set the style initialization flag
     styles_initialized = true;
+}
+
+void LvglMenu::addOption(Option option)
+{
+    options.push_back(option);
+}
+
+void LvglMenu::removeOption(const std::string& option_name)
+{
+    for (auto it{options.begin()}; it != options.end(); ++it)
+    {
+        if (option_name == it->name)
+        {
+            options.erase(it);
+            break;
+        }
+    }
 }
 
 void LvglMenu::drawMainMenu()
@@ -187,13 +217,8 @@ void LvglMenu::drawMainMenu()
     lv_obj_add_style(start_button, &button_pressed_style, LV_STATE_PRESSED);
     lv_obj_set_size(start_button, 160, 70);
     lv_obj_align(start_button, LV_ALIGN_TOP_LEFT, 20, 15);
-    lv_obj_add_event_cb(start_button,
-                        [](lv_event_t* event)
-                        {
-                            lv_obj_clean(lv_scr_act());
-                            //data->write();
-                        },
-                        LV_EVENT_CLICKED, nullptr);
+    static void* start_user_data[]{ this };
+    lv_obj_add_event_cb(start_button, startButtonEventHandler, LV_EVENT_CLICKED, start_user_data);
     lv_obj_t * start_button_label = lv_label_create(start_button);
     lv_label_set_text(start_button_label, "START");
     lv_obj_center(start_button_label);
@@ -205,38 +230,140 @@ void LvglMenu::drawMainMenu()
     lv_obj_add_style(settings_button, &button_pressed_style, LV_STATE_PRESSED);
     lv_obj_set_size(settings_button, 70, 70);
     lv_obj_align(settings_button, LV_ALIGN_TOP_LEFT, 190, 15);
-    lv_obj_add_event_cb(settings_button,
-                        [](lv_event_t* event)
-                        {
-                            lv_obj_clean(lv_scr_act());
-                            //drawSettingsMenu();
-                        },
-                        LV_EVENT_CLICKED, nullptr);
+    static void* settings_user_data[]{ this };
+    lv_obj_add_event_cb(settings_button, settingsButtonEventHandler, LV_EVENT_CLICKED, settings_user_data);
     lv_obj_t * settings_button_label = lv_label_create(settings_button);
     lv_label_set_text(settings_button_label, LV_SYMBOL_SETTINGS);
     lv_obj_center(settings_button_label);
 }
 
-void LvglMenu::addOption(Option option)
+void LvglMenu::drawSettingsMenu()
 {
-    options.push_back(option);
+    // Create the menu
+    lv_obj_t* menu{lv_menu_create(lv_scr_act())};
+    lv_menu_set_mode_root_back_btn(menu, LV_MENU_ROOT_BACK_BTN_ENABLED);
+    lv_obj_set_style_bg_color(menu, lv_color_make(0, 104, 179), 0);
+    lv_obj_set_size(menu, lv_disp_get_hor_res(NULL), lv_disp_get_ver_res(NULL));
+    lv_obj_center(menu);
+
+    // Create a root page
+    lv_obj_t* root_page{lv_menu_page_create(menu, NULL)};
+    lv_obj_set_style_pad_hor(root_page, lv_obj_get_style_pad_left(lv_menu_get_main_header(menu), 0), 0);
+    lv_obj_t* section{lv_menu_section_create(root_page)};
+    lv_menu_set_sidebar_page(menu, root_page);
+
+    // Create the back button
+    lv_obj_t* back_btn{lv_menu_get_sidebar_header_back_btn(menu)};
+    lv_obj_remove_style_all(back_btn);
+    lv_obj_add_style(back_btn, &button_default_style, 0);
+    lv_obj_add_style(back_btn, &button_pressed_style, LV_STATE_PRESSED);
+    lv_obj_set_style_text_font(back_btn, &lv_font_montserrat_14, 0);
+    lv_obj_set_style_text_font(back_btn, &lv_font_montserrat_14, LV_STATE_PRESSED);
+    lv_obj_set_style_pad_all(back_btn, 3, 0);
+    lv_obj_set_style_pad_all(back_btn, 3, LV_STATE_PRESSED);
+    lv_obj_set_style_translate_y(back_btn, 0, LV_STATE_PRESSED);
+    lv_obj_set_style_shadow_ofs_y(back_btn, 0, LV_STATE_PRESSED);
+    lv_obj_t* back_btn_label{lv_label_create(back_btn)};
+    lv_label_set_text(back_btn_label, "   Back");
+    static void* back_user_data[]{ nullptr };
+    back_user_data[0] = menu;
+    lv_obj_add_event_cb(menu, settingsBackButtonEventHandler, LV_EVENT_CLICKED, back_user_data);
+
+    static std::vector<std::shared_ptr<std::vector<const char*>>> option_button_matrix_maps{};
+    static std::vector<void*> option_button_matrix_user_data{};
+    for (Option& option : options)
+    {
+        lv_obj_t* option_page{lv_menu_page_create(menu, NULL)};
+        lv_obj_set_style_pad_hor(option_page, lv_obj_get_style_pad_left(lv_menu_get_main_header(menu), 0), 0);
+        lv_menu_separator_create(option_page);
+
+        std::shared_ptr<std::vector<const char*>> option_button_matrix_map{std::make_shared<std::vector<const char*>>()};
+        uint8_t line_counter{};
+        for (std::string choice : option.choices)
+        {
+            option_button_matrix_map->push_back(choice.c_str());
+            ++line_counter;
+            if (line_counter >= BUTTONS_PER_LINE)
+            {
+                option_button_matrix_map->push_back("\n");
+                line_counter = 0;
+            }
+        }
+        option_button_matrix_map->push_back("");
+        option_button_matrix_maps.push_back(option_button_matrix_map);
+
+        lv_obj_t* option_button_matrix{lv_btnmatrix_create(option_page)};
+        lv_btnmatrix_set_map(option_button_matrix, option_button_matrix_map->data());
+        lv_btnmatrix_set_one_checked(option_button_matrix, true);
+        lv_btnmatrix_set_btn_ctrl_all(option_button_matrix, LV_BTNMATRIX_CTRL_CHECKABLE);
+        lv_btnmatrix_set_btn_ctrl(option_button_matrix, option.selected, LV_BTNMATRIX_CTRL_CHECKED);
+        lv_obj_add_style(option_button_matrix, &button_matrix_main_style, LV_PART_MAIN);
+        lv_obj_set_size(option_button_matrix, 300, 220);
+
+        static void* option_user_data[]{ nullptr };
+        option_user_data[0] = &option;
+        option_button_matrix_user_data.push_back(option_user_data);
+        lv_obj_add_event_cb(option_button_matrix, settingsButtonMatrixEventHandler, LV_EVENT_VALUE_CHANGED, option_user_data);
+
+        lv_obj_t* option_menu_container{lv_menu_cont_create(section)};
+        lv_obj_remove_style_all(option_menu_container);
+        lv_obj_add_style(option_menu_container, &container_default_style, 0);
+        lv_obj_add_style(option_menu_container, &container_pressed_style, LV_STATE_CHECKED);
+        lv_obj_t* option_menu_container_label{lv_label_create(option_menu_container)};
+        lv_label_set_text(option_menu_container_label, option.name.c_str());
+        lv_menu_set_load_page_event(menu, option_menu_container, option_page);
+    }
+
+    lv_event_send(lv_obj_get_child(lv_obj_get_child(lv_menu_get_cur_sidebar_page(menu), 0), 0), LV_EVENT_CLICKED, NULL);
 }
 
-void LvglMenu::removeOption(const std::string& option_name)
+void LvglMenu::readConfiguration()
 {
-    for (auto it{options.begin()}; it != options.end(); ++it)
+    std::ifstream configuration_file{CONFIGURATION_FILE};
+    if (configuration_file.fail())
+        return;
+
+    std::string option_name{};
+    while (configuration_file >> option_name)
     {
-        if (option_name == it->name)
+        std::string option_selection{};
+        if (configuration_file >> option_selection)
         {
-            options.erase(it);
-            break;
+            for (Option option : options)
+            {
+                if (option_name == option.name)
+                {
+                    for (uint8_t i{0}; i < option.choices.size(); ++i)
+                    {
+                        if (option_selection == option.choices[i])
+                        {
+                            option.selected = i;
+                        }
+                    }
+                }
+            }
         }
     }
+
+    configuration_file.close();
+}
+
+void LvglMenu::writeConfiguration()
+{
+    std::ofstream configuration_file{CONFIGURATION_FILE};
+    if (configuration_file.fail())
+        return;
+
+    for (Option option : options)
+        configuration_file << option.name << ' ' << option.choices[option.selected] << std::endl;
+
+    configuration_file.close();
 }
 
 void LvglMenu::displayMenu()
 {
     initializeStyles();
+    readConfiguration();
     drawMainMenu();
 }
 

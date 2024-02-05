@@ -1,7 +1,9 @@
 #ifndef WISCO_MENU_LVGL_MENU_HPP
 #define WISCO_MENU_LVGL_MENU_HPP
 
+#include <memory>
 #include <string>
+#include <fstream>
 #include <vector>
 
 #include "liblvgl/lvgl.h"
@@ -23,13 +25,22 @@ namespace wisco
 namespace menu
 {
 /**
- * Event handler function for the back button in the settings menu
+ * @brief Event handler function for the start button
+ * 
+ * @param event The event data
+ */
+extern void startButtonEventHandler(lv_event_t* event);
+
+/**
+ * @brief Event handler function for the back button in the settings menu
+ * 
  * @param event The event data
  */
 extern void settingsBackButtonEventHandler(lv_event_t* event);
 
 /**
- * Event handler function for the button matrices in settings
+ * @brief Event handler function for the button matrices in settings
+ * 
  * @param event The event data
  */
 extern void settingsButtonMatrixEventHandler(lv_event_t* event);
@@ -42,7 +53,13 @@ extern void settingsButtonMatrixEventHandler(lv_event_t* event);
 class LvglMenu
 {
 private:
-        /**
+    /**
+     * @brief The path of the file that stores the configuration
+     * 
+     */
+    static constexpr char CONFIGURATION_FILE[]{"/usd/system/menu_data.txt"};
+
+    /**
      * @brief The number of buttons to display on a line
      *
      */
@@ -108,18 +125,6 @@ private:
      */
     static void initializeStyles();
 
-    /**
-     * @brief Draws the main menu screen
-     * 
-     */
-    void drawMainMenu();
-
-    /**
-     * @brief Draws the settings menu screen
-     * 
-     */
-    void drawSettingsMenu();
-
 public:
     /**
      * @brief Adds an option to the menu system
@@ -134,6 +139,30 @@ public:
      * @param option_name The name of the option to remove
      */
     void removeOption(const std::string& option_name);
+
+    /**
+     * @brief Draws the main menu screen
+     * 
+     */
+    void drawMainMenu();
+
+    /**
+     * @brief Draws the settings menu screen
+     * 
+     */
+    void drawSettingsMenu();
+
+    /**
+     * @brief Reads the configuration of the menu
+     * 
+     */
+    void readConfiguration();
+
+    /**
+     * @brief Writes the configuration of the menu
+     * 
+     */
+    void writeConfiguration();
 
     /**
      * @brief Displays the menu

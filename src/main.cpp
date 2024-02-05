@@ -1,6 +1,6 @@
 #include "main.h"
-#include "pros/misc.h"
-#include "pros/misc.hpp"
+
+static wisco::MatchController match_controller{wisco::MatchControllerFactory::createMatchController()};
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -10,7 +10,7 @@
  */
 void initialize()
 {
-    //wisco::MatchController::initialize();
+    match_controller.initialize();
 }
 
 /**
@@ -20,7 +20,7 @@ void initialize()
  */
 void disabled()
 {
-	wisco::MatchController::disabled();
+	match_controller.disabled();
 }
 
 /**
@@ -34,7 +34,7 @@ void disabled()
  */
 void competition_initialize()
 {
-	wisco::MatchController::competitionInitialize();
+	match_controller.competitionInitialize();
 }
 
 /**
@@ -50,7 +50,7 @@ void competition_initialize()
  */
 void autonomous()
 {
-	wisco::MatchController::autonomous();
+	match_controller.autonomous();
 }
 
 /**
@@ -68,13 +68,5 @@ void autonomous()
  */
 void opcontrol()
 {
-	pros::Controller master{pros::E_CONTROLLER_MASTER};
-	pros::MotorGroup gearboxMotors{-1, -2, 3, 4};
-	while (true)
-	{
-		gearboxMotors.move(master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y));
-		pros::delay(10);
-	}
-
-	wisco::MatchController::operatorControl();
+	match_controller.operatorControl();
 }

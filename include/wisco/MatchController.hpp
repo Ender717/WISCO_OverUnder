@@ -3,8 +3,6 @@
 
 #include "AutonomousManager.hpp"
 #include "IMenu.hpp"
-#include "hal/rtos/delay.hpp"
-#include "menu/MenuAdapter.hpp"
 
 /**
  * @brief Namespace for all library code
@@ -32,57 +30,57 @@ private:
 	 * @brief The menu system
 	 * 
 	 */
-	static std::unique_ptr<IMenu> m_menu;
+	std::unique_ptr<IMenu> m_menu{};
 
 	/**
 	 * @brief The autonomous management object
 	 *
 	 */
-	static AutonomousManager autonomous_manager;
+	AutonomousManager autonomous_manager{};
 
 	/**
 	 * @brief The robot being controlled
 	 *
 	 */
-	static std::shared_ptr<robot::Robot> robot;
+	std::shared_ptr<robot::Robot> robot{};
 
 public:
 	/**
-	 * @brief Set the menu system
+	 * @brief Construct a new Match Controller object
 	 * 
-	 * @param menu The menu system
+	 * @param menu The menu to use in the match controller
 	 */
-	static void setMenu(std::unique_ptr<IMenu>& menu);
+	MatchController(std::unique_ptr<IMenu>& menu);
 
 	/**
 	 * @brief Runs the robot initialization code
 	 *
 	 */
-	static void initialize();
+	void initialize();
 
 	/**
 	 * @brief Runs the robot disablement code
 	 *
 	 */
-	static void disabled();
+	void disabled();
 
 	/**
 	 * @brief Runs the robot competition initialization code
 	 *
 	 */
-	static void competitionInitialize();
+	void competitionInitialize();
 
 	/**
 	 * @brief Runs the robot autonomous code
 	 *
 	 */
-	static void autonomous();
+	void autonomous();
 
 	/**
 	 * @brief Runs the robot operator control code
 	 *
 	 */
-	static void operatorControl();
+	void operatorControl();
 };
 } // namespace wisco
 #endif
