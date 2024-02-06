@@ -1,7 +1,7 @@
 #ifndef WISCO_AUTONS_ORANGE_SKILLS_AUTON_HPP
 #define WISCO_AUTONS_ORANGE_SKILLS_AUTON_HPP
 
-#include "IAutonomous.hpp"
+#include "wisco/IAutonomous.hpp"
 
 /**
  * @brief Namespace for all library code

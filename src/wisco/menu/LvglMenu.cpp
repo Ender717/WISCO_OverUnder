@@ -4,7 +4,14 @@ namespace wisco
 {
 namespace menu
 {
+lv_style_t LvglMenu::button_default_style;
+lv_style_t LvglMenu::button_pressed_style;
+lv_style_t LvglMenu::container_default_style;
+lv_style_t LvglMenu::container_pressed_style;
+lv_style_t LvglMenu::button_matrix_main_style;
+lv_style_t LvglMenu::button_matrix_items_style;
 bool LvglMenu::styles_initialized = false;
+
 
 void startButtonEventHandler(lv_event_t* event)
 {
@@ -45,8 +52,7 @@ void settingsButtonMatrixEventHandler(lv_event_t *event)
 {
     lv_obj_t* obj {lv_event_get_target(event)};
     uint32_t button_id{lv_btnmatrix_get_selected_btn(obj)};
-    void** user_data{static_cast<void**>(lv_event_get_user_data(event))};
-    Option* option{static_cast<Option*>(user_data[0])};
+    Option* option{static_cast<Option*>(lv_event_get_user_data(event))};
     option->selected = button_id;
 }
 
@@ -204,14 +210,16 @@ void LvglMenu::drawMainMenu()
         if (option.name != options.front().name)
             status_text += '\n';
         status_text += option.name;
-        status_text += ": ";
+        status_text += ":";
+        for (uint8_t i{0}; i < COLUMN_WIDTH - option.name.length() - 1; ++i)
+            status_text += " ";
         status_text += option.choices[option.selected];
     }
     lv_label_set_text_fmt(status_label, "%s", status_text.c_str());
     lv_obj_align(status_label, LV_ALIGN_TOP_LEFT, 20, 100);
 
     // Add the start button
-    lv_obj_t * start_button = lv_btn_create(lv_scr_act());
+    lv_obj_t* start_button = lv_btn_create(lv_scr_act());
     lv_obj_remove_style_all(start_button);
     lv_obj_add_style(start_button, &button_default_style, 0);
     lv_obj_add_style(start_button, &button_pressed_style, LV_STATE_PRESSED);
@@ -265,8 +273,9 @@ void LvglMenu::drawSettingsMenu()
     lv_obj_set_style_shadow_ofs_y(back_btn, 0, LV_STATE_PRESSED);
     lv_obj_t* back_btn_label{lv_label_create(back_btn)};
     lv_label_set_text(back_btn_label, "   Back");
-    static void* back_user_data[]{ nullptr };
+    static void* back_user_data[]{ nullptr, nullptr };
     back_user_data[0] = menu;
+    back_user_data[1] = this;
     lv_obj_add_event_cb(menu, settingsBackButtonEventHandler, LV_EVENT_CLICKED, back_user_data);
 
     static std::vector<std::shared_ptr<std::vector<const char*>>> option_button_matrix_maps{};
@@ -279,15 +288,15 @@ void LvglMenu::drawSettingsMenu()
 
         std::shared_ptr<std::vector<const char*>> option_button_matrix_map{std::make_shared<std::vector<const char*>>()};
         uint8_t line_counter{};
-        for (std::string choice : option.choices)
+        for (std::string& choice : option.choices)
         {
-            option_button_matrix_map->push_back(choice.c_str());
-            ++line_counter;
             if (line_counter >= BUTTONS_PER_LINE)
             {
                 option_button_matrix_map->push_back("\n");
                 line_counter = 0;
             }
+            option_button_matrix_map->push_back(choice.c_str());
+            ++line_counter;
         }
         option_button_matrix_map->push_back("");
         option_button_matrix_maps.push_back(option_button_matrix_map);
@@ -300,10 +309,10 @@ void LvglMenu::drawSettingsMenu()
         lv_obj_add_style(option_button_matrix, &button_matrix_main_style, LV_PART_MAIN);
         lv_obj_set_size(option_button_matrix, 300, 220);
 
-        static void* option_user_data[]{ nullptr };
+        void* option_user_data[]{ nullptr };
         option_user_data[0] = &option;
         option_button_matrix_user_data.push_back(option_user_data);
-        lv_obj_add_event_cb(option_button_matrix, settingsButtonMatrixEventHandler, LV_EVENT_VALUE_CHANGED, option_user_data);
+        lv_obj_add_event_cb(option_button_matrix, settingsButtonMatrixEventHandler, LV_EVENT_VALUE_CHANGED, &option);
 
         lv_obj_t* option_menu_container{lv_menu_cont_create(section)};
         lv_obj_remove_style_all(option_menu_container);
@@ -329,7 +338,7 @@ void LvglMenu::readConfiguration()
         std::string option_selection{};
         if (configuration_file >> option_selection)
         {
-            for (Option option : options)
+            for (Option& option : options)
             {
                 if (option_name == option.name)
                 {

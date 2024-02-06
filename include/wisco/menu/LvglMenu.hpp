@@ -60,10 +60,16 @@ private:
     static constexpr char CONFIGURATION_FILE[]{"/usd/system/menu_data.txt"};
 
     /**
+     * @brief The width of a column on the status page
+     * 
+     */
+    static constexpr int COLUMN_WIDTH{16};
+
+    /**
      * @brief The number of buttons to display on a line
      *
      */
-    static constexpr int BUTTONS_PER_LINE = 2;
+    static constexpr int BUTTONS_PER_LINE{2};
 
     /**
      * @brief The default style for a button

@@ -34,8 +34,8 @@ private:
      * 
      */
     static constexpr char ALLIANCE_OPTION_NAME[]{"ALLIANCE"};
-    static constexpr char AUTONOMOUS_OPTION_NAME[]{"AUTONOMOUS"};
-    static constexpr char CONFIGURATION_OPTION_NAME[]{"CONFIGURATION"};
+    static constexpr char AUTONOMOUS_OPTION_NAME[]{"AUTON"};
+    static constexpr char CONFIGURATION_OPTION_NAME[]{"CONFIG"};
     static constexpr char PROFILE_OPTION_NAME[]{"PROFILE"};
 
     /**
