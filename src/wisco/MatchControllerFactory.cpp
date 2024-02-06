@@ -27,6 +27,11 @@ MatchController MatchControllerFactory::createMatchController()
     std::unique_ptr<IConfiguration> orange_configuration{std::make_unique<configs::OrangeConfiguration>()};
     menu->addConfiguration(orange_configuration);
 
+    std::unique_ptr<IProfile> henry_profile{std::make_unique<profiles::HenryProfile>()};
+    menu->addProfile(henry_profile);
+    std::unique_ptr<IProfile> john_profile{std::make_unique<profiles::JohnProfile>()};
+    menu->addProfile(john_profile);
+
     return MatchController{menu};
 }
 }

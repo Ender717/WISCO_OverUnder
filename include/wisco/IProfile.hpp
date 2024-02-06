@@ -1,7 +1,6 @@
 #ifndef WISCO_I_PROFILE_HPP
 #define WISCO_I_PROFILE_HPP
 
-#include <map>
 #include <string>
 
 /**
@@ -41,11 +40,11 @@ public:
 	virtual std::string getChassisControlMode() = 0;
 
 	/**
-	 * @brief Get the mapping of controls to digital inputs
+	 * @brief Get the mapping of a control to digital inputs
 	 *
-	 * @return std::map<std::string, std::string> The mapping of controls to digital inputs
+	 * @return std::string The mapping of this control to a digital input
 	 */
-	virtual std::map<std::string, std::string> getControlMap();
+	virtual std::string getControlMapping(std::string control) = 0;
 };
 
 } // namespace wisco

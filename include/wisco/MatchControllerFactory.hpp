@@ -10,6 +10,8 @@
 #include "autons/OrangeSkillsAuton.hpp"
 #include "configs/BlueConfiguration.hpp"
 #include "configs/OrangeConfiguration.hpp"
+#include "profiles/HenryProfile.hpp"
+#include "profiles/JohnProfile.hpp"
 #include "menu/MenuAdapter.hpp"
 
 #include "MatchController.hpp"
