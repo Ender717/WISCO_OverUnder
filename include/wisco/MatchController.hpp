@@ -4,6 +4,7 @@
 #include "hal/rtos/delay.hpp"
 
 #include "AutonomousManager.hpp"
+#include "OpcontrolManager.hpp"
 #include "IMenu.hpp"
 
 /**
@@ -39,6 +40,12 @@ private:
 	 *
 	 */
 	AutonomousManager autonomous_manager{};
+
+	/**
+	 * @brief The opcontrol management object
+	 * 
+	 */
+	OPControlManager opcontrol_manager{};
 
 	/**
 	 * @brief The robot being controlled

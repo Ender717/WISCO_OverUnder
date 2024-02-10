@@ -19,7 +19,7 @@ namespace wisco
  * @author Nathan Sandvig
  *
  */
-class AutonomousManager
+class OPControlManager
 {
 private:
 	/**

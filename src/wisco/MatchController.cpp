@@ -18,9 +18,13 @@ void MatchController::initialize()
 
 	SystemConfiguration system_configuration{m_menu->getSystemConfiguration()};
 	autonomous_manager.setAutonomous(system_configuration.autonomous);
+	opcontrol_manager.setProfile(system_configuration.profile);
 	robot = system_configuration.configuration->buildRobot();
 	if (robot)
+	{
 		autonomous_manager.initializeAutonomous(robot);
+		opcontrol_manager.initializeOpcontrol(robot);
+	}
 }
 
 void MatchController::disabled()
@@ -41,6 +45,7 @@ void MatchController::autonomous()
 
 void MatchController::operatorControl()
 {
-
+	if (robot)
+		opcontrol_manager.runOpcontrol(robot);
 }
 } // namespace wisco
