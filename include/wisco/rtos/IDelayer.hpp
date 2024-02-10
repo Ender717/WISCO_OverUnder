@@ -38,7 +38,7 @@ public:
      * 
      * @param millis The number of milliseconds to delay
      */
-    virtual void delay(uint32_t millis);
+    virtual void delay(uint32_t millis) = 0;
 };
 }
 }

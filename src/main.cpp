@@ -10,7 +10,7 @@ static wisco::MatchController match_controller{MatchControllerFactory::createMat
  */
 void initialize()
 {
-    //match_controller.initialize();
+    match_controller.initialize();
 }
 
 /**
