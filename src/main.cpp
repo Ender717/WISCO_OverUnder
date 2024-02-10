@@ -1,6 +1,7 @@
 #include "main.h"
+#include "pros/misc.h"
 
-static wisco::MatchController match_controller{wisco::MatchControllerFactory::createMatchController()};
+static wisco::MatchController match_controller{MatchControllerFactory::createMatchController()};
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -10,7 +11,7 @@ static wisco::MatchController match_controller{wisco::MatchControllerFactory::cr
  */
 void initialize()
 {
-    match_controller.initialize();
+    //match_controller.initialize();
 }
 
 /**
@@ -68,5 +69,42 @@ void autonomous()
  */
 void opcontrol()
 {
+	pros::Controller master{pros::E_CONTROLLER_MASTER};
+	pros::MotorGroup leftMotors{19, 20, -11, -12};
+	pros::MotorGroup rightMotors{-1, -2, 9, 10};
+	pros::MotorGroup intakeMotors{11, -5};
+	bool arcade{true};
+
+	double leftPower{};
+	double rightPower{};
+	double intakePower{};
+	while (true)
+	{
+		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A))
+			arcade = !arcade;
+
+		if (arcade)
+		{
+			leftPower = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) +
+				master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
+			rightPower = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) -
+				master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
+		}
+		else
+		{
+			leftPower = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+			rightPower = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
+		}
+
+		intakePower = (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1) -
+			master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) * INT8_MAX;
+
+		leftMotors.move(leftPower);
+		rightMotors.move(rightPower);
+		intakeMotors.move(intakePower);
+
+		pros::delay(10);
+	}
+
 	match_controller.operatorControl();
 }
