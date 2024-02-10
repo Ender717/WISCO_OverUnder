@@ -12,8 +12,11 @@ void OPControlManager::initializeOpcontrol(std::shared_ptr<robot::Robot> robot)
 
 }
 
-void OPControlManager::runOpcontrol(std::shared_ptr<robot::Robot> robot)
+void OPControlManager::runOpcontrol(std::shared_ptr<robot::Robot> robot, std::shared_ptr<rtos::IDelayer> delayer)
 {
-
+    while (true)
+    {
+        delayer->delay(CONTROL_DELAY);
+    }
 }
 }

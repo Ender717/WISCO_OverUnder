@@ -3,6 +3,7 @@
 
 #include <memory>
 
+#include "rtos/IDelayer.hpp"
 #include "IProfile.hpp"
 #include "robot/Robot.hpp"
 
@@ -22,6 +23,7 @@ namespace wisco
 class OPControlManager
 {
 private:
+	static constexpr uint8_t CONTROL_DELAY{10};
 	/**
 	 * @brief The driver profile
 	 *
@@ -47,8 +49,9 @@ public:
 	 * @brief Run the operator control
 	 *
 	 * @param robot The robot being controlled
+	 * @param delayer The rtos delayer
 	 */
-	void runOpcontrol(std::shared_ptr<robot::Robot> robot);
+	void runOpcontrol(std::shared_ptr<robot::Robot> robot, std::shared_ptr<rtos::IDelayer> delayer);
 };
 
 } // namespace wisco

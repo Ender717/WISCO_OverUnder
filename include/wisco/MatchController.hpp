@@ -1,7 +1,7 @@
 #ifndef WISCO_MATCH_CONTROLLER_HPP
 #define WISCO_MATCH_CONTROLLER_HPP
 
-#include "hal/rtos/delay.hpp"
+#include "rtos/IDelayer.hpp"
 
 #include "AutonomousManager.hpp"
 #include "OpcontrolManager.hpp"
@@ -36,6 +36,12 @@ private:
 	std::unique_ptr<IMenu> m_menu{};
 
 	/**
+	 * @brief The rtos delayer
+	 * 
+	 */
+	std::shared_ptr<rtos::IDelayer> m_delayer{};
+
+	/**
 	 * @brief The autonomous management object
 	 *
 	 */
@@ -58,8 +64,9 @@ public:
 	 * @brief Construct a new Match Controller object
 	 * 
 	 * @param menu The menu to use in the match controller
+	 * @param delayer The rtos delayer to use in the match controller
 	 */
-	MatchController(std::unique_ptr<IMenu>& menu);
+	MatchController(std::unique_ptr<IMenu>& menu, const std::shared_ptr<rtos::IDelayer>& delayer);
 
 	/**
 	 * @brief Runs the robot initialization code

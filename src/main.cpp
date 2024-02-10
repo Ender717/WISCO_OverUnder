@@ -1,5 +1,4 @@
 #include "main.h"
-#include "pros/misc.h"
 
 static wisco::MatchController match_controller{MatchControllerFactory::createMatchController()};
 

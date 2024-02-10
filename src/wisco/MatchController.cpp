@@ -2,7 +2,8 @@
 
 namespace wisco
 {
-MatchController::MatchController(std::unique_ptr<IMenu>& menu) : m_menu{std::move(menu)}
+MatchController::MatchController(std::unique_ptr<IMenu>& menu, const std::shared_ptr<rtos::IDelayer>& delayer) : 
+	m_menu{std::move(menu)}, m_delayer{delayer}
 {
 
 }
@@ -13,7 +14,7 @@ void MatchController::initialize()
 	{
 		m_menu->display();
 		while (!m_menu->isStarted())
-			hal::rtos::delay(MENU_DELAY);
+			m_delayer->delay(MENU_DELAY);
 	}
 
 	SystemConfiguration system_configuration{m_menu->getSystemConfiguration()};
@@ -46,6 +47,6 @@ void MatchController::autonomous()
 void MatchController::operatorControl()
 {
 	if (robot)
-		opcontrol_manager.runOpcontrol(robot);
+		opcontrol_manager.runOpcontrol(robot, m_delayer);
 }
 } // namespace wisco
