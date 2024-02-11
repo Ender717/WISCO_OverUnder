@@ -70,8 +70,8 @@ void opcontrol()
 {
 	pros::Controller master{pros::E_CONTROLLER_MASTER};
 	pros::MotorGroup leftMotors{19, 20, -11, -12};
-	pros::MotorGroup rightMotors{-1, -2, 9, 10};
-	pros::MotorGroup intakeMotors{11, -5};
+	pros::MotorGroup rightMotors{1, 2, -9, -10};
+	pros::MotorGroup intakeMotors{13, -3};
 	bool arcade{true};
 
 	double leftPower{};
