@@ -159,6 +159,12 @@ public:
     void drawSettingsMenu();
 
     /**
+     * @brief Set the menu selection to complete
+     * 
+     */
+    void setComplete();
+
+    /**
      * @brief Reads the configuration of the menu
      * 
      */

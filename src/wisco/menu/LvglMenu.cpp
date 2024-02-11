@@ -20,7 +20,10 @@ void startButtonEventHandler(lv_event_t* event)
 
     lv_obj_clean(lv_scr_act());
     if (lvgl_menu)
+    {
         lvgl_menu->writeConfiguration();
+        lvgl_menu->setComplete();
+    }
 }
 
 void settingsButtonEventHandler(lv_event_t* event)
@@ -324,6 +327,11 @@ void LvglMenu::drawSettingsMenu()
     }
 
     lv_event_send(lv_obj_get_child(lv_obj_get_child(lv_menu_get_cur_sidebar_page(menu), 0), 0), LV_EVENT_CLICKED, NULL);
+}
+
+void LvglMenu::setComplete()
+{
+    complete = true;
 }
 
 void LvglMenu::readConfiguration()
