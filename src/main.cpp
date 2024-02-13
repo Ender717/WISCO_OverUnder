@@ -72,11 +72,15 @@ void opcontrol()
 	pros::MotorGroup leftMotors{19, 20, -11, -12};
 	pros::MotorGroup rightMotors{1, 2, -9, -10};
 	pros::MotorGroup intakeMotors{13, -3};
+	pros::adi::DigitalOut transmissionPiston{'A'};
+	pros::adi::DigitalOut elevatorPiston{'B'};
 	bool arcade{true};
 
 	double leftPower{};
 	double rightPower{};
 	double intakePower{};
+	bool transmission_state{};
+	bool elevator_state{};
 	while (true)
 	{
 		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A))
@@ -98,9 +102,17 @@ void opcontrol()
 		intakePower = (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1) -
 			master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) * INT8_MAX;
 
+		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT))
+			transmission_state = !transmission_state;
+
+		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y))
+			elevator_state = !elevator_state;
+
 		leftMotors.move(leftPower);
 		rightMotors.move(rightPower);
 		intakeMotors.move(intakePower);
+		transmissionPiston.set_value(transmission_state);
+		elevatorPiston.set_value(elevator_state);
 
 		pros::delay(10);
 	}
