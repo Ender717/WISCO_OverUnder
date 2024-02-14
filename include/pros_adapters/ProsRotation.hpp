@@ -5,7 +5,7 @@
 #include <memory>
 
 #include "pros/rotation.hpp"
-#include "wisco/hal/IRotationSensor.hpp"
+#include "wisco/sensors/IRotationSensor.hpp"
 
 /**
  * @brief Namespace for adapters from the pros library to the wisco library
@@ -20,7 +20,7 @@ namespace pros_adapters
  * @author Nathan Sandvig
  * 
  */
-class ProsRotation : public wisco::hal::IRotationSensor
+class ProsRotation : public wisco::sensors::IRotationSensor
 {
 private:
     /**
