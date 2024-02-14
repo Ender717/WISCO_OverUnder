@@ -1,10 +1,10 @@
-#ifndef WISCO_ROBOT_SENSORS_TRACKING_WHEEL_HPP
-#define WISCO_ROBOT_SENSORS_TRACKING_WHEEL_HPP
+#ifndef WISCO_ROBOT_HAL_TRACKING_WHEEL_HPP
+#define WISCO_ROBOT_HAL_TRACKING_WHEEL_HPP
 
 #include <memory>
 
-#include "wisco/hal/IDistanceTrackingSensor.hpp"
-#include "wisco/hal/IRotationSensor.hpp"
+#include "wisco/sensors/IDistanceTrackingSensor.hpp"
+#include "wisco/sensors/IRotationSensor.hpp"
 
 /**
  * @brief Namespace for all library code
@@ -14,25 +14,25 @@
 namespace wisco
 {
 /**
- * @brief The namespace that holds all custom sensors
+ * @brief The namespace for the hardware abstraction layer
  * @author Nathan Sandvig
  *
  */
-namespace sensors
+namespace hal
 {
 /**
  * @brief A tracking wheel sensor
  * @author Nathan Sandvig
  * 
  */
-class TrackingWheel : public hal::IDistanceTrackingSensor
+class TrackingWheel : public sensors::IDistanceTrackingSensor
 {
 private:
     /**
      * @brief The sensor on the tracking wheel
      * 
      */
-    std::unique_ptr<hal::IRotationSensor> m_sensor{};
+    std::unique_ptr<sensors::IRotationSensor> m_sensor{};
 
     /**
      * @brief The radius of the wheel in inches
@@ -47,7 +47,7 @@ public:
      * @param sensor The rotation sensor on the tracking wheel
      * @param wheel_radius The radius of the tracking wheel in inches
      */
-    TrackingWheel(std::unique_ptr<hal::IRotationSensor>& sensor, double wheel_radius);
+    TrackingWheel(std::unique_ptr<sensors::IRotationSensor>& sensor, double wheel_radius);
 
     /**
      * @brief Initializes the sensor

@@ -1,5 +1,5 @@
-#ifndef WISCO_HAL_I_DISTANCE_TRACKING_SENSOR_HPP
-#define WISCO_HAL_I_DISTANCE_TRACKING_SENSOR_HPP
+#ifndef WISCO_SENSORS_I_DISTANCE_TRACKING_SENSOR_HPP
+#define WISCO_SENSORS_I_DISTANCE_TRACKING_SENSOR_HPP
 
 /**
  * @brief Namespace for all library code
@@ -9,11 +9,11 @@
 namespace wisco
 {
 /**
- * @brief Namespace for the hardware abstraction layer interfaces
+ * @brief Namespace for the sensor types
  * @author Nathan Sandvig
  * 
  */
-namespace hal
+namespace sensors
 {
 /**
  * @brief Interface for distance tracking sensors
@@ -55,7 +55,7 @@ public:
      */
     virtual void setDistance(double distance) = 0;
 };
-} // namespace hal
+} // namespace sensors
 } // namespace wisco
 
 #endif

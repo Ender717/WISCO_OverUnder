@@ -1,10 +1,10 @@
-#include "wisco/sensors/TrackingWheel.hpp"
+#include "wisco/hal/TrackingWheel.hpp"
 
 namespace wisco
 {
-namespace sensors
+namespace hal
 {
-TrackingWheel::TrackingWheel(std::unique_ptr<hal::IRotationSensor>& sensor, double wheel_radius) :
+TrackingWheel::TrackingWheel(std::unique_ptr<sensors::IRotationSensor>& sensor, double wheel_radius) :
     m_sensor{std::move(sensor)}, m_wheel_radius{wheel_radius}
 {
 

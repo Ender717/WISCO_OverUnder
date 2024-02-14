@@ -1,5 +1,5 @@
-#ifndef WISCO_HAL_I_ROTATION_SENSOR_HPP
-#define WISCO_HAL_I_ROTATION_SENSOR_HPP
+#ifndef WISCO_SENSORS_I_ROTATION_SENSOR_HPP
+#define WISCO_SENSORS_I_ROTATION_SENSOR_HPP
 
 /**
  * @brief Namespace for all library code
@@ -9,11 +9,11 @@
 namespace wisco
 {
 /**
- * @brief Namespace for the hardware abstraction layer interfaces
+ * @brief Namespace for the sensor types
  * @author Nathan Sandvig
  * 
  */
-namespace hal
+namespace sensors
 {
 /**
  * @brief Interface for rotation sensors
@@ -62,7 +62,7 @@ public:
      */
     virtual double getAngle() = 0;
 };
-}
-}
+} // namespace sensors
+} // namespace wisco
 
 #endif
