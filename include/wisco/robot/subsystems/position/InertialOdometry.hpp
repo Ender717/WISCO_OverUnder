@@ -1,6 +1,7 @@
 #ifndef WISCO_ROBOT_SUBSYSTEMS_POSITION_INERTIAL_ODOMETRY_HPP
 #define WISCO_ROBOT_SUBSYSTEMS_POSITION_INERTIAL_ODOMETRY_HPP
 
+#include <cmath>
 #include <memory>
 
 #include "wisco/rtos/IClock.hpp"
@@ -59,6 +60,12 @@ private:
     static constexpr uint8_t TASK_DELAY{10};
 
     /**
+     * @brief Converts the time units for velocity
+     * 
+     */
+    static constexpr double TIME_UNIT_CONVERTER{1000};
+
+    /**
      * @brief The task loop function for background updates
      * 
      * @param params 
@@ -103,6 +110,7 @@ private:
 
     /**
      * @brief The offset from the linear distance tracking sensor to the tracking center
+     *        This value is left-justified, I.E. the offset to the left of center
      * 
      */
     double m_linear_distance_tracking_offset{};
@@ -115,6 +123,7 @@ private:
 
     /**
      * @brief The offset from the strafe distance tracking sensor to the tracking center
+     *        This value is front-justified, I.E. the offset to the front of center
      * 
      */
     double m_strafe_distance_tracking_offset{};
