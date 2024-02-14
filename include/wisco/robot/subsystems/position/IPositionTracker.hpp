@@ -1,5 +1,5 @@
-#ifndef WISCO_ROBOT_SUBSYSTEMS_I_POSITION_TRACKER_HPP
-#define WISCO_ROBOT_SUBSYSTEMS_I_POSITION_TRACKER_HPP
+#ifndef WISCO_ROBOT_SUBSYSTEMS_POSITION_I_POSITION_TRACKER_HPP
+#define WISCO_ROBOT_SUBSYSTEMS_POSITION_I_POSITION_TRACKER_HPP
 
 #include "Position.hpp"
 
@@ -28,7 +28,16 @@ namespace subsystems
 {
 
 /**
+ * @brief Namespace for all position subsystem classes
+ * @author Nathan Sandvig
+ * 
+ */
+namespace position
+{
+    
+/**
  * @brief Interface for position tracking subsystems
+ * @author Nathan Sandvig
  * 
  */
 class IPositionTracker
@@ -66,6 +75,7 @@ public:
      */
     virtual Position getPosition() = 0;
 };
+} // namespace position
 } // namespace subsystems
 } // namespace robot
 } // namespace wisco

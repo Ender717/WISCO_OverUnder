@@ -1,5 +1,5 @@
-#ifndef WISCO_ROBOT_SUBSYSTEMS_POSITION_HPP
-#define WISCO_ROBOT_SUBSYSTEMS_POSITION_HPP
+#ifndef WISCO_ROBOT_SUBSYSTEMS_POSITION_POSITION_HPP
+#define WISCO_ROBOT_SUBSYSTEMS_POSITION_POSITION_HPP
 
 /**
  * @brief Namespace for all library code
@@ -26,6 +26,14 @@ namespace subsystems
 {
 
 /**
+ * @brief Namespace for all position subsystem classes
+ * @author Nathan Sandvig
+ * 
+ */
+namespace position
+{
+
+/**
  * @brief Holds a robot position
  * @author Nathan Sandvig
  * 
@@ -39,7 +47,8 @@ struct Position
     double yV{};
     double thetaV{};
 };
-}
+} // namespace position
+} // namespace subsystems
 } // namespace robot
 } // namespace wisco
 

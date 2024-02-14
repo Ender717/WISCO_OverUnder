@@ -1,6 +1,7 @@
 #ifndef WISCO_ROBOT_A_SUBSYSTEM_HPP
 #define WISCO_ROBOT_A_SUBSYSTEM_HPP
 
+#include <cstdarg>
 #include <string>
 
 /**
@@ -79,6 +80,12 @@ public:
 	 *
 	 */
 	virtual void initialize();
+
+	/**
+	 * @brief Runs the subsystem
+	 * 
+	 */
+	virtual void run();
 
 	/**
 	 * @brief Runs a command for the subsystem
