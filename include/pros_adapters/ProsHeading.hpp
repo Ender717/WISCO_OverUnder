@@ -26,7 +26,7 @@ private:
      * @brief Converts the units for the sensor
      * 
      */
-    static constexpr double UNIT_CONVERTER{360 / M_PI};
+    static constexpr double UNIT_CONVERTER{-180 / M_PI};
     
     /**
      * @brief The sensor being adapted
