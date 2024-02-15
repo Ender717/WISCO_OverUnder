@@ -79,13 +79,13 @@ public:
 	 * @brief Initializes the subsystem
 	 *
 	 */
-	virtual void initialize();
+	virtual void initialize() = 0;
 
 	/**
 	 * @brief Runs the subsystem
 	 * 
 	 */
-	virtual void run();
+	virtual void run() = 0;
 
 	/**
 	 * @brief Runs a command for the subsystem
@@ -93,7 +93,7 @@ public:
 	 * @param command_name The name of the command to run
 	 * @param ... The parameters for the command
 	 */
-	virtual void command(std::string command_name, ...);
+	virtual void command(std::string command_name, ...) = 0;
 
 	/**
 	 * @brief Gets a state of the subsystem
@@ -101,7 +101,7 @@ public:
 	 * @param state_name The name of the state to get
 	 * @return void* The current value of that state
 	 */
-	virtual void* state(std::string state_name);
+	virtual void* state(std::string state_name) = 0;
 
 	/**
 	 * @brief Copy assignment operator for ASubsystem

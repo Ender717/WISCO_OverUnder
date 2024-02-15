@@ -1,6 +1,7 @@
 #ifndef WISCO_MATCH_CONTROLLER_FACTORY
 #define WISCO_MATCH_CONTROLLER_FACTORY
 
+// Menu includes
 #include "wisco/alliances/BlueAlliance.hpp"
 #include "wisco/alliances/RedAlliance.hpp"
 #include "wisco/alliances/SkillsAlliance.hpp"
@@ -13,7 +14,6 @@
 #include "wisco/profiles/HenryProfile.hpp"
 #include "wisco/profiles/JohnProfile.hpp"
 #include "wisco/menu/MenuAdapter.hpp"
-#include "pros_adapters/ProsDelayer.hpp"
 
 #include "wisco/MatchController.hpp"
 

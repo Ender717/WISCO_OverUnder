@@ -26,16 +26,9 @@ private:
      * @brief The mutex being adapted
      * 
      */
-    std::unique_ptr<pros::Mutex> m_mutex{};
+    pros::Mutex mutex{};
 
 public:
-    /**
-     * @brief Construct a new Pros Mutex object
-     * 
-     * @param mutex The mutex to adapt
-     */
-    ProsMutex(std::unique_ptr<pros::Mutex>& mutex);
-
     /**
      * @brief Takes and locks the mutex
      * 

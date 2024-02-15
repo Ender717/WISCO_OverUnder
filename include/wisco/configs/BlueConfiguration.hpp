@@ -1,6 +1,17 @@
 #ifndef WISCO_CONFIGS_BLUE_CONFIGURATION_HPP
 #define WISCO_CONFIGS_BLUE_CONFIGURATION_HPP
 
+// odometry includes
+#include "pros_adapters/ProsClock.hpp"
+#include "pros_adapters/ProsDelayer.hpp"
+#include "pros_adapters/ProsHeading.hpp"
+#include "pros_adapters/ProsMutex.hpp"
+#include "pros_adapters/ProsRotation.hpp"
+#include "pros_adapters/ProsTask.hpp"
+#include "wisco/hal/TrackingWheel.hpp"
+#include "wisco/robot/subsystems/position/InertialOdometryBuilder.hpp"
+#include "wisco/robot/subsystems/position/PositionSubsystem.hpp"
+
 #include "wisco/IConfiguration.hpp"
 
 /**
@@ -25,6 +36,48 @@ private:
      * 
      */
     static constexpr char CONFIGURATION_NAME[]{"BLUE"};
+
+	/**
+	 * @brief The port for the odometry heading sensor
+	 * 
+	 */
+	static constexpr int8_t ODOMETRY_HEADING_PORT{};
+
+	/**
+	 * @brief The port for the odometry linear distance tracking sensor
+	 * 
+	 */
+	static constexpr int8_t ODOMETRY_LINEAR_PORT{};
+
+	/**
+	 * @brief The radius of the odometry linear distance tracking wheel
+	 * 
+	 */
+	static constexpr double ODOMETRY_LINEAR_RADIUS{};
+
+	/**
+	 * @brief The offset of the odometry linear distance tracking wheel
+	 * 
+	 */
+	static constexpr double ODOMETRY_LINEAR_OFFSET{};
+
+	/**
+	 * @brief The port for the odometry strafe distance tracking sensor
+	 * 
+	 */
+	static constexpr int8_t ODOMETRY_STRAFE_PORT{};
+
+	/**
+	 * @brief The radius of the odometry strafe distance tracking wheel
+	 * 
+	 */
+	static constexpr double ODOMETRY_STRAFE_RADIUS{};
+
+	/**
+	 * @brief The offset of the odometry strafe distance tracking wheel
+	 * 
+	 */
+	static constexpr double ODOMETRY_STRAFE_OFFSET{};
 
 public:
     /**
