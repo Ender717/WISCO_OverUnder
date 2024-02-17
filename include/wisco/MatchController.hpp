@@ -36,6 +36,12 @@ private:
 	std::unique_ptr<IMenu> m_menu{};
 
 	/**
+	 * @brief The touch screen
+	 * 
+	 */
+	std::shared_ptr<io::ITouchScreen> m_touch_screen{};
+
+	/**
 	 * @brief The rtos delayer
 	 * 
 	 */
@@ -66,7 +72,7 @@ public:
 	 * @param menu The menu to use in the match controller
 	 * @param delayer The rtos delayer to use in the match controller
 	 */
-	MatchController(std::unique_ptr<IMenu>& menu, const std::shared_ptr<rtos::IDelayer>& delayer);
+	MatchController(std::unique_ptr<IMenu>& menu, const std::shared_ptr<io::ITouchScreen>& touch_screen, const std::shared_ptr<rtos::IDelayer>& delayer);
 
 	/**
 	 * @brief Runs the robot initialization code

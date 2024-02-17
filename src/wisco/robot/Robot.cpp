@@ -30,6 +30,10 @@ void Robot::initialize()
 	{
 		subsystem->initialize();
 	}
+	for (auto& subsystem : subsystems)
+	{
+		subsystem->run();
+	}
 }
 
 void Robot::sendCommand(std::string subsystem_name, std::string command_name, ...)

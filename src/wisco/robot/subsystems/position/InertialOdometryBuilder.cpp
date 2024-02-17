@@ -32,13 +32,13 @@ InertialOdometryBuilder* InertialOdometryBuilder::withTask(std::unique_ptr<wisco
     return this;
 }
 
-InertialOdometryBuilder* InertialOdometryBuilder::withHeadingSensor(std::unique_ptr<wisco::sensors::IHeadingSensor>& heading_sensor)
+InertialOdometryBuilder* InertialOdometryBuilder::withHeadingSensor(std::unique_ptr<wisco::io::IHeadingSensor>& heading_sensor)
 {
     m_heading_sensor = std::move(heading_sensor);
     return this;
 }
 
-InertialOdometryBuilder* InertialOdometryBuilder::withLinearDistanceTrackingSensor(std::unique_ptr<wisco::sensors::IDistanceTrackingSensor>& linear_distance_tracking_sensor)
+InertialOdometryBuilder* InertialOdometryBuilder::withLinearDistanceTrackingSensor(std::unique_ptr<wisco::io::IDistanceTrackingSensor>& linear_distance_tracking_sensor)
 {
     m_linear_distance_tracking_sensor = std::move(linear_distance_tracking_sensor);
     return this;
@@ -50,7 +50,7 @@ InertialOdometryBuilder* InertialOdometryBuilder::withLinearDistanceTrackingOffs
     return this;
 }
 
-InertialOdometryBuilder* InertialOdometryBuilder::withStrafeDistanceTrackingSensor(std::unique_ptr<wisco::sensors::IDistanceTrackingSensor>& strafe_distance_tracking_sensor)
+InertialOdometryBuilder* InertialOdometryBuilder::withStrafeDistanceTrackingSensor(std::unique_ptr<wisco::io::IDistanceTrackingSensor>& strafe_distance_tracking_sensor)
 {
     m_strafe_distance_tracking_sensor = std::move(strafe_distance_tracking_sensor);
     return this;

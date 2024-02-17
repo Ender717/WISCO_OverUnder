@@ -5,7 +5,7 @@
 #include <memory>
 
 #include "pros/imu.hpp"
-#include "wisco/sensors/IHeadingSensor.hpp"
+#include "wisco/io/IHeadingSensor.hpp"
 
 /**
  * @brief Namespace for adapters from the pros library to the wisco library
@@ -19,7 +19,7 @@ namespace pros_adapters
  * @author Nathan Sandvig
  * 
  */
-class ProsHeading : public wisco::sensors::IHeadingSensor
+class ProsHeading : public wisco::io::IHeadingSensor
 {
 private:
     /**

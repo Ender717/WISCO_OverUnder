@@ -2,8 +2,8 @@
 
 namespace wisco
 {
-MatchController::MatchController(std::unique_ptr<IMenu>& menu, const std::shared_ptr<rtos::IDelayer>& delayer) : 
-	m_menu{std::move(menu)}, m_delayer{delayer}
+MatchController::MatchController(std::unique_ptr<IMenu>& menu, const std::shared_ptr<io::ITouchScreen>& touch_screen, const std::shared_ptr<rtos::IDelayer>& delayer) : 
+	m_menu{std::move(menu)}, m_touch_screen{touch_screen}, m_delayer{delayer}
 {
 
 }
@@ -47,6 +47,6 @@ void MatchController::autonomous()
 void MatchController::operatorControl()
 {
 	if (robot)
-		opcontrol_manager.runOpcontrol(robot, m_delayer);
+		opcontrol_manager.runOpcontrol(robot, m_touch_screen, m_delayer);
 }
 } // namespace wisco

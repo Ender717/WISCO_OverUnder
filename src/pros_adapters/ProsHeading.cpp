@@ -10,13 +10,25 @@ ProsHeading::ProsHeading(std::unique_ptr<pros::Imu>& sensor) : m_sensor{std::mov
 void ProsHeading::initialize()
 {
     if (m_sensor)
-        m_sensor->reset();
+    {
+        uint8_t port{m_sensor->get_port()};
+        pros::Device device{port};
+        pros::DeviceType sensor_type{device.get_plugged_type()};
+        if (sensor_type == pros::DeviceType::imu)
+            m_sensor->reset();
+    }
 }
 
 void ProsHeading::reset()
 {
     if (m_sensor)
-        m_sensor->reset();
+    {
+        uint8_t port{m_sensor->get_port()};
+        pros::Device device{port};
+        pros::DeviceType sensor_type{device.get_plugged_type()};
+        if (sensor_type == pros::DeviceType::imu)
+            m_sensor->reset();
+    }
 }
 
 double ProsHeading::getHeading()

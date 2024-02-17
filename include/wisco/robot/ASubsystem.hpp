@@ -73,7 +73,10 @@ public:
 	 *
 	 * @return const std::string& The name of the subsystem
 	 */
-	const std::string& getName() const;
+	const std::string& getName() const
+	{
+		return m_name;
+	}
 
 	/**
 	 * @brief Initializes the subsystem

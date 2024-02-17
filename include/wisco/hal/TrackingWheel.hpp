@@ -3,8 +3,8 @@
 
 #include <memory>
 
-#include "wisco/sensors/IDistanceTrackingSensor.hpp"
-#include "wisco/sensors/IRotationSensor.hpp"
+#include "wisco/io/IDistanceTrackingSensor.hpp"
+#include "wisco/io/IRotationSensor.hpp"
 
 /**
  * @brief Namespace for all library code
@@ -25,14 +25,14 @@ namespace hal
  * @author Nathan Sandvig
  * 
  */
-class TrackingWheel : public sensors::IDistanceTrackingSensor
+class TrackingWheel : public io::IDistanceTrackingSensor
 {
 private:
     /**
      * @brief The sensor on the tracking wheel
      * 
      */
-    std::unique_ptr<sensors::IRotationSensor> m_sensor{};
+    std::unique_ptr<io::IRotationSensor> m_sensor{};
 
     /**
      * @brief The radius of the wheel in inches
@@ -47,7 +47,7 @@ public:
      * @param sensor The rotation sensor on the tracking wheel
      * @param wheel_radius The radius of the tracking wheel in inches
      */
-    TrackingWheel(std::unique_ptr<sensors::IRotationSensor>& sensor, double wheel_radius);
+    TrackingWheel(std::unique_ptr<io::IRotationSensor>& sensor, double wheel_radius);
 
     /**
      * @brief Initializes the sensor

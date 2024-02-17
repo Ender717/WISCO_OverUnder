@@ -66,13 +66,13 @@ private:
      * @brief The sensor to track the robot's heading
      * 
      */
-    std::unique_ptr<sensors::IHeadingSensor> m_heading_sensor{};
+    std::unique_ptr<io::IHeadingSensor> m_heading_sensor{};
 
     /**
      * @brief The sensor to track the robot's linear movement
      * 
      */
-    std::unique_ptr<sensors::IDistanceTrackingSensor> m_linear_distance_tracking_sensor{};
+    std::unique_ptr<io::IDistanceTrackingSensor> m_linear_distance_tracking_sensor{};
 
     /**
      * @brief The offset from the linear distance tracking sensor to the tracking center
@@ -85,7 +85,7 @@ private:
      * @brief The sensor to track the robot's strafe movement
      * 
      */
-    std::unique_ptr<sensors::IDistanceTrackingSensor> m_strafe_distance_tracking_sensor{};
+    std::unique_ptr<io::IDistanceTrackingSensor> m_strafe_distance_tracking_sensor{};
 
     /**
      * @brief The offset from the strafe distance tracking sensor to the tracking center
@@ -133,7 +133,7 @@ public:
      * @param heading_sensor The heading sensor
      * @return InertialOdometryBuilder* This builder for build chaining
      */
-    InertialOdometryBuilder* withHeadingSensor(std::unique_ptr<wisco::sensors::IHeadingSensor>& heading_sensor);
+    InertialOdometryBuilder* withHeadingSensor(std::unique_ptr<wisco::io::IHeadingSensor>& heading_sensor);
 
     /**
      * @brief Adds a linear distance tracking sensor to the builder
@@ -141,7 +141,7 @@ public:
      * @param linear_distance_tracking_sensor The linear distance tracking sensor
      * @return InertialOdometryBuilder* This builder for build chaining
      */
-    InertialOdometryBuilder* withLinearDistanceTrackingSensor(std::unique_ptr<wisco::sensors::IDistanceTrackingSensor>& linear_distance_tracking_sensor);
+    InertialOdometryBuilder* withLinearDistanceTrackingSensor(std::unique_ptr<wisco::io::IDistanceTrackingSensor>& linear_distance_tracking_sensor);
 
     /**
      * @brief Adds a linear distance tracking offset to the builder
@@ -157,7 +157,7 @@ public:
      * @param strafe_distance_tracking_sensor The strafe distance tracking sensor
      * @return InertialOdometryBuilder* This builder for build chaining
      */
-    InertialOdometryBuilder* withStrafeDistanceTrackingSensor(std::unique_ptr<wisco::sensors::IDistanceTrackingSensor>& strafe_distance_tracking_sensor);
+    InertialOdometryBuilder* withStrafeDistanceTrackingSensor(std::unique_ptr<wisco::io::IDistanceTrackingSensor>& strafe_distance_tracking_sensor);
 
     /**
      * @brief Adds a strafe distance tracking offset to the builder

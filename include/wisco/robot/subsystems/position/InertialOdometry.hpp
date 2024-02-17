@@ -8,8 +8,8 @@
 #include "wisco/rtos/IDelayer.hpp"
 #include "wisco/rtos/IMutex.hpp"
 #include "wisco/rtos/ITask.hpp"
-#include "wisco/sensors/IHeadingSensor.hpp"
-#include "wisco/sensors/IDistanceTrackingSensor.hpp"
+#include "wisco/io/IHeadingSensor.hpp"
+#include "wisco/io/IDistanceTrackingSensor.hpp"
 
 #include "IPositionTracker.hpp"
 
@@ -100,13 +100,13 @@ private:
      * @brief The sensor to track the robot's heading
      * 
      */
-    std::unique_ptr<sensors::IHeadingSensor> m_heading_sensor{};
+    std::unique_ptr<io::IHeadingSensor> m_heading_sensor{};
 
     /**
      * @brief The sensor to track the robot's linear movement
      * 
      */
-    std::unique_ptr<sensors::IDistanceTrackingSensor> m_linear_distance_tracking_sensor{};
+    std::unique_ptr<io::IDistanceTrackingSensor> m_linear_distance_tracking_sensor{};
 
     /**
      * @brief The offset from the linear distance tracking sensor to the tracking center
@@ -119,7 +119,7 @@ private:
      * @brief The sensor to track the robot's strafe movement
      * 
      */
-    std::unique_ptr<sensors::IDistanceTrackingSensor> m_strafe_distance_tracking_sensor{};
+    std::unique_ptr<io::IDistanceTrackingSensor> m_strafe_distance_tracking_sensor{};
 
     /**
      * @brief The offset from the strafe distance tracking sensor to the tracking center
@@ -230,14 +230,14 @@ public:
      * 
      * @param heading_sensor The heading sensor
      */
-    void setHeadingSensor(std::unique_ptr<sensors::IHeadingSensor>& heading_sensor);
+    void setHeadingSensor(std::unique_ptr<io::IHeadingSensor>& heading_sensor);
 
     /**
      * @brief Set the linear distance tracking sensor
      * 
      * @param linear_distance_tracking_sensor The linear distance tracking sensor
      */
-    void setLinearDistanceTrackingSensor(std::unique_ptr<sensors::IDistanceTrackingSensor>& linear_distance_tracking_sensor);
+    void setLinearDistanceTrackingSensor(std::unique_ptr<io::IDistanceTrackingSensor>& linear_distance_tracking_sensor);
 
     /**
      * @brief Set the linear distance tracking offset
@@ -251,7 +251,7 @@ public:
      * 
      * @param strafe_distance_tracking_sensor The strafe distance tracking sensor
      */
-    void setStrafeDistanceTrackingSensor(std::unique_ptr<sensors::IDistanceTrackingSensor>& strafe_distance_tracking_sensor);
+    void setStrafeDistanceTrackingSensor(std::unique_ptr<io::IDistanceTrackingSensor>& strafe_distance_tracking_sensor);
 
     /**
      * @brief Set the strafe distance tracking offset

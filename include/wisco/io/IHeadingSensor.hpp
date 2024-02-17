@@ -1,5 +1,5 @@
-#ifndef WISCO_SENSORS_I_HEADING_SENSOR_HPP
-#define WISCO_SENSORS_I_HEADING_SENSOR_HPP
+#ifndef WISCO_IO_I_HEADING_SENSOR_HPP
+#define WISCO_IO_I_HEADING_SENSOR_HPP
 
 /**
  * @brief Namespace for all library code
@@ -9,11 +9,11 @@
 namespace wisco
 {
 /**
- * @brief Namespace for the sensor types
+ * @brief Namespace for the io types
  * @author Nathan Sandvig
  * 
  */
-namespace sensors
+namespace io
 {
 /**
  * @brief Interface for heading sensors
@@ -69,7 +69,7 @@ public:
      */
     virtual void setRotation(double rotation) = 0;
 };
-} // namespace sensors
+} // namespace io
 } // namespace wisco
 
 #endif

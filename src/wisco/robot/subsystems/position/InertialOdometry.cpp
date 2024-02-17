@@ -160,12 +160,12 @@ void InertialOdometry::setTask(std::unique_ptr<rtos::ITask>& task)
     m_task = std::move(task);
 }
 
-void InertialOdometry::setHeadingSensor(std::unique_ptr<sensors::IHeadingSensor>& heading_sensor)
+void InertialOdometry::setHeadingSensor(std::unique_ptr<io::IHeadingSensor>& heading_sensor)
 {
     m_heading_sensor = std::move(heading_sensor);
 }
 
-void InertialOdometry::setLinearDistanceTrackingSensor(std::unique_ptr<sensors::IDistanceTrackingSensor>& linear_distance_tracking_sensor)
+void InertialOdometry::setLinearDistanceTrackingSensor(std::unique_ptr<io::IDistanceTrackingSensor>& linear_distance_tracking_sensor)
 {   
     m_linear_distance_tracking_sensor = std::move(linear_distance_tracking_sensor);
 }
@@ -175,7 +175,7 @@ void InertialOdometry::setLinearDistanceTrackingOffset(double linear_distance_tr
     m_linear_distance_tracking_offset = linear_distance_tracking_offset;
 }
 
-void InertialOdometry::setStrafeDistanceTrackingSensor(std::unique_ptr<sensors::IDistanceTrackingSensor>& strafe_distance_tracking_sensor)
+void InertialOdometry::setStrafeDistanceTrackingSensor(std::unique_ptr<io::IDistanceTrackingSensor>& strafe_distance_tracking_sensor)
 {
     m_strafe_distance_tracking_sensor = std::move(strafe_distance_tracking_sensor);
 }

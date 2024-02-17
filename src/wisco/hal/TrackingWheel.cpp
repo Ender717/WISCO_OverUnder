@@ -4,7 +4,7 @@ namespace wisco
 {
 namespace hal
 {
-TrackingWheel::TrackingWheel(std::unique_ptr<sensors::IRotationSensor>& sensor, double wheel_radius) :
+TrackingWheel::TrackingWheel(std::unique_ptr<io::IRotationSensor>& sensor, double wheel_radius) :
     m_sensor{std::move(sensor)}, m_wheel_radius{wheel_radius}
 {
 

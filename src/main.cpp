@@ -68,11 +68,12 @@ void autonomous()
  */
 void opcontrol()
 {
+	/*
 	pros::Controller master{pros::E_CONTROLLER_MASTER};
-	pros::MotorGroup leftMotors{19, 20, -11, -12};
-	pros::MotorGroup rightMotors{1, 2, -9, -10};
-	pros::MotorGroup intakeMotors{3};
-	pros::MotorGroup armMotors{13};
+	pros::MotorGroup leftMotors{11, 12, -13, -14};
+	pros::MotorGroup rightMotors{17, 18, -19, -20};
+	pros::MotorGroup intakeMotors{1};
+	pros::MotorGroup armMotors{10};
 	pros::adi::DigitalOut transmissionPiston{'A'};
 	pros::adi::DigitalOut elevatorPiston{'B'};
 	bool arcade{true};
@@ -122,6 +123,7 @@ void opcontrol()
 
 		pros::delay(10);
 	}
+	*/
 
 	match_controller.operatorControl();
 }
