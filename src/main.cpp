@@ -76,6 +76,7 @@ void opcontrol()
 	pros::MotorGroup armMotors{10};
 	pros::adi::DigitalOut transmissionPiston{'A'};
 	pros::adi::DigitalOut elevatorPiston{'B'};
+	std::vector<pros::adi::DigitalOut> wingPistons{pros::adi::DigitalOut{'C'}, pros::adi::DigitalOut{'D'}};
 	bool arcade{true};
 
 	double leftPower{};
@@ -84,6 +85,7 @@ void opcontrol()
 	double armPower{};
 	bool transmission_state{};
 	bool elevator_state{};
+	bool wing_state{};
 	while (true)
 	{
 		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A))
@@ -111,8 +113,11 @@ void opcontrol()
 		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT))
 			transmission_state = !transmission_state;
 
-		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y))
+		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT))
 			elevator_state = !elevator_state;
+
+		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y))
+			wing_state = !wing_state;
 
 		leftMotors.move(leftPower);
 		rightMotors.move(rightPower);
@@ -120,6 +125,8 @@ void opcontrol()
 		armMotors.move(armPower);
 		transmissionPiston.set_value(transmission_state);
 		elevatorPiston.set_value(elevator_state);
+		for (auto& piston : wingPistons)
+			piston.set_value(wing_state);
 
 		pros::delay(10);
 	}

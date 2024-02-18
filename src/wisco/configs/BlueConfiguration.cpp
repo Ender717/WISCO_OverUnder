@@ -20,7 +20,7 @@ std::shared_ptr<robot::Robot> BlueConfiguration::buildRobot()
     std::unique_ptr<wisco::rtos::IMutex> pros_mutex{std::make_unique<pros_adapters::ProsMutex>()};
     std::unique_ptr<wisco::rtos::ITask> pros_task{std::make_unique<pros_adapters::ProsTask>()};
     std::unique_ptr<pros::Imu> pros_heading{std::make_unique<pros::Imu>(ODOMETRY_HEADING_PORT)};
-    std::unique_ptr<wisco::io::IHeadingSensor> pros_heading_sensor{std::make_unique<pros_adapters::ProsHeading>(pros_heading)};
+    std::unique_ptr<wisco::io::IHeadingSensor> pros_heading_sensor{std::make_unique<pros_adapters::ProsHeading>(pros_heading, ODOMETRY_HEADING_TUNING_CONSTANT)};
     std::unique_ptr<pros::Rotation> pros_linear_rotation{std::make_unique<pros::Rotation>(ODOMETRY_LINEAR_PORT)};
     std::unique_ptr<wisco::io::IRotationSensor> pros_linear_rotation_sensor{std::make_unique<pros_adapters::ProsRotation>(pros_linear_rotation)};
     std::unique_ptr<wisco::io::IDistanceTrackingSensor> linear_tracking_wheel{std::make_unique<wisco::hal::TrackingWheel>(pros_linear_rotation_sensor, ODOMETRY_LINEAR_RADIUS)};

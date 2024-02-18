@@ -2,6 +2,8 @@
 #define PROS_ADAPTERS_PROS_TOUCH_SCREEN_HPP
 
 #include <cstdarg>
+#include <memory>
+#include <string>
 
 #include "pros/screen.h"
 #include "pros/screen.hpp"
@@ -29,6 +31,16 @@ private:
      * 
      */
     pros::text_format_e_t m_text_format;
+
+    /**
+     * @brief Formats a string
+     * 
+     * @tparam Args The type of format arguments
+     * @param format The format string
+     * @param args The format arguments
+     * @return std::string The formatted string
+     */
+    std::string string_format(const std::string& format, va_list args);
 
 public:
     /**

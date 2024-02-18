@@ -41,43 +41,49 @@ private:
 	 * @brief The port for the odometry heading sensor
 	 * 
 	 */
-	static constexpr int8_t ODOMETRY_HEADING_PORT{};
+	static constexpr int8_t ODOMETRY_HEADING_PORT{9};
+
+	/**
+	 * @brief The tuning constant for the odometry heading sensor
+	 * 
+	 */
+	static constexpr double ODOMETRY_HEADING_TUNING_CONSTANT{1.014};
 
 	/**
 	 * @brief The port for the odometry linear distance tracking sensor
 	 * 
 	 */
-	static constexpr int8_t ODOMETRY_LINEAR_PORT{};
+	static constexpr uint8_t ODOMETRY_LINEAR_PORT{8};
 
 	/**
 	 * @brief The radius of the odometry linear distance tracking wheel
 	 * 
 	 */
-	static constexpr double ODOMETRY_LINEAR_RADIUS{};
+	static constexpr double ODOMETRY_LINEAR_RADIUS{1.22};
 
 	/**
 	 * @brief The offset of the odometry linear distance tracking wheel
 	 * 
 	 */
-	static constexpr double ODOMETRY_LINEAR_OFFSET{};
+	static constexpr double ODOMETRY_LINEAR_OFFSET{3.35};
 
 	/**
 	 * @brief The port for the odometry strafe distance tracking sensor
 	 * 
 	 */
-	static constexpr int8_t ODOMETRY_STRAFE_PORT{};
+	static constexpr uint8_t ODOMETRY_STRAFE_PORT{2};
 
 	/**
 	 * @brief The radius of the odometry strafe distance tracking wheel
 	 * 
 	 */
-	static constexpr double ODOMETRY_STRAFE_RADIUS{};
+	static constexpr double ODOMETRY_STRAFE_RADIUS{1.22};
 
 	/**
 	 * @brief The offset of the odometry strafe distance tracking wheel
 	 * 
 	 */
-	static constexpr double ODOMETRY_STRAFE_OFFSET{};
+	static constexpr double ODOMETRY_STRAFE_OFFSET{4.6};
 
 public:
     /**

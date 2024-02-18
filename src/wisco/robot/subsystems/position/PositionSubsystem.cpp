@@ -1,4 +1,5 @@
 #include "wisco/robot/subsystems/position/PositionSubsystem.hpp"
+#include "pros/screen.hpp"
 
 namespace wisco
 {
@@ -44,8 +45,8 @@ void* PositionSubsystem::state(std::string state_name)
 
     if (state_name == GET_POSITION_STATE_NAME)
     {
-        result = malloc(sizeof(Position));
-        *((Position*)result) = m_position_tracker->getPosition();
+        Position* position{new Position{m_position_tracker->getPosition()}};
+        result = position;
     }
 
     return result;

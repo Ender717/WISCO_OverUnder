@@ -2,7 +2,8 @@
 
 namespace pros_adapters
 {
-ProsHeading::ProsHeading(std::unique_ptr<pros::Imu>& sensor) : m_sensor{std::move(sensor)}
+ProsHeading::ProsHeading(std::unique_ptr<pros::Imu>& sensor, double tuning_constant) : 
+    m_sensor{std::move(sensor)}, m_tuning_constant{tuning_constant}
 {
 
 }
@@ -15,7 +16,10 @@ void ProsHeading::initialize()
         pros::Device device{port};
         pros::DeviceType sensor_type{device.get_plugged_type()};
         if (sensor_type == pros::DeviceType::imu)
+        {
             m_sensor->reset();
+            pros::delay(3000);
+        }
     }
 }
 
@@ -27,7 +31,10 @@ void ProsHeading::reset()
         pros::Device device{port};
         pros::DeviceType sensor_type{device.get_plugged_type()};
         if (sensor_type == pros::DeviceType::imu)
+        {
             m_sensor->reset();
+            pros::delay(3000);
+        }
     }
 }
 

@@ -1,4 +1,5 @@
 #include "wisco/robot/subsystems/position/InertialOdometry.hpp"
+#include "pros/screen.hpp"
 
 namespace wisco
 {
@@ -54,8 +55,10 @@ void InertialOdometry::updatePosition()
     double local_theta{};
     if (heading_change != 0.0)
     {
-        local_x = (2 * std::sin(heading_change / 2)) * ((strafe_change / heading_change) + m_strafe_distance_tracking_offset);
-        local_y = (2 * std::sin(heading_change / 2)) * ((linear_change / heading_change) + m_linear_distance_tracking_offset);
+        double linear_radius{(linear_change / heading_change) - m_linear_distance_tracking_offset};
+        double strafe_radius{(strafe_change / heading_change) - m_strafe_distance_tracking_offset};
+        local_x = 2 * std::sin(heading_change / 2) * strafe_radius;
+        local_y = 2 * std::sin(heading_change / 2) * linear_radius;
         local_theta = (last_heading + current_heading) / 2;
     }
     else
@@ -66,7 +69,7 @@ void InertialOdometry::updatePosition()
     }
 
 
-    double global_x{(-local_x * std::sin(local_theta)) + (local_y * std::cos(local_theta))};
+    double global_x{(local_x * std::sin(local_theta)) + (-local_y * std::cos(local_theta))};
     double global_y{(local_y * std::sin(local_theta)) + (local_x * std::cos(local_theta))};
 
     m_position.x += global_x;

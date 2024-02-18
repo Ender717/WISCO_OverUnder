@@ -23,6 +23,7 @@ void MatchController::initialize()
 	robot = system_configuration.configuration->buildRobot();
 	if (robot)
 	{
+		robot->initialize();
 		autonomous_manager.initializeAutonomous(robot);
 		opcontrol_manager.initializeOpcontrol(robot);
 	}

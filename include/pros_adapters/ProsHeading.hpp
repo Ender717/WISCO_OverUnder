@@ -34,13 +34,20 @@ private:
      */
     std::unique_ptr<pros::Imu> m_sensor{};
 
+    /**
+     * @brief The tuning constant for the sensor
+     * 
+     */
+    double m_tuning_constant{1};
+
 public:
     /**
      * @brief Construct a new Pros Heading object
      * 
      * @param sensor The sensor being adapted
+     * @param tuning_constant The tuning constant multiplier for the sensor
      */
-    ProsHeading(std::unique_ptr<pros::Imu>& sensor);
+    ProsHeading(std::unique_ptr<pros::Imu>& sensor, double tuning_constant = 1);
 
     /**
      * @brief Initializes the sensor
