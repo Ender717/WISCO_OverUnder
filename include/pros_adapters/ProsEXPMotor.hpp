@@ -1,8 +1,7 @@
-#ifndef PROS_ADAPTERS_PROS_V5_MOTOR_HPP
-#define PROS_ADAPTERS_PROS_V5_MOTOR_HPP
+#ifndef PROS_ADAPTERS_PROS_EXP_MOTOR_HPP
+#define PROS_ADAPTERS_PROS_EXP_MOTOR_HPP
 
 #include <cmath>
-#include <map>
 #include <memory>
 
 #include "pros/motors.hpp"
@@ -17,38 +16,18 @@ namespace pros_adapters
 {
 
 /**
- * @brief Pros v5 smart motor adapter for the wisco IMotor interface
+ * @brief Pros exp smart motor adapter for the wisco IMotor interface
  * @author Nathan Sandvig
  * 
  */
-class ProsV5Motor : public wisco::io::IMotor
+class ProsEXPMotor : public wisco::io::IMotor
 {
 private:
-    /**
-     * @brief The different cartridges and their gear ratios
-     * @author Nathan Sandvig
-     * 
-     */
-    enum class Cartridge : uint8_t
-    {
-        V5_100 = 36,
-        V5_200 = 18,
-        V5_600 = 6,
-        NO_CARTRIDGE = 1
-    };
-
-    const std::map<pros::MotorGears, Cartridge> cartridge_map
-    {
-        {pros::MotorGears::rpm_100, Cartridge::V5_100},
-        {pros::MotorGears::rpm_200, Cartridge::V5_200},
-        {pros::MotorGears::rpm_600, Cartridge::V5_600}
-    };
-
     /**
      * @brief The torque constant of the motor
      * 
      */
-    static constexpr double TORQUE_CONSTANT{(2.1 / 36) / 2.5};
+    static constexpr double TORQUE_CONSTANT{(0.5 / 18) / 2.5};
 
     /**
      * @brief The resistance of the motor
@@ -61,6 +40,12 @@ private:
      * 
      */
     static constexpr double ANGULAR_VELOCITY_CONSTANT{};
+
+    /**
+     * @brief The internal gear ratio for the motor
+     * 
+     */
+    static constexpr double GEAR_RATIO{18};
 
     /**
      * @brief Converts motor velocity to radians/second
@@ -82,11 +67,11 @@ private:
 
 public:
     /**
-     * @brief Construct a new Pros V5 Motor object
+     * @brief Construct a new Pros EXP Motor object
      * 
      * @param motor The motor being adapted
      */
-    ProsV5Motor(std::unique_ptr<pros::Motor>& motor);
+    ProsEXPMotor(std::unique_ptr<pros::Motor>& motor);
 
     /**
      * @brief Initializes the motor
