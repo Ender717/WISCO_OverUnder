@@ -12,10 +12,7 @@ void ProsHeading::initialize()
 {
     if (m_sensor)
     {
-        uint8_t port{m_sensor->get_port()};
-        pros::Device device{port};
-        pros::DeviceType sensor_type{device.get_plugged_type()};
-        if (sensor_type == pros::DeviceType::imu)
+        if (m_sensor->is_installed())
         {
             m_sensor->reset();
             pros::delay(3000);
