@@ -20,6 +20,14 @@ DriveTest::DriveTest(std::unique_ptr<pros::MotorGroup>& left_drive_motors,
 
 }
 
+void DriveTest::initialize()
+{
+    m_heading_sensor->reset(true);
+    m_linear_sensor->reset();
+    m_heading_sensor->set_data_rate(5);
+    m_linear_sensor->set_data_rate(5);
+}
+
 void DriveTest::runLinearTest()
 {
     std::string test_output_file_path{FILE_PATH};

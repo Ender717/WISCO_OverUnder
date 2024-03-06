@@ -25,24 +25,21 @@ class ProsV5Motor : public wisco::io::IMotor
 {
 private:
     /**
-     * @brief The different cartridges and their gear ratios
-     * @author Nathan Sandvig
+     * @brief Map from v5 motor cartridges to gear ratios
      * 
      */
-    enum class Cartridge : uint8_t
+    const std::map<pros::MotorGears, double> cartridge_map
     {
-        V5_100 = 36,
-        V5_200 = 18,
-        V5_600 = 6,
-        NO_CARTRIDGE = 1
+        {pros::MotorGears::rpm_100, 36.0},
+        {pros::MotorGears::rpm_200, 18.0},
+        {pros::MotorGears::rpm_600, 6.0}
     };
 
-    const std::map<pros::MotorGears, Cartridge> cartridge_map
-    {
-        {pros::MotorGears::rpm_100, Cartridge::V5_100},
-        {pros::MotorGears::rpm_200, Cartridge::V5_200},
-        {pros::MotorGears::rpm_600, Cartridge::V5_600}
-    };
+    /**
+     * @brief The gear ratio if no cartridge is present
+     * 
+     */
+    static constexpr double NO_CARTRIDGE{1.0};
 
     /**
      * @brief The torque constant of the motor
@@ -51,16 +48,16 @@ private:
     static constexpr double TORQUE_CONSTANT{(2.1 / 36) / 2.5};
 
     /**
-     * @brief The resistance of the motor
+     * @brief The resistance of the motor in ohms
      * 
      */
-    static constexpr double RESISTANCE{};
+    static constexpr double RESISTANCE{3.2};
 
     /**
      * @brief The angular velocity constant of the motor
      * 
      */
-    static constexpr double ANGULAR_VELOCITY_CONSTANT{};
+    static constexpr double ANGULAR_VELOCITY_CONSTANT{2.1};
 
     /**
      * @brief Converts motor velocity to radians/second

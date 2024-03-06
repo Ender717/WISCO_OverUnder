@@ -68,9 +68,8 @@ void InertialOdometry::updatePosition()
         local_theta = current_heading;
     }
 
-
-    double global_x{(local_x * std::sin(local_theta)) + (-local_y * std::cos(local_theta))};
-    double global_y{(local_y * std::sin(local_theta)) + (local_x * std::cos(local_theta))};
+    double global_x{(local_x * std::sin(local_theta)) + (local_y * std::cos(local_theta))};
+    double global_y{(local_y * std::sin(local_theta)) + (-local_x * std::cos(local_theta))};
 
     m_position.x += global_x;
     m_position.y += global_y;

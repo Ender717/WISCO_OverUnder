@@ -41,6 +41,7 @@
  */
 //#include "okapi/api.hpp"
 #include "MatchControllerFactory.hpp"
+#include "wisco/testing/TestFactory.hpp"
 
 /**
  * If you find doing pros::Motor() to be tedious and you'd prefer just to do

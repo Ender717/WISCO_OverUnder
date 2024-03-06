@@ -39,9 +39,9 @@ double ProsV5Motor::getGearRatio()
     {
         pros::MotorGears gearing{m_motor->get_gearing()};
         if (cartridge_map.contains(gearing))
-            ratio = static_cast<uint8_t>(cartridge_map.at(gearing));
+            ratio = cartridge_map.at(gearing);
         else
-            ratio = static_cast<uint8_t>(Cartridge::NO_CARTRIDGE);
+            ratio = NO_CARTRIDGE;
     }
     
     return ratio;

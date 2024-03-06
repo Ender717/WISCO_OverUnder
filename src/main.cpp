@@ -10,6 +10,14 @@ static wisco::MatchController match_controller{MatchControllerFactory::createMat
  */
 void initialize()
 {
+	/*
+	auto drive_test{wisco::testing::TestFactory::createDriveTest()};
+	drive_test->initialize();
+	drive_test->runLinearTest();
+	pros::delay(2000);
+	drive_test->runTurningTest();
+	*/
+
     match_controller.initialize();
 }
 
@@ -68,69 +76,5 @@ void autonomous()
  */
 void opcontrol()
 {
-	/*
-	pros::Controller master{pros::E_CONTROLLER_MASTER};
-	pros::MotorGroup leftMotors{11, 12, -13, -14};
-	pros::MotorGroup rightMotors{17, 18, -19, -20};
-	pros::MotorGroup intakeMotors{1};
-	pros::MotorGroup armMotors{10};
-	pros::adi::DigitalOut transmissionPiston{'A'};
-	pros::adi::DigitalOut elevatorPiston{'B'};
-	std::vector<pros::adi::DigitalOut> wingPistons{pros::adi::DigitalOut{'C'}, pros::adi::DigitalOut{'D'}};
-	bool arcade{true};
-
-	double leftPower{};
-	double rightPower{};
-	double intakePower{};
-	double armPower{};
-	bool transmission_state{};
-	bool elevator_state{};
-	bool wing_state{};
-	while (true)
-	{
-		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A))
-			arcade = !arcade;
-
-		if (arcade)
-		{
-			leftPower = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) +
-				master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
-			rightPower = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) -
-				master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
-		}
-		else
-		{
-			leftPower = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-			rightPower = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
-		}
-
-		intakePower = (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1) -
-			master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) * INT8_MAX;
-
-		armPower = (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1) -
-			master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) * INT8_MAX;
-
-		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT))
-			transmission_state = !transmission_state;
-
-		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT))
-			elevator_state = !elevator_state;
-
-		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y))
-			wing_state = !wing_state;
-
-		leftMotors.move(leftPower);
-		rightMotors.move(rightPower);
-		intakeMotors.move(intakePower);
-		armMotors.move(armPower);
-		transmissionPiston.set_value(transmission_state);
-		elevatorPiston.set_value(elevator_state);
-		for (auto& piston : wingPistons)
-			piston.set_value(wing_state);
-
-		pros::delay(10);
-	}
-	*/
-
 	match_controller.operatorControl();
 }

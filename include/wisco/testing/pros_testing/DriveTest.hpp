@@ -94,7 +94,7 @@ private:
      * @brief The duration of the tests in ms
      * 
      */
-    static constexpr uint32_t TEST_DURATION{1000};
+    static constexpr uint32_t TEST_DURATION{500};
 
     /**
      * @brief The left drive motors
@@ -141,6 +141,12 @@ public:
               std::unique_ptr<pros::Imu>& heading_sensor, 
               std::unique_ptr<pros::Rotation>& linear_sensor, 
               double linear_counts_per_inch);
+
+    /**
+     * @brief Initializes the drive testing system
+     * 
+     */
+    void initialize();
 
     /**
      * @brief Runs the linear motion test
