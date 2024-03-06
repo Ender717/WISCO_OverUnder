@@ -1,7 +1,13 @@
 #ifndef WISCO_ROBOT_SUBSYSTEMS_DRIVE_DIFFERENTIAL_DRIVE_HPP
 #define WISCO_ROBOT_SUBSYSTEMS_DRIVE_DIFFERENTIAL_DRIVE_HPP
 
+#include <memory>
+
 #include "wisco/hal/MotorGroup.hpp"
+#include "wisco/rtos/IClock.hpp"
+#include "wisco/rtos/IDelayer.hpp"
+#include "wisco/rtos/IMutex.hpp"
+#include "wisco/rtos/ITask.hpp"
 
 #include "wisco/robot/subsystems/drive/IDifferentialDrive.hpp"
 
@@ -46,6 +52,49 @@ class DifferentialDrive : public IDifferentialDrive
 {
 private:
     /**
+     * @brief The loop delay on the task
+     * 
+     */
+    static constexpr uint8_t TASK_DELAY{10};
+
+    /**
+     * @brief Converts the time units for velocity
+     * 
+     */
+    static constexpr double TIME_UNIT_CONVERTER{1000};
+
+    /**
+     * @brief The task loop function for background updates
+     * 
+     * @param params 
+     */
+    static void taskLoop(void* params);
+
+    /**
+     * @brief The system clock
+     * 
+     */
+    std::unique_ptr<rtos::IClock> m_clock{};
+
+    /**
+     * @brief The system delayer
+     * 
+     */
+    std::unique_ptr<rtos::IDelayer> m_delayer{};
+
+    /**
+     * @brief The os mutex
+     * 
+     */
+    std::unique_ptr<rtos::IMutex> m_mutex{};
+
+    /**
+     * @brief The task handler
+     * 
+     */
+    std::unique_ptr<rtos::ITask> m_task{};
+
+    /**
      * @brief The left motors on the differential drive
      * 
      */
@@ -86,6 +135,30 @@ private:
      * 
      */
     double m_wheel_radius{};
+
+    /**
+     * @brief The target acceleration for the left drive
+     * 
+     */
+    double m_left_acceleration{};
+    
+    /**
+     * @brief The target acceleration for the right drive
+     * 
+     */
+    double m_right_acceleration{};
+
+    /**
+     * @brief Runs all the object-specific updates in the task loop
+     * 
+     */
+    void taskUpdate();
+
+    /**
+     * @brief Updates the motor values using the target acceleration values
+     * 
+     */
+    void updateAcceleration();
     
 public:
     /**
@@ -121,6 +194,83 @@ public:
      * @param right_acceleration The acceleration of the right side of the drive
      */
     void setAcceleration(double left_acceleration, double right_acceleration) override;  
+
+    /**
+     * @brief Set the system clock
+     * 
+     * @param clock The system clock
+     */
+    void setClock(std::unique_ptr<rtos::IClock>& clock);
+
+    /**
+     * @brief Set the rtos delayer
+     * 
+     * @param delayer The rtos delayer
+     */
+    void setDelayer(std::unique_ptr<rtos::IDelayer>& delayer);
+
+    /**
+     * @brief Set the os mutex
+     * 
+     * @param mutex The os mutex
+     */
+    void setMutex(std::unique_ptr<rtos::IMutex>& mutex);
+
+    /**
+     * @brief Set the rtos task handler
+     * 
+     * @param task The rtos task handler
+     */
+    void setTask(std::unique_ptr<rtos::ITask>& task);
+
+    /**
+     * @brief Set the left drive motors
+     * 
+     * @param left_motors The motors on the left side of the drive
+     */
+    void setLeftMotors(hal::MotorGroup left_motors);
+
+    /**
+     * @brief Set the right drive motors
+     * 
+     * @param right_motors The motors on the right side of the drive
+     */
+    void setRightMotors(hal::MotorGroup right_motors);
+
+    /**
+     * @brief Set the mass
+     * 
+     * @param mass The mass of the drive
+     */
+    void setMass(double mass);
+
+    /**
+     * @brief Set the radius
+     * 
+     * @param radius The radius of the drive
+     */
+    void setRadius(double radius);
+
+    /**
+     * @brief Set the moment of inertia
+     * 
+     * @param moment_of_inertia The moment of inertia of the drive
+     */
+    void setMomentOfInertia(double moment_of_inertia);
+
+    /**
+     * @brief Set the gear ratio
+     * 
+     * @param gear_ratio The gear ratio of the drive
+     */
+    void setGearRatio(double gear_ratio);
+
+    /**
+     * @brief Set the wheel radius
+     * 
+     * @param wheel_radius The wheel radius of the drive
+     */
+    void setWheelRadius(double wheel_radius);
 };
 } // namespace drive
 } // namespace subsystems
