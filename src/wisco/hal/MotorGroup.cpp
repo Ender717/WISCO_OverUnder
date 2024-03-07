@@ -68,5 +68,14 @@ void MotorGroup::setVoltage(double volts)
     for (auto& motor : motors)
         motor->setVoltage(volts);
 }
+
+MotorGroup& MotorGroup::operator=(MotorGroup& rhs)
+{
+    motors.clear();
+    for (uint8_t i{0}; i < rhs.motors.size(); ++i)
+        motors.push_back(std::move(rhs.motors[i]));
+    rhs.motors.clear();
+    return *this;
+}
 } // namespace hal
 } // namespace wisco

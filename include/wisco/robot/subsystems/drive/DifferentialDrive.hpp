@@ -1,10 +1,10 @@
 #ifndef WISCO_ROBOT_SUBSYSTEMS_DRIVE_DIFFERENTIAL_DRIVE_HPP
 #define WISCO_ROBOT_SUBSYSTEMS_DRIVE_DIFFERENTIAL_DRIVE_HPP
 
+#include <cmath>
 #include <memory>
 
 #include "wisco/hal/MotorGroup.hpp"
-#include "wisco/rtos/IClock.hpp"
 #include "wisco/rtos/IDelayer.hpp"
 #include "wisco/rtos/IMutex.hpp"
 #include "wisco/rtos/ITask.hpp"
@@ -58,23 +58,11 @@ private:
     static constexpr uint8_t TASK_DELAY{10};
 
     /**
-     * @brief Converts the time units for velocity
-     * 
-     */
-    static constexpr double TIME_UNIT_CONVERTER{1000};
-
-    /**
      * @brief The task loop function for background updates
      * 
      * @param params 
      */
     static void taskLoop(void* params);
-
-    /**
-     * @brief The system clock
-     * 
-     */
-    std::unique_ptr<rtos::IClock> m_clock{};
 
     /**
      * @brief The system delayer
@@ -137,6 +125,42 @@ private:
     double m_wheel_radius{};
 
     /**
+     * @brief The first kinematic constant
+     * 
+     */
+    double c1{};
+
+    /**
+     * @brief The second kinematic constant
+     * 
+     */
+    double c2{};
+
+    /**
+     * @brief The third kinematic constant
+     * 
+     */
+    double c3{};
+
+    /**
+     * @brief The fourth kinematic constant
+     * 
+     */
+    double c4{};
+
+    /**
+     * @brief The fifth kinematic constant
+     * 
+     */
+    double c5{};
+
+    /**
+     * @brief The sixth kinematic constant
+     * 
+     */
+    double c6{};
+
+    /**
      * @brief The target acceleration for the left drive
      * 
      */
@@ -194,13 +218,6 @@ public:
      * @param right_acceleration The acceleration of the right side of the drive
      */
     void setAcceleration(double left_acceleration, double right_acceleration) override;  
-
-    /**
-     * @brief Set the system clock
-     * 
-     * @param clock The system clock
-     */
-    void setClock(std::unique_ptr<rtos::IClock>& clock);
 
     /**
      * @brief Set the rtos delayer

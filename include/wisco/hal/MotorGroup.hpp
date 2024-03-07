@@ -92,6 +92,14 @@ public:
      * @param volts The voltage input in Volts
      */
     void setVoltage(double volts);
+
+    /**
+     * @brief Override for the assignment operator for MotorGroup
+     * 
+     * @param rhs The MotorGroup object on the right hand side of the operator
+     * @return MotorGroup& This MotorGroup object with the assigned values
+     */
+    MotorGroup& operator=(MotorGroup& rhs);
 };
 } // namespace hal
 } // namespace wisco

@@ -35,6 +35,11 @@ namespace subsystems
 namespace position
 {
 
+/**
+ * @brief Builder class for the inertial odometry class
+ * @author Nathan Sandvig
+ * 
+ */
 class InertialOdometryBuilder
 {
 private:

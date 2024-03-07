@@ -30,7 +30,22 @@ namespace drive
         if (m_mutex)
             m_mutex->take();
         
-        // TODO kinematic calculation for voltage
+        double right_velocity{getRightVelocity()};
+        double left_velocity{getLeftVelocity()};
+
+        double right_voltage{(c5 * m_right_acceleration - 
+                              c6 * m_left_acceleration - 
+                              (std::pow(c5, 2) - std::pow(c6, 2)) * c3 * right_velocity)
+                             /
+                             ((std::pow(c5, 2) - std::pow(c6, 2)) * c4)};
+        double left_voltage{(m_right_acceleration - 
+                             c1 * c6 * left_velocity -
+                             c5 * (c3 * right_velocity + c4 * right_voltage))
+                            /
+                            (c2 * c6)};
+
+        m_left_motors.setVoltage(left_voltage);
+        m_right_motors.setVoltage(right_voltage);
 
         if (m_mutex)
             m_mutex->give();
@@ -42,6 +57,17 @@ namespace drive
         m_right_motors.initialize();
         m_left_acceleration = 0;
         m_right_acceleration = 0;
+
+        c1 = (-1 * std::pow(m_left_motors.getGearRatio() * m_gear_ratio, 2) * m_left_motors.getTorqueConstant())
+            / (m_left_motors.getAngularVelocityConstant() * m_left_motors.getResistance() * std::pow(m_wheel_radius, 2));
+        c2 = (m_left_motors.getGearRatio() * m_gear_ratio * m_left_motors.getTorqueConstant())
+            / (m_left_motors.getResistance() * m_wheel_radius);
+        c3 = (-1 * std::pow(m_right_motors.getGearRatio() * m_gear_ratio, 2) * m_right_motors.getTorqueConstant())
+            / (m_right_motors.getAngularVelocityConstant() * m_right_motors.getResistance() * std::pow(m_wheel_radius, 2));        
+        c4 = (m_right_motors.getGearRatio() * m_gear_ratio * m_right_motors.getTorqueConstant())
+            / (m_right_motors.getResistance() * m_wheel_radius);
+        c5 = (1 / m_mass) + (std::pow(m_radius, 2) / m_moment_of_inertia);
+        c6 = (1 / m_mass) - (std::pow(m_radius, 2) / m_moment_of_inertia);
     }
 
     void DifferentialDrive::run()
@@ -75,11 +101,6 @@ namespace drive
         if (m_mutex)
             m_mutex->give();
     } 
-
-    void DifferentialDrive::setClock(std::unique_ptr<rtos::IClock>& clock)
-    {
-        m_clock = std::move(clock);
-    }
 
     void DifferentialDrive::setDelayer(std::unique_ptr<rtos::IDelayer>& delayer)
     {
