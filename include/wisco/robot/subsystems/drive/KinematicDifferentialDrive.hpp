@@ -44,11 +44,11 @@ namespace drive
 {
 
 /**
- * @brief A drive controller with independent left and right wheelsets
+ * @brief A kinematic drive controller with independent left and right wheelsets
  * @author Nathan Sandvig
  * 
  */
-class DifferentialDrive : public IDifferentialDrive
+class KinematicDifferentialDrive : public IDifferentialDrive
 {
 private:
     /**

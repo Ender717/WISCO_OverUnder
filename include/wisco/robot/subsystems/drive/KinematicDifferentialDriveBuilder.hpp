@@ -1,7 +1,7 @@
 #ifndef WISCO_ROBOT_SUBSYSTEMS_DRIVE_DIFFERENTIAL_DRIVE_BUILDER_HPP
 #define WISCO_ROBOT_SUBSYSTEMS_DRIVE_DIFFERENTIAL_DRIVE_BUILDER_HPP
 
-#include "DifferentialDrive.hpp"
+#include "KinematicDifferentialDrive.hpp"
 
 /**
  * @brief Namespace for all library code
@@ -40,7 +40,7 @@ namespace drive
  * @author Nathan Sandvig
  * 
  */
-class DifferentialDriveBuilder
+class KinematicDifferentialDriveBuilder
 {
 private:
     /**
@@ -108,86 +108,86 @@ public:
      * @brief Add an rtos delayer to the build
      * 
      * @param delayer The rtos delayer
-     * @return DifferentialDriveBuilder* This object for build chaining
+     * @return KinematicDifferentialDriveBuilder* This object for build chaining
      */
-    DifferentialDriveBuilder* withDelayer(std::unique_ptr<rtos::IDelayer>& delayer);
+    KinematicDifferentialDriveBuilder* withDelayer(std::unique_ptr<rtos::IDelayer>& delayer);
 
     /**
      * @brief Add an os mutex to the build
      * 
      * @param mutex The os mutex
-     * @return DifferentialDriveBuilder* This object for build chaining
+     * @return KinematicDifferentialDriveBuilder* This object for build chaining
      */
-    DifferentialDriveBuilder* withMutex(std::unique_ptr<rtos::IMutex>& mutex);
+    KinematicDifferentialDriveBuilder* withMutex(std::unique_ptr<rtos::IMutex>& mutex);
 
     /**
      * @brief Add an rtos task handler to the build
      * 
      * @param task The rtos task handler
-     * @return DifferentialDriveBuilder* This object for build chaining
+     * @return KinematicDifferentialDriveBuilder* This object for build chaining
      */
-    DifferentialDriveBuilder* withTask(std::unique_ptr<rtos::ITask>& task);
+    KinematicDifferentialDriveBuilder* withTask(std::unique_ptr<rtos::ITask>& task);
 
     /**
      * @brief Add the left drive motors to the build
      * 
      * @param left_motors The motors on the left side of the drive
-     * @return DifferentialDriveBuilder* This object for build chaining
+     * @return KinematicDifferentialDriveBuilder* This object for build chaining
      */
-    DifferentialDriveBuilder* withLeftMotors(hal::MotorGroup left_motors);
+    KinematicDifferentialDriveBuilder* withLeftMotors(hal::MotorGroup left_motors);
 
     /**
      * @brief Add the right drive motors to the build
      * 
      * @param right_motors The motors on the right side of the drive
-     * @return DifferentialDriveBuilder* This object for build chaining
+     * @return KinematicDifferentialDriveBuilder* This object for build chaining
      */
-    DifferentialDriveBuilder* withRightMotors(hal::MotorGroup right_motors);
+    KinematicDifferentialDriveBuilder* withRightMotors(hal::MotorGroup right_motors);
 
     /**
      * @brief Add the mass to the build
      * 
      * @param mass The mass of the drive
-     * @return DifferentialDriveBuilder* This object for build chaining
+     * @return KinematicDifferentialDriveBuilder* This object for build chaining
      */
-    DifferentialDriveBuilder* withMass(double mass);
+    KinematicDifferentialDriveBuilder* withMass(double mass);
 
     /**
      * @brief Add the radius to the build
      * 
      * @param radius The radius of the drive
-     * @return DifferentialDriveBuilder* This object for build chaining
+     * @return KinematicDifferentialDriveBuilder* This object for build chaining
      */
-    DifferentialDriveBuilder* withRadius(double radius);
+    KinematicDifferentialDriveBuilder* withRadius(double radius);
 
     /**
      * @brief Add the moment of inertia to the build
      * 
      * @param moment_of_inertia The moment of inertia of the drive
-     * @return DifferentialDriveBuilder* This object for build chaining
+     * @return KinematicDifferentialDriveBuilder* This object for build chaining
      */
-    DifferentialDriveBuilder* withMomentOfInertia(double moment_of_inertia);
+    KinematicDifferentialDriveBuilder* withMomentOfInertia(double moment_of_inertia);
 
     /**
      * @brief Add the gear ratio to the build
      * 
      * @param gear_ratio The gear ratio of the drive
-     * @return DifferentialDriveBuilder* This object for build chaining
+     * @return KinematicDifferentialDriveBuilder* This object for build chaining
      */
-    DifferentialDriveBuilder* withGearRatio(double gear_ratio);
+    KinematicDifferentialDriveBuilder* withGearRatio(double gear_ratio);
 
     /**
      * @brief Add the wheel radius to the build
      * 
      * @param wheel_radius The wheel radius of the drive
-     * @return DifferentialDriveBuilder* This object for build chaining
+     * @return KinematicDifferentialDriveBuilder* This object for build chaining
      */
-    DifferentialDriveBuilder* withWheelRadius(double wheel_radius);
+    KinematicDifferentialDriveBuilder* withWheelRadius(double wheel_radius);
 
     /**
      * @brief Builds the differential drive system
      * 
-     * @return std::unique_ptr<IPositionTracker> The differential drive system as a differential drive interface
+     * @return std::unique_ptr<IDifferentialDrive> The differential drive system as a differential drive interface
      */
     std::unique_ptr<IDifferentialDrive> build();
 };

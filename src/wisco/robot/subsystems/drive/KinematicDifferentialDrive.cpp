@@ -1,4 +1,4 @@
-#include "wisco/robot/subsystems/drive/DifferentialDrive.hpp"
+#include "wisco/robot/subsystems/drive/KinematicDifferentialDrive.hpp"
 
 namespace wisco
 {
@@ -8,10 +8,10 @@ namespace subsystems
 {
 namespace drive
 {
-    void DifferentialDrive::taskLoop(void* params)
+    void KinematicDifferentialDrive::taskLoop(void* params)
     {
         void** parameters{static_cast<void**>(params)};
-        DifferentialDrive* instance{static_cast<DifferentialDrive*>(parameters[0])};
+        KinematicDifferentialDrive* instance{static_cast<KinematicDifferentialDrive*>(parameters[0])};
 
         while (true)
         {
@@ -19,13 +19,13 @@ namespace drive
         }
     }
 
-    void DifferentialDrive::taskUpdate()
+    void KinematicDifferentialDrive::taskUpdate()
     {
         updateAcceleration();
         m_delayer->delay(TASK_DELAY);
     }
 
-    void DifferentialDrive::updateAcceleration()
+    void KinematicDifferentialDrive::updateAcceleration()
     {
         if (m_mutex)
             m_mutex->take();
@@ -51,7 +51,7 @@ namespace drive
             m_mutex->give();
     }
 
-    void DifferentialDrive::initialize()
+    void KinematicDifferentialDrive::initialize()
     {
         m_left_motors.initialize();
         m_right_motors.initialize();
@@ -70,27 +70,27 @@ namespace drive
         c6 = (1 / m_mass) - (std::pow(m_radius, 2) / m_moment_of_inertia);
     }
 
-    void DifferentialDrive::run()
+    void KinematicDifferentialDrive::run()
     {
         if (m_task)
         {
             void** params{static_cast<void**>(malloc(1 * sizeof(void*)))};
             params[0] = this;
-            m_task->start(&DifferentialDrive::taskLoop, params);
+            m_task->start(&KinematicDifferentialDrive::taskLoop, params);
         }
     }
 
-    double DifferentialDrive::getLeftVelocity()
+    double KinematicDifferentialDrive::getLeftVelocity()
     {
         return m_left_motors.getAngularVelocity() * m_wheel_radius;
     }
 
-    double DifferentialDrive::getRightVelocity()
+    double KinematicDifferentialDrive::getRightVelocity()
     {
         return m_right_motors.getAngularVelocity() * m_wheel_radius;
     }
 
-    void DifferentialDrive::setAcceleration(double left_acceleration, double right_acceleration)
+    void KinematicDifferentialDrive::setAcceleration(double left_acceleration, double right_acceleration)
     {
         if (m_mutex)
             m_mutex->take();
@@ -102,52 +102,52 @@ namespace drive
             m_mutex->give();
     } 
 
-    void DifferentialDrive::setDelayer(std::unique_ptr<rtos::IDelayer>& delayer)
+    void KinematicDifferentialDrive::setDelayer(std::unique_ptr<rtos::IDelayer>& delayer)
     {
         m_delayer = std::move(delayer);
     }
 
-    void DifferentialDrive::setMutex(std::unique_ptr<rtos::IMutex>& mutex)
+    void KinematicDifferentialDrive::setMutex(std::unique_ptr<rtos::IMutex>& mutex)
     {
         m_mutex = std::move(mutex);
     }
 
-    void DifferentialDrive::setTask(std::unique_ptr<rtos::ITask>& task)
+    void KinematicDifferentialDrive::setTask(std::unique_ptr<rtos::ITask>& task)
     {
         m_task = std::move(task);
     }
 
-    void DifferentialDrive::setLeftMotors(hal::MotorGroup left_motors)
+    void KinematicDifferentialDrive::setLeftMotors(hal::MotorGroup left_motors)
     {
         m_left_motors = left_motors;
     }
 
-    void DifferentialDrive::setRightMotors(hal::MotorGroup right_motors)
+    void KinematicDifferentialDrive::setRightMotors(hal::MotorGroup right_motors)
     {
         m_right_motors = right_motors;
     }
 
-    void DifferentialDrive::setMass(double mass)
+    void KinematicDifferentialDrive::setMass(double mass)
     {
         m_mass = mass;
     }
 
-    void DifferentialDrive::setRadius(double radius)
+    void KinematicDifferentialDrive::setRadius(double radius)
     {
         m_radius = radius;
     }
 
-    void DifferentialDrive::setMomentOfInertia(double moment_of_inertia)
+    void KinematicDifferentialDrive::setMomentOfInertia(double moment_of_inertia)
     {
         m_moment_of_inertia = moment_of_inertia;
     }
 
-    void DifferentialDrive::setGearRatio(double gear_ratio)
+    void KinematicDifferentialDrive::setGearRatio(double gear_ratio)
     {
         m_gear_ratio = gear_ratio;
     }
 
-    void DifferentialDrive::setWheelRadius(double wheel_radius)
+    void KinematicDifferentialDrive::setWheelRadius(double wheel_radius)
     {
         m_wheel_radius = wheel_radius;
     }
