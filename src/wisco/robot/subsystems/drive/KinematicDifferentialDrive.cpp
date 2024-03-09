@@ -1,4 +1,5 @@
 #include "wisco/robot/subsystems/drive/KinematicDifferentialDrive.hpp"
+#include "IVelocityProfile.hpp"
 
 namespace wisco
 {
@@ -30,17 +31,19 @@ namespace drive
         if (m_mutex)
             m_mutex->take();
         
-        double right_velocity{getRightVelocity()};
-        double left_velocity{getLeftVelocity()};
+        Velocity velocity{getVelocity()};
 
-        double right_voltage{(c5 * m_right_acceleration - 
-                              c6 * m_left_acceleration - 
-                              (std::pow(c5, 2) - std::pow(c6, 2)) * c3 * right_velocity)
+        double left_acceleration{m_left_velocity_profile->getAcceleration(m_velocity.left_velocity)};
+        double right_acceleration{m_right_velocity_profile->getAcceleration(m_velocity.right_velocity)};
+
+        double right_voltage{(c5 * right_acceleration - 
+                              c6 * left_acceleration - 
+                              (std::pow(c5, 2) - std::pow(c6, 2)) * c3 * velocity.right_velocity)
                              /
                              ((std::pow(c5, 2) - std::pow(c6, 2)) * c4)};
-        double left_voltage{(m_right_acceleration - 
-                             c1 * c6 * left_velocity -
-                             c5 * (c3 * right_velocity + c4 * right_voltage))
+        double left_voltage{(right_acceleration - 
+                             c1 * c6 * velocity.left_velocity -
+                             c5 * (c3 * velocity.right_velocity + c4 * right_voltage))
                             /
                             (c2 * c6)};
 
@@ -55,8 +58,8 @@ namespace drive
     {
         m_left_motors.initialize();
         m_right_motors.initialize();
-        m_left_acceleration = 0;
-        m_right_acceleration = 0;
+        m_left_velocity_profile->setAcceleration(0);
+        m_right_velocity_profile->setAcceleration(0);
 
         c1 = (-1 * std::pow(m_left_motors.getGearRatio() * m_gear_ratio, 2) * m_left_motors.getTorqueConstant())
             / (m_left_motors.getAngularVelocityConstant() * m_left_motors.getResistance() * std::pow(m_wheel_radius, 2));
@@ -80,23 +83,22 @@ namespace drive
         }
     }
 
-    double KinematicDifferentialDrive::getLeftVelocity()
+    Velocity KinematicDifferentialDrive::getVelocity()
     {
-        return m_left_motors.getAngularVelocity() * m_wheel_radius;
+        Velocity velocity
+        {
+            m_left_motors.getAngularVelocity() * m_wheel_radius,
+            m_right_motors.getAngularVelocity() * m_wheel_radius
+        };
+        return velocity;
     }
 
-    double KinematicDifferentialDrive::getRightVelocity()
-    {
-        return m_right_motors.getAngularVelocity() * m_wheel_radius;
-    }
-
-    void KinematicDifferentialDrive::setAcceleration(double left_acceleration, double right_acceleration)
+    void KinematicDifferentialDrive::setVelocity(Velocity velocity)
     {
         if (m_mutex)
             m_mutex->take();
         
-        m_left_acceleration = left_acceleration;
-        m_right_acceleration = right_acceleration;
+        m_velocity = velocity;
 
         if (m_mutex)
             m_mutex->give();
@@ -115,6 +117,12 @@ namespace drive
     void KinematicDifferentialDrive::setTask(std::unique_ptr<rtos::ITask>& task)
     {
         m_task = std::move(task);
+    }
+
+    void KinematicDifferentialDrive::setVelocityProfiles(std::unique_ptr<IVelocityProfile>& left_velocity_profile, std::unique_ptr<IVelocityProfile>& right_velocity_profile)
+    {
+        m_left_velocity_profile = std::move(left_velocity_profile);
+        m_right_velocity_profile = std::move(right_velocity_profile);
     }
 
     void KinematicDifferentialDrive::setLeftMotors(hal::MotorGroup left_motors)

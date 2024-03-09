@@ -2,6 +2,7 @@
 #define WISCO_CONFIGS_BLUE_CONFIGURATION_HPP
 
 // odometry includes
+#include "pros/motors.h"
 #include "pros_adapters/ProsClock.hpp"
 #include "pros_adapters/ProsDelayer.hpp"
 #include "pros_adapters/ProsHeading.hpp"
@@ -11,6 +12,12 @@
 #include "wisco/hal/TrackingWheel.hpp"
 #include "wisco/robot/subsystems/position/InertialOdometryBuilder.hpp"
 #include "wisco/robot/subsystems/position/PositionSubsystem.hpp"
+
+// drive includes
+#include "pros_adapters/ProsV5Motor.hpp"
+#include "wisco/robot/subsystems/drive/KinematicDifferentialDriveBuilder.hpp"
+#include "wisco/robot/subsystems/drive/CurveVelocityProfile.hpp"
+#include "wisco/robot/subsystems/drive/DifferentialDriveSubsystem.hpp"
 
 #include "wisco/IConfiguration.hpp"
 
@@ -84,6 +91,144 @@ private:
 	 * 
 	 */
 	static constexpr double ODOMETRY_STRAFE_OFFSET{4.6};
+
+	/**
+	 * @brief The jerk rate of the drive velocity profile
+	 * 
+	 */
+	static constexpr double DRIVE_VELOCITY_PROFILE_JERK_RATE{20.0};
+
+	/**
+	 * @brief The maximum acceleration of the drive velocity profile
+	 * 
+	 */
+	static constexpr double DRIVE_VELOCITY_PROFILE_MAX_ACCELERATION{5.0};
+
+	/**
+	 * @brief The first left drive motor port
+	 * 
+	 */
+	static constexpr int8_t DRIVE_LEFT_MOTOR_1_PORT{11};
+
+	/**
+	 * @brief The first left drive motor gearset
+	 * 
+	 */
+	static constexpr pros::v5::MotorGears DRIVE_LEFT_MOTOR_1_GEARSET{pros::E_MOTOR_GEARSET_06};
+
+	/**
+	 * @brief The second left drive motor port
+	 * 
+	 */
+	static constexpr int8_t DRIVE_LEFT_MOTOR_2_PORT{12};
+
+	/**
+	 * @brief The second left drive motor gearset
+	 * 
+	 */
+	static constexpr pros::v5::MotorGears DRIVE_LEFT_MOTOR_2_GEARSET{pros::E_MOTOR_GEARSET_06};
+
+	/**
+	 * @brief The third left drive motor port
+	 * 
+	 */
+	static constexpr int8_t DRIVE_LEFT_MOTOR_3_PORT{-13};
+
+	/**
+	 * @brief The third left drive motor gearset
+	 * 
+	 */
+	static constexpr pros::v5::MotorGears DRIVE_LEFT_MOTOR_3_GEARSET{pros::E_MOTOR_GEARSET_06};
+
+	/**
+	 * @brief The fourth left drive motor port
+	 * 
+	 */
+	static constexpr int8_t DRIVE_LEFT_MOTOR_4_PORT{-14};
+
+	/**
+	 * @brief The fourth left drive motor gearset
+	 * 
+	 */
+	static constexpr pros::v5::MotorGears DRIVE_LEFT_MOTOR_4_GEARSET{pros::E_MOTOR_GEARSET_06};
+
+	/**
+	 * @brief The first right drive motor port
+	 * 
+	 */
+	static constexpr int8_t DRIVE_RIGHT_MOTOR_1_PORT{17};
+
+	/**
+	 * @brief The first right drive motor gearset
+	 * 
+	 */
+	static constexpr pros::v5::MotorGears DRIVE_RIGHT_MOTOR_1_GEARSET{pros::E_MOTOR_GEARSET_06};
+
+	/**
+	 * @brief The second right drive motor port
+	 * 
+	 */
+	static constexpr int8_t DRIVE_RIGHT_MOTOR_2_PORT{18};
+
+	/**
+	 * @brief The second right drive motor gearset
+	 * 
+	 */
+	static constexpr pros::v5::MotorGears DRIVE_RIGHT_MOTOR_2_GEARSET{pros::E_MOTOR_GEARSET_06};
+
+	/**
+	 * @brief The third right drive motor port
+	 * 
+	 */
+	static constexpr int8_t DRIVE_RIGHT_MOTOR_3_PORT{-19};
+
+	/**
+	 * @brief The third right drive motor gearset
+	 * 
+	 */
+	static constexpr pros::v5::MotorGears DRIVE_RIGHT_MOTOR_3_GEARSET{pros::E_MOTOR_GEARSET_06};
+
+	/**
+	 * @brief The fourth right drive motor port
+	 * 
+	 */
+	static constexpr int8_t DRIVE_RIGHT_MOTOR_4_PORT{-20};
+
+	/**
+	 * @brief The fourth right drive motor gearset
+	 * 
+	 */
+	static constexpr pros::v5::MotorGears DRIVE_RIGHT_MOTOR_4_GEARSET{pros::E_MOTOR_GEARSET_06};
+
+	/**
+	 * @brief The mass of the drive
+	 * 
+	 */
+	static constexpr double DRIVE_MASS{9.89};
+
+	/**
+	 * @brief The radius of the drive
+	 * 
+	 */
+	static constexpr double DRIVE_RADIUS{6.5 * 2.54 / 100};
+
+	/**
+	 * @brief The moment of inertia of the drive
+	 * 
+	 */
+	static constexpr double DRIVE_MOMENT_OF_INERTIA{19.887 * DRIVE_RADIUS * DRIVE_MASS};
+
+	/**
+	 * @brief The gear ratio of the drive
+	 * 
+	 */
+	static constexpr double DRIVE_GEAR_RATIO{600.0 / 331.4};
+
+	/**
+	 * @brief The wheel radius of the drive
+	 * 
+	 */
+	static constexpr double DRIVE_WHEEL_RADIUS{3.25 * 2.54 / 100};
 
 public:
     /**

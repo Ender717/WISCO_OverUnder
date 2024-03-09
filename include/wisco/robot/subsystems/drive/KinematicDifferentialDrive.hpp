@@ -4,6 +4,7 @@
 #include <cmath>
 #include <memory>
 
+#include "IVelocityProfile.hpp"
 #include "wisco/hal/MotorGroup.hpp"
 #include "wisco/rtos/IDelayer.hpp"
 #include "wisco/rtos/IMutex.hpp"
@@ -81,6 +82,18 @@ private:
      * 
      */
     std::unique_ptr<rtos::ITask> m_task{};
+
+    /**
+     * @brief The left velocity profile
+     * 
+     */
+    std::unique_ptr<IVelocityProfile> m_left_velocity_profile{};
+
+    /**
+     * @brief The right velocity profile
+     * 
+     */
+    std::unique_ptr<IVelocityProfile> m_right_velocity_profile{};
 
     /**
      * @brief The left motors on the differential drive
@@ -161,16 +174,10 @@ private:
     double c6{};
 
     /**
-     * @brief The target acceleration for the left drive
+     * @brief The target velocity for the drive
      * 
      */
-    double m_left_acceleration{};
-    
-    /**
-     * @brief The target acceleration for the right drive
-     * 
-     */
-    double m_right_acceleration{};
+    Velocity m_velocity{};
 
     /**
      * @brief Runs all the object-specific updates in the task loop
@@ -198,26 +205,18 @@ public:
     void run() override;
 
     /**
-     * @brief Get the velocity of the left side of the drive
+     * @brief Get the velocity values of the drive
      * 
-     * @return double The left drive velocity
+     * @return double The drive velocity
      */
-    double getLeftVelocity() override;
+    Velocity getVelocity() override;
 
     /**
-     * @brief Get the velocity of the right side of the drive
+     * @brief Set the velocity values of the drive
      * 
-     * @return double The right drive velocity
+     * @param velocity The velocity values for the drive
      */
-    double getRightVelocity() override;
-
-    /**
-     * @brief Set the acceleration values of the drive
-     * 
-     * @param left_acceleration The acceleration of the left side of the drive
-     * @param right_acceleration The acceleration of the right side of the drive
-     */
-    void setAcceleration(double left_acceleration, double right_acceleration) override;  
+    void setVelocity(Velocity velocity) override;  
 
     /**
      * @brief Set the rtos delayer
@@ -239,6 +238,14 @@ public:
      * @param task The rtos task handler
      */
     void setTask(std::unique_ptr<rtos::ITask>& task);
+
+    /**
+     * @brief Set the Velocity Profiles
+     * 
+     * @param left_velocity_profile The velocity profile for the left side
+     * @param right_velocity_profile The velocity profile for the right side
+     */
+    void setVelocityProfiles(std::unique_ptr<IVelocityProfile>& left_velocity_profile, std::unique_ptr<IVelocityProfile>& right_velocity_profile);
 
     /**
      * @brief Set the left drive motors

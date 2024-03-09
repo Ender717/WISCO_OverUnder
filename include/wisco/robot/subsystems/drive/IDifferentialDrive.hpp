@@ -1,6 +1,8 @@
 #ifndef WISCO_ROBOT_SUBSYSTEMS_DRIVE_I_DIFFERENTIAL_DRIVE_HPP
 #define WISCO_ROBOT_SUBSYSTEMS_DRIVE_I_DIFFERENTIAL_DRIVE_HPP
 
+#include "Velocity.hpp"
+
 /**
  * @brief Namespace for all library code
  * @author Nathan Sandvig
@@ -60,26 +62,18 @@ public:
     virtual void run() = 0;
 
     /**
-     * @brief Get the velocity of the left side of the drive
+     * @brief Get the velocity values of the drive
      * 
-     * @return double The left drive velocity
+     * @return double The drive velocity
      */
-    virtual double getLeftVelocity() = 0;
+    virtual Velocity getVelocity() = 0;
 
     /**
-     * @brief Get the velocity of the right side of the drive
+     * @brief Set the velocity values of the drive
      * 
-     * @return double The right drive velocity
+     * @param velocity The velocity values for the drive
      */
-    virtual double getRightVelocity() = 0;
-
-    /**
-     * @brief Set the acceleration values of the drive
-     * 
-     * @param left_acceleration The acceleration of the left side of the drive
-     * @param right_acceleration The acceleration of the right side of the drive
-     */
-    virtual void setAcceleration(double left_acceleration, double right_acceleration) = 0;
+    virtual void setVelocity(Velocity velocity) = 0;
 };
 } // namespace drive
 } // namespace subsystems

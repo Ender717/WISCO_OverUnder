@@ -26,15 +26,27 @@ KinematicDifferentialDriveBuilder* KinematicDifferentialDriveBuilder::withTask(s
     return this;
 }
 
-KinematicDifferentialDriveBuilder* KinematicDifferentialDriveBuilder::withLeftMotors(hal::MotorGroup left_motors)
+KinematicDifferentialDriveBuilder* KinematicDifferentialDriveBuilder::withLeftVelocityProfile(std::unique_ptr<IVelocityProfile>& left_velocity_profile)
 {
-    m_left_motors = left_motors;
+    m_left_velocity_profile = std::move(left_velocity_profile);
     return this;
 }
 
-KinematicDifferentialDriveBuilder* KinematicDifferentialDriveBuilder::withRightMotors(hal::MotorGroup right_motors)
+KinematicDifferentialDriveBuilder* KinematicDifferentialDriveBuilder::withRightVelocityProfile(std::unique_ptr<IVelocityProfile>& right_velocity_profile)
 {
-    m_right_motors = right_motors;
+    m_right_velocity_profile = std::move(right_velocity_profile);
+    return this;
+}
+
+KinematicDifferentialDriveBuilder* KinematicDifferentialDriveBuilder::withLeftMotor(std::unique_ptr<io::IMotor>& left_motor)
+{
+    m_left_motors.addMotor(left_motor);
+    return this;
+}
+
+KinematicDifferentialDriveBuilder* KinematicDifferentialDriveBuilder::withRightMotor(std::unique_ptr<io::IMotor>& right_motor)
+{
+    m_right_motors.addMotor(right_motor);
     return this;
 }
 
@@ -74,6 +86,7 @@ std::unique_ptr<IDifferentialDrive> KinematicDifferentialDriveBuilder::build()
     differential_drive->setDelayer(m_delayer);
     differential_drive->setMutex(m_mutex);
     differential_drive->setTask(m_task);
+    differential_drive->setVelocityProfiles(m_left_velocity_profile, m_right_velocity_profile);
     differential_drive->setLeftMotors(m_left_motors);
     differential_drive->setRightMotors(m_right_motors);
     differential_drive->setMass(m_mass);

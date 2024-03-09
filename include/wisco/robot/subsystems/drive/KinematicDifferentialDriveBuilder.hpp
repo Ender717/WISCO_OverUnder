@@ -1,7 +1,9 @@
 #ifndef WISCO_ROBOT_SUBSYSTEMS_DRIVE_DIFFERENTIAL_DRIVE_BUILDER_HPP
 #define WISCO_ROBOT_SUBSYSTEMS_DRIVE_DIFFERENTIAL_DRIVE_BUILDER_HPP
 
+#include "IVelocityProfile.hpp"
 #include "KinematicDifferentialDrive.hpp"
+#include <memory>
 
 /**
  * @brief Namespace for all library code
@@ -60,6 +62,18 @@ private:
      * 
      */
     std::unique_ptr<rtos::ITask> m_task{};
+
+    /**
+     * @brief The left velocity profile
+     * 
+     */
+    std::unique_ptr<IVelocityProfile> m_left_velocity_profile{};
+
+    /**
+     * @brief The right velocity profile
+     * 
+     */
+    std::unique_ptr<IVelocityProfile> m_right_velocity_profile{};
 
     /**
      * @brief The left motors on the differential drive
@@ -129,20 +143,36 @@ public:
     KinematicDifferentialDriveBuilder* withTask(std::unique_ptr<rtos::ITask>& task);
 
     /**
-     * @brief Add the left drive motors to the build
+     * @brief Adds a left velocity profile to the build
      * 
-     * @param left_motors The motors on the left side of the drive
+     * @param velocity_profile The left velocity profile
      * @return KinematicDifferentialDriveBuilder* This object for build chaining
      */
-    KinematicDifferentialDriveBuilder* withLeftMotors(hal::MotorGroup left_motors);
+    KinematicDifferentialDriveBuilder* withLeftVelocityProfile(std::unique_ptr<IVelocityProfile>& left_velocity_profile);
 
     /**
-     * @brief Add the right drive motors to the build
+     * @brief Adds a right velocity profile to the build
      * 
-     * @param right_motors The motors on the right side of the drive
+     * @param velocity_profile The right velocity profile
      * @return KinematicDifferentialDriveBuilder* This object for build chaining
      */
-    KinematicDifferentialDriveBuilder* withRightMotors(hal::MotorGroup right_motors);
+    KinematicDifferentialDriveBuilder* withRightVelocityProfile(std::unique_ptr<IVelocityProfile>& right_velocity_profile);
+
+    /**
+     * @brief Add a left drive motor to the build
+     * 
+     * @param left_motor The motor on the left side of the drive
+     * @return KinematicDifferentialDriveBuilder* This object for build chaining
+     */
+    KinematicDifferentialDriveBuilder* withLeftMotor(std::unique_ptr<io::IMotor>& left_motor);
+
+    /**
+     * @brief Add a right drive motor to the build
+     * 
+     * @param right_motor The motor on the right side of the drive
+     * @return KinematicDifferentialDriveBuilder* This object for build chaining
+     */
+    KinematicDifferentialDriveBuilder* withRightMotor(std::unique_ptr<io::IMotor>& right_motor);
 
     /**
      * @brief Add the mass to the build
