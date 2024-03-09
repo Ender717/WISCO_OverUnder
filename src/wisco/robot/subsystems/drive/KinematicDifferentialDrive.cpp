@@ -125,12 +125,12 @@ namespace drive
         m_right_velocity_profile = std::move(right_velocity_profile);
     }
 
-    void KinematicDifferentialDrive::setLeftMotors(hal::MotorGroup left_motors)
+    void KinematicDifferentialDrive::setLeftMotors(hal::MotorGroup& left_motors)
     {
         m_left_motors = left_motors;
     }
 
-    void KinematicDifferentialDrive::setRightMotors(hal::MotorGroup right_motors)
+    void KinematicDifferentialDrive::setRightMotors(hal::MotorGroup& right_motors)
     {
         m_right_motors = right_motors;
     }

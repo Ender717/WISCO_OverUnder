@@ -45,7 +45,7 @@ std::shared_ptr<robot::Robot> BlueConfiguration::buildRobot()
     robot->addSubsystem(odometry_subsystem);
 
     // Drive creation
-    robot::subsystems::drive::KinematicDifferentialDriveBuilder kinematic_differential_drive_builder{};
+    wisco::robot::subsystems::drive::KinematicDifferentialDriveBuilder kinematic_differential_drive_builder{};
     std::unique_ptr<wisco::rtos::IDelayer> drive_pros_delayer{std::make_unique<pros_adapters::ProsDelayer>()};
     std::unique_ptr<wisco::rtos::IMutex> drive_pros_mutex{std::make_unique<pros_adapters::ProsMutex>()};
     std::unique_ptr<wisco::rtos::ITask> drive_pros_task{std::make_unique<pros_adapters::ProsTask>()};

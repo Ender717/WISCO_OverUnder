@@ -73,7 +73,7 @@ MotorGroup& MotorGroup::operator=(MotorGroup& rhs)
 {
     motors.clear();
     for (uint8_t i{0}; i < rhs.motors.size(); ++i)
-        motors.push_back(std::move(rhs.motors[i]));
+        motors.push_back(std::move(rhs.motors.at(i)));
     rhs.motors.clear();
     return *this;
 }

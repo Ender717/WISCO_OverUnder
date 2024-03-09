@@ -8,19 +8,19 @@ namespace subsystems
 {
 namespace drive
 {
-KinematicDifferentialDriveBuilder* KinematicDifferentialDriveBuilder::withDelayer(std::unique_ptr<rtos::IDelayer>& delayer)
+KinematicDifferentialDriveBuilder* KinematicDifferentialDriveBuilder::withDelayer(std::unique_ptr<wisco::rtos::IDelayer>& delayer)
 {
     m_delayer = std::move(delayer);
     return this;
 }
 
-KinematicDifferentialDriveBuilder* KinematicDifferentialDriveBuilder::withMutex(std::unique_ptr<rtos::IMutex>& mutex)
+KinematicDifferentialDriveBuilder* KinematicDifferentialDriveBuilder::withMutex(std::unique_ptr<wisco::rtos::IMutex>& mutex)
 {
     m_mutex = std::move(mutex);
     return this;
 }
 
-KinematicDifferentialDriveBuilder* KinematicDifferentialDriveBuilder::withTask(std::unique_ptr<rtos::ITask>& task)
+KinematicDifferentialDriveBuilder* KinematicDifferentialDriveBuilder::withTask(std::unique_ptr<wisco::rtos::ITask>& task)
 {
     m_task = std::move(task);
     return this;

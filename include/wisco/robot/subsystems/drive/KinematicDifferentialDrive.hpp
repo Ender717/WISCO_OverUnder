@@ -252,14 +252,14 @@ public:
      * 
      * @param left_motors The motors on the left side of the drive
      */
-    void setLeftMotors(hal::MotorGroup left_motors);
+    void setLeftMotors(hal::MotorGroup& left_motors);
 
     /**
      * @brief Set the right drive motors
      * 
      * @param right_motors The motors on the right side of the drive
      */
-    void setRightMotors(hal::MotorGroup right_motors);
+    void setRightMotors(hal::MotorGroup& right_motors);
 
     /**
      * @brief Set the mass
