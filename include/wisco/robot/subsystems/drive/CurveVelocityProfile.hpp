@@ -1,6 +1,7 @@
 #ifndef WISCO_ROBOT_SUBSYSTEMS_DRIVE_CURVE_VELOCITY_PROFILE_HPP
 #define WISCO_ROBOT_SUBSYSTEMS_DRIVE_CURVE_VELOCITY_PROFILE_HPP
 
+#include <cmath>
 #include <memory>
 
 #include "wisco/rtos/IClock.hpp"
