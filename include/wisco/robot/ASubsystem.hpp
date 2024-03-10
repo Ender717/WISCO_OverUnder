@@ -94,9 +94,9 @@ public:
 	 * @brief Runs a command for the subsystem
 	 *
 	 * @param command_name The name of the command to run
-	 * @param ... The parameters for the command
+	 * @param args The parameters for the command
 	 */
-	virtual void command(std::string command_name, ...) = 0;
+	virtual void command(std::string command_name, va_list& args) = 0;
 
 	/**
 	 * @brief Gets a state of the subsystem

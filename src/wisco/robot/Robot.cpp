@@ -27,18 +27,15 @@ bool Robot::removeSubsystem(std::string subsystem_name)
 void Robot::initialize()
 {
 	for (auto& subsystem : subsystems)
-	{
 		subsystem->initialize();
-	}
 	for (auto& subsystem : subsystems)
-	{
 		subsystem->run();
-	}
 }
 
 void Robot::sendCommand(std::string subsystem_name, std::string command_name, ...)
 {
 	va_list args;
+	va_start(args, command_name);
 	for (auto& subsystem : subsystems)
 	{
 		if (subsystem->getName() == subsystem_name)
@@ -47,6 +44,7 @@ void Robot::sendCommand(std::string subsystem_name, std::string command_name, ..
 			break;
 		}
 	}
+	va_end(args);
 }
 
 void* Robot::getState(std::string subsystem_name, std::string state_name)

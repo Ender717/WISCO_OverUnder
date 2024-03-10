@@ -91,10 +91,11 @@ public:
     /**
      * @brief Get the target acceleration from the profile
      * 
-     * @param target_velocity The target velocity of the drive side
+     * @param current_velocity The current velocity
+     * @param target_velocity The target velocity
      * @return double The acceleration in m/s^2
      */
-    double getAcceleration(double target_velocity) override;
+    double getAcceleration(double current_velocity, double target_velocity) override;
 
     /**
      * @brief Set the current acceleration

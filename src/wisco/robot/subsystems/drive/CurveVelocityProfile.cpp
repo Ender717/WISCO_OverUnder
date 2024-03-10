@@ -1,5 +1,7 @@
 #include "wisco/robot/subsystems/drive/CurveVelocityProfile.hpp"
 
+#include "pros/screen.hpp"
+
 namespace wisco
 {
 namespace robot
@@ -14,7 +16,7 @@ CurveVelocityProfile::CurveVelocityProfile(std::unique_ptr<rtos::IClock>& clock,
 
 }
 
-double CurveVelocityProfile::getAcceleration(double target_velocity)
+double CurveVelocityProfile::getAcceleration(double current_velocity, double target_velocity)
 {
     double time_change{};
     if (m_clock)
@@ -26,23 +28,7 @@ double CurveVelocityProfile::getAcceleration(double target_velocity)
 
     double acceleration{};
 
-    double next_acceleration{m_current_acceleration + m_jerk_rate};
-    next_acceleration = std::min(next_acceleration, m_max_acceleration);
-    next_acceleration = std::max(next_acceleration, -m_max_acceleration);
-
-    double next_step{(m_current_acceleration + next_acceleration) / 2 * time_change};
-    double trapezoid{std::pow(next_acceleration, 2) / (2 * m_jerk_rate)};
-    if (next_step + trapezoid  >= target_velocity)
-    {
-        double timestep{m_jerk_rate * time_change};
-        acceleration = static_cast<int>(next_acceleration / timestep) * timestep;
-    }
-    else
-    {
-        acceleration = next_acceleration;
-    }
-
-    m_current_acceleration = acceleration;
+    // TODO calculate acceleration
 
     return acceleration;
 }

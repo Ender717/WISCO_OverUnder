@@ -174,6 +174,12 @@ private:
     double c6{};
 
     /**
+     * @brief The seventh kinematic constant
+     * 
+     */
+    double c7{};
+
+    /**
      * @brief The target velocity for the drive
      * 
      */

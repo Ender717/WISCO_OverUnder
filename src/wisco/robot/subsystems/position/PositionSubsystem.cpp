@@ -25,18 +25,13 @@ void PositionSubsystem::run()
     m_position_tracker->run();
 }
 
-void PositionSubsystem::command(std::string command_name, ...)
+void PositionSubsystem::command(std::string command_name, va_list& args)
 {
-    std::va_list args;
-    va_start(args, command_name);
-    
     if (command_name == SET_POSITION_COMMAND_NAME)
     {
         Position position{va_arg(args, double), va_arg(args, double), va_arg(args, double)};
         m_position_tracker->setPosition(position);
     }
-
-    va_end(args);
 }
 
 void* PositionSubsystem::state(std::string state_name)

@@ -94,7 +94,7 @@ std::shared_ptr<robot::Robot> BlueConfiguration::buildRobot()
     };
     std::unique_ptr<wisco::robot::ASubsystem> drive_subsystem{std::make_unique<wisco::robot::subsystems::drive::DifferentialDriveSubsystem>(differential_drive)};
     robot->addSubsystem(drive_subsystem);
-    
+
     return robot;
 }
 }

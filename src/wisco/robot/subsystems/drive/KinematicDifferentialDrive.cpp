@@ -1,5 +1,4 @@
 #include "wisco/robot/subsystems/drive/KinematicDifferentialDrive.hpp"
-#include "IVelocityProfile.hpp"
 
 namespace wisco
 {
@@ -33,19 +32,19 @@ namespace drive
         
         Velocity velocity{getVelocity()};
 
-        double left_acceleration{m_left_velocity_profile->getAcceleration(m_velocity.left_velocity)};
-        double right_acceleration{m_right_velocity_profile->getAcceleration(m_velocity.right_velocity)};
+        double left_acceleration{m_left_velocity_profile->getAcceleration(velocity.left_velocity, m_velocity.left_velocity)};
+        double right_acceleration{m_right_velocity_profile->getAcceleration(velocity.right_velocity, m_velocity.right_velocity)};
 
-        double right_voltage{(c5 * right_acceleration - 
-                              c6 * left_acceleration - 
-                              (std::pow(c5, 2) - std::pow(c6, 2)) * c3 * velocity.right_velocity)
-                             /
-                             ((std::pow(c5, 2) - std::pow(c6, 2)) * c4)};
-        double left_voltage{(right_acceleration - 
-                             c1 * c6 * velocity.left_velocity -
-                             c5 * (c3 * velocity.right_velocity + c4 * right_voltage))
+        double left_voltage{c5 * left_acceleration 
+                            - c1 * c7 * velocity.left_velocity
+                            - c6 * right_acceleration
                             /
-                            (c2 * c6)};
+                            c2 * c7};
+        double right_voltage{c5 * right_acceleration 
+                            - c3 * c7 * velocity.right_velocity
+                            - c6 * left_acceleration
+                            /
+                            c4 * c7};
 
         m_left_motors.setVoltage(left_voltage);
         m_right_motors.setVoltage(right_voltage);
@@ -63,14 +62,21 @@ namespace drive
 
         c1 = (-1 * std::pow(m_left_motors.getGearRatio() * m_gear_ratio, 2) * m_left_motors.getTorqueConstant())
             / (m_left_motors.getAngularVelocityConstant() * m_left_motors.getResistance() * std::pow(m_wheel_radius, 2));
+        
         c2 = (m_left_motors.getGearRatio() * m_gear_ratio * m_left_motors.getTorqueConstant())
             / (m_left_motors.getResistance() * m_wheel_radius);
+        
         c3 = (-1 * std::pow(m_right_motors.getGearRatio() * m_gear_ratio, 2) * m_right_motors.getTorqueConstant())
             / (m_right_motors.getAngularVelocityConstant() * m_right_motors.getResistance() * std::pow(m_wheel_radius, 2));        
+        
         c4 = (m_right_motors.getGearRatio() * m_gear_ratio * m_right_motors.getTorqueConstant())
             / (m_right_motors.getResistance() * m_wheel_radius);
+        
         c5 = (1 / m_mass) + (std::pow(m_radius, 2) / m_moment_of_inertia);
+        
         c6 = (1 / m_mass) - (std::pow(m_radius, 2) / m_moment_of_inertia);
+
+        c7 = std::pow(c5, 2) - std::pow(c6, 2);
     }
 
     void KinematicDifferentialDrive::run()

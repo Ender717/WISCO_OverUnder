@@ -5,6 +5,7 @@
 
 #include "io/ITouchScreen.hpp"
 #include "robot/subsystems/position/Position.hpp"
+#include "robot/subsystems/drive/Velocity.hpp"
 #include "rtos/IDelayer.hpp"
 #include "IProfile.hpp"
 #include "robot/Robot.hpp"

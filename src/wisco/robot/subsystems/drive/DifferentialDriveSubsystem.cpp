@@ -25,23 +25,18 @@ void DifferentialDriveSubsystem::run()
     m_differential_drive->run();
 }
 
-void DifferentialDriveSubsystem::command(std::string command_name, ...)
+void DifferentialDriveSubsystem::command(std::string command_name, va_list& args)
 {
-    std::va_list args;
-    va_start(args, command_name);
-    
     if (command_name == SET_VELOCITY_COMMAND_NAME)
     {
         Velocity velocity{va_arg(args, double), va_arg(args, double)};
         m_differential_drive->setVelocity(velocity);
     }
-
-    va_end(args);
 }
 
 void* DifferentialDriveSubsystem::state(std::string state_name)
 {
-    void* result{};
+    void* result{nullptr};
 
     if (state_name == GET_VELOCITY_STATE_NAME)
     {

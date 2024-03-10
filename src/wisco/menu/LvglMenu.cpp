@@ -205,6 +205,7 @@ void LvglMenu::drawMainMenu()
     lv_style_set_border_width(&status_label_style, 2);
     lv_style_set_pad_all(&status_label_style, 3);
     lv_style_set_border_color(&status_label_style, lv_color_make(0, 104, 179));
+    lv_style_set_text_color(&status_label_style, lv_color_black());
     lv_obj_t* status_label = lv_label_create(lv_scr_act());
     lv_obj_add_style(status_label, &status_label_style, 0);
     std::string status_text{};

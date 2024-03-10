@@ -12,25 +12,30 @@ void MotorGroup::addMotor(std::unique_ptr<io::IMotor>& motor)
 void MotorGroup::initialize()
 {
     for (auto& motor : motors)
-        motor->initialize();
+        if (motor)
+            motor->initialize();
 }
 
 double MotorGroup::getTorqueConstant()
 {
-    double average_constant{};
+    double sum_constant{};
     for (auto& motor : motors)
-        average_constant += motor->getTorqueConstant();
-    average_constant /= motors.size();
+        if (motor)
+            sum_constant += motor->getTorqueConstant();
 
-    return average_constant * motors.size();
+    return sum_constant;
 }
 
 double MotorGroup::getResistance()
 {
     double average_resistance{};
-    for (auto& motor : motors)
-        average_resistance += motor->getResistance();
-    average_resistance /= motors.size();
+    if (!motors.empty())
+    {
+        for (auto& motor : motors)
+            if (motor)
+                average_resistance += motor->getResistance();
+        average_resistance /= motors.size();
+    }
     
     return average_resistance;
 }
@@ -38,9 +43,13 @@ double MotorGroup::getResistance()
 double MotorGroup::getAngularVelocityConstant()
 {
     double average_constant{};
-    for (auto& motor : motors)
-        average_constant += motor->getAngularVelocityConstant();
-    average_constant /= motors.size();
+    if (!motors.empty())
+    {
+        for (auto& motor : motors)
+            if (motor)
+                average_constant += motor->getAngularVelocityConstant();
+        average_constant /= motors.size();
+    }
     
     return average_constant;
 }
@@ -48,7 +57,7 @@ double MotorGroup::getAngularVelocityConstant()
 double MotorGroup::getGearRatio()
 {
     double gear_ratio{};
-    if (!motors.empty())
+    if (!motors.empty() && motors.front())
         gear_ratio = motors.front()->getGearRatio();
     return gear_ratio;
 }
@@ -56,9 +65,13 @@ double MotorGroup::getGearRatio()
 double MotorGroup::getAngularVelocity()
 {
     double average_velocity{};
-    for (auto& motor : motors)
-        average_velocity += motor->getAngularVelocity();
-    average_velocity /= motors.size();
+    if (!motors.empty())
+    {
+        for (auto& motor : motors)
+            if (motor)
+                average_velocity += motor->getAngularVelocity();
+        average_velocity /= motors.size();
+    }
 
     return average_velocity;
 }
