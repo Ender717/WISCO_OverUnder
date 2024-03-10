@@ -17,6 +17,12 @@ namespace wisco
  */
 namespace configs
 {
+
+/**
+ * @brief The hardware configuration of the orange robot
+ * @author Nathan Sandvig
+ * 
+ */
 class OrangeConfiguration : public IConfiguration
 {
 private:

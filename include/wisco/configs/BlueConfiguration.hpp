@@ -35,6 +35,12 @@ namespace wisco
  */
 namespace configs
 {
+
+/**
+ * @brief The hardware configuration of the blue robot
+ * @author Nathan Sandvig
+ * 
+ */
 class BlueConfiguration : public IConfiguration
 {
 private:
