@@ -1,5 +1,8 @@
 #include "wisco/robot/subsystems/drive/KinematicDifferentialDrive.hpp"
 
+#include "pros/screen.h"
+#include "pros/screen.hpp"
+
 namespace wisco
 {
 namespace robot
@@ -35,19 +38,20 @@ namespace drive
         double left_acceleration{m_left_velocity_profile->getAcceleration(velocity.left_velocity, m_velocity.left_velocity)};
         double right_acceleration{m_right_velocity_profile->getAcceleration(velocity.right_velocity, m_velocity.right_velocity)};
 
-        double left_voltage{c5 * left_acceleration 
-                            - c1 * c7 * velocity.left_velocity
-                            - c6 * right_acceleration
+        double left_voltage{(c5 * left_acceleration 
+                             - c1 * c7 * velocity.left_velocity
+                             - c6 * right_acceleration)
                             /
-                            c2 * c7};
-        double right_voltage{c5 * right_acceleration 
-                            - c3 * c7 * velocity.right_velocity
-                            - c6 * left_acceleration
-                            /
-                            c4 * c7};
+                            (c2 * c7)};
+        double right_voltage{(c5 * right_acceleration 
+                              - c3 * c7 * velocity.right_velocity
+                              - c6 * left_acceleration)
+                             /
+                             (c4 * c7)};
 
-        m_left_motors.setVoltage(left_voltage);
-        m_right_motors.setVoltage(right_voltage);
+        // TODO fix kinematic constants
+        //m_left_motors.setVoltage(left_voltage);
+        //m_right_motors.setVoltage(right_voltage);
 
         if (m_mutex)
             m_mutex->give();

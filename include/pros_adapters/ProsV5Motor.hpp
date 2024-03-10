@@ -72,6 +72,12 @@ private:
     static constexpr double VOLTAGE_CONVERSION{1000};
 
     /**
+     * @brief The maximum output to the motor in millivolts
+     * 
+     */
+    static constexpr int MAX_MILLIVOLTS{12000};
+
+    /**
      * @brief The motor being adapted
      * 
      */

@@ -59,7 +59,11 @@ double ProsV5Motor::getAngularVelocity()
 
 void ProsV5Motor::setVoltage(double volts)
 {
+    int millivolts{static_cast<int>(volts * VOLTAGE_CONVERSION)};
+    millivolts = std::min(millivolts, MAX_MILLIVOLTS);
+    millivolts = std::max(millivolts, -MAX_MILLIVOLTS);
+    
     if (m_motor)
-        m_motor->move_voltage(volts * VOLTAGE_CONVERSION);
+        m_motor->move_voltage(millivolts);
 }
 } // namespace pros_adapters

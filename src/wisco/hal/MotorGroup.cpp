@@ -79,7 +79,8 @@ double MotorGroup::getAngularVelocity()
 void MotorGroup::setVoltage(double volts)
 {
     for (auto& motor : motors)
-        motor->setVoltage(volts);
+        if (motor)
+            motor->setVoltage(volts);
 }
 
 MotorGroup& MotorGroup::operator=(MotorGroup& rhs)

@@ -26,11 +26,22 @@ double CurveVelocityProfile::getAcceleration(double current_velocity, double tar
         last_time = current_time;
     }
 
-    double acceleration{};
+    // TODO calculate acceleration in a better manner
+    double target_acceleration = (target_velocity - current_velocity) / time_change;
 
-    // TODO calculate acceleration
+    if (target_acceleration > m_max_acceleration)
+        target_acceleration = m_max_acceleration;
+    else if (target_acceleration < -m_max_acceleration)
+        target_acceleration = -m_max_acceleration;
 
-    return acceleration;
+    if (target_acceleration > (m_current_acceleration + (m_jerk_rate * time_change)))
+        target_acceleration = (m_current_acceleration + (m_jerk_rate * time_change));
+    else if (target_acceleration < (m_current_acceleration - (m_jerk_rate * time_change)))
+        target_acceleration = (m_current_acceleration - (m_jerk_rate * time_change));
+
+    m_current_acceleration = target_acceleration;
+
+    return target_acceleration;
 }
 
 void CurveVelocityProfile::setAcceleration(double acceleration)
