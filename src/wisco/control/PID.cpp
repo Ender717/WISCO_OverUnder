@@ -22,7 +22,7 @@ double PID::getControlValue(double current, double target)
 
     double error{target - current};
     accumulated_error += (error * time_change);
-    double error_change{error - last_error};
+    double error_change{(error - last_error) / time_change};
     last_error = error;
 
     return (m_kp * error) + (m_ki * accumulated_error) + (m_kd * error_change);
