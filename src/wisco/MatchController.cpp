@@ -29,7 +29,11 @@ void MatchController::initialize()
 		robot->initialize();
 		autonomous_manager.initializeAutonomous(robot);
 		if (controller)
+		{
+			controller->initialize();
+			controller->run();
 			opcontrol_manager.initializeOpcontrol(controller, robot);
+		}
 	}
 }
 

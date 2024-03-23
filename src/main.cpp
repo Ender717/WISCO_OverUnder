@@ -1,7 +1,7 @@
 #include "main.h"
 #include "pros/misc.h"
 
-#define TESTING true
+#define TESTING false
 
 static wisco::MatchController match_controller{MatchControllerFactory::createMatchController()};
 

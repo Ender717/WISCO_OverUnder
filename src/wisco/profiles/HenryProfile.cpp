@@ -9,9 +9,12 @@ std::string HenryProfile::getName()
     return PROFILE_NAME;
 }
 
-user::EChassisControlMode HenryProfile::getChassisControlMode()
+int HenryProfile::getControlMode(std::string control)
 {
-    return CHASSIS_CONTROL_MODE;
+    int mode{};
+    if (CONTROL_MODE_MAP.contains(control))
+        mode = CONTROL_MODE_MAP.at(control);
+    return mode;
 }
 
 user::EControllerAnalog HenryProfile::getAnalogControlMapping(std::string control)

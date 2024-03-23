@@ -9,9 +9,12 @@ std::string JohnProfile::getName()
     return PROFILE_NAME;
 }
 
-user::EChassisControlMode JohnProfile::getChassisControlMode()
+int JohnProfile::getControlMode(std::string control)
 {
-    return CHASSIS_CONTROL_MODE;
+    int mode{};
+    if (CONTROL_MODE_MAP.contains(control))
+        mode = CONTROL_MODE_MAP.at(control);
+    return mode;
 }
 
 user::EControllerAnalog JohnProfile::getAnalogControlMapping(std::string control)
