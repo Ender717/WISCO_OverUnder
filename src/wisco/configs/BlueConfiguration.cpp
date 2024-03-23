@@ -45,55 +45,96 @@ std::shared_ptr<robot::Robot> BlueConfiguration::buildRobot()
     robot->addSubsystem(odometry_subsystem);
 
     // Drive creation
-    wisco::robot::subsystems::drive::KinematicDifferentialDriveBuilder kinematic_differential_drive_builder{};
-    std::unique_ptr<wisco::rtos::IDelayer> drive_pros_delayer{std::make_unique<pros_adapters::ProsDelayer>()};
-    std::unique_ptr<wisco::rtos::IMutex> drive_pros_mutex{std::make_unique<pros_adapters::ProsMutex>()};
-    std::unique_ptr<wisco::rtos::ITask> drive_pros_task{std::make_unique<pros_adapters::ProsTask>()};
-    std::unique_ptr<wisco::rtos::IClock> drive_left_velocity_profile_pros_clock{std::make_unique<pros_adapters::ProsClock>()};
-    std::unique_ptr<wisco::robot::subsystems::drive::IVelocityProfile> drive_left_velocity_profile{std::make_unique<wisco::robot::subsystems::drive::CurveVelocityProfile>(drive_left_velocity_profile_pros_clock, DRIVE_VELOCITY_PROFILE_JERK_RATE, DRIVE_VELOCITY_PROFILE_MAX_ACCELERATION)};
-    std::unique_ptr<wisco::rtos::IClock> drive_right_velocity_profile_pros_clock{std::make_unique<pros_adapters::ProsClock>()};
-    std::unique_ptr<wisco::robot::subsystems::drive::IVelocityProfile> drive_right_velocity_profile{std::make_unique<wisco::robot::subsystems::drive::CurveVelocityProfile>(drive_right_velocity_profile_pros_clock, DRIVE_VELOCITY_PROFILE_JERK_RATE, DRIVE_VELOCITY_PROFILE_MAX_ACCELERATION)};
-    std::unique_ptr<pros::Motor> drive_pros_left_motor_1{std::make_unique<pros::Motor>(DRIVE_LEFT_MOTOR_1_PORT, DRIVE_LEFT_MOTOR_1_GEARSET)};
-    std::unique_ptr<wisco::io::IMotor> drive_pros_left_motor_1_motor{std::make_unique<pros_adapters::ProsV5Motor>(drive_pros_left_motor_1)};
-    std::unique_ptr<pros::Motor> drive_pros_left_motor_2{std::make_unique<pros::Motor>(DRIVE_LEFT_MOTOR_2_PORT, DRIVE_LEFT_MOTOR_2_GEARSET)};
-    std::unique_ptr<wisco::io::IMotor> drive_pros_left_motor_2_motor{std::make_unique<pros_adapters::ProsV5Motor>(drive_pros_left_motor_2)};
-    std::unique_ptr<pros::Motor> drive_pros_left_motor_3{std::make_unique<pros::Motor>(DRIVE_LEFT_MOTOR_3_PORT, DRIVE_LEFT_MOTOR_3_GEARSET)};
-    std::unique_ptr<wisco::io::IMotor> drive_pros_left_motor_3_motor{std::make_unique<pros_adapters::ProsV5Motor>(drive_pros_left_motor_3)};
-    std::unique_ptr<pros::Motor> drive_pros_left_motor_4{std::make_unique<pros::Motor>(DRIVE_LEFT_MOTOR_4_PORT, DRIVE_LEFT_MOTOR_4_GEARSET)};
-    std::unique_ptr<wisco::io::IMotor> drive_pros_left_motor_4_motor{std::make_unique<pros_adapters::ProsV5Motor>(drive_pros_left_motor_4)};
-    std::unique_ptr<pros::Motor> drive_pros_right_motor_1{std::make_unique<pros::Motor>(DRIVE_RIGHT_MOTOR_1_PORT, DRIVE_RIGHT_MOTOR_1_GEARSET)};
-    std::unique_ptr<wisco::io::IMotor> drive_pros_right_motor_1_motor{std::make_unique<pros_adapters::ProsV5Motor>(drive_pros_right_motor_1)};
-    std::unique_ptr<pros::Motor> drive_pros_right_motor_2{std::make_unique<pros::Motor>(DRIVE_RIGHT_MOTOR_2_PORT, DRIVE_RIGHT_MOTOR_2_GEARSET)};
-    std::unique_ptr<wisco::io::IMotor> drive_pros_right_motor_2_motor{std::make_unique<pros_adapters::ProsV5Motor>(drive_pros_right_motor_2)};
-    std::unique_ptr<pros::Motor> drive_pros_right_motor_3{std::make_unique<pros::Motor>(DRIVE_RIGHT_MOTOR_3_PORT, DRIVE_RIGHT_MOTOR_3_GEARSET)};
-    std::unique_ptr<wisco::io::IMotor> drive_pros_right_motor_3_motor{std::make_unique<pros_adapters::ProsV5Motor>(drive_pros_right_motor_3)};
-    std::unique_ptr<pros::Motor> drive_pros_right_motor_4{std::make_unique<pros::Motor>(DRIVE_RIGHT_MOTOR_4_PORT, DRIVE_RIGHT_MOTOR_4_GEARSET)};
-    std::unique_ptr<wisco::io::IMotor> drive_pros_right_motor_4_motor{std::make_unique<pros_adapters::ProsV5Motor>(drive_pros_right_motor_4)};
-    std::unique_ptr<wisco::robot::subsystems::drive::IDifferentialDrive> differential_drive
+    if (DRIVE_KINEMATIC)
     {
-        kinematic_differential_drive_builder.
-        withDelayer(drive_pros_delayer)->
-        withMutex(drive_pros_mutex)->
-        withTask(drive_pros_task)->
-        withLeftVelocityProfile(drive_left_velocity_profile)->
-        withRightVelocityProfile(drive_right_velocity_profile)->
-        withLeftMotor(drive_pros_left_motor_1_motor)->
-        withLeftMotor(drive_pros_left_motor_2_motor)->
-        withLeftMotor(drive_pros_left_motor_3_motor)->
-        withLeftMotor(drive_pros_left_motor_4_motor)->
-        withRightMotor(drive_pros_right_motor_1_motor)->
-        withRightMotor(drive_pros_right_motor_2_motor)->
-        withRightMotor(drive_pros_right_motor_3_motor)->
-        withRightMotor(drive_pros_right_motor_4_motor)->
-        withMass(DRIVE_MASS)->
-        withRadius(DRIVE_RADIUS)->
-        withMomentOfInertia(DRIVE_MOMENT_OF_INERTIA)->
-        withGearRatio(DRIVE_GEAR_RATIO)->
-        withWheelRadius(DRIVE_WHEEL_RADIUS)->
-        build()
-    };
-    std::unique_ptr<wisco::robot::ASubsystem> drive_subsystem{std::make_unique<wisco::robot::subsystems::drive::DifferentialDriveSubsystem>(differential_drive)};
-    robot->addSubsystem(drive_subsystem);
+        wisco::robot::subsystems::drive::KinematicDifferentialDriveBuilder kinematic_differential_drive_builder{};
+        std::unique_ptr<wisco::rtos::IDelayer> drive_pros_delayer{std::make_unique<pros_adapters::ProsDelayer>()};
+        std::unique_ptr<wisco::rtos::IMutex> drive_pros_mutex{std::make_unique<pros_adapters::ProsMutex>()};
+        std::unique_ptr<wisco::rtos::ITask> drive_pros_task{std::make_unique<pros_adapters::ProsTask>()};
+        std::unique_ptr<wisco::rtos::IClock> drive_left_velocity_profile_pros_clock{std::make_unique<pros_adapters::ProsClock>()};
+        std::unique_ptr<wisco::robot::subsystems::drive::IVelocityProfile> drive_left_velocity_profile{std::make_unique<wisco::robot::subsystems::drive::CurveVelocityProfile>(drive_left_velocity_profile_pros_clock, DRIVE_VELOCITY_PROFILE_JERK_RATE, DRIVE_VELOCITY_PROFILE_MAX_ACCELERATION)};
+        std::unique_ptr<wisco::rtos::IClock> drive_right_velocity_profile_pros_clock{std::make_unique<pros_adapters::ProsClock>()};
+        std::unique_ptr<wisco::robot::subsystems::drive::IVelocityProfile> drive_right_velocity_profile{std::make_unique<wisco::robot::subsystems::drive::CurveVelocityProfile>(drive_right_velocity_profile_pros_clock, DRIVE_VELOCITY_PROFILE_JERK_RATE, DRIVE_VELOCITY_PROFILE_MAX_ACCELERATION)};
+        std::unique_ptr<pros::Motor> drive_pros_left_motor_1{std::make_unique<pros::Motor>(DRIVE_LEFT_MOTOR_1_PORT, DRIVE_LEFT_MOTOR_1_GEARSET)};
+        std::unique_ptr<wisco::io::IMotor> drive_pros_left_motor_1_motor{std::make_unique<pros_adapters::ProsV5Motor>(drive_pros_left_motor_1)};
+        std::unique_ptr<pros::Motor> drive_pros_left_motor_2{std::make_unique<pros::Motor>(DRIVE_LEFT_MOTOR_2_PORT, DRIVE_LEFT_MOTOR_2_GEARSET)};
+        std::unique_ptr<wisco::io::IMotor> drive_pros_left_motor_2_motor{std::make_unique<pros_adapters::ProsV5Motor>(drive_pros_left_motor_2)};
+        std::unique_ptr<pros::Motor> drive_pros_left_motor_3{std::make_unique<pros::Motor>(DRIVE_LEFT_MOTOR_3_PORT, DRIVE_LEFT_MOTOR_3_GEARSET)};
+        std::unique_ptr<wisco::io::IMotor> drive_pros_left_motor_3_motor{std::make_unique<pros_adapters::ProsV5Motor>(drive_pros_left_motor_3)};
+        std::unique_ptr<pros::Motor> drive_pros_left_motor_4{std::make_unique<pros::Motor>(DRIVE_LEFT_MOTOR_4_PORT, DRIVE_LEFT_MOTOR_4_GEARSET)};
+        std::unique_ptr<wisco::io::IMotor> drive_pros_left_motor_4_motor{std::make_unique<pros_adapters::ProsV5Motor>(drive_pros_left_motor_4)};
+        std::unique_ptr<pros::Motor> drive_pros_right_motor_1{std::make_unique<pros::Motor>(DRIVE_RIGHT_MOTOR_1_PORT, DRIVE_RIGHT_MOTOR_1_GEARSET)};
+        std::unique_ptr<wisco::io::IMotor> drive_pros_right_motor_1_motor{std::make_unique<pros_adapters::ProsV5Motor>(drive_pros_right_motor_1)};
+        std::unique_ptr<pros::Motor> drive_pros_right_motor_2{std::make_unique<pros::Motor>(DRIVE_RIGHT_MOTOR_2_PORT, DRIVE_RIGHT_MOTOR_2_GEARSET)};
+        std::unique_ptr<wisco::io::IMotor> drive_pros_right_motor_2_motor{std::make_unique<pros_adapters::ProsV5Motor>(drive_pros_right_motor_2)};
+        std::unique_ptr<pros::Motor> drive_pros_right_motor_3{std::make_unique<pros::Motor>(DRIVE_RIGHT_MOTOR_3_PORT, DRIVE_RIGHT_MOTOR_3_GEARSET)};
+        std::unique_ptr<wisco::io::IMotor> drive_pros_right_motor_3_motor{std::make_unique<pros_adapters::ProsV5Motor>(drive_pros_right_motor_3)};
+        std::unique_ptr<pros::Motor> drive_pros_right_motor_4{std::make_unique<pros::Motor>(DRIVE_RIGHT_MOTOR_4_PORT, DRIVE_RIGHT_MOTOR_4_GEARSET)};
+        std::unique_ptr<wisco::io::IMotor> drive_pros_right_motor_4_motor{std::make_unique<pros_adapters::ProsV5Motor>(drive_pros_right_motor_4)};
+        std::unique_ptr<wisco::robot::subsystems::drive::IDifferentialDrive> differential_drive
+        {
+            kinematic_differential_drive_builder.
+            withDelayer(drive_pros_delayer)->
+            withMutex(drive_pros_mutex)->
+            withTask(drive_pros_task)->
+            withLeftVelocityProfile(drive_left_velocity_profile)->
+            withRightVelocityProfile(drive_right_velocity_profile)->
+            withLeftMotor(drive_pros_left_motor_1_motor)->
+            withLeftMotor(drive_pros_left_motor_2_motor)->
+            withLeftMotor(drive_pros_left_motor_3_motor)->
+            withLeftMotor(drive_pros_left_motor_4_motor)->
+            withRightMotor(drive_pros_right_motor_1_motor)->
+            withRightMotor(drive_pros_right_motor_2_motor)->
+            withRightMotor(drive_pros_right_motor_3_motor)->
+            withRightMotor(drive_pros_right_motor_4_motor)->
+            withMass(DRIVE_MASS)->
+            withRadius(DRIVE_RADIUS)->
+            withMomentOfInertia(DRIVE_MOMENT_OF_INERTIA)->
+            withGearRatio(DRIVE_GEAR_RATIO)->
+            withWheelRadius(DRIVE_WHEEL_RADIUS)->
+            build()
+        };
+        std::unique_ptr<wisco::robot::ASubsystem> drive_subsystem{std::make_unique<wisco::robot::subsystems::drive::DifferentialDriveSubsystem>(differential_drive)};
+        robot->addSubsystem(drive_subsystem);
+    }
+    else
+    {
+        wisco::robot::subsystems::drive::DirectDifferentialDriveBuilder direct_differential_drive_builder{};
+        std::unique_ptr<pros::Motor> drive_pros_left_motor_1{std::make_unique<pros::Motor>(DRIVE_LEFT_MOTOR_1_PORT, DRIVE_LEFT_MOTOR_1_GEARSET)};
+        std::unique_ptr<wisco::io::IMotor> drive_pros_left_motor_1_motor{std::make_unique<pros_adapters::ProsV5Motor>(drive_pros_left_motor_1)};
+        std::unique_ptr<pros::Motor> drive_pros_left_motor_2{std::make_unique<pros::Motor>(DRIVE_LEFT_MOTOR_2_PORT, DRIVE_LEFT_MOTOR_2_GEARSET)};
+        std::unique_ptr<wisco::io::IMotor> drive_pros_left_motor_2_motor{std::make_unique<pros_adapters::ProsV5Motor>(drive_pros_left_motor_2)};
+        std::unique_ptr<pros::Motor> drive_pros_left_motor_3{std::make_unique<pros::Motor>(DRIVE_LEFT_MOTOR_3_PORT, DRIVE_LEFT_MOTOR_3_GEARSET)};
+        std::unique_ptr<wisco::io::IMotor> drive_pros_left_motor_3_motor{std::make_unique<pros_adapters::ProsV5Motor>(drive_pros_left_motor_3)};
+        std::unique_ptr<pros::Motor> drive_pros_left_motor_4{std::make_unique<pros::Motor>(DRIVE_LEFT_MOTOR_4_PORT, DRIVE_LEFT_MOTOR_4_GEARSET)};
+        std::unique_ptr<wisco::io::IMotor> drive_pros_left_motor_4_motor{std::make_unique<pros_adapters::ProsV5Motor>(drive_pros_left_motor_4)};
+        std::unique_ptr<pros::Motor> drive_pros_right_motor_1{std::make_unique<pros::Motor>(DRIVE_RIGHT_MOTOR_1_PORT, DRIVE_RIGHT_MOTOR_1_GEARSET)};
+        std::unique_ptr<wisco::io::IMotor> drive_pros_right_motor_1_motor{std::make_unique<pros_adapters::ProsV5Motor>(drive_pros_right_motor_1)};
+        std::unique_ptr<pros::Motor> drive_pros_right_motor_2{std::make_unique<pros::Motor>(DRIVE_RIGHT_MOTOR_2_PORT, DRIVE_RIGHT_MOTOR_2_GEARSET)};
+        std::unique_ptr<wisco::io::IMotor> drive_pros_right_motor_2_motor{std::make_unique<pros_adapters::ProsV5Motor>(drive_pros_right_motor_2)};
+        std::unique_ptr<pros::Motor> drive_pros_right_motor_3{std::make_unique<pros::Motor>(DRIVE_RIGHT_MOTOR_3_PORT, DRIVE_RIGHT_MOTOR_3_GEARSET)};
+        std::unique_ptr<wisco::io::IMotor> drive_pros_right_motor_3_motor{std::make_unique<pros_adapters::ProsV5Motor>(drive_pros_right_motor_3)};
+        std::unique_ptr<pros::Motor> drive_pros_right_motor_4{std::make_unique<pros::Motor>(DRIVE_RIGHT_MOTOR_4_PORT, DRIVE_RIGHT_MOTOR_4_GEARSET)};
+        std::unique_ptr<wisco::io::IMotor> drive_pros_right_motor_4_motor{std::make_unique<pros_adapters::ProsV5Motor>(drive_pros_right_motor_4)};
+        std::unique_ptr<wisco::robot::subsystems::drive::IDifferentialDrive> differential_drive
+        {
+            direct_differential_drive_builder.
+            withLeftMotor(drive_pros_left_motor_1_motor)->
+            withLeftMotor(drive_pros_left_motor_2_motor)->
+            withLeftMotor(drive_pros_left_motor_3_motor)->
+            withLeftMotor(drive_pros_left_motor_4_motor)->
+            withRightMotor(drive_pros_right_motor_1_motor)->
+            withRightMotor(drive_pros_right_motor_2_motor)->
+            withRightMotor(drive_pros_right_motor_3_motor)->
+            withRightMotor(drive_pros_right_motor_4_motor)->
+            withVelocityToVoltage(DRIVE_VELOCITY_TO_VOLTAGE)->
+            withGearRatio(DRIVE_GEAR_RATIO)->
+            withWheelRadius(DRIVE_WHEEL_RADIUS)->
+            build()
+        };
+        std::unique_ptr<wisco::robot::ASubsystem> drive_subsystem{std::make_unique<wisco::robot::subsystems::drive::DifferentialDriveSubsystem>(differential_drive)};
+        robot->addSubsystem(drive_subsystem);
+    }
 
     return robot;
 }

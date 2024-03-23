@@ -36,13 +36,19 @@ private:
      * @brief The chassis control mode of the profile
      * 
      */
-    static constexpr char CHASSIS_CONTROL_MODE[]{"ARCADE"};
+    static constexpr user::EChassisControlMode CHASSIS_CONTROL_MODE{user::EChassisControlMode::TANK};
 
     /**
+     * @brief The mapping of the controls to the analog inputs
+     * 
+     */
+    const std::map<std::string, user::EControllerAnalog> ANALOG_CONTROL_MAP{};
+
+	/**
      * @brief The mapping of the controls to the digital inputs
      * 
      */
-    const std::map<std::string, std::string> CONTROL_MAP{};
+    const std::map<std::string, user::EControllerDigital> DIGITAL_CONTROL_MAP{};
 
 public:
 	/**
@@ -55,16 +61,23 @@ public:
 	/**
 	 * @brief Get the chassis control mode
 	 *
-	 * @return std::string The chassis control mode
+	 * @return user::EChassisControlMode The chassis control mode
 	 */
-	std::string getChassisControlMode() override;
+	user::EChassisControlMode getChassisControlMode() override;
+
+	/**
+	 * @brief Get the mapping of a control to analog inputs
+	 *
+	 * @return std::string The mapping of this control to an analog input
+	 */
+	user::EControllerAnalog getAnalogControlMapping(std::string control) override;
 
 	/**
 	 * @brief Get the mapping of a control to digital inputs
 	 *
 	 * @return std::string The mapping of this control to a digital input
 	 */
-	std::string getControlMapping(std::string control) override;
+	user::EControllerDigital getDigitalControlMapping(std::string control) override;
 };
 }
 }

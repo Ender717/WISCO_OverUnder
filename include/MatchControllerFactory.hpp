@@ -15,6 +15,7 @@
 #include "wisco/profiles/JohnProfile.hpp"
 #include "wisco/menu/MenuAdapter.hpp"
 
+#include "pros_adapters/ProsController.hpp"
 #include "pros_adapters/ProsTouchScreen.hpp"
 #include "pros_adapters/ProsDelayer.hpp"
 

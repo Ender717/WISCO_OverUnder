@@ -55,6 +55,12 @@ private:
     static constexpr char SET_VELOCITY_COMMAND_NAME[]{"SET VELOCITY"};
 
     /**
+     * @brief The name of the set voltage command
+     * 
+     */
+    static constexpr char SET_VOLTAGE_COMMAND_NAME[]{"SET VOLTAGE"};
+
+    /**
      * @brief The name of the get velocity command
      * 
      */

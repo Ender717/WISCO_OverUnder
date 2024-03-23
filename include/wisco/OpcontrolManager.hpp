@@ -8,6 +8,7 @@
 #include "robot/subsystems/drive/Velocity.hpp"
 #include "rtos/IDelayer.hpp"
 #include "IProfile.hpp"
+#include "user/IController.hpp"
 #include "robot/Robot.hpp"
 
 /**
@@ -54,7 +55,7 @@ public:
 	 * @param robot The robot being controlled
 	 * @param delayer The rtos delayer
 	 */
-	void runOpcontrol(std::shared_ptr<robot::Robot> robot, std::shared_ptr<io::ITouchScreen> touch_screen, std::shared_ptr<rtos::IDelayer> delayer);
+	void runOpcontrol(std::shared_ptr<user::IController> controller, std::shared_ptr<robot::Robot> robot, std::shared_ptr<io::ITouchScreen> touch_screen, std::shared_ptr<rtos::IDelayer> delayer);
 };
 
 } // namespace wisco

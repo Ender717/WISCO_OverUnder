@@ -3,6 +3,10 @@
 
 #include <string>
 
+#include "wisco/user/EChassisControlMode.hpp"
+#include "wisco/user/EControllerAnalog.hpp"
+#include "wisco/user/EControllerDigital.hpp"
+
 /**
  * @brief Namespace for all library code
  * @author Nathan Sandvig
@@ -37,14 +41,21 @@ public:
 	 *
 	 * @return std::string The chassis control mode
 	 */
-	virtual std::string getChassisControlMode() = 0;
+	virtual user::EChassisControlMode getChassisControlMode() = 0;
+
+	/**
+	 * @brief Get the mapping of a control to analog inputs
+	 *
+	 * @return user::EControllerAnalog The mapping of this control to a analog input
+	 */
+	virtual user::EControllerAnalog getAnalogControlMapping(std::string control) = 0;
 
 	/**
 	 * @brief Get the mapping of a control to digital inputs
 	 *
-	 * @return std::string The mapping of this control to a digital input
+	 * @return user::EControllerDigital The mapping of this control to a digital input
 	 */
-	virtual std::string getControlMapping(std::string control) = 0;
+	virtual user::EControllerDigital getDigitalControlMapping(std::string control) = 0;
 };
 
 } // namespace wisco

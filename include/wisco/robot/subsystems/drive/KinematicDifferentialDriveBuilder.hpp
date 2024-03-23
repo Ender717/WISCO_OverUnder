@@ -1,5 +1,5 @@
-#ifndef WISCO_ROBOT_SUBSYSTEMS_DRIVE_DIFFERENTIAL_DRIVE_BUILDER_HPP
-#define WISCO_ROBOT_SUBSYSTEMS_DRIVE_DIFFERENTIAL_DRIVE_BUILDER_HPP
+#ifndef WISCO_ROBOT_SUBSYSTEMS_DRIVE_KINEMATIC_DIFFERENTIAL_DRIVE_BUILDER_HPP
+#define WISCO_ROBOT_SUBSYSTEMS_DRIVE_KINEMATIC_DIFFERENTIAL_DRIVE_BUILDER_HPP
 
 #include "IVelocityProfile.hpp"
 #include "KinematicDifferentialDrive.hpp"
@@ -38,7 +38,7 @@ namespace drive
 {
 
 /**
- * @brief Builder class for the differential drive class
+ * @brief Builder class for the kinematic differential drive class
  * @author Nathan Sandvig
  * 
  */

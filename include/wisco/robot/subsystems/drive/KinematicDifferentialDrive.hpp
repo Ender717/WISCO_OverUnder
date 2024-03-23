@@ -222,7 +222,15 @@ public:
      * 
      * @param velocity The velocity values for the drive
      */
-    void setVelocity(Velocity velocity) override;  
+    void setVelocity(Velocity velocity) override;
+
+    /**
+     * @brief Set the voltages of the drive directly
+     * 
+     * @param left_voltage The voltage for the left side of the drive
+     * @param right_voltage The voltage for the right side of the drive
+     */
+    void setVoltage(double left_voltage, double right_voltage) override;
 
     /**
      * @brief Set the rtos delayer

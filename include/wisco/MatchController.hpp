@@ -6,6 +6,8 @@
 #include "AutonomousManager.hpp"
 #include "OpcontrolManager.hpp"
 #include "IMenu.hpp"
+#include "user/IController.hpp"
+#include "robot/Robot.hpp"
 
 /**
  * @brief Namespace for all library code
@@ -48,6 +50,12 @@ private:
 	std::shared_ptr<rtos::IDelayer> m_delayer{};
 
 	/**
+	 * @brief The user input controller
+	 * 
+	 */
+	std::shared_ptr<user::IController> m_controller{};
+
+	/**
 	 * @brief The autonomous management object
 	 *
 	 */
@@ -72,7 +80,7 @@ public:
 	 * @param menu The menu to use in the match controller
 	 * @param delayer The rtos delayer to use in the match controller
 	 */
-	MatchController(std::unique_ptr<IMenu>& menu, const std::shared_ptr<io::ITouchScreen>& touch_screen, const std::shared_ptr<rtos::IDelayer>& delayer);
+	MatchController(std::unique_ptr<IMenu>& menu, const std::shared_ptr<io::ITouchScreen>& touch_screen, const std::shared_ptr<rtos::IDelayer>& delayer, const std::shared_ptr<user::IController>& controller);
 
 	/**
 	 * @brief Runs the robot initialization code

@@ -26,7 +26,10 @@ wisco::MatchController MatchControllerFactory::createMatchController()
     lvgl_menu->addProfile(henry_profile);
     std::unique_ptr<wisco::IProfile> john_profile{std::make_unique<wisco::profiles::JohnProfile>()};
     lvgl_menu->addProfile(john_profile);
+
+    // Other creation
+    std::shared_ptr<wisco::user::IController> pros_controller{std::make_shared<pros_adapters::ProsController>(std::make_unique<pros::Controller>(pros::E_CONTROLLER_MASTER))};
     std::shared_ptr<wisco::io::ITouchScreen> pros_touch_screen{std::make_shared<pros_adapters::ProsTouchScreen>(pros::E_TEXT_LARGE)};
     std::shared_ptr<wisco::rtos::IDelayer> pros_delayer{std::make_shared<pros_adapters::ProsDelayer>()};
-    return wisco::MatchController{lvgl_menu, pros_touch_screen, pros_delayer};
+    return wisco::MatchController{lvgl_menu, pros_touch_screen, pros_delayer, pros_controller};
 }

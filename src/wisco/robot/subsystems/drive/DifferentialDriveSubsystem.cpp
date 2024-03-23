@@ -29,8 +29,16 @@ void DifferentialDriveSubsystem::command(std::string command_name, va_list& args
 {
     if (command_name == SET_VELOCITY_COMMAND_NAME)
     {
-        Velocity velocity{va_arg(args, double), va_arg(args, double)};
+        double left_velocity{va_arg(args, double)};
+        double right_velocity{va_arg(args, double)};
+        Velocity velocity{left_velocity, right_velocity};
         m_differential_drive->setVelocity(velocity);
+    }
+    else if (command_name == SET_VOLTAGE_COMMAND_NAME)
+    {
+        double left_voltage{va_arg(args, double)};
+        double right_voltage{va_arg(args, double)};
+        m_differential_drive->setVoltage(left_voltage, right_voltage);
     }
 }
 

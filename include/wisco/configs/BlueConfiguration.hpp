@@ -15,6 +15,7 @@
 
 // drive includes
 #include "pros_adapters/ProsV5Motor.hpp"
+#include "wisco/robot/subsystems/drive/DirectDifferentialDriveBuilder.hpp"
 #include "wisco/robot/subsystems/drive/KinematicDifferentialDriveBuilder.hpp"
 #include "wisco/robot/subsystems/drive/CurveVelocityProfile.hpp"
 #include "wisco/robot/subsystems/drive/DifferentialDriveSubsystem.hpp"
@@ -96,7 +97,13 @@ private:
 	 * @brief The offset of the odometry strafe distance tracking wheel
 	 * 
 	 */
-	static constexpr double ODOMETRY_STRAFE_OFFSET{4.6};
+	static constexpr double ODOMETRY_STRAFE_OFFSET{4.6};	
+
+	/**
+	 * @brief Whether to use the kinematic drive model or not
+	 * 
+	 */
+	static constexpr bool DRIVE_KINEMATIC{false};
 
 	/**
 	 * @brief The jerk rate of the drive velocity profile
@@ -205,6 +212,13 @@ private:
 	 * 
 	 */
 	static constexpr pros::v5::MotorGears DRIVE_RIGHT_MOTOR_4_GEARSET{pros::E_MOTOR_GEARSET_06};
+
+	/**
+	 * @brief The conversion from velocity to voltage on the drive
+	 * Current calculation = 12 volts to 1.43 meters per second
+	 * 
+	 */
+	static constexpr double DRIVE_VELOCITY_TO_VOLTAGE{12.0 / 1.43};
 
 	/**
 	 * @brief The mass of the drive

@@ -1,4 +1,7 @@
 #include "main.h"
+#include "pros/misc.h"
+
+#define TESTING true
 
 static wisco::MatchController match_controller{MatchControllerFactory::createMatchController()};
 
@@ -17,8 +20,12 @@ void initialize()
 	pros::delay(2000);
 	drive_test->runTurningTest();
 	*/
+	if (TESTING)
+	{
 
-    match_controller.initialize();
+	}
+	else
+		match_controller.initialize();
 }
 
 /**
@@ -28,7 +35,12 @@ void initialize()
  */
 void disabled()
 {
-	match_controller.disabled();
+	if (TESTING)
+	{
+
+	}
+	else
+		match_controller.disabled();
 }
 
 /**
@@ -42,7 +54,12 @@ void disabled()
  */
 void competition_initialize()
 {
-	match_controller.competitionInitialize();
+	if (TESTING)
+	{
+
+	}
+	else
+		match_controller.competitionInitialize();
 }
 
 /**
@@ -58,7 +75,12 @@ void competition_initialize()
  */
 void autonomous()
 {
-	match_controller.autonomous();
+	if (TESTING)
+	{
+
+	}
+	else
+		match_controller.autonomous();
 }
 
 /**
@@ -76,5 +98,20 @@ void autonomous()
  */
 void opcontrol()
 {
-	match_controller.operatorControl();
+	if (TESTING)
+	{
+		pros::Controller controller{pros::E_CONTROLLER_MASTER};
+		pros::Motor leftMotor{-1};
+		pros::Motor rightMotor{10};
+
+		while (true)
+		{
+			int power{controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y)};
+			leftMotor.move(power);
+			rightMotor.move(power);
+			pros::delay(10);
+		}
+	}
+	else
+		match_controller.operatorControl();
 }
