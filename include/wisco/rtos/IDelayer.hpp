@@ -39,6 +39,13 @@ public:
      * @param millis The number of milliseconds to delay
      */
     virtual void delay(uint32_t millis) = 0;
+
+    /**
+     * @brief Delays the rtos system until a certain system time in milliseconds
+     * 
+     * @param time The time in milliseconds to delay until
+     */
+    virtual void delayUntil(uint32_t time) = 0;
 };
 }
 }

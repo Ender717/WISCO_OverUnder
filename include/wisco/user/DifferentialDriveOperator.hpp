@@ -2,7 +2,6 @@
 #define WISCO_USER_DRIVE_OPERATOR_HPP
 
 #include <memory>
-#include <string>
 
 #include "wisco/robot/Robot.hpp"
 #include "wisco/user/IController.hpp"
@@ -25,13 +24,19 @@ namespace user
 {
 
 /**
- * @brief Runs the operator-controlled drive voltage settings
+ * @brief Runs the operator-controlled differential drive voltage settings
  * @author Nathan Sandvig
  * 
  */
-class DriveOperator
+class DifferentialDriveOperator
 {
 private:
+    /**
+     * @brief The name of the differential drive subsystem
+     * 
+     */
+    static constexpr char DIFFERENTIAL_DRIVE_SUBSYSTEM_NAME[]{"DIFFERENTIAL DRIVE"};
+
     /**
      * @brief The command to set drive voltage
      * 
@@ -55,12 +60,6 @@ private:
      * 
      */
     std::shared_ptr<robot::Robot> m_robot{};
-
-    /**
-     * @brief The name of the drive subsystem being controlled
-     * 
-     */
-    std::string m_drive_name{};
 
     /**
      * @brief Updates the voltage of the drive subsystem
@@ -114,11 +113,9 @@ public:
      * 
      * @param controller The user input controller
      * @param robot The robot to control
-     * @param drive_name The name of the drive subsystem
      */
-    DriveOperator(const std::shared_ptr<user::IController>& controller, 
-                  const std::shared_ptr<robot::Robot>& robot,
-                  std::string drive_name);
+    DifferentialDriveOperator(const std::shared_ptr<user::IController>& controller, 
+                              const std::shared_ptr<robot::Robot>& robot);
 
     /**
      * @brief Set the drive voltage

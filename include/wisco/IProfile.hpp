@@ -3,7 +3,6 @@
 
 #include <string>
 
-#include "wisco/user/EChassisControlMode.hpp"
 #include "wisco/user/EControllerAnalog.hpp"
 #include "wisco/user/EControllerDigital.hpp"
 
@@ -37,11 +36,12 @@ public:
 	virtual std::string getName() = 0;
 
 	/**
-	 * @brief Get the chassis control mode
-	 *
-	 * @return std::string The chassis control mode
+	 * @brief Get the control mode for a specific control type
+	 * 
+	 * @param control The control type
+	 * @return int The control mode
 	 */
-	virtual user::EChassisControlMode getChassisControlMode() = 0;
+	virtual int getControlMode(std::string control) = 0;
 
 	/**
 	 * @brief Get the mapping of a control to analog inputs

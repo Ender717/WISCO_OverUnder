@@ -9,6 +9,13 @@ std::string BlueConfiguration::getName()
     return CONFIGURATION_NAME;
 }
 
+std::shared_ptr<user::IController> BlueConfiguration::buildController()
+{
+    std::unique_ptr<pros::Controller> pros_controller{std::make_unique<pros::Controller>(pros::E_CONTROLLER_MASTER)};
+    std::shared_ptr<user::IController> pros_controller_controller{std::make_shared<pros_adapters::ProsController>(pros_controller)};
+    return pros_controller_controller;
+}
+
 std::shared_ptr<robot::Robot> BlueConfiguration::buildRobot()
 {
     std::shared_ptr<robot::Robot> robot{std::make_unique<robot::Robot>()};

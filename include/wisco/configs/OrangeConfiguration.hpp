@@ -41,6 +41,13 @@ public:
 	std::string getName() override;
 
 	/**
+	 * @brief Build a controller using this configuration
+	 * 
+	 * @return std::shared_ptr<user::IController> The controller build by this configuration
+	 */
+	std::shared_ptr<user::IController> buildController() override;
+
+	/**
 	 * @brief Build a robot using this configuration
 	 *
 	 * @return robot::Robot The robot built by this configuration

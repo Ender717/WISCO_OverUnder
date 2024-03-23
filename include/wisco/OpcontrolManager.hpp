@@ -3,13 +3,13 @@
 
 #include <memory>
 
-#include "io/ITouchScreen.hpp"
-#include "robot/subsystems/position/Position.hpp"
-#include "robot/subsystems/drive/Velocity.hpp"
+#include "rtos/IClock.hpp"
 #include "rtos/IDelayer.hpp"
 #include "IProfile.hpp"
 #include "user/IController.hpp"
 #include "robot/Robot.hpp"
+
+#include "user/DifferentialDriveOperator.hpp"
 
 /**
  * @brief Namespace for all library code
@@ -27,7 +27,24 @@ namespace wisco
 class OPControlManager
 {
 private:
-	static constexpr uint8_t CONTROL_DELAY{10};
+	/**
+	 * @brief The loop delay for control inputs
+	 * 
+	 */
+	static constexpr uint32_t CONTROL_DELAY{10};
+
+	/**
+	 * @brief The rtos clock for the control loop
+	 * 
+	 */
+	std::shared_ptr<rtos::IClock> m_clock{};
+
+	/**
+	 * @brief The rtos delayer for the control loop
+	 * 
+	 */
+	std::shared_ptr<rtos::IDelayer> m_delayer{};
+
 	/**
 	 * @brief The driver profile
 	 *
@@ -35,6 +52,14 @@ private:
 	std::unique_ptr<IProfile> m_profile{};
 
 public:
+	/**
+	 * @brief Construct a new OPControlManager object
+	 * 
+	 * @param clock The rtos clock
+	 * @param delayer The rtos delayer
+	 */
+	OPControlManager(const std::shared_ptr<rtos::IClock>& clock, const std::shared_ptr<rtos::IDelayer>& delayer);
+
 	/**
 	 * @brief Set the operator profile
 	 *
@@ -45,17 +70,18 @@ public:
 	/**
 	 * @brief Initialize the operator control
 	 *
+	 * @param controller The controller for the robot
 	 * @param robot The robot being controlled
 	 */
-	void initializeOpcontrol(std::shared_ptr<robot::Robot> robot);
+	void initializeOpcontrol(std::shared_ptr<user::IController> controller, std::shared_ptr<robot::Robot> robot);
 
 	/**
 	 * @brief Run the operator control
 	 *
+	 * @param controller The controller for the robot
 	 * @param robot The robot being controlled
-	 * @param delayer The rtos delayer
 	 */
-	void runOpcontrol(std::shared_ptr<user::IController> controller, std::shared_ptr<robot::Robot> robot, std::shared_ptr<io::ITouchScreen> touch_screen, std::shared_ptr<rtos::IDelayer> delayer);
+	void runOpcontrol(std::shared_ptr<user::IController> controller, std::shared_ptr<robot::Robot> robot);
 };
 
 } // namespace wisco

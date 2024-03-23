@@ -4,6 +4,7 @@
 #include <memory>
 #include <string>
 
+#include "user/IController.hpp"
 #include "robot/Robot.hpp"
 
 /**
@@ -34,6 +35,13 @@ public:
 	 * @return std::string The name of the configuration
 	 */
 	virtual std::string getName() = 0;
+
+	/**
+	 * @brief Build a controller using this configuration
+	 * 
+	 * @return std::shared_ptr<user::IController> The controller build by this configuration
+	 */
+	virtual std::shared_ptr<user::IController> buildController() = 0;
 
 	/**
 	 * @brief Build a robot using this configuration

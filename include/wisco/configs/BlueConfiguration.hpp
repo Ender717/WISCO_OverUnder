@@ -4,6 +4,7 @@
 // odometry includes
 #include "pros/motors.h"
 #include "pros_adapters/ProsClock.hpp"
+#include "pros_adapters/ProsController.hpp"
 #include "pros_adapters/ProsDelayer.hpp"
 #include "pros_adapters/ProsHeading.hpp"
 #include "pros_adapters/ProsMutex.hpp"
@@ -257,6 +258,13 @@ public:
 	 * @return std::string The name of the configuration
 	 */
 	std::string getName() override;
+
+	/**
+	 * @brief Build a controller using this configuration
+	 * 
+	 * @return std::shared_ptr<user::IController> The controller build by this configuration
+	 */
+	std::shared_ptr<user::IController> buildController() override;
 
 	/**
 	 * @brief Build a robot using this configuration

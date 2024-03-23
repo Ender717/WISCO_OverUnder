@@ -26,6 +26,13 @@ public:
      * @param millis The number of milliseconds to delay
      */
     void delay(uint32_t millis) override;
+
+    /**
+     * @brief Delays the rtos system until a certain system time in milliseconds
+     * 
+     * @param time The time in milliseconds to delay until
+     */
+    void delayUntil(uint32_t time) override;
 };
 }
 

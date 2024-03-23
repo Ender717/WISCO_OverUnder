@@ -2,33 +2,34 @@
 
 namespace wisco
 {
+OPControlManager::OPControlManager(const std::shared_ptr<rtos::IClock>& clock, const std::shared_ptr<rtos::IDelayer>& delayer) 
+    : m_clock{clock}, m_delayer{delayer}
+{
+
+}
+
 void OPControlManager::setProfile(std::unique_ptr<IProfile>& profile)
 {
     m_profile = std::move(profile);
 }
 
-void OPControlManager::initializeOpcontrol(std::shared_ptr<robot::Robot> robot)
+void OPControlManager::initializeOpcontrol(std::shared_ptr<user::IController> controller, std::shared_ptr<robot::Robot> robot)
 {
 
 }
 
-void OPControlManager::runOpcontrol(std::shared_ptr<user::IController> controller, std::shared_ptr<robot::Robot> robot, std::shared_ptr<io::ITouchScreen> touch_screen, std::shared_ptr<rtos::IDelayer> delayer)
+void OPControlManager::runOpcontrol(std::shared_ptr<user::IController> controller, std::shared_ptr<robot::Robot> robot)
 {
-    robot::subsystems::position::Position* position{};
-    robot::subsystems::drive::Velocity* velocity{};
+    user::DifferentialDriveOperator drive_operator{controller, robot};
+    uint32_t current_time{};
     while (true)
     {
+        current_time = m_clock->getTime();
         
-        position = (robot::subsystems::position::Position*)(robot->getState("POSITION TRACKER", "GET POSITION"));
-        if (position)
-        {
-            touch_screen->print(0, 0, "X: %7.2f", position->x);
-            touch_screen->print(0, 40, "Y: %7.2f", position->y);
-            touch_screen->print(0, 80, "Theta: %9.2f", position->theta * 180 / 3.1415);
-            delete position;
-        }
-       
-        delayer->delay(CONTROL_DELAY);
+        //TODO user control code
+        drive_operator.setDriveVoltage(static_cast<user::EChassisControlMode>(m_profile->getControlMode("DRIVE")));
+
+        m_delayer->delayUntil(current_time + CONTROL_DELAY);
     }
 }
 }

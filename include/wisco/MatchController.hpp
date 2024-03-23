@@ -38,22 +38,16 @@ private:
 	std::unique_ptr<IMenu> m_menu{};
 
 	/**
-	 * @brief The touch screen
+	 * @brief The rtos clock
 	 * 
 	 */
-	std::shared_ptr<io::ITouchScreen> m_touch_screen{};
+	std::shared_ptr<rtos::IClock> m_clock{};
 
 	/**
 	 * @brief The rtos delayer
 	 * 
 	 */
 	std::shared_ptr<rtos::IDelayer> m_delayer{};
-
-	/**
-	 * @brief The user input controller
-	 * 
-	 */
-	std::shared_ptr<user::IController> m_controller{};
 
 	/**
 	 * @brief The autonomous management object
@@ -65,7 +59,13 @@ private:
 	 * @brief The opcontrol management object
 	 * 
 	 */
-	OPControlManager opcontrol_manager{};
+	OPControlManager opcontrol_manager{m_clock, m_delayer};
+
+	/**
+	 * @brief The user input controller
+	 * 
+	 */
+	std::shared_ptr<user::IController> controller{};
 
 	/**
 	 * @brief The robot being controlled
@@ -78,9 +78,10 @@ public:
 	 * @brief Construct a new Match Controller object
 	 * 
 	 * @param menu The menu to use in the match controller
+	 * @param clock The rtos clock to use in the match controller
 	 * @param delayer The rtos delayer to use in the match controller
 	 */
-	MatchController(std::unique_ptr<IMenu>& menu, const std::shared_ptr<io::ITouchScreen>& touch_screen, const std::shared_ptr<rtos::IDelayer>& delayer, const std::shared_ptr<user::IController>& controller);
+	MatchController(std::unique_ptr<IMenu>& menu, const std::shared_ptr<rtos::IClock>& clock, const std::shared_ptr<rtos::IDelayer>& delayer);
 
 	/**
 	 * @brief Runs the robot initialization code

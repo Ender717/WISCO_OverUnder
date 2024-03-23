@@ -5,6 +5,8 @@
 
 #include "wisco/IProfile.hpp"
 
+#include "wisco/user/EChassisControlMode.hpp"
+
 /**
  * @brief Namespace for all library code
  * @author Nathan Sandvig
@@ -33,10 +35,13 @@ private:
     static constexpr char PROFILE_NAME[]{"HENRY"};
 
     /**
-     * @brief The chassis control mode of the profile
+     * @brief The control modes for the profile
      * 
      */
-    static constexpr user::EChassisControlMode CHASSIS_CONTROL_MODE{user::EChassisControlMode::SPLIT_ARCADE_LEFT};
+	const std::map<std::string, int> CONTROL_MODE_MAP
+	{
+		{"DRIVE", static_cast<int>(user::EChassisControlMode::SPLIT_ARCADE_LEFT)}
+	};
 
     /**
      * @brief The mapping of the controls to the analog inputs
@@ -59,11 +64,12 @@ public:
 	std::string getName() override;
 
 	/**
-	 * @brief Get the chassis control mode
-	 *
-	 * @return user::EChassisControlMode The chassis control mode
+	 * @brief Get the control mode for a specific control type
+	 * 
+	 * @param control The control type
+	 * @return int The control mode
 	 */
-	user::EChassisControlMode getChassisControlMode() override;
+	int getControlMode(std::string control) override;
 
 	/**
 	 * @brief Get the mapping of a control to analog inputs

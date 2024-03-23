@@ -2,8 +2,8 @@
 
 namespace wisco
 {
-MatchController::MatchController(std::unique_ptr<IMenu>& menu, const std::shared_ptr<io::ITouchScreen>& touch_screen, const std::shared_ptr<rtos::IDelayer>& delayer, const std::shared_ptr<user::IController>& controller) : 
-	m_menu{std::move(menu)}, m_touch_screen{touch_screen}, m_delayer{delayer}, m_controller{controller}
+MatchController::MatchController(std::unique_ptr<IMenu>& menu, const std::shared_ptr<rtos::IClock>& clock, const std::shared_ptr<rtos::IDelayer>& delayer) : 
+	m_menu{std::move(menu)}, m_clock{clock}, m_delayer{delayer}, opcontrol_manager{clock, delayer}
 {
 
 }
@@ -13,19 +13,23 @@ void MatchController::initialize()
 	if (m_menu)
 	{
 		m_menu->display();
-		while (!m_menu->isStarted())
+		while (m_delayer && !m_menu->isStarted())
 			m_delayer->delay(MENU_DELAY);
 	}
 
-	SystemConfiguration system_configuration{m_menu->getSystemConfiguration()};
+	SystemConfiguration system_configuration{};
+	if (m_menu)
+		system_configuration = m_menu->getSystemConfiguration();
 	autonomous_manager.setAutonomous(system_configuration.autonomous);
 	opcontrol_manager.setProfile(system_configuration.profile);
+	controller = system_configuration.configuration->buildController();
 	robot = system_configuration.configuration->buildRobot();
 	if (robot)
 	{
 		robot->initialize();
 		autonomous_manager.initializeAutonomous(robot);
-		opcontrol_manager.initializeOpcontrol(robot);
+		if (controller)
+			opcontrol_manager.initializeOpcontrol(controller, robot);
 	}
 }
 
@@ -47,7 +51,7 @@ void MatchController::autonomous()
 
 void MatchController::operatorControl()
 {
-	if (robot)
-		opcontrol_manager.runOpcontrol(m_controller, robot, m_touch_screen, m_delayer);
+	if (controller && robot)
+		opcontrol_manager.runOpcontrol(controller, robot);
 }
 } // namespace wisco
