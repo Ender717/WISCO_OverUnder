@@ -1,5 +1,4 @@
 #include "wisco/profiles/HenryProfile.hpp"
-#include "user/EChassisControlMode.hpp"
 
 namespace wisco
 {
