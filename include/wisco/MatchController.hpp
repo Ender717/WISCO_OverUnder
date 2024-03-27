@@ -47,7 +47,7 @@ private:
 	 * @brief The rtos delayer
 	 * 
 	 */
-	std::shared_ptr<rtos::IDelayer> m_delayer{};
+	std::unique_ptr<rtos::IDelayer> m_delayer{};
 
 	/**
 	 * @brief The autonomous management object
@@ -81,7 +81,7 @@ public:
 	 * @param clock The rtos clock to use in the match controller
 	 * @param delayer The rtos delayer to use in the match controller
 	 */
-	MatchController(std::unique_ptr<IMenu>& menu, const std::shared_ptr<rtos::IClock>& clock, const std::shared_ptr<rtos::IDelayer>& delayer);
+	MatchController(std::unique_ptr<IMenu>& menu, const std::shared_ptr<rtos::IClock>& clock, std::unique_ptr<rtos::IDelayer>& delayer);
 
 	/**
 	 * @brief Runs the robot initialization code

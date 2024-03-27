@@ -22,6 +22,13 @@ class ProsClock : public wisco::rtos::IClock
 {
 public:
     /**
+     * @brief Clones the IClock object
+     * 
+     * @return std::unique_ptr<IClock> The cloned IClock object
+     */
+    std::unique_ptr<wisco::rtos::IClock> clone() const override;
+
+    /**
      * @brief Get the system clock time in milliseconds
      * 
      * @return uint32_t The system clock time in milliseconds

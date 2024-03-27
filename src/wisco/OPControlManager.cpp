@@ -2,8 +2,8 @@
 
 namespace wisco
 {
-OPControlManager::OPControlManager(const std::shared_ptr<rtos::IClock>& clock, const std::shared_ptr<rtos::IDelayer>& delayer) 
-    : m_clock{clock}, m_delayer{delayer}
+OPControlManager::OPControlManager(const std::shared_ptr<rtos::IClock>& clock, const std::unique_ptr<rtos::IDelayer>& delayer) 
+    : m_clock{clock}, m_delayer{delayer->clone()}
 {
 
 }

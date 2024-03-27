@@ -80,7 +80,7 @@ public:
      */
     virtual void setVoltage(double voltage) = 0;
 };
-} // namespace drive
+} // namespace intake
 } // namespace subsystems
 } // namespace robot
 } // namespace wisco

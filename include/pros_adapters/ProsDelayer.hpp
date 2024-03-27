@@ -21,6 +21,13 @@ class ProsDelayer : public wisco::rtos::IDelayer
 {
 public:
     /**
+     * @brief Clones the IDelayer object
+     * 
+     * @return std::unique_ptr<IDelayer> The cloned IDelayer object
+     */
+    std::unique_ptr<wisco::rtos::IDelayer> clone() const override;
+
+    /**
      * @brief Delays the rtos system for a number of milliseconds
      * 
      * @param millis The number of milliseconds to delay

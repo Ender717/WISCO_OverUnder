@@ -43,7 +43,7 @@ private:
 	 * @brief The rtos delayer for the control loop
 	 * 
 	 */
-	std::shared_ptr<rtos::IDelayer> m_delayer{};
+	std::unique_ptr<rtos::IDelayer> m_delayer{};
 
 	/**
 	 * @brief The driver profile
@@ -58,7 +58,7 @@ public:
 	 * @param clock The rtos clock
 	 * @param delayer The rtos delayer
 	 */
-	OPControlManager(const std::shared_ptr<rtos::IClock>& clock, const std::shared_ptr<rtos::IDelayer>& delayer);
+	OPControlManager(const std::shared_ptr<rtos::IClock>& clock, const std::unique_ptr<rtos::IDelayer>& delayer);
 
 	/**
 	 * @brief Set the operator profile

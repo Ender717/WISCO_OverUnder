@@ -2,6 +2,11 @@
 
 namespace pros_adapters
 {
+std::unique_ptr<wisco::rtos::IDelayer> ProsDelayer::clone() const
+{
+    return std::unique_ptr<wisco::rtos::IDelayer>(std::make_unique<ProsDelayer>(*this));
+}
+
 void ProsDelayer::delay(uint32_t millis)
 {
     pros::Task::delay(millis);

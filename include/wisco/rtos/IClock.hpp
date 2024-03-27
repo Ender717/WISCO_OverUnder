@@ -2,6 +2,7 @@
 #define WISCO_RTOS_I_CLOCK_HPP
 
 #include <cstdint>
+#include <memory>
 
 /**
  * @brief Namespace for all library code
@@ -32,6 +33,13 @@ public:
      * 
      */
     virtual ~IClock() = default;
+
+    /**
+     * @brief Clones the IClock object
+     * 
+     * @return std::unique_ptr<IClock> The cloned IClock object
+     */
+    virtual std::unique_ptr<IClock> clone() const = 0;
 
     /**
      * @brief Get the clock time in milliseconds
