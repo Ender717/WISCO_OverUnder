@@ -101,14 +101,15 @@ void opcontrol()
 	if (TESTING)
 	{
 		pros::Controller controller{pros::E_CONTROLLER_MASTER};
-		pros::Motor leftMotor{-1};
-		pros::Motor rightMotor{10};
+		pros::MotorGroup intakeMotors{9, -10};
+		pros::MotorGroup elevatorMotors{1, -2};
 
 		while (true)
 		{
-			int power{controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y)};
-			leftMotor.move(power);
-			rightMotor.move(power);
+			int intakePower{controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y)};
+			int elevatorPower{controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y)};
+			intakeMotors.move(intakePower);
+			elevatorMotors.move(elevatorPower);
 			pros::delay(10);
 		}
 	}
