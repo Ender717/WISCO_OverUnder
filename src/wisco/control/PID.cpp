@@ -40,6 +40,14 @@ double PID::getControlValue(double current, double target)
     return (m_kp * error) + (m_ki * accumulated_error) + (m_kd * error_change);
 }
 
+void PID::reset()
+{
+    if (m_clock)
+        last_time = m_clock->getTime();
+    accumulated_error = 0;
+    last_error = 0;
+}
+
 PID& PID::operator=(const PID& rhs)
 {
     m_clock = rhs.m_clock->clone();

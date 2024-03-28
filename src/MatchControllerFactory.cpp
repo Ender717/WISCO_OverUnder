@@ -29,7 +29,7 @@ wisco::MatchController MatchControllerFactory::createMatchController()
 
     // RTOS creation
     std::shared_ptr<wisco::rtos::IClock> pros_clock{std::make_unique<pros_adapters::ProsClock>()};
-    std::shared_ptr<wisco::rtos::IDelayer> pros_delayer{std::make_shared<pros_adapters::ProsDelayer>()};
+    std::unique_ptr<wisco::rtos::IDelayer> pros_delayer{std::make_unique<pros_adapters::ProsDelayer>()};
 
     return wisco::MatchController{lvgl_menu, pros_clock, pros_delayer};
 }

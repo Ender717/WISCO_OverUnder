@@ -112,6 +112,12 @@ public:
     double getControlValue(double current, double target);
 
     /**
+     * @brief Resets the PID controller
+     * 
+     */
+    void reset();
+
+    /**
      * @brief Copy assignment operator
      * 
      * @param rhs The PID object being copied
