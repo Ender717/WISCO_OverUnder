@@ -143,6 +143,33 @@ std::shared_ptr<robot::Robot> BlueConfiguration::buildRobot()
         robot->addSubsystem(drive_subsystem);
     }
 
+    // Intake creation
+    wisco::robot::subsystems::intake::PIDIntakeBuilder pid_intake_builder{};
+    std::unique_ptr<wisco::rtos::IClock> intake_pros_clock{std::make_unique<pros_adapters::ProsClock>()};
+    std::unique_ptr<wisco::rtos::IDelayer> intake_pros_delayer{std::make_unique<pros_adapters::ProsDelayer>()};
+    std::unique_ptr<wisco::rtos::IMutex> intake_pros_mutex{std::make_unique<pros_adapters::ProsMutex>()};
+    std::unique_ptr<wisco::rtos::ITask> intake_pros_task{std::make_unique<pros_adapters::ProsTask>()};
+    wisco::control::PID intake_pid{intake_pros_clock, INTAKE_KP, INTAKE_KI, INTAKE_KD};
+    std::unique_ptr<pros::Motor> intake_pros_motor_1{std::make_unique<pros::Motor>(INTAKE_MOTOR_1_PORT, INTAKE_MOTOR_1_GEARSET)};
+    std::unique_ptr<wisco::io::IMotor> intake_pros_motor_1_motor{std::make_unique<pros_adapters::ProsV5Motor>(intake_pros_motor_1)};
+    std::unique_ptr<pros::Motor> intake_pros_motor_2{std::make_unique<pros::Motor>(INTAKE_MOTOR_2_PORT, INTAKE_MOTOR_2_GEARSET)};
+    std::unique_ptr<wisco::io::IMotor> intake_pros_motor_2_motor{std::make_unique<pros_adapters::ProsV5Motor>(intake_pros_motor_2)};
+    std::unique_ptr<wisco::robot::subsystems::intake::IIntake> pid_intake
+    {
+        pid_intake_builder.
+        withClock(intake_pros_clock)->
+        withDelayer(intake_pros_delayer)->
+        withMutex(intake_pros_mutex)->
+        withTask(intake_pros_task)->
+        withPID(intake_pid)->
+        withMotor(intake_pros_motor_1_motor)->
+        withMotor(intake_pros_motor_2_motor)->
+        withRollerRadius(INTAKE_ROLLER_RADIUS)->
+        build()
+    };
+    std::unique_ptr<wisco::robot::ASubsystem> intake_subsystem{std::make_unique<wisco::robot::subsystems::intake::IntakeSubsystem>(pid_intake)};
+    robot->addSubsystem(intake_subsystem);
+    
     return robot;
 }
 }

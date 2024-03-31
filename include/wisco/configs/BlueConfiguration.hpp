@@ -21,6 +21,10 @@
 #include "wisco/robot/subsystems/drive/CurveVelocityProfile.hpp"
 #include "wisco/robot/subsystems/drive/DifferentialDriveSubsystem.hpp"
 
+// intake includes
+#include "wisco/robot/subsystems/intake/PIDIntakeBuilder.hpp"
+#include "wisco/robot/subsystems/intake/IntakeSubsystem.hpp"
+
 #include "wisco/IConfiguration.hpp"
 
 /**
@@ -250,6 +254,54 @@ private:
 	 * 
 	 */
 	static constexpr double DRIVE_WHEEL_RADIUS{3.25 * 2.54 / 100};
+
+	/**
+	 * @brief The KP for the intake PID
+	 * 
+	 */
+	static constexpr double INTAKE_KP{};
+
+	/**
+	 * @brief The KI for the intake PID
+	 * 
+	 */
+	static constexpr double INTAKE_KI{};
+
+	/**
+	 * @brief The KD for the intake PID
+	 * 
+	 */
+	static constexpr double INTAKE_KD{};
+
+	/**
+	 * @brief The first intake motor port
+	 * 
+	 */
+	static constexpr int8_t INTAKE_MOTOR_1_PORT{};
+
+	/**
+	 * @brief The first intake motor gearset
+	 * 
+	 */
+	static constexpr pros::v5::MotorGears INTAKE_MOTOR_1_GEARSET{pros::E_MOTOR_GEARSET_06};
+
+	/**
+	 * @brief The second intake motor port
+	 * 
+	 */
+	static constexpr int8_t INTAKE_MOTOR_2_PORT{};
+
+	/**
+	 * @brief The second intake motor gearset
+	 * 
+	 */
+	static constexpr pros::v5::MotorGears INTAKE_MOTOR_2_GEARSET{pros::E_MOTOR_GEARSET_06};
+
+	/**
+	 * @brief The radius of the intake roller
+	 * 
+	 */
+	static constexpr double INTAKE_ROLLER_RADIUS{};
 
 public:
     /**
