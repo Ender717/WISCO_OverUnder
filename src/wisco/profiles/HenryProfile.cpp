@@ -9,15 +9,15 @@ std::string HenryProfile::getName()
     return PROFILE_NAME;
 }
 
-int HenryProfile::getControlMode(std::string control)
+int HenryProfile::getControlMode(user::EControlType control_type)
 {
     int mode{};
-    if (CONTROL_MODE_MAP.contains(control))
-        mode = CONTROL_MODE_MAP.at(control);
+    if (CONTROL_MODE_MAP.contains(control_type))
+        mode = CONTROL_MODE_MAP.at(control_type);
     return mode;
 }
 
-user::EControllerAnalog HenryProfile::getAnalogControlMapping(std::string control)
+user::EControllerAnalog HenryProfile::getAnalogControlMapping(user::EControl control)
 {
     user::EControllerAnalog analog{user::EControllerAnalog::NONE};
     if (ANALOG_CONTROL_MAP.contains(control))
@@ -25,7 +25,7 @@ user::EControllerAnalog HenryProfile::getAnalogControlMapping(std::string contro
     return analog;
 }
 
-user::EControllerDigital HenryProfile::getDigitalControlMapping(std::string control)
+user::EControllerDigital HenryProfile::getDigitalControlMapping(user::EControl control)
 {
     user::EControllerDigital digital{user::EControllerDigital::NONE};
     if (DIGITAL_CONTROL_MAP.contains(control))

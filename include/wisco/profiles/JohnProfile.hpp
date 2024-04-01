@@ -6,6 +6,7 @@
 #include "wisco/IProfile.hpp"
 
 #include "wisco/user/EChassisControlMode.hpp"
+#include "wisco/user/EIntakeControlMode.hpp"
 
 /**
  * @brief Namespace for all library code
@@ -38,22 +39,27 @@ private:
      * @brief The control modes for the profile
      * 
      */
-	const std::map<std::string, int> CONTROL_MODE_MAP
+	const std::map<user::EControlType, int> CONTROL_MODE_MAP
 	{
-		{"DRIVE", static_cast<int>(user::EChassisControlMode::TANK)}
+		{user::EControlType::DRIVE, static_cast<int>(user::EChassisControlMode::TANK)},
+		{user::EControlType::INTAKE, static_cast<int>(user::EIntakeControlMode::SPLIT_HOLD)}
 	};
 
     /**
      * @brief The mapping of the controls to the analog inputs
      * 
      */
-    const std::map<std::string, user::EControllerAnalog> ANALOG_CONTROL_MAP{};
+    const std::map<user::EControl, user::EControllerAnalog> ANALOG_CONTROL_MAP{};
 
 	/**
      * @brief The mapping of the controls to the digital inputs
      * 
      */
-    const std::map<std::string, user::EControllerDigital> DIGITAL_CONTROL_MAP{};
+    const std::map<user::EControl, user::EControllerDigital> DIGITAL_CONTROL_MAP
+	{
+		{user::EControl::INTAKE_IN, user::EControllerDigital::TRIGGER_LEFT_TOP},
+		{user::EControl::INTAKE_OUT, user::EControllerDigital::TRIGGER_LEFT_BOTTOM}
+	};
 
 public:
 	/**
@@ -66,24 +72,26 @@ public:
 	/**
 	 * @brief Get the control mode for a specific control type
 	 * 
-	 * @param control The control type
+	 * @param control_type The control type
 	 * @return int The control mode
 	 */
-	int getControlMode(std::string control) override;
+	int getControlMode(user::EControlType control_type) override;
 
 	/**
 	 * @brief Get the mapping of a control to analog inputs
 	 *
-	 * @return std::string The mapping of this control to an analog input
+	 * @param control The control
+	 * @return user::EControllerAnalog The mapping of this control to a analog input
 	 */
-	user::EControllerAnalog getAnalogControlMapping(std::string control) override;
+	user::EControllerAnalog getAnalogControlMapping(user::EControl control) override;
 
 	/**
 	 * @brief Get the mapping of a control to digital inputs
 	 *
-	 * @return std::string The mapping of this control to a digital input
+	 * @param control The control
+	 * @return user::EControllerDigital The mapping of this control to a digital input
 	 */
-	user::EControllerDigital getDigitalControlMapping(std::string control) override;
+	user::EControllerDigital getDigitalControlMapping(user::EControl control) override;
 };
 }
 }

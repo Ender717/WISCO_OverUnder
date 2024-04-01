@@ -21,7 +21,8 @@ void PIDIntake::taskLoop(void* params)
 
 void PIDIntake::taskUpdate()
 {
-    updateVelocity();
+    if (velocity_control)
+        updateVelocity();
     m_delayer->delay(TASK_DELAY);
 }
 
@@ -65,7 +66,7 @@ void PIDIntake::setVelocity(double velocity)
         m_mutex->take();
     
     m_velocity = velocity / m_roller_radius;
-    velocity_control = false;
+    velocity_control = true;
 
     if (m_mutex)
         m_mutex->give();

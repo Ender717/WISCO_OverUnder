@@ -27,7 +27,7 @@ void OPControlManager::runOpcontrol(std::shared_ptr<user::IController> controlle
         current_time = m_clock->getTime();
         
         //TODO user control code
-        drive_operator.setDriveVoltage(static_cast<user::EChassisControlMode>(m_profile->getControlMode("DRIVE")));
+        drive_operator.setDriveVoltage(static_cast<user::EChassisControlMode>(m_profile->getControlMode(user::EControlType::DRIVE)));
 
         m_delayer->delayUntil(current_time + CONTROL_DELAY);
     }

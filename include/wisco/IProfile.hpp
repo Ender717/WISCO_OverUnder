@@ -3,6 +3,8 @@
 
 #include <string>
 
+#include "wisco/user/EControl.hpp"
+#include "wisco/user/EControlType.hpp"
 #include "wisco/user/EControllerAnalog.hpp"
 #include "wisco/user/EControllerDigital.hpp"
 
@@ -38,24 +40,26 @@ public:
 	/**
 	 * @brief Get the control mode for a specific control type
 	 * 
-	 * @param control The control type
+	 * @param control_type The control type
 	 * @return int The control mode
 	 */
-	virtual int getControlMode(std::string control) = 0;
+	virtual int getControlMode(user::EControlType control_type) = 0;
 
 	/**
 	 * @brief Get the mapping of a control to analog inputs
 	 *
+	 * @param control The control
 	 * @return user::EControllerAnalog The mapping of this control to a analog input
 	 */
-	virtual user::EControllerAnalog getAnalogControlMapping(std::string control) = 0;
+	virtual user::EControllerAnalog getAnalogControlMapping(user::EControl control) = 0;
 
 	/**
 	 * @brief Get the mapping of a control to digital inputs
 	 *
+	 * @param control The control
 	 * @return user::EControllerDigital The mapping of this control to a digital input
 	 */
-	virtual user::EControllerDigital getDigitalControlMapping(std::string control) = 0;
+	virtual user::EControllerDigital getDigitalControlMapping(user::EControl control) = 0;
 };
 
 } // namespace wisco
