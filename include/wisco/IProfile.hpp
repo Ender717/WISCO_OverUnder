@@ -43,7 +43,7 @@ public:
 	 * @param control_type The control type
 	 * @return int The control mode
 	 */
-	virtual int getControlMode(user::EControlType control_type) = 0;
+	virtual int getControlMode(user::EControlType control_type) const = 0;
 
 	/**
 	 * @brief Get the mapping of a control to analog inputs
@@ -51,7 +51,7 @@ public:
 	 * @param control The control
 	 * @return user::EControllerAnalog The mapping of this control to a analog input
 	 */
-	virtual user::EControllerAnalog getAnalogControlMapping(user::EControl control) = 0;
+	virtual user::EControllerAnalog getAnalogControlMapping(user::EControl control) const = 0;
 
 	/**
 	 * @brief Get the mapping of a control to digital inputs
@@ -59,7 +59,7 @@ public:
 	 * @param control The control
 	 * @return user::EControllerDigital The mapping of this control to a digital input
 	 */
-	virtual user::EControllerDigital getDigitalControlMapping(user::EControl control) = 0;
+	virtual user::EControllerDigital getDigitalControlMapping(user::EControl control) const = 0;
 };
 
 } // namespace wisco

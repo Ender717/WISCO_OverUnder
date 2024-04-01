@@ -110,7 +110,7 @@ void PIDIntake::setPID(control::PID pid)
     m_pid = pid;
 }
 
-void PIDIntake::setMotors(hal::MotorGroup motors)
+void PIDIntake::setMotors(hal::MotorGroup& motors)
 {
     m_motors = motors;
 }

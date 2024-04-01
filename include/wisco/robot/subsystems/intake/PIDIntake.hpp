@@ -205,7 +205,7 @@ public:
      * 
      * @param motors The motors
      */
-    void setMotors(hal::MotorGroup motors);
+    void setMotors(hal::MotorGroup& motors);
 
     /**
      * @brief Set the radius of the roller

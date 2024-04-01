@@ -1,11 +1,12 @@
-#ifndef WISCO_USER_DRIVE_OPERATOR_HPP
-#define WISCO_USER_DRIVE_OPERATOR_HPP
+#ifndef WISCO_USER_INTAKE_OPERATOR_HPP
+#define WISCO_USER_INTAKE_OPERATOR_HPP
 
 #include <memory>
 
 #include "wisco/robot/Robot.hpp"
 #include "wisco/user/IController.hpp"
-#include "EIntakeControlMode.hpp"
+#include "wisco/IProfile.hpp"
+#include "wisco/user/EIntakeControlMode.hpp"
 
 /**
  * @brief Namespace for all library code
@@ -32,6 +33,17 @@ class IntakeOperator
 {
 private:
     /**
+     * @brief The available states for intake toggles
+     * 
+     */
+    enum class EToggleState
+    {
+        OFF,
+        IN,
+        OUT
+    };
+
+    /**
      * @brief The name of the differential drive subsystem
      * 
      */
@@ -44,10 +56,10 @@ private:
     static constexpr char SET_VOLTAGE_COMMAND[]{"SET VOLTAGE"};
 
     /**
-     * @brief Converts controller input to voltage
+     * @brief The voltage to run the intake at
      * 
      */
-    static constexpr double VOLTAGE_CONVERSION{12.0};
+    static constexpr double VOLTAGE_SETTING{12.0};
 
     /**
      * @brief The user input controller
@@ -62,6 +74,12 @@ private:
     std::shared_ptr<robot::Robot> m_robot{};
 
     /**
+     * @brief The state stored for toggle mode
+     * 
+     */
+    EToggleState toggle_state{EToggleState::OFF};
+
+    /**
      * @brief Updates the voltage of the intake subsystem
      * 
      * @param voltage The intake voltage
@@ -69,22 +87,28 @@ private:
     void updateIntakeVoltage(double voltage);
 
     /**
+     * @brief Updates the intake voltage based on toggle state
+     * 
+     */
+    void updateToggleVoltage();
+
+    /**
      * @brief Update the drive voltage for single left stick arcade drive
      * 
      */
-    void updateSingleToggle();
+    void updateSingleToggle(EControllerDigital toggle);
 
     /**
      * @brief Update the drive voltage for single right stick arcade drive
      * 
      */
-    void updateSplitHold();
+    void updateSplitHold(EControllerDigital in, EControllerDigital out);
 
     /**
      * @brief Update the drive voltage for split stick arcade with left stick forward control
      * 
      */
-    void updateSplitToggle();
+    void updateSplitToggle(EControllerDigital in, EControllerDigital out);
 
 public:
     /**
@@ -94,14 +118,14 @@ public:
      * @param robot The robot to control
      */
     IntakeOperator(const std::shared_ptr<user::IController>& controller, 
-                              const std::shared_ptr<robot::Robot>& robot);
+                   const std::shared_ptr<robot::Robot>& robot);
 
     /**
      * @brief Set the intake voltage
      * 
      * @param control_mode The control mode of the intake
      */
-    void setIntakeVoltage(EIntakeControlMode control_mode);
+    void setIntakeVoltage(const std::unique_ptr<IProfile>& profile);
 };
 } // namespace user
 } // namespace wisco

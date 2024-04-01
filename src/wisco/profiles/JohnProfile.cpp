@@ -9,15 +9,16 @@ std::string JohnProfile::getName()
     return PROFILE_NAME;
 }
 
-int JohnProfile::getControlMode(std::string control)
+
+int JohnProfile::getControlMode(user::EControlType control_type) const
 {
     int mode{};
-    if (CONTROL_MODE_MAP.contains(control))
-        mode = CONTROL_MODE_MAP.at(control);
+    if (CONTROL_MODE_MAP.contains(control_type))
+        mode = CONTROL_MODE_MAP.at(control_type);
     return mode;
 }
 
-user::EControllerAnalog JohnProfile::getAnalogControlMapping(std::string control)
+user::EControllerAnalog JohnProfile::getAnalogControlMapping(user::EControl control) const
 {
     user::EControllerAnalog analog{user::EControllerAnalog::NONE};
     if (ANALOG_CONTROL_MAP.contains(control))
@@ -25,7 +26,7 @@ user::EControllerAnalog JohnProfile::getAnalogControlMapping(std::string control
     return analog;
 }
 
-user::EControllerDigital JohnProfile::getDigitalControlMapping(std::string control)
+user::EControllerDigital JohnProfile::getDigitalControlMapping(user::EControl control) const
 {
     user::EControllerDigital digital{user::EControllerDigital::NONE};
     if (DIGITAL_CONTROL_MAP.contains(control))

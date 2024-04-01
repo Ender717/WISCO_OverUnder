@@ -75,7 +75,7 @@ public:
 	 * @param control_type The control type
 	 * @return int The control mode
 	 */
-	int getControlMode(user::EControlType control_type) override;
+	int getControlMode(user::EControlType control_type) const override;
 
 	/**
 	 * @brief Get the mapping of a control to analog inputs
@@ -83,7 +83,7 @@ public:
 	 * @param control The control
 	 * @return user::EControllerAnalog The mapping of this control to a analog input
 	 */
-	user::EControllerAnalog getAnalogControlMapping(user::EControl control) override;
+	user::EControllerAnalog getAnalogControlMapping(user::EControl control) const override;
 
 	/**
 	 * @brief Get the mapping of a control to digital inputs
@@ -91,7 +91,7 @@ public:
 	 * @param control The control
 	 * @return user::EControllerDigital The mapping of this control to a digital input
 	 */
-	user::EControllerDigital getDigitalControlMapping(user::EControl control) override;
+	user::EControllerDigital getDigitalControlMapping(user::EControl control) const override;
 };
 }
 }
