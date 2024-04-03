@@ -76,6 +76,20 @@ double MotorGroup::getAngularVelocity()
     return average_velocity;
 }
 
+double MotorGroup::getPosition()
+{
+    double average_position{};
+    if (!motors.empty())
+    {
+        for (auto& motor : motors)
+            if (motor)
+                average_position += motor->getPosition();
+        average_position /= motors.size();
+    }
+
+    return average_position;
+}
+
 void MotorGroup::setVoltage(double volts)
 {
     for (auto& motor : motors)

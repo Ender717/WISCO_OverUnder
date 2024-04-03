@@ -87,6 +87,13 @@ public:
     double getAngularVelocity();
 
     /**
+     * @brief Get the average position of the motors in the group
+     * 
+     * @return double The average position of the motors in the group
+     */
+    double getPosition();
+
+    /**
      * @brief Set the voltage input to the motors in Volts
      * 
      * @param volts The voltage input in Volts

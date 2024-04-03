@@ -65,7 +65,7 @@ void PIDIntake::setVelocity(double velocity)
     if (m_mutex)
         m_mutex->take();
     
-    m_velocity = velocity / m_roller_radius;
+    m_velocity = velocity;
     velocity_control = true;
 
     if (m_mutex)

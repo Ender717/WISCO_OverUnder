@@ -66,6 +66,12 @@ private:
     static constexpr double VELOCITY_CONVERSION{2 * M_PI / 60};
 
     /**
+     * @brief Converts motor position to radians
+     * 
+     */
+    static constexpr double POSITION_CONVERSION{M_PI / 25};
+
+    /**
      * @brief Converts input voltage to millivolts
      * 
      */
@@ -131,6 +137,13 @@ public:
      * @return double The angular velocity of the motor in radians/second
      */
     double getAngularVelocity() override;
+
+    /**
+     * @brief Get the position of the motor in total radians
+     * 
+     * @return double The total number of radians moved since last reset
+     */
+    double getPosition() override;
 
     /**
      * @brief Set the voltage input to the motor in Volts

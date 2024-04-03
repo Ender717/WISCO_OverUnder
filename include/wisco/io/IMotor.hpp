@@ -72,6 +72,13 @@ public:
     virtual double getAngularVelocity() = 0;
 
     /**
+     * @brief Get the position of the motor in total radians
+     * 
+     * @return double The total number of radians moved since last reset
+     */
+    virtual double getPosition() = 0;
+
+    /**
      * @brief Set the voltage input to the motor in Volts
      * 
      * @param volts The voltage input in Volts

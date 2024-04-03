@@ -57,6 +57,16 @@ double ProsV5Motor::getAngularVelocity()
     return angular_velocity;
 }
 
+double ProsV5Motor::getPosition()
+{
+    double angular_velocity{};
+
+    if (m_motor)
+        angular_velocity = m_motor->get_position() * (POSITION_CONVERSION / getGearRatio());
+
+    return angular_velocity;
+}
+
 void ProsV5Motor::setVoltage(double volts)
 {
     int millivolts{static_cast<int>(volts * VOLTAGE_CONVERSION)};
