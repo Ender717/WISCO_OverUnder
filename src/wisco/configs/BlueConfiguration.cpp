@@ -169,6 +169,39 @@ std::shared_ptr<robot::Robot> BlueConfiguration::buildRobot()
     };
     std::unique_ptr<wisco::robot::ASubsystem> intake_subsystem{std::make_unique<wisco::robot::subsystems::intake::IntakeSubsystem>(pid_intake)};
     robot->addSubsystem(intake_subsystem);
+
+    // Elevator creation
+    wisco::robot::subsystems::elevator::PIDElevatorBuilder pid_elevator_builder{};
+    std::unique_ptr<wisco::rtos::IClock> elevator_pros_clock{std::make_unique<pros_adapters::ProsClock>()};
+    std::unique_ptr<wisco::rtos::IDelayer> elevator_pros_delayer{std::make_unique<pros_adapters::ProsDelayer>()};
+    std::unique_ptr<wisco::rtos::IMutex> elevator_pros_mutex{std::make_unique<pros_adapters::ProsMutex>()};
+    std::unique_ptr<wisco::rtos::ITask> elevator_pros_task{std::make_unique<pros_adapters::ProsTask>()};
+    wisco::control::PID elevator_pid{elevator_pros_clock, ELEVATOR_KP, ELEVATOR_KI, ELEVATOR_KD};
+    std::unique_ptr<pros::Motor> elevator_pros_motor_1{std::make_unique<pros::Motor>(ELEVATOR_MOTOR_1_PORT, ELEVATOR_MOTOR_1_GEARSET)};
+    std::unique_ptr<wisco::io::IMotor> elevator_pros_motor_1_motor{std::make_unique<pros_adapters::ProsV5Motor>(elevator_pros_motor_1)};
+    std::unique_ptr<pros::Motor> elevator_pros_motor_2{std::make_unique<pros::Motor>(ELEVATOR_MOTOR_2_PORT, ELEVATOR_MOTOR_2_GEARSET)};
+    std::unique_ptr<wisco::io::IMotor> elevator_pros_motor_2_motor{std::make_unique<pros_adapters::ProsV5Motor>(elevator_pros_motor_2)};
+    if (ELEVATOR_ROTATION_SENSOR_PORT)
+    {
+        std::unique_ptr<pros::Rotation> elevator_pros_rotation{std::make_unique<pros::Rotation>(ELEVATOR_ROTATION_SENSOR_PORT)};
+        std::unique_ptr<wisco::io::IRotationSensor> elevator_pros_rotation_sensor{std::make_unique<pros_adapters::ProsRotation>(elevator_pros_rotation)};
+        pid_elevator_builder.withRotationSensor(elevator_pros_rotation_sensor);
+    }
+    std::unique_ptr<wisco::robot::subsystems::elevator::IElevator> pid_elevator
+    {
+        pid_elevator_builder.
+        withClock(elevator_pros_clock)->
+        withDelayer(elevator_pros_delayer)->
+        withMutex(elevator_pros_mutex)->
+        withTask(elevator_pros_task)->
+        withPID(elevator_pid)->
+        withMotor(elevator_pros_motor_1_motor)->
+        withMotor(elevator_pros_motor_2_motor)->
+        withInchesPerRadian(ELEVATOR_INCHES_PER_RADIAN)->
+        build()
+    };
+    std::unique_ptr<wisco::robot::ASubsystem> elevator_subsystem{std::make_unique<wisco::robot::subsystems::elevator::ElevatorSubsystem>(pid_elevator)};
+    robot->addSubsystem(elevator_subsystem);
     
     return robot;
 }

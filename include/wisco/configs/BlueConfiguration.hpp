@@ -25,6 +25,10 @@
 #include "wisco/robot/subsystems/intake/PIDIntakeBuilder.hpp"
 #include "wisco/robot/subsystems/intake/IntakeSubsystem.hpp"
 
+// elevator inclues
+#include "wisco/robot/subsystems/elevator/PIDElevatorBuilder.hpp"
+#include "wisco/robot/subsystems/elevator/ElevatorSubsystem.hpp"
+
 #include "wisco/IConfiguration.hpp"
 
 /**
@@ -302,6 +306,60 @@ private:
 	 * 
 	 */
 	static constexpr double INTAKE_ROLLER_RADIUS{};
+
+	/**
+	 * @brief The KP for the elevator PID
+	 * 
+	 */
+	static constexpr double ELEVATOR_KP{};
+
+	/**
+	 * @brief The KI for the elevator PID
+	 * 
+	 */
+	static constexpr double ELEVATOR_KI{};
+
+	/**
+	 * @brief The KD for the elevator PID
+	 * 
+	 */
+	static constexpr double ELEVATOR_KD{};
+
+	/**
+	 * @brief The first elevator motor port
+	 * 
+	 */
+	static constexpr int8_t ELEVATOR_MOTOR_1_PORT{};
+
+	/**
+	 * @brief The first elevator motor gearset
+	 * 
+	 */
+	static constexpr pros::v5::MotorGears ELEVATOR_MOTOR_1_GEARSET{pros::E_MOTOR_GEARSET_18};
+
+	/**
+	 * @brief The second elevator motor port
+	 * 
+	 */
+	static constexpr int8_t ELEVATOR_MOTOR_2_PORT{};
+
+	/**
+	 * @brief The second elevator motor gearset
+	 * 
+	 */
+	static constexpr pros::v5::MotorGears ELEVATOR_MOTOR_2_GEARSET{pros::E_MOTOR_GEARSET_18};
+
+	/**
+	 * @brief The elevator rotation sensor port
+	 * 
+	 */
+	static constexpr int8_t ELEVATOR_ROTATION_SENSOR_PORT{};
+
+	/**
+	 * @brief The number of inches moved per radian on the elevator
+	 * 
+	 */
+	static constexpr double ELEVATOR_INCHES_PER_RADIAN{};
 
 public:
     /**
