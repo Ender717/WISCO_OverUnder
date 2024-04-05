@@ -1,5 +1,5 @@
-#ifndef WISCO_USER_INTAKE_OPERATOR_HPP
-#define WISCO_USER_INTAKE_OPERATOR_HPP
+#ifndef WISCO_USER_ELEVATOR_OPERATOR_HPP
+#define WISCO_USER_ELEVATOR_OPERATOR_HPP
 
 #include <memory>
 
@@ -54,7 +54,13 @@ private:
      * @brief The command to set elevator position
      * 
      */
-    static constexpr char SET_VOLTAGE_COMMAND[]{"SET POSITION"};
+    static constexpr char SET_POSITION_COMMAND[]{"SET POSITION"};
+
+    /**
+     * @brief The state to get elevator position
+     * 
+     */
+    static constexpr char GET_POSITION_STATE[]{"GET POSITION"};
 
     /**
      * @brief The in position for the elevator
@@ -97,6 +103,19 @@ private:
      * 
      */
     EToggleState toggle_state{EToggleState::IN};
+
+    /**
+     * @brief Whether or not there is currently manual input
+     * 
+     */
+    bool manual_input{};
+
+    /**
+     * @brief Gets the current elevator position
+     * 
+     * @return double The current elevator position
+     */
+    double getElevatorPosition();
 
     /**
      * @brief Updates the position of the elevator subsystem

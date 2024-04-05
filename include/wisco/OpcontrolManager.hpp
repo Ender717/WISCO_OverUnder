@@ -10,6 +10,7 @@
 #include "robot/Robot.hpp"
 
 #include "user/DifferentialDriveOperator.hpp"
+#include "user/ElevatorOperator.hpp"
 #include "user/IntakeOperator.hpp"
 
 /**

@@ -24,14 +24,14 @@ namespace user
  */
 enum class EControl
 {
-    INTAKE_IN,
-    INTAKE_OUT,
-    INTAKE_TOGGLE,
     ELEVATOR_IN,
     ELEVATOR_FIELD,
     ELEVATOR_MATCH_LOAD,
     ELEVATOR_OUT,
-    ELEVATOR_TOGGLE
+    ELEVATOR_TOGGLE,
+    INTAKE_IN,
+    INTAKE_OUT,
+    INTAKE_TOGGLE
 };
 } // namespace user
 } // namespace wisco
