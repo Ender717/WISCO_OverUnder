@@ -41,6 +41,8 @@ void PIDElevator::initialize()
 {
     m_pid.reset();
     m_motors.initialize();
+    if (m_rotation_sensor)
+        m_rotation_sensor->initialize();
 }
 
 void PIDElevator::run()

@@ -1,5 +1,5 @@
-#ifndef WISCO_USER_E_CONTROL_HPP
-#define WISCO_USER_E_CONTROL_HPP
+#ifndef WISCO_USER_E_ELEVATOR_CONTROL_MODE_HPP
+#define WISCO_USER_E_ELEVATOR_CONTROL_MODE_HPP
 
 /**
  * @brief Namespace for all library code
@@ -18,20 +18,16 @@ namespace user
 {
 
 /**
- * @brief Defines all different control inputs
+ * @brief Defines all different elevator control formats
  * @author Nathan Sandvig
  * 
  */
-enum class EControl
+enum class EElevatorControlMode
 {
-    INTAKE_IN,
-    INTAKE_OUT,
-    INTAKE_TOGGLE,
-    ELEVATOR_IN,
-    ELEVATOR_FIELD,
-    ELEVATOR_MATCH_LOAD,
-    ELEVATOR_OUT,
-    ELEVATOR_TOGGLE
+    MANUAL,
+    PRESET_SPLIT,
+    PRESET_TOGGLE_SINGLE,
+    PRESET_TOGGLE_LADDER
 };
 } // namespace user
 } // namespace wisco

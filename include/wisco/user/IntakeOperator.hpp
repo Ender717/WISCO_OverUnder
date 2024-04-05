@@ -44,13 +44,13 @@ private:
     };
 
     /**
-     * @brief The name of the differential drive subsystem
+     * @brief The name of the intake subsystem
      * 
      */
     static constexpr char INTAKE_SUBSYSTEM_NAME[]{"INTAKE"};
 
     /**
-     * @brief The command to set drive voltage
+     * @brief The command to set intake voltage
      * 
      */
     static constexpr char SET_VOLTAGE_COMMAND[]{"SET VOLTAGE"};
@@ -93,19 +93,19 @@ private:
     void updateToggleVoltage();
 
     /**
-     * @brief Update the drive voltage for single left stick arcade drive
+     * @brief Update the voltage for single button toggle
      * 
      */
     void updateSingleToggle(EControllerDigital toggle);
 
     /**
-     * @brief Update the drive voltage for single right stick arcade drive
+     * @brief Update the voltage for split button hold
      * 
      */
     void updateSplitHold(EControllerDigital in, EControllerDigital out);
 
     /**
-     * @brief Update the drive voltage for split stick arcade with left stick forward control
+     * @brief Update the voltage for split button toggle
      * 
      */
     void updateSplitToggle(EControllerDigital in, EControllerDigital out);
@@ -123,7 +123,7 @@ public:
     /**
      * @brief Set the intake voltage
      * 
-     * @param control_mode The control mode of the intake
+     * @param profile The driver profile
      */
     void setIntakeVoltage(const std::unique_ptr<IProfile>& profile);
 };
