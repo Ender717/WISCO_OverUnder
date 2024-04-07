@@ -1,0 +1,342 @@
+\doxysection{wisco\+::hal\+::Distance\+Boolean\+Sensor Class Reference}
+\hypertarget{classwisco_1_1hal_1_1_distance_boolean_sensor}{}\label{classwisco_1_1hal_1_1_distance_boolean_sensor}\index{wisco::hal::DistanceBooleanSensor@{wisco::hal::DistanceBooleanSensor}}
+
+
+A distance sensor used to create boolean outputs.  
+
+
+Inheritance diagram for wisco\+::hal\+::Distance\+Boolean\+Sensor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classwisco_1_1hal_1_1_distance_boolean_sensor}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_aba04e8522dbb4ee6c16d37abc981ba47}{Distance\+Boolean\+Sensor}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1io_1_1_i_distance_sensor}{io\+::\+IDistance\+Sensor}} $>$ \&distance\+\_\+sensor, \mbox{\hyperlink{namespacewisco_1_1hal_a7cd370cb155dea2f3660a4c487d488cc}{Distance\+Boolean\+Mode}} mode, double lower\+\_\+threshold)
+\begin{DoxyCompactList}\small\item\em Construct a new Distance Boolean Sensor object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_ab6a1731e8ddcacf5f18554520ad0a759}{Distance\+Boolean\+Sensor}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1io_1_1_i_distance_sensor}{io\+::\+IDistance\+Sensor}} $>$ \&distance\+\_\+sensor, \mbox{\hyperlink{namespacewisco_1_1hal_a7cd370cb155dea2f3660a4c487d488cc}{Distance\+Boolean\+Mode}} mode, double lower\+\_\+threshold, double upper\+\_\+threshold)
+\begin{DoxyCompactList}\small\item\em Construct a new Distance Boolean Sensor object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a6c476324c40a9c95ee2e93f384e59839}{initialize}} ()=0
+\begin{DoxyCompactList}\small\item\em Initializes the sensor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a766e7b04137bb47eb1d2092197ffe854}{reset}} ()=0
+\begin{DoxyCompactList}\small\item\em Resets the sensor. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_abd6669d4ed7314cceee57b65a015eeb6}{get\+Value}} ()=0
+\begin{DoxyCompactList}\small\item\em Get the boolean value of the sensor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classwisco_1_1io_1_1_i_boolean_sensor}{wisco\+::io\+::\+IBoolean\+Sensor}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IBoolean\+Sensor} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classwisco_1_1io_1_1_i_boolean_sensor}{IBoolean\+Sensor} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1io_1_1_i_distance_sensor}{io\+::\+IDistance\+Sensor}} $>$ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_aee13f9d02e29dbc3abbe144362b0aac6}{m\+\_\+distance\+\_\+sensor}} \{\}
+\begin{DoxyCompactList}\small\item\em The distance sensor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacewisco_1_1hal_a7cd370cb155dea2f3660a4c487d488cc}{Distance\+Boolean\+Mode}} \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_aaed79418a2936bc143bec92a57cf7750}{m\+\_\+mode}} \{\}
+\begin{DoxyCompactList}\small\item\em The mode of the sensor. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a278954e5a9cff7428564a61029d5a90a}{m\+\_\+lower\+\_\+threshold}} \{\}
+\begin{DoxyCompactList}\small\item\em The lower threshold of the sensor. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a43aab50423d90d531987c48a05adbffd}{m\+\_\+upper\+\_\+threshold}} \{\}
+\begin{DoxyCompactList}\small\item\em The upper threshold of the sensor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a5173045e64a2a14765f5f215cf522607}{value}} \{\}
+\begin{DoxyCompactList}\small\item\em The current boolean value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A distance sensor used to create boolean outputs. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Sandvig 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_distance_boolean_sensor_8hpp_source_l00032}{32}} of file \mbox{\hyperlink{_distance_boolean_sensor_8hpp_source}{Distance\+Boolean\+Sensor.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classwisco_1_1hal_1_1_distance_boolean_sensor_aba04e8522dbb4ee6c16d37abc981ba47}\label{classwisco_1_1hal_1_1_distance_boolean_sensor_aba04e8522dbb4ee6c16d37abc981ba47} 
+\index{wisco::hal::DistanceBooleanSensor@{wisco::hal::DistanceBooleanSensor}!DistanceBooleanSensor@{DistanceBooleanSensor}}
+\index{DistanceBooleanSensor@{DistanceBooleanSensor}!wisco::hal::DistanceBooleanSensor@{wisco::hal::DistanceBooleanSensor}}
+\doxysubsubsection{\texorpdfstring{DistanceBooleanSensor()}{DistanceBooleanSensor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily wisco\+::hal\+::\+Distance\+Boolean\+Sensor\+::\+Distance\+Boolean\+Sensor (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1io_1_1_i_distance_sensor}{io\+::\+IDistance\+Sensor}} $>$ \&}]{distance\+\_\+sensor,  }\item[{\mbox{\hyperlink{namespacewisco_1_1hal_a7cd370cb155dea2f3660a4c487d488cc}{Distance\+Boolean\+Mode}}}]{mode,  }\item[{double}]{lower\+\_\+threshold }\end{DoxyParamCaption})}
+
+
+
+Construct a new Distance Boolean Sensor object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em distance\+\_\+sensor} & The distance sensor \\
+\hline
+{\em mode} & The mode of the sensor \\
+\hline
+{\em lower\+\_\+threshold} & The lower threshold of the sensor \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_distance_boolean_sensor_8cpp_source_l00007}{7}} of file \mbox{\hyperlink{_distance_boolean_sensor_8cpp_source}{Distance\+Boolean\+Sensor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00010\ \ \ \ \ :\ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_aee13f9d02e29dbc3abbe144362b0aac6}{m\_distance\_sensor}}\{std::move(distance\_sensor)\},\ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_aaed79418a2936bc143bec92a57cf7750}{m\_mode}}\{mode\},\ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a278954e5a9cff7428564a61029d5a90a}{m\_lower\_threshold}}\{lower\_threshold\},\ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a43aab50423d90d531987c48a05adbffd}{m\_upper\_threshold}}\{lower\_threshold\}}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1hal_1_1_distance_boolean_sensor_ab6a1731e8ddcacf5f18554520ad0a759}\label{classwisco_1_1hal_1_1_distance_boolean_sensor_ab6a1731e8ddcacf5f18554520ad0a759} 
+\index{wisco::hal::DistanceBooleanSensor@{wisco::hal::DistanceBooleanSensor}!DistanceBooleanSensor@{DistanceBooleanSensor}}
+\index{DistanceBooleanSensor@{DistanceBooleanSensor}!wisco::hal::DistanceBooleanSensor@{wisco::hal::DistanceBooleanSensor}}
+\doxysubsubsection{\texorpdfstring{DistanceBooleanSensor()}{DistanceBooleanSensor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily wisco\+::hal\+::\+Distance\+Boolean\+Sensor\+::\+Distance\+Boolean\+Sensor (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1io_1_1_i_distance_sensor}{io\+::\+IDistance\+Sensor}} $>$ \&}]{distance\+\_\+sensor,  }\item[{\mbox{\hyperlink{namespacewisco_1_1hal_a7cd370cb155dea2f3660a4c487d488cc}{Distance\+Boolean\+Mode}}}]{mode,  }\item[{double}]{lower\+\_\+threshold,  }\item[{double}]{upper\+\_\+threshold }\end{DoxyParamCaption})}
+
+
+
+Construct a new Distance Boolean Sensor object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em distance\+\_\+sensor} & The distance sensor \\
+\hline
+{\em mode} & The mode of the sensor \\
+\hline
+{\em lower\+\_\+threshold} & The lower threshold of the sensor \\
+\hline
+{\em upper\+\_\+threshold} & The upper threshold of the sensor \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_distance_boolean_sensor_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{_distance_boolean_sensor_8cpp_source}{Distance\+Boolean\+Sensor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00019\ \ \ \ \ :\ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_aee13f9d02e29dbc3abbe144362b0aac6}{m\_distance\_sensor}}\{std::move(distance\_sensor)\},\ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_aaed79418a2936bc143bec92a57cf7750}{m\_mode}}\{mode\},\ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a278954e5a9cff7428564a61029d5a90a}{m\_lower\_threshold}}\{lower\_threshold\},\ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a43aab50423d90d531987c48a05adbffd}{m\_upper\_threshold}}\{upper\_threshold\}}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ }
+\DoxyCodeLine{00022\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classwisco_1_1hal_1_1_distance_boolean_sensor_a6c476324c40a9c95ee2e93f384e59839}\label{classwisco_1_1hal_1_1_distance_boolean_sensor_a6c476324c40a9c95ee2e93f384e59839} 
+\index{wisco::hal::DistanceBooleanSensor@{wisco::hal::DistanceBooleanSensor}!initialize@{initialize}}
+\index{initialize@{initialize}!wisco::hal::DistanceBooleanSensor@{wisco::hal::DistanceBooleanSensor}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void wisco\+::hal\+::\+Distance\+Boolean\+Sensor\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Initializes the sensor. 
+
+
+
+Implements \mbox{\hyperlink{classwisco_1_1io_1_1_i_boolean_sensor_a92db7f505d70f9a6b66c93a77ff239ce}{wisco\+::io\+::\+IBoolean\+Sensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_distance_boolean_sensor_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{_distance_boolean_sensor_8cpp_source}{Distance\+Boolean\+Sensor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a766e7b04137bb47eb1d2092197ffe854}{reset}}();}
+\DoxyCodeLine{00027\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1hal_1_1_distance_boolean_sensor_a766e7b04137bb47eb1d2092197ffe854}\label{classwisco_1_1hal_1_1_distance_boolean_sensor_a766e7b04137bb47eb1d2092197ffe854} 
+\index{wisco::hal::DistanceBooleanSensor@{wisco::hal::DistanceBooleanSensor}!reset@{reset}}
+\index{reset@{reset}!wisco::hal::DistanceBooleanSensor@{wisco::hal::DistanceBooleanSensor}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void wisco\+::hal\+::\+Distance\+Boolean\+Sensor\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Resets the sensor. 
+
+
+
+Implements \mbox{\hyperlink{classwisco_1_1io_1_1_i_boolean_sensor_a059be4eacc42a5e5ecc26b2e2ed11fcf}{wisco\+::io\+::\+IBoolean\+Sensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_distance_boolean_sensor_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{_distance_boolean_sensor_8cpp_source}{Distance\+Boolean\+Sensor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_aee13f9d02e29dbc3abbe144362b0aac6}{m\_distance\_sensor}})}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{double}\ distance\{\mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_aee13f9d02e29dbc3abbe144362b0aac6}{m\_distance\_sensor}}-\/>getDistance()\};}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{switch}\ (\mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_aaed79418a2936bc143bec92a57cf7750}{m\_mode}})}
+\DoxyCodeLine{00036\ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordflow}{case}\ DistanceBooleanMode::ABOVE\_THRESHOLD:}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a5173045e64a2a14765f5f215cf522607}{value}}\ =\ distance\ >\ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a43aab50423d90d531987c48a05adbffd}{m\_upper\_threshold}};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{case}\ DistanceBooleanMode::BELOW\_THRESHOLD:}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a5173045e64a2a14765f5f215cf522607}{value}}\ =\ distance\ <\ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a278954e5a9cff7428564a61029d5a90a}{m\_lower\_threshold}};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordflow}{case}\ DistanceBooleanMode::BETWEEN\_THRESHOLD:}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a5173045e64a2a14765f5f215cf522607}{value}}\ =\ (distance\ >\ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a278954e5a9cff7428564a61029d5a90a}{m\_lower\_threshold}}\ \&\&}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ distance\ <\ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a43aab50423d90d531987c48a05adbffd}{m\_upper\_threshold}});}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00047\ \ \ \ \ \}}
+\DoxyCodeLine{00048\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1hal_1_1_distance_boolean_sensor_abd6669d4ed7314cceee57b65a015eeb6}\label{classwisco_1_1hal_1_1_distance_boolean_sensor_abd6669d4ed7314cceee57b65a015eeb6} 
+\index{wisco::hal::DistanceBooleanSensor@{wisco::hal::DistanceBooleanSensor}!getValue@{getValue}}
+\index{getValue@{getValue}!wisco::hal::DistanceBooleanSensor@{wisco::hal::DistanceBooleanSensor}}
+\doxysubsubsection{\texorpdfstring{getValue()}{getValue()}}
+{\footnotesize\ttfamily bool wisco\+::hal\+::\+Distance\+Boolean\+Sensor\+::get\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the boolean value of the sensor. 
+
+\begin{DoxyReturn}{Returns}
+bool The value of the sensor 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1io_1_1_i_boolean_sensor_af0844b87bf37da155204b13974dfafd1}{wisco\+::io\+::\+IBoolean\+Sensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_distance_boolean_sensor_8cpp_source_l00050}{50}} of file \mbox{\hyperlink{_distance_boolean_sensor_8cpp_source}{Distance\+Boolean\+Sensor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00051\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{double}\ distance\{\};}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_aee13f9d02e29dbc3abbe144362b0aac6}{m\_distance\_sensor}})}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ distance\ =\ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_aee13f9d02e29dbc3abbe144362b0aac6}{m\_distance\_sensor}}-\/>getDistance();}
+\DoxyCodeLine{00055\ \ \ \ \ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordflow}{switch}\ (\mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_aaed79418a2936bc143bec92a57cf7750}{m\_mode}})}
+\DoxyCodeLine{00057\ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordflow}{case}\ DistanceBooleanMode::ABOVE\_THRESHOLD:}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a5173045e64a2a14765f5f215cf522607}{value}})}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a5173045e64a2a14765f5f215cf522607}{value}}\ =\ distance\ >\ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a278954e5a9cff7428564a61029d5a90a}{m\_lower\_threshold}};}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a5173045e64a2a14765f5f215cf522607}{value}}\ =\ distance\ >\ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a43aab50423d90d531987c48a05adbffd}{m\_upper\_threshold}};}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{case}\ DistanceBooleanMode::BELOW\_THRESHOLD:}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a5173045e64a2a14765f5f215cf522607}{value}})}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a5173045e64a2a14765f5f215cf522607}{value}}\ =\ distance\ <\ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a43aab50423d90d531987c48a05adbffd}{m\_upper\_threshold}};}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a5173045e64a2a14765f5f215cf522607}{value}}\ =\ distance\ <\ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a278954e5a9cff7428564a61029d5a90a}{m\_lower\_threshold}};}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordflow}{case}\ DistanceBooleanMode::BETWEEN\_THRESHOLD:}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a5173045e64a2a14765f5f215cf522607}{value}}\ =\ (distance\ >\ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a278954e5a9cff7428564a61029d5a90a}{m\_lower\_threshold}}\ \&\&}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ distance\ <\ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a43aab50423d90d531987c48a05adbffd}{m\_upper\_threshold}});}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00074\ \ \ \ \ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classwisco_1_1hal_1_1_distance_boolean_sensor_a5173045e64a2a14765f5f215cf522607}{value}};}
+\DoxyCodeLine{00077\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classwisco_1_1hal_1_1_distance_boolean_sensor_aee13f9d02e29dbc3abbe144362b0aac6}\label{classwisco_1_1hal_1_1_distance_boolean_sensor_aee13f9d02e29dbc3abbe144362b0aac6} 
+\index{wisco::hal::DistanceBooleanSensor@{wisco::hal::DistanceBooleanSensor}!m\_distance\_sensor@{m\_distance\_sensor}}
+\index{m\_distance\_sensor@{m\_distance\_sensor}!wisco::hal::DistanceBooleanSensor@{wisco::hal::DistanceBooleanSensor}}
+\doxysubsubsection{\texorpdfstring{m\_distance\_sensor}{m\_distance\_sensor}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1io_1_1_i_distance_sensor}{io\+::\+IDistance\+Sensor}}$>$ wisco\+::hal\+::\+Distance\+Boolean\+Sensor\+::m\+\_\+distance\+\_\+sensor \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The distance sensor. 
+
+
+
+Definition at line \mbox{\hyperlink{_distance_boolean_sensor_8hpp_source_l00039}{39}} of file \mbox{\hyperlink{_distance_boolean_sensor_8hpp_source}{Distance\+Boolean\+Sensor.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00039\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1hal_1_1_distance_boolean_sensor_aaed79418a2936bc143bec92a57cf7750}\label{classwisco_1_1hal_1_1_distance_boolean_sensor_aaed79418a2936bc143bec92a57cf7750} 
+\index{wisco::hal::DistanceBooleanSensor@{wisco::hal::DistanceBooleanSensor}!m\_mode@{m\_mode}}
+\index{m\_mode@{m\_mode}!wisco::hal::DistanceBooleanSensor@{wisco::hal::DistanceBooleanSensor}}
+\doxysubsubsection{\texorpdfstring{m\_mode}{m\_mode}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacewisco_1_1hal_a7cd370cb155dea2f3660a4c487d488cc}{Distance\+Boolean\+Mode}} wisco\+::hal\+::\+Distance\+Boolean\+Sensor\+::m\+\_\+mode \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The mode of the sensor. 
+
+
+
+Definition at line \mbox{\hyperlink{_distance_boolean_sensor_8hpp_source_l00045}{45}} of file \mbox{\hyperlink{_distance_boolean_sensor_8hpp_source}{Distance\+Boolean\+Sensor.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00045\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1hal_1_1_distance_boolean_sensor_a278954e5a9cff7428564a61029d5a90a}\label{classwisco_1_1hal_1_1_distance_boolean_sensor_a278954e5a9cff7428564a61029d5a90a} 
+\index{wisco::hal::DistanceBooleanSensor@{wisco::hal::DistanceBooleanSensor}!m\_lower\_threshold@{m\_lower\_threshold}}
+\index{m\_lower\_threshold@{m\_lower\_threshold}!wisco::hal::DistanceBooleanSensor@{wisco::hal::DistanceBooleanSensor}}
+\doxysubsubsection{\texorpdfstring{m\_lower\_threshold}{m\_lower\_threshold}}
+{\footnotesize\ttfamily double wisco\+::hal\+::\+Distance\+Boolean\+Sensor\+::m\+\_\+lower\+\_\+threshold \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The lower threshold of the sensor. 
+
+
+
+Definition at line \mbox{\hyperlink{_distance_boolean_sensor_8hpp_source_l00051}{51}} of file \mbox{\hyperlink{_distance_boolean_sensor_8hpp_source}{Distance\+Boolean\+Sensor.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00051\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1hal_1_1_distance_boolean_sensor_a43aab50423d90d531987c48a05adbffd}\label{classwisco_1_1hal_1_1_distance_boolean_sensor_a43aab50423d90d531987c48a05adbffd} 
+\index{wisco::hal::DistanceBooleanSensor@{wisco::hal::DistanceBooleanSensor}!m\_upper\_threshold@{m\_upper\_threshold}}
+\index{m\_upper\_threshold@{m\_upper\_threshold}!wisco::hal::DistanceBooleanSensor@{wisco::hal::DistanceBooleanSensor}}
+\doxysubsubsection{\texorpdfstring{m\_upper\_threshold}{m\_upper\_threshold}}
+{\footnotesize\ttfamily double wisco\+::hal\+::\+Distance\+Boolean\+Sensor\+::m\+\_\+upper\+\_\+threshold \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The upper threshold of the sensor. 
+
+
+
+Definition at line \mbox{\hyperlink{_distance_boolean_sensor_8hpp_source_l00057}{57}} of file \mbox{\hyperlink{_distance_boolean_sensor_8hpp_source}{Distance\+Boolean\+Sensor.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00057\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1hal_1_1_distance_boolean_sensor_a5173045e64a2a14765f5f215cf522607}\label{classwisco_1_1hal_1_1_distance_boolean_sensor_a5173045e64a2a14765f5f215cf522607} 
+\index{wisco::hal::DistanceBooleanSensor@{wisco::hal::DistanceBooleanSensor}!value@{value}}
+\index{value@{value}!wisco::hal::DistanceBooleanSensor@{wisco::hal::DistanceBooleanSensor}}
+\doxysubsubsection{\texorpdfstring{value}{value}}
+{\footnotesize\ttfamily bool wisco\+::hal\+::\+Distance\+Boolean\+Sensor\+::value \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The current boolean value. 
+
+
+
+Definition at line \mbox{\hyperlink{_distance_boolean_sensor_8hpp_source_l00063}{63}} of file \mbox{\hyperlink{_distance_boolean_sensor_8hpp_source}{Distance\+Boolean\+Sensor.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00063\ \{\};}
+
+\end{DoxyCode}

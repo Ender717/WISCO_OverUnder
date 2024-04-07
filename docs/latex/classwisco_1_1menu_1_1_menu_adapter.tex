@@ -1,0 +1,534 @@
+\doxysection{wisco\+::menu\+::Menu\+Adapter Class Reference}
+\hypertarget{classwisco_1_1menu_1_1_menu_adapter}{}\label{classwisco_1_1menu_1_1_menu_adapter}\index{wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}}
+
+
+This class adapts the menu system to the \doxylink{classwisco_1_1_i_menu}{IMenu} interface.  
+
+
+Inheritance diagram for wisco\+::menu\+::Menu\+Adapter\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classwisco_1_1menu_1_1_menu_adapter}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_aa207b014b7e3081a6b2972906722f47a}{add\+Alliance}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1_i_alliance}{IAlliance}} $>$ \&alliance) override
+\begin{DoxyCompactList}\small\item\em Adds an alliance to the menu system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a0daa29300fb24b0517da3268efe7452f}{add\+Autonomous}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1_i_autonomous}{IAutonomous}} $>$ \&autonomous) override
+\begin{DoxyCompactList}\small\item\em Adds an autonomous routine to the menu system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_aef78af4ab009362faba3a0dfe8b339fc}{add\+Configuration}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1_i_configuration}{IConfiguration}} $>$ \&configuration) override
+\begin{DoxyCompactList}\small\item\em Adds a hardware configuration to the menu system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a25a696424455b8c6f591615d6cd857ba}{add\+Profile}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1_i_profile}{IProfile}} $>$ \&profile) override
+\begin{DoxyCompactList}\small\item\em Adds a driver profile to the menu system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a77ccef19f25b39a6b865454535bb8bfc}{display}} () override
+\begin{DoxyCompactList}\small\item\em Displays the menu. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a1e70f31f2ca9e544d58dd9ea41be2bc3}{is\+Started}} () override
+\begin{DoxyCompactList}\small\item\em Checks if the system is started. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structwisco_1_1_system_configuration}{System\+Configuration}} \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_aa983629174639d8709be1c71ccf03fbc}{get\+System\+Configuration}} () override
+\begin{DoxyCompactList}\small\item\em Get the System Configuration settings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classwisco_1_1_i_menu}{wisco\+::\+IMenu}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IMenu} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classwisco_1_1_i_menu}{IMenu} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1_i_alliance}{IAlliance}} $>$ $>$ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_ac01f3904d90c9697a5e3c7f4e5ccafca}{alliances}} \{\}
+\begin{DoxyCompactList}\small\item\em The alliances available in the menu system. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1_i_autonomous}{IAutonomous}} $>$ $>$ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a64dd566b6dba800332aec30ad7b04685}{autonomous\+\_\+routines}} \{\}
+\begin{DoxyCompactList}\small\item\em The autonomous routines available in the menu system. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1_i_configuration}{IConfiguration}} $>$ $>$ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a095ab0735f62618d8ae9cfae0fb05a6c}{hardware\+\_\+configurations}} \{\}
+\begin{DoxyCompactList}\small\item\em The hardware configurations available in the menu system. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1_i_profile}{IProfile}} $>$ $>$ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a400cb933cfe447898a7ee667eee167d9}{driver\+\_\+profiles}} \{\}
+\begin{DoxyCompactList}\small\item\em The driver profiles available in the menu system. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu}{Lvgl\+Menu}} \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_af6ae66e24dce580a65e5beb567e2c6d9}{lvgl\+\_\+menu}} \{\}
+\begin{DoxyCompactList}\small\item\em The lvgl menu being adapted. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr char \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a1f2c98547f7b9307da1db255c4f51ba7}{ALLIANCE\+\_\+\+OPTION\+\_\+\+NAME}} \mbox{[}$\,$\mbox{]} \{"{}ALLIANCE"{}\}
+\begin{DoxyCompactList}\small\item\em The alliance option name. \end{DoxyCompactList}\item 
+static constexpr char \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a337af26bb64c67b1851f77c9b1757abe}{AUTONOMOUS\+\_\+\+OPTION\+\_\+\+NAME}} \mbox{[}$\,$\mbox{]} \{"{}AUTON"{}\}
+\begin{DoxyCompactList}\small\item\em The autonomous option name. \end{DoxyCompactList}\item 
+static constexpr char \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a2e5ec7e0165930f86a41cd171577db50}{CONFIGURATION\+\_\+\+OPTION\+\_\+\+NAME}} \mbox{[}$\,$\mbox{]} \{"{}CONFIG"{}\}
+\begin{DoxyCompactList}\small\item\em The configuration option name. \end{DoxyCompactList}\item 
+static constexpr char \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a8c2350b2fae34b06c7635d4a84541fe0}{PROFILE\+\_\+\+OPTION\+\_\+\+NAME}} \mbox{[}$\,$\mbox{]} \{"{}PROFILE"{}\}
+\begin{DoxyCompactList}\small\item\em The profile option name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class adapts the menu system to the \doxylink{classwisco_1_1_i_menu}{IMenu} interface. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Sandvig 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_menu_adapter_8hpp_source_l00029}{29}} of file \mbox{\hyperlink{_menu_adapter_8hpp_source}{Menu\+Adapter.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classwisco_1_1menu_1_1_menu_adapter_aa207b014b7e3081a6b2972906722f47a}\label{classwisco_1_1menu_1_1_menu_adapter_aa207b014b7e3081a6b2972906722f47a} 
+\index{wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}!addAlliance@{addAlliance}}
+\index{addAlliance@{addAlliance}!wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}}
+\doxysubsubsection{\texorpdfstring{addAlliance()}{addAlliance()}}
+{\footnotesize\ttfamily void wisco\+::menu\+::\+Menu\+Adapter\+::add\+Alliance (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1_i_alliance}{IAlliance}} $>$ \&}]{alliance }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Adds an alliance to the menu system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em alliance} & The new alliance \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1_i_menu_a8883f0b3dc9f879c3a8aba5685f75f20}{wisco\+::\+IMenu}}.
+
+
+
+Definition at line \mbox{\hyperlink{_menu_adapter_8cpp_source_l00008}{8}} of file \mbox{\hyperlink{_menu_adapter_8cpp_source}{Menu\+Adapter.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{bool}\ unique\{\textcolor{keyword}{true}\};}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordflow}{for}\ (std::unique\_ptr<IAlliance>\&\ existing\_alliance\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_ac01f3904d90c9697a5e3c7f4e5ccafca}{alliances}})}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ if\ (existing\_alliance-\/>getName()\ ==\ alliance-\/>getName())}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ unique\ =\ false;}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordflow}{if}\ (unique)}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_ac01f3904d90c9697a5e3c7f4e5ccafca}{alliances}}.push\_back(std::move(alliance));}
+\DoxyCodeLine{00016\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_menu_adapter_a0daa29300fb24b0517da3268efe7452f}\label{classwisco_1_1menu_1_1_menu_adapter_a0daa29300fb24b0517da3268efe7452f} 
+\index{wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}!addAutonomous@{addAutonomous}}
+\index{addAutonomous@{addAutonomous}!wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}}
+\doxysubsubsection{\texorpdfstring{addAutonomous()}{addAutonomous()}}
+{\footnotesize\ttfamily void wisco\+::menu\+::\+Menu\+Adapter\+::add\+Autonomous (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1_i_autonomous}{IAutonomous}} $>$ \&}]{autonomous }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Adds an autonomous routine to the menu system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em autonomous} & The new autonomous routine \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1_i_menu_ac71dbb8cb208426a44770740e5345c6b}{wisco\+::\+IMenu}}.
+
+
+
+Definition at line \mbox{\hyperlink{_menu_adapter_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{_menu_adapter_8cpp_source}{Menu\+Adapter.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{bool}\ unique\{\textcolor{keyword}{true}\};}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordflow}{for}\ (std::unique\_ptr<IAutonomous>\&\ existing\_autonomous\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a64dd566b6dba800332aec30ad7b04685}{autonomous\_routines}})}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ if\ (existing\_autonomous-\/>getName()\ ==\ autonomous-\/>getName())}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ unique\ =\ false;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordflow}{if}\ (unique)}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a64dd566b6dba800332aec30ad7b04685}{autonomous\_routines}}.push\_back(std::move(autonomous));}
+\DoxyCodeLine{00026\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_menu_adapter_aef78af4ab009362faba3a0dfe8b339fc}\label{classwisco_1_1menu_1_1_menu_adapter_aef78af4ab009362faba3a0dfe8b339fc} 
+\index{wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}!addConfiguration@{addConfiguration}}
+\index{addConfiguration@{addConfiguration}!wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}}
+\doxysubsubsection{\texorpdfstring{addConfiguration()}{addConfiguration()}}
+{\footnotesize\ttfamily void wisco\+::menu\+::\+Menu\+Adapter\+::add\+Configuration (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1_i_configuration}{IConfiguration}} $>$ \&}]{configuration }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Adds a hardware configuration to the menu system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em configuration} & The new hardware configuration \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1_i_menu_abe5ec624c7d92450554e9987f9f2e24d}{wisco\+::\+IMenu}}.
+
+
+
+Definition at line \mbox{\hyperlink{_menu_adapter_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{_menu_adapter_8cpp_source}{Menu\+Adapter.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{bool}\ unique\{\textcolor{keyword}{true}\};}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{for}\ (std::unique\_ptr<IConfiguration>\&\ existing\_configuration\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a095ab0735f62618d8ae9cfae0fb05a6c}{hardware\_configurations}})}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ if\ (existing\_configuration-\/>getName()\ ==\ configuration-\/>getName())}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ unique\ =\ false;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordflow}{if}\ (unique)}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a095ab0735f62618d8ae9cfae0fb05a6c}{hardware\_configurations}}.push\_back(std::move(configuration));}
+\DoxyCodeLine{00036\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_menu_adapter_a25a696424455b8c6f591615d6cd857ba}\label{classwisco_1_1menu_1_1_menu_adapter_a25a696424455b8c6f591615d6cd857ba} 
+\index{wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}!addProfile@{addProfile}}
+\index{addProfile@{addProfile}!wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}}
+\doxysubsubsection{\texorpdfstring{addProfile()}{addProfile()}}
+{\footnotesize\ttfamily void wisco\+::menu\+::\+Menu\+Adapter\+::add\+Profile (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1_i_profile}{IProfile}} $>$ \&}]{profile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Adds a driver profile to the menu system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em profile} & The new driver profile \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1_i_menu_aa6d98535a744e0407e974481a80d821c}{wisco\+::\+IMenu}}.
+
+
+
+Definition at line \mbox{\hyperlink{_menu_adapter_8cpp_source_l00038}{38}} of file \mbox{\hyperlink{_menu_adapter_8cpp_source}{Menu\+Adapter.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00039\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{bool}\ unique\{\textcolor{keyword}{true}\};}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{for}\ (std::unique\_ptr<IProfile>\&\ existing\_profile\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a400cb933cfe447898a7ee667eee167d9}{driver\_profiles}})}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ if\ (existing\_profile-\/>getName()\ ==\ profile-\/>getName())}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ unique\ =\ false;}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordflow}{if}\ (unique)}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a400cb933cfe447898a7ee667eee167d9}{driver\_profiles}}.push\_back(std::move(profile));}
+\DoxyCodeLine{00046\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_menu_adapter_a77ccef19f25b39a6b865454535bb8bfc}\label{classwisco_1_1menu_1_1_menu_adapter_a77ccef19f25b39a6b865454535bb8bfc} 
+\index{wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}!display@{display}}
+\index{display@{display}!wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily void wisco\+::menu\+::\+Menu\+Adapter\+::display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Displays the menu. 
+
+
+
+Implements \mbox{\hyperlink{classwisco_1_1_i_menu_a07879d3275176dde62f5c58a9cc69ae2}{wisco\+::\+IMenu}}.
+
+
+
+Definition at line \mbox{\hyperlink{_menu_adapter_8cpp_source_l00048}{48}} of file \mbox{\hyperlink{_menu_adapter_8cpp_source}{Menu\+Adapter.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00049\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ std::vector<std::string>\ alliance\_options\{\};}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordflow}{for}\ (std::unique\_ptr<IAlliance>\&\ alliance\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_ac01f3904d90c9697a5e3c7f4e5ccafca}{alliances}})}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ alliance\_options.push\_back(alliance-\/>getName());}
+\DoxyCodeLine{00053\ \ \ \ \ Option\ alliance\_option\{\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a1f2c98547f7b9307da1db255c4f51ba7}{ALLIANCE\_OPTION\_NAME}},\ alliance\_options\};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ std::vector<std::string>\ autonomous\_options\{\};}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordflow}{for}\ (std::unique\_ptr<IAutonomous>\&\ autonomous\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a64dd566b6dba800332aec30ad7b04685}{autonomous\_routines}})}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ autonomous\_options.push\_back(autonomous-\/>getName());}
+\DoxyCodeLine{00058\ \ \ \ \ Option\ autonomous\_option\{\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a337af26bb64c67b1851f77c9b1757abe}{AUTONOMOUS\_OPTION\_NAME}},\ autonomous\_options\};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ std::vector<std::string>\ configuration\_options\{\};}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordflow}{for}\ (std::unique\_ptr<IConfiguration>\&\ configuration\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a095ab0735f62618d8ae9cfae0fb05a6c}{hardware\_configurations}})}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ configuration\_options.push\_back(configuration-\/>getName());}
+\DoxyCodeLine{00063\ \ \ \ \ Option\ configuration\_option\{\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a2e5ec7e0165930f86a41cd171577db50}{CONFIGURATION\_OPTION\_NAME}},\ configuration\_options\};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ std::vector<std::string>\ profile\_options\{\};}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordflow}{for}\ (std::unique\_ptr<IProfile>\&\ profile\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a400cb933cfe447898a7ee667eee167d9}{driver\_profiles}})}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ profile\_options.push\_back(profile-\/>getName());}
+\DoxyCodeLine{00068\ \ \ \ \ Option\ profile\_option\{\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a8c2350b2fae34b06c7635d4a84541fe0}{PROFILE\_OPTION\_NAME}},\ profile\_options\};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_af6ae66e24dce580a65e5beb567e2c6d9}{lvgl\_menu}}.\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a419ea3f60f4f59008761a1769b672689}{addOption}}(alliance\_option);}
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_af6ae66e24dce580a65e5beb567e2c6d9}{lvgl\_menu}}.\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a419ea3f60f4f59008761a1769b672689}{addOption}}(autonomous\_option);}
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_af6ae66e24dce580a65e5beb567e2c6d9}{lvgl\_menu}}.\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a419ea3f60f4f59008761a1769b672689}{addOption}}(configuration\_option);}
+\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_af6ae66e24dce580a65e5beb567e2c6d9}{lvgl\_menu}}.\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a419ea3f60f4f59008761a1769b672689}{addOption}}(profile\_option);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_af6ae66e24dce580a65e5beb567e2c6d9}{lvgl\_menu}}.\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a82f1a642589a3ddd9d00901d6a4f8ec3}{displayMenu}}();}
+\DoxyCodeLine{00076\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_menu_adapter_a1e70f31f2ca9e544d58dd9ea41be2bc3}\label{classwisco_1_1menu_1_1_menu_adapter_a1e70f31f2ca9e544d58dd9ea41be2bc3} 
+\index{wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}!isStarted@{isStarted}}
+\index{isStarted@{isStarted}!wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}}
+\doxysubsubsection{\texorpdfstring{isStarted()}{isStarted()}}
+{\footnotesize\ttfamily bool wisco\+::menu\+::\+Menu\+Adapter\+::is\+Started (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Checks if the system is started. 
+
+\begin{DoxyReturn}{Returns}
+true The system is started 
+
+false The system is not started 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1_i_menu_ae1c00cb9a94962d70e7fc8c3b3e7bfd6}{wisco\+::\+IMenu}}.
+
+
+
+Definition at line \mbox{\hyperlink{_menu_adapter_8cpp_source_l00078}{78}} of file \mbox{\hyperlink{_menu_adapter_8cpp_source}{Menu\+Adapter.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00079\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_af6ae66e24dce580a65e5beb567e2c6d9}{lvgl\_menu}}.\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_afa7588b532071448c467ade5ba9a7230}{selectionComplete}}();}
+\DoxyCodeLine{00081\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_menu_adapter_aa983629174639d8709be1c71ccf03fbc}\label{classwisco_1_1menu_1_1_menu_adapter_aa983629174639d8709be1c71ccf03fbc} 
+\index{wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}!getSystemConfiguration@{getSystemConfiguration}}
+\index{getSystemConfiguration@{getSystemConfiguration}!wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}}
+\doxysubsubsection{\texorpdfstring{getSystemConfiguration()}{getSystemConfiguration()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwisco_1_1_system_configuration}{System\+Configuration}} wisco\+::menu\+::\+Menu\+Adapter\+::get\+System\+Configuration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the System Configuration settings. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{structwisco_1_1_system_configuration}{System\+Configuration} The system configuration settings 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1_i_menu_ab7b471585266a8968e0a34cf716fe603}{wisco\+::\+IMenu}}.
+
+
+
+Definition at line \mbox{\hyperlink{_menu_adapter_8cpp_source_l00083}{83}} of file \mbox{\hyperlink{_menu_adapter_8cpp_source}{Menu\+Adapter.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00084\ \{}
+\DoxyCodeLine{00085\ \ \ \ \ SystemConfiguration\ system\_configuration\{\};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordflow}{for}\ (std::unique\_ptr<IAlliance>\&\ alliance\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_ac01f3904d90c9697a5e3c7f4e5ccafca}{alliances}})}
+\DoxyCodeLine{00088\ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_af6ae66e24dce580a65e5beb567e2c6d9}{lvgl\_menu}}.\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a585f99981d7252960ffe1be0c56e3e45}{getSelection}}(\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a1f2c98547f7b9307da1db255c4f51ba7}{ALLIANCE\_OPTION\_NAME}})\ ==\ alliance-\/>getName())}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ system\_configuration.alliance\ =\ std::move(alliance);}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \ \ \ \ \}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordflow}{for}\ (std::unique\_ptr<IAutonomous>\&\ autonomous\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a64dd566b6dba800332aec30ad7b04685}{autonomous\_routines}})}
+\DoxyCodeLine{00097\ \ \ \ \ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_af6ae66e24dce580a65e5beb567e2c6d9}{lvgl\_menu}}.\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a585f99981d7252960ffe1be0c56e3e45}{getSelection}}(\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a337af26bb64c67b1851f77c9b1757abe}{AUTONOMOUS\_OPTION\_NAME}})\ ==\ autonomous-\/>getName())}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ system\_configuration.autonomous\ =\ std::move(autonomous);}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \ \ \ \ \}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordflow}{for}\ (std::unique\_ptr<IConfiguration>\&\ configuration\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a095ab0735f62618d8ae9cfae0fb05a6c}{hardware\_configurations}})}
+\DoxyCodeLine{00106\ \ \ \ \ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_af6ae66e24dce580a65e5beb567e2c6d9}{lvgl\_menu}}.\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a585f99981d7252960ffe1be0c56e3e45}{getSelection}}(\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a2e5ec7e0165930f86a41cd171577db50}{CONFIGURATION\_OPTION\_NAME}})\ ==\ configuration-\/>getName())}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ system\_configuration.configuration\ =\ std::move(configuration);}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00112\ \ \ \ \ \}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordflow}{for}\ (std::unique\_ptr<IProfile>\&\ profile\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a400cb933cfe447898a7ee667eee167d9}{driver\_profiles}})}
+\DoxyCodeLine{00115\ \ \ \ \ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_af6ae66e24dce580a65e5beb567e2c6d9}{lvgl\_menu}}.\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a585f99981d7252960ffe1be0c56e3e45}{getSelection}}(\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a8c2350b2fae34b06c7635d4a84541fe0}{PROFILE\_OPTION\_NAME}})\ ==\ profile-\/>getName())}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ system\_configuration.profile\ =\ std::move(profile);}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00121\ \ \ \ \ \}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordflow}{return}\ system\_configuration;}
+\DoxyCodeLine{00124\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classwisco_1_1menu_1_1_menu_adapter_a1f2c98547f7b9307da1db255c4f51ba7}\label{classwisco_1_1menu_1_1_menu_adapter_a1f2c98547f7b9307da1db255c4f51ba7} 
+\index{wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}!ALLIANCE\_OPTION\_NAME@{ALLIANCE\_OPTION\_NAME}}
+\index{ALLIANCE\_OPTION\_NAME@{ALLIANCE\_OPTION\_NAME}!wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}}
+\doxysubsubsection{\texorpdfstring{ALLIANCE\_OPTION\_NAME}{ALLIANCE\_OPTION\_NAME}}
+{\footnotesize\ttfamily constexpr char wisco\+::menu\+::\+Menu\+Adapter\+::\+ALLIANCE\+\_\+\+OPTION\+\_\+\+NAME\mbox{[}$\,$\mbox{]} \{"{}ALLIANCE"{}\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The alliance option name. 
+
+
+
+Definition at line \mbox{\hyperlink{_menu_adapter_8hpp_source_l00036}{36}} of file \mbox{\hyperlink{_menu_adapter_8hpp_source}{Menu\+Adapter.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036\ \{\textcolor{stringliteral}{"{}ALLIANCE"{}}\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_menu_adapter_a337af26bb64c67b1851f77c9b1757abe}\label{classwisco_1_1menu_1_1_menu_adapter_a337af26bb64c67b1851f77c9b1757abe} 
+\index{wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}!AUTONOMOUS\_OPTION\_NAME@{AUTONOMOUS\_OPTION\_NAME}}
+\index{AUTONOMOUS\_OPTION\_NAME@{AUTONOMOUS\_OPTION\_NAME}!wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}}
+\doxysubsubsection{\texorpdfstring{AUTONOMOUS\_OPTION\_NAME}{AUTONOMOUS\_OPTION\_NAME}}
+{\footnotesize\ttfamily constexpr char wisco\+::menu\+::\+Menu\+Adapter\+::\+AUTONOMOUS\+\_\+\+OPTION\+\_\+\+NAME\mbox{[}$\,$\mbox{]} \{"{}AUTON"{}\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The autonomous option name. 
+
+
+
+Definition at line \mbox{\hyperlink{_menu_adapter_8hpp_source_l00042}{42}} of file \mbox{\hyperlink{_menu_adapter_8hpp_source}{Menu\+Adapter.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00042\ \{\textcolor{stringliteral}{"{}AUTON"{}}\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_menu_adapter_a2e5ec7e0165930f86a41cd171577db50}\label{classwisco_1_1menu_1_1_menu_adapter_a2e5ec7e0165930f86a41cd171577db50} 
+\index{wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}!CONFIGURATION\_OPTION\_NAME@{CONFIGURATION\_OPTION\_NAME}}
+\index{CONFIGURATION\_OPTION\_NAME@{CONFIGURATION\_OPTION\_NAME}!wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}}
+\doxysubsubsection{\texorpdfstring{CONFIGURATION\_OPTION\_NAME}{CONFIGURATION\_OPTION\_NAME}}
+{\footnotesize\ttfamily constexpr char wisco\+::menu\+::\+Menu\+Adapter\+::\+CONFIGURATION\+\_\+\+OPTION\+\_\+\+NAME\mbox{[}$\,$\mbox{]} \{"{}CONFIG"{}\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The configuration option name. 
+
+
+
+Definition at line \mbox{\hyperlink{_menu_adapter_8hpp_source_l00048}{48}} of file \mbox{\hyperlink{_menu_adapter_8hpp_source}{Menu\+Adapter.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00048\ \{\textcolor{stringliteral}{"{}CONFIG"{}}\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_menu_adapter_a8c2350b2fae34b06c7635d4a84541fe0}\label{classwisco_1_1menu_1_1_menu_adapter_a8c2350b2fae34b06c7635d4a84541fe0} 
+\index{wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}!PROFILE\_OPTION\_NAME@{PROFILE\_OPTION\_NAME}}
+\index{PROFILE\_OPTION\_NAME@{PROFILE\_OPTION\_NAME}!wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}}
+\doxysubsubsection{\texorpdfstring{PROFILE\_OPTION\_NAME}{PROFILE\_OPTION\_NAME}}
+{\footnotesize\ttfamily constexpr char wisco\+::menu\+::\+Menu\+Adapter\+::\+PROFILE\+\_\+\+OPTION\+\_\+\+NAME\mbox{[}$\,$\mbox{]} \{"{}PROFILE"{}\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The profile option name. 
+
+
+
+Definition at line \mbox{\hyperlink{_menu_adapter_8hpp_source_l00054}{54}} of file \mbox{\hyperlink{_menu_adapter_8hpp_source}{Menu\+Adapter.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00054\ \{\textcolor{stringliteral}{"{}PROFILE"{}}\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_menu_adapter_ac01f3904d90c9697a5e3c7f4e5ccafca}\label{classwisco_1_1menu_1_1_menu_adapter_ac01f3904d90c9697a5e3c7f4e5ccafca} 
+\index{wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}!alliances@{alliances}}
+\index{alliances@{alliances}!wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}}
+\doxysubsubsection{\texorpdfstring{alliances}{alliances}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1_i_alliance}{IAlliance}}$>$ $>$ wisco\+::menu\+::\+Menu\+Adapter\+::alliances \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The alliances available in the menu system. 
+
+
+
+Definition at line \mbox{\hyperlink{_menu_adapter_8hpp_source_l00060}{60}} of file \mbox{\hyperlink{_menu_adapter_8hpp_source}{Menu\+Adapter.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00060\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_menu_adapter_a64dd566b6dba800332aec30ad7b04685}\label{classwisco_1_1menu_1_1_menu_adapter_a64dd566b6dba800332aec30ad7b04685} 
+\index{wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}!autonomous\_routines@{autonomous\_routines}}
+\index{autonomous\_routines@{autonomous\_routines}!wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}}
+\doxysubsubsection{\texorpdfstring{autonomous\_routines}{autonomous\_routines}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1_i_autonomous}{IAutonomous}}$>$ $>$ wisco\+::menu\+::\+Menu\+Adapter\+::autonomous\+\_\+routines \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The autonomous routines available in the menu system. 
+
+
+
+Definition at line \mbox{\hyperlink{_menu_adapter_8hpp_source_l00066}{66}} of file \mbox{\hyperlink{_menu_adapter_8hpp_source}{Menu\+Adapter.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00066\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_menu_adapter_a095ab0735f62618d8ae9cfae0fb05a6c}\label{classwisco_1_1menu_1_1_menu_adapter_a095ab0735f62618d8ae9cfae0fb05a6c} 
+\index{wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}!hardware\_configurations@{hardware\_configurations}}
+\index{hardware\_configurations@{hardware\_configurations}!wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}}
+\doxysubsubsection{\texorpdfstring{hardware\_configurations}{hardware\_configurations}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1_i_configuration}{IConfiguration}}$>$ $>$ wisco\+::menu\+::\+Menu\+Adapter\+::hardware\+\_\+configurations \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The hardware configurations available in the menu system. 
+
+
+
+Definition at line \mbox{\hyperlink{_menu_adapter_8hpp_source_l00072}{72}} of file \mbox{\hyperlink{_menu_adapter_8hpp_source}{Menu\+Adapter.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00072\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_menu_adapter_a400cb933cfe447898a7ee667eee167d9}\label{classwisco_1_1menu_1_1_menu_adapter_a400cb933cfe447898a7ee667eee167d9} 
+\index{wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}!driver\_profiles@{driver\_profiles}}
+\index{driver\_profiles@{driver\_profiles}!wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}}
+\doxysubsubsection{\texorpdfstring{driver\_profiles}{driver\_profiles}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1_i_profile}{IProfile}}$>$ $>$ wisco\+::menu\+::\+Menu\+Adapter\+::driver\+\_\+profiles \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The driver profiles available in the menu system. 
+
+
+
+Definition at line \mbox{\hyperlink{_menu_adapter_8hpp_source_l00078}{78}} of file \mbox{\hyperlink{_menu_adapter_8hpp_source}{Menu\+Adapter.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00078\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_menu_adapter_af6ae66e24dce580a65e5beb567e2c6d9}\label{classwisco_1_1menu_1_1_menu_adapter_af6ae66e24dce580a65e5beb567e2c6d9} 
+\index{wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}!lvgl\_menu@{lvgl\_menu}}
+\index{lvgl\_menu@{lvgl\_menu}!wisco::menu::MenuAdapter@{wisco::menu::MenuAdapter}}
+\doxysubsubsection{\texorpdfstring{lvgl\_menu}{lvgl\_menu}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu}{Lvgl\+Menu}} wisco\+::menu\+::\+Menu\+Adapter\+::lvgl\+\_\+menu \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The lvgl menu being adapted. 
+
+
+
+Definition at line \mbox{\hyperlink{_menu_adapter_8hpp_source_l00084}{84}} of file \mbox{\hyperlink{_menu_adapter_8hpp_source}{Menu\+Adapter.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00084\ \{\};}
+
+\end{DoxyCode}

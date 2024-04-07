@@ -17,6 +17,12 @@ namespace wisco
  */
 namespace autons
 {
+
+/**
+ * @brief The auton for the orange robot in skills
+ * @author Nathan Sandvig
+ * 
+ */
 class OrangeSkillsAuton : public IAutonomous
 {
 private:

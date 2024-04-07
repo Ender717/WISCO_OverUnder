@@ -1,0 +1,491 @@
+\doxysection{wisco\+::robot\+::subsystems\+::elevator\+::PIDElevator\+Builder Class Reference}
+\hypertarget{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{}\label{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}\index{wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}}
+
+
+Builder class for a pid-\/based elevator system.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{PIDElevator\+Builder}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a85a3f98a31545bcec850ebd761932e4f}{with\+Clock}} (const std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_clock}{rtos\+::\+IClock}} $>$ \&clock)
+\begin{DoxyCompactList}\small\item\em Add an rtos clock to the build. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{PIDElevator\+Builder}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_af3de4b76174cd787019825267a854bb4}{with\+Delayer}} (const std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_delayer}{rtos\+::\+IDelayer}} $>$ \&delayer)
+\begin{DoxyCompactList}\small\item\em Add an rtos delayer to the build. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{PIDElevator\+Builder}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a73ee035f731203cb588f1325f1687ee3}{with\+Mutex}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_mutex}{rtos\+::\+IMutex}} $>$ \&mutex)
+\begin{DoxyCompactList}\small\item\em Add a thread mutex to the build. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{PIDElevator\+Builder}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_adaaa454af7fd29394a7de2dabac1dfe0}{with\+Task}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_task}{rtos\+::\+ITask}} $>$ \&task)
+\begin{DoxyCompactList}\small\item\em Add a task handler to the build. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{PIDElevator\+Builder}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_ae7afa16f979158e924ed51bfc23d18f0}{with\+PID}} (\mbox{\hyperlink{classwisco_1_1control_1_1_p_i_d}{control\+::\+PID}} pid)
+\begin{DoxyCompactList}\small\item\em Add a PID controller to the build. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{PIDElevator\+Builder}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a8b80aa0aa3429d091eab0cc08482c466}{with\+Motor}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1io_1_1_i_motor}{io\+::\+IMotor}} $>$ \&motor)
+\begin{DoxyCompactList}\small\item\em Add a motor to the build. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{PIDElevator\+Builder}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a0f44f079ffbb218ee0f8d65e1deef518}{with\+Rotation\+Sensor}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1io_1_1_i_rotation_sensor}{io\+::\+IRotation\+Sensor}} $>$ \&rotation\+\_\+sensor)
+\begin{DoxyCompactList}\small\item\em Add a rotation sensor to the build. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{PIDElevator\+Builder}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_af2083a265506000aa43eb53232f8b846}{with\+Inches\+Per\+Radian}} (double inches\+\_\+per\+\_\+radian)
+\begin{DoxyCompactList}\small\item\em Add an inches per radian constant to the build. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_i_elevator}{IElevator}} $>$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a754c55f0733b470d024b1f6ab9bdd985}{build}} ()
+\begin{DoxyCompactList}\small\item\em Builds the elevator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_clock}{rtos\+::\+IClock}} $>$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a48f7c89968796140c5a323791df7ca65}{m\+\_\+clock}} \{\}
+\begin{DoxyCompactList}\small\item\em The rtos clock. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_delayer}{rtos\+::\+IDelayer}} $>$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_ab082987b54b92742785f014b3396f249}{m\+\_\+delayer}} \{\}
+\begin{DoxyCompactList}\small\item\em The rtos delayer. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_mutex}{rtos\+::\+IMutex}} $>$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a89a895371e43e36df2d7f833d7009024}{m\+\_\+mutex}} \{\}
+\begin{DoxyCompactList}\small\item\em The mutex for thread safety. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_task}{rtos\+::\+ITask}} $>$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_ae27a7172d78a76d1bf6523d0e37ff343}{m\+\_\+task}} \{\}
+\begin{DoxyCompactList}\small\item\em The background task handler. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classwisco_1_1control_1_1_p_i_d}{control\+::\+PID}} \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a6e63af61c77245ef33c884665d8988a7}{m\+\_\+pid}} \{\}
+\begin{DoxyCompactList}\small\item\em The position PID controller. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classwisco_1_1hal_1_1_motor_group}{hal\+::\+Motor\+Group}} \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_aeefc0e9acf3026b3f7e3933656810d9c}{m\+\_\+motors}} \{\}
+\begin{DoxyCompactList}\small\item\em The motors on the elevator. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1io_1_1_i_rotation_sensor}{io\+::\+IRotation\+Sensor}} $>$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a3635a613d118b4a990fb11fb3242b3ad}{m\+\_\+rotation\+\_\+sensor}} \{\}
+\begin{DoxyCompactList}\small\item\em The rotation sensor on the elevator. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a113c64a06455c599091f8d2339b37d5b}{m\+\_\+inches\+\_\+per\+\_\+radian}} \{\}
+\begin{DoxyCompactList}\small\item\em The number of movement inches per radian. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Builder class for a pid-\/based elevator system. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Sandvig 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_elevator_builder_8hpp_source_l00045}{45}} of file \mbox{\hyperlink{_p_i_d_elevator_builder_8hpp_source}{PIDElevator\+Builder.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a85a3f98a31545bcec850ebd761932e4f}\label{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a85a3f98a31545bcec850ebd761932e4f} 
+\index{wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}!withClock@{withClock}}
+\index{withClock@{withClock}!wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}}
+\doxysubsubsection{\texorpdfstring{withClock()}{withClock()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{PIDElevator\+Builder}} \texorpdfstring{$\ast$}{*} wisco\+::robot\+::subsystems\+::elevator\+::\+PIDElevator\+Builder\+::with\+Clock (\begin{DoxyParamCaption}\item[{const std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_clock}{rtos\+::\+IClock}} $>$ \&}]{clock }\end{DoxyParamCaption})}
+
+
+
+Add an rtos clock to the build. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clock} & The rtos clock \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+PIDElevator\+Builder\texorpdfstring{$\ast$}{*} This object for build chaining 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_elevator_builder_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{_p_i_d_elevator_builder_8cpp_source}{PIDElevator\+Builder.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a48f7c89968796140c5a323791df7ca65}{m\_clock}}\ =\ clock-\/>clone();}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00015\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_af3de4b76174cd787019825267a854bb4}\label{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_af3de4b76174cd787019825267a854bb4} 
+\index{wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}!withDelayer@{withDelayer}}
+\index{withDelayer@{withDelayer}!wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}}
+\doxysubsubsection{\texorpdfstring{withDelayer()}{withDelayer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{PIDElevator\+Builder}} \texorpdfstring{$\ast$}{*} wisco\+::robot\+::subsystems\+::elevator\+::\+PIDElevator\+Builder\+::with\+Delayer (\begin{DoxyParamCaption}\item[{const std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_delayer}{rtos\+::\+IDelayer}} $>$ \&}]{delayer }\end{DoxyParamCaption})}
+
+
+
+Add an rtos delayer to the build. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delayer} & The rtos delayer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+PIDElevator\+Builder\texorpdfstring{$\ast$}{*} This object for build chaining 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_elevator_builder_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{_p_i_d_elevator_builder_8cpp_source}{PIDElevator\+Builder.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_ab082987b54b92742785f014b3396f249}{m\_delayer}}\ =\ delayer-\/>clone();}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00021\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a73ee035f731203cb588f1325f1687ee3}\label{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a73ee035f731203cb588f1325f1687ee3} 
+\index{wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}!withMutex@{withMutex}}
+\index{withMutex@{withMutex}!wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}}
+\doxysubsubsection{\texorpdfstring{withMutex()}{withMutex()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{PIDElevator\+Builder}} \texorpdfstring{$\ast$}{*} wisco\+::robot\+::subsystems\+::elevator\+::\+PIDElevator\+Builder\+::with\+Mutex (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_mutex}{rtos\+::\+IMutex}} $>$ \&}]{mutex }\end{DoxyParamCaption})}
+
+
+
+Add a thread mutex to the build. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mutex} & The thread mutex \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+PIDElevator\+Builder\texorpdfstring{$\ast$}{*} This object for build chaining 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_elevator_builder_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{_p_i_d_elevator_builder_8cpp_source}{PIDElevator\+Builder.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a89a895371e43e36df2d7f833d7009024}{m\_mutex}}\ =\ std::move(mutex);}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00027\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_adaaa454af7fd29394a7de2dabac1dfe0}\label{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_adaaa454af7fd29394a7de2dabac1dfe0} 
+\index{wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}!withTask@{withTask}}
+\index{withTask@{withTask}!wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}}
+\doxysubsubsection{\texorpdfstring{withTask()}{withTask()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{PIDElevator\+Builder}} \texorpdfstring{$\ast$}{*} wisco\+::robot\+::subsystems\+::elevator\+::\+PIDElevator\+Builder\+::with\+Task (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_task}{rtos\+::\+ITask}} $>$ \&}]{task }\end{DoxyParamCaption})}
+
+
+
+Add a task handler to the build. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em task} & The task handler \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+PIDElevator\+Builder\texorpdfstring{$\ast$}{*} This object for build chaining 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_elevator_builder_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{_p_i_d_elevator_builder_8cpp_source}{PIDElevator\+Builder.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_ae27a7172d78a76d1bf6523d0e37ff343}{m\_task}}\ =\ std::move(task);}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00033\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_ae7afa16f979158e924ed51bfc23d18f0}\label{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_ae7afa16f979158e924ed51bfc23d18f0} 
+\index{wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}!withPID@{withPID}}
+\index{withPID@{withPID}!wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}}
+\doxysubsubsection{\texorpdfstring{withPID()}{withPID()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{PIDElevator\+Builder}} \texorpdfstring{$\ast$}{*} wisco\+::robot\+::subsystems\+::elevator\+::\+PIDElevator\+Builder\+::with\+PID (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classwisco_1_1control_1_1_p_i_d}{control\+::\+PID}}}]{pid }\end{DoxyParamCaption})}
+
+
+
+Add a PID controller to the build. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pid} & The PID controller \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+PIDElevator\+Builder\texorpdfstring{$\ast$}{*} This object for build chaining 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_elevator_builder_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{_p_i_d_elevator_builder_8cpp_source}{PIDElevator\+Builder.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a6e63af61c77245ef33c884665d8988a7}{m\_pid}}\ =\ pid;}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00039\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a8b80aa0aa3429d091eab0cc08482c466}\label{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a8b80aa0aa3429d091eab0cc08482c466} 
+\index{wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}!withMotor@{withMotor}}
+\index{withMotor@{withMotor}!wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}}
+\doxysubsubsection{\texorpdfstring{withMotor()}{withMotor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{PIDElevator\+Builder}} \texorpdfstring{$\ast$}{*} wisco\+::robot\+::subsystems\+::elevator\+::\+PIDElevator\+Builder\+::with\+Motor (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1io_1_1_i_motor}{io\+::\+IMotor}} $>$ \&}]{motor }\end{DoxyParamCaption})}
+
+
+
+Add a motor to the build. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em motor} & The motor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+PIDElevator\+Builder\texorpdfstring{$\ast$}{*} This object for build chaining 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_elevator_builder_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{_p_i_d_elevator_builder_8cpp_source}{PIDElevator\+Builder.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00042\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_aeefc0e9acf3026b3f7e3933656810d9c}{m\_motors}}.\mbox{\hyperlink{classwisco_1_1hal_1_1_motor_group_a1dacb45c197a4113533322b8402b1e4e}{addMotor}}(motor);}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00045\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a0f44f079ffbb218ee0f8d65e1deef518}\label{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a0f44f079ffbb218ee0f8d65e1deef518} 
+\index{wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}!withRotationSensor@{withRotationSensor}}
+\index{withRotationSensor@{withRotationSensor}!wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}}
+\doxysubsubsection{\texorpdfstring{withRotationSensor()}{withRotationSensor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{PIDElevator\+Builder}} \texorpdfstring{$\ast$}{*} wisco\+::robot\+::subsystems\+::elevator\+::\+PIDElevator\+Builder\+::with\+Rotation\+Sensor (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1io_1_1_i_rotation_sensor}{io\+::\+IRotation\+Sensor}} $>$ \&}]{rotation\+\_\+sensor }\end{DoxyParamCaption})}
+
+
+
+Add a rotation sensor to the build. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rotation\+\_\+sensor} & The rotation sensor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+PIDElevator\+Builder\texorpdfstring{$\ast$}{*} This object for build chaining 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_elevator_builder_8cpp_source_l00047}{47}} of file \mbox{\hyperlink{_p_i_d_elevator_builder_8cpp_source}{PIDElevator\+Builder.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00048\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a3635a613d118b4a990fb11fb3242b3ad}{m\_rotation\_sensor}}\ =\ std::move(rotation\_sensor);}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00051\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_af2083a265506000aa43eb53232f8b846}\label{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_af2083a265506000aa43eb53232f8b846} 
+\index{wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}!withInchesPerRadian@{withInchesPerRadian}}
+\index{withInchesPerRadian@{withInchesPerRadian}!wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}}
+\doxysubsubsection{\texorpdfstring{withInchesPerRadian()}{withInchesPerRadian()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{PIDElevator\+Builder}} \texorpdfstring{$\ast$}{*} wisco\+::robot\+::subsystems\+::elevator\+::\+PIDElevator\+Builder\+::with\+Inches\+Per\+Radian (\begin{DoxyParamCaption}\item[{double}]{inches\+\_\+per\+\_\+radian }\end{DoxyParamCaption})}
+
+
+
+Add an inches per radian constant to the build. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em inches\+\_\+per\+\_\+radian} & The inches per radian of the elevator \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+PIDElevator\+Builder\texorpdfstring{$\ast$}{*} This object for build chaining 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_elevator_builder_8cpp_source_l00053}{53}} of file \mbox{\hyperlink{_p_i_d_elevator_builder_8cpp_source}{PIDElevator\+Builder.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00054\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a113c64a06455c599091f8d2339b37d5b}{m\_inches\_per\_radian}}\ =\ inches\_per\_radian;}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00057\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a754c55f0733b470d024b1f6ab9bdd985}\label{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a754c55f0733b470d024b1f6ab9bdd985} 
+\index{wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}!build@{build}}
+\index{build@{build}!wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_i_elevator}{IElevator}} $>$ wisco\+::robot\+::subsystems\+::elevator\+::\+PIDElevator\+Builder\+::build (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Builds the elevator. 
+
+\begin{DoxyReturn}{Returns}
+std\+::unique\+\_\+ptr$<$\+IElevator$>$ The \doxylink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator}{PIDElevator} object built with the stored data 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_elevator_builder_8cpp_source_l00059}{59}} of file \mbox{\hyperlink{_p_i_d_elevator_builder_8cpp_source}{PIDElevator\+Builder.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00060\ \{}
+\DoxyCodeLine{00061\ \ \ \ \ std::unique\_ptr<PIDElevator>\ pid\_elevator\{std::make\_unique<PIDElevator>()\};}
+\DoxyCodeLine{00062\ \ \ \ \ pid\_elevator-\/>setClock(\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a48f7c89968796140c5a323791df7ca65}{m\_clock}});}
+\DoxyCodeLine{00063\ \ \ \ \ pid\_elevator-\/>setDelayer(\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_ab082987b54b92742785f014b3396f249}{m\_delayer}});}
+\DoxyCodeLine{00064\ \ \ \ \ pid\_elevator-\/>setMutex(\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a89a895371e43e36df2d7f833d7009024}{m\_mutex}});}
+\DoxyCodeLine{00065\ \ \ \ \ pid\_elevator-\/>setTask(\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_ae27a7172d78a76d1bf6523d0e37ff343}{m\_task}});}
+\DoxyCodeLine{00066\ \ \ \ \ pid\_elevator-\/>setPID(\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a6e63af61c77245ef33c884665d8988a7}{m\_pid}});}
+\DoxyCodeLine{00067\ \ \ \ \ pid\_elevator-\/>setMotors(\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_aeefc0e9acf3026b3f7e3933656810d9c}{m\_motors}});}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a3635a613d118b4a990fb11fb3242b3ad}{m\_rotation\_sensor}})}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ pid\_elevator-\/>setRotationSensor(\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a3635a613d118b4a990fb11fb3242b3ad}{m\_rotation\_sensor}});}
+\DoxyCodeLine{00070\ \ \ \ \ pid\_elevator-\/>setInchesPerRadian(\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a113c64a06455c599091f8d2339b37d5b}{m\_inches\_per\_radian}});}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordflow}{return}\ pid\_elevator;}
+\DoxyCodeLine{00072\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a48f7c89968796140c5a323791df7ca65}\label{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a48f7c89968796140c5a323791df7ca65} 
+\index{wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}!m\_clock@{m\_clock}}
+\index{m\_clock@{m\_clock}!wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}}
+\doxysubsubsection{\texorpdfstring{m\_clock}{m\_clock}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1rtos_1_1_i_clock}{rtos\+::\+IClock}}$>$ wisco\+::robot\+::subsystems\+::elevator\+::\+PIDElevator\+Builder\+::m\+\_\+clock \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The rtos clock. 
+
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_elevator_builder_8hpp_source_l00052}{52}} of file \mbox{\hyperlink{_p_i_d_elevator_builder_8hpp_source}{PIDElevator\+Builder.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00052\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_ab082987b54b92742785f014b3396f249}\label{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_ab082987b54b92742785f014b3396f249} 
+\index{wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}!m\_delayer@{m\_delayer}}
+\index{m\_delayer@{m\_delayer}!wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}}
+\doxysubsubsection{\texorpdfstring{m\_delayer}{m\_delayer}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1rtos_1_1_i_delayer}{rtos\+::\+IDelayer}}$>$ wisco\+::robot\+::subsystems\+::elevator\+::\+PIDElevator\+Builder\+::m\+\_\+delayer \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The rtos delayer. 
+
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_elevator_builder_8hpp_source_l00058}{58}} of file \mbox{\hyperlink{_p_i_d_elevator_builder_8hpp_source}{PIDElevator\+Builder.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00058\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a89a895371e43e36df2d7f833d7009024}\label{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a89a895371e43e36df2d7f833d7009024} 
+\index{wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}!m\_mutex@{m\_mutex}}
+\index{m\_mutex@{m\_mutex}!wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}}
+\doxysubsubsection{\texorpdfstring{m\_mutex}{m\_mutex}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1rtos_1_1_i_mutex}{rtos\+::\+IMutex}}$>$ wisco\+::robot\+::subsystems\+::elevator\+::\+PIDElevator\+Builder\+::m\+\_\+mutex \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The mutex for thread safety. 
+
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_elevator_builder_8hpp_source_l00064}{64}} of file \mbox{\hyperlink{_p_i_d_elevator_builder_8hpp_source}{PIDElevator\+Builder.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00064\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_ae27a7172d78a76d1bf6523d0e37ff343}\label{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_ae27a7172d78a76d1bf6523d0e37ff343} 
+\index{wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}!m\_task@{m\_task}}
+\index{m\_task@{m\_task}!wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}}
+\doxysubsubsection{\texorpdfstring{m\_task}{m\_task}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1rtos_1_1_i_task}{rtos\+::\+ITask}}$>$ wisco\+::robot\+::subsystems\+::elevator\+::\+PIDElevator\+Builder\+::m\+\_\+task \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The background task handler. 
+
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_elevator_builder_8hpp_source_l00070}{70}} of file \mbox{\hyperlink{_p_i_d_elevator_builder_8hpp_source}{PIDElevator\+Builder.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00070\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a6e63af61c77245ef33c884665d8988a7}\label{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a6e63af61c77245ef33c884665d8988a7} 
+\index{wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}!m\_pid@{m\_pid}}
+\index{m\_pid@{m\_pid}!wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}}
+\doxysubsubsection{\texorpdfstring{m\_pid}{m\_pid}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classwisco_1_1control_1_1_p_i_d}{control\+::\+PID}} wisco\+::robot\+::subsystems\+::elevator\+::\+PIDElevator\+Builder\+::m\+\_\+pid \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The position PID controller. 
+
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_elevator_builder_8hpp_source_l00076}{76}} of file \mbox{\hyperlink{_p_i_d_elevator_builder_8hpp_source}{PIDElevator\+Builder.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00076\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_aeefc0e9acf3026b3f7e3933656810d9c}\label{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_aeefc0e9acf3026b3f7e3933656810d9c} 
+\index{wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}!m\_motors@{m\_motors}}
+\index{m\_motors@{m\_motors}!wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}}
+\doxysubsubsection{\texorpdfstring{m\_motors}{m\_motors}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classwisco_1_1hal_1_1_motor_group}{hal\+::\+Motor\+Group}} wisco\+::robot\+::subsystems\+::elevator\+::\+PIDElevator\+Builder\+::m\+\_\+motors \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The motors on the elevator. 
+
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_elevator_builder_8hpp_source_l00082}{82}} of file \mbox{\hyperlink{_p_i_d_elevator_builder_8hpp_source}{PIDElevator\+Builder.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00082\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a3635a613d118b4a990fb11fb3242b3ad}\label{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a3635a613d118b4a990fb11fb3242b3ad} 
+\index{wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}!m\_rotation\_sensor@{m\_rotation\_sensor}}
+\index{m\_rotation\_sensor@{m\_rotation\_sensor}!wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}}
+\doxysubsubsection{\texorpdfstring{m\_rotation\_sensor}{m\_rotation\_sensor}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1io_1_1_i_rotation_sensor}{io\+::\+IRotation\+Sensor}}$>$ wisco\+::robot\+::subsystems\+::elevator\+::\+PIDElevator\+Builder\+::m\+\_\+rotation\+\_\+sensor \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The rotation sensor on the elevator. 
+
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_elevator_builder_8hpp_source_l00088}{88}} of file \mbox{\hyperlink{_p_i_d_elevator_builder_8hpp_source}{PIDElevator\+Builder.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00088\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a113c64a06455c599091f8d2339b37d5b}\label{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a113c64a06455c599091f8d2339b37d5b} 
+\index{wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}!m\_inches\_per\_radian@{m\_inches\_per\_radian}}
+\index{m\_inches\_per\_radian@{m\_inches\_per\_radian}!wisco::robot::subsystems::elevator::PIDElevatorBuilder@{wisco::robot::subsystems::elevator::PIDElevatorBuilder}}
+\doxysubsubsection{\texorpdfstring{m\_inches\_per\_radian}{m\_inches\_per\_radian}}
+{\footnotesize\ttfamily double wisco\+::robot\+::subsystems\+::elevator\+::\+PIDElevator\+Builder\+::m\+\_\+inches\+\_\+per\+\_\+radian \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The number of movement inches per radian. 
+
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_elevator_builder_8hpp_source_l00094}{94}} of file \mbox{\hyperlink{_p_i_d_elevator_builder_8hpp_source}{PIDElevator\+Builder.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00094\ \{\};}
+
+\end{DoxyCode}

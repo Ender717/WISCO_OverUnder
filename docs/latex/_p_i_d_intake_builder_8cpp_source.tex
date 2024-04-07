@@ -1,0 +1,74 @@
+\doxysection{PIDIntake\+Builder.\+cpp}
+\hypertarget{_p_i_d_intake_builder_8cpp_source}{}\label{_p_i_d_intake_builder_8cpp_source}\index{src/wisco/robot/subsystems/intake/PIDIntakeBuilder.cpp@{src/wisco/robot/subsystems/intake/PIDIntakeBuilder.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}wisco/robot/subsystems/intake/PIDIntakeBuilder.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00003}00003\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacewisco}{wisco}}}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00004}00004\ \{}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00005}00005\ \textcolor{keyword}{namespace\ }robot}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00007}00007\ \textcolor{keyword}{namespace\ }subsystems}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00009}00009\ \textcolor{keyword}{namespace\ }intake}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00011}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_af49213ed2a1a38285c62db725d5eaf25}{00011}}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder}{PIDIntakeBuilder}}*\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_af49213ed2a1a38285c62db725d5eaf25}{PIDIntakeBuilder::withClock}}(\textcolor{keyword}{const}\ std::unique\_ptr<rtos::IClock>\&\ clock)}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00012}00012\ \{}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00013}00013\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_a6da3b50b99667d9b9fac572d54071ccf}{m\_clock}}\ =\ clock-\/>clone();}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00014}00014\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00015}00015\ \}}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00017}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_a3b774eba6bf9353bf844f912b7762ab7}{00017}}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder}{PIDIntakeBuilder}}*\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_a3b774eba6bf9353bf844f912b7762ab7}{PIDIntakeBuilder::withDelayer}}(\textcolor{keyword}{const}\ std::unique\_ptr<rtos::IDelayer>\&\ delayer)}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00018}00018\ \{}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00019}00019\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_a510703aacaf242a0d53f98a781f08ad0}{m\_delayer}}\ =\ delayer-\/>clone();}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00020}00020\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00021}00021\ \}}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00023}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_aaf9f4d6b1efcbd66436c59bdbdbbc069}{00023}}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder}{PIDIntakeBuilder}}*\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_aaf9f4d6b1efcbd66436c59bdbdbbc069}{PIDIntakeBuilder::withMutex}}(std::unique\_ptr<rtos::IMutex>\&\ mutex)}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00024}00024\ \{}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00025}00025\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_aa0a2c29a6dd5bbd36ad6b8004c2dc84f}{m\_mutex}}\ =\ std::move(mutex);}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00027}00027\ \}}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00029}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_ab65a5a13e05da1aff7bb5dab1e514b06}{00029}}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder}{PIDIntakeBuilder}}*\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_ab65a5a13e05da1aff7bb5dab1e514b06}{PIDIntakeBuilder::withTask}}(std::unique\_ptr<rtos::ITask>\&\ task)}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00030}00030\ \{}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00031}00031\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_a254d8eea9aa2d085ba25bd3b5e0f9f1c}{m\_task}}\ =\ std::move(task);}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00033}00033\ \}}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00035}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_a01a3520ea4dbfc4dffca91e173702912}{00035}}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder}{PIDIntakeBuilder}}*\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_a01a3520ea4dbfc4dffca91e173702912}{PIDIntakeBuilder::withPID}}(\mbox{\hyperlink{classwisco_1_1control_1_1_p_i_d}{control::PID}}\ pid)}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00036}00036\ \{}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00037}00037\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_a9da80b27ac4d6af1a5cc1dfff947f32d}{m\_pid}}\ =\ pid;}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00039}00039\ \}}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00041}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_ab3f3e9b09bcdff907c45a8aaf1a919f6}{00041}}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder}{PIDIntakeBuilder}}*\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_ab3f3e9b09bcdff907c45a8aaf1a919f6}{PIDIntakeBuilder::withMotor}}(std::unique\_ptr<io::IMotor>\&\ motor)}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00042}00042\ \{}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00043}00043\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_a13fada624faadeaa5d4e3ae948cd9e4a}{m\_motors}}.\mbox{\hyperlink{classwisco_1_1hal_1_1_motor_group_a1dacb45c197a4113533322b8402b1e4e}{addMotor}}(motor);}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00044}00044\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00045}00045\ \}}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00047}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_a689dd76fd5e6a3036e205a1155dd10d5}{00047}}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder}{PIDIntakeBuilder}}*\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_a689dd76fd5e6a3036e205a1155dd10d5}{PIDIntakeBuilder::withRollerRadius}}(\textcolor{keywordtype}{double}\ roller\_radius)}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00048}00048\ \{}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00049}00049\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_a08d021fea1f02289ab661d3482fd41f9}{m\_roller\_radius}}\ =\ roller\_radius;}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00051}00051\ \}}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00053}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_a818a3f884574c548a851a86bab70ea88}{00053}}\ std::unique\_ptr<IIntake>\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_a818a3f884574c548a851a86bab70ea88}{PIDIntakeBuilder::build}}()}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00054}00054\ \{}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00055}00055\ \ \ \ \ std::unique\_ptr<PIDIntake>\ pid\_intake\{std::make\_unique<PIDIntake>()\};}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00056}00056\ \ \ \ \ pid\_intake-\/>setClock(\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_a6da3b50b99667d9b9fac572d54071ccf}{m\_clock}});}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00057}00057\ \ \ \ \ pid\_intake-\/>setDelayer(\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_a510703aacaf242a0d53f98a781f08ad0}{m\_delayer}});}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00058}00058\ \ \ \ \ pid\_intake-\/>setMutex(\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_aa0a2c29a6dd5bbd36ad6b8004c2dc84f}{m\_mutex}});}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00059}00059\ \ \ \ \ pid\_intake-\/>setTask(\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_a254d8eea9aa2d085ba25bd3b5e0f9f1c}{m\_task}});}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00060}00060\ \ \ \ \ pid\_intake-\/>setPID(\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_a9da80b27ac4d6af1a5cc1dfff947f32d}{m\_pid}});}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00061}00061\ \ \ \ \ pid\_intake-\/>setMotors(\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_a13fada624faadeaa5d4e3ae948cd9e4a}{m\_motors}});}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00062}00062\ \ \ \ \ pid\_intake-\/>setRollerRadius(\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_builder_a08d021fea1f02289ab661d3482fd41f9}{m\_roller\_radius}});}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00063}00063\ \ \ \ \ \textcolor{keywordflow}{return}\ pid\_intake;}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00064}00064\ \}}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00065}00065\ \}\ \textcolor{comment}{//\ namespace\ intake}}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00066}00066\ \}\ \textcolor{comment}{//\ namespace\ subsystems}}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00067}00067\ \}\ \textcolor{comment}{//\ namespace\ robot}}
+\DoxyCodeLine{\Hypertarget{_p_i_d_intake_builder_8cpp_source_l00068}00068\ \}\ \textcolor{comment}{//\ namespace\ wisco}}
+
+\end{DoxyCode}

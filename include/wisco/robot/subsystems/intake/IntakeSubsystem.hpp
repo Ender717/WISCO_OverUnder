@@ -38,6 +38,11 @@ namespace subsystems
 namespace intake
 {
 
+/**
+ * @brief The subsystem adapter for intakes
+ * @author Nathan Sandvig
+ * 
+ */
 class IntakeSubsystem : public ASubsystem
 {
 private:

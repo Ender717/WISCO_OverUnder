@@ -32,6 +32,13 @@ namespace menu
 extern void startButtonEventHandler(lv_event_t* event);
 
 /**
+ * @brief Event handler function for the settings button
+ * 
+ * @param event The event data
+ */
+extern void settingsButtonEventHandler(lv_event_t* event);
+
+/**
  * @brief Event handler function for the back button in the settings menu
  * 
  * @param event The event data

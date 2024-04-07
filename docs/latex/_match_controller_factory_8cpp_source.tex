@@ -1,0 +1,41 @@
+\doxysection{Match\+Controller\+Factory.\+cpp}
+\hypertarget{_match_controller_factory_8cpp_source}{}\label{_match_controller_factory_8cpp_source}\index{src/MatchControllerFactory.cpp@{src/MatchControllerFactory.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}MatchControllerFactory.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00003}\mbox{\hyperlink{class_match_controller_factory_a10659b598e18e21250bad42b30d65b51}{00003}}\ \mbox{\hyperlink{classwisco_1_1_match_controller}{wisco::MatchController}}\ \mbox{\hyperlink{class_match_controller_factory_a10659b598e18e21250bad42b30d65b51}{MatchControllerFactory::createMatchController}}()}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00004}00004\ \{}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00005}00005\ \ \ \ \ \textcolor{comment}{//\ Menu\ creation}}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00006}00006\ \ \ \ \ std::unique\_ptr<wisco::IMenu>\ lvgl\_menu\{std::make\_unique<wisco::menu::MenuAdapter>()\};}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00007}00007\ \ \ \ \ std::unique\_ptr<wisco::IAlliance>\ blue\_alliance\{std::make\_unique<wisco::alliances::BlueAlliance>()\};}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00008}00008\ \ \ \ \ lvgl\_menu-\/>addAlliance(blue\_alliance);}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00009}00009\ \ \ \ \ std::unique\_ptr<wisco::IAlliance>\ red\_alliance\{std::make\_unique<wisco::alliances::RedAlliance>()\};}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00010}00010\ \ \ \ \ lvgl\_menu-\/>addAlliance(red\_alliance);}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00011}00011\ \ \ \ \ std::unique\_ptr<wisco::IAlliance>\ skills\_alliance\{std::make\_unique<wisco::alliances::SkillsAlliance>()\};}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00012}00012\ \ \ \ \ lvgl\_menu-\/>addAlliance(skills\_alliance);}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00013}00013\ \ \ \ \ std::unique\_ptr<wisco::IAutonomous>\ blue\_match\_autonomous\{std::make\_unique<wisco::autons::BlueMatchAuton>()\};}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00014}00014\ \ \ \ \ lvgl\_menu-\/>addAutonomous(blue\_match\_autonomous);}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00015}00015\ \ \ \ \ std::unique\_ptr<wisco::IAutonomous>\ blue\_skills\_autonomous\{std::make\_unique<wisco::autons::BlueSkillsAuton>()\};}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00016}00016\ \ \ \ \ lvgl\_menu-\/>addAutonomous(blue\_skills\_autonomous);}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00017}00017\ \ \ \ \ std::unique\_ptr<wisco::IAutonomous>\ orange\_match\_autonomous\{std::make\_unique<wisco::autons::OrangeMatchAuton>()\};}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00018}00018\ \ \ \ \ lvgl\_menu-\/>addAutonomous(orange\_match\_autonomous);}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00019}00019\ \ \ \ \ std::unique\_ptr<wisco::IAutonomous>\ orange\_skills\_autonomous\{std::make\_unique<wisco::autons::OrangeSkillsAuton>()\};}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00020}00020\ \ \ \ \ lvgl\_menu-\/>addAutonomous(orange\_skills\_autonomous);}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00021}00021\ \ \ \ \ std::unique\_ptr<wisco::IConfiguration>\ blue\_configuration\{std::make\_unique<wisco::configs::BlueConfiguration>()\};}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00022}00022\ \ \ \ \ lvgl\_menu-\/>addConfiguration(blue\_configuration);}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00023}00023\ \ \ \ \ std::unique\_ptr<wisco::IConfiguration>\ orange\_configuration\{std::make\_unique<wisco::configs::OrangeConfiguration>()\};}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00024}00024\ \ \ \ \ lvgl\_menu-\/>addConfiguration(orange\_configuration);}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00025}00025\ \ \ \ \ std::unique\_ptr<wisco::IProfile>\ henry\_profile\{std::make\_unique<wisco::profiles::HenryProfile>()\};}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00026}00026\ \ \ \ \ lvgl\_menu-\/>addProfile(henry\_profile);}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00027}00027\ \ \ \ \ std::unique\_ptr<wisco::IProfile>\ john\_profile\{std::make\_unique<wisco::profiles::JohnProfile>()\};}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00028}00028\ \ \ \ \ lvgl\_menu-\/>addProfile(john\_profile);}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{comment}{//\ RTOS\ creation}}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00031}00031\ \ \ \ \ std::shared\_ptr<wisco::rtos::IClock>\ pros\_clock\{std::make\_unique<pros\_adapters::ProsClock>()\};}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00032}00032\ \ \ \ \ std::unique\_ptr<wisco::rtos::IDelayer>\ pros\_delayer\{std::make\_unique<pros\_adapters::ProsDelayer>()\};}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classwisco_1_1_match_controller}{wisco::MatchController}}\{lvgl\_menu,\ pros\_clock,\ pros\_delayer\};}
+\DoxyCodeLine{\Hypertarget{_match_controller_factory_8cpp_source_l00035}00035\ \}}
+
+\end{DoxyCode}

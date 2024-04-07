@@ -1,0 +1,380 @@
+\doxysection{wisco\+::Match\+Controller Class Reference}
+\hypertarget{classwisco_1_1_match_controller}{}\label{classwisco_1_1_match_controller}\index{wisco::MatchController@{wisco::MatchController}}
+
+
+Handles the field controller inputs during a match.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classwisco_1_1_match_controller_ac77ceea75a9f471c31097142d5971c69}{Match\+Controller}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1_i_menu}{IMenu}} $>$ \&menu, const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_clock}{rtos\+::\+IClock}} $>$ \&clock, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_delayer}{rtos\+::\+IDelayer}} $>$ \&delayer)
+\begin{DoxyCompactList}\small\item\em Construct a new Match Controller object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1_match_controller_a89937f6e3f443fc04e7234145353f14b}{initialize}} ()
+\begin{DoxyCompactList}\small\item\em Runs the robot initialization code. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1_match_controller_ae195db41117dc0bfb3b5441e27fbbfa9}{disabled}} ()
+\begin{DoxyCompactList}\small\item\em Runs the robot disablement code. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1_match_controller_a673f1846e74749a39fc7b6882ab14f1a}{competition\+Initialize}} ()
+\begin{DoxyCompactList}\small\item\em Runs the robot competition initialization code. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1_match_controller_a38e7ba5fa888dc174f88d614c5ec18b9}{autonomous}} ()
+\begin{DoxyCompactList}\small\item\em Runs the robot autonomous code. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1_match_controller_a4c0a9bedf8e814d54e6100f755239c68}{operator\+Control}} ()
+\begin{DoxyCompactList}\small\item\em Runs the robot operator control code. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1_i_menu}{IMenu}} $>$ \mbox{\hyperlink{classwisco_1_1_match_controller_ac7052e14152fb64b6a00fa9457b548d7}{m\+\_\+menu}} \{\}
+\begin{DoxyCompactList}\small\item\em The menu system. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_clock}{rtos\+::\+IClock}} $>$ \mbox{\hyperlink{classwisco_1_1_match_controller_a5309b0401b169c34b9ac3c0d0953d81c}{m\+\_\+clock}} \{\}
+\begin{DoxyCompactList}\small\item\em The rtos clock. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_delayer}{rtos\+::\+IDelayer}} $>$ \mbox{\hyperlink{classwisco_1_1_match_controller_a8b1d4cf0f277cb6f6b6cbb838eb2203a}{m\+\_\+delayer}} \{\}
+\begin{DoxyCompactList}\small\item\em The rtos delayer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classwisco_1_1_autonomous_manager}{Autonomous\+Manager}} \mbox{\hyperlink{classwisco_1_1_match_controller_a5e3d4ced35202c8d8ec023cb94b9a388}{autonomous\+\_\+manager}} \{\}
+\begin{DoxyCompactList}\small\item\em The autonomous management object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classwisco_1_1_o_p_control_manager}{OPControl\+Manager}} \mbox{\hyperlink{classwisco_1_1_match_controller_af33ebecfcca681990f5953dc8b6f8087}{opcontrol\+\_\+manager}} \{\mbox{\hyperlink{classwisco_1_1_match_controller_a5309b0401b169c34b9ac3c0d0953d81c}{m\+\_\+clock}}, \mbox{\hyperlink{classwisco_1_1_match_controller_a8b1d4cf0f277cb6f6b6cbb838eb2203a}{m\+\_\+delayer}}\}
+\begin{DoxyCompactList}\small\item\em The opcontrol management object. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1user_1_1_i_controller}{user\+::\+IController}} $>$ \mbox{\hyperlink{classwisco_1_1_match_controller_a985d5ffb4234cf270252fb205d1564d4}{controller}} \{\}
+\begin{DoxyCompactList}\small\item\em The user input controller. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1robot_1_1_robot}{robot\+::\+Robot}} $>$ \mbox{\hyperlink{classwisco_1_1_match_controller_a26e4a4830b9077763b8b8bb5782b4569}{robot}} \{\}
+\begin{DoxyCompactList}\small\item\em The robot being controlled. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr uint32\+\_\+t \mbox{\hyperlink{classwisco_1_1_match_controller_abfe74e87bc2f376a37041218cac4a98b}{MENU\+\_\+\+DELAY}} \{10\}
+\begin{DoxyCompactList}\small\item\em The number of milliseconds to wait to check the menu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handles the field controller inputs during a match. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Sandvig 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_match_controller_8hpp_source_l00025}{25}} of file \mbox{\hyperlink{_match_controller_8hpp_source}{Match\+Controller.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classwisco_1_1_match_controller_ac77ceea75a9f471c31097142d5971c69}\label{classwisco_1_1_match_controller_ac77ceea75a9f471c31097142d5971c69} 
+\index{wisco::MatchController@{wisco::MatchController}!MatchController@{MatchController}}
+\index{MatchController@{MatchController}!wisco::MatchController@{wisco::MatchController}}
+\doxysubsubsection{\texorpdfstring{MatchController()}{MatchController()}}
+{\footnotesize\ttfamily wisco\+::\+Match\+Controller\+::\+Match\+Controller (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1_i_menu}{IMenu}} $>$ \&}]{menu,  }\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_clock}{rtos\+::\+IClock}} $>$ \&}]{clock,  }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_delayer}{rtos\+::\+IDelayer}} $>$ \&}]{delayer }\end{DoxyParamCaption})}
+
+
+
+Construct a new Match Controller object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em menu} & The menu to use in the match controller \\
+\hline
+{\em clock} & The rtos clock to use in the match controller \\
+\hline
+{\em delayer} & The rtos delayer to use in the match controller \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_match_controller_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{_match_controller_8cpp_source}{Match\+Controller.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00005\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ }
+\DoxyCodeLine{00006\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1_match_controller_ac7052e14152fb64b6a00fa9457b548d7}{m\_menu}}\{std::move(menu)\},\ \mbox{\hyperlink{classwisco_1_1_match_controller_a5309b0401b169c34b9ac3c0d0953d81c}{m\_clock}}\{clock\},\ \mbox{\hyperlink{classwisco_1_1_match_controller_a8b1d4cf0f277cb6f6b6cbb838eb2203a}{m\_delayer}}\{std::move(delayer)\},\ \mbox{\hyperlink{classwisco_1_1_match_controller_af33ebecfcca681990f5953dc8b6f8087}{opcontrol\_manager}}\{clock,\ delayer\}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classwisco_1_1_match_controller_a89937f6e3f443fc04e7234145353f14b}\label{classwisco_1_1_match_controller_a89937f6e3f443fc04e7234145353f14b} 
+\index{wisco::MatchController@{wisco::MatchController}!initialize@{initialize}}
+\index{initialize@{initialize}!wisco::MatchController@{wisco::MatchController}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void wisco\+::\+Match\+Controller\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Runs the robot initialization code. 
+
+
+
+Definition at line \mbox{\hyperlink{_match_controller_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{_match_controller_8cpp_source}{Match\+Controller.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1_match_controller_ac7052e14152fb64b6a00fa9457b548d7}{m\_menu}})}
+\DoxyCodeLine{00014\ \ \ \ \ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1_match_controller_ac7052e14152fb64b6a00fa9457b548d7}{m\_menu}}-\/>display();}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{classwisco_1_1_match_controller_a8b1d4cf0f277cb6f6b6cbb838eb2203a}{m\_delayer}}\ \&\&\ !\mbox{\hyperlink{classwisco_1_1_match_controller_ac7052e14152fb64b6a00fa9457b548d7}{m\_menu}}-\/>isStarted())}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1_match_controller_a8b1d4cf0f277cb6f6b6cbb838eb2203a}{m\_delayer}}-\/>delay(\mbox{\hyperlink{classwisco_1_1_match_controller_abfe74e87bc2f376a37041218cac4a98b}{MENU\_DELAY}});}
+\DoxyCodeLine{00018\ \ \ \ \ \}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ SystemConfiguration\ system\_configuration\{\};}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1_match_controller_ac7052e14152fb64b6a00fa9457b548d7}{m\_menu}})}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ system\_configuration\ =\ \mbox{\hyperlink{classwisco_1_1_match_controller_ac7052e14152fb64b6a00fa9457b548d7}{m\_menu}}-\/>getSystemConfiguration();}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1_match_controller_a5e3d4ced35202c8d8ec023cb94b9a388}{autonomous\_manager}}.\mbox{\hyperlink{classwisco_1_1_autonomous_manager_a9a136f68860d197a7a513b87e92c0996}{setAutonomous}}(system\_configuration.autonomous);}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1_match_controller_af33ebecfcca681990f5953dc8b6f8087}{opcontrol\_manager}}.\mbox{\hyperlink{classwisco_1_1_o_p_control_manager_ab8e265d7709df47f9852230fd5335b5a}{setProfile}}(system\_configuration.profile);}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1_match_controller_a985d5ffb4234cf270252fb205d1564d4}{controller}}\ =\ system\_configuration.configuration-\/>buildController();}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1_match_controller_a26e4a4830b9077763b8b8bb5782b4569}{robot}}\ =\ system\_configuration.configuration-\/>buildRobot();}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1_match_controller_a26e4a4830b9077763b8b8bb5782b4569}{robot}})}
+\DoxyCodeLine{00028\ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1_match_controller_a26e4a4830b9077763b8b8bb5782b4569}{robot}}-\/>initialize();}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1_match_controller_a5e3d4ced35202c8d8ec023cb94b9a388}{autonomous\_manager}}.\mbox{\hyperlink{classwisco_1_1_autonomous_manager_a66d90653f36d6ae4461f08d5634f2d95}{initializeAutonomous}}(\mbox{\hyperlink{classwisco_1_1_match_controller_a26e4a4830b9077763b8b8bb5782b4569}{robot}});}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1_match_controller_a985d5ffb4234cf270252fb205d1564d4}{controller}})}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1_match_controller_a985d5ffb4234cf270252fb205d1564d4}{controller}}-\/>initialize();}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1_match_controller_a985d5ffb4234cf270252fb205d1564d4}{controller}}-\/>run();}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1_match_controller_af33ebecfcca681990f5953dc8b6f8087}{opcontrol\_manager}}.\mbox{\hyperlink{classwisco_1_1_o_p_control_manager_a6ffc464547d392a26c891450f8b84471}{initializeOpcontrol}}(\mbox{\hyperlink{classwisco_1_1_match_controller_a985d5ffb4234cf270252fb205d1564d4}{controller}},\ \mbox{\hyperlink{classwisco_1_1_match_controller_a26e4a4830b9077763b8b8bb5782b4569}{robot}});}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1_match_controller_ae195db41117dc0bfb3b5441e27fbbfa9}\label{classwisco_1_1_match_controller_ae195db41117dc0bfb3b5441e27fbbfa9} 
+\index{wisco::MatchController@{wisco::MatchController}!disabled@{disabled}}
+\index{disabled@{disabled}!wisco::MatchController@{wisco::MatchController}}
+\doxysubsubsection{\texorpdfstring{disabled()}{disabled()}}
+{\footnotesize\ttfamily void wisco\+::\+Match\+Controller\+::disabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Runs the robot disablement code. 
+
+
+
+Definition at line \mbox{\hyperlink{_match_controller_8cpp_source_l00040}{40}} of file \mbox{\hyperlink{_match_controller_8cpp_source}{Match\+Controller.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00041\ \{}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1_match_controller_a673f1846e74749a39fc7b6882ab14f1a}\label{classwisco_1_1_match_controller_a673f1846e74749a39fc7b6882ab14f1a} 
+\index{wisco::MatchController@{wisco::MatchController}!competitionInitialize@{competitionInitialize}}
+\index{competitionInitialize@{competitionInitialize}!wisco::MatchController@{wisco::MatchController}}
+\doxysubsubsection{\texorpdfstring{competitionInitialize()}{competitionInitialize()}}
+{\footnotesize\ttfamily void wisco\+::\+Match\+Controller\+::competition\+Initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Runs the robot competition initialization code. 
+
+
+
+Definition at line \mbox{\hyperlink{_match_controller_8cpp_source_l00045}{45}} of file \mbox{\hyperlink{_match_controller_8cpp_source}{Match\+Controller.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00046\ \{}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1_match_controller_a38e7ba5fa888dc174f88d614c5ec18b9}\label{classwisco_1_1_match_controller_a38e7ba5fa888dc174f88d614c5ec18b9} 
+\index{wisco::MatchController@{wisco::MatchController}!autonomous@{autonomous}}
+\index{autonomous@{autonomous}!wisco::MatchController@{wisco::MatchController}}
+\doxysubsubsection{\texorpdfstring{autonomous()}{autonomous()}}
+{\footnotesize\ttfamily void wisco\+::\+Match\+Controller\+::autonomous (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Runs the robot autonomous code. 
+
+
+
+Definition at line \mbox{\hyperlink{_match_controller_8cpp_source_l00050}{50}} of file \mbox{\hyperlink{_match_controller_8cpp_source}{Match\+Controller.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00051\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1_match_controller_a26e4a4830b9077763b8b8bb5782b4569}{robot}})}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1_match_controller_a5e3d4ced35202c8d8ec023cb94b9a388}{autonomous\_manager}}.\mbox{\hyperlink{classwisco_1_1_autonomous_manager_adeff642a1816c9df4f13b717e4b08cbe}{runAutonomous}}(\mbox{\hyperlink{classwisco_1_1_match_controller_a26e4a4830b9077763b8b8bb5782b4569}{robot}});}
+\DoxyCodeLine{00054\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1_match_controller_a4c0a9bedf8e814d54e6100f755239c68}\label{classwisco_1_1_match_controller_a4c0a9bedf8e814d54e6100f755239c68} 
+\index{wisco::MatchController@{wisco::MatchController}!operatorControl@{operatorControl}}
+\index{operatorControl@{operatorControl}!wisco::MatchController@{wisco::MatchController}}
+\doxysubsubsection{\texorpdfstring{operatorControl()}{operatorControl()}}
+{\footnotesize\ttfamily void wisco\+::\+Match\+Controller\+::operator\+Control (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Runs the robot operator control code. 
+
+
+
+Definition at line \mbox{\hyperlink{_match_controller_8cpp_source_l00056}{56}} of file \mbox{\hyperlink{_match_controller_8cpp_source}{Match\+Controller.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00057\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1_match_controller_a985d5ffb4234cf270252fb205d1564d4}{controller}}\ \&\&\ \mbox{\hyperlink{classwisco_1_1_match_controller_a26e4a4830b9077763b8b8bb5782b4569}{robot}})}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1_match_controller_af33ebecfcca681990f5953dc8b6f8087}{opcontrol\_manager}}.\mbox{\hyperlink{classwisco_1_1_o_p_control_manager_a8f9b673667a5e3fd3bc8bb6464f3f72c}{runOpcontrol}}(\mbox{\hyperlink{classwisco_1_1_match_controller_a985d5ffb4234cf270252fb205d1564d4}{controller}},\ \mbox{\hyperlink{classwisco_1_1_match_controller_a26e4a4830b9077763b8b8bb5782b4569}{robot}});}
+\DoxyCodeLine{00060\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classwisco_1_1_match_controller_abfe74e87bc2f376a37041218cac4a98b}\label{classwisco_1_1_match_controller_abfe74e87bc2f376a37041218cac4a98b} 
+\index{wisco::MatchController@{wisco::MatchController}!MENU\_DELAY@{MENU\_DELAY}}
+\index{MENU\_DELAY@{MENU\_DELAY}!wisco::MatchController@{wisco::MatchController}}
+\doxysubsubsection{\texorpdfstring{MENU\_DELAY}{MENU\_DELAY}}
+{\footnotesize\ttfamily constexpr uint32\+\_\+t wisco\+::\+Match\+Controller\+::\+MENU\+\_\+\+DELAY \{10\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The number of milliseconds to wait to check the menu. 
+
+
+
+Definition at line \mbox{\hyperlink{_match_controller_8hpp_source_l00032}{32}} of file \mbox{\hyperlink{_match_controller_8hpp_source}{Match\+Controller.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00032\ \{10\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1_match_controller_ac7052e14152fb64b6a00fa9457b548d7}\label{classwisco_1_1_match_controller_ac7052e14152fb64b6a00fa9457b548d7} 
+\index{wisco::MatchController@{wisco::MatchController}!m\_menu@{m\_menu}}
+\index{m\_menu@{m\_menu}!wisco::MatchController@{wisco::MatchController}}
+\doxysubsubsection{\texorpdfstring{m\_menu}{m\_menu}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1_i_menu}{IMenu}}$>$ wisco\+::\+Match\+Controller\+::m\+\_\+menu \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The menu system. 
+
+
+
+Definition at line \mbox{\hyperlink{_match_controller_8hpp_source_l00038}{38}} of file \mbox{\hyperlink{_match_controller_8hpp_source}{Match\+Controller.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00038\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1_match_controller_a5309b0401b169c34b9ac3c0d0953d81c}\label{classwisco_1_1_match_controller_a5309b0401b169c34b9ac3c0d0953d81c} 
+\index{wisco::MatchController@{wisco::MatchController}!m\_clock@{m\_clock}}
+\index{m\_clock@{m\_clock}!wisco::MatchController@{wisco::MatchController}}
+\doxysubsubsection{\texorpdfstring{m\_clock}{m\_clock}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1rtos_1_1_i_clock}{rtos\+::\+IClock}}$>$ wisco\+::\+Match\+Controller\+::m\+\_\+clock \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The rtos clock. 
+
+
+
+Definition at line \mbox{\hyperlink{_match_controller_8hpp_source_l00044}{44}} of file \mbox{\hyperlink{_match_controller_8hpp_source}{Match\+Controller.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00044\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1_match_controller_a8b1d4cf0f277cb6f6b6cbb838eb2203a}\label{classwisco_1_1_match_controller_a8b1d4cf0f277cb6f6b6cbb838eb2203a} 
+\index{wisco::MatchController@{wisco::MatchController}!m\_delayer@{m\_delayer}}
+\index{m\_delayer@{m\_delayer}!wisco::MatchController@{wisco::MatchController}}
+\doxysubsubsection{\texorpdfstring{m\_delayer}{m\_delayer}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1rtos_1_1_i_delayer}{rtos\+::\+IDelayer}}$>$ wisco\+::\+Match\+Controller\+::m\+\_\+delayer \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The rtos delayer. 
+
+
+
+Definition at line \mbox{\hyperlink{_match_controller_8hpp_source_l00050}{50}} of file \mbox{\hyperlink{_match_controller_8hpp_source}{Match\+Controller.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00050\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1_match_controller_a5e3d4ced35202c8d8ec023cb94b9a388}\label{classwisco_1_1_match_controller_a5e3d4ced35202c8d8ec023cb94b9a388} 
+\index{wisco::MatchController@{wisco::MatchController}!autonomous\_manager@{autonomous\_manager}}
+\index{autonomous\_manager@{autonomous\_manager}!wisco::MatchController@{wisco::MatchController}}
+\doxysubsubsection{\texorpdfstring{autonomous\_manager}{autonomous\_manager}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classwisco_1_1_autonomous_manager}{Autonomous\+Manager}} wisco\+::\+Match\+Controller\+::autonomous\+\_\+manager \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The autonomous management object. 
+
+
+
+Definition at line \mbox{\hyperlink{_match_controller_8hpp_source_l00056}{56}} of file \mbox{\hyperlink{_match_controller_8hpp_source}{Match\+Controller.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00056\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1_match_controller_af33ebecfcca681990f5953dc8b6f8087}\label{classwisco_1_1_match_controller_af33ebecfcca681990f5953dc8b6f8087} 
+\index{wisco::MatchController@{wisco::MatchController}!opcontrol\_manager@{opcontrol\_manager}}
+\index{opcontrol\_manager@{opcontrol\_manager}!wisco::MatchController@{wisco::MatchController}}
+\doxysubsubsection{\texorpdfstring{opcontrol\_manager}{opcontrol\_manager}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classwisco_1_1_o_p_control_manager}{OPControl\+Manager}} wisco\+::\+Match\+Controller\+::opcontrol\+\_\+manager \{\mbox{\hyperlink{classwisco_1_1_match_controller_a5309b0401b169c34b9ac3c0d0953d81c}{m\+\_\+clock}}, \mbox{\hyperlink{classwisco_1_1_match_controller_a8b1d4cf0f277cb6f6b6cbb838eb2203a}{m\+\_\+delayer}}\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The opcontrol management object. 
+
+
+
+Definition at line \mbox{\hyperlink{_match_controller_8hpp_source_l00062}{62}} of file \mbox{\hyperlink{_match_controller_8hpp_source}{Match\+Controller.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00062\ \{\mbox{\hyperlink{classwisco_1_1_match_controller_a5309b0401b169c34b9ac3c0d0953d81c}{m\_clock}},\ \mbox{\hyperlink{classwisco_1_1_match_controller_a8b1d4cf0f277cb6f6b6cbb838eb2203a}{m\_delayer}}\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1_match_controller_a985d5ffb4234cf270252fb205d1564d4}\label{classwisco_1_1_match_controller_a985d5ffb4234cf270252fb205d1564d4} 
+\index{wisco::MatchController@{wisco::MatchController}!controller@{controller}}
+\index{controller@{controller}!wisco::MatchController@{wisco::MatchController}}
+\doxysubsubsection{\texorpdfstring{controller}{controller}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1user_1_1_i_controller}{user\+::\+IController}}$>$ wisco\+::\+Match\+Controller\+::controller \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The user input controller. 
+
+
+
+Definition at line \mbox{\hyperlink{_match_controller_8hpp_source_l00068}{68}} of file \mbox{\hyperlink{_match_controller_8hpp_source}{Match\+Controller.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00068\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1_match_controller_a26e4a4830b9077763b8b8bb5782b4569}\label{classwisco_1_1_match_controller_a26e4a4830b9077763b8b8bb5782b4569} 
+\index{wisco::MatchController@{wisco::MatchController}!robot@{robot}}
+\index{robot@{robot}!wisco::MatchController@{wisco::MatchController}}
+\doxysubsubsection{\texorpdfstring{robot}{robot}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1robot_1_1_robot}{robot\+::\+Robot}}$>$ wisco\+::\+Match\+Controller\+::robot \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The robot being controlled. 
+
+
+
+Definition at line \mbox{\hyperlink{_match_controller_8hpp_source_l00074}{74}} of file \mbox{\hyperlink{_match_controller_8hpp_source}{Match\+Controller.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00074\ \{\};}
+
+\end{DoxyCode}

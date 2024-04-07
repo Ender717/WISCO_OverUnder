@@ -1,0 +1,350 @@
+\doxysection{pros\+\_\+adapters\+::Pros\+Heading Class Reference}
+\hypertarget{classpros__adapters_1_1_pros_heading}{}\label{classpros__adapters_1_1_pros_heading}\index{pros\_adapters::ProsHeading@{pros\_adapters::ProsHeading}}
+
+
+Pros inertial sensor adapter for the wisco IHeading\+Sensor interface.  
+
+
+Inheritance diagram for pros\+\_\+adapters\+::Pros\+Heading\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classpros__adapters_1_1_pros_heading}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpros__adapters_1_1_pros_heading_a07a8f80643dd4364587021b125290fb1}{Pros\+Heading}} (std\+::unique\+\_\+ptr$<$ pros\+::\+Imu $>$ \&sensor, double tuning\+\_\+constant=1)
+\begin{DoxyCompactList}\small\item\em Construct a new Pros Heading object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpros__adapters_1_1_pros_heading_a8ddf7d2db662947ffec00843640fdaea}{initialize}} () override
+\begin{DoxyCompactList}\small\item\em Initializes the sensor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpros__adapters_1_1_pros_heading_af282af52f5b18e8fc9eab7aac9f9f209}{reset}} () override
+\begin{DoxyCompactList}\small\item\em Resets the sensor. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classpros__adapters_1_1_pros_heading_a15707129306d0b5d1f4d457f6ee3e16a}{get\+Heading}} () override
+\begin{DoxyCompactList}\small\item\em Get the heading of the sensor in radians. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpros__adapters_1_1_pros_heading_a98507f313dbcab518f9f528180f24c22}{set\+Heading}} (double heading) override
+\begin{DoxyCompactList}\small\item\em Set the heading of the sensor in radians. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classpros__adapters_1_1_pros_heading_a4cac8f14b90b654ea77ccbb978359e69}{get\+Rotation}} () override
+\begin{DoxyCompactList}\small\item\em Get the rotation of the sensor in radians. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpros__adapters_1_1_pros_heading_aa5042132eb23630ee370a02ec1b1491b}{set\+Rotation}} (double rotation) override
+\begin{DoxyCompactList}\small\item\em Set the rotation of the sensor in radians. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classwisco_1_1io_1_1_i_heading_sensor}{wisco\+::io\+::\+IHeading\+Sensor}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IHeading\+Sensor} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classwisco_1_1io_1_1_i_heading_sensor}{IHeading\+Sensor} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ pros\+::\+Imu $>$ \mbox{\hyperlink{classpros__adapters_1_1_pros_heading_a7361299ef3de64ccfb1fc3abfbc5c502}{m\+\_\+sensor}} \{\}
+\begin{DoxyCompactList}\small\item\em The sensor being adapted. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classpros__adapters_1_1_pros_heading_aa35d7fc8fb728a0bba463b1aaa9cf7ae}{m\+\_\+tuning\+\_\+constant}} \{1\}
+\begin{DoxyCompactList}\small\item\em The tuning constant for the sensor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr double \mbox{\hyperlink{classpros__adapters_1_1_pros_heading_a183f3c2a22379232a51b413dd06a7b42}{UNIT\+\_\+\+CONVERTER}} \{-\/180 / M\+\_\+\+PI\}
+\begin{DoxyCompactList}\small\item\em Converts the units for the sensor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Pros inertial sensor adapter for the wisco IHeading\+Sensor interface. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Sandvig 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_pros_heading_8hpp_source_l00022}{22}} of file \mbox{\hyperlink{_pros_heading_8hpp_source}{Pros\+Heading.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classpros__adapters_1_1_pros_heading_a07a8f80643dd4364587021b125290fb1}\label{classpros__adapters_1_1_pros_heading_a07a8f80643dd4364587021b125290fb1} 
+\index{pros\_adapters::ProsHeading@{pros\_adapters::ProsHeading}!ProsHeading@{ProsHeading}}
+\index{ProsHeading@{ProsHeading}!pros\_adapters::ProsHeading@{pros\_adapters::ProsHeading}}
+\doxysubsubsection{\texorpdfstring{ProsHeading()}{ProsHeading()}}
+{\footnotesize\ttfamily pros\+\_\+adapters\+::\+Pros\+Heading\+::\+Pros\+Heading (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ pros\+::\+Imu $>$ \&}]{sensor,  }\item[{double}]{tuning\+\_\+constant = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+
+
+Construct a new Pros Heading object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sensor} & The sensor being adapted \\
+\hline
+{\em tuning\+\_\+constant} & The tuning constant multiplier for the sensor \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_pros_heading_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{_pros_heading_8cpp_source}{Pros\+Heading.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00005\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ }
+\DoxyCodeLine{00006\ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_heading_a7361299ef3de64ccfb1fc3abfbc5c502}{m\_sensor}}\{std::move(sensor)\},\ \mbox{\hyperlink{classpros__adapters_1_1_pros_heading_aa35d7fc8fb728a0bba463b1aaa9cf7ae}{m\_tuning\_constant}}\{tuning\_constant\}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classpros__adapters_1_1_pros_heading_a8ddf7d2db662947ffec00843640fdaea}\label{classpros__adapters_1_1_pros_heading_a8ddf7d2db662947ffec00843640fdaea} 
+\index{pros\_adapters::ProsHeading@{pros\_adapters::ProsHeading}!initialize@{initialize}}
+\index{initialize@{initialize}!pros\_adapters::ProsHeading@{pros\_adapters::ProsHeading}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void pros\+\_\+adapters\+::\+Pros\+Heading\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Initializes the sensor. 
+
+
+
+Implements \mbox{\hyperlink{classwisco_1_1io_1_1_i_heading_sensor_abeb99e7375bea3409fd2ea9ac07bc50e}{wisco\+::io\+::\+IHeading\+Sensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_pros_heading_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{_pros_heading_8cpp_source}{Pros\+Heading.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_heading_a7361299ef3de64ccfb1fc3abfbc5c502}{m\_sensor}})}
+\DoxyCodeLine{00014\ \ \ \ \ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_heading_a7361299ef3de64ccfb1fc3abfbc5c502}{m\_sensor}}-\/>is\_installed())}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_heading_a7361299ef3de64ccfb1fc3abfbc5c502}{m\_sensor}}-\/>reset();}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ pros::delay(3000);}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00020\ \ \ \ \ \}}
+\DoxyCodeLine{00021\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_heading_af282af52f5b18e8fc9eab7aac9f9f209}\label{classpros__adapters_1_1_pros_heading_af282af52f5b18e8fc9eab7aac9f9f209} 
+\index{pros\_adapters::ProsHeading@{pros\_adapters::ProsHeading}!reset@{reset}}
+\index{reset@{reset}!pros\_adapters::ProsHeading@{pros\_adapters::ProsHeading}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void pros\+\_\+adapters\+::\+Pros\+Heading\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Resets the sensor. 
+
+
+
+Implements \mbox{\hyperlink{classwisco_1_1io_1_1_i_heading_sensor_ad0ef5004cfb7b67cfb9b412abe8e71e7}{wisco\+::io\+::\+IHeading\+Sensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_pros_heading_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{_pros_heading_8cpp_source}{Pros\+Heading.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_heading_a7361299ef3de64ccfb1fc3abfbc5c502}{m\_sensor}})}
+\DoxyCodeLine{00026\ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ uint8\_t\ port\{\mbox{\hyperlink{classpros__adapters_1_1_pros_heading_a7361299ef3de64ccfb1fc3abfbc5c502}{m\_sensor}}-\/>get\_port()\};}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ pros::Device\ device\{port\};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ pros::DeviceType\ sensor\_type\{device.get\_plugged\_type()\};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sensor\_type\ ==\ pros::DeviceType::imu)}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_heading_a7361299ef3de64ccfb1fc3abfbc5c502}{m\_sensor}}-\/>reset();}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ pros::delay(3000);}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00035\ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_heading_a15707129306d0b5d1f4d457f6ee3e16a}\label{classpros__adapters_1_1_pros_heading_a15707129306d0b5d1f4d457f6ee3e16a} 
+\index{pros\_adapters::ProsHeading@{pros\_adapters::ProsHeading}!getHeading@{getHeading}}
+\index{getHeading@{getHeading}!pros\_adapters::ProsHeading@{pros\_adapters::ProsHeading}}
+\doxysubsubsection{\texorpdfstring{getHeading()}{getHeading()}}
+{\footnotesize\ttfamily double pros\+\_\+adapters\+::\+Pros\+Heading\+::get\+Heading (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the heading of the sensor in radians. 
+
+\begin{DoxyReturn}{Returns}
+double The heading in radians 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1io_1_1_i_heading_sensor_a84c0a92ed4f186ff9b50f4be4632f4a6}{wisco\+::io\+::\+IHeading\+Sensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_pros_heading_8cpp_source_l00038}{38}} of file \mbox{\hyperlink{_pros_heading_8cpp_source}{Pros\+Heading.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00039\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{double}\ heading\{\};}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_heading_a7361299ef3de64ccfb1fc3abfbc5c502}{m\_sensor}})}
+\DoxyCodeLine{00042\ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ heading\ =\ \mbox{\hyperlink{classpros__adapters_1_1_pros_heading_a7361299ef3de64ccfb1fc3abfbc5c502}{m\_sensor}}-\/>get\_heading()\ /\ \mbox{\hyperlink{classpros__adapters_1_1_pros_heading_a183f3c2a22379232a51b413dd06a7b42}{UNIT\_CONVERTER}};}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordflow}{return}\ heading;}
+\DoxyCodeLine{00046\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_heading_a98507f313dbcab518f9f528180f24c22}\label{classpros__adapters_1_1_pros_heading_a98507f313dbcab518f9f528180f24c22} 
+\index{pros\_adapters::ProsHeading@{pros\_adapters::ProsHeading}!setHeading@{setHeading}}
+\index{setHeading@{setHeading}!pros\_adapters::ProsHeading@{pros\_adapters::ProsHeading}}
+\doxysubsubsection{\texorpdfstring{setHeading()}{setHeading()}}
+{\footnotesize\ttfamily void pros\+\_\+adapters\+::\+Pros\+Heading\+::set\+Heading (\begin{DoxyParamCaption}\item[{double}]{heading }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the heading of the sensor in radians. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em heading} & The heading in radians \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1io_1_1_i_heading_sensor_ab9c7aa3655c084180274b92905aea04c}{wisco\+::io\+::\+IHeading\+Sensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_pros_heading_8cpp_source_l00048}{48}} of file \mbox{\hyperlink{_pros_heading_8cpp_source}{Pros\+Heading.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00049\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_heading_a7361299ef3de64ccfb1fc3abfbc5c502}{m\_sensor}})}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_heading_a7361299ef3de64ccfb1fc3abfbc5c502}{m\_sensor}}-\/>set\_heading(heading\ *\ \mbox{\hyperlink{classpros__adapters_1_1_pros_heading_a183f3c2a22379232a51b413dd06a7b42}{UNIT\_CONVERTER}});}
+\DoxyCodeLine{00052\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_heading_a4cac8f14b90b654ea77ccbb978359e69}\label{classpros__adapters_1_1_pros_heading_a4cac8f14b90b654ea77ccbb978359e69} 
+\index{pros\_adapters::ProsHeading@{pros\_adapters::ProsHeading}!getRotation@{getRotation}}
+\index{getRotation@{getRotation}!pros\_adapters::ProsHeading@{pros\_adapters::ProsHeading}}
+\doxysubsubsection{\texorpdfstring{getRotation()}{getRotation()}}
+{\footnotesize\ttfamily double pros\+\_\+adapters\+::\+Pros\+Heading\+::get\+Rotation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the rotation of the sensor in radians. 
+
+\begin{DoxyReturn}{Returns}
+double The rotation in radians 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1io_1_1_i_heading_sensor_a795aacd9db45221fb58bfba01f7b346f}{wisco\+::io\+::\+IHeading\+Sensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_pros_heading_8cpp_source_l00054}{54}} of file \mbox{\hyperlink{_pros_heading_8cpp_source}{Pros\+Heading.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00055\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{double}\ rotation\{\};}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_heading_a7361299ef3de64ccfb1fc3abfbc5c502}{m\_sensor}})}
+\DoxyCodeLine{00058\ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ rotation\ =\ \mbox{\hyperlink{classpros__adapters_1_1_pros_heading_a7361299ef3de64ccfb1fc3abfbc5c502}{m\_sensor}}-\/>get\_rotation()\ /\ \mbox{\hyperlink{classpros__adapters_1_1_pros_heading_a183f3c2a22379232a51b413dd06a7b42}{UNIT\_CONVERTER}};}
+\DoxyCodeLine{00060\ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordflow}{return}\ rotation;}
+\DoxyCodeLine{00062\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_heading_aa5042132eb23630ee370a02ec1b1491b}\label{classpros__adapters_1_1_pros_heading_aa5042132eb23630ee370a02ec1b1491b} 
+\index{pros\_adapters::ProsHeading@{pros\_adapters::ProsHeading}!setRotation@{setRotation}}
+\index{setRotation@{setRotation}!pros\_adapters::ProsHeading@{pros\_adapters::ProsHeading}}
+\doxysubsubsection{\texorpdfstring{setRotation()}{setRotation()}}
+{\footnotesize\ttfamily void pros\+\_\+adapters\+::\+Pros\+Heading\+::set\+Rotation (\begin{DoxyParamCaption}\item[{double}]{rotation }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the rotation of the sensor in radians. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rotation} & The rotation in radians \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1io_1_1_i_heading_sensor_adc69bd5fcf813c9a2d4ad9eb3b7ea5b4}{wisco\+::io\+::\+IHeading\+Sensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_pros_heading_8cpp_source_l00064}{64}} of file \mbox{\hyperlink{_pros_heading_8cpp_source}{Pros\+Heading.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00065\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_heading_a7361299ef3de64ccfb1fc3abfbc5c502}{m\_sensor}})}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_heading_a7361299ef3de64ccfb1fc3abfbc5c502}{m\_sensor}}-\/>set\_rotation(rotation\ *\ \mbox{\hyperlink{classpros__adapters_1_1_pros_heading_a183f3c2a22379232a51b413dd06a7b42}{UNIT\_CONVERTER}});}
+\DoxyCodeLine{00068\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classpros__adapters_1_1_pros_heading_a183f3c2a22379232a51b413dd06a7b42}\label{classpros__adapters_1_1_pros_heading_a183f3c2a22379232a51b413dd06a7b42} 
+\index{pros\_adapters::ProsHeading@{pros\_adapters::ProsHeading}!UNIT\_CONVERTER@{UNIT\_CONVERTER}}
+\index{UNIT\_CONVERTER@{UNIT\_CONVERTER}!pros\_adapters::ProsHeading@{pros\_adapters::ProsHeading}}
+\doxysubsubsection{\texorpdfstring{UNIT\_CONVERTER}{UNIT\_CONVERTER}}
+{\footnotesize\ttfamily constexpr double pros\+\_\+adapters\+::\+Pros\+Heading\+::\+UNIT\+\_\+\+CONVERTER \{-\/180 / M\+\_\+\+PI\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+Converts the units for the sensor. 
+
+
+
+Definition at line \mbox{\hyperlink{_pros_heading_8hpp_source_l00029}{29}} of file \mbox{\hyperlink{_pros_heading_8hpp_source}{Pros\+Heading.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00029\ \{-\/180\ /\ M\_PI\};}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_heading_a7361299ef3de64ccfb1fc3abfbc5c502}\label{classpros__adapters_1_1_pros_heading_a7361299ef3de64ccfb1fc3abfbc5c502} 
+\index{pros\_adapters::ProsHeading@{pros\_adapters::ProsHeading}!m\_sensor@{m\_sensor}}
+\index{m\_sensor@{m\_sensor}!pros\_adapters::ProsHeading@{pros\_adapters::ProsHeading}}
+\doxysubsubsection{\texorpdfstring{m\_sensor}{m\_sensor}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$pros\+::\+Imu$>$ pros\+\_\+adapters\+::\+Pros\+Heading\+::m\+\_\+sensor \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The sensor being adapted. 
+
+
+
+Definition at line \mbox{\hyperlink{_pros_heading_8hpp_source_l00035}{35}} of file \mbox{\hyperlink{_pros_heading_8hpp_source}{Pros\+Heading.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_heading_aa35d7fc8fb728a0bba463b1aaa9cf7ae}\label{classpros__adapters_1_1_pros_heading_aa35d7fc8fb728a0bba463b1aaa9cf7ae} 
+\index{pros\_adapters::ProsHeading@{pros\_adapters::ProsHeading}!m\_tuning\_constant@{m\_tuning\_constant}}
+\index{m\_tuning\_constant@{m\_tuning\_constant}!pros\_adapters::ProsHeading@{pros\_adapters::ProsHeading}}
+\doxysubsubsection{\texorpdfstring{m\_tuning\_constant}{m\_tuning\_constant}}
+{\footnotesize\ttfamily double pros\+\_\+adapters\+::\+Pros\+Heading\+::m\+\_\+tuning\+\_\+constant \{1\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The tuning constant for the sensor. 
+
+
+
+Definition at line \mbox{\hyperlink{_pros_heading_8hpp_source_l00041}{41}} of file \mbox{\hyperlink{_pros_heading_8hpp_source}{Pros\+Heading.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00041\ \{1\};}
+
+\end{DoxyCode}

@@ -1,0 +1,59 @@
+\doxysection{Pros\+Rotation.\+cpp}
+\hypertarget{_pros_rotation_8cpp_source}{}\label{_pros_rotation_8cpp_source}\index{src/pros\_adapters/ProsRotation.cpp@{src/pros\_adapters/ProsRotation.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}pros\_adapters/ProsRotation.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00003}00003\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacepros__adapters}{pros\_adapters}}}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00004}00004\ \{}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00005}\mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_a2b28a33e80504765aab242e443d36fa5}{00005}}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_a2b28a33e80504765aab242e443d36fa5}{ProsRotation::ProsRotation}}(std::unique\_ptr<pros::Rotation>\&\ sensor)\ :\ m\_sensor\{std::move(sensor)\}}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00008}00008\ \}}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00010}\mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_a36f7a18b0612025f93f409d223879eab}{00010}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_a36f7a18b0612025f93f409d223879eab}{ProsRotation::initialize}}()}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00012}00012\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_a418a48373bdd4a21992befe7de2ed41f}{m\_sensor}})}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00013}00013\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00014}00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_a418a48373bdd4a21992befe7de2ed41f}{m\_sensor}}-\/>reset();}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00015}00015\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00016}00016\ \}}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00018}\mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_af69309c5e55de0808d33c27b9f4f75ae}{00018}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_af69309c5e55de0808d33c27b9f4f75ae}{ProsRotation::reset}}()}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00019}00019\ \{}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00020}00020\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_a418a48373bdd4a21992befe7de2ed41f}{m\_sensor}})}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00021}00021\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_a418a48373bdd4a21992befe7de2ed41f}{m\_sensor}}-\/>reset();}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00023}00023\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00024}00024\ \}}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00026}\mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_a8418691b6a6570e39b07bd11199efe7e}{00026}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_a8418691b6a6570e39b07bd11199efe7e}{ProsRotation::getRotation}}()}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00027}00027\ \{}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00028}00028\ \ \ \ \ \textcolor{keywordtype}{double}\ rotation\{\};}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_a418a48373bdd4a21992befe7de2ed41f}{m\_sensor}})}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00030}00030\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ rotation\ =\ \mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_a418a48373bdd4a21992befe7de2ed41f}{m\_sensor}}-\/>get\_position()\ /\ \mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_af2c69aaf5c76f86585e8c4e44fac0220}{UNIT\_CONVERSION}};}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00033}00033\ \ \ \ \ \textcolor{keywordflow}{return}\ rotation;}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00034}00034\ \}}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00036}\mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_a8c8b8387a8f3c54346f76b03e20f0e86}{00036}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_a8c8b8387a8f3c54346f76b03e20f0e86}{ProsRotation::setRotation}}(\textcolor{keywordtype}{double}\ rotation)}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00037}00037\ \{}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_a418a48373bdd4a21992befe7de2ed41f}{m\_sensor}})}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00039}00039\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_a418a48373bdd4a21992befe7de2ed41f}{m\_sensor}}-\/>set\_position(rotation\ *\ \mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_af2c69aaf5c76f86585e8c4e44fac0220}{UNIT\_CONVERSION}});}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00041}00041\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00042}00042\ \}}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00044}\mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_ac2e0f90e5a70a6da897098ccbe44f657}{00044}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_ac2e0f90e5a70a6da897098ccbe44f657}{ProsRotation::getAngle}}()}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00045}00045\ \{}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{keywordtype}{double}\ angle\{\};}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_a418a48373bdd4a21992befe7de2ed41f}{m\_sensor}})}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00048}00048\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ angle\ =\ \mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_a418a48373bdd4a21992befe7de2ed41f}{m\_sensor}}-\/>get\_angle()\ /\ \mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_af2c69aaf5c76f86585e8c4e44fac0220}{UNIT\_CONVERSION}};}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{return}\ angle;}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00052}00052\ \}}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8cpp_source_l00053}00053\ \}}
+
+\end{DoxyCode}

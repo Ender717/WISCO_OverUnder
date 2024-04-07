@@ -1,0 +1,927 @@
+\doxysection{wisco\+::robot\+::subsystems\+::position\+::Inertial\+Odometry Class Reference}
+\hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry}{}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry}\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+
+
+An odometry system based on a heading sensor with two distance tracking sensors.  
+
+
+Inheritance diagram for wisco\+::robot\+::subsystems\+::position\+::Inertial\+Odometry\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a0bce97ee42c26027a647806d8b8dfd7b}{initialize}} () override
+\begin{DoxyCompactList}\small\item\em Initializes the position tracking system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_acdb1d844a584ea0de7017c8139d2c1f5}{run}} () override
+\begin{DoxyCompactList}\small\item\em Runs the position tracking system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_acef01067adecd18c523cfe9042d7cbf7}{set\+Position}} (\mbox{\hyperlink{structwisco_1_1robot_1_1subsystems_1_1position_1_1_position}{Position}} position) override
+\begin{DoxyCompactList}\small\item\em Set the position of the position tracking system. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structwisco_1_1robot_1_1subsystems_1_1position_1_1_position}{Position}} \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a104ed53d5507bb4bf9b91bb1b1aa38ce}{get\+Position}} () override
+\begin{DoxyCompactList}\small\item\em Get the position of the system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a635aee16ac21b727dd6ca40bd7a3915d}{set\+Clock}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_clock}{rtos\+::\+IClock}} $>$ \&clock)
+\begin{DoxyCompactList}\small\item\em Set the system clock. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a2e8ce3bc378799a0c63835d969bb43c7}{set\+Delayer}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_delayer}{rtos\+::\+IDelayer}} $>$ \&delayer)
+\begin{DoxyCompactList}\small\item\em Set the rtos delayer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_aa8dae0425a46af9eb90047e785ae0b47}{set\+Mutex}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_mutex}{rtos\+::\+IMutex}} $>$ \&mutex)
+\begin{DoxyCompactList}\small\item\em Set the os mutex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_aeb9759706f51b8945e114a22244c86f8}{set\+Task}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_task}{rtos\+::\+ITask}} $>$ \&task)
+\begin{DoxyCompactList}\small\item\em Set the rtos task handler. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_af12af03ea44abe467dc3e5a006e1b143}{set\+Heading\+Sensor}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1io_1_1_i_heading_sensor}{io\+::\+IHeading\+Sensor}} $>$ \&heading\+\_\+sensor)
+\begin{DoxyCompactList}\small\item\em Set the heading sensor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_afe91c3de3bc77ae9dfa04cd9f1361b2f}{set\+Linear\+Distance\+Tracking\+Sensor}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1io_1_1_i_distance_tracking_sensor}{io\+::\+IDistance\+Tracking\+Sensor}} $>$ \&linear\+\_\+distance\+\_\+tracking\+\_\+sensor)
+\begin{DoxyCompactList}\small\item\em Set the linear distance tracking sensor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_adb6e826df654910a1cb685db7fd62569}{set\+Linear\+Distance\+Tracking\+Offset}} (double linear\+\_\+distance\+\_\+tracking\+\_\+offset)
+\begin{DoxyCompactList}\small\item\em Set the linear distance tracking offset. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ab0790651ce8be71a8cd7aadd89e5d7b8}{set\+Strafe\+Distance\+Tracking\+Sensor}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1io_1_1_i_distance_tracking_sensor}{io\+::\+IDistance\+Tracking\+Sensor}} $>$ \&strafe\+\_\+distance\+\_\+tracking\+\_\+sensor)
+\begin{DoxyCompactList}\small\item\em Set the strafe distance tracking sensor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_aab5ad52e146d68394c9755bc957fe697}{set\+Strafe\+Distance\+Tracking\+Offset}} (double strafe\+\_\+distance\+\_\+tracking\+\_\+offset)
+\begin{DoxyCompactList}\small\item\em Set the strafe distance tracking offset. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker}{wisco\+::robot\+::subsystems\+::position\+::\+IPosition\+Tracker}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IPosition\+Tracker} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker}{IPosition\+Tracker} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ab6c0f3b1ccce2ff1e8551a433b214f3d}{task\+Update}} ()
+\begin{DoxyCompactList}\small\item\em Runs all the object-\/specific updates in the task loop. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a2c4656bf6d4143addbcae3581c8320bc}{update\+Position}} ()
+\begin{DoxyCompactList}\small\item\em Updates the position of the system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a430a2b121aa7e8bcdfc12248af8e6254}{task\+Loop}} (void \texorpdfstring{$\ast$}{*}params)
+\begin{DoxyCompactList}\small\item\em The task loop function for background updates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_clock}{rtos\+::\+IClock}} $>$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a288235ba671567d61e95370471c48239}{m\+\_\+clock}} \{\}
+\begin{DoxyCompactList}\small\item\em The system clock. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_delayer}{rtos\+::\+IDelayer}} $>$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a4f68602b33a596fe206b4d5593d27bff}{m\+\_\+delayer}} \{\}
+\begin{DoxyCompactList}\small\item\em The system delayer. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_mutex}{rtos\+::\+IMutex}} $>$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ae4ffb56ca0f6af8e5fbe5996971ecfd4}{m\+\_\+mutex}} \{\}
+\begin{DoxyCompactList}\small\item\em The os mutex. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_task}{rtos\+::\+ITask}} $>$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a1fb79eaf6e0ec8e5014c9bd4728a869e}{m\+\_\+task}} \{\}
+\begin{DoxyCompactList}\small\item\em The task handler. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1io_1_1_i_heading_sensor}{io\+::\+IHeading\+Sensor}} $>$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_adebc78855ac0a518bdeae167d0dc018f}{m\+\_\+heading\+\_\+sensor}} \{\}
+\begin{DoxyCompactList}\small\item\em The sensor to track the robot\textquotesingle{}s heading. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1io_1_1_i_distance_tracking_sensor}{io\+::\+IDistance\+Tracking\+Sensor}} $>$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a7088b1b0ee492b190208aadac526e24d}{m\+\_\+linear\+\_\+distance\+\_\+tracking\+\_\+sensor}} \{\}
+\begin{DoxyCompactList}\small\item\em The sensor to track the robot\textquotesingle{}s linear movement. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a6be151a95412d9e817b6c6b2ec7206f6}{m\+\_\+linear\+\_\+distance\+\_\+tracking\+\_\+offset}} \{\}
+\begin{DoxyCompactList}\small\item\em The offset from the linear distance tracking sensor to the tracking center This value is left-\/justified, I.\+E. the offset to the left of center. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1io_1_1_i_distance_tracking_sensor}{io\+::\+IDistance\+Tracking\+Sensor}} $>$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_aa8a6ad9051d65cbc303f5c19d4e783aa}{m\+\_\+strafe\+\_\+distance\+\_\+tracking\+\_\+sensor}} \{\}
+\begin{DoxyCompactList}\small\item\em The sensor to track the robot\textquotesingle{}s strafe movement. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a9afcc3bc83de4ea79392f4b7d50b63a5}{m\+\_\+strafe\+\_\+distance\+\_\+tracking\+\_\+offset}} \{\}
+\begin{DoxyCompactList}\small\item\em The offset from the strafe distance tracking sensor to the tracking center This value is front-\/justified, I.\+E. the offset to the front of center. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structwisco_1_1robot_1_1subsystems_1_1position_1_1_position}{Position}} \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a0f9f18545a7cb1d410581dbeb87b12f7}{m\+\_\+position}} \{\}
+\begin{DoxyCompactList}\small\item\em The current position of the system. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a9a6345708c9beaf5a023b840809ddbbe}{last\+\_\+heading}} \{\}
+\begin{DoxyCompactList}\small\item\em The last value of the heading sensor. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a525571579c4a973de3420c41ff3d621e}{last\+\_\+linear\+\_\+distance}} \{\}
+\begin{DoxyCompactList}\small\item\em The last value of the linear distance tracking sensor. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a78432c81afa5434131cd39fa358d915b}{last\+\_\+strafe\+\_\+distance}} \{\}
+\begin{DoxyCompactList}\small\item\em The last value of the strafe distance tracking sensor. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ab3f59c5603b8c3f71b9c0d678a79bfa5}{last\+\_\+time}} \{\}
+\begin{DoxyCompactList}\small\item\em The last value of the system clock time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr uint8\+\_\+t \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a459e24ae3bfbd476fd23cdd031eb25d0}{TASK\+\_\+\+DELAY}} \{10\}
+\begin{DoxyCompactList}\small\item\em The loop delay on the task. \end{DoxyCompactList}\item 
+static constexpr double \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a72b152ddd277aab812eefaa502058603}{TIME\+\_\+\+UNIT\+\_\+\+CONVERTER}} \{1000\}
+\begin{DoxyCompactList}\small\item\em Converts the time units for velocity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An odometry system based on a heading sensor with two distance tracking sensors. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Sandvig 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8hpp_source_l00053}{53}} of file \mbox{\hyperlink{_inertial_odometry_8hpp_source}{Inertial\+Odometry.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a430a2b121aa7e8bcdfc12248af8e6254}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a430a2b121aa7e8bcdfc12248af8e6254} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!taskLoop@{taskLoop}}
+\index{taskLoop@{taskLoop}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{taskLoop()}{taskLoop()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::task\+Loop (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{params }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The task loop function for background updates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em params} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{_inertial_odometry_8cpp_source}{Inertial\+Odometry.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{void}**\ parameters\{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}**\textcolor{keyword}{>}(params)\};}
+\DoxyCodeLine{00015\ \ \ \ \ InertialOdometry*\ instance\{\textcolor{keyword}{static\_cast<}InertialOdometry*\textcolor{keyword}{>}(parameters[0])\};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})}
+\DoxyCodeLine{00018\ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ instance-\/>taskUpdate();}
+\DoxyCodeLine{00020\ \ \ \ \ \}}
+\DoxyCodeLine{00021\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ab6c0f3b1ccce2ff1e8551a433b214f3d}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ab6c0f3b1ccce2ff1e8551a433b214f3d} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!taskUpdate@{taskUpdate}}
+\index{taskUpdate@{taskUpdate}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{taskUpdate()}{taskUpdate()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::task\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Runs all the object-\/specific updates in the task loop. 
+
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{_inertial_odometry_8cpp_source}{Inertial\+Odometry.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a2c4656bf6d4143addbcae3581c8320bc}{updatePosition}}();}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a4f68602b33a596fe206b4d5593d27bff}{m\_delayer}}-\/>delay(\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a459e24ae3bfbd476fd23cdd031eb25d0}{TASK\_DELAY}});}
+\DoxyCodeLine{00027\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a2c4656bf6d4143addbcae3581c8320bc}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a2c4656bf6d4143addbcae3581c8320bc} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!updatePosition@{updatePosition}}
+\index{updatePosition@{updatePosition}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{updatePosition()}{updatePosition()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::update\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Updates the position of the system. 
+
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{_inertial_odometry_8cpp_source}{Inertial\+Odometry.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ae4ffb56ca0f6af8e5fbe5996971ecfd4}{m\_mutex}})}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ae4ffb56ca0f6af8e5fbe5996971ecfd4}{m\_mutex}}-\/>take();}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{double}\ current\_heading\{\};}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{double}\ current\_linear\_distance\{\};}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{double}\ current\_strafe\_distance\{\};}
+\DoxyCodeLine{00037\ \ \ \ \ uint32\_t\ current\_time\{\};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_adebc78855ac0a518bdeae167d0dc018f}{m\_heading\_sensor}})}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ current\_heading\ =\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_adebc78855ac0a518bdeae167d0dc018f}{m\_heading\_sensor}}-\/>getRotation();}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a7088b1b0ee492b190208aadac526e24d}{m\_linear\_distance\_tracking\_sensor}})}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ current\_linear\_distance\ =\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a7088b1b0ee492b190208aadac526e24d}{m\_linear\_distance\_tracking\_sensor}}-\/>getDistance();}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_aa8a6ad9051d65cbc303f5c19d4e783aa}{m\_strafe\_distance\_tracking\_sensor}})}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ current\_strafe\_distance\ =\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_aa8a6ad9051d65cbc303f5c19d4e783aa}{m\_strafe\_distance\_tracking\_sensor}}-\/>getDistance();}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a288235ba671567d61e95370471c48239}{m\_clock}})}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ current\_time\ =\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a288235ba671567d61e95370471c48239}{m\_clock}}-\/>getTime();}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{double}\ heading\_change\{current\_heading\ -\/\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a9a6345708c9beaf5a023b840809ddbbe}{last\_heading}}\};}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{double}\ linear\_change\{current\_linear\_distance\ -\/\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a525571579c4a973de3420c41ff3d621e}{last\_linear\_distance}}\};}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{double}\ strafe\_change\{current\_strafe\_distance\ -\/\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a78432c81afa5434131cd39fa358d915b}{last\_strafe\_distance}}\};}
+\DoxyCodeLine{00051\ \ \ \ \ uint32\_t\ time\_change\{current\_time\ -\/\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ab3f59c5603b8c3f71b9c0d678a79bfa5}{last\_time}}\};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{double}\ local\_x\{\};}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{double}\ local\_y\{\};}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{double}\ local\_theta\{\};}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordflow}{if}\ (heading\_change\ !=\ 0.0)}
+\DoxyCodeLine{00057\ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ linear\_radius\{(linear\_change\ /\ heading\_change)\ -\/\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a6be151a95412d9e817b6c6b2ec7206f6}{m\_linear\_distance\_tracking\_offset}}\};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ strafe\_radius\{(strafe\_change\ /\ heading\_change)\ -\/\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a9afcc3bc83de4ea79392f4b7d50b63a5}{m\_strafe\_distance\_tracking\_offset}}\};}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ local\_x\ =\ 2\ *\ std::sin(heading\_change\ /\ 2)\ *\ strafe\_radius;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ local\_y\ =\ 2\ *\ std::sin(heading\_change\ /\ 2)\ *\ linear\_radius;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ local\_theta\ =\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a9a6345708c9beaf5a023b840809ddbbe}{last\_heading}}\ +\ current\_heading)\ /\ 2;}
+\DoxyCodeLine{00063\ \ \ \ \ \}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00065\ \ \ \ \ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ local\_x\ =\ strafe\_change;}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ local\_y\ =\ linear\_change;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ local\_theta\ =\ current\_heading;}
+\DoxyCodeLine{00069\ \ \ \ \ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{double}\ global\_x\{(local\_x\ *\ std::sin(local\_theta))\ +\ (local\_y\ *\ std::cos(local\_theta))\};}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{double}\ global\_y\{(local\_y\ *\ std::sin(local\_theta))\ +\ (-\/local\_x\ *\ std::cos(local\_theta))\};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a0f9f18545a7cb1d410581dbeb87b12f7}{m\_position}}.\mbox{\hyperlink{structwisco_1_1robot_1_1subsystems_1_1position_1_1_position_a3293da89fa356ed9940a8d3d30bbbaf3}{x}}\ +=\ global\_x;}
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a0f9f18545a7cb1d410581dbeb87b12f7}{m\_position}}.\mbox{\hyperlink{structwisco_1_1robot_1_1subsystems_1_1position_1_1_position_a6dd0870860a4ae69e0f6d2256a94e6dd}{y}}\ +=\ global\_y;}
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a0f9f18545a7cb1d410581dbeb87b12f7}{m\_position}}.\mbox{\hyperlink{structwisco_1_1robot_1_1subsystems_1_1position_1_1_position_af148967a4af739857dbcbcd3224b1bd8}{theta}}\ =\ current\_heading;}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a288235ba671567d61e95370471c48239}{m\_clock}})}
+\DoxyCodeLine{00079\ \ \ \ \ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a0f9f18545a7cb1d410581dbeb87b12f7}{m\_position}}.\mbox{\hyperlink{structwisco_1_1robot_1_1subsystems_1_1position_1_1_position_a7b34c6c3f3905033ba47141ec131e18a}{xV}}\ =\ global\_x\ *\ time\_change\ /\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a72b152ddd277aab812eefaa502058603}{TIME\_UNIT\_CONVERTER}};}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a0f9f18545a7cb1d410581dbeb87b12f7}{m\_position}}.\mbox{\hyperlink{structwisco_1_1robot_1_1subsystems_1_1position_1_1_position_a7b5d44c8d33ff7f4f4f7f8294d1cf597}{yV}}\ =\ global\_y\ *\ time\_change\ /\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a72b152ddd277aab812eefaa502058603}{TIME\_UNIT\_CONVERTER}};}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a0f9f18545a7cb1d410581dbeb87b12f7}{m\_position}}.\mbox{\hyperlink{structwisco_1_1robot_1_1subsystems_1_1position_1_1_position_aea639e4a77c311756fa4c407996cd97f}{thetaV}}\ =\ heading\_change\ *\ time\_change\ /\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a72b152ddd277aab812eefaa502058603}{TIME\_UNIT\_CONVERTER}};}
+\DoxyCodeLine{00083\ \ \ \ \ \}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a9a6345708c9beaf5a023b840809ddbbe}{last\_heading}}\ =\ current\_heading;}
+\DoxyCodeLine{00086\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a525571579c4a973de3420c41ff3d621e}{last\_linear\_distance}}\ =\ current\_linear\_distance;}
+\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a78432c81afa5434131cd39fa358d915b}{last\_strafe\_distance}}\ =\ current\_strafe\_distance;}
+\DoxyCodeLine{00088\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ab3f59c5603b8c3f71b9c0d678a79bfa5}{last\_time}}\ =\ current\_time;}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ae4ffb56ca0f6af8e5fbe5996971ecfd4}{m\_mutex}})}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ae4ffb56ca0f6af8e5fbe5996971ecfd4}{m\_mutex}}-\/>give();}
+\DoxyCodeLine{00092\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a0bce97ee42c26027a647806d8b8dfd7b}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a0bce97ee42c26027a647806d8b8dfd7b} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!initialize@{initialize}}
+\index{initialize@{initialize}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Initializes the position tracking system. 
+
+
+
+Implements \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker_ab06468ef7bf7b04ba6e1787936a1f4fa}{wisco\+::robot\+::subsystems\+::position\+::\+IPosition\+Tracker}}.
+
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8cpp_source_l00094}{94}} of file \mbox{\hyperlink{_inertial_odometry_8cpp_source}{Inertial\+Odometry.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00095\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_adebc78855ac0a518bdeae167d0dc018f}{m\_heading\_sensor}})}
+\DoxyCodeLine{00097\ \ \ \ \ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_adebc78855ac0a518bdeae167d0dc018f}{m\_heading\_sensor}}-\/>initialize();}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a9a6345708c9beaf5a023b840809ddbbe}{last\_heading}}\ =\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_adebc78855ac0a518bdeae167d0dc018f}{m\_heading\_sensor}}-\/>getRotation();}
+\DoxyCodeLine{00100\ \ \ \ \ \}}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a7088b1b0ee492b190208aadac526e24d}{m\_linear\_distance\_tracking\_sensor}})}
+\DoxyCodeLine{00102\ \ \ \ \ \{}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a7088b1b0ee492b190208aadac526e24d}{m\_linear\_distance\_tracking\_sensor}}-\/>initialize();}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a525571579c4a973de3420c41ff3d621e}{last\_linear\_distance}}\ =\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a7088b1b0ee492b190208aadac526e24d}{m\_linear\_distance\_tracking\_sensor}}-\/>getDistance();}
+\DoxyCodeLine{00105\ \ \ \ \ \}}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_aa8a6ad9051d65cbc303f5c19d4e783aa}{m\_strafe\_distance\_tracking\_sensor}})}
+\DoxyCodeLine{00107\ \ \ \ \ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_aa8a6ad9051d65cbc303f5c19d4e783aa}{m\_strafe\_distance\_tracking\_sensor}}-\/>initialize();}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a78432c81afa5434131cd39fa358d915b}{last\_strafe\_distance}}\ =\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_aa8a6ad9051d65cbc303f5c19d4e783aa}{m\_strafe\_distance\_tracking\_sensor}}-\/>getDistance();}
+\DoxyCodeLine{00110\ \ \ \ \ \}}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a288235ba671567d61e95370471c48239}{m\_clock}})}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ab3f59c5603b8c3f71b9c0d678a79bfa5}{last\_time}}\ =\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a288235ba671567d61e95370471c48239}{m\_clock}}-\/>getTime();}
+\DoxyCodeLine{00113\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_acdb1d844a584ea0de7017c8139d2c1f5}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_acdb1d844a584ea0de7017c8139d2c1f5} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!run@{run}}
+\index{run@{run}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Runs the position tracking system. 
+
+
+
+Implements \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker_a448b3476fa5a7530652d10f84ebd4df9}{wisco\+::robot\+::subsystems\+::position\+::\+IPosition\+Tracker}}.
+
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8cpp_source_l00115}{115}} of file \mbox{\hyperlink{_inertial_odometry_8cpp_source}{Inertial\+Odometry.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00116\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a1fb79eaf6e0ec8e5014c9bd4728a869e}{m\_task}})}
+\DoxyCodeLine{00118\ \ \ \ \ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}**\ params\{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}**\textcolor{keyword}{>}(malloc(1\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{void}*)))\};}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ params[0]\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a1fb79eaf6e0ec8e5014c9bd4728a869e}{m\_task}}-\/>start(\&\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a430a2b121aa7e8bcdfc12248af8e6254}{InertialOdometry::taskLoop}},\ params);}
+\DoxyCodeLine{00122\ \ \ \ \ \}}
+\DoxyCodeLine{00123\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_acef01067adecd18c523cfe9042d7cbf7}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_acef01067adecd18c523cfe9042d7cbf7} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::set\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwisco_1_1robot_1_1subsystems_1_1position_1_1_position}{Position}}}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the position of the position tracking system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The new position \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker_ad4de026302d7a129bfc443e422a22afd}{wisco\+::robot\+::subsystems\+::position\+::\+IPosition\+Tracker}}.
+
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8cpp_source_l00125}{125}} of file \mbox{\hyperlink{_inertial_odometry_8cpp_source}{Inertial\+Odometry.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00126\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ae4ffb56ca0f6af8e5fbe5996971ecfd4}{m\_mutex}})}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ae4ffb56ca0f6af8e5fbe5996971ecfd4}{m\_mutex}}-\/>take();}
+\DoxyCodeLine{00129\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a0f9f18545a7cb1d410581dbeb87b12f7}{m\_position}}\ =\ position;}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ae4ffb56ca0f6af8e5fbe5996971ecfd4}{m\_mutex}})}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ae4ffb56ca0f6af8e5fbe5996971ecfd4}{m\_mutex}}-\/>give();}
+\DoxyCodeLine{00132\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a104ed53d5507bb4bf9b91bb1b1aa38ce}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a104ed53d5507bb4bf9b91bb1b1aa38ce} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwisco_1_1robot_1_1subsystems_1_1position_1_1_position}{Position}} wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the position of the system. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{structwisco_1_1robot_1_1subsystems_1_1position_1_1_position}{Position} The position of the system 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker_a709a05277a1da2d40aa4b037a2977548}{wisco\+::robot\+::subsystems\+::position\+::\+IPosition\+Tracker}}.
+
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8cpp_source_l00134}{134}} of file \mbox{\hyperlink{_inertial_odometry_8cpp_source}{Inertial\+Odometry.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00135\ \{}
+\DoxyCodeLine{00136\ \ \ \ \ Position\ position\{\};}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ae4ffb56ca0f6af8e5fbe5996971ecfd4}{m\_mutex}})}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ae4ffb56ca0f6af8e5fbe5996971ecfd4}{m\_mutex}}-\/>take();}
+\DoxyCodeLine{00139\ \ \ \ \ position\ =\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a0f9f18545a7cb1d410581dbeb87b12f7}{m\_position}};}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ae4ffb56ca0f6af8e5fbe5996971ecfd4}{m\_mutex}})}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ae4ffb56ca0f6af8e5fbe5996971ecfd4}{m\_mutex}}-\/>give();}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordflow}{return}\ position;}
+\DoxyCodeLine{00143\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a635aee16ac21b727dd6ca40bd7a3915d}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a635aee16ac21b727dd6ca40bd7a3915d} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!setClock@{setClock}}
+\index{setClock@{setClock}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{setClock()}{setClock()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::set\+Clock (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_clock}{rtos\+::\+IClock}} $>$ \&}]{clock }\end{DoxyParamCaption})}
+
+
+
+Set the system clock. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clock} & The system clock \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8cpp_source_l00145}{145}} of file \mbox{\hyperlink{_inertial_odometry_8cpp_source}{Inertial\+Odometry.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00146\ \{}
+\DoxyCodeLine{00147\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a288235ba671567d61e95370471c48239}{m\_clock}}\ =\ std::move(clock);}
+\DoxyCodeLine{00148\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a2e8ce3bc378799a0c63835d969bb43c7}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a2e8ce3bc378799a0c63835d969bb43c7} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!setDelayer@{setDelayer}}
+\index{setDelayer@{setDelayer}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{setDelayer()}{setDelayer()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::set\+Delayer (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_delayer}{rtos\+::\+IDelayer}} $>$ \&}]{delayer }\end{DoxyParamCaption})}
+
+
+
+Set the rtos delayer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delayer} & The rtos delayer \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8cpp_source_l00150}{150}} of file \mbox{\hyperlink{_inertial_odometry_8cpp_source}{Inertial\+Odometry.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00151\ \{}
+\DoxyCodeLine{00152\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a4f68602b33a596fe206b4d5593d27bff}{m\_delayer}}\ =\ std::move(delayer);}
+\DoxyCodeLine{00153\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_aa8dae0425a46af9eb90047e785ae0b47}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_aa8dae0425a46af9eb90047e785ae0b47} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!setMutex@{setMutex}}
+\index{setMutex@{setMutex}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{setMutex()}{setMutex()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::set\+Mutex (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_mutex}{rtos\+::\+IMutex}} $>$ \&}]{mutex }\end{DoxyParamCaption})}
+
+
+
+Set the os mutex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mutex} & The os mutex \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8cpp_source_l00155}{155}} of file \mbox{\hyperlink{_inertial_odometry_8cpp_source}{Inertial\+Odometry.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00156\ \{}
+\DoxyCodeLine{00157\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ae4ffb56ca0f6af8e5fbe5996971ecfd4}{m\_mutex}}\ =\ std::move(mutex);}
+\DoxyCodeLine{00158\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_aeb9759706f51b8945e114a22244c86f8}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_aeb9759706f51b8945e114a22244c86f8} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!setTask@{setTask}}
+\index{setTask@{setTask}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{setTask()}{setTask()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::set\+Task (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_task}{rtos\+::\+ITask}} $>$ \&}]{task }\end{DoxyParamCaption})}
+
+
+
+Set the rtos task handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em task} & The rtos task handler \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8cpp_source_l00160}{160}} of file \mbox{\hyperlink{_inertial_odometry_8cpp_source}{Inertial\+Odometry.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00161\ \{}
+\DoxyCodeLine{00162\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a1fb79eaf6e0ec8e5014c9bd4728a869e}{m\_task}}\ =\ std::move(task);}
+\DoxyCodeLine{00163\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_af12af03ea44abe467dc3e5a006e1b143}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_af12af03ea44abe467dc3e5a006e1b143} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!setHeadingSensor@{setHeadingSensor}}
+\index{setHeadingSensor@{setHeadingSensor}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{setHeadingSensor()}{setHeadingSensor()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::set\+Heading\+Sensor (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1io_1_1_i_heading_sensor}{io\+::\+IHeading\+Sensor}} $>$ \&}]{heading\+\_\+sensor }\end{DoxyParamCaption})}
+
+
+
+Set the heading sensor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em heading\+\_\+sensor} & The heading sensor \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8cpp_source_l00165}{165}} of file \mbox{\hyperlink{_inertial_odometry_8cpp_source}{Inertial\+Odometry.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00166\ \{}
+\DoxyCodeLine{00167\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_adebc78855ac0a518bdeae167d0dc018f}{m\_heading\_sensor}}\ =\ std::move(heading\_sensor);}
+\DoxyCodeLine{00168\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_afe91c3de3bc77ae9dfa04cd9f1361b2f}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_afe91c3de3bc77ae9dfa04cd9f1361b2f} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!setLinearDistanceTrackingSensor@{setLinearDistanceTrackingSensor}}
+\index{setLinearDistanceTrackingSensor@{setLinearDistanceTrackingSensor}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{setLinearDistanceTrackingSensor()}{setLinearDistanceTrackingSensor()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::set\+Linear\+Distance\+Tracking\+Sensor (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1io_1_1_i_distance_tracking_sensor}{io\+::\+IDistance\+Tracking\+Sensor}} $>$ \&}]{linear\+\_\+distance\+\_\+tracking\+\_\+sensor }\end{DoxyParamCaption})}
+
+
+
+Set the linear distance tracking sensor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em linear\+\_\+distance\+\_\+tracking\+\_\+sensor} & The linear distance tracking sensor \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8cpp_source_l00170}{170}} of file \mbox{\hyperlink{_inertial_odometry_8cpp_source}{Inertial\+Odometry.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00171\ \{\ \ \ }
+\DoxyCodeLine{00172\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a7088b1b0ee492b190208aadac526e24d}{m\_linear\_distance\_tracking\_sensor}}\ =\ std::move(linear\_distance\_tracking\_sensor);}
+\DoxyCodeLine{00173\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_adb6e826df654910a1cb685db7fd62569}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_adb6e826df654910a1cb685db7fd62569} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!setLinearDistanceTrackingOffset@{setLinearDistanceTrackingOffset}}
+\index{setLinearDistanceTrackingOffset@{setLinearDistanceTrackingOffset}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{setLinearDistanceTrackingOffset()}{setLinearDistanceTrackingOffset()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::set\+Linear\+Distance\+Tracking\+Offset (\begin{DoxyParamCaption}\item[{double}]{linear\+\_\+distance\+\_\+tracking\+\_\+offset }\end{DoxyParamCaption})}
+
+
+
+Set the linear distance tracking offset. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em linear\+\_\+distance\+\_\+tracking\+\_\+offset} & The linear distance tracking offset \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8cpp_source_l00175}{175}} of file \mbox{\hyperlink{_inertial_odometry_8cpp_source}{Inertial\+Odometry.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00176\ \{}
+\DoxyCodeLine{00177\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a6be151a95412d9e817b6c6b2ec7206f6}{m\_linear\_distance\_tracking\_offset}}\ =\ linear\_distance\_tracking\_offset;}
+\DoxyCodeLine{00178\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ab0790651ce8be71a8cd7aadd89e5d7b8}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ab0790651ce8be71a8cd7aadd89e5d7b8} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!setStrafeDistanceTrackingSensor@{setStrafeDistanceTrackingSensor}}
+\index{setStrafeDistanceTrackingSensor@{setStrafeDistanceTrackingSensor}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{setStrafeDistanceTrackingSensor()}{setStrafeDistanceTrackingSensor()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::set\+Strafe\+Distance\+Tracking\+Sensor (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1io_1_1_i_distance_tracking_sensor}{io\+::\+IDistance\+Tracking\+Sensor}} $>$ \&}]{strafe\+\_\+distance\+\_\+tracking\+\_\+sensor }\end{DoxyParamCaption})}
+
+
+
+Set the strafe distance tracking sensor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em strafe\+\_\+distance\+\_\+tracking\+\_\+sensor} & The strafe distance tracking sensor \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8cpp_source_l00180}{180}} of file \mbox{\hyperlink{_inertial_odometry_8cpp_source}{Inertial\+Odometry.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00181\ \{}
+\DoxyCodeLine{00182\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_aa8a6ad9051d65cbc303f5c19d4e783aa}{m\_strafe\_distance\_tracking\_sensor}}\ =\ std::move(strafe\_distance\_tracking\_sensor);}
+\DoxyCodeLine{00183\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_aab5ad52e146d68394c9755bc957fe697}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_aab5ad52e146d68394c9755bc957fe697} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!setStrafeDistanceTrackingOffset@{setStrafeDistanceTrackingOffset}}
+\index{setStrafeDistanceTrackingOffset@{setStrafeDistanceTrackingOffset}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{setStrafeDistanceTrackingOffset()}{setStrafeDistanceTrackingOffset()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::set\+Strafe\+Distance\+Tracking\+Offset (\begin{DoxyParamCaption}\item[{double}]{strafe\+\_\+distance\+\_\+tracking\+\_\+offset }\end{DoxyParamCaption})}
+
+
+
+Set the strafe distance tracking offset. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em strafe\+\_\+distance\+\_\+tracking\+\_\+offset} & The strafe distance tracking offset \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8cpp_source_l00185}{185}} of file \mbox{\hyperlink{_inertial_odometry_8cpp_source}{Inertial\+Odometry.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00186\ \{}
+\DoxyCodeLine{00187\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a9afcc3bc83de4ea79392f4b7d50b63a5}{m\_strafe\_distance\_tracking\_offset}}\ =\ strafe\_distance\_tracking\_offset;}
+\DoxyCodeLine{00188\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a459e24ae3bfbd476fd23cdd031eb25d0}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a459e24ae3bfbd476fd23cdd031eb25d0} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!TASK\_DELAY@{TASK\_DELAY}}
+\index{TASK\_DELAY@{TASK\_DELAY}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{TASK\_DELAY}{TASK\_DELAY}}
+{\footnotesize\ttfamily constexpr uint8\+\_\+t wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::\+TASK\+\_\+\+DELAY \{10\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The loop delay on the task. 
+
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8hpp_source_l00060}{60}} of file \mbox{\hyperlink{_inertial_odometry_8hpp_source}{Inertial\+Odometry.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00060\ \{10\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a72b152ddd277aab812eefaa502058603}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a72b152ddd277aab812eefaa502058603} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!TIME\_UNIT\_CONVERTER@{TIME\_UNIT\_CONVERTER}}
+\index{TIME\_UNIT\_CONVERTER@{TIME\_UNIT\_CONVERTER}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{TIME\_UNIT\_CONVERTER}{TIME\_UNIT\_CONVERTER}}
+{\footnotesize\ttfamily constexpr double wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::\+TIME\+\_\+\+UNIT\+\_\+\+CONVERTER \{1000\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+Converts the time units for velocity. 
+
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8hpp_source_l00066}{66}} of file \mbox{\hyperlink{_inertial_odometry_8hpp_source}{Inertial\+Odometry.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00066\ \{1000\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a288235ba671567d61e95370471c48239}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a288235ba671567d61e95370471c48239} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!m\_clock@{m\_clock}}
+\index{m\_clock@{m\_clock}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{m\_clock}{m\_clock}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1rtos_1_1_i_clock}{rtos\+::\+IClock}}$>$ wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::m\+\_\+clock \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The system clock. 
+
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8hpp_source_l00079}{79}} of file \mbox{\hyperlink{_inertial_odometry_8hpp_source}{Inertial\+Odometry.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00079\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a4f68602b33a596fe206b4d5593d27bff}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a4f68602b33a596fe206b4d5593d27bff} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!m\_delayer@{m\_delayer}}
+\index{m\_delayer@{m\_delayer}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{m\_delayer}{m\_delayer}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1rtos_1_1_i_delayer}{rtos\+::\+IDelayer}}$>$ wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::m\+\_\+delayer \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The system delayer. 
+
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8hpp_source_l00085}{85}} of file \mbox{\hyperlink{_inertial_odometry_8hpp_source}{Inertial\+Odometry.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00085\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ae4ffb56ca0f6af8e5fbe5996971ecfd4}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ae4ffb56ca0f6af8e5fbe5996971ecfd4} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!m\_mutex@{m\_mutex}}
+\index{m\_mutex@{m\_mutex}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{m\_mutex}{m\_mutex}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1rtos_1_1_i_mutex}{rtos\+::\+IMutex}}$>$ wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::m\+\_\+mutex \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The os mutex. 
+
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8hpp_source_l00091}{91}} of file \mbox{\hyperlink{_inertial_odometry_8hpp_source}{Inertial\+Odometry.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00091\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a1fb79eaf6e0ec8e5014c9bd4728a869e}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a1fb79eaf6e0ec8e5014c9bd4728a869e} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!m\_task@{m\_task}}
+\index{m\_task@{m\_task}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{m\_task}{m\_task}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1rtos_1_1_i_task}{rtos\+::\+ITask}}$>$ wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::m\+\_\+task \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The task handler. 
+
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8hpp_source_l00097}{97}} of file \mbox{\hyperlink{_inertial_odometry_8hpp_source}{Inertial\+Odometry.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00097\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_adebc78855ac0a518bdeae167d0dc018f}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_adebc78855ac0a518bdeae167d0dc018f} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!m\_heading\_sensor@{m\_heading\_sensor}}
+\index{m\_heading\_sensor@{m\_heading\_sensor}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{m\_heading\_sensor}{m\_heading\_sensor}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1io_1_1_i_heading_sensor}{io\+::\+IHeading\+Sensor}}$>$ wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::m\+\_\+heading\+\_\+sensor \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The sensor to track the robot\textquotesingle{}s heading. 
+
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8hpp_source_l00103}{103}} of file \mbox{\hyperlink{_inertial_odometry_8hpp_source}{Inertial\+Odometry.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00103\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a7088b1b0ee492b190208aadac526e24d}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a7088b1b0ee492b190208aadac526e24d} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!m\_linear\_distance\_tracking\_sensor@{m\_linear\_distance\_tracking\_sensor}}
+\index{m\_linear\_distance\_tracking\_sensor@{m\_linear\_distance\_tracking\_sensor}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{m\_linear\_distance\_tracking\_sensor}{m\_linear\_distance\_tracking\_sensor}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1io_1_1_i_distance_tracking_sensor}{io\+::\+IDistance\+Tracking\+Sensor}}$>$ wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::m\+\_\+linear\+\_\+distance\+\_\+tracking\+\_\+sensor \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The sensor to track the robot\textquotesingle{}s linear movement. 
+
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8hpp_source_l00109}{109}} of file \mbox{\hyperlink{_inertial_odometry_8hpp_source}{Inertial\+Odometry.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00109\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a6be151a95412d9e817b6c6b2ec7206f6}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a6be151a95412d9e817b6c6b2ec7206f6} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!m\_linear\_distance\_tracking\_offset@{m\_linear\_distance\_tracking\_offset}}
+\index{m\_linear\_distance\_tracking\_offset@{m\_linear\_distance\_tracking\_offset}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{m\_linear\_distance\_tracking\_offset}{m\_linear\_distance\_tracking\_offset}}
+{\footnotesize\ttfamily double wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::m\+\_\+linear\+\_\+distance\+\_\+tracking\+\_\+offset \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The offset from the linear distance tracking sensor to the tracking center This value is left-\/justified, I.\+E. the offset to the left of center. 
+
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8hpp_source_l00116}{116}} of file \mbox{\hyperlink{_inertial_odometry_8hpp_source}{Inertial\+Odometry.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00116\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_aa8a6ad9051d65cbc303f5c19d4e783aa}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_aa8a6ad9051d65cbc303f5c19d4e783aa} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!m\_strafe\_distance\_tracking\_sensor@{m\_strafe\_distance\_tracking\_sensor}}
+\index{m\_strafe\_distance\_tracking\_sensor@{m\_strafe\_distance\_tracking\_sensor}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{m\_strafe\_distance\_tracking\_sensor}{m\_strafe\_distance\_tracking\_sensor}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1io_1_1_i_distance_tracking_sensor}{io\+::\+IDistance\+Tracking\+Sensor}}$>$ wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::m\+\_\+strafe\+\_\+distance\+\_\+tracking\+\_\+sensor \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The sensor to track the robot\textquotesingle{}s strafe movement. 
+
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8hpp_source_l00122}{122}} of file \mbox{\hyperlink{_inertial_odometry_8hpp_source}{Inertial\+Odometry.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00122\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a9afcc3bc83de4ea79392f4b7d50b63a5}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a9afcc3bc83de4ea79392f4b7d50b63a5} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!m\_strafe\_distance\_tracking\_offset@{m\_strafe\_distance\_tracking\_offset}}
+\index{m\_strafe\_distance\_tracking\_offset@{m\_strafe\_distance\_tracking\_offset}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{m\_strafe\_distance\_tracking\_offset}{m\_strafe\_distance\_tracking\_offset}}
+{\footnotesize\ttfamily double wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::m\+\_\+strafe\+\_\+distance\+\_\+tracking\+\_\+offset \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The offset from the strafe distance tracking sensor to the tracking center This value is front-\/justified, I.\+E. the offset to the front of center. 
+
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8hpp_source_l00129}{129}} of file \mbox{\hyperlink{_inertial_odometry_8hpp_source}{Inertial\+Odometry.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00129\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a0f9f18545a7cb1d410581dbeb87b12f7}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a0f9f18545a7cb1d410581dbeb87b12f7} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!m\_position@{m\_position}}
+\index{m\_position@{m\_position}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{m\_position}{m\_position}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwisco_1_1robot_1_1subsystems_1_1position_1_1_position}{Position}} wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::m\+\_\+position \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The current position of the system. 
+
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8hpp_source_l00135}{135}} of file \mbox{\hyperlink{_inertial_odometry_8hpp_source}{Inertial\+Odometry.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00135\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a9a6345708c9beaf5a023b840809ddbbe}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a9a6345708c9beaf5a023b840809ddbbe} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!last\_heading@{last\_heading}}
+\index{last\_heading@{last\_heading}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{last\_heading}{last\_heading}}
+{\footnotesize\ttfamily double wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::last\+\_\+heading \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The last value of the heading sensor. 
+
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8hpp_source_l00141}{141}} of file \mbox{\hyperlink{_inertial_odometry_8hpp_source}{Inertial\+Odometry.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00141\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a525571579c4a973de3420c41ff3d621e}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a525571579c4a973de3420c41ff3d621e} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!last\_linear\_distance@{last\_linear\_distance}}
+\index{last\_linear\_distance@{last\_linear\_distance}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{last\_linear\_distance}{last\_linear\_distance}}
+{\footnotesize\ttfamily double wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::last\+\_\+linear\+\_\+distance \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The last value of the linear distance tracking sensor. 
+
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8hpp_source_l00147}{147}} of file \mbox{\hyperlink{_inertial_odometry_8hpp_source}{Inertial\+Odometry.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00147\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a78432c81afa5434131cd39fa358d915b}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a78432c81afa5434131cd39fa358d915b} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!last\_strafe\_distance@{last\_strafe\_distance}}
+\index{last\_strafe\_distance@{last\_strafe\_distance}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{last\_strafe\_distance}{last\_strafe\_distance}}
+{\footnotesize\ttfamily double wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::last\+\_\+strafe\+\_\+distance \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The last value of the strafe distance tracking sensor. 
+
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8hpp_source_l00153}{153}} of file \mbox{\hyperlink{_inertial_odometry_8hpp_source}{Inertial\+Odometry.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00153\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ab3f59c5603b8c3f71b9c0d678a79bfa5}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_ab3f59c5603b8c3f71b9c0d678a79bfa5} 
+\index{wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}!last\_time@{last\_time}}
+\index{last\_time@{last\_time}!wisco::robot::subsystems::position::InertialOdometry@{wisco::robot::subsystems::position::InertialOdometry}}
+\doxysubsubsection{\texorpdfstring{last\_time}{last\_time}}
+{\footnotesize\ttfamily uint32\+\_\+t wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry\+::last\+\_\+time \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The last value of the system clock time. 
+
+
+
+Definition at line \mbox{\hyperlink{_inertial_odometry_8hpp_source_l00159}{159}} of file \mbox{\hyperlink{_inertial_odometry_8hpp_source}{Inertial\+Odometry.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00159\ \{\};}
+
+\end{DoxyCode}

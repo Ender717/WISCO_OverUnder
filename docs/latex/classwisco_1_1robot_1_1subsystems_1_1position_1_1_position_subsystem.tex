@@ -1,0 +1,310 @@
+\doxysection{wisco\+::robot\+::subsystems\+::position\+::Position\+Subsystem Class Reference}
+\hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem}{}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem}\index{wisco::robot::subsystems::position::PositionSubsystem@{wisco::robot::subsystems::position::PositionSubsystem}}
+
+
+Adapter from a position tracker to a robot subsystem.  
+
+
+Inheritance diagram for wisco\+::robot\+::subsystems\+::position\+::Position\+Subsystem\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_a8daf6ad643b458e7078e90548779ac99}{Position\+Subsystem}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker}{IPosition\+Tracker}} $>$ \&position\+\_\+tracker)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{structwisco_1_1robot_1_1subsystems_1_1position_1_1_position}{Position} Subsystem object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_af2dbb4559e5a44b9565dde3a315e4eb0}{initialize}} () override
+\begin{DoxyCompactList}\small\item\em Initializes the subsystem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_a319e29e3e12051d80e0c69ddb08f4a13}{run}} () override
+\begin{DoxyCompactList}\small\item\em Runs the subsystems. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_a449f27026082c84887aeaa5f70d5d1b2}{command}} (std\+::string command\+\_\+name, va\+\_\+list \&args) override
+\begin{DoxyCompactList}\small\item\em Runs a command for the subsystem. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_aa40307a2c1f7f4669e2e0ad0d8b1f8f9}{state}} (std\+::string state\+\_\+name) override
+\begin{DoxyCompactList}\small\item\em Gets a state of the subsystem. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem}{wisco\+::robot\+::\+ASubsystem}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries ASubsystem} ()=default
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem_aa59c61c8541912d6c18b804c04ca531e}{ASubsystem}} (const \mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem}} \&other)=default
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem_a25fa0c2ca4079f6e7d862a891d2f738e}{ASubsystem}} (\mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem}} \&\&other)=default
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem_ab0a2234a2da48f651efcf69ef0edbec6}{ASubsystem}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+ASubsystem} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem} object. \end{DoxyCompactList}\item 
+const std\+::string \& \mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem_a080b583927d54f230941fdba5a1ff921}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Get the name of the subsystem. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem}} \& \mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem_ac083f2fab780048b556071e86e3c2b97}{operator=}} (const \mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem}} \&rhs)=default
+\begin{DoxyCompactList}\small\item\em Copy assignment operator for \doxylink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem}} \& \mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem_a6da5cf12e3d3bfc98808611c73ee7675}{operator=}} (\mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem}} \&\&rhs)=default
+\begin{DoxyCompactList}\small\item\em Move assignment operator for \doxylink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker}{IPosition\+Tracker}} $>$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_a9b9a2b7ed49be4c32d999af0cdc5d381}{m\+\_\+position\+\_\+tracker}} \{\}
+\begin{DoxyCompactList}\small\item\em The position tracker being adapted. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr char \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_ab08e6a8341aa92e392a7732388040936}{SUBSYSTEM\+\_\+\+NAME}} \mbox{[}$\,$\mbox{]} \{"{}POSITION TRACKER"{}\}
+\begin{DoxyCompactList}\small\item\em The name of the subsystem. \end{DoxyCompactList}\item 
+static constexpr char \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_a1e0c425a1e7b2b65364255473be4dc62}{SET\+\_\+\+POSITION\+\_\+\+COMMAND\+\_\+\+NAME}} \mbox{[}$\,$\mbox{]} \{"{}SET POSITION"{}\}
+\begin{DoxyCompactList}\small\item\em The name of the set position command. \end{DoxyCompactList}\item 
+static constexpr char \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_a9092f64ac8cea119bb185dd3ad90b1fb}{GET\+\_\+\+POSITION\+\_\+\+STATE\+\_\+\+NAME}} \mbox{[}$\,$\mbox{]} \{"{}GET POSITION"{}\}
+\begin{DoxyCompactList}\small\item\em The name of the get position command. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Adapter from a position tracker to a robot subsystem. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Sandvig 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_position_subsystem_8hpp_source_l00046}{46}} of file \mbox{\hyperlink{_position_subsystem_8hpp_source}{Position\+Subsystem.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_a8daf6ad643b458e7078e90548779ac99}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_a8daf6ad643b458e7078e90548779ac99} 
+\index{wisco::robot::subsystems::position::PositionSubsystem@{wisco::robot::subsystems::position::PositionSubsystem}!PositionSubsystem@{PositionSubsystem}}
+\index{PositionSubsystem@{PositionSubsystem}!wisco::robot::subsystems::position::PositionSubsystem@{wisco::robot::subsystems::position::PositionSubsystem}}
+\doxysubsubsection{\texorpdfstring{PositionSubsystem()}{PositionSubsystem()}}
+{\footnotesize\ttfamily wisco\+::robot\+::subsystems\+::position\+::\+Position\+Subsystem\+::\+Position\+Subsystem (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker}{IPosition\+Tracker}} $>$ \&}]{position\+\_\+tracker }\end{DoxyParamCaption})}
+
+
+
+Construct a new \doxylink{structwisco_1_1robot_1_1subsystems_1_1position_1_1_position}{Position} Subsystem object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position\+\_\+tracker} & The position tracker being adapted \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_position_subsystem_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{_position_subsystem_8cpp_source}{Position\+Subsystem.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00013\ \ \ \ \ :\ \mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem_a9067a5aedfd9ca0f71eb1e278d2cea35}{ASubsystem}}\{\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_ab08e6a8341aa92e392a7732388040936}{SUBSYSTEM\_NAME}}\},\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_a9b9a2b7ed49be4c32d999af0cdc5d381}{m\_position\_tracker}}\{std::move(position\_tracker)\}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_af2dbb4559e5a44b9565dde3a315e4eb0}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_af2dbb4559e5a44b9565dde3a315e4eb0} 
+\index{wisco::robot::subsystems::position::PositionSubsystem@{wisco::robot::subsystems::position::PositionSubsystem}!initialize@{initialize}}
+\index{initialize@{initialize}!wisco::robot::subsystems::position::PositionSubsystem@{wisco::robot::subsystems::position::PositionSubsystem}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::position\+::\+Position\+Subsystem\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Initializes the subsystem. 
+
+
+
+Implements \mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem_a7623b0d9dfa1d866d5ad2de8ecec2464}{wisco\+::robot\+::\+ASubsystem}}.
+
+
+
+Definition at line \mbox{\hyperlink{_position_subsystem_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{_position_subsystem_8cpp_source}{Position\+Subsystem.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_a9b9a2b7ed49be4c32d999af0cdc5d381}{m\_position\_tracker}}-\/>initialize();}
+\DoxyCodeLine{00021\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_a319e29e3e12051d80e0c69ddb08f4a13}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_a319e29e3e12051d80e0c69ddb08f4a13} 
+\index{wisco::robot::subsystems::position::PositionSubsystem@{wisco::robot::subsystems::position::PositionSubsystem}!run@{run}}
+\index{run@{run}!wisco::robot::subsystems::position::PositionSubsystem@{wisco::robot::subsystems::position::PositionSubsystem}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::position\+::\+Position\+Subsystem\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Runs the subsystems. 
+
+
+
+Implements \mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem_ab54e63827bf9d2c750de090fbc434586}{wisco\+::robot\+::\+ASubsystem}}.
+
+
+
+Definition at line \mbox{\hyperlink{_position_subsystem_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{_position_subsystem_8cpp_source}{Position\+Subsystem.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_a9b9a2b7ed49be4c32d999af0cdc5d381}{m\_position\_tracker}}-\/>run();}
+\DoxyCodeLine{00026\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_a449f27026082c84887aeaa5f70d5d1b2}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_a449f27026082c84887aeaa5f70d5d1b2} 
+\index{wisco::robot::subsystems::position::PositionSubsystem@{wisco::robot::subsystems::position::PositionSubsystem}!command@{command}}
+\index{command@{command}!wisco::robot::subsystems::position::PositionSubsystem@{wisco::robot::subsystems::position::PositionSubsystem}}
+\doxysubsubsection{\texorpdfstring{command()}{command()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::position\+::\+Position\+Subsystem\+::command (\begin{DoxyParamCaption}\item[{std\+::string}]{command\+\_\+name,  }\item[{va\+\_\+list \&}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Runs a command for the subsystem. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em command\+\_\+name} & The name of the command to run \\
+\hline
+{\em args} & The parameters for the command \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem_a0a0d105b37d6d6991d369aeeecd844b4}{wisco\+::robot\+::\+ASubsystem}}.
+
+
+
+Definition at line \mbox{\hyperlink{_position_subsystem_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{_position_subsystem_8cpp_source}{Position\+Subsystem.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordflow}{if}\ (command\_name\ ==\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_a1e0c425a1e7b2b65364255473be4dc62}{SET\_POSITION\_COMMAND\_NAME}})}
+\DoxyCodeLine{00031\ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ Position\ position\{va\_arg(args,\ \textcolor{keywordtype}{double}),\ va\_arg(args,\ \textcolor{keywordtype}{double}),\ va\_arg(args,\ \textcolor{keywordtype}{double})\};}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_a9b9a2b7ed49be4c32d999af0cdc5d381}{m\_position\_tracker}}-\/>setPosition(position);}
+\DoxyCodeLine{00034\ \ \ \ \ \}}
+\DoxyCodeLine{00035\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_aa40307a2c1f7f4669e2e0ad0d8b1f8f9}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_aa40307a2c1f7f4669e2e0ad0d8b1f8f9} 
+\index{wisco::robot::subsystems::position::PositionSubsystem@{wisco::robot::subsystems::position::PositionSubsystem}!state@{state}}
+\index{state@{state}!wisco::robot::subsystems::position::PositionSubsystem@{wisco::robot::subsystems::position::PositionSubsystem}}
+\doxysubsubsection{\texorpdfstring{state()}{state()}}
+{\footnotesize\ttfamily void \texorpdfstring{$\ast$}{*} wisco\+::robot\+::subsystems\+::position\+::\+Position\+Subsystem\+::state (\begin{DoxyParamCaption}\item[{std\+::string}]{state\+\_\+name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gets a state of the subsystem. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state\+\_\+name} & The name of the state to get \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void\texorpdfstring{$\ast$}{*} The current value of that state 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem_ab8e59543b53a00d8e2d5ae1e642b2fce}{wisco\+::robot\+::\+ASubsystem}}.
+
+
+
+Definition at line \mbox{\hyperlink{_position_subsystem_8cpp_source_l00037}{37}} of file \mbox{\hyperlink{_position_subsystem_8cpp_source}{Position\+Subsystem.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00038\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}*\ result\{\};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{if}\ (state\_name\ ==\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_a9092f64ac8cea119bb185dd3ad90b1fb}{GET\_POSITION\_STATE\_NAME}})}
+\DoxyCodeLine{00042\ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ Position*\ position\{\textcolor{keyword}{new}\ Position\{\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_a9b9a2b7ed49be4c32d999af0cdc5d381}{m\_position\_tracker}}-\/>getPosition()\}\};}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ result\ =\ position;}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00048\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_ab08e6a8341aa92e392a7732388040936}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_ab08e6a8341aa92e392a7732388040936} 
+\index{wisco::robot::subsystems::position::PositionSubsystem@{wisco::robot::subsystems::position::PositionSubsystem}!SUBSYSTEM\_NAME@{SUBSYSTEM\_NAME}}
+\index{SUBSYSTEM\_NAME@{SUBSYSTEM\_NAME}!wisco::robot::subsystems::position::PositionSubsystem@{wisco::robot::subsystems::position::PositionSubsystem}}
+\doxysubsubsection{\texorpdfstring{SUBSYSTEM\_NAME}{SUBSYSTEM\_NAME}}
+{\footnotesize\ttfamily constexpr char wisco\+::robot\+::subsystems\+::position\+::\+Position\+Subsystem\+::\+SUBSYSTEM\+\_\+\+NAME\mbox{[}$\,$\mbox{]} \{"{}POSITION TRACKER"{}\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The name of the subsystem. 
+
+
+
+Definition at line \mbox{\hyperlink{_position_subsystem_8hpp_source_l00053}{53}} of file \mbox{\hyperlink{_position_subsystem_8hpp_source}{Position\+Subsystem.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00053\ \{\textcolor{stringliteral}{"{}POSITION\ TRACKER"{}}\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_a1e0c425a1e7b2b65364255473be4dc62}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_a1e0c425a1e7b2b65364255473be4dc62} 
+\index{wisco::robot::subsystems::position::PositionSubsystem@{wisco::robot::subsystems::position::PositionSubsystem}!SET\_POSITION\_COMMAND\_NAME@{SET\_POSITION\_COMMAND\_NAME}}
+\index{SET\_POSITION\_COMMAND\_NAME@{SET\_POSITION\_COMMAND\_NAME}!wisco::robot::subsystems::position::PositionSubsystem@{wisco::robot::subsystems::position::PositionSubsystem}}
+\doxysubsubsection{\texorpdfstring{SET\_POSITION\_COMMAND\_NAME}{SET\_POSITION\_COMMAND\_NAME}}
+{\footnotesize\ttfamily constexpr char wisco\+::robot\+::subsystems\+::position\+::\+Position\+Subsystem\+::\+SET\+\_\+\+POSITION\+\_\+\+COMMAND\+\_\+\+NAME\mbox{[}$\,$\mbox{]} \{"{}SET POSITION"{}\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The name of the set position command. 
+
+
+
+Definition at line \mbox{\hyperlink{_position_subsystem_8hpp_source_l00059}{59}} of file \mbox{\hyperlink{_position_subsystem_8hpp_source}{Position\+Subsystem.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00059\ \{\textcolor{stringliteral}{"{}SET\ POSITION"{}}\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_a9092f64ac8cea119bb185dd3ad90b1fb}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_a9092f64ac8cea119bb185dd3ad90b1fb} 
+\index{wisco::robot::subsystems::position::PositionSubsystem@{wisco::robot::subsystems::position::PositionSubsystem}!GET\_POSITION\_STATE\_NAME@{GET\_POSITION\_STATE\_NAME}}
+\index{GET\_POSITION\_STATE\_NAME@{GET\_POSITION\_STATE\_NAME}!wisco::robot::subsystems::position::PositionSubsystem@{wisco::robot::subsystems::position::PositionSubsystem}}
+\doxysubsubsection{\texorpdfstring{GET\_POSITION\_STATE\_NAME}{GET\_POSITION\_STATE\_NAME}}
+{\footnotesize\ttfamily constexpr char wisco\+::robot\+::subsystems\+::position\+::\+Position\+Subsystem\+::\+GET\+\_\+\+POSITION\+\_\+\+STATE\+\_\+\+NAME\mbox{[}$\,$\mbox{]} \{"{}GET POSITION"{}\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The name of the get position command. 
+
+
+
+Definition at line \mbox{\hyperlink{_position_subsystem_8hpp_source_l00065}{65}} of file \mbox{\hyperlink{_position_subsystem_8hpp_source}{Position\+Subsystem.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00065\ \{\textcolor{stringliteral}{"{}GET\ POSITION"{}}\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_a9b9a2b7ed49be4c32d999af0cdc5d381}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_position_subsystem_a9b9a2b7ed49be4c32d999af0cdc5d381} 
+\index{wisco::robot::subsystems::position::PositionSubsystem@{wisco::robot::subsystems::position::PositionSubsystem}!m\_position\_tracker@{m\_position\_tracker}}
+\index{m\_position\_tracker@{m\_position\_tracker}!wisco::robot::subsystems::position::PositionSubsystem@{wisco::robot::subsystems::position::PositionSubsystem}}
+\doxysubsubsection{\texorpdfstring{m\_position\_tracker}{m\_position\_tracker}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker}{IPosition\+Tracker}}$>$ wisco\+::robot\+::subsystems\+::position\+::\+Position\+Subsystem\+::m\+\_\+position\+\_\+tracker \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The position tracker being adapted. 
+
+
+
+Definition at line \mbox{\hyperlink{_position_subsystem_8hpp_source_l00071}{71}} of file \mbox{\hyperlink{_position_subsystem_8hpp_source}{Position\+Subsystem.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00071\ \{\};}
+
+\end{DoxyCode}

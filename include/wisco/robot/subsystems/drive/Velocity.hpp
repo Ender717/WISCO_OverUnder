@@ -40,7 +40,16 @@ namespace drive
  */
 struct Velocity
 {
+    /**
+     * @brief The velocity for the left side of the drive
+     * 
+     */
     double left_velocity{};
+
+    /**
+     * @brief The velocity for the right side of the drive
+     * 
+     */
     double right_velocity{};
 };
 

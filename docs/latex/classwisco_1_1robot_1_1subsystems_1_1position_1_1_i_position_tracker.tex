@@ -1,0 +1,106 @@
+\doxysection{wisco\+::robot\+::subsystems\+::position\+::IPosition\+Tracker Class Reference}
+\hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker}{}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker}\index{wisco::robot::subsystems::position::IPositionTracker@{wisco::robot::subsystems::position::IPositionTracker}}
+
+
+Interface for position tracking subsystems.  
+
+
+Inheritance diagram for wisco\+::robot\+::subsystems\+::position\+::IPosition\+Tracker\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker_a9ad82001a1be22dd6cdb41dc08dfcff6}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker_a9ad82001a1be22dd6cdb41dc08dfcff6} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IPosition\+Tracker} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker}{IPosition\+Tracker} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker_ab06468ef7bf7b04ba6e1787936a1f4fa}{initialize}} ()=0
+\begin{DoxyCompactList}\small\item\em Initializes the position tracking system. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker_a448b3476fa5a7530652d10f84ebd4df9}{run}} ()=0
+\begin{DoxyCompactList}\small\item\em Runs the position tracking system. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker_ad4de026302d7a129bfc443e422a22afd}{set\+Position}} (\mbox{\hyperlink{structwisco_1_1robot_1_1subsystems_1_1position_1_1_position}{Position}} position)=0
+\begin{DoxyCompactList}\small\item\em Set the position of the position tracking system. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{structwisco_1_1robot_1_1subsystems_1_1position_1_1_position}{Position}} \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker_a709a05277a1da2d40aa4b037a2977548}{get\+Position}} ()=0
+\begin{DoxyCompactList}\small\item\em Get the position of the system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for position tracking subsystems. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Sandvig 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_i_position_tracker_8hpp_source_l00043}{43}} of file \mbox{\hyperlink{_i_position_tracker_8hpp_source}{IPosition\+Tracker.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker_ab06468ef7bf7b04ba6e1787936a1f4fa}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker_ab06468ef7bf7b04ba6e1787936a1f4fa} 
+\index{wisco::robot::subsystems::position::IPositionTracker@{wisco::robot::subsystems::position::IPositionTracker}!initialize@{initialize}}
+\index{initialize@{initialize}!wisco::robot::subsystems::position::IPositionTracker@{wisco::robot::subsystems::position::IPositionTracker}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily virtual void wisco\+::robot\+::subsystems\+::position\+::\+IPosition\+Tracker\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Initializes the position tracking system. 
+
+
+
+Implemented in \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a0bce97ee42c26027a647806d8b8dfd7b}{wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry}}.
+
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker_a448b3476fa5a7530652d10f84ebd4df9}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker_a448b3476fa5a7530652d10f84ebd4df9} 
+\index{wisco::robot::subsystems::position::IPositionTracker@{wisco::robot::subsystems::position::IPositionTracker}!run@{run}}
+\index{run@{run}!wisco::robot::subsystems::position::IPositionTracker@{wisco::robot::subsystems::position::IPositionTracker}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily virtual void wisco\+::robot\+::subsystems\+::position\+::\+IPosition\+Tracker\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Runs the position tracking system. 
+
+
+
+Implemented in \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_acdb1d844a584ea0de7017c8139d2c1f5}{wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry}}.
+
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker_ad4de026302d7a129bfc443e422a22afd}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker_ad4de026302d7a129bfc443e422a22afd} 
+\index{wisco::robot::subsystems::position::IPositionTracker@{wisco::robot::subsystems::position::IPositionTracker}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!wisco::robot::subsystems::position::IPositionTracker@{wisco::robot::subsystems::position::IPositionTracker}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily virtual void wisco\+::robot\+::subsystems\+::position\+::\+IPosition\+Tracker\+::set\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwisco_1_1robot_1_1subsystems_1_1position_1_1_position}{Position}}}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the position of the position tracking system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The new position \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_acef01067adecd18c523cfe9042d7cbf7}{wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry}}.
+
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker_a709a05277a1da2d40aa4b037a2977548}\label{classwisco_1_1robot_1_1subsystems_1_1position_1_1_i_position_tracker_a709a05277a1da2d40aa4b037a2977548} 
+\index{wisco::robot::subsystems::position::IPositionTracker@{wisco::robot::subsystems::position::IPositionTracker}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!wisco::robot::subsystems::position::IPositionTracker@{wisco::robot::subsystems::position::IPositionTracker}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{structwisco_1_1robot_1_1subsystems_1_1position_1_1_position}{Position}} wisco\+::robot\+::subsystems\+::position\+::\+IPosition\+Tracker\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the position of the system. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{structwisco_1_1robot_1_1subsystems_1_1position_1_1_position}{Position} The position of the system 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1position_1_1_inertial_odometry_a104ed53d5507bb4bf9b91bb1b1aa38ce}{wisco\+::robot\+::subsystems\+::position\+::\+Inertial\+Odometry}}.
+

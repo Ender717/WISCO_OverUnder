@@ -1,0 +1,106 @@
+\doxysection{Intake\+Operator.\+cpp}
+\hypertarget{_intake_operator_8cpp_source}{}\label{_intake_operator_8cpp_source}\index{src/wisco/user/IntakeOperator.cpp@{src/wisco/user/IntakeOperator.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}wisco/user/IntakeOperator.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00003}00003\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacewisco}{wisco}}}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00004}00004\ \{}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00005}00005\ \textcolor{keyword}{namespace\ }user}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00007}\mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_ab020a8447c79671ab6aec25bf6645b88}{00007}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_ab020a8447c79671ab6aec25bf6645b88}{IntakeOperator::updateIntakeVoltage}}(\textcolor{keywordtype}{double}\ voltage)}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00009}00009\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a72afdd72f297f094fbfe7307bbf49ab8}{m\_robot}}-\/>sendCommand(\mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a38570cd7c6d61d175cb76a71a8f8c9bc}{INTAKE\_SUBSYSTEM\_NAME}},\ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_ae3a79d717d1d70ad7cc94a0b166ac7f9}{SET\_VOLTAGE\_COMMAND}},\ voltage);}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00010}00010\ \}}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00012}\mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a82c70a23af9685928a1005c21be3a6b2}{00012}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a82c70a23af9685928a1005c21be3a6b2}{IntakeOperator::updateToggleVoltage}}()}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00013}00013\ \{}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00014}00014\ \ \ \ \ \textcolor{keywordflow}{switch}(\mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a000473d90b81b5e0c0a777f1b0fe1ed7}{toggle\_state}})}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00015}00015\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00016}00016\ \ \ \ \ \textcolor{keywordflow}{case}\ EToggleState::OFF:}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00017}00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_ab020a8447c79671ab6aec25bf6645b88}{updateIntakeVoltage}}(\mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_afab80708d85ea0ddacf7b0e6c9df9875}{VOLTAGE\_SETTING}});}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00019}00019\ \ \ \ \ \textcolor{keywordflow}{case}\ EToggleState::IN:}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_ab020a8447c79671ab6aec25bf6645b88}{updateIntakeVoltage}}(-\/\mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_afab80708d85ea0ddacf7b0e6c9df9875}{VOLTAGE\_SETTING}});}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{keywordflow}{case}\ EToggleState::OUT:}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_ab020a8447c79671ab6aec25bf6645b88}{updateIntakeVoltage}}(0);}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00025}00025\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00026}00026\ \}}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00028}\mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a685577de499d023e02fffd0204275027}{00028}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a685577de499d023e02fffd0204275027}{IntakeOperator::updateSingleToggle}}(\mbox{\hyperlink{namespacewisco_1_1user_a794210ea2b8a8e3185b71b59a934ea30}{EControllerDigital}}\ toggle)}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00029}00029\ \{}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a0ba68b94b1033b4b0e53c5d1dfa847f2}{m\_controller}}-\/>getNewDigital(toggle))}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00031}00031\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(\mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a000473d90b81b5e0c0a777f1b0fe1ed7}{toggle\_state}})}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ EToggleState::OFF:}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a000473d90b81b5e0c0a777f1b0fe1ed7}{toggle\_state}}\ =\ EToggleState::IN;}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ EToggleState::IN:}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a000473d90b81b5e0c0a777f1b0fe1ed7}{toggle\_state}}\ =\ EToggleState::OUT;}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ EToggleState::OUT:}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a000473d90b81b5e0c0a777f1b0fe1ed7}{toggle\_state}}\ =\ EToggleState::OFF;}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a82c70a23af9685928a1005c21be3a6b2}{updateToggleVoltage}}();}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00045}00045\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00046}00046\ \}}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00048}\mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a319a8d3ba560744d5c55787276965513}{00048}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a319a8d3ba560744d5c55787276965513}{IntakeOperator::updateSplitHold}}(\mbox{\hyperlink{namespacewisco_1_1user_a794210ea2b8a8e3185b71b59a934ea30}{EControllerDigital}}\ in,\ \mbox{\hyperlink{namespacewisco_1_1user_a794210ea2b8a8e3185b71b59a934ea30}{EControllerDigital}}\ out)}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00049}00049\ \{}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordtype}{double}\ voltage\{(\mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a0ba68b94b1033b4b0e53c5d1dfa847f2}{m\_controller}}-\/>getDigital(in)\ -\/\ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a0ba68b94b1033b4b0e53c5d1dfa847f2}{m\_controller}}-\/>getDigital(out))\ *\ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_afab80708d85ea0ddacf7b0e6c9df9875}{VOLTAGE\_SETTING}}\};}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00051}00051\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_ab020a8447c79671ab6aec25bf6645b88}{updateIntakeVoltage}}(voltage);}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00052}00052\ \}}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00054}\mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a3f7ab48aef5ce51398c10ccc72b878dd}{00054}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a3f7ab48aef5ce51398c10ccc72b878dd}{IntakeOperator::updateSplitToggle}}(\mbox{\hyperlink{namespacewisco_1_1user_a794210ea2b8a8e3185b71b59a934ea30}{EControllerDigital}}\ in,\ \mbox{\hyperlink{namespacewisco_1_1user_a794210ea2b8a8e3185b71b59a934ea30}{EControllerDigital}}\ out)}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00055}00055\ \{}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a0ba68b94b1033b4b0e53c5d1dfa847f2}{m\_controller}}-\/>getNewDigital(in))}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00057}00057\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a000473d90b81b5e0c0a777f1b0fe1ed7}{toggle\_state}}\ ==\ EToggleState::IN)}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a000473d90b81b5e0c0a777f1b0fe1ed7}{toggle\_state}}\ =\ EToggleState::OFF;}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a000473d90b81b5e0c0a777f1b0fe1ed7}{toggle\_state}}\ =\ EToggleState::IN;}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a82c70a23af9685928a1005c21be3a6b2}{updateToggleVoltage}}();}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a0ba68b94b1033b4b0e53c5d1dfa847f2}{m\_controller}}-\/>getNewDigital(out))}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00065}00065\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a000473d90b81b5e0c0a777f1b0fe1ed7}{toggle\_state}}\ ==\ EToggleState::OUT)}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a000473d90b81b5e0c0a777f1b0fe1ed7}{toggle\_state}}\ =\ EToggleState::OFF;}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a000473d90b81b5e0c0a777f1b0fe1ed7}{toggle\_state}}\ =\ EToggleState::OUT;}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a82c70a23af9685928a1005c21be3a6b2}{updateToggleVoltage}}();}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00071}00071\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00072}00072\ \}}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00074}\mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a7e51b0720375e96f3b71eb86e9a84f9e}{00074}}\ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a7e51b0720375e96f3b71eb86e9a84f9e}{IntakeOperator::IntakeOperator}}(\textcolor{keyword}{const}\ std::shared\_ptr<user::IController>\&\ controller,\ }
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::shared\_ptr<robot::Robot>\&\ robot)}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00076}00076\ \ \ \ \ :\ m\_controller\{controller\},\ m\_robot\{robot\}}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00077}00077\ \{}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00078}00078\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00079}00079\ \}}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00081}\mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_aee83e54e6d8d255f97f1eac789c92de4}{00081}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_aee83e54e6d8d255f97f1eac789c92de4}{IntakeOperator::setIntakeVoltage}}(\textcolor{keyword}{const}\ std::unique\_ptr<IProfile>\&\ profile)}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00082}00082\ \{}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00083}00083\ \ \ \ \ \mbox{\hyperlink{namespacewisco_1_1user_a794210ea2b8a8e3185b71b59a934ea30}{EControllerDigital}}\ toggle\{profile-\/>getDigitalControlMapping(EControl::INTAKE\_TOGGLE)\};}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00084}00084\ \ \ \ \ \mbox{\hyperlink{namespacewisco_1_1user_a794210ea2b8a8e3185b71b59a934ea30}{EControllerDigital}}\ in\{profile-\/>getDigitalControlMapping(EControl::INTAKE\_IN)\};}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00085}00085\ \ \ \ \ \mbox{\hyperlink{namespacewisco_1_1user_a794210ea2b8a8e3185b71b59a934ea30}{EControllerDigital}}\ out\{profile-\/>getDigitalControlMapping(EControl::INTAKE\_OUT)\};}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00086}00086\ \ \ \ \ \textcolor{keywordflow}{switch}(\textcolor{keyword}{static\_cast<}\mbox{\hyperlink{namespacewisco_1_1user_aa1f32939c27f3907279f528d0a2bd96d}{EIntakeControlMode}}\textcolor{keyword}{>}(profile-\/>getControlMode(EControlType::INTAKE)))}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00087}00087\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00088}00088\ \ \ \ \ \textcolor{keywordflow}{case}\ EIntakeControlMode::SINGLE\_TOGGLE:}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a685577de499d023e02fffd0204275027}{updateSingleToggle}}(toggle);}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00091}00091\ \ \ \ \ \textcolor{keywordflow}{case}\ EIntakeControlMode::SPLIT\_HOLD:}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a319a8d3ba560744d5c55787276965513}{updateSplitHold}}(in,\ out);}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00094}00094\ \ \ \ \ \textcolor{keywordflow}{case}\ EIntakeControlMode::SPLIT\_TOGGLE:}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1user_1_1_intake_operator_a3f7ab48aef5ce51398c10ccc72b878dd}{updateSplitToggle}}(in,\ out);}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00097}00097\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00098}00098\ \}}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00099}00099\ \}\ \textcolor{comment}{//\ namespace\ user}}
+\DoxyCodeLine{\Hypertarget{_intake_operator_8cpp_source_l00100}00100\ \}\ \textcolor{comment}{//\ namespace\ wisco}}
+
+\end{DoxyCode}

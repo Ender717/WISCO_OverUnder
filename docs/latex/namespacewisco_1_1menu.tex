@@ -1,0 +1,170 @@
+\doxysection{wisco\+::menu Namespace Reference}
+\hypertarget{namespacewisco_1_1menu}{}\label{namespacewisco_1_1menu}\index{wisco::menu@{wisco::menu}}
+
+
+Interface for the menu system.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu}{Lvgl\+Menu}}
+\begin{DoxyCompactList}\small\item\em Controls an lvgl-\/based menu selection system. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter}{Menu\+Adapter}}
+\begin{DoxyCompactList}\small\item\em This class adapts the menu system to the \doxylink{classwisco_1_1_i_menu}{IMenu} interface. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structwisco_1_1menu_1_1_option}{Option}}
+\begin{DoxyCompactList}\small\item\em An option in the menu system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespacewisco_1_1menu_a217b7356d6ed8e2636647a1d6a37c2b4}{start\+Button\+Event\+Handler}} (lv\+\_\+event\+\_\+t \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Event handler function for the start button. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacewisco_1_1menu_a6bbcbac2a9513c21e372022e98c5f9d9}{settings\+Button\+Event\+Handler}} (lv\+\_\+event\+\_\+t \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Event handler function for the settings button. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacewisco_1_1menu_a023f3edb93f334e391206e8fa41552e3}{settings\+Back\+Button\+Event\+Handler}} (lv\+\_\+event\+\_\+t \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Event handler function for the back button in the settings menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacewisco_1_1menu_adf87c5eecd1826aab3a0bd5957f73f87}{settings\+Button\+Matrix\+Event\+Handler}} (lv\+\_\+event\+\_\+t \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Event handler function for the button matrices in settings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for the menu system. 
+
+Program data related to the menu system.
+
+\begin{DoxyAuthor}{Author}
+Nathan Sandvig 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacewisco_1_1menu_a217b7356d6ed8e2636647a1d6a37c2b4}\label{namespacewisco_1_1menu_a217b7356d6ed8e2636647a1d6a37c2b4} 
+\index{wisco::menu@{wisco::menu}!startButtonEventHandler@{startButtonEventHandler}}
+\index{startButtonEventHandler@{startButtonEventHandler}!wisco::menu@{wisco::menu}}
+\doxysubsubsection{\texorpdfstring{startButtonEventHandler()}{startButtonEventHandler()}}
+{\footnotesize\ttfamily void wisco\+::menu\+::start\+Button\+Event\+Handler (\begin{DoxyParamCaption}\item[{lv\+\_\+event\+\_\+t \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Event handler function for the start button. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & The event data \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{_lvgl_menu_8cpp_source}{Lvgl\+Menu.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}**\ user\_data\{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}**\textcolor{keyword}{>}(lv\_event\_get\_user\_data(event))\};}
+\DoxyCodeLine{00019\ \ \ \ \ LvglMenu*\ lvgl\_menu\{\textcolor{keyword}{static\_cast<}LvglMenu*\textcolor{keyword}{>}(user\_data[0])\};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ lv\_obj\_clean(lv\_scr\_act());}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordflow}{if}\ (lvgl\_menu)}
+\DoxyCodeLine{00023\ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ lvgl\_menu-\/>writeConfiguration();}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ lvgl\_menu-\/>setComplete();}
+\DoxyCodeLine{00026\ \ \ \ \ \}}
+\DoxyCodeLine{00027\ \}}
+
+\end{DoxyCode}
+\Hypertarget{namespacewisco_1_1menu_a6bbcbac2a9513c21e372022e98c5f9d9}\label{namespacewisco_1_1menu_a6bbcbac2a9513c21e372022e98c5f9d9} 
+\index{wisco::menu@{wisco::menu}!settingsButtonEventHandler@{settingsButtonEventHandler}}
+\index{settingsButtonEventHandler@{settingsButtonEventHandler}!wisco::menu@{wisco::menu}}
+\doxysubsubsection{\texorpdfstring{settingsButtonEventHandler()}{settingsButtonEventHandler()}}
+{\footnotesize\ttfamily void wisco\+::menu\+::settings\+Button\+Event\+Handler (\begin{DoxyParamCaption}\item[{lv\+\_\+event\+\_\+t \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Event handler function for the settings button. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & The event data \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{_lvgl_menu_8cpp_source}{Lvgl\+Menu.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}**\ user\_data\{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}**\textcolor{keyword}{>}(lv\_event\_get\_user\_data(event))\};}
+\DoxyCodeLine{00032\ \ \ \ \ LvglMenu*\ lvgl\_menu\{\textcolor{keyword}{static\_cast<}LvglMenu*\textcolor{keyword}{>}(user\_data[0])\};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ lv\_obj\_clean(lv\_scr\_act());}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{if}\ (lvgl\_menu)}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ lvgl\_menu-\/>drawSettingsMenu();}
+\DoxyCodeLine{00037\ \}}
+
+\end{DoxyCode}
+\Hypertarget{namespacewisco_1_1menu_a023f3edb93f334e391206e8fa41552e3}\label{namespacewisco_1_1menu_a023f3edb93f334e391206e8fa41552e3} 
+\index{wisco::menu@{wisco::menu}!settingsBackButtonEventHandler@{settingsBackButtonEventHandler}}
+\index{settingsBackButtonEventHandler@{settingsBackButtonEventHandler}!wisco::menu@{wisco::menu}}
+\doxysubsubsection{\texorpdfstring{settingsBackButtonEventHandler()}{settingsBackButtonEventHandler()}}
+{\footnotesize\ttfamily void wisco\+::menu\+::settings\+Back\+Button\+Event\+Handler (\begin{DoxyParamCaption}\item[{lv\+\_\+event\+\_\+t \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Event handler function for the back button in the settings menu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & The event data \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8cpp_source_l00039}{39}} of file \mbox{\hyperlink{_lvgl_menu_8cpp_source}{Lvgl\+Menu.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00040\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ lv\_obj\_t*\ obj\{lv\_event\_get\_target(event)\};}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}**\ user\_data\{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}**\textcolor{keyword}{>}(lv\_event\_get\_user\_data(event))\};}
+\DoxyCodeLine{00043\ \ \ \ \ lv\_obj\_t*\ menu\{\textcolor{keyword}{static\_cast<}lv\_obj\_t*\textcolor{keyword}{>}(user\_data[0])\};}
+\DoxyCodeLine{00044\ \ \ \ \ LvglMenu*\ lvgl\_menu\{\textcolor{keyword}{static\_cast<}LvglMenu*\textcolor{keyword}{>}(user\_data[1])\};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{if}(obj\ ==\ lv\_menu\_get\_sidebar\_header\_back\_btn(menu))}
+\DoxyCodeLine{00047\ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ lv\_obj\_clean(lv\_scr\_act());}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (lvgl\_menu)}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ lvgl\_menu-\/>drawMainMenu();}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \}}
+
+\end{DoxyCode}
+\Hypertarget{namespacewisco_1_1menu_adf87c5eecd1826aab3a0bd5957f73f87}\label{namespacewisco_1_1menu_adf87c5eecd1826aab3a0bd5957f73f87} 
+\index{wisco::menu@{wisco::menu}!settingsButtonMatrixEventHandler@{settingsButtonMatrixEventHandler}}
+\index{settingsButtonMatrixEventHandler@{settingsButtonMatrixEventHandler}!wisco::menu@{wisco::menu}}
+\doxysubsubsection{\texorpdfstring{settingsButtonMatrixEventHandler()}{settingsButtonMatrixEventHandler()}}
+{\footnotesize\ttfamily void wisco\+::menu\+::settings\+Button\+Matrix\+Event\+Handler (\begin{DoxyParamCaption}\item[{lv\+\_\+event\+\_\+t \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Event handler function for the button matrices in settings. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & The event data \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8cpp_source_l00054}{54}} of file \mbox{\hyperlink{_lvgl_menu_8cpp_source}{Lvgl\+Menu.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00055\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ lv\_obj\_t*\ obj\ \{lv\_event\_get\_target(event)\};}
+\DoxyCodeLine{00057\ \ \ \ \ uint32\_t\ button\_id\{lv\_btnmatrix\_get\_selected\_btn(obj)\};}
+\DoxyCodeLine{00058\ \ \ \ \ Option*\ option\{\textcolor{keyword}{static\_cast<}Option*\textcolor{keyword}{>}(lv\_event\_get\_user\_data(event))\};}
+\DoxyCodeLine{00059\ \ \ \ \ option-\/>selected\ =\ button\_id;}
+\DoxyCodeLine{00060\ \}}
+
+\end{DoxyCode}

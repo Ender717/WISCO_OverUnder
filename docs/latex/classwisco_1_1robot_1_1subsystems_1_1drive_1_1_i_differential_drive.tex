@@ -1,0 +1,129 @@
+\doxysection{wisco\+::robot\+::subsystems\+::drive\+::IDifferential\+Drive Class Reference}
+\hypertarget{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_differential_drive}{}\label{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_differential_drive}\index{wisco::robot::subsystems::drive::IDifferentialDrive@{wisco::robot::subsystems::drive::IDifferentialDrive}}
+
+
+Interface for differential drivetrains.  
+
+
+Inheritance diagram for wisco\+::robot\+::subsystems\+::drive\+::IDifferential\+Drive\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.623188cm]{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_differential_drive}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_differential_drive_a531e79b5c77d91bf02eb859cdb062264}\label{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_differential_drive_a531e79b5c77d91bf02eb859cdb062264} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IDifferential\+Drive} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_differential_drive}{IDifferential\+Drive} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_differential_drive_a5ff28b6b1ef2a76836f2c2c2a47b79f0}{initialize}} ()=0
+\begin{DoxyCompactList}\small\item\em Initializes the differential drive. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_differential_drive_a614dd7276933d2353172b941f011e928}{run}} ()=0
+\begin{DoxyCompactList}\small\item\em Runs the differential drive. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{structwisco_1_1robot_1_1subsystems_1_1drive_1_1_velocity}{Velocity}} \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_differential_drive_af8b645c8a77cc2f29f9d46bf0db6eb71}{get\+Velocity}} ()=0
+\begin{DoxyCompactList}\small\item\em Get the velocity values of the drive. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_differential_drive_ae44edac78b629fa2123c833d53929c39}{set\+Velocity}} (\mbox{\hyperlink{structwisco_1_1robot_1_1subsystems_1_1drive_1_1_velocity}{Velocity}} velocity)=0
+\begin{DoxyCompactList}\small\item\em Set the velocity values of the drive. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_differential_drive_a6796aceef47f301566ea1107e11b36fe}{set\+Voltage}} (double left\+\_\+voltage, double right\+\_\+voltage)=0
+\begin{DoxyCompactList}\small\item\em Set the voltages of the drive directly. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for differential drivetrains. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Sandvig 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_i_differential_drive_8hpp_source_l00043}{43}} of file \mbox{\hyperlink{_i_differential_drive_8hpp_source}{IDifferential\+Drive.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_differential_drive_a5ff28b6b1ef2a76836f2c2c2a47b79f0}\label{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_differential_drive_a5ff28b6b1ef2a76836f2c2c2a47b79f0} 
+\index{wisco::robot::subsystems::drive::IDifferentialDrive@{wisco::robot::subsystems::drive::IDifferentialDrive}!initialize@{initialize}}
+\index{initialize@{initialize}!wisco::robot::subsystems::drive::IDifferentialDrive@{wisco::robot::subsystems::drive::IDifferentialDrive}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily virtual void wisco\+::robot\+::subsystems\+::drive\+::\+IDifferential\+Drive\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Initializes the differential drive. 
+
+
+
+Implemented in \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_a66f3fd73ac4c8758578131f8e7c5103a}{wisco\+::robot\+::subsystems\+::drive\+::\+Direct\+Differential\+Drive}}, and \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_ab095e72e74b651ec06321de7c505eb02}{wisco\+::robot\+::subsystems\+::drive\+::\+Kinematic\+Differential\+Drive}}.
+
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_differential_drive_a614dd7276933d2353172b941f011e928}\label{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_differential_drive_a614dd7276933d2353172b941f011e928} 
+\index{wisco::robot::subsystems::drive::IDifferentialDrive@{wisco::robot::subsystems::drive::IDifferentialDrive}!run@{run}}
+\index{run@{run}!wisco::robot::subsystems::drive::IDifferentialDrive@{wisco::robot::subsystems::drive::IDifferentialDrive}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily virtual void wisco\+::robot\+::subsystems\+::drive\+::\+IDifferential\+Drive\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Runs the differential drive. 
+
+
+
+Implemented in \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_a71e9ab6b23c9f7bd72866b0445802a5e}{wisco\+::robot\+::subsystems\+::drive\+::\+Direct\+Differential\+Drive}}, and \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a0ae9a3d8d8cd6db2979b1c56a6b933d0}{wisco\+::robot\+::subsystems\+::drive\+::\+Kinematic\+Differential\+Drive}}.
+
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_differential_drive_af8b645c8a77cc2f29f9d46bf0db6eb71}\label{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_differential_drive_af8b645c8a77cc2f29f9d46bf0db6eb71} 
+\index{wisco::robot::subsystems::drive::IDifferentialDrive@{wisco::robot::subsystems::drive::IDifferentialDrive}!getVelocity@{getVelocity}}
+\index{getVelocity@{getVelocity}!wisco::robot::subsystems::drive::IDifferentialDrive@{wisco::robot::subsystems::drive::IDifferentialDrive}}
+\doxysubsubsection{\texorpdfstring{getVelocity()}{getVelocity()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{structwisco_1_1robot_1_1subsystems_1_1drive_1_1_velocity}{Velocity}} wisco\+::robot\+::subsystems\+::drive\+::\+IDifferential\+Drive\+::get\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the velocity values of the drive. 
+
+\begin{DoxyReturn}{Returns}
+double The drive velocity 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_a254f83d3cf37ae407e70a6ebf3a95060}{wisco\+::robot\+::subsystems\+::drive\+::\+Direct\+Differential\+Drive}}, and \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a615f4aa058181b161cd52df4656d7957}{wisco\+::robot\+::subsystems\+::drive\+::\+Kinematic\+Differential\+Drive}}.
+
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_differential_drive_ae44edac78b629fa2123c833d53929c39}\label{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_differential_drive_ae44edac78b629fa2123c833d53929c39} 
+\index{wisco::robot::subsystems::drive::IDifferentialDrive@{wisco::robot::subsystems::drive::IDifferentialDrive}!setVelocity@{setVelocity}}
+\index{setVelocity@{setVelocity}!wisco::robot::subsystems::drive::IDifferentialDrive@{wisco::robot::subsystems::drive::IDifferentialDrive}}
+\doxysubsubsection{\texorpdfstring{setVelocity()}{setVelocity()}}
+{\footnotesize\ttfamily virtual void wisco\+::robot\+::subsystems\+::drive\+::\+IDifferential\+Drive\+::set\+Velocity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwisco_1_1robot_1_1subsystems_1_1drive_1_1_velocity}{Velocity}}}]{velocity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the velocity values of the drive. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em velocity} & The velocity values for the drive \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_a5e5fc779da020210ed565d1ebad0b188}{wisco\+::robot\+::subsystems\+::drive\+::\+Direct\+Differential\+Drive}}, and \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a98def3051e990131061032bcdde40184}{wisco\+::robot\+::subsystems\+::drive\+::\+Kinematic\+Differential\+Drive}}.
+
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_differential_drive_a6796aceef47f301566ea1107e11b36fe}\label{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_differential_drive_a6796aceef47f301566ea1107e11b36fe} 
+\index{wisco::robot::subsystems::drive::IDifferentialDrive@{wisco::robot::subsystems::drive::IDifferentialDrive}!setVoltage@{setVoltage}}
+\index{setVoltage@{setVoltage}!wisco::robot::subsystems::drive::IDifferentialDrive@{wisco::robot::subsystems::drive::IDifferentialDrive}}
+\doxysubsubsection{\texorpdfstring{setVoltage()}{setVoltage()}}
+{\footnotesize\ttfamily virtual void wisco\+::robot\+::subsystems\+::drive\+::\+IDifferential\+Drive\+::set\+Voltage (\begin{DoxyParamCaption}\item[{double}]{left\+\_\+voltage,  }\item[{double}]{right\+\_\+voltage }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the voltages of the drive directly. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em left\+\_\+voltage} & The voltage for the left side of the drive \\
+\hline
+{\em right\+\_\+voltage} & The voltage for the right side of the drive \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_a81272233184634efc85cfc387698ccb4}{wisco\+::robot\+::subsystems\+::drive\+::\+Direct\+Differential\+Drive}}, and \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_aaa6ab48655401fa4c46b6b8cfac32eb1}{wisco\+::robot\+::subsystems\+::drive\+::\+Kinematic\+Differential\+Drive}}.
+

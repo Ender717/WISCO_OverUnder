@@ -1,0 +1,338 @@
+\doxysection{wisco\+::robot\+::subsystems\+::intake\+::Intake\+Subsystem Class Reference}
+\hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem}{}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem}\index{wisco::robot::subsystems::intake::IntakeSubsystem@{wisco::robot::subsystems::intake::IntakeSubsystem}}
+
+
+The subsystem adapter for intakes.  
+
+
+Inheritance diagram for wisco\+::robot\+::subsystems\+::intake\+::Intake\+Subsystem\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_aaacc783adc5f44ac0024c95da9cedd19}{Intake\+Subsystem}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_i_intake}{IIntake}} $>$ \&intake)
+\begin{DoxyCompactList}\small\item\em Construct a new Intake Subsystem object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_afd6158d2072e2cec4ad98c24a5e2a875}{initialize}} () override
+\begin{DoxyCompactList}\small\item\em Initializes the subsystem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_adcc91dc77a37cfd302b0d32bd1e0603f}{run}} () override
+\begin{DoxyCompactList}\small\item\em Runs the subsystem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a26c0e65e0e946c08d1675169760d2c3a}{command}} (std\+::string command\+\_\+name, va\+\_\+list \&args) override
+\begin{DoxyCompactList}\small\item\em Runs a command for the subsystem. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a42df806edddc20fca3e7f90c0602979a}{state}} (std\+::string state\+\_\+name) override
+\begin{DoxyCompactList}\small\item\em Gets a state of the subsystem. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem}{wisco\+::robot\+::\+ASubsystem}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries ASubsystem} ()=default
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem_aa59c61c8541912d6c18b804c04ca531e}{ASubsystem}} (const \mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem}} \&other)=default
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem_a25fa0c2ca4079f6e7d862a891d2f738e}{ASubsystem}} (\mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem}} \&\&other)=default
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem_ab0a2234a2da48f651efcf69ef0edbec6}{ASubsystem}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+ASubsystem} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem} object. \end{DoxyCompactList}\item 
+const std\+::string \& \mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem_a080b583927d54f230941fdba5a1ff921}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Get the name of the subsystem. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem}} \& \mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem_ac083f2fab780048b556071e86e3c2b97}{operator=}} (const \mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem}} \&rhs)=default
+\begin{DoxyCompactList}\small\item\em Copy assignment operator for \doxylink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem}} \& \mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem_a6da5cf12e3d3bfc98808611c73ee7675}{operator=}} (\mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem}} \&\&rhs)=default
+\begin{DoxyCompactList}\small\item\em Move assignment operator for \doxylink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_i_intake}{IIntake}} $>$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a85ac6db324accacb7476e907007928fc}{m\+\_\+intake}} \{\}
+\begin{DoxyCompactList}\small\item\em The intake being adapted. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr char \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a716827a4bfa84b225e4abafb37f2a251}{SUBSYSTEM\+\_\+\+NAME}} \mbox{[}$\,$\mbox{]} \{"{}INTAKE"{}\}
+\begin{DoxyCompactList}\small\item\em The name of the subsystem. \end{DoxyCompactList}\item 
+static constexpr char \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a8aecd366959bea0d9225ecaaffc428a6}{SET\+\_\+\+VELOCITY\+\_\+\+COMMAND\+\_\+\+NAME}} \mbox{[}$\,$\mbox{]} \{"{}SET VELOCITY"{}\}
+\begin{DoxyCompactList}\small\item\em The name of the set velocity command. \end{DoxyCompactList}\item 
+static constexpr char \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a70229ab0ce8e02d31dc016b2370c1677}{SET\+\_\+\+VOLTAGE\+\_\+\+COMMAND\+\_\+\+NAME}} \mbox{[}$\,$\mbox{]} \{"{}SET VOLTAGE"{}\}
+\begin{DoxyCompactList}\small\item\em The name of the set voltage command. \end{DoxyCompactList}\item 
+static constexpr char \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_ab527577a84188cea273b9b3ff06d178f}{GET\+\_\+\+VELOCITY\+\_\+\+STATE\+\_\+\+NAME}} \mbox{[}$\,$\mbox{]} \{"{}GET VELOCITY"{}\}
+\begin{DoxyCompactList}\small\item\em The name of the get velocity command. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The subsystem adapter for intakes. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Sandvig 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_intake_subsystem_8hpp_source_l00046}{46}} of file \mbox{\hyperlink{_intake_subsystem_8hpp_source}{Intake\+Subsystem.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_aaacc783adc5f44ac0024c95da9cedd19}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_aaacc783adc5f44ac0024c95da9cedd19} 
+\index{wisco::robot::subsystems::intake::IntakeSubsystem@{wisco::robot::subsystems::intake::IntakeSubsystem}!IntakeSubsystem@{IntakeSubsystem}}
+\index{IntakeSubsystem@{IntakeSubsystem}!wisco::robot::subsystems::intake::IntakeSubsystem@{wisco::robot::subsystems::intake::IntakeSubsystem}}
+\doxysubsubsection{\texorpdfstring{IntakeSubsystem()}{IntakeSubsystem()}}
+{\footnotesize\ttfamily wisco\+::robot\+::subsystems\+::intake\+::\+Intake\+Subsystem\+::\+Intake\+Subsystem (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_i_intake}{IIntake}} $>$ \&}]{intake }\end{DoxyParamCaption})}
+
+
+
+Construct a new Intake Subsystem object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em intake} & The intake being adapted \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_intake_subsystem_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{_intake_subsystem_8cpp_source}{Intake\+Subsystem.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a85ac6db324accacb7476e907007928fc}{m\_intake}}\{std::move(intake)\}}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_afd6158d2072e2cec4ad98c24a5e2a875}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_afd6158d2072e2cec4ad98c24a5e2a875} 
+\index{wisco::robot::subsystems::intake::IntakeSubsystem@{wisco::robot::subsystems::intake::IntakeSubsystem}!initialize@{initialize}}
+\index{initialize@{initialize}!wisco::robot::subsystems::intake::IntakeSubsystem@{wisco::robot::subsystems::intake::IntakeSubsystem}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::intake\+::\+Intake\+Subsystem\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Initializes the subsystem. 
+
+
+
+Implements \mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem_a7623b0d9dfa1d866d5ad2de8ecec2464}{wisco\+::robot\+::\+ASubsystem}}.
+
+
+
+Definition at line \mbox{\hyperlink{_intake_subsystem_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{_intake_subsystem_8cpp_source}{Intake\+Subsystem.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a85ac6db324accacb7476e907007928fc}{m\_intake}})}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a85ac6db324accacb7476e907007928fc}{m\_intake}}-\/>initialize();}
+\DoxyCodeLine{00020\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_adcc91dc77a37cfd302b0d32bd1e0603f}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_adcc91dc77a37cfd302b0d32bd1e0603f} 
+\index{wisco::robot::subsystems::intake::IntakeSubsystem@{wisco::robot::subsystems::intake::IntakeSubsystem}!run@{run}}
+\index{run@{run}!wisco::robot::subsystems::intake::IntakeSubsystem@{wisco::robot::subsystems::intake::IntakeSubsystem}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::intake\+::\+Intake\+Subsystem\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Runs the subsystem. 
+
+
+
+Implements \mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem_ab54e63827bf9d2c750de090fbc434586}{wisco\+::robot\+::\+ASubsystem}}.
+
+
+
+Definition at line \mbox{\hyperlink{_intake_subsystem_8cpp_source_l00022}{22}} of file \mbox{\hyperlink{_intake_subsystem_8cpp_source}{Intake\+Subsystem.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a85ac6db324accacb7476e907007928fc}{m\_intake}})}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a85ac6db324accacb7476e907007928fc}{m\_intake}}-\/>run();}
+\DoxyCodeLine{00026\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a26c0e65e0e946c08d1675169760d2c3a}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a26c0e65e0e946c08d1675169760d2c3a} 
+\index{wisco::robot::subsystems::intake::IntakeSubsystem@{wisco::robot::subsystems::intake::IntakeSubsystem}!command@{command}}
+\index{command@{command}!wisco::robot::subsystems::intake::IntakeSubsystem@{wisco::robot::subsystems::intake::IntakeSubsystem}}
+\doxysubsubsection{\texorpdfstring{command()}{command()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::intake\+::\+Intake\+Subsystem\+::command (\begin{DoxyParamCaption}\item[{std\+::string}]{command\+\_\+name,  }\item[{va\+\_\+list \&}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Runs a command for the subsystem. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em command\+\_\+name} & The name of the command to run \\
+\hline
+{\em args} & The parameters for the command \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem_a0a0d105b37d6d6991d369aeeecd844b4}{wisco\+::robot\+::\+ASubsystem}}.
+
+
+
+Definition at line \mbox{\hyperlink{_intake_subsystem_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{_intake_subsystem_8cpp_source}{Intake\+Subsystem.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordflow}{if}\ (command\_name\ ==\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a8aecd366959bea0d9225ecaaffc428a6}{SET\_VELOCITY\_COMMAND\_NAME}})}
+\DoxyCodeLine{00031\ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ velocity\{va\_arg(args,\ \textcolor{keywordtype}{double})\};}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a85ac6db324accacb7476e907007928fc}{m\_intake}}-\/>setVelocity(velocity);}
+\DoxyCodeLine{00034\ \ \ \ \ \}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (command\_name\ ==\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a70229ab0ce8e02d31dc016b2370c1677}{SET\_VOLTAGE\_COMMAND\_NAME}})}
+\DoxyCodeLine{00036\ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ voltage\{va\_arg(args,\ \textcolor{keywordtype}{double})\};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a85ac6db324accacb7476e907007928fc}{m\_intake}}-\/>setVoltage(voltage);}
+\DoxyCodeLine{00039\ \ \ \ \ \}}
+\DoxyCodeLine{00040\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a42df806edddc20fca3e7f90c0602979a}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a42df806edddc20fca3e7f90c0602979a} 
+\index{wisco::robot::subsystems::intake::IntakeSubsystem@{wisco::robot::subsystems::intake::IntakeSubsystem}!state@{state}}
+\index{state@{state}!wisco::robot::subsystems::intake::IntakeSubsystem@{wisco::robot::subsystems::intake::IntakeSubsystem}}
+\doxysubsubsection{\texorpdfstring{state()}{state()}}
+{\footnotesize\ttfamily void \texorpdfstring{$\ast$}{*} wisco\+::robot\+::subsystems\+::intake\+::\+Intake\+Subsystem\+::state (\begin{DoxyParamCaption}\item[{std\+::string}]{state\+\_\+name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gets a state of the subsystem. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state\+\_\+name} & The name of the state to get \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void\texorpdfstring{$\ast$}{*} The current value of that state 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem_ab8e59543b53a00d8e2d5ae1e642b2fce}{wisco\+::robot\+::\+ASubsystem}}.
+
+
+
+Definition at line \mbox{\hyperlink{_intake_subsystem_8cpp_source_l00042}{42}} of file \mbox{\hyperlink{_intake_subsystem_8cpp_source}{Intake\+Subsystem.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00043\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}*\ result\{\textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{if}\ (state\_name\ ==\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_ab527577a84188cea273b9b3ff06d178f}{GET\_VELOCITY\_STATE\_NAME}})}
+\DoxyCodeLine{00047\ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}*\ velocity\{\textcolor{keyword}{new}\ \textcolor{keywordtype}{double}\{\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a85ac6db324accacb7476e907007928fc}{m\_intake}}-\/>getVelocity()\}\};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ result\ =\ velocity;}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00053\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a716827a4bfa84b225e4abafb37f2a251}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a716827a4bfa84b225e4abafb37f2a251} 
+\index{wisco::robot::subsystems::intake::IntakeSubsystem@{wisco::robot::subsystems::intake::IntakeSubsystem}!SUBSYSTEM\_NAME@{SUBSYSTEM\_NAME}}
+\index{SUBSYSTEM\_NAME@{SUBSYSTEM\_NAME}!wisco::robot::subsystems::intake::IntakeSubsystem@{wisco::robot::subsystems::intake::IntakeSubsystem}}
+\doxysubsubsection{\texorpdfstring{SUBSYSTEM\_NAME}{SUBSYSTEM\_NAME}}
+{\footnotesize\ttfamily constexpr char wisco\+::robot\+::subsystems\+::intake\+::\+Intake\+Subsystem\+::\+SUBSYSTEM\+\_\+\+NAME\mbox{[}$\,$\mbox{]} \{"{}INTAKE"{}\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The name of the subsystem. 
+
+
+
+Definition at line \mbox{\hyperlink{_intake_subsystem_8hpp_source_l00053}{53}} of file \mbox{\hyperlink{_intake_subsystem_8hpp_source}{Intake\+Subsystem.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00053\ \{\textcolor{stringliteral}{"{}INTAKE"{}}\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a8aecd366959bea0d9225ecaaffc428a6}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a8aecd366959bea0d9225ecaaffc428a6} 
+\index{wisco::robot::subsystems::intake::IntakeSubsystem@{wisco::robot::subsystems::intake::IntakeSubsystem}!SET\_VELOCITY\_COMMAND\_NAME@{SET\_VELOCITY\_COMMAND\_NAME}}
+\index{SET\_VELOCITY\_COMMAND\_NAME@{SET\_VELOCITY\_COMMAND\_NAME}!wisco::robot::subsystems::intake::IntakeSubsystem@{wisco::robot::subsystems::intake::IntakeSubsystem}}
+\doxysubsubsection{\texorpdfstring{SET\_VELOCITY\_COMMAND\_NAME}{SET\_VELOCITY\_COMMAND\_NAME}}
+{\footnotesize\ttfamily constexpr char wisco\+::robot\+::subsystems\+::intake\+::\+Intake\+Subsystem\+::\+SET\+\_\+\+VELOCITY\+\_\+\+COMMAND\+\_\+\+NAME\mbox{[}$\,$\mbox{]} \{"{}SET VELOCITY"{}\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The name of the set velocity command. 
+
+
+
+Definition at line \mbox{\hyperlink{_intake_subsystem_8hpp_source_l00059}{59}} of file \mbox{\hyperlink{_intake_subsystem_8hpp_source}{Intake\+Subsystem.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00059\ \{\textcolor{stringliteral}{"{}SET\ VELOCITY"{}}\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a70229ab0ce8e02d31dc016b2370c1677}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a70229ab0ce8e02d31dc016b2370c1677} 
+\index{wisco::robot::subsystems::intake::IntakeSubsystem@{wisco::robot::subsystems::intake::IntakeSubsystem}!SET\_VOLTAGE\_COMMAND\_NAME@{SET\_VOLTAGE\_COMMAND\_NAME}}
+\index{SET\_VOLTAGE\_COMMAND\_NAME@{SET\_VOLTAGE\_COMMAND\_NAME}!wisco::robot::subsystems::intake::IntakeSubsystem@{wisco::robot::subsystems::intake::IntakeSubsystem}}
+\doxysubsubsection{\texorpdfstring{SET\_VOLTAGE\_COMMAND\_NAME}{SET\_VOLTAGE\_COMMAND\_NAME}}
+{\footnotesize\ttfamily constexpr char wisco\+::robot\+::subsystems\+::intake\+::\+Intake\+Subsystem\+::\+SET\+\_\+\+VOLTAGE\+\_\+\+COMMAND\+\_\+\+NAME\mbox{[}$\,$\mbox{]} \{"{}SET VOLTAGE"{}\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The name of the set voltage command. 
+
+
+
+Definition at line \mbox{\hyperlink{_intake_subsystem_8hpp_source_l00065}{65}} of file \mbox{\hyperlink{_intake_subsystem_8hpp_source}{Intake\+Subsystem.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00065\ \{\textcolor{stringliteral}{"{}SET\ VOLTAGE"{}}\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_ab527577a84188cea273b9b3ff06d178f}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_ab527577a84188cea273b9b3ff06d178f} 
+\index{wisco::robot::subsystems::intake::IntakeSubsystem@{wisco::robot::subsystems::intake::IntakeSubsystem}!GET\_VELOCITY\_STATE\_NAME@{GET\_VELOCITY\_STATE\_NAME}}
+\index{GET\_VELOCITY\_STATE\_NAME@{GET\_VELOCITY\_STATE\_NAME}!wisco::robot::subsystems::intake::IntakeSubsystem@{wisco::robot::subsystems::intake::IntakeSubsystem}}
+\doxysubsubsection{\texorpdfstring{GET\_VELOCITY\_STATE\_NAME}{GET\_VELOCITY\_STATE\_NAME}}
+{\footnotesize\ttfamily constexpr char wisco\+::robot\+::subsystems\+::intake\+::\+Intake\+Subsystem\+::\+GET\+\_\+\+VELOCITY\+\_\+\+STATE\+\_\+\+NAME\mbox{[}$\,$\mbox{]} \{"{}GET VELOCITY"{}\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The name of the get velocity command. 
+
+
+
+Definition at line \mbox{\hyperlink{_intake_subsystem_8hpp_source_l00071}{71}} of file \mbox{\hyperlink{_intake_subsystem_8hpp_source}{Intake\+Subsystem.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00071\ \{\textcolor{stringliteral}{"{}GET\ VELOCITY"{}}\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a85ac6db324accacb7476e907007928fc}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_intake_subsystem_a85ac6db324accacb7476e907007928fc} 
+\index{wisco::robot::subsystems::intake::IntakeSubsystem@{wisco::robot::subsystems::intake::IntakeSubsystem}!m\_intake@{m\_intake}}
+\index{m\_intake@{m\_intake}!wisco::robot::subsystems::intake::IntakeSubsystem@{wisco::robot::subsystems::intake::IntakeSubsystem}}
+\doxysubsubsection{\texorpdfstring{m\_intake}{m\_intake}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_i_intake}{IIntake}}$>$ wisco\+::robot\+::subsystems\+::intake\+::\+Intake\+Subsystem\+::m\+\_\+intake \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The intake being adapted. 
+
+
+
+Definition at line \mbox{\hyperlink{_intake_subsystem_8hpp_source_l00077}{77}} of file \mbox{\hyperlink{_intake_subsystem_8hpp_source}{Intake\+Subsystem.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00077\ \{\};}
+
+\end{DoxyCode}

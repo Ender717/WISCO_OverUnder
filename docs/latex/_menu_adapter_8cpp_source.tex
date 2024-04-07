@@ -1,0 +1,132 @@
+\doxysection{Menu\+Adapter.\+cpp}
+\hypertarget{_menu_adapter_8cpp_source}{}\label{_menu_adapter_8cpp_source}\index{src/wisco/menu/MenuAdapter.cpp@{src/wisco/menu/MenuAdapter.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}MenuAdapter.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}wisco/IAutonomous.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00004}00004\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacewisco}{wisco}}}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00005}00005\ \{}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00006}00006\ \textcolor{keyword}{namespace\ }menu}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00007}00007\ \{\ \ }
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00008}\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_aa207b014b7e3081a6b2972906722f47a}{00008}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_aa207b014b7e3081a6b2972906722f47a}{MenuAdapter::addAlliance}}(std::unique\_ptr<IAlliance>\&\ alliance)}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00010}00010\ \ \ \ \ \textcolor{keywordtype}{bool}\ unique\{\textcolor{keyword}{true}\};}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00011}00011\ \ \ \ \ \textcolor{keywordflow}{for}\ (std::unique\_ptr<IAlliance>\&\ existing\_alliance\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_ac01f3904d90c9697a5e3c7f4e5ccafca}{alliances}})}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (existing\_alliance-\/>getName()\ ==\ alliance-\/>getName())}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ \ \ \ \ unique\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00014}00014\ \ \ \ \ \textcolor{keywordflow}{if}\ (unique)}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00015}00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_ac01f3904d90c9697a5e3c7f4e5ccafca}{alliances}}.push\_back(std::move(alliance));}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00016}00016\ \}}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00018}\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a0daa29300fb24b0517da3268efe7452f}{00018}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a0daa29300fb24b0517da3268efe7452f}{MenuAdapter::addAutonomous}}(std::unique\_ptr<IAutonomous>\&\ autonomous)}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00019}00019\ \{}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00020}00020\ \ \ \ \ \textcolor{keywordtype}{bool}\ unique\{\textcolor{keyword}{true}\};}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00021}00021\ \ \ \ \ \textcolor{keywordflow}{for}\ (std::unique\_ptr<IAutonomous>\&\ existing\_autonomous\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a64dd566b6dba800332aec30ad7b04685}{autonomous\_routines}})}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (existing\_autonomous-\/>getName()\ ==\ autonomous-\/>getName())}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ unique\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{if}\ (unique)}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a64dd566b6dba800332aec30ad7b04685}{autonomous\_routines}}.push\_back(std::move(autonomous));}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00026}00026\ \}}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00028}\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_aef78af4ab009362faba3a0dfe8b339fc}{00028}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_aef78af4ab009362faba3a0dfe8b339fc}{MenuAdapter::addConfiguration}}(std::unique\_ptr<IConfiguration>\&\ configuration)}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00029}00029\ \{}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordtype}{bool}\ unique\{\textcolor{keyword}{true}\};}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{keywordflow}{for}\ (std::unique\_ptr<IConfiguration>\&\ existing\_configuration\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a095ab0735f62618d8ae9cfae0fb05a6c}{hardware\_configurations}})}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (existing\_configuration-\/>getName()\ ==\ configuration-\/>getName())}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ unique\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{if}\ (unique)}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a095ab0735f62618d8ae9cfae0fb05a6c}{hardware\_configurations}}.push\_back(std::move(configuration));}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00036}00036\ \}}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00038}\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a25a696424455b8c6f591615d6cd857ba}{00038}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a25a696424455b8c6f591615d6cd857ba}{MenuAdapter::addProfile}}(std::unique\_ptr<IProfile>\&\ profile)}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00039}00039\ \{}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{keywordtype}{bool}\ unique\{\textcolor{keyword}{true}\};}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordflow}{for}\ (std::unique\_ptr<IProfile>\&\ existing\_profile\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a400cb933cfe447898a7ee667eee167d9}{driver\_profiles}})}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (existing\_profile-\/>getName()\ ==\ profile-\/>getName())}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ unique\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00044}00044\ \ \ \ \ \textcolor{keywordflow}{if}\ (unique)}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a400cb933cfe447898a7ee667eee167d9}{driver\_profiles}}.push\_back(std::move(profile));}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00046}00046\ \}}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00048}\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a77ccef19f25b39a6b865454535bb8bfc}{00048}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a77ccef19f25b39a6b865454535bb8bfc}{MenuAdapter::display}}()}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00049}00049\ \{}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00050}00050\ \ \ \ \ std::vector<std::string>\ alliance\_options\{\};}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{for}\ (std::unique\_ptr<IAlliance>\&\ alliance\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_ac01f3904d90c9697a5e3c7f4e5ccafca}{alliances}})}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ alliance\_options.push\_back(alliance-\/>getName());}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00053}00053\ \ \ \ \ \mbox{\hyperlink{structwisco_1_1menu_1_1_option}{Option}}\ alliance\_option\{\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a1f2c98547f7b9307da1db255c4f51ba7}{ALLIANCE\_OPTION\_NAME}},\ alliance\_options\};}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00055}00055\ \ \ \ \ std::vector<std::string>\ autonomous\_options\{\};}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordflow}{for}\ (std::unique\_ptr<IAutonomous>\&\ autonomous\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a64dd566b6dba800332aec30ad7b04685}{autonomous\_routines}})}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ autonomous\_options.push\_back(autonomous-\/>getName());}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00058}00058\ \ \ \ \ \mbox{\hyperlink{structwisco_1_1menu_1_1_option}{Option}}\ autonomous\_option\{\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a337af26bb64c67b1851f77c9b1757abe}{AUTONOMOUS\_OPTION\_NAME}},\ autonomous\_options\};}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00060}00060\ \ \ \ \ std::vector<std::string>\ configuration\_options\{\};}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00061}00061\ \ \ \ \ \textcolor{keywordflow}{for}\ (std::unique\_ptr<IConfiguration>\&\ configuration\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a095ab0735f62618d8ae9cfae0fb05a6c}{hardware\_configurations}})}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ configuration\_options.push\_back(configuration-\/>getName());}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00063}00063\ \ \ \ \ \mbox{\hyperlink{structwisco_1_1menu_1_1_option}{Option}}\ configuration\_option\{\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a2e5ec7e0165930f86a41cd171577db50}{CONFIGURATION\_OPTION\_NAME}},\ configuration\_options\};}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00065}00065\ \ \ \ \ std::vector<std::string>\ profile\_options\{\};}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00066}00066\ \ \ \ \ \textcolor{keywordflow}{for}\ (std::unique\_ptr<IProfile>\&\ profile\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a400cb933cfe447898a7ee667eee167d9}{driver\_profiles}})}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ profile\_options.push\_back(profile-\/>getName());}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00068}00068\ \ \ \ \ \mbox{\hyperlink{structwisco_1_1menu_1_1_option}{Option}}\ profile\_option\{\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a8c2350b2fae34b06c7635d4a84541fe0}{PROFILE\_OPTION\_NAME}},\ profile\_options\};}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00070}00070\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_af6ae66e24dce580a65e5beb567e2c6d9}{lvgl\_menu}}.\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a419ea3f60f4f59008761a1769b672689}{addOption}}(alliance\_option);}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00071}00071\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_af6ae66e24dce580a65e5beb567e2c6d9}{lvgl\_menu}}.\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a419ea3f60f4f59008761a1769b672689}{addOption}}(autonomous\_option);}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00072}00072\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_af6ae66e24dce580a65e5beb567e2c6d9}{lvgl\_menu}}.\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a419ea3f60f4f59008761a1769b672689}{addOption}}(configuration\_option);}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00073}00073\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_af6ae66e24dce580a65e5beb567e2c6d9}{lvgl\_menu}}.\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a419ea3f60f4f59008761a1769b672689}{addOption}}(profile\_option);}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00075}00075\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_af6ae66e24dce580a65e5beb567e2c6d9}{lvgl\_menu}}.\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a82f1a642589a3ddd9d00901d6a4f8ec3}{displayMenu}}();}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00076}00076\ \}}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00078}\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a1e70f31f2ca9e544d58dd9ea41be2bc3}{00078}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a1e70f31f2ca9e544d58dd9ea41be2bc3}{MenuAdapter::isStarted}}()}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00079}00079\ \{}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00080}00080\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_af6ae66e24dce580a65e5beb567e2c6d9}{lvgl\_menu}}.\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_afa7588b532071448c467ade5ba9a7230}{selectionComplete}}();}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00081}00081\ \}}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00083}\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_aa983629174639d8709be1c71ccf03fbc}{00083}}\ \mbox{\hyperlink{structwisco_1_1_system_configuration}{SystemConfiguration}}\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_aa983629174639d8709be1c71ccf03fbc}{MenuAdapter::getSystemConfiguration}}()}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00084}00084\ \{}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00085}00085\ \ \ \ \ \mbox{\hyperlink{structwisco_1_1_system_configuration}{SystemConfiguration}}\ system\_configuration\{\};}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00087}00087\ \ \ \ \ \textcolor{keywordflow}{for}\ (std::unique\_ptr<IAlliance>\&\ alliance\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_ac01f3904d90c9697a5e3c7f4e5ccafca}{alliances}})}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00088}00088\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_af6ae66e24dce580a65e5beb567e2c6d9}{lvgl\_menu}}.\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a585f99981d7252960ffe1be0c56e3e45}{getSelection}}(\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a1f2c98547f7b9307da1db255c4f51ba7}{ALLIANCE\_OPTION\_NAME}})\ ==\ alliance-\/>getName())}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ system\_configuration.\mbox{\hyperlink{structwisco_1_1_system_configuration_af113203f87ef6e3b743cd66a442d7a8e}{alliance}}\ =\ std::move(alliance);}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00094}00094\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00096}00096\ \ \ \ \ \textcolor{keywordflow}{for}\ (std::unique\_ptr<IAutonomous>\&\ autonomous\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a64dd566b6dba800332aec30ad7b04685}{autonomous\_routines}})}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00097}00097\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_af6ae66e24dce580a65e5beb567e2c6d9}{lvgl\_menu}}.\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a585f99981d7252960ffe1be0c56e3e45}{getSelection}}(\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a337af26bb64c67b1851f77c9b1757abe}{AUTONOMOUS\_OPTION\_NAME}})\ ==\ autonomous-\/>getName())}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ system\_configuration.autonomous\ =\ std::move(autonomous);}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00103}00103\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00105}00105\ \ \ \ \ \textcolor{keywordflow}{for}\ (std::unique\_ptr<IConfiguration>\&\ configuration\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a095ab0735f62618d8ae9cfae0fb05a6c}{hardware\_configurations}})}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00106}00106\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_af6ae66e24dce580a65e5beb567e2c6d9}{lvgl\_menu}}.\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a585f99981d7252960ffe1be0c56e3e45}{getSelection}}(\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a2e5ec7e0165930f86a41cd171577db50}{CONFIGURATION\_OPTION\_NAME}})\ ==\ configuration-\/>getName())}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ system\_configuration.configuration\ =\ std::move(configuration);}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00112}00112\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00114}00114\ \ \ \ \ \textcolor{keywordflow}{for}\ (std::unique\_ptr<IProfile>\&\ profile\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a400cb933cfe447898a7ee667eee167d9}{driver\_profiles}})}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00115}00115\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_af6ae66e24dce580a65e5beb567e2c6d9}{lvgl\_menu}}.\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a585f99981d7252960ffe1be0c56e3e45}{getSelection}}(\mbox{\hyperlink{classwisco_1_1menu_1_1_menu_adapter_a8c2350b2fae34b06c7635d4a84541fe0}{PROFILE\_OPTION\_NAME}})\ ==\ profile-\/>getName())}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ system\_configuration.profile\ =\ std::move(profile);}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00121}00121\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00123}00123\ \ \ \ \ \textcolor{keywordflow}{return}\ system\_configuration;}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00124}00124\ \}}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00125}00125\ \}}
+\DoxyCodeLine{\Hypertarget{_menu_adapter_8cpp_source_l00126}00126\ \}}
+
+\end{DoxyCode}

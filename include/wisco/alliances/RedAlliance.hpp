@@ -19,6 +19,12 @@ namespace wisco
  */
 namespace alliances
 {
+
+/**
+ * @brief The red match alliance
+ * @author Nathan Sandvig
+ * 
+ */
 class RedAlliance : public IAlliance
 {
 private:

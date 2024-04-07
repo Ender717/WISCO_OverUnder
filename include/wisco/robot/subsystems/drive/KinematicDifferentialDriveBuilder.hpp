@@ -145,7 +145,7 @@ public:
     /**
      * @brief Adds a left velocity profile to the build
      * 
-     * @param velocity_profile The left velocity profile
+     * @param left_velocity_profile The left velocity profile
      * @return KinematicDifferentialDriveBuilder* This object for build chaining
      */
     KinematicDifferentialDriveBuilder* withLeftVelocityProfile(std::unique_ptr<IVelocityProfile>& left_velocity_profile);
@@ -153,7 +153,7 @@ public:
     /**
      * @brief Adds a right velocity profile to the build
      * 
-     * @param velocity_profile The right velocity profile
+     * @param right_velocity_profile The right velocity profile
      * @return KinematicDifferentialDriveBuilder* This object for build chaining
      */
     KinematicDifferentialDriveBuilder* withRightVelocityProfile(std::unique_ptr<IVelocityProfile>& right_velocity_profile);

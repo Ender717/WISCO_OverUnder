@@ -1,0 +1,52 @@
+\doxysection{Henry\+Profile.\+hpp}
+\hypertarget{_henry_profile_8hpp_source}{}\label{_henry_profile_8hpp_source}\index{include/wisco/profiles/HenryProfile.hpp@{include/wisco/profiles/HenryProfile.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ WISCO\_PROFILES\_HENRY\_PROFILE\_HPP}}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00002}00002\ \textcolor{preprocessor}{\#define\ WISCO\_PROFILES\_HENRY\_PROFILE\_HPP}}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}wisco/IProfile.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}wisco/user/EChassisControlMode.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}wisco/user/EIntakeControlMode.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00016}00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacewisco}{wisco}}}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00017}00017\ \{}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00023}\mbox{\hyperlink{namespacewisco_1_1profiles}{00023}}\ \textcolor{keyword}{namespace\ }profiles}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00024}00024\ \{}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00029}\mbox{\hyperlink{classwisco_1_1profiles_1_1_henry_profile}{00029}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classwisco_1_1profiles_1_1_henry_profile}{HenryProfile}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classwisco_1_1_i_profile}{IProfile}}}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00030}00030\ \{}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00031}00031\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00036}\mbox{\hyperlink{classwisco_1_1profiles_1_1_henry_profile_abdae66f098c3f364b7b844f272d7a99f}{00036}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{classwisco_1_1profiles_1_1_henry_profile_abdae66f098c3f364b7b844f272d7a99f}{PROFILE\_NAME}}[]\{\textcolor{stringliteral}{"{}HENRY"{}}\};}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00042}\mbox{\hyperlink{classwisco_1_1profiles_1_1_henry_profile_ab66b4b1f86402df6a337c1e9157b64c3}{00042}}\ \ \ \ \ \textcolor{keyword}{const}\ std::map<user::EControlType,\ int>\ \mbox{\hyperlink{classwisco_1_1profiles_1_1_henry_profile_ab66b4b1f86402df6a337c1e9157b64c3}{CONTROL\_MODE\_MAP}}}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00043}00043\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \{user::EControlType::DRIVE,\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(user::EChassisControlMode::SPLIT\_ARCADE\_LEFT)\},}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \{user::EControlType::INTAKE,\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(user::EIntakeControlMode::SPLIT\_HOLD)\}}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00046}00046\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00052}\mbox{\hyperlink{classwisco_1_1profiles_1_1_henry_profile_a76cd30f0d3873ba65dd3a967492d0385}{00052}}\ \ \ \ \ \textcolor{keyword}{const}\ std::map<user::EControl,\ user::EControllerAnalog>\ \mbox{\hyperlink{classwisco_1_1profiles_1_1_henry_profile_a76cd30f0d3873ba65dd3a967492d0385}{ANALOG\_CONTROL\_MAP}}\{\};}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00058}\mbox{\hyperlink{classwisco_1_1profiles_1_1_henry_profile_a522def31af7a951f10b7449710ca0c76}{00058}}\ \ \ \ \ \textcolor{keyword}{const}\ std::map<user::EControl,\ user::EControllerDigital>\ \mbox{\hyperlink{classwisco_1_1profiles_1_1_henry_profile_a522def31af7a951f10b7449710ca0c76}{DIGITAL\_CONTROL\_MAP}}}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00059}00059\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \{user::EControl::INTAKE\_IN,\ user::EControllerDigital::TRIGGER\_LEFT\_TOP\},}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \{user::EControl::INTAKE\_OUT,\ user::EControllerDigital::TRIGGER\_LEFT\_BOTTOM\}}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00062}00062\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00064}00064\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00070}00070\ \ \ \ \ std::string\ \mbox{\hyperlink{classwisco_1_1profiles_1_1_henry_profile_a70655ac613b89fad28c3d483f597232f}{getName}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00078}00078\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classwisco_1_1profiles_1_1_henry_profile_adf4558b8b7a7d1f1dca404596ee235e0}{getControlMode}}(\mbox{\hyperlink{namespacewisco_1_1user_ad0f1edab901df0274a6e4491cd08a6e4}{user::EControlType}}\ control\_type)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00086}00086\ \ \ \ \ \mbox{\hyperlink{namespacewisco_1_1user_ae202ce004590703fcc95a178670c7e93}{user::EControllerAnalog}}\ \mbox{\hyperlink{classwisco_1_1profiles_1_1_henry_profile_a378af9112cf05b1de3fd98b15e941f17}{getAnalogControlMapping}}(\mbox{\hyperlink{namespacewisco_1_1user_aaf30d49a57c83d6cd21d1bce912a4267}{user::EControl}}\ control)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00094}00094\ \ \ \ \ \mbox{\hyperlink{namespacewisco_1_1user_a794210ea2b8a8e3185b71b59a934ea30}{user::EControllerDigital}}\ \mbox{\hyperlink{classwisco_1_1profiles_1_1_henry_profile_a0ff82e85509e95b751684e9b03aa3223}{getDigitalControlMapping}}(\mbox{\hyperlink{namespacewisco_1_1user_aaf30d49a57c83d6cd21d1bce912a4267}{user::EControl}}\ control)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00095}00095\ \};}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00096}00096\ \}}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00097}00097\ \}}
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_henry_profile_8hpp_source_l00099}00099\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

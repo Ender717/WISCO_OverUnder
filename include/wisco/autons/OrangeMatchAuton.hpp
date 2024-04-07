@@ -17,6 +17,12 @@ namespace wisco
  */
 namespace autons
 {
+
+/**
+ * @brief The auton for the orange robot in matches
+ * @author Nathan Sandvig
+ * 
+ */
 class OrangeMatchAuton : public IAutonomous
 {
 private:

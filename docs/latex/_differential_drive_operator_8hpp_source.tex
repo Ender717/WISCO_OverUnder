@@ -1,0 +1,58 @@
+\doxysection{Differential\+Drive\+Operator.\+hpp}
+\hypertarget{_differential_drive_operator_8hpp_source}{}\label{_differential_drive_operator_8hpp_source}\index{include/wisco/user/DifferentialDriveOperator.hpp@{include/wisco/user/DifferentialDriveOperator.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ WISCO\_USER\_DRIVE\_OPERATOR\_HPP}}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00002}00002\ \textcolor{preprocessor}{\#define\ WISCO\_USER\_DRIVE\_OPERATOR\_HPP}}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}wisco/robot/Robot.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}wisco/user/IController.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}EChassisControlMode.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00015}00015\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacewisco}{wisco}}}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00016}00016\ \{}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00023}\mbox{\hyperlink{namespacewisco_1_1user}{00023}}\ \textcolor{keyword}{namespace\ }user}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00024}00024\ \{}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00031}\mbox{\hyperlink{classwisco_1_1user_1_1_differential_drive_operator}{00031}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classwisco_1_1user_1_1_differential_drive_operator}{DifferentialDriveOperator}}}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00032}00032\ \{}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00033}00033\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00038}\mbox{\hyperlink{classwisco_1_1user_1_1_differential_drive_operator_a512b7ed45df19beded36534ef5497bd6}{00038}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{classwisco_1_1user_1_1_differential_drive_operator_a512b7ed45df19beded36534ef5497bd6}{DIFFERENTIAL\_DRIVE\_SUBSYSTEM\_NAME}}[]\{\textcolor{stringliteral}{"{}DIFFERENTIAL\ DRIVE"{}}\};}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00044}\mbox{\hyperlink{classwisco_1_1user_1_1_differential_drive_operator_a72769026ea0bb05a64e7276bcc682f1f}{00044}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{classwisco_1_1user_1_1_differential_drive_operator_a72769026ea0bb05a64e7276bcc682f1f}{SET\_VOLTAGE\_COMMAND}}[]\{\textcolor{stringliteral}{"{}SET\ VOLTAGE"{}}\};}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00050}\mbox{\hyperlink{classwisco_1_1user_1_1_differential_drive_operator_a35345a629f9d187d6663464a5f78af7c}{00050}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1user_1_1_differential_drive_operator_a35345a629f9d187d6663464a5f78af7c}{VOLTAGE\_CONVERSION}}\{12.0\};}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00056}\mbox{\hyperlink{classwisco_1_1user_1_1_differential_drive_operator_aa735e09cb5b24470fd0e65ac78babca0}{00056}}\ \ \ \ \ std::shared\_ptr<user::IController>\ \mbox{\hyperlink{classwisco_1_1user_1_1_differential_drive_operator_aa735e09cb5b24470fd0e65ac78babca0}{m\_controller}}\{\};}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00062}\mbox{\hyperlink{classwisco_1_1user_1_1_differential_drive_operator_a1ae8d5407e6004b16fb592581f6158d5}{00062}}\ \ \ \ \ std::shared\_ptr<robot::Robot>\ \mbox{\hyperlink{classwisco_1_1user_1_1_differential_drive_operator_a1ae8d5407e6004b16fb592581f6158d5}{m\_robot}}\{\};}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00070}00070\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1user_1_1_differential_drive_operator_aa20b81a293dcb331c8f4257f1ce17031}{updateDriveVoltage}}(\textcolor{keywordtype}{double}\ left\_voltage,\ \textcolor{keywordtype}{double}\ right\_voltage);}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00078}00078\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1user_1_1_differential_drive_operator_ac5a75fbc92265e85b1d7a91ff0194e65}{updateArcade}}(\textcolor{keywordtype}{double}\ forward,\ \textcolor{keywordtype}{double}\ turn);}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00084}00084\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1user_1_1_differential_drive_operator_a46df7bb132a6a73221fc972d088e25c2}{updateSingleArcadeLeft}}();}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00090}00090\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1user_1_1_differential_drive_operator_a624f5067a9e5d90e7935a96014ce8f2b}{updateSingleArcadeRight}}();}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00096}00096\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1user_1_1_differential_drive_operator_a70b3b0dd42c9fae0f0effc513f12d8eb}{updateSplitArcadeLeft}}();}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00102}00102\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1user_1_1_differential_drive_operator_a4da57450dbb3481628e90d37cc8a7739}{updateSplitArcadeRight}}();}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00108}00108\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1user_1_1_differential_drive_operator_aaf3d098ab801a2a5a051688fba8655eb}{updateTank}}();}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00110}00110\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00117}00117\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1user_1_1_differential_drive_operator_ac3f07fac61e50abd3426faeb7dd43639}{DifferentialDriveOperator}}(\textcolor{keyword}{const}\ std::shared\_ptr<user::IController>\&\ controller,\ }
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::shared\_ptr<robot::Robot>\&\ robot);}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00125}00125\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1user_1_1_differential_drive_operator_aa34ddd90d3f863ad77444d411943e6dd}{setDriveVoltage}}(\mbox{\hyperlink{namespacewisco_1_1user_ab55414283b211f2bbde924d9dedeb1bb}{EChassisControlMode}}\ control\_mode);}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00126}00126\ \};}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00127}00127\ \}\ \textcolor{comment}{//\ namespace\ user}}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00128}00128\ \}\ \textcolor{comment}{//\ namespace\ wisco}}
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_differential_drive_operator_8hpp_source_l00130}00130\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

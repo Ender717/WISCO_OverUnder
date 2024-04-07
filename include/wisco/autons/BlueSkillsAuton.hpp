@@ -17,6 +17,12 @@ namespace wisco
  */
 namespace autons
 {
+
+/**
+ * @brief The auton for the blue robot in skills
+ * @author Nathan Sandvig
+ * 
+ */
 class BlueSkillsAuton : public IAutonomous
 {
 private:

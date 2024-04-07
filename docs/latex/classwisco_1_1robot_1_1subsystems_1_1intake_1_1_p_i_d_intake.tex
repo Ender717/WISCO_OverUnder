@@ -1,0 +1,716 @@
+\doxysection{wisco\+::robot\+::subsystems\+::intake\+::PIDIntake Class Reference}
+\hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake}{}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake}\index{wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}}
+
+
+An intake controller with PID velocity control.  
+
+
+Inheritance diagram for wisco\+::robot\+::subsystems\+::intake\+::PIDIntake\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a9545e8a5166713eae6eadfc7daaeed46}{initialize}} () override
+\begin{DoxyCompactList}\small\item\em Initializes the intake. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a82eac486cc7cfbb5525ce08ffea5da85}{run}} () override
+\begin{DoxyCompactList}\small\item\em Runs the intake. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_af3798b3e60feefba174abe70ab1f9952}{get\+Velocity}} () override
+\begin{DoxyCompactList}\small\item\em Get the velocity of the intake in in/s. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a10fb4168d646e3f4f3c568148321be1c}{set\+Velocity}} (double velocity) override
+\begin{DoxyCompactList}\small\item\em Set the velocity of the intake. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_ab8292405ad0259ef0894665bf4e7b2dd}{set\+Voltage}} (double voltage) override
+\begin{DoxyCompactList}\small\item\em Set the voltage of the intake directly. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_ac59ff4150e0a52ccc4b31db9770d061b}{set\+Clock}} (const std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_clock}{rtos\+::\+IClock}} $>$ \&clock)
+\begin{DoxyCompactList}\small\item\em Set the rtos clock. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a1623d26b8f68c57ce99954e5ce038161}{set\+Delayer}} (const std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_delayer}{rtos\+::\+IDelayer}} $>$ \&delayer)
+\begin{DoxyCompactList}\small\item\em Set the rtos delayer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a33ac7c2b2b80e2bb80623efa2cf589e5}{set\+Mutex}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_mutex}{rtos\+::\+IMutex}} $>$ \&mutex)
+\begin{DoxyCompactList}\small\item\em Set the thread mutex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_acd2be40012ad3ccea228e9ce19af4c2d}{set\+Task}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_task}{rtos\+::\+ITask}} $>$ \&task)
+\begin{DoxyCompactList}\small\item\em Set the task handler. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a6fceaad46af2555987f4a9d60242d10f}{set\+PID}} (\mbox{\hyperlink{classwisco_1_1control_1_1_p_i_d}{control\+::\+PID}} pid)
+\begin{DoxyCompactList}\small\item\em Set the PID controller. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a0096e8922e15e8139be81829d2dc0779}{set\+Motors}} (\mbox{\hyperlink{classwisco_1_1hal_1_1_motor_group}{hal\+::\+Motor\+Group}} \&motors)
+\begin{DoxyCompactList}\small\item\em Set the motors. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a0b64f2bbfbaa8c404f49b036e20fffae}{set\+Roller\+Radius}} (double roller\+\_\+radius)
+\begin{DoxyCompactList}\small\item\em Set the radius of the roller. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_i_intake}{wisco\+::robot\+::subsystems\+::intake\+::\+IIntake}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IIntake} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_i_intake}{IIntake} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_aca697b676e6bdcb0f4bb60cb3e7745f7}{task\+Update}} ()
+\begin{DoxyCompactList}\small\item\em Runs all the object-\/specific updates in the task loop. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_aa88fd66599214b75c4f19d162607bd4b}{update\+Velocity}} ()
+\begin{DoxyCompactList}\small\item\em Updates the intake velocity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a6ce515283ab70b6cb259037e6c91b789}{task\+Loop}} (void \texorpdfstring{$\ast$}{*}params)
+\begin{DoxyCompactList}\small\item\em The task loop function for background updates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_clock}{rtos\+::\+IClock}} $>$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_aa7735e798398ca19f5e7a79e5c2fffb7}{m\+\_\+clock}} \{\}
+\begin{DoxyCompactList}\small\item\em The rtos clock. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_delayer}{rtos\+::\+IDelayer}} $>$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_aa87fbb9a1ff87ac0e3247e1b60589eb8}{m\+\_\+delayer}} \{\}
+\begin{DoxyCompactList}\small\item\em The rtos delayer. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_mutex}{rtos\+::\+IMutex}} $>$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a6f2c3cb0af98beca8bff2b3e92c31a51}{m\+\_\+mutex}} \{\}
+\begin{DoxyCompactList}\small\item\em The mutex for thread safety. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_task}{rtos\+::\+ITask}} $>$ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a83f5fafe583176a3468a4993a57fbe91}{m\+\_\+task}} \{\}
+\begin{DoxyCompactList}\small\item\em The background task handler. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classwisco_1_1control_1_1_p_i_d}{control\+::\+PID}} \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_ae51ebf46970e6c674cb0d0bdd494f540}{m\+\_\+pid}} \{\}
+\begin{DoxyCompactList}\small\item\em The velocity PID controller. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classwisco_1_1hal_1_1_motor_group}{hal\+::\+Motor\+Group}} \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a4b109bcd6bc5354d75f857fa8782b32d}{m\+\_\+motors}} \{\}
+\begin{DoxyCompactList}\small\item\em The motors on the intake. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_aefd60809f5a67bb9e28198d94e79bef5}{m\+\_\+roller\+\_\+radius}} \{\}
+\begin{DoxyCompactList}\small\item\em The radius of the intake roller. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a27d5c9d7f6ddbaaf314c7ddc3f5a1e81}{m\+\_\+velocity}} \{\}
+\begin{DoxyCompactList}\small\item\em The velocity setting of the intake. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a7872f2a57d7745374f06acdcc689617e}{velocity\+\_\+control}} \{\}
+\begin{DoxyCompactList}\small\item\em Whether or not to control with velocity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr uint8\+\_\+t \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a245d136f3b6b772d2a73e94aa4aba4ef}{TASK\+\_\+\+DELAY}} \{10\}
+\begin{DoxyCompactList}\small\item\em The loop delay on the task. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An intake controller with PID velocity control. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Sandvig 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_intake_8hpp_source_l00052}{52}} of file \mbox{\hyperlink{_p_i_d_intake_8hpp_source}{PIDIntake.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a6ce515283ab70b6cb259037e6c91b789}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a6ce515283ab70b6cb259037e6c91b789} 
+\index{wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}!taskLoop@{taskLoop}}
+\index{taskLoop@{taskLoop}!wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}}
+\doxysubsubsection{\texorpdfstring{taskLoop()}{taskLoop()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::intake\+::\+PIDIntake\+::task\+Loop (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{params }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The task loop function for background updates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em params} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_intake_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{_p_i_d_intake_8cpp_source}{PIDIntake.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{void}**\ parameters\{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}**\textcolor{keyword}{>}(params)\};}
+\DoxyCodeLine{00014\ \ \ \ \ PIDIntake*\ instance\{\textcolor{keyword}{static\_cast<}PIDIntake*\textcolor{keyword}{>}(parameters[0])\};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})}
+\DoxyCodeLine{00017\ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ instance-\/>taskUpdate();}
+\DoxyCodeLine{00019\ \ \ \ \ \}}
+\DoxyCodeLine{00020\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_aca697b676e6bdcb0f4bb60cb3e7745f7}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_aca697b676e6bdcb0f4bb60cb3e7745f7} 
+\index{wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}!taskUpdate@{taskUpdate}}
+\index{taskUpdate@{taskUpdate}!wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}}
+\doxysubsubsection{\texorpdfstring{taskUpdate()}{taskUpdate()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::intake\+::\+PIDIntake\+::task\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Runs all the object-\/specific updates in the task loop. 
+
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_intake_8cpp_source_l00022}{22}} of file \mbox{\hyperlink{_p_i_d_intake_8cpp_source}{PIDIntake.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a7872f2a57d7745374f06acdcc689617e}{velocity\_control}})}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_aa88fd66599214b75c4f19d162607bd4b}{updateVelocity}}();}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_aa87fbb9a1ff87ac0e3247e1b60589eb8}{m\_delayer}}-\/>delay(\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a245d136f3b6b772d2a73e94aa4aba4ef}{TASK\_DELAY}});}
+\DoxyCodeLine{00027\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_aa88fd66599214b75c4f19d162607bd4b}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_aa88fd66599214b75c4f19d162607bd4b} 
+\index{wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}!updateVelocity@{updateVelocity}}
+\index{updateVelocity@{updateVelocity}!wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}}
+\doxysubsubsection{\texorpdfstring{updateVelocity()}{updateVelocity()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::intake\+::\+PIDIntake\+::update\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Updates the intake velocity. 
+
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_intake_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{_p_i_d_intake_8cpp_source}{PIDIntake.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a6f2c3cb0af98beca8bff2b3e92c31a51}{m\_mutex}})}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a6f2c3cb0af98beca8bff2b3e92c31a51}{m\_mutex}}-\/>take();}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{double}\ velocity\{\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_af3798b3e60feefba174abe70ab1f9952}{getVelocity}}()\};}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{double}\ voltage\{\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_ae51ebf46970e6c674cb0d0bdd494f540}{m\_pid}}.\mbox{\hyperlink{classwisco_1_1control_1_1_p_i_d_abdd21c9c800b6a6832ab79bcd3ecf938}{getControlValue}}(velocity,\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a27d5c9d7f6ddbaaf314c7ddc3f5a1e81}{m\_velocity}})\};}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a4b109bcd6bc5354d75f857fa8782b32d}{m\_motors}}.\mbox{\hyperlink{classwisco_1_1hal_1_1_motor_group_a8e2dc531ce3ecd92746d1f2a02422e3a}{setVoltage}}(voltage);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a6f2c3cb0af98beca8bff2b3e92c31a51}{m\_mutex}})}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a6f2c3cb0af98beca8bff2b3e92c31a51}{m\_mutex}}-\/>give();}
+\DoxyCodeLine{00040\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a9545e8a5166713eae6eadfc7daaeed46}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a9545e8a5166713eae6eadfc7daaeed46} 
+\index{wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}!initialize@{initialize}}
+\index{initialize@{initialize}!wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::intake\+::\+PIDIntake\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Initializes the intake. 
+
+
+
+Implements \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_i_intake_a0cc0537be440949809a06601c8d0924f}{wisco\+::robot\+::subsystems\+::intake\+::\+IIntake}}.
+
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_intake_8cpp_source_l00042}{42}} of file \mbox{\hyperlink{_p_i_d_intake_8cpp_source}{PIDIntake.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00043\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_ae51ebf46970e6c674cb0d0bdd494f540}{m\_pid}}.\mbox{\hyperlink{classwisco_1_1control_1_1_p_i_d_a506e8b883a636d2e8aefaed97232efcf}{reset}}();}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a4b109bcd6bc5354d75f857fa8782b32d}{m\_motors}}.\mbox{\hyperlink{classwisco_1_1hal_1_1_motor_group_a7c7f143c10b72fc6d1666ea8eb71df2e}{initialize}}();}
+\DoxyCodeLine{00046\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a82eac486cc7cfbb5525ce08ffea5da85}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a82eac486cc7cfbb5525ce08ffea5da85} 
+\index{wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}!run@{run}}
+\index{run@{run}!wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::intake\+::\+PIDIntake\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Runs the intake. 
+
+
+
+Implements \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_i_intake_adc327167c958f1be9b64f4da4c61093b}{wisco\+::robot\+::subsystems\+::intake\+::\+IIntake}}.
+
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_intake_8cpp_source_l00048}{48}} of file \mbox{\hyperlink{_p_i_d_intake_8cpp_source}{PIDIntake.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00049\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a83f5fafe583176a3468a4993a57fbe91}{m\_task}})}
+\DoxyCodeLine{00051\ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}**\ params\{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}**\textcolor{keyword}{>}(malloc(1\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{void}*)))\};}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ params[0]\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a83f5fafe583176a3468a4993a57fbe91}{m\_task}}-\/>start(\&\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a6ce515283ab70b6cb259037e6c91b789}{PIDIntake::taskLoop}},\ params);}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_af3798b3e60feefba174abe70ab1f9952}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_af3798b3e60feefba174abe70ab1f9952} 
+\index{wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}!getVelocity@{getVelocity}}
+\index{getVelocity@{getVelocity}!wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}}
+\doxysubsubsection{\texorpdfstring{getVelocity()}{getVelocity()}}
+{\footnotesize\ttfamily double wisco\+::robot\+::subsystems\+::intake\+::\+PIDIntake\+::get\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the velocity of the intake in in/s. 
+
+\begin{DoxyReturn}{Returns}
+double The intake velocity 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_i_intake_adb5e1b0e4a80e6d16fd8f61f4d989cb3}{wisco\+::robot\+::subsystems\+::intake\+::\+IIntake}}.
+
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_intake_8cpp_source_l00058}{58}} of file \mbox{\hyperlink{_p_i_d_intake_8cpp_source}{PIDIntake.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00059\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a4b109bcd6bc5354d75f857fa8782b32d}{m\_motors}}.\mbox{\hyperlink{classwisco_1_1hal_1_1_motor_group_a5ee7c0daba7118b14b9056e28394da4e}{getAngularVelocity}}()\ *\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_aefd60809f5a67bb9e28198d94e79bef5}{m\_roller\_radius}};}
+\DoxyCodeLine{00061\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a10fb4168d646e3f4f3c568148321be1c}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a10fb4168d646e3f4f3c568148321be1c} 
+\index{wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}!setVelocity@{setVelocity}}
+\index{setVelocity@{setVelocity}!wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}}
+\doxysubsubsection{\texorpdfstring{setVelocity()}{setVelocity()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::intake\+::\+PIDIntake\+::set\+Velocity (\begin{DoxyParamCaption}\item[{double}]{velocity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the velocity of the intake. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em velocity} & The velocity of the intake in in/s \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_i_intake_a6157b464218fb18d2233ba108029cd9b}{wisco\+::robot\+::subsystems\+::intake\+::\+IIntake}}.
+
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_intake_8cpp_source_l00063}{63}} of file \mbox{\hyperlink{_p_i_d_intake_8cpp_source}{PIDIntake.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00064\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a6f2c3cb0af98beca8bff2b3e92c31a51}{m\_mutex}})}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a6f2c3cb0af98beca8bff2b3e92c31a51}{m\_mutex}}-\/>take();}
+\DoxyCodeLine{00067\ \ \ \ \ }
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a27d5c9d7f6ddbaaf314c7ddc3f5a1e81}{m\_velocity}}\ =\ velocity;}
+\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a7872f2a57d7745374f06acdcc689617e}{velocity\_control}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a6f2c3cb0af98beca8bff2b3e92c31a51}{m\_mutex}})}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a6f2c3cb0af98beca8bff2b3e92c31a51}{m\_mutex}}-\/>give();}
+\DoxyCodeLine{00073\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_ab8292405ad0259ef0894665bf4e7b2dd}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_ab8292405ad0259ef0894665bf4e7b2dd} 
+\index{wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}!setVoltage@{setVoltage}}
+\index{setVoltage@{setVoltage}!wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}}
+\doxysubsubsection{\texorpdfstring{setVoltage()}{setVoltage()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::intake\+::\+PIDIntake\+::set\+Voltage (\begin{DoxyParamCaption}\item[{double}]{voltage }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the voltage of the intake directly. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em voltage} & The voltage for the intake \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_i_intake_a110fbff45a50c0468b08da9c30674ca5}{wisco\+::robot\+::subsystems\+::intake\+::\+IIntake}}.
+
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_intake_8cpp_source_l00075}{75}} of file \mbox{\hyperlink{_p_i_d_intake_8cpp_source}{PIDIntake.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00076\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a6f2c3cb0af98beca8bff2b3e92c31a51}{m\_mutex}})}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a6f2c3cb0af98beca8bff2b3e92c31a51}{m\_mutex}}-\/>take();}
+\DoxyCodeLine{00079\ \ \ \ \ }
+\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_ae51ebf46970e6c674cb0d0bdd494f540}{m\_pid}}.\mbox{\hyperlink{classwisco_1_1control_1_1_p_i_d_a506e8b883a636d2e8aefaed97232efcf}{reset}}();}
+\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a4b109bcd6bc5354d75f857fa8782b32d}{m\_motors}}.\mbox{\hyperlink{classwisco_1_1hal_1_1_motor_group_a8e2dc531ce3ecd92746d1f2a02422e3a}{setVoltage}}(voltage);}
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a7872f2a57d7745374f06acdcc689617e}{velocity\_control}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a6f2c3cb0af98beca8bff2b3e92c31a51}{m\_mutex}})}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a6f2c3cb0af98beca8bff2b3e92c31a51}{m\_mutex}}-\/>give();}
+\DoxyCodeLine{00086\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_ac59ff4150e0a52ccc4b31db9770d061b}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_ac59ff4150e0a52ccc4b31db9770d061b} 
+\index{wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}!setClock@{setClock}}
+\index{setClock@{setClock}!wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}}
+\doxysubsubsection{\texorpdfstring{setClock()}{setClock()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::intake\+::\+PIDIntake\+::set\+Clock (\begin{DoxyParamCaption}\item[{const std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_clock}{rtos\+::\+IClock}} $>$ \&}]{clock }\end{DoxyParamCaption})}
+
+
+
+Set the rtos clock. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clock} & The rtos clock \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_intake_8cpp_source_l00088}{88}} of file \mbox{\hyperlink{_p_i_d_intake_8cpp_source}{PIDIntake.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00089\ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_aa7735e798398ca19f5e7a79e5c2fffb7}{m\_clock}}\ =\ clock-\/>clone();}
+\DoxyCodeLine{00091\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a1623d26b8f68c57ce99954e5ce038161}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a1623d26b8f68c57ce99954e5ce038161} 
+\index{wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}!setDelayer@{setDelayer}}
+\index{setDelayer@{setDelayer}!wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}}
+\doxysubsubsection{\texorpdfstring{setDelayer()}{setDelayer()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::intake\+::\+PIDIntake\+::set\+Delayer (\begin{DoxyParamCaption}\item[{const std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_delayer}{rtos\+::\+IDelayer}} $>$ \&}]{delayer }\end{DoxyParamCaption})}
+
+
+
+Set the rtos delayer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delayer} & The rtos delayer \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_intake_8cpp_source_l00093}{93}} of file \mbox{\hyperlink{_p_i_d_intake_8cpp_source}{PIDIntake.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00094\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_aa87fbb9a1ff87ac0e3247e1b60589eb8}{m\_delayer}}\ =\ delayer-\/>clone();}
+\DoxyCodeLine{00096\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a33ac7c2b2b80e2bb80623efa2cf589e5}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a33ac7c2b2b80e2bb80623efa2cf589e5} 
+\index{wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}!setMutex@{setMutex}}
+\index{setMutex@{setMutex}!wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}}
+\doxysubsubsection{\texorpdfstring{setMutex()}{setMutex()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::intake\+::\+PIDIntake\+::set\+Mutex (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_mutex}{rtos\+::\+IMutex}} $>$ \&}]{mutex }\end{DoxyParamCaption})}
+
+
+
+Set the thread mutex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mutex} & The thread mutex \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_intake_8cpp_source_l00098}{98}} of file \mbox{\hyperlink{_p_i_d_intake_8cpp_source}{PIDIntake.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00099\ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a6f2c3cb0af98beca8bff2b3e92c31a51}{m\_mutex}}\ =\ std::move(mutex);}
+\DoxyCodeLine{00101\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_acd2be40012ad3ccea228e9ce19af4c2d}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_acd2be40012ad3ccea228e9ce19af4c2d} 
+\index{wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}!setTask@{setTask}}
+\index{setTask@{setTask}!wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}}
+\doxysubsubsection{\texorpdfstring{setTask()}{setTask()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::intake\+::\+PIDIntake\+::set\+Task (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_task}{rtos\+::\+ITask}} $>$ \&}]{task }\end{DoxyParamCaption})}
+
+
+
+Set the task handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em task} & The task handler \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_intake_8cpp_source_l00103}{103}} of file \mbox{\hyperlink{_p_i_d_intake_8cpp_source}{PIDIntake.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00104\ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a83f5fafe583176a3468a4993a57fbe91}{m\_task}}\ =\ std::move(task);}
+\DoxyCodeLine{00106\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a6fceaad46af2555987f4a9d60242d10f}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a6fceaad46af2555987f4a9d60242d10f} 
+\index{wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}!setPID@{setPID}}
+\index{setPID@{setPID}!wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}}
+\doxysubsubsection{\texorpdfstring{setPID()}{setPID()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::intake\+::\+PIDIntake\+::set\+PID (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classwisco_1_1control_1_1_p_i_d}{control\+::\+PID}}}]{pid }\end{DoxyParamCaption})}
+
+
+
+Set the PID controller. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pid} & The PID controller \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_intake_8cpp_source_l00108}{108}} of file \mbox{\hyperlink{_p_i_d_intake_8cpp_source}{PIDIntake.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00109\ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_ae51ebf46970e6c674cb0d0bdd494f540}{m\_pid}}\ =\ pid;}
+\DoxyCodeLine{00111\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a0096e8922e15e8139be81829d2dc0779}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a0096e8922e15e8139be81829d2dc0779} 
+\index{wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}!setMotors@{setMotors}}
+\index{setMotors@{setMotors}!wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}}
+\doxysubsubsection{\texorpdfstring{setMotors()}{setMotors()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::intake\+::\+PIDIntake\+::set\+Motors (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classwisco_1_1hal_1_1_motor_group}{hal\+::\+Motor\+Group}} \&}]{motors }\end{DoxyParamCaption})}
+
+
+
+Set the motors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em motors} & The motors \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_intake_8cpp_source_l00113}{113}} of file \mbox{\hyperlink{_p_i_d_intake_8cpp_source}{PIDIntake.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00114\ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a4b109bcd6bc5354d75f857fa8782b32d}{m\_motors}}\ =\ motors;}
+\DoxyCodeLine{00116\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a0b64f2bbfbaa8c404f49b036e20fffae}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a0b64f2bbfbaa8c404f49b036e20fffae} 
+\index{wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}!setRollerRadius@{setRollerRadius}}
+\index{setRollerRadius@{setRollerRadius}!wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}}
+\doxysubsubsection{\texorpdfstring{setRollerRadius()}{setRollerRadius()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::subsystems\+::intake\+::\+PIDIntake\+::set\+Roller\+Radius (\begin{DoxyParamCaption}\item[{double}]{roller\+\_\+radius }\end{DoxyParamCaption})}
+
+
+
+Set the radius of the roller. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em roller\+\_\+radius} & The radius of the roller \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_intake_8cpp_source_l00118}{118}} of file \mbox{\hyperlink{_p_i_d_intake_8cpp_source}{PIDIntake.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00119\ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_aefd60809f5a67bb9e28198d94e79bef5}{m\_roller\_radius}}\ =\ roller\_radius;}
+\DoxyCodeLine{00121\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a245d136f3b6b772d2a73e94aa4aba4ef}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a245d136f3b6b772d2a73e94aa4aba4ef} 
+\index{wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}!TASK\_DELAY@{TASK\_DELAY}}
+\index{TASK\_DELAY@{TASK\_DELAY}!wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}}
+\doxysubsubsection{\texorpdfstring{TASK\_DELAY}{TASK\_DELAY}}
+{\footnotesize\ttfamily constexpr uint8\+\_\+t wisco\+::robot\+::subsystems\+::intake\+::\+PIDIntake\+::\+TASK\+\_\+\+DELAY \{10\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The loop delay on the task. 
+
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_intake_8hpp_source_l00059}{59}} of file \mbox{\hyperlink{_p_i_d_intake_8hpp_source}{PIDIntake.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00059\ \{10\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_aa7735e798398ca19f5e7a79e5c2fffb7}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_aa7735e798398ca19f5e7a79e5c2fffb7} 
+\index{wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}!m\_clock@{m\_clock}}
+\index{m\_clock@{m\_clock}!wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}}
+\doxysubsubsection{\texorpdfstring{m\_clock}{m\_clock}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1rtos_1_1_i_clock}{rtos\+::\+IClock}}$>$ wisco\+::robot\+::subsystems\+::intake\+::\+PIDIntake\+::m\+\_\+clock \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The rtos clock. 
+
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_intake_8hpp_source_l00072}{72}} of file \mbox{\hyperlink{_p_i_d_intake_8hpp_source}{PIDIntake.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00072\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_aa87fbb9a1ff87ac0e3247e1b60589eb8}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_aa87fbb9a1ff87ac0e3247e1b60589eb8} 
+\index{wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}!m\_delayer@{m\_delayer}}
+\index{m\_delayer@{m\_delayer}!wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}}
+\doxysubsubsection{\texorpdfstring{m\_delayer}{m\_delayer}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1rtos_1_1_i_delayer}{rtos\+::\+IDelayer}}$>$ wisco\+::robot\+::subsystems\+::intake\+::\+PIDIntake\+::m\+\_\+delayer \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The rtos delayer. 
+
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_intake_8hpp_source_l00078}{78}} of file \mbox{\hyperlink{_p_i_d_intake_8hpp_source}{PIDIntake.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00078\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a6f2c3cb0af98beca8bff2b3e92c31a51}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a6f2c3cb0af98beca8bff2b3e92c31a51} 
+\index{wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}!m\_mutex@{m\_mutex}}
+\index{m\_mutex@{m\_mutex}!wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}}
+\doxysubsubsection{\texorpdfstring{m\_mutex}{m\_mutex}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1rtos_1_1_i_mutex}{rtos\+::\+IMutex}}$>$ wisco\+::robot\+::subsystems\+::intake\+::\+PIDIntake\+::m\+\_\+mutex \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The mutex for thread safety. 
+
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_intake_8hpp_source_l00084}{84}} of file \mbox{\hyperlink{_p_i_d_intake_8hpp_source}{PIDIntake.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00084\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a83f5fafe583176a3468a4993a57fbe91}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a83f5fafe583176a3468a4993a57fbe91} 
+\index{wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}!m\_task@{m\_task}}
+\index{m\_task@{m\_task}!wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}}
+\doxysubsubsection{\texorpdfstring{m\_task}{m\_task}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1rtos_1_1_i_task}{rtos\+::\+ITask}}$>$ wisco\+::robot\+::subsystems\+::intake\+::\+PIDIntake\+::m\+\_\+task \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The background task handler. 
+
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_intake_8hpp_source_l00090}{90}} of file \mbox{\hyperlink{_p_i_d_intake_8hpp_source}{PIDIntake.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00090\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_ae51ebf46970e6c674cb0d0bdd494f540}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_ae51ebf46970e6c674cb0d0bdd494f540} 
+\index{wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}!m\_pid@{m\_pid}}
+\index{m\_pid@{m\_pid}!wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}}
+\doxysubsubsection{\texorpdfstring{m\_pid}{m\_pid}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classwisco_1_1control_1_1_p_i_d}{control\+::\+PID}} wisco\+::robot\+::subsystems\+::intake\+::\+PIDIntake\+::m\+\_\+pid \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The velocity PID controller. 
+
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_intake_8hpp_source_l00096}{96}} of file \mbox{\hyperlink{_p_i_d_intake_8hpp_source}{PIDIntake.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00096\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a4b109bcd6bc5354d75f857fa8782b32d}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a4b109bcd6bc5354d75f857fa8782b32d} 
+\index{wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}!m\_motors@{m\_motors}}
+\index{m\_motors@{m\_motors}!wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}}
+\doxysubsubsection{\texorpdfstring{m\_motors}{m\_motors}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classwisco_1_1hal_1_1_motor_group}{hal\+::\+Motor\+Group}} wisco\+::robot\+::subsystems\+::intake\+::\+PIDIntake\+::m\+\_\+motors \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The motors on the intake. 
+
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_intake_8hpp_source_l00102}{102}} of file \mbox{\hyperlink{_p_i_d_intake_8hpp_source}{PIDIntake.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00102\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_aefd60809f5a67bb9e28198d94e79bef5}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_aefd60809f5a67bb9e28198d94e79bef5} 
+\index{wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}!m\_roller\_radius@{m\_roller\_radius}}
+\index{m\_roller\_radius@{m\_roller\_radius}!wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}}
+\doxysubsubsection{\texorpdfstring{m\_roller\_radius}{m\_roller\_radius}}
+{\footnotesize\ttfamily double wisco\+::robot\+::subsystems\+::intake\+::\+PIDIntake\+::m\+\_\+roller\+\_\+radius \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The radius of the intake roller. 
+
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_intake_8hpp_source_l00108}{108}} of file \mbox{\hyperlink{_p_i_d_intake_8hpp_source}{PIDIntake.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00108\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a27d5c9d7f6ddbaaf314c7ddc3f5a1e81}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a27d5c9d7f6ddbaaf314c7ddc3f5a1e81} 
+\index{wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}!m\_velocity@{m\_velocity}}
+\index{m\_velocity@{m\_velocity}!wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}}
+\doxysubsubsection{\texorpdfstring{m\_velocity}{m\_velocity}}
+{\footnotesize\ttfamily double wisco\+::robot\+::subsystems\+::intake\+::\+PIDIntake\+::m\+\_\+velocity \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The velocity setting of the intake. 
+
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_intake_8hpp_source_l00114}{114}} of file \mbox{\hyperlink{_p_i_d_intake_8hpp_source}{PIDIntake.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00114\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a7872f2a57d7745374f06acdcc689617e}\label{classwisco_1_1robot_1_1subsystems_1_1intake_1_1_p_i_d_intake_a7872f2a57d7745374f06acdcc689617e} 
+\index{wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}!velocity\_control@{velocity\_control}}
+\index{velocity\_control@{velocity\_control}!wisco::robot::subsystems::intake::PIDIntake@{wisco::robot::subsystems::intake::PIDIntake}}
+\doxysubsubsection{\texorpdfstring{velocity\_control}{velocity\_control}}
+{\footnotesize\ttfamily bool wisco\+::robot\+::subsystems\+::intake\+::\+PIDIntake\+::velocity\+\_\+control \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Whether or not to control with velocity. 
+
+
+
+Definition at line \mbox{\hyperlink{_p_i_d_intake_8hpp_source_l00120}{120}} of file \mbox{\hyperlink{_p_i_d_intake_8hpp_source}{PIDIntake.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00120\ \{\};}
+
+\end{DoxyCode}

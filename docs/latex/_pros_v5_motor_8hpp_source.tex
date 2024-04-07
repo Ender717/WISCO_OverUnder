@@ -1,0 +1,69 @@
+\doxysection{Pros\+V5\+Motor.\+hpp}
+\hypertarget{_pros_v5_motor_8hpp_source}{}\label{_pros_v5_motor_8hpp_source}\index{include/pros\_adapters/ProsV5Motor.hpp@{include/pros\_adapters/ProsV5Motor.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ PROS\_ADAPTERS\_PROS\_V5\_MOTOR\_HPP}}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00002}00002\ \textcolor{preprocessor}{\#define\ PROS\_ADAPTERS\_PROS\_V5\_MOTOR\_HPP}}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}pros/motors.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}wisco/io/IMotor.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00016}00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacepros__adapters}{pros\_adapters}}}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00017}00017\ \{}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00024}\mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor}{00024}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor}{ProsV5Motor}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classwisco_1_1io_1_1_i_motor}{wisco::io::IMotor}}}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00025}00025\ \{}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00026}00026\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00031}\mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_abc8f93a88733e6527268a1ea2bcad275}{00031}}\ \ \ \ \ \textcolor{keyword}{const}\ std::map<pros::MotorGears,\ double>\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_abc8f93a88733e6527268a1ea2bcad275}{cartridge\_map}}}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00032}00032\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \{pros::MotorGears::rpm\_100,\ 36.0\},}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \{pros::MotorGears::rpm\_200,\ 18.0\},}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \{pros::MotorGears::rpm\_600,\ 6.0\}}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00036}00036\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00042}\mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_ac58b82f23abe5838a01dc506c5d5decf}{00042}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_ac58b82f23abe5838a01dc506c5d5decf}{NO\_CARTRIDGE}}\{1.0\};}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00048}\mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_afd2aac4e7e94e9160c5af790ad1dd023}{00048}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_afd2aac4e7e94e9160c5af790ad1dd023}{TORQUE\_CONSTANT}}\{(2.1\ /\ 36)\ /\ 2.5\};}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00054}\mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_aac1f3730f7349c50832130301443b9c1}{00054}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_aac1f3730f7349c50832130301443b9c1}{RESISTANCE}}\{3.2\};}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00060}\mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a24903addbe405fde2cf89388b42b4698}{00060}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a24903addbe405fde2cf89388b42b4698}{ANGULAR\_VELOCITY\_CONSTANT}}\{2.1\};}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00066}\mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a98497db71713f604132880cdde3b7020}{00066}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a98497db71713f604132880cdde3b7020}{VELOCITY\_CONVERSION}}\{2\ *\ M\_PI\ /\ 60\};}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00072}\mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a1e5d60ba5faf97337da1b877e23e29ac}{00072}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a1e5d60ba5faf97337da1b877e23e29ac}{POSITION\_CONVERSION}}\{M\_PI\ /\ 25\};}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00078}\mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_ab7f02ab96b2c8dee23ac4e913324d25e}{00078}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_ab7f02ab96b2c8dee23ac4e913324d25e}{VOLTAGE\_CONVERSION}}\{1000\};}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00084}\mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_ad7ba424d4509a5d2e52c0891615ac592}{00084}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_ad7ba424d4509a5d2e52c0891615ac592}{MAX\_MILLIVOLTS}}\{12000\};}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00090}\mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a3f4465947d67b8583d4eaefd897aeea1}{00090}}\ \ \ \ \ std::unique\_ptr<pros::Motor>\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a3f4465947d67b8583d4eaefd897aeea1}{m\_motor}}\{\};}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00092}00092\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00098}00098\ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_ab08742e7a9a5a09d7d34f740adc7123f}{ProsV5Motor}}(std::unique\_ptr<pros::Motor>\&\ motor);}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00104}00104\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_ad885aaf16998d6c42b382d64f705be4a}{initialize}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00111}00111\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_afe1b3bf8144a98f73a3cb574beff1813}{getTorqueConstant}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00118}00118\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_ae4ea5781e2a07451be90b86fb6c0b63f}{getResistance}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00125}00125\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a1d8aa5d2bc5793e935d6b918a66ace88}{getAngularVelocityConstant}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00132}00132\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a3b269f6d79e3d6e4850289b32d8a5907}{getGearRatio}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00139}00139\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a54458b8a3358af755b401cd2d561f11a}{getAngularVelocity}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00146}00146\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_aa223526a1a2f3f40c18aee8efbf67217}{getPosition}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00153}00153\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a8509f9fe3ed9388f1fa456e9426caf5a}{setVoltage}}(\textcolor{keywordtype}{double}\ volts)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00154}00154\ \};}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00155}00155\ \}\ \textcolor{comment}{//\ namespace\ pros\_adapters}}
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{_pros_v5_motor_8hpp_source_l00157}00157\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
