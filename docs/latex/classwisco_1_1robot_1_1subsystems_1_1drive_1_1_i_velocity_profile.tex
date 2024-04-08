@@ -1,0 +1,81 @@
+\doxysection{wisco\+::robot\+::subsystems\+::drive\+::IVelocity\+Profile Class Reference}
+\hypertarget{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_velocity_profile}{}\label{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_velocity_profile}\index{wisco::robot::subsystems::drive::IVelocityProfile@{wisco::robot::subsystems::drive::IVelocityProfile}}
+
+
+Interface for drive velocity profiles.  
+
+
+Inheritance diagram for wisco\+::robot\+::subsystems\+::drive\+::IVelocity\+Profile\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_velocity_profile}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_velocity_profile_a63c9ab9d8daaa0b5aa5231eaf9e08a5a}\label{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_velocity_profile_a63c9ab9d8daaa0b5aa5231eaf9e08a5a} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IVelocity\+Profile} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_velocity_profile}{IVelocity\+Profile} object. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_velocity_profile_a6b0efc01f7cc50466601565163471cb4}{get\+Acceleration}} (double current\+\_\+velocity, double target\+\_\+velocity)=0
+\begin{DoxyCompactList}\small\item\em Get the target acceleration from the profile. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_velocity_profile_a4ebb90ac07743944da78444f3b0d40c3}{set\+Acceleration}} (double acceleration)=0
+\begin{DoxyCompactList}\small\item\em Set the current acceleration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for drive velocity profiles. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Sandvig 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_i_velocity_profile_8hpp_source_l00041}{41}} of file \mbox{\hyperlink{_i_velocity_profile_8hpp_source}{IVelocity\+Profile.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_velocity_profile_a6b0efc01f7cc50466601565163471cb4}\label{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_velocity_profile_a6b0efc01f7cc50466601565163471cb4} 
+\index{wisco::robot::subsystems::drive::IVelocityProfile@{wisco::robot::subsystems::drive::IVelocityProfile}!getAcceleration@{getAcceleration}}
+\index{getAcceleration@{getAcceleration}!wisco::robot::subsystems::drive::IVelocityProfile@{wisco::robot::subsystems::drive::IVelocityProfile}}
+\doxysubsubsection{\texorpdfstring{getAcceleration()}{getAcceleration()}}
+{\footnotesize\ttfamily virtual double wisco\+::robot\+::subsystems\+::drive\+::\+IVelocity\+Profile\+::get\+Acceleration (\begin{DoxyParamCaption}\item[{double}]{current\+\_\+velocity,  }\item[{double}]{target\+\_\+velocity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the target acceleration from the profile. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+\_\+velocity} & The current velocity \\
+\hline
+{\em target\+\_\+velocity} & The target velocity \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double The acceleration in m/s\texorpdfstring{$^\wedge$}{\string^}2 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_curve_velocity_profile_ab0c603bf840823e0201e3d07a04248c5}{wisco\+::robot\+::subsystems\+::drive\+::\+Curve\+Velocity\+Profile}}.
+
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_velocity_profile_a4ebb90ac07743944da78444f3b0d40c3}\label{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_velocity_profile_a4ebb90ac07743944da78444f3b0d40c3} 
+\index{wisco::robot::subsystems::drive::IVelocityProfile@{wisco::robot::subsystems::drive::IVelocityProfile}!setAcceleration@{setAcceleration}}
+\index{setAcceleration@{setAcceleration}!wisco::robot::subsystems::drive::IVelocityProfile@{wisco::robot::subsystems::drive::IVelocityProfile}}
+\doxysubsubsection{\texorpdfstring{setAcceleration()}{setAcceleration()}}
+{\footnotesize\ttfamily virtual void wisco\+::robot\+::subsystems\+::drive\+::\+IVelocity\+Profile\+::set\+Acceleration (\begin{DoxyParamCaption}\item[{double}]{acceleration }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the current acceleration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em acceleration} & The current acceleration \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_curve_velocity_profile_a8bfe045f68d2a5ad829cdd0a23ee731b}{wisco\+::robot\+::subsystems\+::drive\+::\+Curve\+Velocity\+Profile}}.
+

@@ -38,6 +38,11 @@ namespace subsystems
 namespace elevator
 {
 
+/**
+ * @brief The subsystem adapter for elevators
+ * @author Nathan Sandvig
+ * 
+ */
 class ElevatorSubsystem : public ASubsystem
 {
 private:

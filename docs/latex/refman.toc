@@ -1,0 +1,1131 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}Namespace Index}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Namespace List}{1}{section.1.1}%
+\contentsline {chapter}{\numberline {2}Hierarchical Index}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Class Hierarchy}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Class Index}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Class List}{5}{section.3.1}%
+\contentsline {chapter}{\numberline {4}Namespace Documentation}{9}{chapter.4}%
+\contentsline {section}{\numberline {4.1}pros\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}adapters Namespace Reference}{9}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Detailed Description}{9}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4.2}wisco Namespace Reference}{10}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Detailed Description}{11}{subsection.4.2.1}%
+\contentsline {section}{\numberline {4.3}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::alliances Namespace Reference}{11}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Detailed Description}{11}{subsection.4.3.1}%
+\contentsline {section}{\numberline {4.4}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::autons Namespace Reference}{11}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Detailed Description}{12}{subsection.4.4.1}%
+\contentsline {section}{\numberline {4.5}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::configs Namespace Reference}{12}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Detailed Description}{12}{subsection.4.5.1}%
+\contentsline {section}{\numberline {4.6}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::control Namespace Reference}{12}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Detailed Description}{12}{subsection.4.6.1}%
+\contentsline {section}{\numberline {4.7}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::hal Namespace Reference}{13}{section.4.7}%
+\contentsline {subsection}{\numberline {4.7.1}Detailed Description}{13}{subsection.4.7.1}%
+\contentsline {subsection}{\numberline {4.7.2}Enumeration Type Documentation}{13}{subsection.4.7.2}%
+\contentsline {subsubsection}{\numberline {4.7.2.1}DistanceBooleanMode}{13}{subsubsection.4.7.2.1}%
+\contentsline {section}{\numberline {4.8}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::io Namespace Reference}{13}{section.4.8}%
+\contentsline {subsection}{\numberline {4.8.1}Detailed Description}{14}{subsection.4.8.1}%
+\contentsline {section}{\numberline {4.9}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::menu Namespace Reference}{14}{section.4.9}%
+\contentsline {subsection}{\numberline {4.9.1}Detailed Description}{15}{subsection.4.9.1}%
+\contentsline {subsection}{\numberline {4.9.2}Function Documentation}{15}{subsection.4.9.2}%
+\contentsline {subsubsection}{\numberline {4.9.2.1}startButtonEventHandler()}{15}{subsubsection.4.9.2.1}%
+\contentsline {subsubsection}{\numberline {4.9.2.2}settingsButtonEventHandler()}{15}{subsubsection.4.9.2.2}%
+\contentsline {subsubsection}{\numberline {4.9.2.3}settingsBackButtonEventHandler()}{16}{subsubsection.4.9.2.3}%
+\contentsline {subsubsection}{\numberline {4.9.2.4}settingsButtonMatrixEventHandler()}{16}{subsubsection.4.9.2.4}%
+\contentsline {section}{\numberline {4.10}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::profiles Namespace Reference}{16}{section.4.10}%
+\contentsline {subsection}{\numberline {4.10.1}Detailed Description}{17}{subsection.4.10.1}%
+\contentsline {section}{\numberline {4.11}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot Namespace Reference}{17}{section.4.11}%
+\contentsline {subsection}{\numberline {4.11.1}Detailed Description}{17}{subsection.4.11.1}%
+\contentsline {section}{\numberline {4.12}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems Namespace Reference}{17}{section.4.12}%
+\contentsline {subsection}{\numberline {4.12.1}Detailed Description}{18}{subsection.4.12.1}%
+\contentsline {section}{\numberline {4.13}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::drive Namespace Reference}{18}{section.4.13}%
+\contentsline {subsection}{\numberline {4.13.1}Detailed Description}{18}{subsection.4.13.1}%
+\contentsline {section}{\numberline {4.14}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::elevator Namespace Reference}{18}{section.4.14}%
+\contentsline {subsection}{\numberline {4.14.1}Detailed Description}{19}{subsection.4.14.1}%
+\contentsline {section}{\numberline {4.15}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::intake Namespace Reference}{19}{section.4.15}%
+\contentsline {subsection}{\numberline {4.15.1}Detailed Description}{19}{subsection.4.15.1}%
+\contentsline {section}{\numberline {4.16}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::position Namespace Reference}{19}{section.4.16}%
+\contentsline {subsection}{\numberline {4.16.1}Detailed Description}{20}{subsection.4.16.1}%
+\contentsline {section}{\numberline {4.17}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::rtos Namespace Reference}{20}{section.4.17}%
+\contentsline {subsection}{\numberline {4.17.1}Detailed Description}{20}{subsection.4.17.1}%
+\contentsline {section}{\numberline {4.18}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::testing Namespace Reference}{20}{section.4.18}%
+\contentsline {subsection}{\numberline {4.18.1}Detailed Description}{21}{subsection.4.18.1}%
+\contentsline {section}{\numberline {4.19}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::testing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::pros\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}testing Namespace Reference}{21}{section.4.19}%
+\contentsline {subsection}{\numberline {4.19.1}Detailed Description}{21}{subsection.4.19.1}%
+\contentsline {subsection}{\numberline {4.19.2}Variable Documentation}{21}{subsection.4.19.2}%
+\contentsline {subsubsection}{\numberline {4.19.2.1}FILE\_PATH}{21}{subsubsection.4.19.2.1}%
+\contentsline {section}{\numberline {4.20}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::user Namespace Reference}{22}{section.4.20}%
+\contentsline {subsection}{\numberline {4.20.1}Detailed Description}{22}{subsection.4.20.1}%
+\contentsline {subsection}{\numberline {4.20.2}Enumeration Type Documentation}{23}{subsection.4.20.2}%
+\contentsline {subsubsection}{\numberline {4.20.2.1}EChassisControlMode}{23}{subsubsection.4.20.2.1}%
+\contentsline {subsubsection}{\numberline {4.20.2.2}EControl}{23}{subsubsection.4.20.2.2}%
+\contentsline {subsubsection}{\numberline {4.20.2.3}EControllerAnalog}{23}{subsubsection.4.20.2.3}%
+\contentsline {subsubsection}{\numberline {4.20.2.4}EControllerDigital}{24}{subsubsection.4.20.2.4}%
+\contentsline {subsubsection}{\numberline {4.20.2.5}EControlType}{24}{subsubsection.4.20.2.5}%
+\contentsline {subsubsection}{\numberline {4.20.2.6}EElevatorControlMode}{24}{subsubsection.4.20.2.6}%
+\contentsline {subsubsection}{\numberline {4.20.2.7}EIntakeControlMode}{25}{subsubsection.4.20.2.7}%
+\contentsline {chapter}{\numberline {5}Class Documentation}{27}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Match\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Factory Class Reference}{27}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Detailed Description}{27}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Member Function Documentation}{27}{subsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.2.1}createMatchController()}{27}{subsubsection.5.1.2.1}%
+\contentsline {section}{\numberline {5.2}pros\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}adapters\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Pros\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Clock Class Reference}{28}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Detailed Description}{29}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Member Function Documentation}{29}{subsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.2.1}clone()}{29}{subsubsection.5.2.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2.2}getTime()}{29}{subsubsection.5.2.2.2}%
+\contentsline {section}{\numberline {5.3}pros\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}adapters\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Pros\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller Class Reference}{30}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Detailed Description}{31}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Constructor \& Destructor Documentation}{31}{subsection.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.2.1}ProsController()}{31}{subsubsection.5.3.2.1}%
+\contentsline {subsection}{\numberline {5.3.3}Member Function Documentation}{32}{subsection.5.3.3}%
+\contentsline {subsubsection}{\numberline {5.3.3.1}taskLoop()}{32}{subsubsection.5.3.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.3.2}updateRumble()}{32}{subsubsection.5.3.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.3.3}taskUpdate()}{33}{subsubsection.5.3.3.3}%
+\contentsline {subsubsection}{\numberline {5.3.3.4}initialize()}{33}{subsubsection.5.3.3.4}%
+\contentsline {subsubsection}{\numberline {5.3.3.5}run()}{33}{subsubsection.5.3.3.5}%
+\contentsline {subsubsection}{\numberline {5.3.3.6}getAnalog()}{33}{subsubsection.5.3.3.6}%
+\contentsline {subsubsection}{\numberline {5.3.3.7}getDigital()}{34}{subsubsection.5.3.3.7}%
+\contentsline {subsubsection}{\numberline {5.3.3.8}getNewDigital()}{34}{subsubsection.5.3.3.8}%
+\contentsline {subsubsection}{\numberline {5.3.3.9}rumble()}{35}{subsubsection.5.3.3.9}%
+\contentsline {subsection}{\numberline {5.3.4}Member Data Documentation}{35}{subsection.5.3.4}%
+\contentsline {subsubsection}{\numberline {5.3.4.1}TASK\_DELAY}{35}{subsubsection.5.3.4.1}%
+\contentsline {subsubsection}{\numberline {5.3.4.2}RUMBLE\_REFRESH\_RATE}{35}{subsubsection.5.3.4.2}%
+\contentsline {subsubsection}{\numberline {5.3.4.3}ANALOG\_CONVERSION}{36}{subsubsection.5.3.4.3}%
+\contentsline {subsubsection}{\numberline {5.3.4.4}MAX\_RUMBLE\_LENGTH}{36}{subsubsection.5.3.4.4}%
+\contentsline {subsubsection}{\numberline {5.3.4.5}ANALOG\_MAP}{36}{subsubsection.5.3.4.5}%
+\contentsline {subsubsection}{\numberline {5.3.4.6}DIGITAL\_MAP}{36}{subsubsection.5.3.4.6}%
+\contentsline {subsubsection}{\numberline {5.3.4.7}m\_controller}{37}{subsubsection.5.3.4.7}%
+\contentsline {subsubsection}{\numberline {5.3.4.8}mutex}{37}{subsubsection.5.3.4.8}%
+\contentsline {subsubsection}{\numberline {5.3.4.9}rumble\_pattern}{37}{subsubsection.5.3.4.9}%
+\contentsline {subsubsection}{\numberline {5.3.4.10}new\_rumble\_pattern}{37}{subsubsection.5.3.4.10}%
+\contentsline {subsubsection}{\numberline {5.3.4.11}last\_rumble\_refresh}{38}{subsubsection.5.3.4.11}%
+\contentsline {section}{\numberline {5.4}pros\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}adapters\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Pros\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Delayer Class Reference}{38}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Detailed Description}{38}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Member Function Documentation}{39}{subsection.5.4.2}%
+\contentsline {subsubsection}{\numberline {5.4.2.1}clone()}{39}{subsubsection.5.4.2.1}%
+\contentsline {subsubsection}{\numberline {5.4.2.2}delay()}{39}{subsubsection.5.4.2.2}%
+\contentsline {subsubsection}{\numberline {5.4.2.3}delayUntil()}{39}{subsubsection.5.4.2.3}%
+\contentsline {section}{\numberline {5.5}pros\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}adapters\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Pros\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Distance Class Reference}{40}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Detailed Description}{41}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Constructor \& Destructor Documentation}{41}{subsection.5.5.2}%
+\contentsline {subsubsection}{\numberline {5.5.2.1}ProsDistance()}{41}{subsubsection.5.5.2.1}%
+\contentsline {subsection}{\numberline {5.5.3}Member Function Documentation}{41}{subsection.5.5.3}%
+\contentsline {subsubsection}{\numberline {5.5.3.1}initialize()}{41}{subsubsection.5.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.5.3.2}reset()}{42}{subsubsection.5.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.5.3.3}getDistance()}{42}{subsubsection.5.5.3.3}%
+\contentsline {subsection}{\numberline {5.5.4}Member Data Documentation}{42}{subsection.5.5.4}%
+\contentsline {subsubsection}{\numberline {5.5.4.1}UNIT\_CONVERTER}{42}{subsubsection.5.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.5.4.2}m\_sensor}{42}{subsubsection.5.5.4.2}%
+\contentsline {subsubsection}{\numberline {5.5.4.3}m\_tuning\_constant}{43}{subsubsection.5.5.4.3}%
+\contentsline {subsubsection}{\numberline {5.5.4.4}m\_tuning\_offset}{43}{subsubsection.5.5.4.4}%
+\contentsline {section}{\numberline {5.6}pros\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}adapters\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Pros\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}EXPMotor Class Reference}{43}{section.5.6}%
+\contentsline {subsection}{\numberline {5.6.1}Detailed Description}{44}{subsection.5.6.1}%
+\contentsline {subsection}{\numberline {5.6.2}Constructor \& Destructor Documentation}{44}{subsection.5.6.2}%
+\contentsline {subsubsection}{\numberline {5.6.2.1}ProsEXPMotor()}{44}{subsubsection.5.6.2.1}%
+\contentsline {subsection}{\numberline {5.6.3}Member Function Documentation}{45}{subsection.5.6.3}%
+\contentsline {subsubsection}{\numberline {5.6.3.1}initialize()}{45}{subsubsection.5.6.3.1}%
+\contentsline {subsubsection}{\numberline {5.6.3.2}getTorqueConstant()}{45}{subsubsection.5.6.3.2}%
+\contentsline {subsubsection}{\numberline {5.6.3.3}getResistance()}{45}{subsubsection.5.6.3.3}%
+\contentsline {subsubsection}{\numberline {5.6.3.4}getAngularVelocityConstant()}{46}{subsubsection.5.6.3.4}%
+\contentsline {subsubsection}{\numberline {5.6.3.5}getGearRatio()}{46}{subsubsection.5.6.3.5}%
+\contentsline {subsubsection}{\numberline {5.6.3.6}getAngularVelocity()}{46}{subsubsection.5.6.3.6}%
+\contentsline {subsubsection}{\numberline {5.6.3.7}setVoltage()}{46}{subsubsection.5.6.3.7}%
+\contentsline {subsection}{\numberline {5.6.4}Member Data Documentation}{47}{subsection.5.6.4}%
+\contentsline {subsubsection}{\numberline {5.6.4.1}TORQUE\_CONSTANT}{47}{subsubsection.5.6.4.1}%
+\contentsline {subsubsection}{\numberline {5.6.4.2}RESISTANCE}{47}{subsubsection.5.6.4.2}%
+\contentsline {subsubsection}{\numberline {5.6.4.3}ANGULAR\_VELOCITY\_CONSTANT}{47}{subsubsection.5.6.4.3}%
+\contentsline {subsubsection}{\numberline {5.6.4.4}GEAR\_RATIO}{47}{subsubsection.5.6.4.4}%
+\contentsline {subsubsection}{\numberline {5.6.4.5}VELOCITY\_CONVERSION}{48}{subsubsection.5.6.4.5}%
+\contentsline {subsubsection}{\numberline {5.6.4.6}VOLTAGE\_CONVERSION}{48}{subsubsection.5.6.4.6}%
+\contentsline {subsubsection}{\numberline {5.6.4.7}m\_motor}{48}{subsubsection.5.6.4.7}%
+\contentsline {section}{\numberline {5.7}pros\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}adapters\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Pros\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Heading Class Reference}{48}{section.5.7}%
+\contentsline {subsection}{\numberline {5.7.1}Detailed Description}{49}{subsection.5.7.1}%
+\contentsline {subsection}{\numberline {5.7.2}Constructor \& Destructor Documentation}{49}{subsection.5.7.2}%
+\contentsline {subsubsection}{\numberline {5.7.2.1}ProsHeading()}{49}{subsubsection.5.7.2.1}%
+\contentsline {subsection}{\numberline {5.7.3}Member Function Documentation}{50}{subsection.5.7.3}%
+\contentsline {subsubsection}{\numberline {5.7.3.1}initialize()}{50}{subsubsection.5.7.3.1}%
+\contentsline {subsubsection}{\numberline {5.7.3.2}reset()}{50}{subsubsection.5.7.3.2}%
+\contentsline {subsubsection}{\numberline {5.7.3.3}getHeading()}{50}{subsubsection.5.7.3.3}%
+\contentsline {subsubsection}{\numberline {5.7.3.4}setHeading()}{50}{subsubsection.5.7.3.4}%
+\contentsline {subsubsection}{\numberline {5.7.3.5}getRotation()}{51}{subsubsection.5.7.3.5}%
+\contentsline {subsubsection}{\numberline {5.7.3.6}setRotation()}{51}{subsubsection.5.7.3.6}%
+\contentsline {subsection}{\numberline {5.7.4}Member Data Documentation}{52}{subsection.5.7.4}%
+\contentsline {subsubsection}{\numberline {5.7.4.1}UNIT\_CONVERTER}{52}{subsubsection.5.7.4.1}%
+\contentsline {subsubsection}{\numberline {5.7.4.2}m\_sensor}{52}{subsubsection.5.7.4.2}%
+\contentsline {subsubsection}{\numberline {5.7.4.3}m\_tuning\_constant}{52}{subsubsection.5.7.4.3}%
+\contentsline {section}{\numberline {5.8}pros\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}adapters\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Pros\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Mutex Class Reference}{52}{section.5.8}%
+\contentsline {subsection}{\numberline {5.8.1}Detailed Description}{53}{subsection.5.8.1}%
+\contentsline {subsection}{\numberline {5.8.2}Member Function Documentation}{53}{subsection.5.8.2}%
+\contentsline {subsubsection}{\numberline {5.8.2.1}take()}{53}{subsubsection.5.8.2.1}%
+\contentsline {subsubsection}{\numberline {5.8.2.2}give()}{53}{subsubsection.5.8.2.2}%
+\contentsline {subsection}{\numberline {5.8.3}Member Data Documentation}{54}{subsection.5.8.3}%
+\contentsline {subsubsection}{\numberline {5.8.3.1}mutex}{54}{subsubsection.5.8.3.1}%
+\contentsline {section}{\numberline {5.9}pros\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}adapters\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Pros\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Rotation Class Reference}{54}{section.5.9}%
+\contentsline {subsection}{\numberline {5.9.1}Detailed Description}{55}{subsection.5.9.1}%
+\contentsline {subsection}{\numberline {5.9.2}Constructor \& Destructor Documentation}{55}{subsection.5.9.2}%
+\contentsline {subsubsection}{\numberline {5.9.2.1}ProsRotation()}{55}{subsubsection.5.9.2.1}%
+\contentsline {subsection}{\numberline {5.9.3}Member Function Documentation}{55}{subsection.5.9.3}%
+\contentsline {subsubsection}{\numberline {5.9.3.1}initialize()}{55}{subsubsection.5.9.3.1}%
+\contentsline {subsubsection}{\numberline {5.9.3.2}reset()}{56}{subsubsection.5.9.3.2}%
+\contentsline {subsubsection}{\numberline {5.9.3.3}getRotation()}{56}{subsubsection.5.9.3.3}%
+\contentsline {subsubsection}{\numberline {5.9.3.4}setRotation()}{56}{subsubsection.5.9.3.4}%
+\contentsline {subsubsection}{\numberline {5.9.3.5}getAngle()}{57}{subsubsection.5.9.3.5}%
+\contentsline {subsection}{\numberline {5.9.4}Member Data Documentation}{57}{subsection.5.9.4}%
+\contentsline {subsubsection}{\numberline {5.9.4.1}UNIT\_CONVERSION}{57}{subsubsection.5.9.4.1}%
+\contentsline {subsubsection}{\numberline {5.9.4.2}m\_sensor}{57}{subsubsection.5.9.4.2}%
+\contentsline {section}{\numberline {5.10}pros\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}adapters\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Pros\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Task Class Reference}{57}{section.5.10}%
+\contentsline {subsection}{\numberline {5.10.1}Detailed Description}{58}{subsection.5.10.1}%
+\contentsline {subsection}{\numberline {5.10.2}Member Function Documentation}{58}{subsection.5.10.2}%
+\contentsline {subsubsection}{\numberline {5.10.2.1}start()}{58}{subsubsection.5.10.2.1}%
+\contentsline {subsubsection}{\numberline {5.10.2.2}remove()}{59}{subsubsection.5.10.2.2}%
+\contentsline {subsubsection}{\numberline {5.10.2.3}suspend()}{59}{subsubsection.5.10.2.3}%
+\contentsline {subsubsection}{\numberline {5.10.2.4}resume()}{59}{subsubsection.5.10.2.4}%
+\contentsline {subsubsection}{\numberline {5.10.2.5}join()}{59}{subsubsection.5.10.2.5}%
+\contentsline {subsection}{\numberline {5.10.3}Member Data Documentation}{60}{subsection.5.10.3}%
+\contentsline {subsubsection}{\numberline {5.10.3.1}task}{60}{subsubsection.5.10.3.1}%
+\contentsline {section}{\numberline {5.11}pros\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}adapters\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Pros\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}V5\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Motor Class Reference}{60}{section.5.11}%
+\contentsline {subsection}{\numberline {5.11.1}Detailed Description}{61}{subsection.5.11.1}%
+\contentsline {subsection}{\numberline {5.11.2}Constructor \& Destructor Documentation}{61}{subsection.5.11.2}%
+\contentsline {subsubsection}{\numberline {5.11.2.1}ProsV5Motor()}{61}{subsubsection.5.11.2.1}%
+\contentsline {subsection}{\numberline {5.11.3}Member Function Documentation}{62}{subsection.5.11.3}%
+\contentsline {subsubsection}{\numberline {5.11.3.1}initialize()}{62}{subsubsection.5.11.3.1}%
+\contentsline {subsubsection}{\numberline {5.11.3.2}getTorqueConstant()}{62}{subsubsection.5.11.3.2}%
+\contentsline {subsubsection}{\numberline {5.11.3.3}getResistance()}{62}{subsubsection.5.11.3.3}%
+\contentsline {subsubsection}{\numberline {5.11.3.4}getAngularVelocityConstant()}{63}{subsubsection.5.11.3.4}%
+\contentsline {subsubsection}{\numberline {5.11.3.5}getGearRatio()}{63}{subsubsection.5.11.3.5}%
+\contentsline {subsubsection}{\numberline {5.11.3.6}getAngularVelocity()}{63}{subsubsection.5.11.3.6}%
+\contentsline {subsubsection}{\numberline {5.11.3.7}getPosition()}{64}{subsubsection.5.11.3.7}%
+\contentsline {subsubsection}{\numberline {5.11.3.8}setVoltage()}{64}{subsubsection.5.11.3.8}%
+\contentsline {subsection}{\numberline {5.11.4}Member Data Documentation}{64}{subsection.5.11.4}%
+\contentsline {subsubsection}{\numberline {5.11.4.1}cartridge\_map}{64}{subsubsection.5.11.4.1}%
+\contentsline {subsubsection}{\numberline {5.11.4.2}NO\_CARTRIDGE}{65}{subsubsection.5.11.4.2}%
+\contentsline {subsubsection}{\numberline {5.11.4.3}TORQUE\_CONSTANT}{65}{subsubsection.5.11.4.3}%
+\contentsline {subsubsection}{\numberline {5.11.4.4}RESISTANCE}{65}{subsubsection.5.11.4.4}%
+\contentsline {subsubsection}{\numberline {5.11.4.5}ANGULAR\_VELOCITY\_CONSTANT}{65}{subsubsection.5.11.4.5}%
+\contentsline {subsubsection}{\numberline {5.11.4.6}VELOCITY\_CONVERSION}{65}{subsubsection.5.11.4.6}%
+\contentsline {subsubsection}{\numberline {5.11.4.7}POSITION\_CONVERSION}{66}{subsubsection.5.11.4.7}%
+\contentsline {subsubsection}{\numberline {5.11.4.8}VOLTAGE\_CONVERSION}{66}{subsubsection.5.11.4.8}%
+\contentsline {subsubsection}{\numberline {5.11.4.9}MAX\_MILLIVOLTS}{66}{subsubsection.5.11.4.9}%
+\contentsline {subsubsection}{\numberline {5.11.4.10}m\_motor}{66}{subsubsection.5.11.4.10}%
+\contentsline {section}{\numberline {5.12}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::alliances\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Blue\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Alliance Class Reference}{66}{section.5.12}%
+\contentsline {subsection}{\numberline {5.12.1}Detailed Description}{67}{subsection.5.12.1}%
+\contentsline {subsection}{\numberline {5.12.2}Member Function Documentation}{67}{subsection.5.12.2}%
+\contentsline {subsubsection}{\numberline {5.12.2.1}getName()}{67}{subsubsection.5.12.2.1}%
+\contentsline {subsection}{\numberline {5.12.3}Member Data Documentation}{68}{subsection.5.12.3}%
+\contentsline {subsubsection}{\numberline {5.12.3.1}ALLIANCE\_NAME}{68}{subsubsection.5.12.3.1}%
+\contentsline {section}{\numberline {5.13}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::alliances\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Red\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Alliance Class Reference}{68}{section.5.13}%
+\contentsline {subsection}{\numberline {5.13.1}Detailed Description}{68}{subsection.5.13.1}%
+\contentsline {subsection}{\numberline {5.13.2}Member Function Documentation}{69}{subsection.5.13.2}%
+\contentsline {subsubsection}{\numberline {5.13.2.1}getName()}{69}{subsubsection.5.13.2.1}%
+\contentsline {subsection}{\numberline {5.13.3}Member Data Documentation}{69}{subsection.5.13.3}%
+\contentsline {subsubsection}{\numberline {5.13.3.1}ALLIANCE\_NAME}{69}{subsubsection.5.13.3.1}%
+\contentsline {section}{\numberline {5.14}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::alliances\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Skills\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Alliance Class Reference}{69}{section.5.14}%
+\contentsline {subsection}{\numberline {5.14.1}Detailed Description}{70}{subsection.5.14.1}%
+\contentsline {subsection}{\numberline {5.14.2}Member Function Documentation}{70}{subsection.5.14.2}%
+\contentsline {subsubsection}{\numberline {5.14.2.1}getName()}{70}{subsubsection.5.14.2.1}%
+\contentsline {subsection}{\numberline {5.14.3}Member Data Documentation}{70}{subsection.5.14.3}%
+\contentsline {subsubsection}{\numberline {5.14.3.1}ALLIANCE\_NAME}{70}{subsubsection.5.14.3.1}%
+\contentsline {section}{\numberline {5.15}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Autonomous\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Manager Class Reference}{71}{section.5.15}%
+\contentsline {subsection}{\numberline {5.15.1}Detailed Description}{71}{subsection.5.15.1}%
+\contentsline {subsection}{\numberline {5.15.2}Member Function Documentation}{71}{subsection.5.15.2}%
+\contentsline {subsubsection}{\numberline {5.15.2.1}setAutonomous()}{71}{subsubsection.5.15.2.1}%
+\contentsline {subsubsection}{\numberline {5.15.2.2}initializeAutonomous()}{72}{subsubsection.5.15.2.2}%
+\contentsline {subsubsection}{\numberline {5.15.2.3}runAutonomous()}{72}{subsubsection.5.15.2.3}%
+\contentsline {subsection}{\numberline {5.15.3}Member Data Documentation}{72}{subsection.5.15.3}%
+\contentsline {subsubsection}{\numberline {5.15.3.1}m\_autonomous}{72}{subsubsection.5.15.3.1}%
+\contentsline {section}{\numberline {5.16}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::autons\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Blue\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Match\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Auton Class Reference}{72}{section.5.16}%
+\contentsline {subsection}{\numberline {5.16.1}Detailed Description}{73}{subsection.5.16.1}%
+\contentsline {subsection}{\numberline {5.16.2}Member Function Documentation}{73}{subsection.5.16.2}%
+\contentsline {subsubsection}{\numberline {5.16.2.1}getName()}{73}{subsubsection.5.16.2.1}%
+\contentsline {subsubsection}{\numberline {5.16.2.2}initialize()}{74}{subsubsection.5.16.2.2}%
+\contentsline {subsubsection}{\numberline {5.16.2.3}run()}{74}{subsubsection.5.16.2.3}%
+\contentsline {subsection}{\numberline {5.16.3}Member Data Documentation}{74}{subsection.5.16.3}%
+\contentsline {subsubsection}{\numberline {5.16.3.1}AUTONOMOUS\_NAME}{74}{subsubsection.5.16.3.1}%
+\contentsline {section}{\numberline {5.17}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::autons\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Blue\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Skills\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Auton Class Reference}{74}{section.5.17}%
+\contentsline {subsection}{\numberline {5.17.1}Detailed Description}{75}{subsection.5.17.1}%
+\contentsline {subsection}{\numberline {5.17.2}Member Function Documentation}{75}{subsection.5.17.2}%
+\contentsline {subsubsection}{\numberline {5.17.2.1}getName()}{75}{subsubsection.5.17.2.1}%
+\contentsline {subsubsection}{\numberline {5.17.2.2}initialize()}{76}{subsubsection.5.17.2.2}%
+\contentsline {subsubsection}{\numberline {5.17.2.3}run()}{76}{subsubsection.5.17.2.3}%
+\contentsline {subsection}{\numberline {5.17.3}Member Data Documentation}{76}{subsection.5.17.3}%
+\contentsline {subsubsection}{\numberline {5.17.3.1}AUTONOMOUS\_NAME}{76}{subsubsection.5.17.3.1}%
+\contentsline {section}{\numberline {5.18}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::autons\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Orange\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Match\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Auton Class Reference}{76}{section.5.18}%
+\contentsline {subsection}{\numberline {5.18.1}Detailed Description}{77}{subsection.5.18.1}%
+\contentsline {subsection}{\numberline {5.18.2}Member Function Documentation}{77}{subsection.5.18.2}%
+\contentsline {subsubsection}{\numberline {5.18.2.1}getName()}{77}{subsubsection.5.18.2.1}%
+\contentsline {subsubsection}{\numberline {5.18.2.2}initialize()}{78}{subsubsection.5.18.2.2}%
+\contentsline {subsubsection}{\numberline {5.18.2.3}run()}{78}{subsubsection.5.18.2.3}%
+\contentsline {subsection}{\numberline {5.18.3}Member Data Documentation}{78}{subsection.5.18.3}%
+\contentsline {subsubsection}{\numberline {5.18.3.1}AUTONOMOUS\_NAME}{78}{subsubsection.5.18.3.1}%
+\contentsline {section}{\numberline {5.19}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::autons\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Orange\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Skills\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Auton Class Reference}{78}{section.5.19}%
+\contentsline {subsection}{\numberline {5.19.1}Detailed Description}{79}{subsection.5.19.1}%
+\contentsline {subsection}{\numberline {5.19.2}Member Function Documentation}{79}{subsection.5.19.2}%
+\contentsline {subsubsection}{\numberline {5.19.2.1}getName()}{79}{subsubsection.5.19.2.1}%
+\contentsline {subsubsection}{\numberline {5.19.2.2}initialize()}{80}{subsubsection.5.19.2.2}%
+\contentsline {subsubsection}{\numberline {5.19.2.3}run()}{80}{subsubsection.5.19.2.3}%
+\contentsline {subsection}{\numberline {5.19.3}Member Data Documentation}{80}{subsection.5.19.3}%
+\contentsline {subsubsection}{\numberline {5.19.3.1}AUTONOMOUS\_NAME}{80}{subsubsection.5.19.3.1}%
+\contentsline {section}{\numberline {5.20}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::configs\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Blue\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Configuration Class Reference}{80}{section.5.20}%
+\contentsline {subsection}{\numberline {5.20.1}Detailed Description}{83}{subsection.5.20.1}%
+\contentsline {subsection}{\numberline {5.20.2}Member Function Documentation}{83}{subsection.5.20.2}%
+\contentsline {subsubsection}{\numberline {5.20.2.1}getName()}{83}{subsubsection.5.20.2.1}%
+\contentsline {subsubsection}{\numberline {5.20.2.2}buildController()}{84}{subsubsection.5.20.2.2}%
+\contentsline {subsubsection}{\numberline {5.20.2.3}buildRobot()}{84}{subsubsection.5.20.2.3}%
+\contentsline {subsection}{\numberline {5.20.3}Member Data Documentation}{88}{subsection.5.20.3}%
+\contentsline {subsubsection}{\numberline {5.20.3.1}CONFIGURATION\_NAME}{88}{subsubsection.5.20.3.1}%
+\contentsline {subsubsection}{\numberline {5.20.3.2}ODOMETRY\_HEADING\_PORT}{88}{subsubsection.5.20.3.2}%
+\contentsline {subsubsection}{\numberline {5.20.3.3}ODOMETRY\_HEADING\_TUNING\_CONSTANT}{88}{subsubsection.5.20.3.3}%
+\contentsline {subsubsection}{\numberline {5.20.3.4}ODOMETRY\_LINEAR\_PORT}{88}{subsubsection.5.20.3.4}%
+\contentsline {subsubsection}{\numberline {5.20.3.5}ODOMETRY\_LINEAR\_RADIUS}{88}{subsubsection.5.20.3.5}%
+\contentsline {subsubsection}{\numberline {5.20.3.6}ODOMETRY\_LINEAR\_OFFSET}{89}{subsubsection.5.20.3.6}%
+\contentsline {subsubsection}{\numberline {5.20.3.7}ODOMETRY\_STRAFE\_PORT}{89}{subsubsection.5.20.3.7}%
+\contentsline {subsubsection}{\numberline {5.20.3.8}ODOMETRY\_STRAFE\_RADIUS}{89}{subsubsection.5.20.3.8}%
+\contentsline {subsubsection}{\numberline {5.20.3.9}ODOMETRY\_STRAFE\_OFFSET}{89}{subsubsection.5.20.3.9}%
+\contentsline {subsubsection}{\numberline {5.20.3.10}DRIVE\_KINEMATIC}{89}{subsubsection.5.20.3.10}%
+\contentsline {subsubsection}{\numberline {5.20.3.11}DRIVE\_VELOCITY\_PROFILE\_JERK\_RATE}{90}{subsubsection.5.20.3.11}%
+\contentsline {subsubsection}{\numberline {5.20.3.12}DRIVE\_VELOCITY\_PROFILE\_MAX\_ACCELERATION}{90}{subsubsection.5.20.3.12}%
+\contentsline {subsubsection}{\numberline {5.20.3.13}DRIVE\_LEFT\_MOTOR\_1\_PORT}{90}{subsubsection.5.20.3.13}%
+\contentsline {subsubsection}{\numberline {5.20.3.14}DRIVE\_LEFT\_MOTOR\_1\_GEARSET}{90}{subsubsection.5.20.3.14}%
+\contentsline {subsubsection}{\numberline {5.20.3.15}DRIVE\_LEFT\_MOTOR\_2\_PORT}{90}{subsubsection.5.20.3.15}%
+\contentsline {subsubsection}{\numberline {5.20.3.16}DRIVE\_LEFT\_MOTOR\_2\_GEARSET}{91}{subsubsection.5.20.3.16}%
+\contentsline {subsubsection}{\numberline {5.20.3.17}DRIVE\_LEFT\_MOTOR\_3\_PORT}{91}{subsubsection.5.20.3.17}%
+\contentsline {subsubsection}{\numberline {5.20.3.18}DRIVE\_LEFT\_MOTOR\_3\_GEARSET}{91}{subsubsection.5.20.3.18}%
+\contentsline {subsubsection}{\numberline {5.20.3.19}DRIVE\_LEFT\_MOTOR\_4\_PORT}{91}{subsubsection.5.20.3.19}%
+\contentsline {subsubsection}{\numberline {5.20.3.20}DRIVE\_LEFT\_MOTOR\_4\_GEARSET}{91}{subsubsection.5.20.3.20}%
+\contentsline {subsubsection}{\numberline {5.20.3.21}DRIVE\_RIGHT\_MOTOR\_1\_PORT}{92}{subsubsection.5.20.3.21}%
+\contentsline {subsubsection}{\numberline {5.20.3.22}DRIVE\_RIGHT\_MOTOR\_1\_GEARSET}{92}{subsubsection.5.20.3.22}%
+\contentsline {subsubsection}{\numberline {5.20.3.23}DRIVE\_RIGHT\_MOTOR\_2\_PORT}{92}{subsubsection.5.20.3.23}%
+\contentsline {subsubsection}{\numberline {5.20.3.24}DRIVE\_RIGHT\_MOTOR\_2\_GEARSET}{92}{subsubsection.5.20.3.24}%
+\contentsline {subsubsection}{\numberline {5.20.3.25}DRIVE\_RIGHT\_MOTOR\_3\_PORT}{92}{subsubsection.5.20.3.25}%
+\contentsline {subsubsection}{\numberline {5.20.3.26}DRIVE\_RIGHT\_MOTOR\_3\_GEARSET}{93}{subsubsection.5.20.3.26}%
+\contentsline {subsubsection}{\numberline {5.20.3.27}DRIVE\_RIGHT\_MOTOR\_4\_PORT}{93}{subsubsection.5.20.3.27}%
+\contentsline {subsubsection}{\numberline {5.20.3.28}DRIVE\_RIGHT\_MOTOR\_4\_GEARSET}{93}{subsubsection.5.20.3.28}%
+\contentsline {subsubsection}{\numberline {5.20.3.29}DRIVE\_VELOCITY\_TO\_VOLTAGE}{93}{subsubsection.5.20.3.29}%
+\contentsline {subsubsection}{\numberline {5.20.3.30}DRIVE\_MASS}{93}{subsubsection.5.20.3.30}%
+\contentsline {subsubsection}{\numberline {5.20.3.31}DRIVE\_RADIUS}{94}{subsubsection.5.20.3.31}%
+\contentsline {subsubsection}{\numberline {5.20.3.32}DRIVE\_MOMENT\_OF\_INERTIA}{94}{subsubsection.5.20.3.32}%
+\contentsline {subsubsection}{\numberline {5.20.3.33}DRIVE\_GEAR\_RATIO}{94}{subsubsection.5.20.3.33}%
+\contentsline {subsubsection}{\numberline {5.20.3.34}DRIVE\_WHEEL\_RADIUS}{94}{subsubsection.5.20.3.34}%
+\contentsline {subsubsection}{\numberline {5.20.3.35}INTAKE\_KP}{94}{subsubsection.5.20.3.35}%
+\contentsline {subsubsection}{\numberline {5.20.3.36}INTAKE\_KI}{95}{subsubsection.5.20.3.36}%
+\contentsline {subsubsection}{\numberline {5.20.3.37}INTAKE\_KD}{95}{subsubsection.5.20.3.37}%
+\contentsline {subsubsection}{\numberline {5.20.3.38}INTAKE\_MOTOR\_1\_PORT}{95}{subsubsection.5.20.3.38}%
+\contentsline {subsubsection}{\numberline {5.20.3.39}INTAKE\_MOTOR\_1\_GEARSET}{95}{subsubsection.5.20.3.39}%
+\contentsline {subsubsection}{\numberline {5.20.3.40}INTAKE\_MOTOR\_2\_PORT}{95}{subsubsection.5.20.3.40}%
+\contentsline {subsubsection}{\numberline {5.20.3.41}INTAKE\_MOTOR\_2\_GEARSET}{96}{subsubsection.5.20.3.41}%
+\contentsline {subsubsection}{\numberline {5.20.3.42}INTAKE\_ROLLER\_RADIUS}{96}{subsubsection.5.20.3.42}%
+\contentsline {subsubsection}{\numberline {5.20.3.43}ELEVATOR\_KP}{96}{subsubsection.5.20.3.43}%
+\contentsline {subsubsection}{\numberline {5.20.3.44}ELEVATOR\_KI}{96}{subsubsection.5.20.3.44}%
+\contentsline {subsubsection}{\numberline {5.20.3.45}ELEVATOR\_KD}{96}{subsubsection.5.20.3.45}%
+\contentsline {subsubsection}{\numberline {5.20.3.46}ELEVATOR\_MOTOR\_1\_PORT}{97}{subsubsection.5.20.3.46}%
+\contentsline {subsubsection}{\numberline {5.20.3.47}ELEVATOR\_MOTOR\_1\_GEARSET}{97}{subsubsection.5.20.3.47}%
+\contentsline {subsubsection}{\numberline {5.20.3.48}ELEVATOR\_MOTOR\_2\_PORT}{97}{subsubsection.5.20.3.48}%
+\contentsline {subsubsection}{\numberline {5.20.3.49}ELEVATOR\_MOTOR\_2\_GEARSET}{97}{subsubsection.5.20.3.49}%
+\contentsline {subsubsection}{\numberline {5.20.3.50}ELEVATOR\_ROTATION\_SENSOR\_PORT}{97}{subsubsection.5.20.3.50}%
+\contentsline {subsubsection}{\numberline {5.20.3.51}ELEVATOR\_INCHES\_PER\_RADIAN}{98}{subsubsection.5.20.3.51}%
+\contentsline {section}{\numberline {5.21}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::configs\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Orange\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Configuration Class Reference}{98}{section.5.21}%
+\contentsline {subsection}{\numberline {5.21.1}Detailed Description}{98}{subsection.5.21.1}%
+\contentsline {subsection}{\numberline {5.21.2}Member Function Documentation}{99}{subsection.5.21.2}%
+\contentsline {subsubsection}{\numberline {5.21.2.1}getName()}{99}{subsubsection.5.21.2.1}%
+\contentsline {subsubsection}{\numberline {5.21.2.2}buildController()}{99}{subsubsection.5.21.2.2}%
+\contentsline {subsubsection}{\numberline {5.21.2.3}buildRobot()}{99}{subsubsection.5.21.2.3}%
+\contentsline {subsection}{\numberline {5.21.3}Member Data Documentation}{100}{subsection.5.21.3}%
+\contentsline {subsubsection}{\numberline {5.21.3.1}CONFIGURATION\_NAME}{100}{subsubsection.5.21.3.1}%
+\contentsline {section}{\numberline {5.22}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::control\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::PID Class Reference}{100}{section.5.22}%
+\contentsline {subsection}{\numberline {5.22.1}Detailed Description}{101}{subsection.5.22.1}%
+\contentsline {subsection}{\numberline {5.22.2}Constructor \& Destructor Documentation}{101}{subsection.5.22.2}%
+\contentsline {subsubsection}{\numberline {5.22.2.1}PID()\hspace {0.1cm}{\footnotesize \ttfamily [1/3]}}{101}{subsubsection.5.22.2.1}%
+\contentsline {subsubsection}{\numberline {5.22.2.2}PID()\hspace {0.1cm}{\footnotesize \ttfamily [2/3]}}{101}{subsubsection.5.22.2.2}%
+\contentsline {subsubsection}{\numberline {5.22.2.3}PID()\hspace {0.1cm}{\footnotesize \ttfamily [3/3]}}{102}{subsubsection.5.22.2.3}%
+\contentsline {subsection}{\numberline {5.22.3}Member Function Documentation}{102}{subsection.5.22.3}%
+\contentsline {subsubsection}{\numberline {5.22.3.1}getControlValue()}{102}{subsubsection.5.22.3.1}%
+\contentsline {subsubsection}{\numberline {5.22.3.2}reset()}{103}{subsubsection.5.22.3.2}%
+\contentsline {subsubsection}{\numberline {5.22.3.3}operator=()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{103}{subsubsection.5.22.3.3}%
+\contentsline {subsubsection}{\numberline {5.22.3.4}operator=()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{103}{subsubsection.5.22.3.4}%
+\contentsline {subsection}{\numberline {5.22.4}Member Data Documentation}{104}{subsection.5.22.4}%
+\contentsline {subsubsection}{\numberline {5.22.4.1}m\_clock}{104}{subsubsection.5.22.4.1}%
+\contentsline {subsubsection}{\numberline {5.22.4.2}m\_kp}{104}{subsubsection.5.22.4.2}%
+\contentsline {subsubsection}{\numberline {5.22.4.3}m\_ki}{104}{subsubsection.5.22.4.3}%
+\contentsline {subsubsection}{\numberline {5.22.4.4}m\_kd}{104}{subsubsection.5.22.4.4}%
+\contentsline {subsubsection}{\numberline {5.22.4.5}accumulated\_error}{104}{subsubsection.5.22.4.5}%
+\contentsline {subsubsection}{\numberline {5.22.4.6}last\_error}{105}{subsubsection.5.22.4.6}%
+\contentsline {subsubsection}{\numberline {5.22.4.7}last\_time}{105}{subsubsection.5.22.4.7}%
+\contentsline {section}{\numberline {5.23}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::hal\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Distance\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Boolean\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sensor Class Reference}{105}{section.5.23}%
+\contentsline {subsection}{\numberline {5.23.1}Detailed Description}{106}{subsection.5.23.1}%
+\contentsline {subsection}{\numberline {5.23.2}Constructor \& Destructor Documentation}{106}{subsection.5.23.2}%
+\contentsline {subsubsection}{\numberline {5.23.2.1}DistanceBooleanSensor()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{106}{subsubsection.5.23.2.1}%
+\contentsline {subsubsection}{\numberline {5.23.2.2}DistanceBooleanSensor()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{106}{subsubsection.5.23.2.2}%
+\contentsline {subsection}{\numberline {5.23.3}Member Function Documentation}{107}{subsection.5.23.3}%
+\contentsline {subsubsection}{\numberline {5.23.3.1}initialize()}{107}{subsubsection.5.23.3.1}%
+\contentsline {subsubsection}{\numberline {5.23.3.2}reset()}{107}{subsubsection.5.23.3.2}%
+\contentsline {subsubsection}{\numberline {5.23.3.3}getValue()}{108}{subsubsection.5.23.3.3}%
+\contentsline {subsection}{\numberline {5.23.4}Member Data Documentation}{108}{subsection.5.23.4}%
+\contentsline {subsubsection}{\numberline {5.23.4.1}m\_distance\_sensor}{108}{subsubsection.5.23.4.1}%
+\contentsline {subsubsection}{\numberline {5.23.4.2}m\_mode}{108}{subsubsection.5.23.4.2}%
+\contentsline {subsubsection}{\numberline {5.23.4.3}m\_lower\_threshold}{109}{subsubsection.5.23.4.3}%
+\contentsline {subsubsection}{\numberline {5.23.4.4}m\_upper\_threshold}{109}{subsubsection.5.23.4.4}%
+\contentsline {subsubsection}{\numberline {5.23.4.5}value}{109}{subsubsection.5.23.4.5}%
+\contentsline {section}{\numberline {5.24}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::hal\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Motor\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Group Class Reference}{109}{section.5.24}%
+\contentsline {subsection}{\numberline {5.24.1}Detailed Description}{110}{subsection.5.24.1}%
+\contentsline {subsection}{\numberline {5.24.2}Member Function Documentation}{110}{subsection.5.24.2}%
+\contentsline {subsubsection}{\numberline {5.24.2.1}addMotor()}{110}{subsubsection.5.24.2.1}%
+\contentsline {subsubsection}{\numberline {5.24.2.2}initialize()}{110}{subsubsection.5.24.2.2}%
+\contentsline {subsubsection}{\numberline {5.24.2.3}getTorqueConstant()}{110}{subsubsection.5.24.2.3}%
+\contentsline {subsubsection}{\numberline {5.24.2.4}getResistance()}{111}{subsubsection.5.24.2.4}%
+\contentsline {subsubsection}{\numberline {5.24.2.5}getAngularVelocityConstant()}{111}{subsubsection.5.24.2.5}%
+\contentsline {subsubsection}{\numberline {5.24.2.6}getGearRatio()}{112}{subsubsection.5.24.2.6}%
+\contentsline {subsubsection}{\numberline {5.24.2.7}getAngularVelocity()}{112}{subsubsection.5.24.2.7}%
+\contentsline {subsubsection}{\numberline {5.24.2.8}getPosition()}{112}{subsubsection.5.24.2.8}%
+\contentsline {subsubsection}{\numberline {5.24.2.9}setVoltage()}{112}{subsubsection.5.24.2.9}%
+\contentsline {subsubsection}{\numberline {5.24.2.10}operator=()}{113}{subsubsection.5.24.2.10}%
+\contentsline {subsection}{\numberline {5.24.3}Member Data Documentation}{113}{subsection.5.24.3}%
+\contentsline {subsubsection}{\numberline {5.24.3.1}motors}{113}{subsubsection.5.24.3.1}%
+\contentsline {section}{\numberline {5.25}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::hal\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Tracking\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Wheel Class Reference}{113}{section.5.25}%
+\contentsline {subsection}{\numberline {5.25.1}Detailed Description}{114}{subsection.5.25.1}%
+\contentsline {subsection}{\numberline {5.25.2}Constructor \& Destructor Documentation}{114}{subsection.5.25.2}%
+\contentsline {subsubsection}{\numberline {5.25.2.1}TrackingWheel()}{114}{subsubsection.5.25.2.1}%
+\contentsline {subsection}{\numberline {5.25.3}Member Function Documentation}{115}{subsection.5.25.3}%
+\contentsline {subsubsection}{\numberline {5.25.3.1}initialize()}{115}{subsubsection.5.25.3.1}%
+\contentsline {subsubsection}{\numberline {5.25.3.2}reset()}{115}{subsubsection.5.25.3.2}%
+\contentsline {subsubsection}{\numberline {5.25.3.3}getDistance()}{115}{subsubsection.5.25.3.3}%
+\contentsline {subsubsection}{\numberline {5.25.3.4}setDistance()}{115}{subsubsection.5.25.3.4}%
+\contentsline {subsection}{\numberline {5.25.4}Member Data Documentation}{116}{subsection.5.25.4}%
+\contentsline {subsubsection}{\numberline {5.25.4.1}m\_sensor}{116}{subsubsection.5.25.4.1}%
+\contentsline {subsubsection}{\numberline {5.25.4.2}m\_wheel\_radius}{116}{subsubsection.5.25.4.2}%
+\contentsline {section}{\numberline {5.26}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::IAlliance Class Reference}{116}{section.5.26}%
+\contentsline {subsection}{\numberline {5.26.1}Detailed Description}{117}{subsection.5.26.1}%
+\contentsline {subsection}{\numberline {5.26.2}Member Function Documentation}{117}{subsection.5.26.2}%
+\contentsline {subsubsection}{\numberline {5.26.2.1}getName()}{117}{subsubsection.5.26.2.1}%
+\contentsline {section}{\numberline {5.27}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::IAutonomous Class Reference}{117}{section.5.27}%
+\contentsline {subsection}{\numberline {5.27.1}Detailed Description}{118}{subsection.5.27.1}%
+\contentsline {subsection}{\numberline {5.27.2}Member Function Documentation}{118}{subsection.5.27.2}%
+\contentsline {subsubsection}{\numberline {5.27.2.1}getName()}{118}{subsubsection.5.27.2.1}%
+\contentsline {subsubsection}{\numberline {5.27.2.2}initialize()}{118}{subsubsection.5.27.2.2}%
+\contentsline {subsubsection}{\numberline {5.27.2.3}run()}{118}{subsubsection.5.27.2.3}%
+\contentsline {section}{\numberline {5.28}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::IConfiguration Class Reference}{119}{section.5.28}%
+\contentsline {subsection}{\numberline {5.28.1}Detailed Description}{119}{subsection.5.28.1}%
+\contentsline {subsection}{\numberline {5.28.2}Member Function Documentation}{119}{subsection.5.28.2}%
+\contentsline {subsubsection}{\numberline {5.28.2.1}getName()}{119}{subsubsection.5.28.2.1}%
+\contentsline {subsubsection}{\numberline {5.28.2.2}buildController()}{120}{subsubsection.5.28.2.2}%
+\contentsline {subsubsection}{\numberline {5.28.2.3}buildRobot()}{120}{subsubsection.5.28.2.3}%
+\contentsline {section}{\numberline {5.29}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::IMenu Class Reference}{120}{section.5.29}%
+\contentsline {subsection}{\numberline {5.29.1}Detailed Description}{121}{subsection.5.29.1}%
+\contentsline {subsection}{\numberline {5.29.2}Member Function Documentation}{121}{subsection.5.29.2}%
+\contentsline {subsubsection}{\numberline {5.29.2.1}addAlliance()}{121}{subsubsection.5.29.2.1}%
+\contentsline {subsubsection}{\numberline {5.29.2.2}addAutonomous()}{121}{subsubsection.5.29.2.2}%
+\contentsline {subsubsection}{\numberline {5.29.2.3}addConfiguration()}{121}{subsubsection.5.29.2.3}%
+\contentsline {subsubsection}{\numberline {5.29.2.4}addProfile()}{122}{subsubsection.5.29.2.4}%
+\contentsline {subsubsection}{\numberline {5.29.2.5}display()}{122}{subsubsection.5.29.2.5}%
+\contentsline {subsubsection}{\numberline {5.29.2.6}isStarted()}{122}{subsubsection.5.29.2.6}%
+\contentsline {subsubsection}{\numberline {5.29.2.7}getSystemConfiguration()}{122}{subsubsection.5.29.2.7}%
+\contentsline {section}{\numberline {5.30}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::io\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::IBoolean\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sensor Class Reference}{123}{section.5.30}%
+\contentsline {subsection}{\numberline {5.30.1}Detailed Description}{123}{subsection.5.30.1}%
+\contentsline {subsection}{\numberline {5.30.2}Member Function Documentation}{123}{subsection.5.30.2}%
+\contentsline {subsubsection}{\numberline {5.30.2.1}initialize()}{123}{subsubsection.5.30.2.1}%
+\contentsline {subsubsection}{\numberline {5.30.2.2}reset()}{123}{subsubsection.5.30.2.2}%
+\contentsline {subsubsection}{\numberline {5.30.2.3}getValue()}{124}{subsubsection.5.30.2.3}%
+\contentsline {section}{\numberline {5.31}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::io\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::IDistance\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sensor Class Reference}{124}{section.5.31}%
+\contentsline {subsection}{\numberline {5.31.1}Detailed Description}{124}{subsection.5.31.1}%
+\contentsline {subsection}{\numberline {5.31.2}Member Function Documentation}{125}{subsection.5.31.2}%
+\contentsline {subsubsection}{\numberline {5.31.2.1}initialize()}{125}{subsubsection.5.31.2.1}%
+\contentsline {subsubsection}{\numberline {5.31.2.2}reset()}{125}{subsubsection.5.31.2.2}%
+\contentsline {subsubsection}{\numberline {5.31.2.3}getDistance()}{125}{subsubsection.5.31.2.3}%
+\contentsline {section}{\numberline {5.32}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::io\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::IDistance\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tracking\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sensor Class Reference}{125}{section.5.32}%
+\contentsline {subsection}{\numberline {5.32.1}Detailed Description}{126}{subsection.5.32.1}%
+\contentsline {subsection}{\numberline {5.32.2}Member Function Documentation}{126}{subsection.5.32.2}%
+\contentsline {subsubsection}{\numberline {5.32.2.1}initialize()}{126}{subsubsection.5.32.2.1}%
+\contentsline {subsubsection}{\numberline {5.32.2.2}reset()}{126}{subsubsection.5.32.2.2}%
+\contentsline {subsubsection}{\numberline {5.32.2.3}getDistance()}{126}{subsubsection.5.32.2.3}%
+\contentsline {subsubsection}{\numberline {5.32.2.4}setDistance()}{126}{subsubsection.5.32.2.4}%
+\contentsline {section}{\numberline {5.33}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::io\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::IHeading\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sensor Class Reference}{127}{section.5.33}%
+\contentsline {subsection}{\numberline {5.33.1}Detailed Description}{127}{subsection.5.33.1}%
+\contentsline {subsection}{\numberline {5.33.2}Member Function Documentation}{128}{subsection.5.33.2}%
+\contentsline {subsubsection}{\numberline {5.33.2.1}initialize()}{128}{subsubsection.5.33.2.1}%
+\contentsline {subsubsection}{\numberline {5.33.2.2}reset()}{128}{subsubsection.5.33.2.2}%
+\contentsline {subsubsection}{\numberline {5.33.2.3}getHeading()}{128}{subsubsection.5.33.2.3}%
+\contentsline {subsubsection}{\numberline {5.33.2.4}setHeading()}{128}{subsubsection.5.33.2.4}%
+\contentsline {subsubsection}{\numberline {5.33.2.5}getRotation()}{128}{subsubsection.5.33.2.5}%
+\contentsline {subsubsection}{\numberline {5.33.2.6}setRotation()}{129}{subsubsection.5.33.2.6}%
+\contentsline {section}{\numberline {5.34}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::io\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::IMotor Class Reference}{129}{section.5.34}%
+\contentsline {subsection}{\numberline {5.34.1}Detailed Description}{130}{subsection.5.34.1}%
+\contentsline {subsection}{\numberline {5.34.2}Member Function Documentation}{130}{subsection.5.34.2}%
+\contentsline {subsubsection}{\numberline {5.34.2.1}initialize()}{130}{subsubsection.5.34.2.1}%
+\contentsline {subsubsection}{\numberline {5.34.2.2}getTorqueConstant()}{130}{subsubsection.5.34.2.2}%
+\contentsline {subsubsection}{\numberline {5.34.2.3}getResistance()}{130}{subsubsection.5.34.2.3}%
+\contentsline {subsubsection}{\numberline {5.34.2.4}getAngularVelocityConstant()}{131}{subsubsection.5.34.2.4}%
+\contentsline {subsubsection}{\numberline {5.34.2.5}getGearRatio()}{131}{subsubsection.5.34.2.5}%
+\contentsline {subsubsection}{\numberline {5.34.2.6}getAngularVelocity()}{131}{subsubsection.5.34.2.6}%
+\contentsline {subsubsection}{\numberline {5.34.2.7}getPosition()}{131}{subsubsection.5.34.2.7}%
+\contentsline {subsubsection}{\numberline {5.34.2.8}setVoltage()}{131}{subsubsection.5.34.2.8}%
+\contentsline {section}{\numberline {5.35}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::io\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::IRotation\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sensor Class Reference}{132}{section.5.35}%
+\contentsline {subsection}{\numberline {5.35.1}Detailed Description}{132}{subsection.5.35.1}%
+\contentsline {subsection}{\numberline {5.35.2}Member Function Documentation}{133}{subsection.5.35.2}%
+\contentsline {subsubsection}{\numberline {5.35.2.1}initialize()}{133}{subsubsection.5.35.2.1}%
+\contentsline {subsubsection}{\numberline {5.35.2.2}reset()}{133}{subsubsection.5.35.2.2}%
+\contentsline {subsubsection}{\numberline {5.35.2.3}getRotation()}{133}{subsubsection.5.35.2.3}%
+\contentsline {subsubsection}{\numberline {5.35.2.4}setRotation()}{133}{subsubsection.5.35.2.4}%
+\contentsline {subsubsection}{\numberline {5.35.2.5}getAngle()}{133}{subsubsection.5.35.2.5}%
+\contentsline {section}{\numberline {5.36}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::IProfile Class Reference}{134}{section.5.36}%
+\contentsline {subsection}{\numberline {5.36.1}Detailed Description}{134}{subsection.5.36.1}%
+\contentsline {subsection}{\numberline {5.36.2}Member Function Documentation}{134}{subsection.5.36.2}%
+\contentsline {subsubsection}{\numberline {5.36.2.1}getName()}{134}{subsubsection.5.36.2.1}%
+\contentsline {subsubsection}{\numberline {5.36.2.2}getControlMode()}{135}{subsubsection.5.36.2.2}%
+\contentsline {subsubsection}{\numberline {5.36.2.3}getAnalogControlMapping()}{135}{subsubsection.5.36.2.3}%
+\contentsline {subsubsection}{\numberline {5.36.2.4}getDigitalControlMapping()}{135}{subsubsection.5.36.2.4}%
+\contentsline {section}{\numberline {5.37}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Match\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller Class Reference}{136}{section.5.37}%
+\contentsline {subsection}{\numberline {5.37.1}Detailed Description}{137}{subsection.5.37.1}%
+\contentsline {subsection}{\numberline {5.37.2}Constructor \& Destructor Documentation}{137}{subsection.5.37.2}%
+\contentsline {subsubsection}{\numberline {5.37.2.1}MatchController()}{137}{subsubsection.5.37.2.1}%
+\contentsline {subsection}{\numberline {5.37.3}Member Function Documentation}{137}{subsection.5.37.3}%
+\contentsline {subsubsection}{\numberline {5.37.3.1}initialize()}{137}{subsubsection.5.37.3.1}%
+\contentsline {subsubsection}{\numberline {5.37.3.2}disabled()}{138}{subsubsection.5.37.3.2}%
+\contentsline {subsubsection}{\numberline {5.37.3.3}competitionInitialize()}{138}{subsubsection.5.37.3.3}%
+\contentsline {subsubsection}{\numberline {5.37.3.4}autonomous()}{138}{subsubsection.5.37.3.4}%
+\contentsline {subsubsection}{\numberline {5.37.3.5}operatorControl()}{138}{subsubsection.5.37.3.5}%
+\contentsline {subsection}{\numberline {5.37.4}Member Data Documentation}{139}{subsection.5.37.4}%
+\contentsline {subsubsection}{\numberline {5.37.4.1}MENU\_DELAY}{139}{subsubsection.5.37.4.1}%
+\contentsline {subsubsection}{\numberline {5.37.4.2}m\_menu}{139}{subsubsection.5.37.4.2}%
+\contentsline {subsubsection}{\numberline {5.37.4.3}m\_clock}{139}{subsubsection.5.37.4.3}%
+\contentsline {subsubsection}{\numberline {5.37.4.4}m\_delayer}{139}{subsubsection.5.37.4.4}%
+\contentsline {subsubsection}{\numberline {5.37.4.5}autonomous\_manager}{139}{subsubsection.5.37.4.5}%
+\contentsline {subsubsection}{\numberline {5.37.4.6}opcontrol\_manager}{140}{subsubsection.5.37.4.6}%
+\contentsline {subsubsection}{\numberline {5.37.4.7}controller}{140}{subsubsection.5.37.4.7}%
+\contentsline {subsubsection}{\numberline {5.37.4.8}robot}{140}{subsubsection.5.37.4.8}%
+\contentsline {section}{\numberline {5.38}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::menu\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Lvgl\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Menu Class Reference}{140}{section.5.38}%
+\contentsline {subsection}{\numberline {5.38.1}Detailed Description}{141}{subsection.5.38.1}%
+\contentsline {subsection}{\numberline {5.38.2}Member Function Documentation}{142}{subsection.5.38.2}%
+\contentsline {subsubsection}{\numberline {5.38.2.1}initializeStyles()}{142}{subsubsection.5.38.2.1}%
+\contentsline {subsubsection}{\numberline {5.38.2.2}addOption()}{142}{subsubsection.5.38.2.2}%
+\contentsline {subsubsection}{\numberline {5.38.2.3}removeOption()}{143}{subsubsection.5.38.2.3}%
+\contentsline {subsubsection}{\numberline {5.38.2.4}drawMainMenu()}{143}{subsubsection.5.38.2.4}%
+\contentsline {subsubsection}{\numberline {5.38.2.5}drawSettingsMenu()}{145}{subsubsection.5.38.2.5}%
+\contentsline {subsubsection}{\numberline {5.38.2.6}setComplete()}{146}{subsubsection.5.38.2.6}%
+\contentsline {subsubsection}{\numberline {5.38.2.7}readConfiguration()}{146}{subsubsection.5.38.2.7}%
+\contentsline {subsubsection}{\numberline {5.38.2.8}writeConfiguration()}{146}{subsubsection.5.38.2.8}%
+\contentsline {subsubsection}{\numberline {5.38.2.9}displayMenu()}{147}{subsubsection.5.38.2.9}%
+\contentsline {subsubsection}{\numberline {5.38.2.10}selectionComplete()}{147}{subsubsection.5.38.2.10}%
+\contentsline {subsubsection}{\numberline {5.38.2.11}getSelection()}{147}{subsubsection.5.38.2.11}%
+\contentsline {subsection}{\numberline {5.38.3}Member Data Documentation}{148}{subsection.5.38.3}%
+\contentsline {subsubsection}{\numberline {5.38.3.1}CONFIGURATION\_FILE}{148}{subsubsection.5.38.3.1}%
+\contentsline {subsubsection}{\numberline {5.38.3.2}COLUMN\_WIDTH}{148}{subsubsection.5.38.3.2}%
+\contentsline {subsubsection}{\numberline {5.38.3.3}BUTTONS\_PER\_LINE}{148}{subsubsection.5.38.3.3}%
+\contentsline {subsubsection}{\numberline {5.38.3.4}button\_default\_style}{148}{subsubsection.5.38.3.4}%
+\contentsline {subsubsection}{\numberline {5.38.3.5}button\_pressed\_style}{148}{subsubsection.5.38.3.5}%
+\contentsline {subsubsection}{\numberline {5.38.3.6}container\_default\_style}{149}{subsubsection.5.38.3.6}%
+\contentsline {subsubsection}{\numberline {5.38.3.7}container\_pressed\_style}{149}{subsubsection.5.38.3.7}%
+\contentsline {subsubsection}{\numberline {5.38.3.8}button\_matrix\_main\_style}{149}{subsubsection.5.38.3.8}%
+\contentsline {subsubsection}{\numberline {5.38.3.9}button\_matrix\_items\_style}{149}{subsubsection.5.38.3.9}%
+\contentsline {subsubsection}{\numberline {5.38.3.10}styles\_initialized}{149}{subsubsection.5.38.3.10}%
+\contentsline {subsubsection}{\numberline {5.38.3.11}options}{149}{subsubsection.5.38.3.11}%
+\contentsline {subsubsection}{\numberline {5.38.3.12}complete}{150}{subsubsection.5.38.3.12}%
+\contentsline {section}{\numberline {5.39}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::menu\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Menu\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Adapter Class Reference}{150}{section.5.39}%
+\contentsline {subsection}{\numberline {5.39.1}Detailed Description}{151}{subsection.5.39.1}%
+\contentsline {subsection}{\numberline {5.39.2}Member Function Documentation}{151}{subsection.5.39.2}%
+\contentsline {subsubsection}{\numberline {5.39.2.1}addAlliance()}{151}{subsubsection.5.39.2.1}%
+\contentsline {subsubsection}{\numberline {5.39.2.2}addAutonomous()}{152}{subsubsection.5.39.2.2}%
+\contentsline {subsubsection}{\numberline {5.39.2.3}addConfiguration()}{152}{subsubsection.5.39.2.3}%
+\contentsline {subsubsection}{\numberline {5.39.2.4}addProfile()}{153}{subsubsection.5.39.2.4}%
+\contentsline {subsubsection}{\numberline {5.39.2.5}display()}{153}{subsubsection.5.39.2.5}%
+\contentsline {subsubsection}{\numberline {5.39.2.6}isStarted()}{154}{subsubsection.5.39.2.6}%
+\contentsline {subsubsection}{\numberline {5.39.2.7}getSystemConfiguration()}{154}{subsubsection.5.39.2.7}%
+\contentsline {subsection}{\numberline {5.39.3}Member Data Documentation}{155}{subsection.5.39.3}%
+\contentsline {subsubsection}{\numberline {5.39.3.1}ALLIANCE\_OPTION\_NAME}{155}{subsubsection.5.39.3.1}%
+\contentsline {subsubsection}{\numberline {5.39.3.2}AUTONOMOUS\_OPTION\_NAME}{155}{subsubsection.5.39.3.2}%
+\contentsline {subsubsection}{\numberline {5.39.3.3}CONFIGURATION\_OPTION\_NAME}{155}{subsubsection.5.39.3.3}%
+\contentsline {subsubsection}{\numberline {5.39.3.4}PROFILE\_OPTION\_NAME}{155}{subsubsection.5.39.3.4}%
+\contentsline {subsubsection}{\numberline {5.39.3.5}alliances}{155}{subsubsection.5.39.3.5}%
+\contentsline {subsubsection}{\numberline {5.39.3.6}autonomous\_routines}{156}{subsubsection.5.39.3.6}%
+\contentsline {subsubsection}{\numberline {5.39.3.7}hardware\_configurations}{156}{subsubsection.5.39.3.7}%
+\contentsline {subsubsection}{\numberline {5.39.3.8}driver\_profiles}{156}{subsubsection.5.39.3.8}%
+\contentsline {subsubsection}{\numberline {5.39.3.9}lvgl\_menu}{156}{subsubsection.5.39.3.9}%
+\contentsline {section}{\numberline {5.40}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::menu\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Option Struct Reference}{156}{section.5.40}%
+\contentsline {subsection}{\numberline {5.40.1}Detailed Description}{157}{subsection.5.40.1}%
+\contentsline {subsection}{\numberline {5.40.2}Member Data Documentation}{157}{subsection.5.40.2}%
+\contentsline {subsubsection}{\numberline {5.40.2.1}name}{157}{subsubsection.5.40.2.1}%
+\contentsline {subsubsection}{\numberline {5.40.2.2}choices}{157}{subsubsection.5.40.2.2}%
+\contentsline {subsubsection}{\numberline {5.40.2.3}selected}{157}{subsubsection.5.40.2.3}%
+\contentsline {section}{\numberline {5.41}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::OPControl\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Manager Class Reference}{157}{section.5.41}%
+\contentsline {subsection}{\numberline {5.41.1}Detailed Description}{158}{subsection.5.41.1}%
+\contentsline {subsection}{\numberline {5.41.2}Constructor \& Destructor Documentation}{158}{subsection.5.41.2}%
+\contentsline {subsubsection}{\numberline {5.41.2.1}OPControlManager()}{158}{subsubsection.5.41.2.1}%
+\contentsline {subsection}{\numberline {5.41.3}Member Function Documentation}{159}{subsection.5.41.3}%
+\contentsline {subsubsection}{\numberline {5.41.3.1}setProfile()}{159}{subsubsection.5.41.3.1}%
+\contentsline {subsubsection}{\numberline {5.41.3.2}initializeOpcontrol()}{159}{subsubsection.5.41.3.2}%
+\contentsline {subsubsection}{\numberline {5.41.3.3}runOpcontrol()}{159}{subsubsection.5.41.3.3}%
+\contentsline {subsection}{\numberline {5.41.4}Member Data Documentation}{160}{subsection.5.41.4}%
+\contentsline {subsubsection}{\numberline {5.41.4.1}CONTROL\_DELAY}{160}{subsubsection.5.41.4.1}%
+\contentsline {subsubsection}{\numberline {5.41.4.2}m\_clock}{160}{subsubsection.5.41.4.2}%
+\contentsline {subsubsection}{\numberline {5.41.4.3}m\_delayer}{160}{subsubsection.5.41.4.3}%
+\contentsline {subsubsection}{\numberline {5.41.4.4}m\_profile}{161}{subsubsection.5.41.4.4}%
+\contentsline {section}{\numberline {5.42}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::profiles\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Henry\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Profile Class Reference}{161}{section.5.42}%
+\contentsline {subsection}{\numberline {5.42.1}Detailed Description}{162}{subsection.5.42.1}%
+\contentsline {subsection}{\numberline {5.42.2}Member Function Documentation}{162}{subsection.5.42.2}%
+\contentsline {subsubsection}{\numberline {5.42.2.1}getName()}{162}{subsubsection.5.42.2.1}%
+\contentsline {subsubsection}{\numberline {5.42.2.2}getControlMode()}{162}{subsubsection.5.42.2.2}%
+\contentsline {subsubsection}{\numberline {5.42.2.3}getAnalogControlMapping()}{163}{subsubsection.5.42.2.3}%
+\contentsline {subsubsection}{\numberline {5.42.2.4}getDigitalControlMapping()}{163}{subsubsection.5.42.2.4}%
+\contentsline {subsection}{\numberline {5.42.3}Member Data Documentation}{164}{subsection.5.42.3}%
+\contentsline {subsubsection}{\numberline {5.42.3.1}PROFILE\_NAME}{164}{subsubsection.5.42.3.1}%
+\contentsline {subsubsection}{\numberline {5.42.3.2}CONTROL\_MODE\_MAP}{164}{subsubsection.5.42.3.2}%
+\contentsline {subsubsection}{\numberline {5.42.3.3}ANALOG\_CONTROL\_MAP}{164}{subsubsection.5.42.3.3}%
+\contentsline {subsubsection}{\numberline {5.42.3.4}DIGITAL\_CONTROL\_MAP}{164}{subsubsection.5.42.3.4}%
+\contentsline {section}{\numberline {5.43}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::profiles\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::John\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Profile Class Reference}{165}{section.5.43}%
+\contentsline {subsection}{\numberline {5.43.1}Detailed Description}{165}{subsection.5.43.1}%
+\contentsline {subsection}{\numberline {5.43.2}Member Function Documentation}{166}{subsection.5.43.2}%
+\contentsline {subsubsection}{\numberline {5.43.2.1}getName()}{166}{subsubsection.5.43.2.1}%
+\contentsline {subsubsection}{\numberline {5.43.2.2}getControlMode()}{166}{subsubsection.5.43.2.2}%
+\contentsline {subsubsection}{\numberline {5.43.2.3}getAnalogControlMapping()}{166}{subsubsection.5.43.2.3}%
+\contentsline {subsubsection}{\numberline {5.43.2.4}getDigitalControlMapping()}{167}{subsubsection.5.43.2.4}%
+\contentsline {subsection}{\numberline {5.43.3}Member Data Documentation}{167}{subsection.5.43.3}%
+\contentsline {subsubsection}{\numberline {5.43.3.1}PROFILE\_NAME}{167}{subsubsection.5.43.3.1}%
+\contentsline {subsubsection}{\numberline {5.43.3.2}CONTROL\_MODE\_MAP}{168}{subsubsection.5.43.3.2}%
+\contentsline {subsubsection}{\numberline {5.43.3.3}ANALOG\_CONTROL\_MAP}{168}{subsubsection.5.43.3.3}%
+\contentsline {subsubsection}{\numberline {5.43.3.4}DIGITAL\_CONTROL\_MAP}{168}{subsubsection.5.43.3.4}%
+\contentsline {section}{\numberline {5.44}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::ASubsystem Class Reference}{168}{section.5.44}%
+\contentsline {subsection}{\numberline {5.44.1}Detailed Description}{169}{subsection.5.44.1}%
+\contentsline {subsection}{\numberline {5.44.2}Constructor \& Destructor Documentation}{169}{subsection.5.44.2}%
+\contentsline {subsubsection}{\numberline {5.44.2.1}ASubsystem()\hspace {0.1cm}{\footnotesize \ttfamily [1/3]}}{169}{subsubsection.5.44.2.1}%
+\contentsline {subsubsection}{\numberline {5.44.2.2}ASubsystem()\hspace {0.1cm}{\footnotesize \ttfamily [2/3]}}{170}{subsubsection.5.44.2.2}%
+\contentsline {subsubsection}{\numberline {5.44.2.3}ASubsystem()\hspace {0.1cm}{\footnotesize \ttfamily [3/3]}}{170}{subsubsection.5.44.2.3}%
+\contentsline {subsection}{\numberline {5.44.3}Member Function Documentation}{170}{subsection.5.44.3}%
+\contentsline {subsubsection}{\numberline {5.44.3.1}getName()}{170}{subsubsection.5.44.3.1}%
+\contentsline {subsubsection}{\numberline {5.44.3.2}initialize()}{171}{subsubsection.5.44.3.2}%
+\contentsline {subsubsection}{\numberline {5.44.3.3}run()}{171}{subsubsection.5.44.3.3}%
+\contentsline {subsubsection}{\numberline {5.44.3.4}command()}{171}{subsubsection.5.44.3.4}%
+\contentsline {subsubsection}{\numberline {5.44.3.5}state()}{171}{subsubsection.5.44.3.5}%
+\contentsline {subsubsection}{\numberline {5.44.3.6}operator=()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{172}{subsubsection.5.44.3.6}%
+\contentsline {subsubsection}{\numberline {5.44.3.7}operator=()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{172}{subsubsection.5.44.3.7}%
+\contentsline {subsection}{\numberline {5.44.4}Member Data Documentation}{172}{subsection.5.44.4}%
+\contentsline {subsubsection}{\numberline {5.44.4.1}m\_name}{172}{subsubsection.5.44.4.1}%
+\contentsline {section}{\numberline {5.45}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Robot Class Reference}{172}{section.5.45}%
+\contentsline {subsection}{\numberline {5.45.1}Detailed Description}{173}{subsection.5.45.1}%
+\contentsline {subsection}{\numberline {5.45.2}Member Function Documentation}{173}{subsection.5.45.2}%
+\contentsline {subsubsection}{\numberline {5.45.2.1}addSubsystem()}{173}{subsubsection.5.45.2.1}%
+\contentsline {subsubsection}{\numberline {5.45.2.2}removeSubsystem()}{173}{subsubsection.5.45.2.2}%
+\contentsline {subsubsection}{\numberline {5.45.2.3}initialize()}{174}{subsubsection.5.45.2.3}%
+\contentsline {subsubsection}{\numberline {5.45.2.4}sendCommand()}{174}{subsubsection.5.45.2.4}%
+\contentsline {subsubsection}{\numberline {5.45.2.5}getState()}{175}{subsubsection.5.45.2.5}%
+\contentsline {subsection}{\numberline {5.45.3}Member Data Documentation}{175}{subsection.5.45.3}%
+\contentsline {subsubsection}{\numberline {5.45.3.1}subsystems}{175}{subsubsection.5.45.3.1}%
+\contentsline {section}{\numberline {5.46}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::drive\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Curve\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Velocity\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Profile Class Reference}{176}{section.5.46}%
+\contentsline {subsection}{\numberline {5.46.1}Detailed Description}{176}{subsection.5.46.1}%
+\contentsline {subsection}{\numberline {5.46.2}Constructor \& Destructor Documentation}{177}{subsection.5.46.2}%
+\contentsline {subsubsection}{\numberline {5.46.2.1}CurveVelocityProfile()}{177}{subsubsection.5.46.2.1}%
+\contentsline {subsection}{\numberline {5.46.3}Member Function Documentation}{177}{subsection.5.46.3}%
+\contentsline {subsubsection}{\numberline {5.46.3.1}getAcceleration()}{177}{subsubsection.5.46.3.1}%
+\contentsline {subsubsection}{\numberline {5.46.3.2}setAcceleration()}{178}{subsubsection.5.46.3.2}%
+\contentsline {subsection}{\numberline {5.46.4}Member Data Documentation}{178}{subsection.5.46.4}%
+\contentsline {subsubsection}{\numberline {5.46.4.1}m\_clock}{178}{subsubsection.5.46.4.1}%
+\contentsline {subsubsection}{\numberline {5.46.4.2}m\_jerk\_rate}{178}{subsubsection.5.46.4.2}%
+\contentsline {subsubsection}{\numberline {5.46.4.3}m\_max\_acceleration}{179}{subsubsection.5.46.4.3}%
+\contentsline {subsubsection}{\numberline {5.46.4.4}m\_current\_acceleration}{179}{subsubsection.5.46.4.4}%
+\contentsline {subsubsection}{\numberline {5.46.4.5}last\_time}{179}{subsubsection.5.46.4.5}%
+\contentsline {section}{\numberline {5.47}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::drive\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Differential\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Drive\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Subsystem Class Reference}{179}{section.5.47}%
+\contentsline {subsection}{\numberline {5.47.1}Detailed Description}{180}{subsection.5.47.1}%
+\contentsline {subsection}{\numberline {5.47.2}Constructor \& Destructor Documentation}{180}{subsection.5.47.2}%
+\contentsline {subsubsection}{\numberline {5.47.2.1}DifferentialDriveSubsystem()}{180}{subsubsection.5.47.2.1}%
+\contentsline {subsection}{\numberline {5.47.3}Member Function Documentation}{181}{subsection.5.47.3}%
+\contentsline {subsubsection}{\numberline {5.47.3.1}initialize()}{181}{subsubsection.5.47.3.1}%
+\contentsline {subsubsection}{\numberline {5.47.3.2}run()}{181}{subsubsection.5.47.3.2}%
+\contentsline {subsubsection}{\numberline {5.47.3.3}command()}{181}{subsubsection.5.47.3.3}%
+\contentsline {subsubsection}{\numberline {5.47.3.4}state()}{182}{subsubsection.5.47.3.4}%
+\contentsline {subsection}{\numberline {5.47.4}Member Data Documentation}{182}{subsection.5.47.4}%
+\contentsline {subsubsection}{\numberline {5.47.4.1}SUBSYSTEM\_NAME}{182}{subsubsection.5.47.4.1}%
+\contentsline {subsubsection}{\numberline {5.47.4.2}SET\_VELOCITY\_COMMAND\_NAME}{183}{subsubsection.5.47.4.2}%
+\contentsline {subsubsection}{\numberline {5.47.4.3}SET\_VOLTAGE\_COMMAND\_NAME}{183}{subsubsection.5.47.4.3}%
+\contentsline {subsubsection}{\numberline {5.47.4.4}GET\_VELOCITY\_STATE\_NAME}{183}{subsubsection.5.47.4.4}%
+\contentsline {subsubsection}{\numberline {5.47.4.5}m\_differential\_drive}{183}{subsubsection.5.47.4.5}%
+\contentsline {section}{\numberline {5.48}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::drive\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Direct\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Differential\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Drive Class Reference}{183}{section.5.48}%
+\contentsline {subsection}{\numberline {5.48.1}Detailed Description}{184}{subsection.5.48.1}%
+\contentsline {subsection}{\numberline {5.48.2}Member Function Documentation}{185}{subsection.5.48.2}%
+\contentsline {subsubsection}{\numberline {5.48.2.1}initialize()}{185}{subsubsection.5.48.2.1}%
+\contentsline {subsubsection}{\numberline {5.48.2.2}run()}{185}{subsubsection.5.48.2.2}%
+\contentsline {subsubsection}{\numberline {5.48.2.3}getVelocity()}{185}{subsubsection.5.48.2.3}%
+\contentsline {subsubsection}{\numberline {5.48.2.4}setVelocity()}{185}{subsubsection.5.48.2.4}%
+\contentsline {subsubsection}{\numberline {5.48.2.5}setVoltage()}{186}{subsubsection.5.48.2.5}%
+\contentsline {subsubsection}{\numberline {5.48.2.6}setLeftMotors()}{186}{subsubsection.5.48.2.6}%
+\contentsline {subsubsection}{\numberline {5.48.2.7}setRightMotors()}{186}{subsubsection.5.48.2.7}%
+\contentsline {subsubsection}{\numberline {5.48.2.8}setVelocityToVoltage()}{187}{subsubsection.5.48.2.8}%
+\contentsline {subsubsection}{\numberline {5.48.2.9}setGearRatio()}{187}{subsubsection.5.48.2.9}%
+\contentsline {subsubsection}{\numberline {5.48.2.10}setWheelRadius()}{187}{subsubsection.5.48.2.10}%
+\contentsline {subsection}{\numberline {5.48.3}Member Data Documentation}{188}{subsection.5.48.3}%
+\contentsline {subsubsection}{\numberline {5.48.3.1}m\_left\_motors}{188}{subsubsection.5.48.3.1}%
+\contentsline {subsubsection}{\numberline {5.48.3.2}m\_right\_motors}{188}{subsubsection.5.48.3.2}%
+\contentsline {subsubsection}{\numberline {5.48.3.3}m\_velocity\_to\_voltage}{188}{subsubsection.5.48.3.3}%
+\contentsline {subsubsection}{\numberline {5.48.3.4}m\_gear\_ratio}{188}{subsubsection.5.48.3.4}%
+\contentsline {subsubsection}{\numberline {5.48.3.5}m\_wheel\_radius}{189}{subsubsection.5.48.3.5}%
+\contentsline {section}{\numberline {5.49}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::drive\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Direct\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Differential\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Drive\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Builder Class Reference}{189}{section.5.49}%
+\contentsline {subsection}{\numberline {5.49.1}Detailed Description}{189}{subsection.5.49.1}%
+\contentsline {subsection}{\numberline {5.49.2}Member Function Documentation}{190}{subsection.5.49.2}%
+\contentsline {subsubsection}{\numberline {5.49.2.1}withLeftMotor()}{190}{subsubsection.5.49.2.1}%
+\contentsline {subsubsection}{\numberline {5.49.2.2}withRightMotor()}{190}{subsubsection.5.49.2.2}%
+\contentsline {subsubsection}{\numberline {5.49.2.3}withVelocityToVoltage()}{190}{subsubsection.5.49.2.3}%
+\contentsline {subsubsection}{\numberline {5.49.2.4}withGearRatio()}{191}{subsubsection.5.49.2.4}%
+\contentsline {subsubsection}{\numberline {5.49.2.5}withWheelRadius()}{191}{subsubsection.5.49.2.5}%
+\contentsline {subsubsection}{\numberline {5.49.2.6}build()}{192}{subsubsection.5.49.2.6}%
+\contentsline {subsection}{\numberline {5.49.3}Member Data Documentation}{192}{subsection.5.49.3}%
+\contentsline {subsubsection}{\numberline {5.49.3.1}m\_left\_motors}{192}{subsubsection.5.49.3.1}%
+\contentsline {subsubsection}{\numberline {5.49.3.2}m\_right\_motors}{192}{subsubsection.5.49.3.2}%
+\contentsline {subsubsection}{\numberline {5.49.3.3}m\_velocity\_to\_voltage}{192}{subsubsection.5.49.3.3}%
+\contentsline {subsubsection}{\numberline {5.49.3.4}m\_gear\_ratio}{193}{subsubsection.5.49.3.4}%
+\contentsline {subsubsection}{\numberline {5.49.3.5}m\_wheel\_radius}{193}{subsubsection.5.49.3.5}%
+\contentsline {section}{\numberline {5.50}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::drive\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::IDifferential\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Drive Class Reference}{193}{section.5.50}%
+\contentsline {subsection}{\numberline {5.50.1}Detailed Description}{194}{subsection.5.50.1}%
+\contentsline {subsection}{\numberline {5.50.2}Member Function Documentation}{194}{subsection.5.50.2}%
+\contentsline {subsubsection}{\numberline {5.50.2.1}initialize()}{194}{subsubsection.5.50.2.1}%
+\contentsline {subsubsection}{\numberline {5.50.2.2}run()}{194}{subsubsection.5.50.2.2}%
+\contentsline {subsubsection}{\numberline {5.50.2.3}getVelocity()}{194}{subsubsection.5.50.2.3}%
+\contentsline {subsubsection}{\numberline {5.50.2.4}setVelocity()}{194}{subsubsection.5.50.2.4}%
+\contentsline {subsubsection}{\numberline {5.50.2.5}setVoltage()}{195}{subsubsection.5.50.2.5}%
+\contentsline {section}{\numberline {5.51}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::drive\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::IVelocity\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Profile Class Reference}{195}{section.5.51}%
+\contentsline {subsection}{\numberline {5.51.1}Detailed Description}{195}{subsection.5.51.1}%
+\contentsline {subsection}{\numberline {5.51.2}Member Function Documentation}{196}{subsection.5.51.2}%
+\contentsline {subsubsection}{\numberline {5.51.2.1}getAcceleration()}{196}{subsubsection.5.51.2.1}%
+\contentsline {subsubsection}{\numberline {5.51.2.2}setAcceleration()}{196}{subsubsection.5.51.2.2}%
+\contentsline {section}{\numberline {5.52}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::drive\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Kinematic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Differential\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Drive Class Reference}{196}{section.5.52}%
+\contentsline {subsection}{\numberline {5.52.1}Detailed Description}{199}{subsection.5.52.1}%
+\contentsline {subsection}{\numberline {5.52.2}Member Function Documentation}{199}{subsection.5.52.2}%
+\contentsline {subsubsection}{\numberline {5.52.2.1}taskLoop()}{199}{subsubsection.5.52.2.1}%
+\contentsline {subsubsection}{\numberline {5.52.2.2}taskUpdate()}{199}{subsubsection.5.52.2.2}%
+\contentsline {subsubsection}{\numberline {5.52.2.3}updateAcceleration()}{200}{subsubsection.5.52.2.3}%
+\contentsline {subsubsection}{\numberline {5.52.2.4}initialize()}{200}{subsubsection.5.52.2.4}%
+\contentsline {subsubsection}{\numberline {5.52.2.5}run()}{201}{subsubsection.5.52.2.5}%
+\contentsline {subsubsection}{\numberline {5.52.2.6}getVelocity()}{201}{subsubsection.5.52.2.6}%
+\contentsline {subsubsection}{\numberline {5.52.2.7}setVelocity()}{201}{subsubsection.5.52.2.7}%
+\contentsline {subsubsection}{\numberline {5.52.2.8}setVoltage()}{202}{subsubsection.5.52.2.8}%
+\contentsline {subsubsection}{\numberline {5.52.2.9}setDelayer()}{202}{subsubsection.5.52.2.9}%
+\contentsline {subsubsection}{\numberline {5.52.2.10}setMutex()}{202}{subsubsection.5.52.2.10}%
+\contentsline {subsubsection}{\numberline {5.52.2.11}setTask()}{203}{subsubsection.5.52.2.11}%
+\contentsline {subsubsection}{\numberline {5.52.2.12}setVelocityProfiles()}{203}{subsubsection.5.52.2.12}%
+\contentsline {subsubsection}{\numberline {5.52.2.13}setLeftMotors()}{203}{subsubsection.5.52.2.13}%
+\contentsline {subsubsection}{\numberline {5.52.2.14}setRightMotors()}{204}{subsubsection.5.52.2.14}%
+\contentsline {subsubsection}{\numberline {5.52.2.15}setMass()}{204}{subsubsection.5.52.2.15}%
+\contentsline {subsubsection}{\numberline {5.52.2.16}setRadius()}{204}{subsubsection.5.52.2.16}%
+\contentsline {subsubsection}{\numberline {5.52.2.17}setMomentOfInertia()}{205}{subsubsection.5.52.2.17}%
+\contentsline {subsubsection}{\numberline {5.52.2.18}setGearRatio()}{205}{subsubsection.5.52.2.18}%
+\contentsline {subsubsection}{\numberline {5.52.2.19}setWheelRadius()}{205}{subsubsection.5.52.2.19}%
+\contentsline {subsection}{\numberline {5.52.3}Member Data Documentation}{206}{subsection.5.52.3}%
+\contentsline {subsubsection}{\numberline {5.52.3.1}TASK\_DELAY}{206}{subsubsection.5.52.3.1}%
+\contentsline {subsubsection}{\numberline {5.52.3.2}m\_delayer}{206}{subsubsection.5.52.3.2}%
+\contentsline {subsubsection}{\numberline {5.52.3.3}m\_mutex}{206}{subsubsection.5.52.3.3}%
+\contentsline {subsubsection}{\numberline {5.52.3.4}m\_task}{206}{subsubsection.5.52.3.4}%
+\contentsline {subsubsection}{\numberline {5.52.3.5}m\_left\_velocity\_profile}{206}{subsubsection.5.52.3.5}%
+\contentsline {subsubsection}{\numberline {5.52.3.6}m\_right\_velocity\_profile}{207}{subsubsection.5.52.3.6}%
+\contentsline {subsubsection}{\numberline {5.52.3.7}m\_left\_motors}{207}{subsubsection.5.52.3.7}%
+\contentsline {subsubsection}{\numberline {5.52.3.8}m\_right\_motors}{207}{subsubsection.5.52.3.8}%
+\contentsline {subsubsection}{\numberline {5.52.3.9}m\_mass}{207}{subsubsection.5.52.3.9}%
+\contentsline {subsubsection}{\numberline {5.52.3.10}m\_radius}{207}{subsubsection.5.52.3.10}%
+\contentsline {subsubsection}{\numberline {5.52.3.11}m\_moment\_of\_inertia}{208}{subsubsection.5.52.3.11}%
+\contentsline {subsubsection}{\numberline {5.52.3.12}m\_gear\_ratio}{208}{subsubsection.5.52.3.12}%
+\contentsline {subsubsection}{\numberline {5.52.3.13}m\_wheel\_radius}{208}{subsubsection.5.52.3.13}%
+\contentsline {subsubsection}{\numberline {5.52.3.14}c1}{208}{subsubsection.5.52.3.14}%
+\contentsline {subsubsection}{\numberline {5.52.3.15}c2}{208}{subsubsection.5.52.3.15}%
+\contentsline {subsubsection}{\numberline {5.52.3.16}c3}{208}{subsubsection.5.52.3.16}%
+\contentsline {subsubsection}{\numberline {5.52.3.17}c4}{209}{subsubsection.5.52.3.17}%
+\contentsline {subsubsection}{\numberline {5.52.3.18}c5}{209}{subsubsection.5.52.3.18}%
+\contentsline {subsubsection}{\numberline {5.52.3.19}c6}{209}{subsubsection.5.52.3.19}%
+\contentsline {subsubsection}{\numberline {5.52.3.20}c7}{209}{subsubsection.5.52.3.20}%
+\contentsline {subsubsection}{\numberline {5.52.3.21}m\_velocity}{209}{subsubsection.5.52.3.21}%
+\contentsline {section}{\numberline {5.53}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::drive\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Kinematic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Differential\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Drive\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Builder Class Reference}{209}{section.5.53}%
+\contentsline {subsection}{\numberline {5.53.1}Detailed Description}{211}{subsection.5.53.1}%
+\contentsline {subsection}{\numberline {5.53.2}Member Function Documentation}{211}{subsection.5.53.2}%
+\contentsline {subsubsection}{\numberline {5.53.2.1}withDelayer()}{211}{subsubsection.5.53.2.1}%
+\contentsline {subsubsection}{\numberline {5.53.2.2}withMutex()}{211}{subsubsection.5.53.2.2}%
+\contentsline {subsubsection}{\numberline {5.53.2.3}withTask()}{212}{subsubsection.5.53.2.3}%
+\contentsline {subsubsection}{\numberline {5.53.2.4}withLeftVelocityProfile()}{212}{subsubsection.5.53.2.4}%
+\contentsline {subsubsection}{\numberline {5.53.2.5}withRightVelocityProfile()}{213}{subsubsection.5.53.2.5}%
+\contentsline {subsubsection}{\numberline {5.53.2.6}withLeftMotor()}{213}{subsubsection.5.53.2.6}%
+\contentsline {subsubsection}{\numberline {5.53.2.7}withRightMotor()}{213}{subsubsection.5.53.2.7}%
+\contentsline {subsubsection}{\numberline {5.53.2.8}withMass()}{214}{subsubsection.5.53.2.8}%
+\contentsline {subsubsection}{\numberline {5.53.2.9}withRadius()}{214}{subsubsection.5.53.2.9}%
+\contentsline {subsubsection}{\numberline {5.53.2.10}withMomentOfInertia()}{215}{subsubsection.5.53.2.10}%
+\contentsline {subsubsection}{\numberline {5.53.2.11}withGearRatio()}{215}{subsubsection.5.53.2.11}%
+\contentsline {subsubsection}{\numberline {5.53.2.12}withWheelRadius()}{216}{subsubsection.5.53.2.12}%
+\contentsline {subsubsection}{\numberline {5.53.2.13}build()}{216}{subsubsection.5.53.2.13}%
+\contentsline {subsection}{\numberline {5.53.3}Member Data Documentation}{216}{subsection.5.53.3}%
+\contentsline {subsubsection}{\numberline {5.53.3.1}m\_delayer}{216}{subsubsection.5.53.3.1}%
+\contentsline {subsubsection}{\numberline {5.53.3.2}m\_mutex}{217}{subsubsection.5.53.3.2}%
+\contentsline {subsubsection}{\numberline {5.53.3.3}m\_task}{217}{subsubsection.5.53.3.3}%
+\contentsline {subsubsection}{\numberline {5.53.3.4}m\_left\_velocity\_profile}{217}{subsubsection.5.53.3.4}%
+\contentsline {subsubsection}{\numberline {5.53.3.5}m\_right\_velocity\_profile}{217}{subsubsection.5.53.3.5}%
+\contentsline {subsubsection}{\numberline {5.53.3.6}m\_left\_motors}{217}{subsubsection.5.53.3.6}%
+\contentsline {subsubsection}{\numberline {5.53.3.7}m\_right\_motors}{218}{subsubsection.5.53.3.7}%
+\contentsline {subsubsection}{\numberline {5.53.3.8}m\_mass}{218}{subsubsection.5.53.3.8}%
+\contentsline {subsubsection}{\numberline {5.53.3.9}m\_radius}{218}{subsubsection.5.53.3.9}%
+\contentsline {subsubsection}{\numberline {5.53.3.10}m\_moment\_of\_inertia}{218}{subsubsection.5.53.3.10}%
+\contentsline {subsubsection}{\numberline {5.53.3.11}m\_gear\_ratio}{218}{subsubsection.5.53.3.11}%
+\contentsline {subsubsection}{\numberline {5.53.3.12}m\_wheel\_radius}{219}{subsubsection.5.53.3.12}%
+\contentsline {section}{\numberline {5.54}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::drive\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Velocity Struct Reference}{219}{section.5.54}%
+\contentsline {subsection}{\numberline {5.54.1}Detailed Description}{219}{subsection.5.54.1}%
+\contentsline {subsection}{\numberline {5.54.2}Member Data Documentation}{219}{subsection.5.54.2}%
+\contentsline {subsubsection}{\numberline {5.54.2.1}left\_velocity}{219}{subsubsection.5.54.2.1}%
+\contentsline {subsubsection}{\numberline {5.54.2.2}right\_velocity}{219}{subsubsection.5.54.2.2}%
+\contentsline {section}{\numberline {5.55}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::elevator\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Elevator\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Subsystem Class Reference}{220}{section.5.55}%
+\contentsline {subsection}{\numberline {5.55.1}Detailed Description}{221}{subsection.5.55.1}%
+\contentsline {subsection}{\numberline {5.55.2}Constructor \& Destructor Documentation}{221}{subsection.5.55.2}%
+\contentsline {subsubsection}{\numberline {5.55.2.1}ElevatorSubsystem()}{221}{subsubsection.5.55.2.1}%
+\contentsline {subsection}{\numberline {5.55.3}Member Function Documentation}{221}{subsection.5.55.3}%
+\contentsline {subsubsection}{\numberline {5.55.3.1}initialize()}{221}{subsubsection.5.55.3.1}%
+\contentsline {subsubsection}{\numberline {5.55.3.2}run()}{222}{subsubsection.5.55.3.2}%
+\contentsline {subsubsection}{\numberline {5.55.3.3}command()}{222}{subsubsection.5.55.3.3}%
+\contentsline {subsubsection}{\numberline {5.55.3.4}state()}{222}{subsubsection.5.55.3.4}%
+\contentsline {subsection}{\numberline {5.55.4}Member Data Documentation}{223}{subsection.5.55.4}%
+\contentsline {subsubsection}{\numberline {5.55.4.1}SUBSYSTEM\_NAME}{223}{subsubsection.5.55.4.1}%
+\contentsline {subsubsection}{\numberline {5.55.4.2}SET\_POSITION\_COMMAND\_NAME}{223}{subsubsection.5.55.4.2}%
+\contentsline {subsubsection}{\numberline {5.55.4.3}GET\_POSITION\_STATE\_NAME}{223}{subsubsection.5.55.4.3}%
+\contentsline {subsubsection}{\numberline {5.55.4.4}m\_elevator}{223}{subsubsection.5.55.4.4}%
+\contentsline {section}{\numberline {5.56}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::elevator\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::IElevator Class Reference}{224}{section.5.56}%
+\contentsline {subsection}{\numberline {5.56.1}Detailed Description}{224}{subsection.5.56.1}%
+\contentsline {subsection}{\numberline {5.56.2}Member Function Documentation}{224}{subsection.5.56.2}%
+\contentsline {subsubsection}{\numberline {5.56.2.1}initialize()}{224}{subsubsection.5.56.2.1}%
+\contentsline {subsubsection}{\numberline {5.56.2.2}run()}{225}{subsubsection.5.56.2.2}%
+\contentsline {subsubsection}{\numberline {5.56.2.3}getPosition()}{225}{subsubsection.5.56.2.3}%
+\contentsline {subsubsection}{\numberline {5.56.2.4}setPosition()}{225}{subsubsection.5.56.2.4}%
+\contentsline {section}{\numberline {5.57}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::elevator\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::PIDElevator Class Reference}{225}{section.5.57}%
+\contentsline {subsection}{\numberline {5.57.1}Detailed Description}{227}{subsection.5.57.1}%
+\contentsline {subsection}{\numberline {5.57.2}Member Function Documentation}{227}{subsection.5.57.2}%
+\contentsline {subsubsection}{\numberline {5.57.2.1}taskLoop()}{227}{subsubsection.5.57.2.1}%
+\contentsline {subsubsection}{\numberline {5.57.2.2}taskUpdate()}{228}{subsubsection.5.57.2.2}%
+\contentsline {subsubsection}{\numberline {5.57.2.3}updatePosition()}{228}{subsubsection.5.57.2.3}%
+\contentsline {subsubsection}{\numberline {5.57.2.4}initialize()}{228}{subsubsection.5.57.2.4}%
+\contentsline {subsubsection}{\numberline {5.57.2.5}run()}{229}{subsubsection.5.57.2.5}%
+\contentsline {subsubsection}{\numberline {5.57.2.6}getPosition()}{229}{subsubsection.5.57.2.6}%
+\contentsline {subsubsection}{\numberline {5.57.2.7}setPosition()}{229}{subsubsection.5.57.2.7}%
+\contentsline {subsubsection}{\numberline {5.57.2.8}setClock()}{230}{subsubsection.5.57.2.8}%
+\contentsline {subsubsection}{\numberline {5.57.2.9}setDelayer()}{230}{subsubsection.5.57.2.9}%
+\contentsline {subsubsection}{\numberline {5.57.2.10}setMutex()}{230}{subsubsection.5.57.2.10}%
+\contentsline {subsubsection}{\numberline {5.57.2.11}setTask()}{231}{subsubsection.5.57.2.11}%
+\contentsline {subsubsection}{\numberline {5.57.2.12}setPID()}{231}{subsubsection.5.57.2.12}%
+\contentsline {subsubsection}{\numberline {5.57.2.13}setMotors()}{231}{subsubsection.5.57.2.13}%
+\contentsline {subsubsection}{\numberline {5.57.2.14}setRotationSensor()}{232}{subsubsection.5.57.2.14}%
+\contentsline {subsubsection}{\numberline {5.57.2.15}setInchesPerRadian()}{232}{subsubsection.5.57.2.15}%
+\contentsline {subsection}{\numberline {5.57.3}Member Data Documentation}{232}{subsection.5.57.3}%
+\contentsline {subsubsection}{\numberline {5.57.3.1}TASK\_DELAY}{232}{subsubsection.5.57.3.1}%
+\contentsline {subsubsection}{\numberline {5.57.3.2}m\_clock}{232}{subsubsection.5.57.3.2}%
+\contentsline {subsubsection}{\numberline {5.57.3.3}m\_delayer}{233}{subsubsection.5.57.3.3}%
+\contentsline {subsubsection}{\numberline {5.57.3.4}m\_mutex}{233}{subsubsection.5.57.3.4}%
+\contentsline {subsubsection}{\numberline {5.57.3.5}m\_task}{233}{subsubsection.5.57.3.5}%
+\contentsline {subsubsection}{\numberline {5.57.3.6}m\_pid}{233}{subsubsection.5.57.3.6}%
+\contentsline {subsubsection}{\numberline {5.57.3.7}m\_motors}{233}{subsubsection.5.57.3.7}%
+\contentsline {subsubsection}{\numberline {5.57.3.8}m\_rotation\_sensor}{234}{subsubsection.5.57.3.8}%
+\contentsline {subsubsection}{\numberline {5.57.3.9}m\_inches\_per\_radian}{234}{subsubsection.5.57.3.9}%
+\contentsline {subsubsection}{\numberline {5.57.3.10}m\_position}{234}{subsubsection.5.57.3.10}%
+\contentsline {section}{\numberline {5.58}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::elevator\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::PIDElevator\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Builder Class Reference}{234}{section.5.58}%
+\contentsline {subsection}{\numberline {5.58.1}Detailed Description}{235}{subsection.5.58.1}%
+\contentsline {subsection}{\numberline {5.58.2}Member Function Documentation}{235}{subsection.5.58.2}%
+\contentsline {subsubsection}{\numberline {5.58.2.1}withClock()}{235}{subsubsection.5.58.2.1}%
+\contentsline {subsubsection}{\numberline {5.58.2.2}withDelayer()}{236}{subsubsection.5.58.2.2}%
+\contentsline {subsubsection}{\numberline {5.58.2.3}withMutex()}{236}{subsubsection.5.58.2.3}%
+\contentsline {subsubsection}{\numberline {5.58.2.4}withTask()}{236}{subsubsection.5.58.2.4}%
+\contentsline {subsubsection}{\numberline {5.58.2.5}withPID()}{237}{subsubsection.5.58.2.5}%
+\contentsline {subsubsection}{\numberline {5.58.2.6}withMotor()}{237}{subsubsection.5.58.2.6}%
+\contentsline {subsubsection}{\numberline {5.58.2.7}withRotationSensor()}{238}{subsubsection.5.58.2.7}%
+\contentsline {subsubsection}{\numberline {5.58.2.8}withInchesPerRadian()}{238}{subsubsection.5.58.2.8}%
+\contentsline {subsubsection}{\numberline {5.58.2.9}build()}{238}{subsubsection.5.58.2.9}%
+\contentsline {subsection}{\numberline {5.58.3}Member Data Documentation}{239}{subsection.5.58.3}%
+\contentsline {subsubsection}{\numberline {5.58.3.1}m\_clock}{239}{subsubsection.5.58.3.1}%
+\contentsline {subsubsection}{\numberline {5.58.3.2}m\_delayer}{239}{subsubsection.5.58.3.2}%
+\contentsline {subsubsection}{\numberline {5.58.3.3}m\_mutex}{239}{subsubsection.5.58.3.3}%
+\contentsline {subsubsection}{\numberline {5.58.3.4}m\_task}{239}{subsubsection.5.58.3.4}%
+\contentsline {subsubsection}{\numberline {5.58.3.5}m\_pid}{240}{subsubsection.5.58.3.5}%
+\contentsline {subsubsection}{\numberline {5.58.3.6}m\_motors}{240}{subsubsection.5.58.3.6}%
+\contentsline {subsubsection}{\numberline {5.58.3.7}m\_rotation\_sensor}{240}{subsubsection.5.58.3.7}%
+\contentsline {subsubsection}{\numberline {5.58.3.8}m\_inches\_per\_radian}{240}{subsubsection.5.58.3.8}%
+\contentsline {section}{\numberline {5.59}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::intake\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::IIntake Class Reference}{240}{section.5.59}%
+\contentsline {subsection}{\numberline {5.59.1}Detailed Description}{241}{subsection.5.59.1}%
+\contentsline {subsection}{\numberline {5.59.2}Member Function Documentation}{241}{subsection.5.59.2}%
+\contentsline {subsubsection}{\numberline {5.59.2.1}initialize()}{241}{subsubsection.5.59.2.1}%
+\contentsline {subsubsection}{\numberline {5.59.2.2}run()}{241}{subsubsection.5.59.2.2}%
+\contentsline {subsubsection}{\numberline {5.59.2.3}getVelocity()}{241}{subsubsection.5.59.2.3}%
+\contentsline {subsubsection}{\numberline {5.59.2.4}setVelocity()}{241}{subsubsection.5.59.2.4}%
+\contentsline {subsubsection}{\numberline {5.59.2.5}setVoltage()}{242}{subsubsection.5.59.2.5}%
+\contentsline {section}{\numberline {5.60}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::intake\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Intake\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Subsystem Class Reference}{242}{section.5.60}%
+\contentsline {subsection}{\numberline {5.60.1}Detailed Description}{243}{subsection.5.60.1}%
+\contentsline {subsection}{\numberline {5.60.2}Constructor \& Destructor Documentation}{243}{subsection.5.60.2}%
+\contentsline {subsubsection}{\numberline {5.60.2.1}IntakeSubsystem()}{243}{subsubsection.5.60.2.1}%
+\contentsline {subsection}{\numberline {5.60.3}Member Function Documentation}{244}{subsection.5.60.3}%
+\contentsline {subsubsection}{\numberline {5.60.3.1}initialize()}{244}{subsubsection.5.60.3.1}%
+\contentsline {subsubsection}{\numberline {5.60.3.2}run()}{244}{subsubsection.5.60.3.2}%
+\contentsline {subsubsection}{\numberline {5.60.3.3}command()}{244}{subsubsection.5.60.3.3}%
+\contentsline {subsubsection}{\numberline {5.60.3.4}state()}{245}{subsubsection.5.60.3.4}%
+\contentsline {subsection}{\numberline {5.60.4}Member Data Documentation}{245}{subsection.5.60.4}%
+\contentsline {subsubsection}{\numberline {5.60.4.1}SUBSYSTEM\_NAME}{245}{subsubsection.5.60.4.1}%
+\contentsline {subsubsection}{\numberline {5.60.4.2}SET\_VELOCITY\_COMMAND\_NAME}{246}{subsubsection.5.60.4.2}%
+\contentsline {subsubsection}{\numberline {5.60.4.3}SET\_VOLTAGE\_COMMAND\_NAME}{246}{subsubsection.5.60.4.3}%
+\contentsline {subsubsection}{\numberline {5.60.4.4}GET\_VELOCITY\_STATE\_NAME}{246}{subsubsection.5.60.4.4}%
+\contentsline {subsubsection}{\numberline {5.60.4.5}m\_intake}{246}{subsubsection.5.60.4.5}%
+\contentsline {section}{\numberline {5.61}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::intake\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::PIDIntake Class Reference}{246}{section.5.61}%
+\contentsline {subsection}{\numberline {5.61.1}Detailed Description}{248}{subsection.5.61.1}%
+\contentsline {subsection}{\numberline {5.61.2}Member Function Documentation}{248}{subsection.5.61.2}%
+\contentsline {subsubsection}{\numberline {5.61.2.1}taskLoop()}{248}{subsubsection.5.61.2.1}%
+\contentsline {subsubsection}{\numberline {5.61.2.2}taskUpdate()}{249}{subsubsection.5.61.2.2}%
+\contentsline {subsubsection}{\numberline {5.61.2.3}updateVelocity()}{249}{subsubsection.5.61.2.3}%
+\contentsline {subsubsection}{\numberline {5.61.2.4}initialize()}{249}{subsubsection.5.61.2.4}%
+\contentsline {subsubsection}{\numberline {5.61.2.5}run()}{250}{subsubsection.5.61.2.5}%
+\contentsline {subsubsection}{\numberline {5.61.2.6}getVelocity()}{250}{subsubsection.5.61.2.6}%
+\contentsline {subsubsection}{\numberline {5.61.2.7}setVelocity()}{250}{subsubsection.5.61.2.7}%
+\contentsline {subsubsection}{\numberline {5.61.2.8}setVoltage()}{251}{subsubsection.5.61.2.8}%
+\contentsline {subsubsection}{\numberline {5.61.2.9}setClock()}{251}{subsubsection.5.61.2.9}%
+\contentsline {subsubsection}{\numberline {5.61.2.10}setDelayer()}{251}{subsubsection.5.61.2.10}%
+\contentsline {subsubsection}{\numberline {5.61.2.11}setMutex()}{252}{subsubsection.5.61.2.11}%
+\contentsline {subsubsection}{\numberline {5.61.2.12}setTask()}{252}{subsubsection.5.61.2.12}%
+\contentsline {subsubsection}{\numberline {5.61.2.13}setPID()}{252}{subsubsection.5.61.2.13}%
+\contentsline {subsubsection}{\numberline {5.61.2.14}setMotors()}{253}{subsubsection.5.61.2.14}%
+\contentsline {subsubsection}{\numberline {5.61.2.15}setRollerRadius()}{253}{subsubsection.5.61.2.15}%
+\contentsline {subsection}{\numberline {5.61.3}Member Data Documentation}{253}{subsection.5.61.3}%
+\contentsline {subsubsection}{\numberline {5.61.3.1}TASK\_DELAY}{253}{subsubsection.5.61.3.1}%
+\contentsline {subsubsection}{\numberline {5.61.3.2}m\_clock}{253}{subsubsection.5.61.3.2}%
+\contentsline {subsubsection}{\numberline {5.61.3.3}m\_delayer}{254}{subsubsection.5.61.3.3}%
+\contentsline {subsubsection}{\numberline {5.61.3.4}m\_mutex}{254}{subsubsection.5.61.3.4}%
+\contentsline {subsubsection}{\numberline {5.61.3.5}m\_task}{254}{subsubsection.5.61.3.5}%
+\contentsline {subsubsection}{\numberline {5.61.3.6}m\_pid}{254}{subsubsection.5.61.3.6}%
+\contentsline {subsubsection}{\numberline {5.61.3.7}m\_motors}{254}{subsubsection.5.61.3.7}%
+\contentsline {subsubsection}{\numberline {5.61.3.8}m\_roller\_radius}{254}{subsubsection.5.61.3.8}%
+\contentsline {subsubsection}{\numberline {5.61.3.9}m\_velocity}{255}{subsubsection.5.61.3.9}%
+\contentsline {subsubsection}{\numberline {5.61.3.10}velocity\_control}{255}{subsubsection.5.61.3.10}%
+\contentsline {section}{\numberline {5.62}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::intake\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::PIDIntake\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Builder Class Reference}{255}{section.5.62}%
+\contentsline {subsection}{\numberline {5.62.1}Detailed Description}{256}{subsection.5.62.1}%
+\contentsline {subsection}{\numberline {5.62.2}Member Function Documentation}{256}{subsection.5.62.2}%
+\contentsline {subsubsection}{\numberline {5.62.2.1}withClock()}{256}{subsubsection.5.62.2.1}%
+\contentsline {subsubsection}{\numberline {5.62.2.2}withDelayer()}{257}{subsubsection.5.62.2.2}%
+\contentsline {subsubsection}{\numberline {5.62.2.3}withMutex()}{257}{subsubsection.5.62.2.3}%
+\contentsline {subsubsection}{\numberline {5.62.2.4}withTask()}{257}{subsubsection.5.62.2.4}%
+\contentsline {subsubsection}{\numberline {5.62.2.5}withPID()}{258}{subsubsection.5.62.2.5}%
+\contentsline {subsubsection}{\numberline {5.62.2.6}withMotor()}{258}{subsubsection.5.62.2.6}%
+\contentsline {subsubsection}{\numberline {5.62.2.7}withRollerRadius()}{259}{subsubsection.5.62.2.7}%
+\contentsline {subsubsection}{\numberline {5.62.2.8}build()}{259}{subsubsection.5.62.2.8}%
+\contentsline {subsection}{\numberline {5.62.3}Member Data Documentation}{259}{subsection.5.62.3}%
+\contentsline {subsubsection}{\numberline {5.62.3.1}m\_clock}{259}{subsubsection.5.62.3.1}%
+\contentsline {subsubsection}{\numberline {5.62.3.2}m\_delayer}{260}{subsubsection.5.62.3.2}%
+\contentsline {subsubsection}{\numberline {5.62.3.3}m\_mutex}{260}{subsubsection.5.62.3.3}%
+\contentsline {subsubsection}{\numberline {5.62.3.4}m\_task}{260}{subsubsection.5.62.3.4}%
+\contentsline {subsubsection}{\numberline {5.62.3.5}m\_pid}{260}{subsubsection.5.62.3.5}%
+\contentsline {subsubsection}{\numberline {5.62.3.6}m\_motors}{260}{subsubsection.5.62.3.6}%
+\contentsline {subsubsection}{\numberline {5.62.3.7}m\_roller\_radius}{261}{subsubsection.5.62.3.7}%
+\contentsline {section}{\numberline {5.63}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Inertial\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Odometry Class Reference}{261}{section.5.63}%
+\contentsline {subsection}{\numberline {5.63.1}Detailed Description}{263}{subsection.5.63.1}%
+\contentsline {subsection}{\numberline {5.63.2}Member Function Documentation}{263}{subsection.5.63.2}%
+\contentsline {subsubsection}{\numberline {5.63.2.1}taskLoop()}{263}{subsubsection.5.63.2.1}%
+\contentsline {subsubsection}{\numberline {5.63.2.2}taskUpdate()}{263}{subsubsection.5.63.2.2}%
+\contentsline {subsubsection}{\numberline {5.63.2.3}updatePosition()}{264}{subsubsection.5.63.2.3}%
+\contentsline {subsubsection}{\numberline {5.63.2.4}initialize()}{264}{subsubsection.5.63.2.4}%
+\contentsline {subsubsection}{\numberline {5.63.2.5}run()}{265}{subsubsection.5.63.2.5}%
+\contentsline {subsubsection}{\numberline {5.63.2.6}setPosition()}{265}{subsubsection.5.63.2.6}%
+\contentsline {subsubsection}{\numberline {5.63.2.7}getPosition()}{266}{subsubsection.5.63.2.7}%
+\contentsline {subsubsection}{\numberline {5.63.2.8}setClock()}{266}{subsubsection.5.63.2.8}%
+\contentsline {subsubsection}{\numberline {5.63.2.9}setDelayer()}{266}{subsubsection.5.63.2.9}%
+\contentsline {subsubsection}{\numberline {5.63.2.10}setMutex()}{267}{subsubsection.5.63.2.10}%
+\contentsline {subsubsection}{\numberline {5.63.2.11}setTask()}{267}{subsubsection.5.63.2.11}%
+\contentsline {subsubsection}{\numberline {5.63.2.12}setHeadingSensor()}{267}{subsubsection.5.63.2.12}%
+\contentsline {subsubsection}{\numberline {5.63.2.13}setLinearDistanceTrackingSensor()}{267}{subsubsection.5.63.2.13}%
+\contentsline {subsubsection}{\numberline {5.63.2.14}setLinearDistanceTrackingOffset()}{268}{subsubsection.5.63.2.14}%
+\contentsline {subsubsection}{\numberline {5.63.2.15}setStrafeDistanceTrackingSensor()}{268}{subsubsection.5.63.2.15}%
+\contentsline {subsubsection}{\numberline {5.63.2.16}setStrafeDistanceTrackingOffset()}{268}{subsubsection.5.63.2.16}%
+\contentsline {subsection}{\numberline {5.63.3}Member Data Documentation}{269}{subsection.5.63.3}%
+\contentsline {subsubsection}{\numberline {5.63.3.1}TASK\_DELAY}{269}{subsubsection.5.63.3.1}%
+\contentsline {subsubsection}{\numberline {5.63.3.2}TIME\_UNIT\_CONVERTER}{269}{subsubsection.5.63.3.2}%
+\contentsline {subsubsection}{\numberline {5.63.3.3}m\_clock}{269}{subsubsection.5.63.3.3}%
+\contentsline {subsubsection}{\numberline {5.63.3.4}m\_delayer}{269}{subsubsection.5.63.3.4}%
+\contentsline {subsubsection}{\numberline {5.63.3.5}m\_mutex}{270}{subsubsection.5.63.3.5}%
+\contentsline {subsubsection}{\numberline {5.63.3.6}m\_task}{270}{subsubsection.5.63.3.6}%
+\contentsline {subsubsection}{\numberline {5.63.3.7}m\_heading\_sensor}{270}{subsubsection.5.63.3.7}%
+\contentsline {subsubsection}{\numberline {5.63.3.8}m\_linear\_distance\_tracking\_sensor}{270}{subsubsection.5.63.3.8}%
+\contentsline {subsubsection}{\numberline {5.63.3.9}m\_linear\_distance\_tracking\_offset}{270}{subsubsection.5.63.3.9}%
+\contentsline {subsubsection}{\numberline {5.63.3.10}m\_strafe\_distance\_tracking\_sensor}{271}{subsubsection.5.63.3.10}%
+\contentsline {subsubsection}{\numberline {5.63.3.11}m\_strafe\_distance\_tracking\_offset}{271}{subsubsection.5.63.3.11}%
+\contentsline {subsubsection}{\numberline {5.63.3.12}m\_position}{271}{subsubsection.5.63.3.12}%
+\contentsline {subsubsection}{\numberline {5.63.3.13}last\_heading}{271}{subsubsection.5.63.3.13}%
+\contentsline {subsubsection}{\numberline {5.63.3.14}last\_linear\_distance}{271}{subsubsection.5.63.3.14}%
+\contentsline {subsubsection}{\numberline {5.63.3.15}last\_strafe\_distance}{272}{subsubsection.5.63.3.15}%
+\contentsline {subsubsection}{\numberline {5.63.3.16}last\_time}{272}{subsubsection.5.63.3.16}%
+\contentsline {section}{\numberline {5.64}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Inertial\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Odometry\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Builder Class Reference}{272}{section.5.64}%
+\contentsline {subsection}{\numberline {5.64.1}Detailed Description}{273}{subsection.5.64.1}%
+\contentsline {subsection}{\numberline {5.64.2}Member Function Documentation}{273}{subsection.5.64.2}%
+\contentsline {subsubsection}{\numberline {5.64.2.1}withClock()}{273}{subsubsection.5.64.2.1}%
+\contentsline {subsubsection}{\numberline {5.64.2.2}withDelayer()}{274}{subsubsection.5.64.2.2}%
+\contentsline {subsubsection}{\numberline {5.64.2.3}withMutex()}{274}{subsubsection.5.64.2.3}%
+\contentsline {subsubsection}{\numberline {5.64.2.4}withTask()}{275}{subsubsection.5.64.2.4}%
+\contentsline {subsubsection}{\numberline {5.64.2.5}withHeadingSensor()}{275}{subsubsection.5.64.2.5}%
+\contentsline {subsubsection}{\numberline {5.64.2.6}withLinearDistanceTrackingSensor()}{275}{subsubsection.5.64.2.6}%
+\contentsline {subsubsection}{\numberline {5.64.2.7}withLinearDistanceTrackingOffset()}{276}{subsubsection.5.64.2.7}%
+\contentsline {subsubsection}{\numberline {5.64.2.8}withStrafeDistanceTrackingSensor()}{276}{subsubsection.5.64.2.8}%
+\contentsline {subsubsection}{\numberline {5.64.2.9}withStrafeDistanceTrackingOffset()}{277}{subsubsection.5.64.2.9}%
+\contentsline {subsubsection}{\numberline {5.64.2.10}build()}{277}{subsubsection.5.64.2.10}%
+\contentsline {subsection}{\numberline {5.64.3}Member Data Documentation}{278}{subsection.5.64.3}%
+\contentsline {subsubsection}{\numberline {5.64.3.1}m\_clock}{278}{subsubsection.5.64.3.1}%
+\contentsline {subsubsection}{\numberline {5.64.3.2}m\_delayer}{278}{subsubsection.5.64.3.2}%
+\contentsline {subsubsection}{\numberline {5.64.3.3}m\_mutex}{278}{subsubsection.5.64.3.3}%
+\contentsline {subsubsection}{\numberline {5.64.3.4}m\_task}{278}{subsubsection.5.64.3.4}%
+\contentsline {subsubsection}{\numberline {5.64.3.5}m\_heading\_sensor}{278}{subsubsection.5.64.3.5}%
+\contentsline {subsubsection}{\numberline {5.64.3.6}m\_linear\_distance\_tracking\_sensor}{279}{subsubsection.5.64.3.6}%
+\contentsline {subsubsection}{\numberline {5.64.3.7}m\_linear\_distance\_tracking\_offset}{279}{subsubsection.5.64.3.7}%
+\contentsline {subsubsection}{\numberline {5.64.3.8}m\_strafe\_distance\_tracking\_sensor}{279}{subsubsection.5.64.3.8}%
+\contentsline {subsubsection}{\numberline {5.64.3.9}m\_strafe\_distance\_tracking\_offset}{279}{subsubsection.5.64.3.9}%
+\contentsline {section}{\numberline {5.65}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::IPosition\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tracker Class Reference}{279}{section.5.65}%
+\contentsline {subsection}{\numberline {5.65.1}Detailed Description}{280}{subsection.5.65.1}%
+\contentsline {subsection}{\numberline {5.65.2}Member Function Documentation}{280}{subsection.5.65.2}%
+\contentsline {subsubsection}{\numberline {5.65.2.1}initialize()}{280}{subsubsection.5.65.2.1}%
+\contentsline {subsubsection}{\numberline {5.65.2.2}run()}{280}{subsubsection.5.65.2.2}%
+\contentsline {subsubsection}{\numberline {5.65.2.3}setPosition()}{280}{subsubsection.5.65.2.3}%
+\contentsline {subsubsection}{\numberline {5.65.2.4}getPosition()}{281}{subsubsection.5.65.2.4}%
+\contentsline {section}{\numberline {5.66}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Position Struct Reference}{281}{section.5.66}%
+\contentsline {subsection}{\numberline {5.66.1}Detailed Description}{281}{subsection.5.66.1}%
+\contentsline {subsection}{\numberline {5.66.2}Member Data Documentation}{282}{subsection.5.66.2}%
+\contentsline {subsubsection}{\numberline {5.66.2.1}x}{282}{subsubsection.5.66.2.1}%
+\contentsline {subsubsection}{\numberline {5.66.2.2}y}{282}{subsubsection.5.66.2.2}%
+\contentsline {subsubsection}{\numberline {5.66.2.3}theta}{282}{subsubsection.5.66.2.3}%
+\contentsline {subsubsection}{\numberline {5.66.2.4}xV}{282}{subsubsection.5.66.2.4}%
+\contentsline {subsubsection}{\numberline {5.66.2.5}yV}{282}{subsubsection.5.66.2.5}%
+\contentsline {subsubsection}{\numberline {5.66.2.6}thetaV}{283}{subsubsection.5.66.2.6}%
+\contentsline {section}{\numberline {5.67}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::robot\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::subsystems\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Subsystem Class Reference}{283}{section.5.67}%
+\contentsline {subsection}{\numberline {5.67.1}Detailed Description}{284}{subsection.5.67.1}%
+\contentsline {subsection}{\numberline {5.67.2}Constructor \& Destructor Documentation}{284}{subsection.5.67.2}%
+\contentsline {subsubsection}{\numberline {5.67.2.1}PositionSubsystem()}{284}{subsubsection.5.67.2.1}%
+\contentsline {subsection}{\numberline {5.67.3}Member Function Documentation}{284}{subsection.5.67.3}%
+\contentsline {subsubsection}{\numberline {5.67.3.1}initialize()}{284}{subsubsection.5.67.3.1}%
+\contentsline {subsubsection}{\numberline {5.67.3.2}run()}{285}{subsubsection.5.67.3.2}%
+\contentsline {subsubsection}{\numberline {5.67.3.3}command()}{285}{subsubsection.5.67.3.3}%
+\contentsline {subsubsection}{\numberline {5.67.3.4}state()}{285}{subsubsection.5.67.3.4}%
+\contentsline {subsection}{\numberline {5.67.4}Member Data Documentation}{286}{subsection.5.67.4}%
+\contentsline {subsubsection}{\numberline {5.67.4.1}SUBSYSTEM\_NAME}{286}{subsubsection.5.67.4.1}%
+\contentsline {subsubsection}{\numberline {5.67.4.2}SET\_POSITION\_COMMAND\_NAME}{286}{subsubsection.5.67.4.2}%
+\contentsline {subsubsection}{\numberline {5.67.4.3}GET\_POSITION\_STATE\_NAME}{286}{subsubsection.5.67.4.3}%
+\contentsline {subsubsection}{\numberline {5.67.4.4}m\_position\_tracker}{287}{subsubsection.5.67.4.4}%
+\contentsline {section}{\numberline {5.68}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::rtos\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::IClock Class Reference}{287}{section.5.68}%
+\contentsline {subsection}{\numberline {5.68.1}Detailed Description}{287}{subsection.5.68.1}%
+\contentsline {subsection}{\numberline {5.68.2}Member Function Documentation}{287}{subsection.5.68.2}%
+\contentsline {subsubsection}{\numberline {5.68.2.1}clone()}{287}{subsubsection.5.68.2.1}%
+\contentsline {subsubsection}{\numberline {5.68.2.2}getTime()}{288}{subsubsection.5.68.2.2}%
+\contentsline {section}{\numberline {5.69}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::rtos\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::IDelayer Class Reference}{288}{section.5.69}%
+\contentsline {subsection}{\numberline {5.69.1}Detailed Description}{288}{subsection.5.69.1}%
+\contentsline {subsection}{\numberline {5.69.2}Member Function Documentation}{289}{subsection.5.69.2}%
+\contentsline {subsubsection}{\numberline {5.69.2.1}clone()}{289}{subsubsection.5.69.2.1}%
+\contentsline {subsubsection}{\numberline {5.69.2.2}delay()}{289}{subsubsection.5.69.2.2}%
+\contentsline {subsubsection}{\numberline {5.69.2.3}delayUntil()}{289}{subsubsection.5.69.2.3}%
+\contentsline {section}{\numberline {5.70}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::rtos\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::IMutex Class Reference}{289}{section.5.70}%
+\contentsline {subsection}{\numberline {5.70.1}Detailed Description}{290}{subsection.5.70.1}%
+\contentsline {subsection}{\numberline {5.70.2}Member Function Documentation}{290}{subsection.5.70.2}%
+\contentsline {subsubsection}{\numberline {5.70.2.1}take()}{290}{subsubsection.5.70.2.1}%
+\contentsline {subsubsection}{\numberline {5.70.2.2}give()}{290}{subsubsection.5.70.2.2}%
+\contentsline {section}{\numberline {5.71}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::rtos\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::ITask Class Reference}{291}{section.5.71}%
+\contentsline {subsection}{\numberline {5.71.1}Detailed Description}{291}{subsection.5.71.1}%
+\contentsline {subsection}{\numberline {5.71.2}Member Function Documentation}{291}{subsection.5.71.2}%
+\contentsline {subsubsection}{\numberline {5.71.2.1}start()}{291}{subsubsection.5.71.2.1}%
+\contentsline {subsubsection}{\numberline {5.71.2.2}remove()}{292}{subsubsection.5.71.2.2}%
+\contentsline {subsubsection}{\numberline {5.71.2.3}suspend()}{292}{subsubsection.5.71.2.3}%
+\contentsline {subsubsection}{\numberline {5.71.2.4}resume()}{292}{subsubsection.5.71.2.4}%
+\contentsline {subsubsection}{\numberline {5.71.2.5}join()}{292}{subsubsection.5.71.2.5}%
+\contentsline {section}{\numberline {5.72}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::System\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Configuration Struct Reference}{292}{section.5.72}%
+\contentsline {subsection}{\numberline {5.72.1}Detailed Description}{293}{subsection.5.72.1}%
+\contentsline {subsection}{\numberline {5.72.2}Member Data Documentation}{293}{subsection.5.72.2}%
+\contentsline {subsubsection}{\numberline {5.72.2.1}alliance}{293}{subsubsection.5.72.2.1}%
+\contentsline {subsubsection}{\numberline {5.72.2.2}autonomous}{293}{subsubsection.5.72.2.2}%
+\contentsline {subsubsection}{\numberline {5.72.2.3}configuration}{293}{subsubsection.5.72.2.3}%
+\contentsline {subsubsection}{\numberline {5.72.2.4}profile}{294}{subsubsection.5.72.2.4}%
+\contentsline {section}{\numberline {5.73}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::testing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::pros\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}testing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Drive\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Test Class Reference}{294}{section.5.73}%
+\contentsline {subsection}{\numberline {5.73.1}Detailed Description}{295}{subsection.5.73.1}%
+\contentsline {subsection}{\numberline {5.73.2}Constructor \& Destructor Documentation}{295}{subsection.5.73.2}%
+\contentsline {subsubsection}{\numberline {5.73.2.1}DriveTest()}{295}{subsubsection.5.73.2.1}%
+\contentsline {subsection}{\numberline {5.73.3}Member Function Documentation}{296}{subsection.5.73.3}%
+\contentsline {subsubsection}{\numberline {5.73.3.1}initialize()}{296}{subsubsection.5.73.3.1}%
+\contentsline {subsubsection}{\numberline {5.73.3.2}runLinearTest()}{296}{subsubsection.5.73.3.2}%
+\contentsline {subsubsection}{\numberline {5.73.3.3}runTurningTest()}{297}{subsubsection.5.73.3.3}%
+\contentsline {subsection}{\numberline {5.73.4}Member Data Documentation}{297}{subsection.5.73.4}%
+\contentsline {subsubsection}{\numberline {5.73.4.1}LINEAR\_FILE\_NAME}{297}{subsubsection.5.73.4.1}%
+\contentsline {subsubsection}{\numberline {5.73.4.2}TURNING\_FILE\_NAME}{297}{subsubsection.5.73.4.2}%
+\contentsline {subsubsection}{\numberline {5.73.4.3}MILLIS\_TO\_S}{298}{subsubsection.5.73.4.3}%
+\contentsline {subsubsection}{\numberline {5.73.4.4}HEADING\_TO\_RADIANS}{298}{subsubsection.5.73.4.4}%
+\contentsline {subsubsection}{\numberline {5.73.4.5}INCHES\_TO\_METERS}{298}{subsubsection.5.73.4.5}%
+\contentsline {subsubsection}{\numberline {5.73.4.6}V\_TO\_MV}{298}{subsubsection.5.73.4.6}%
+\contentsline {subsubsection}{\numberline {5.73.4.7}TEST\_V}{298}{subsubsection.5.73.4.7}%
+\contentsline {subsubsection}{\numberline {5.73.4.8}TEST\_DURATION}{299}{subsubsection.5.73.4.8}%
+\contentsline {subsubsection}{\numberline {5.73.4.9}m\_left\_drive\_motors}{299}{subsubsection.5.73.4.9}%
+\contentsline {subsubsection}{\numberline {5.73.4.10}m\_right\_drive\_motors}{299}{subsubsection.5.73.4.10}%
+\contentsline {subsubsection}{\numberline {5.73.4.11}m\_heading\_sensor}{299}{subsubsection.5.73.4.11}%
+\contentsline {subsubsection}{\numberline {5.73.4.12}m\_linear\_sensor}{299}{subsubsection.5.73.4.12}%
+\contentsline {subsubsection}{\numberline {5.73.4.13}m\_linear\_counts\_per\_inch}{300}{subsubsection.5.73.4.13}%
+\contentsline {section}{\numberline {5.74}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::testing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Test\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Factory Class Reference}{300}{section.5.74}%
+\contentsline {subsection}{\numberline {5.74.1}Detailed Description}{300}{subsection.5.74.1}%
+\contentsline {subsection}{\numberline {5.74.2}Member Function Documentation}{301}{subsection.5.74.2}%
+\contentsline {subsubsection}{\numberline {5.74.2.1}createDriveTest()}{301}{subsubsection.5.74.2.1}%
+\contentsline {subsection}{\numberline {5.74.3}Member Data Documentation}{301}{subsection.5.74.3}%
+\contentsline {subsubsection}{\numberline {5.74.3.1}LEFT\_DRIVE\_PORTS}{301}{subsubsection.5.74.3.1}%
+\contentsline {subsubsection}{\numberline {5.74.3.2}RIGHT\_DRIVE\_PORTS}{301}{subsubsection.5.74.3.2}%
+\contentsline {subsubsection}{\numberline {5.74.3.3}INERTIAL\_PORT}{301}{subsubsection.5.74.3.3}%
+\contentsline {subsubsection}{\numberline {5.74.3.4}LINEAR\_TRACKING\_PORT}{302}{subsubsection.5.74.3.4}%
+\contentsline {subsubsection}{\numberline {5.74.3.5}LINEAR\_COUNTS\_PER\_INCH}{302}{subsubsection.5.74.3.5}%
+\contentsline {section}{\numberline {5.75}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::user\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Differential\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Drive\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Operator Class Reference}{302}{section.5.75}%
+\contentsline {subsection}{\numberline {5.75.1}Detailed Description}{303}{subsection.5.75.1}%
+\contentsline {subsection}{\numberline {5.75.2}Constructor \& Destructor Documentation}{303}{subsection.5.75.2}%
+\contentsline {subsubsection}{\numberline {5.75.2.1}DifferentialDriveOperator()}{303}{subsubsection.5.75.2.1}%
+\contentsline {subsection}{\numberline {5.75.3}Member Function Documentation}{304}{subsection.5.75.3}%
+\contentsline {subsubsection}{\numberline {5.75.3.1}updateDriveVoltage()}{304}{subsubsection.5.75.3.1}%
+\contentsline {subsubsection}{\numberline {5.75.3.2}updateArcade()}{304}{subsubsection.5.75.3.2}%
+\contentsline {subsubsection}{\numberline {5.75.3.3}updateSingleArcadeLeft()}{304}{subsubsection.5.75.3.3}%
+\contentsline {subsubsection}{\numberline {5.75.3.4}updateSingleArcadeRight()}{305}{subsubsection.5.75.3.4}%
+\contentsline {subsubsection}{\numberline {5.75.3.5}updateSplitArcadeLeft()}{305}{subsubsection.5.75.3.5}%
+\contentsline {subsubsection}{\numberline {5.75.3.6}updateSplitArcadeRight()}{305}{subsubsection.5.75.3.6}%
+\contentsline {subsubsection}{\numberline {5.75.3.7}updateTank()}{305}{subsubsection.5.75.3.7}%
+\contentsline {subsubsection}{\numberline {5.75.3.8}setDriveVoltage()}{305}{subsubsection.5.75.3.8}%
+\contentsline {subsection}{\numberline {5.75.4}Member Data Documentation}{306}{subsection.5.75.4}%
+\contentsline {subsubsection}{\numberline {5.75.4.1}DIFFERENTIAL\_DRIVE\_SUBSYSTEM\_NAME}{306}{subsubsection.5.75.4.1}%
+\contentsline {subsubsection}{\numberline {5.75.4.2}SET\_VOLTAGE\_COMMAND}{306}{subsubsection.5.75.4.2}%
+\contentsline {subsubsection}{\numberline {5.75.4.3}VOLTAGE\_CONVERSION}{306}{subsubsection.5.75.4.3}%
+\contentsline {subsubsection}{\numberline {5.75.4.4}m\_controller}{307}{subsubsection.5.75.4.4}%
+\contentsline {subsubsection}{\numberline {5.75.4.5}m\_robot}{307}{subsubsection.5.75.4.5}%
+\contentsline {section}{\numberline {5.76}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::user\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Elevator\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Operator Class Reference}{307}{section.5.76}%
+\contentsline {subsection}{\numberline {5.76.1}Detailed Description}{308}{subsection.5.76.1}%
+\contentsline {subsection}{\numberline {5.76.2}Member Enumeration Documentation}{308}{subsection.5.76.2}%
+\contentsline {subsubsection}{\numberline {5.76.2.1}EToggleState}{308}{subsubsection.5.76.2.1}%
+\contentsline {subsection}{\numberline {5.76.3}Constructor \& Destructor Documentation}{309}{subsection.5.76.3}%
+\contentsline {subsubsection}{\numberline {5.76.3.1}ElevatorOperator()}{309}{subsubsection.5.76.3.1}%
+\contentsline {subsection}{\numberline {5.76.4}Member Function Documentation}{309}{subsection.5.76.4}%
+\contentsline {subsubsection}{\numberline {5.76.4.1}getElevatorPosition()}{309}{subsubsection.5.76.4.1}%
+\contentsline {subsubsection}{\numberline {5.76.4.2}updateElevatorPosition()}{309}{subsubsection.5.76.4.2}%
+\contentsline {subsubsection}{\numberline {5.76.4.3}updateManual()}{310}{subsubsection.5.76.4.3}%
+\contentsline {subsubsection}{\numberline {5.76.4.4}updatePresetSplit()}{310}{subsubsection.5.76.4.4}%
+\contentsline {subsubsection}{\numberline {5.76.4.5}updatePresetToggle()}{311}{subsubsection.5.76.4.5}%
+\contentsline {subsubsection}{\numberline {5.76.4.6}updatePresetLadder()}{311}{subsubsection.5.76.4.6}%
+\contentsline {subsubsection}{\numberline {5.76.4.7}setElevatorPosition()}{312}{subsubsection.5.76.4.7}%
+\contentsline {subsection}{\numberline {5.76.5}Member Data Documentation}{313}{subsection.5.76.5}%
+\contentsline {subsubsection}{\numberline {5.76.5.1}ELEVATOR\_SUBSYSTEM\_NAME}{313}{subsubsection.5.76.5.1}%
+\contentsline {subsubsection}{\numberline {5.76.5.2}SET\_POSITION\_COMMAND}{313}{subsubsection.5.76.5.2}%
+\contentsline {subsubsection}{\numberline {5.76.5.3}GET\_POSITION\_STATE}{313}{subsubsection.5.76.5.3}%
+\contentsline {subsubsection}{\numberline {5.76.5.4}IN\_POSITION}{313}{subsubsection.5.76.5.4}%
+\contentsline {subsubsection}{\numberline {5.76.5.5}FIELD\_POSITION}{314}{subsubsection.5.76.5.5}%
+\contentsline {subsubsection}{\numberline {5.76.5.6}MATCH\_LOAD\_POSITION}{314}{subsubsection.5.76.5.6}%
+\contentsline {subsubsection}{\numberline {5.76.5.7}OUT\_POSITION}{314}{subsubsection.5.76.5.7}%
+\contentsline {subsubsection}{\numberline {5.76.5.8}m\_controller}{314}{subsubsection.5.76.5.8}%
+\contentsline {subsubsection}{\numberline {5.76.5.9}m\_robot}{314}{subsubsection.5.76.5.9}%
+\contentsline {subsubsection}{\numberline {5.76.5.10}toggle\_state}{315}{subsubsection.5.76.5.10}%
+\contentsline {subsubsection}{\numberline {5.76.5.11}manual\_input}{315}{subsubsection.5.76.5.11}%
+\contentsline {section}{\numberline {5.77}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::user\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::IController Class Reference}{315}{section.5.77}%
+\contentsline {subsection}{\numberline {5.77.1}Detailed Description}{316}{subsection.5.77.1}%
+\contentsline {subsection}{\numberline {5.77.2}Member Function Documentation}{316}{subsection.5.77.2}%
+\contentsline {subsubsection}{\numberline {5.77.2.1}initialize()}{316}{subsubsection.5.77.2.1}%
+\contentsline {subsubsection}{\numberline {5.77.2.2}run()}{316}{subsubsection.5.77.2.2}%
+\contentsline {subsubsection}{\numberline {5.77.2.3}getAnalog()}{316}{subsubsection.5.77.2.3}%
+\contentsline {subsubsection}{\numberline {5.77.2.4}getDigital()}{316}{subsubsection.5.77.2.4}%
+\contentsline {subsubsection}{\numberline {5.77.2.5}getNewDigital()}{317}{subsubsection.5.77.2.5}%
+\contentsline {subsubsection}{\numberline {5.77.2.6}rumble()}{317}{subsubsection.5.77.2.6}%
+\contentsline {section}{\numberline {5.78}wisco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::user\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Intake\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Operator Class Reference}{317}{section.5.78}%
+\contentsline {subsection}{\numberline {5.78.1}Detailed Description}{319}{subsection.5.78.1}%
+\contentsline {subsection}{\numberline {5.78.2}Member Enumeration Documentation}{319}{subsection.5.78.2}%
+\contentsline {subsubsection}{\numberline {5.78.2.1}EToggleState}{319}{subsubsection.5.78.2.1}%
+\contentsline {subsection}{\numberline {5.78.3}Constructor \& Destructor Documentation}{319}{subsection.5.78.3}%
+\contentsline {subsubsection}{\numberline {5.78.3.1}IntakeOperator()}{319}{subsubsection.5.78.3.1}%
+\contentsline {subsection}{\numberline {5.78.4}Member Function Documentation}{319}{subsection.5.78.4}%
+\contentsline {subsubsection}{\numberline {5.78.4.1}updateIntakeVoltage()}{319}{subsubsection.5.78.4.1}%
+\contentsline {subsubsection}{\numberline {5.78.4.2}updateToggleVoltage()}{320}{subsubsection.5.78.4.2}%
+\contentsline {subsubsection}{\numberline {5.78.4.3}updateSingleToggle()}{320}{subsubsection.5.78.4.3}%
+\contentsline {subsubsection}{\numberline {5.78.4.4}updateSplitHold()}{321}{subsubsection.5.78.4.4}%
+\contentsline {subsubsection}{\numberline {5.78.4.5}updateSplitToggle()}{321}{subsubsection.5.78.4.5}%
+\contentsline {subsubsection}{\numberline {5.78.4.6}setIntakeVoltage()}{321}{subsubsection.5.78.4.6}%
+\contentsline {subsection}{\numberline {5.78.5}Member Data Documentation}{322}{subsection.5.78.5}%
+\contentsline {subsubsection}{\numberline {5.78.5.1}INTAKE\_SUBSYSTEM\_NAME}{322}{subsubsection.5.78.5.1}%
+\contentsline {subsubsection}{\numberline {5.78.5.2}SET\_VOLTAGE\_COMMAND}{322}{subsubsection.5.78.5.2}%
+\contentsline {subsubsection}{\numberline {5.78.5.3}VOLTAGE\_SETTING}{322}{subsubsection.5.78.5.3}%
+\contentsline {subsubsection}{\numberline {5.78.5.4}m\_controller}{322}{subsubsection.5.78.5.4}%
+\contentsline {subsubsection}{\numberline {5.78.5.5}m\_robot}{323}{subsubsection.5.78.5.5}%
+\contentsline {subsubsection}{\numberline {5.78.5.6}toggle\_state}{323}{subsubsection.5.78.5.6}%
+\contentsline {chapter}{Index}{325}{section*.286}%

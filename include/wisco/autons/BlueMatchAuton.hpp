@@ -17,6 +17,12 @@ namespace wisco
  */
 namespace autons
 {
+
+/**
+ * @brief The auton for the blue robot in matches
+ * @author Nathan Sandvig
+ * 
+ */
 class BlueMatchAuton : public IAutonomous
 {
 private:

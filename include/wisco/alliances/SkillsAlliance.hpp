@@ -19,6 +19,12 @@ namespace wisco
  */
 namespace alliances
 {
+
+/**
+ * @brief The skills alliance
+ * @author Nathan Sandvig
+ * 
+ */
 class SkillsAlliance : public IAlliance
 {
 private:

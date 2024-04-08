@@ -1,0 +1,36 @@
+\doxysection{Pros\+Task.\+hpp}
+\hypertarget{_pros_task_8hpp_source}{}\label{_pros_task_8hpp_source}\index{include/pros\_adapters/ProsTask.hpp@{include/pros\_adapters/ProsTask.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ PROS\_ADAPTERS\_PROS\_TASK\_HPP}}
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00002}00002\ \textcolor{preprocessor}{\#define\ PROS\_ADAPTERS\_PROS\_TASK\_HPP}}
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}pros/rtos.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}wisco/rtos/ITask.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00014}00014\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacepros__adapters}{pros\_adapters}}}
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00015}00015\ \{}
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00022}\mbox{\hyperlink{classpros__adapters_1_1_pros_task}{00022}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classpros__adapters_1_1_pros_task}{ProsTask}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_task}{wisco::rtos::ITask}}}
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00023}00023\ \{}
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00024}00024\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00029}\mbox{\hyperlink{classpros__adapters_1_1_pros_task_a7f87959ac1a4c127d01819bd887d3103}{00029}}\ \ \ \ \ std::unique\_ptr<pros::Task>\ \mbox{\hyperlink{classpros__adapters_1_1_pros_task_a7f87959ac1a4c127d01819bd887d3103}{task}}\{\};}
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00031}00031\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_task_a30afa3c547a8f08fa43e76f092d78ee1}{start}}(\textcolor{keywordtype}{void}\ (*function)(\textcolor{keywordtype}{void}*),\ \textcolor{keywordtype}{void}*\ parameters)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00044}00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_task_aa0f3bb37a875916722acc17b969274b6}{remove}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_task_ad9c833ad5d4287920c84767b559c8280}{suspend}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_task_af076ff0b6ef4a4cd03846b3b65462b72}{resume}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00062}00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_task_aa7462094256ceefdf827b59baf2f1e13}{join}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00063}00063\ \};}
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00064}00064\ \}\ \textcolor{comment}{//\ namespace\ pros\_adapters}}
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_pros_task_8hpp_source_l00066}00066\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,237 @@
+\doxysection{wisco\+::hal\+::Tracking\+Wheel Class Reference}
+\hypertarget{classwisco_1_1hal_1_1_tracking_wheel}{}\label{classwisco_1_1hal_1_1_tracking_wheel}\index{wisco::hal::TrackingWheel@{wisco::hal::TrackingWheel}}
+
+
+A tracking wheel sensor.  
+
+
+Inheritance diagram for wisco\+::hal\+::Tracking\+Wheel\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classwisco_1_1hal_1_1_tracking_wheel}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classwisco_1_1hal_1_1_tracking_wheel_abfa137c451f589cef57d65b17bca73dd}{Tracking\+Wheel}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1io_1_1_i_rotation_sensor}{io\+::\+IRotation\+Sensor}} $>$ \&sensor, double wheel\+\_\+radius)
+\begin{DoxyCompactList}\small\item\em Construct a new Tracking Wheel object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1hal_1_1_tracking_wheel_aa43e5980497db29217561d5a6d4e1178}{initialize}} () override
+\begin{DoxyCompactList}\small\item\em Initializes the sensor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1hal_1_1_tracking_wheel_a114684ac4ee36a9e12a2325f4c577e58}{reset}} () override
+\begin{DoxyCompactList}\small\item\em Resets the sensor. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classwisco_1_1hal_1_1_tracking_wheel_af85abcaa521d1ba15026f334e1977cf6}{get\+Distance}} () override
+\begin{DoxyCompactList}\small\item\em Get the distance tracked by the sensor in inches. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1hal_1_1_tracking_wheel_a95b805cd9a8730e9f52f694b8585b9c4}{set\+Distance}} (double distance) override
+\begin{DoxyCompactList}\small\item\em Set the distance tracked by the sensor in inches. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classwisco_1_1io_1_1_i_distance_tracking_sensor}{wisco\+::io\+::\+IDistance\+Tracking\+Sensor}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IDistance\+Tracking\+Sensor} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classwisco_1_1io_1_1_i_distance_tracking_sensor}{IDistance\+Tracking\+Sensor} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1io_1_1_i_rotation_sensor}{io\+::\+IRotation\+Sensor}} $>$ \mbox{\hyperlink{classwisco_1_1hal_1_1_tracking_wheel_ae798df036b513a2f7216d38556c1d457}{m\+\_\+sensor}} \{\}
+\begin{DoxyCompactList}\small\item\em The sensor on the tracking wheel. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classwisco_1_1hal_1_1_tracking_wheel_a0bc0efd1d62922085c88fda1b19b54f1}{m\+\_\+wheel\+\_\+radius}} \{\}
+\begin{DoxyCompactList}\small\item\em The radius of the wheel in inches. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A tracking wheel sensor. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Sandvig 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_tracking_wheel_8hpp_source_l00028}{28}} of file \mbox{\hyperlink{_tracking_wheel_8hpp_source}{Tracking\+Wheel.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classwisco_1_1hal_1_1_tracking_wheel_abfa137c451f589cef57d65b17bca73dd}\label{classwisco_1_1hal_1_1_tracking_wheel_abfa137c451f589cef57d65b17bca73dd} 
+\index{wisco::hal::TrackingWheel@{wisco::hal::TrackingWheel}!TrackingWheel@{TrackingWheel}}
+\index{TrackingWheel@{TrackingWheel}!wisco::hal::TrackingWheel@{wisco::hal::TrackingWheel}}
+\doxysubsubsection{\texorpdfstring{TrackingWheel()}{TrackingWheel()}}
+{\footnotesize\ttfamily wisco\+::hal\+::\+Tracking\+Wheel\+::\+Tracking\+Wheel (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1io_1_1_i_rotation_sensor}{io\+::\+IRotation\+Sensor}} $>$ \&}]{sensor,  }\item[{double}]{wheel\+\_\+radius }\end{DoxyParamCaption})}
+
+
+
+Construct a new Tracking Wheel object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sensor} & The rotation sensor on the tracking wheel \\
+\hline
+{\em wheel\+\_\+radius} & The radius of the tracking wheel in inches \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_tracking_wheel_8cpp_source_l00007}{7}} of file \mbox{\hyperlink{_tracking_wheel_8cpp_source}{Tracking\+Wheel.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{00008\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1hal_1_1_tracking_wheel_ae798df036b513a2f7216d38556c1d457}{m\_sensor}}\{std::move(sensor)\},\ \mbox{\hyperlink{classwisco_1_1hal_1_1_tracking_wheel_a0bc0efd1d62922085c88fda1b19b54f1}{m\_wheel\_radius}}\{wheel\_radius\}}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classwisco_1_1hal_1_1_tracking_wheel_aa43e5980497db29217561d5a6d4e1178}\label{classwisco_1_1hal_1_1_tracking_wheel_aa43e5980497db29217561d5a6d4e1178} 
+\index{wisco::hal::TrackingWheel@{wisco::hal::TrackingWheel}!initialize@{initialize}}
+\index{initialize@{initialize}!wisco::hal::TrackingWheel@{wisco::hal::TrackingWheel}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void wisco\+::hal\+::\+Tracking\+Wheel\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Initializes the sensor. 
+
+
+
+Implements \mbox{\hyperlink{classwisco_1_1io_1_1_i_distance_tracking_sensor_abb4590ccdd2cd8a2210978dd11176513}{wisco\+::io\+::\+IDistance\+Tracking\+Sensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_tracking_wheel_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{_tracking_wheel_8cpp_source}{Tracking\+Wheel.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1hal_1_1_tracking_wheel_ae798df036b513a2f7216d38556c1d457}{m\_sensor}})}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1hal_1_1_tracking_wheel_ae798df036b513a2f7216d38556c1d457}{m\_sensor}}-\/>initialize();}
+\DoxyCodeLine{00017\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1hal_1_1_tracking_wheel_a114684ac4ee36a9e12a2325f4c577e58}\label{classwisco_1_1hal_1_1_tracking_wheel_a114684ac4ee36a9e12a2325f4c577e58} 
+\index{wisco::hal::TrackingWheel@{wisco::hal::TrackingWheel}!reset@{reset}}
+\index{reset@{reset}!wisco::hal::TrackingWheel@{wisco::hal::TrackingWheel}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void wisco\+::hal\+::\+Tracking\+Wheel\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Resets the sensor. 
+
+
+
+Implements \mbox{\hyperlink{classwisco_1_1io_1_1_i_distance_tracking_sensor_a32cfa208c7673891a21591b791e25e9a}{wisco\+::io\+::\+IDistance\+Tracking\+Sensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_tracking_wheel_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{_tracking_wheel_8cpp_source}{Tracking\+Wheel.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1hal_1_1_tracking_wheel_ae798df036b513a2f7216d38556c1d457}{m\_sensor}})}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1hal_1_1_tracking_wheel_ae798df036b513a2f7216d38556c1d457}{m\_sensor}}-\/>reset();}
+\DoxyCodeLine{00023\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1hal_1_1_tracking_wheel_af85abcaa521d1ba15026f334e1977cf6}\label{classwisco_1_1hal_1_1_tracking_wheel_af85abcaa521d1ba15026f334e1977cf6} 
+\index{wisco::hal::TrackingWheel@{wisco::hal::TrackingWheel}!getDistance@{getDistance}}
+\index{getDistance@{getDistance}!wisco::hal::TrackingWheel@{wisco::hal::TrackingWheel}}
+\doxysubsubsection{\texorpdfstring{getDistance()}{getDistance()}}
+{\footnotesize\ttfamily double wisco\+::hal\+::\+Tracking\+Wheel\+::get\+Distance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the distance tracked by the sensor in inches. 
+
+\begin{DoxyReturn}{Returns}
+double The distance tracked by the sensor 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1io_1_1_i_distance_tracking_sensor_aaa7f319e0e203d490712b760bb64fc1b}{wisco\+::io\+::\+IDistance\+Tracking\+Sensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_tracking_wheel_8cpp_source_l00025}{25}} of file \mbox{\hyperlink{_tracking_wheel_8cpp_source}{Tracking\+Wheel.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classwisco_1_1hal_1_1_tracking_wheel_ae798df036b513a2f7216d38556c1d457}{m\_sensor}}-\/>getRotation()\ *\ \mbox{\hyperlink{classwisco_1_1hal_1_1_tracking_wheel_a0bc0efd1d62922085c88fda1b19b54f1}{m\_wheel\_radius}};}
+\DoxyCodeLine{00028\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1hal_1_1_tracking_wheel_a95b805cd9a8730e9f52f694b8585b9c4}\label{classwisco_1_1hal_1_1_tracking_wheel_a95b805cd9a8730e9f52f694b8585b9c4} 
+\index{wisco::hal::TrackingWheel@{wisco::hal::TrackingWheel}!setDistance@{setDistance}}
+\index{setDistance@{setDistance}!wisco::hal::TrackingWheel@{wisco::hal::TrackingWheel}}
+\doxysubsubsection{\texorpdfstring{setDistance()}{setDistance()}}
+{\footnotesize\ttfamily void wisco\+::hal\+::\+Tracking\+Wheel\+::set\+Distance (\begin{DoxyParamCaption}\item[{double}]{distance }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the distance tracked by the sensor in inches. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em distance} & The new distance tracked value \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1io_1_1_i_distance_tracking_sensor_a0da3a9f931491ffe3c83137018e09bb3}{wisco\+::io\+::\+IDistance\+Tracking\+Sensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_tracking_wheel_8cpp_source_l00030}{30}} of file \mbox{\hyperlink{_tracking_wheel_8cpp_source}{Tracking\+Wheel.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00031\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1hal_1_1_tracking_wheel_ae798df036b513a2f7216d38556c1d457}{m\_sensor}}-\/>setRotation(distance\ /\ \mbox{\hyperlink{classwisco_1_1hal_1_1_tracking_wheel_a0bc0efd1d62922085c88fda1b19b54f1}{m\_wheel\_radius}});}
+\DoxyCodeLine{00033\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classwisco_1_1hal_1_1_tracking_wheel_ae798df036b513a2f7216d38556c1d457}\label{classwisco_1_1hal_1_1_tracking_wheel_ae798df036b513a2f7216d38556c1d457} 
+\index{wisco::hal::TrackingWheel@{wisco::hal::TrackingWheel}!m\_sensor@{m\_sensor}}
+\index{m\_sensor@{m\_sensor}!wisco::hal::TrackingWheel@{wisco::hal::TrackingWheel}}
+\doxysubsubsection{\texorpdfstring{m\_sensor}{m\_sensor}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1io_1_1_i_rotation_sensor}{io\+::\+IRotation\+Sensor}}$>$ wisco\+::hal\+::\+Tracking\+Wheel\+::m\+\_\+sensor \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The sensor on the tracking wheel. 
+
+
+
+Definition at line \mbox{\hyperlink{_tracking_wheel_8hpp_source_l00035}{35}} of file \mbox{\hyperlink{_tracking_wheel_8hpp_source}{Tracking\+Wheel.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1hal_1_1_tracking_wheel_a0bc0efd1d62922085c88fda1b19b54f1}\label{classwisco_1_1hal_1_1_tracking_wheel_a0bc0efd1d62922085c88fda1b19b54f1} 
+\index{wisco::hal::TrackingWheel@{wisco::hal::TrackingWheel}!m\_wheel\_radius@{m\_wheel\_radius}}
+\index{m\_wheel\_radius@{m\_wheel\_radius}!wisco::hal::TrackingWheel@{wisco::hal::TrackingWheel}}
+\doxysubsubsection{\texorpdfstring{m\_wheel\_radius}{m\_wheel\_radius}}
+{\footnotesize\ttfamily double wisco\+::hal\+::\+Tracking\+Wheel\+::m\+\_\+wheel\+\_\+radius \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The radius of the wheel in inches. 
+
+
+
+Definition at line \mbox{\hyperlink{_tracking_wheel_8hpp_source_l00041}{41}} of file \mbox{\hyperlink{_tracking_wheel_8hpp_source}{Tracking\+Wheel.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00041\ \{\};}
+
+\end{DoxyCode}

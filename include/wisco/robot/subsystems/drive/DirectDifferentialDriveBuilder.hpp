@@ -95,7 +95,7 @@ public:
     /**
      * @brief Add the velocity to voltage conversion constant to the build
      * 
-     * @param mass The velocity to voltage conversion constant of the drive
+     * @param velocity_to_voltage The velocity to voltage conversion constant of the drive
      * @return DirectDifferentialDriveBuilder* This object for build chaining
      */
     DirectDifferentialDriveBuilder* withVelocityToVoltage(double velocity_to_voltage);

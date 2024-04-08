@@ -1,0 +1,163 @@
+\doxysection{wisco\+::user\+::IController Class Reference}
+\hypertarget{classwisco_1_1user_1_1_i_controller}{}\label{classwisco_1_1user_1_1_i_controller}\index{wisco::user::IController@{wisco::user::IController}}
+
+
+Interface for a controller.  
+
+
+Inheritance diagram for wisco\+::user\+::IController\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classwisco_1_1user_1_1_i_controller}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classwisco_1_1user_1_1_i_controller_aac41fc2ccb39871789d5eaddfbda7bf6}\label{classwisco_1_1user_1_1_i_controller_aac41fc2ccb39871789d5eaddfbda7bf6} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IController} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classwisco_1_1user_1_1_i_controller}{IController} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classwisco_1_1user_1_1_i_controller_aeaa08c36038e228d9923575104c114c5}{initialize}} ()=0
+\begin{DoxyCompactList}\small\item\em Initializes the controller. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classwisco_1_1user_1_1_i_controller_a7f3ac47e348de9db859f674bd929ec29}{run}} ()=0
+\begin{DoxyCompactList}\small\item\em Runs the controller. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classwisco_1_1user_1_1_i_controller_ac1ca96034aa3dffca8dc32fd5b52d450}{get\+Analog}} (\mbox{\hyperlink{namespacewisco_1_1user_ae202ce004590703fcc95a178670c7e93}{EController\+Analog}} analog\+\_\+channel)=0
+\begin{DoxyCompactList}\small\item\em Get the analog input of a channel from the controller. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classwisco_1_1user_1_1_i_controller_a1fa6ecb474a74d070e84315558458900}{get\+Digital}} (\mbox{\hyperlink{namespacewisco_1_1user_a794210ea2b8a8e3185b71b59a934ea30}{EController\+Digital}} digital\+\_\+channel)=0
+\begin{DoxyCompactList}\small\item\em Get the digital input of a channel from the controller. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classwisco_1_1user_1_1_i_controller_a0d2f281a09d21a64725fedf84c4928f1}{get\+New\+Digital}} (\mbox{\hyperlink{namespacewisco_1_1user_a794210ea2b8a8e3185b71b59a934ea30}{EController\+Digital}} digital\+\_\+channel)=0
+\begin{DoxyCompactList}\small\item\em Check for a new digital input of a channel from the controller. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classwisco_1_1user_1_1_i_controller_ac45e3bfdc16e2440572bf685acad79bb}{rumble}} (std\+::string pattern)=0
+\begin{DoxyCompactList}\small\item\em Rumbles the controller. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for a controller. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Sandvig 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_i_controller_8hpp_source_l00030}{30}} of file \mbox{\hyperlink{_i_controller_8hpp_source}{IController.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classwisco_1_1user_1_1_i_controller_aeaa08c36038e228d9923575104c114c5}\label{classwisco_1_1user_1_1_i_controller_aeaa08c36038e228d9923575104c114c5} 
+\index{wisco::user::IController@{wisco::user::IController}!initialize@{initialize}}
+\index{initialize@{initialize}!wisco::user::IController@{wisco::user::IController}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily virtual void wisco\+::user\+::\+IController\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Initializes the controller. 
+
+
+
+Implemented in \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a7e425f33980f040752c06b98d6348784}{pros\+\_\+adapters\+::\+Pros\+Controller}}.
+
+\Hypertarget{classwisco_1_1user_1_1_i_controller_a7f3ac47e348de9db859f674bd929ec29}\label{classwisco_1_1user_1_1_i_controller_a7f3ac47e348de9db859f674bd929ec29} 
+\index{wisco::user::IController@{wisco::user::IController}!run@{run}}
+\index{run@{run}!wisco::user::IController@{wisco::user::IController}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily virtual void wisco\+::user\+::\+IController\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Runs the controller. 
+
+
+
+Implemented in \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a4eb8bcd1f86bde77a32533752e870dbb}{pros\+\_\+adapters\+::\+Pros\+Controller}}.
+
+\Hypertarget{classwisco_1_1user_1_1_i_controller_ac1ca96034aa3dffca8dc32fd5b52d450}\label{classwisco_1_1user_1_1_i_controller_ac1ca96034aa3dffca8dc32fd5b52d450} 
+\index{wisco::user::IController@{wisco::user::IController}!getAnalog@{getAnalog}}
+\index{getAnalog@{getAnalog}!wisco::user::IController@{wisco::user::IController}}
+\doxysubsubsection{\texorpdfstring{getAnalog()}{getAnalog()}}
+{\footnotesize\ttfamily virtual double wisco\+::user\+::\+IController\+::get\+Analog (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacewisco_1_1user_ae202ce004590703fcc95a178670c7e93}{EController\+Analog}}}]{analog\+\_\+channel }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the analog input of a channel from the controller. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em analog\+\_\+channel} & The channel to read analog input from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double The value of the analog channel 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a231a892c12f017e714799e2546c880b7}{pros\+\_\+adapters\+::\+Pros\+Controller}}.
+
+\Hypertarget{classwisco_1_1user_1_1_i_controller_a1fa6ecb474a74d070e84315558458900}\label{classwisco_1_1user_1_1_i_controller_a1fa6ecb474a74d070e84315558458900} 
+\index{wisco::user::IController@{wisco::user::IController}!getDigital@{getDigital}}
+\index{getDigital@{getDigital}!wisco::user::IController@{wisco::user::IController}}
+\doxysubsubsection{\texorpdfstring{getDigital()}{getDigital()}}
+{\footnotesize\ttfamily virtual bool wisco\+::user\+::\+IController\+::get\+Digital (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacewisco_1_1user_a794210ea2b8a8e3185b71b59a934ea30}{EController\+Digital}}}]{digital\+\_\+channel }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the digital input of a channel from the controller. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em digital\+\_\+channel} & The channel to read digital input from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true The digital channel is active 
+
+false The digital channel is not active 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_acb3b6a5a94c4a1a887dd4774481c284b}{pros\+\_\+adapters\+::\+Pros\+Controller}}.
+
+\Hypertarget{classwisco_1_1user_1_1_i_controller_a0d2f281a09d21a64725fedf84c4928f1}\label{classwisco_1_1user_1_1_i_controller_a0d2f281a09d21a64725fedf84c4928f1} 
+\index{wisco::user::IController@{wisco::user::IController}!getNewDigital@{getNewDigital}}
+\index{getNewDigital@{getNewDigital}!wisco::user::IController@{wisco::user::IController}}
+\doxysubsubsection{\texorpdfstring{getNewDigital()}{getNewDigital()}}
+{\footnotesize\ttfamily virtual bool wisco\+::user\+::\+IController\+::get\+New\+Digital (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacewisco_1_1user_a794210ea2b8a8e3185b71b59a934ea30}{EController\+Digital}}}]{digital\+\_\+channel }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Check for a new digital input of a channel from the controller. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em digital\+\_\+channel} & The channel to read digital input from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true The digital channel has a new input 
+
+false The digital channel does not have a new input 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_af880ec77c26dfff5a6803221178c9bf9}{pros\+\_\+adapters\+::\+Pros\+Controller}}.
+
+\Hypertarget{classwisco_1_1user_1_1_i_controller_ac45e3bfdc16e2440572bf685acad79bb}\label{classwisco_1_1user_1_1_i_controller_ac45e3bfdc16e2440572bf685acad79bb} 
+\index{wisco::user::IController@{wisco::user::IController}!rumble@{rumble}}
+\index{rumble@{rumble}!wisco::user::IController@{wisco::user::IController}}
+\doxysubsubsection{\texorpdfstring{rumble()}{rumble()}}
+{\footnotesize\ttfamily virtual void wisco\+::user\+::\+IController\+::rumble (\begin{DoxyParamCaption}\item[{std\+::string}]{pattern }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Rumbles the controller. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pattern} & The rumble pattern to follow Up to 8 characters, \textquotesingle{}.\textquotesingle{} short, \textquotesingle{}-\/\textquotesingle{} long, \textquotesingle{} \textquotesingle{} pause \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_ace94b287f1b1b79743e53a72d4ab5f48}{pros\+\_\+adapters\+::\+Pros\+Controller}}.
+

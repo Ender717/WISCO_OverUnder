@@ -1,0 +1,122 @@
+\doxysection{Kinematic\+Differential\+Drive.\+hpp}
+\hypertarget{_kinematic_differential_drive_8hpp_source}{}\label{_kinematic_differential_drive_8hpp_source}\index{include/wisco/robot/subsystems/drive/KinematicDifferentialDrive.hpp@{include/wisco/robot/subsystems/drive/KinematicDifferentialDrive.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ WISCO\_ROBOT\_SUBSYSTEMS\_DRIVE\_DIFFERENTIAL\_DRIVE\_HPP}}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00002}00002\ \textcolor{preprocessor}{\#define\ WISCO\_ROBOT\_SUBSYSTEMS\_DRIVE\_DIFFERENTIAL\_DRIVE\_HPP}}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}IVelocityProfile.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}wisco/hal/MotorGroup.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}wisco/rtos/IDelayer.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}wisco/rtos/IMutex.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}wisco/rtos/ITask.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}wisco/robot/subsystems/drive/IDifferentialDrive.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00020}00020\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacewisco}{wisco}}}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00021}00021\ \{}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00028}00028\ \textcolor{keyword}{namespace\ }robot}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00029}00029\ \{}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00036}00036\ \textcolor{keyword}{namespace\ }subsystems}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00037}00037\ \{}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00044}00044\ \textcolor{keyword}{namespace\ }drive}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00045}00045\ \{}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00052}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive}{00052}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive}{KinematicDifferentialDrive}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_i_differential_drive}{IDifferentialDrive}}}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00053}00053\ \{}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00054}00054\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00059}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_ac6634c87c6cfd20e2153a2783d91a634}{00059}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_ac6634c87c6cfd20e2153a2783d91a634}{TASK\_DELAY}}\{10\};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00066}00066\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a4263cf76863ad26cadc816a5a1721629}{taskLoop}}(\textcolor{keywordtype}{void}*\ params);}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00072}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_aea29a5662b8f5128654d48cdfc582006}{00072}}\ \ \ \ \ std::unique\_ptr<rtos::IDelayer>\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_aea29a5662b8f5128654d48cdfc582006}{m\_delayer}}\{\};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00078}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a49f97b8479e935a74257792ccfd04c95}{00078}}\ \ \ \ \ std::unique\_ptr<rtos::IMutex>\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a49f97b8479e935a74257792ccfd04c95}{m\_mutex}}\{\};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00084}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a27daea55a97b5e0a6adab7f329f83a7a}{00084}}\ \ \ \ \ std::unique\_ptr<rtos::ITask>\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a27daea55a97b5e0a6adab7f329f83a7a}{m\_task}}\{\};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00090}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a33c9a4eeb45a996cc5aab0a48a2b09ee}{00090}}\ \ \ \ \ std::unique\_ptr<IVelocityProfile>\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a33c9a4eeb45a996cc5aab0a48a2b09ee}{m\_left\_velocity\_profile}}\{\};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00096}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a637074548a315eb294d4307a719951cc}{00096}}\ \ \ \ \ std::unique\_ptr<IVelocityProfile>\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a637074548a315eb294d4307a719951cc}{m\_right\_velocity\_profile}}\{\};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00102}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_ac5fedc5edbe2fc907b10402005c4db23}{00102}}\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1hal_1_1_motor_group}{hal::MotorGroup}}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_ac5fedc5edbe2fc907b10402005c4db23}{m\_left\_motors}}\{\};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00108}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_ace1149c13f70650675d1d32b0d7b3d40}{00108}}\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1hal_1_1_motor_group}{hal::MotorGroup}}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_ace1149c13f70650675d1d32b0d7b3d40}{m\_right\_motors}}\{\};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00114}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_ae35f99d7cc6ddc1af6eb66954c81308f}{00114}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_ae35f99d7cc6ddc1af6eb66954c81308f}{m\_mass}}\{\};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00120}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a16eebb2634f7480f6e18187b0c992a0a}{00120}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a16eebb2634f7480f6e18187b0c992a0a}{m\_radius}}\{\};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00126}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a1d9d63d1cab837b704b27398b0c4bacd}{00126}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a1d9d63d1cab837b704b27398b0c4bacd}{m\_moment\_of\_inertia}}\{\};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00132}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a615d1f9fd35442c661548f0717f7cad4}{00132}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a615d1f9fd35442c661548f0717f7cad4}{m\_gear\_ratio}}\{\};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00138}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a9779a6647af3692c694342b8ffa85663}{00138}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a9779a6647af3692c694342b8ffa85663}{m\_wheel\_radius}}\{\};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00144}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a98b9bdce49811a328bc0fc570aa91bd0}{00144}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a98b9bdce49811a328bc0fc570aa91bd0}{c1}}\{\};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00150}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a1e9a234b5eb1f99ee7ccc3fb6235dcdf}{00150}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a1e9a234b5eb1f99ee7ccc3fb6235dcdf}{c2}}\{\};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00156}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_aa0f735e2e6bd20893569c047f6d5c306}{00156}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_aa0f735e2e6bd20893569c047f6d5c306}{c3}}\{\};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00157}00157\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00162}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a92ddf84c4632b6f9bc148aa7c9e2fc50}{00162}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a92ddf84c4632b6f9bc148aa7c9e2fc50}{c4}}\{\};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00168}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a9268afa339f1edbb4a310228fc77d8d7}{00168}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a9268afa339f1edbb4a310228fc77d8d7}{c5}}\{\};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00174}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_ae0cbf119ce8bed716b1fff3580793105}{00174}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_ae0cbf119ce8bed716b1fff3580793105}{c6}}\{\};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00180}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_aa1617670aef397527dce683e0dfaf2b0}{00180}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_aa1617670aef397527dce683e0dfaf2b0}{c7}}\{\};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00186}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_aff0a27b7aec2687e688498e3b14afeee}{00186}}\ \ \ \ \ \mbox{\hyperlink{structwisco_1_1robot_1_1subsystems_1_1drive_1_1_velocity}{Velocity}}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_aff0a27b7aec2687e688498e3b14afeee}{m\_velocity}}\{\};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00192}00192\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_adda2314b4af901173a4f2e56e0457421}{taskUpdate}}();}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00198}00198\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a788422c3ed5dd5ee6993d46925cdc64c}{updateAcceleration}}();}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00199}00199\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00200}00200\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00205}00205\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_ab095e72e74b651ec06321de7c505eb02}{initialize}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00211}00211\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a0ae9a3d8d8cd6db2979b1c56a6b933d0}{run}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00218}00218\ \ \ \ \ \mbox{\hyperlink{structwisco_1_1robot_1_1subsystems_1_1drive_1_1_velocity}{Velocity}}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a615f4aa058181b161cd52df4656d7957}{getVelocity}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00219}00219\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00225}00225\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a98def3051e990131061032bcdde40184}{setVelocity}}(\mbox{\hyperlink{structwisco_1_1robot_1_1subsystems_1_1drive_1_1_velocity}{Velocity}}\ velocity)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00226}00226\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00233}00233\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_aaa6ab48655401fa4c46b6b8cfac32eb1}{setVoltage}}(\textcolor{keywordtype}{double}\ left\_voltage,\ \textcolor{keywordtype}{double}\ right\_voltage)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00240}00240\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a3403fbec699843fd71788aeae750d0ae}{setDelayer}}(std::unique\_ptr<rtos::IDelayer>\&\ delayer);}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00247}00247\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a6b05e30a7bebccac04bae1de3dc4e1d7}{setMutex}}(std::unique\_ptr<rtos::IMutex>\&\ mutex);}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00248}00248\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00254}00254\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a19dd1f7b09af3f3eaa6308c09cf4268f}{setTask}}(std::unique\_ptr<rtos::ITask>\&\ task);}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00255}00255\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00262}00262\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a8bb0e7106d32182a87add10cb8c9a808}{setVelocityProfiles}}(std::unique\_ptr<IVelocityProfile>\&\ left\_velocity\_profile,\ std::unique\_ptr<IVelocityProfile>\&\ right\_velocity\_profile);}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00263}00263\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00269}00269\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a407a8092678108d4293838660ae9e256}{setLeftMotors}}(\mbox{\hyperlink{classwisco_1_1hal_1_1_motor_group}{hal::MotorGroup}}\&\ left\_motors);}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00270}00270\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00276}00276\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a361f55bd314717728a075408439d9579}{setRightMotors}}(\mbox{\hyperlink{classwisco_1_1hal_1_1_motor_group}{hal::MotorGroup}}\&\ right\_motors);}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00277}00277\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00283}00283\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a93d05771f3a8f220350d952add6d2104}{setMass}}(\textcolor{keywordtype}{double}\ mass);}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00284}00284\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00290}00290\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a1af117360fa193109c837a00afc99664}{setRadius}}(\textcolor{keywordtype}{double}\ radius);}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00291}00291\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00297}00297\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a66f45bcabdc3a76410384c965090e317}{setMomentOfInertia}}(\textcolor{keywordtype}{double}\ moment\_of\_inertia);}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00298}00298\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00304}00304\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a80e66a5f0364858bbf590f6e2187b5f2}{setGearRatio}}(\textcolor{keywordtype}{double}\ gear\_ratio);}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00305}00305\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00311}00311\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_kinematic_differential_drive_a8b0932ae5b9f45e22be465367d65170a}{setWheelRadius}}(\textcolor{keywordtype}{double}\ wheel\_radius);}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00312}00312\ \};}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00313}00313\ \}\ \textcolor{comment}{//\ namespace\ drive}}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00314}00314\ \}\ \textcolor{comment}{//\ namespace\ subsystems}}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00315}00315\ \}\ \textcolor{comment}{//\ namespace\ robot}}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00316}00316\ \}\ \textcolor{comment}{//\ namespace\ wisco}}
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00317}00317\ }
+\DoxyCodeLine{\Hypertarget{_kinematic_differential_drive_8hpp_source_l00318}00318\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

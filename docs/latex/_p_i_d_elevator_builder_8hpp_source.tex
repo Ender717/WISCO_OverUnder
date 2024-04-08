@@ -1,0 +1,69 @@
+\doxysection{PIDElevator\+Builder.\+hpp}
+\hypertarget{_p_i_d_elevator_builder_8hpp_source}{}\label{_p_i_d_elevator_builder_8hpp_source}\index{include/wisco/robot/subsystems/elevator/PIDElevatorBuilder.hpp@{include/wisco/robot/subsystems/elevator/PIDElevatorBuilder.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ WISCO\_ROBOT\_SUBSYSTEMS\_ELEVATOR\_PID\_ELEVATOR\_BUILDER\_HPP}}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00002}00002\ \textcolor{preprocessor}{\#define\ WISCO\_ROBOT\_SUBSYSTEMS\_ELEVATOR\_PID\_ELEVATOR\_BUILDER\_HPP}}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}PIDElevator.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00013}00013\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacewisco}{wisco}}}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00014}00014\ \{}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00021}00021\ \textcolor{keyword}{namespace\ }robot}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00022}00022\ \{}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00029}00029\ \textcolor{keyword}{namespace\ }subsystems}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00030}00030\ \{}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00037}00037\ \textcolor{keyword}{namespace\ }elevator}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00038}00038\ \{}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00045}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{00045}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{PIDElevatorBuilder}}}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00046}00046\ \{}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00047}00047\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00052}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a48f7c89968796140c5a323791df7ca65}{00052}}\ \ \ \ \ std::unique\_ptr<rtos::IClock>\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a48f7c89968796140c5a323791df7ca65}{m\_clock}}\{\};}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00058}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_ab082987b54b92742785f014b3396f249}{00058}}\ \ \ \ \ std::unique\_ptr<rtos::IDelayer>\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_ab082987b54b92742785f014b3396f249}{m\_delayer}}\{\};}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00064}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a89a895371e43e36df2d7f833d7009024}{00064}}\ \ \ \ \ std::unique\_ptr<rtos::IMutex>\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a89a895371e43e36df2d7f833d7009024}{m\_mutex}}\{\};}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00070}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_ae27a7172d78a76d1bf6523d0e37ff343}{00070}}\ \ \ \ \ std::unique\_ptr<rtos::ITask>\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_ae27a7172d78a76d1bf6523d0e37ff343}{m\_task}}\{\};}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00076}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a6e63af61c77245ef33c884665d8988a7}{00076}}\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1control_1_1_p_i_d}{control::PID}}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a6e63af61c77245ef33c884665d8988a7}{m\_pid}}\{\};}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00082}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_aeefc0e9acf3026b3f7e3933656810d9c}{00082}}\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1hal_1_1_motor_group}{hal::MotorGroup}}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_aeefc0e9acf3026b3f7e3933656810d9c}{m\_motors}}\{\};}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00088}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a3635a613d118b4a990fb11fb3242b3ad}{00088}}\ \ \ \ \ std::unique\_ptr<io::IRotationSensor>\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a3635a613d118b4a990fb11fb3242b3ad}{m\_rotation\_sensor}}\{\};}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00094}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a113c64a06455c599091f8d2339b37d5b}{00094}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a113c64a06455c599091f8d2339b37d5b}{m\_inches\_per\_radian}}\{\};}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00096}00096\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00103}00103\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{PIDElevatorBuilder}}*\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a85a3f98a31545bcec850ebd761932e4f}{withClock}}(\textcolor{keyword}{const}\ std::unique\_ptr<rtos::IClock>\&\ clock);}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00111}00111\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{PIDElevatorBuilder}}*\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_af3de4b76174cd787019825267a854bb4}{withDelayer}}(\textcolor{keyword}{const}\ std::unique\_ptr<rtos::IDelayer>\&\ delayer);}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00119}00119\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{PIDElevatorBuilder}}*\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a73ee035f731203cb588f1325f1687ee3}{withMutex}}(std::unique\_ptr<rtos::IMutex>\&\ mutex);}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00127}00127\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{PIDElevatorBuilder}}*\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_adaaa454af7fd29394a7de2dabac1dfe0}{withTask}}(std::unique\_ptr<rtos::ITask>\&\ task);}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00135}00135\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{PIDElevatorBuilder}}*\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_ae7afa16f979158e924ed51bfc23d18f0}{withPID}}(\mbox{\hyperlink{classwisco_1_1control_1_1_p_i_d}{control::PID}}\ pid);}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00143}00143\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{PIDElevatorBuilder}}*\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a8b80aa0aa3429d091eab0cc08482c466}{withMotor}}(std::unique\_ptr<io::IMotor>\&\ motor);}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00151}00151\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{PIDElevatorBuilder}}*\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a0f44f079ffbb218ee0f8d65e1deef518}{withRotationSensor}}(std::unique\_ptr<io::IRotationSensor>\&\ rotation\_sensor);}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00159}00159\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder}{PIDElevatorBuilder}}*\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_af2083a265506000aa43eb53232f8b846}{withInchesPerRadian}}(\textcolor{keywordtype}{double}\ inches\_per\_radian);}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00166}00166\ \ \ \ \ std::unique\_ptr<IElevator>\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_builder_a754c55f0733b470d024b1f6ab9bdd985}{build}}();}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00167}00167\ \};}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00168}00168\ \}\ \textcolor{comment}{//\ namespace\ elevator}}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00169}00169\ \}\ \textcolor{comment}{//\ namespace\ subsystems}}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00170}00170\ \}\ \textcolor{comment}{//\ namespace\ robot}}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00171}00171\ \}\ \textcolor{comment}{//\ namespace\ wisco}}
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{_p_i_d_elevator_builder_8hpp_source_l00173}00173\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

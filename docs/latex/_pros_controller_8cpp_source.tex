@@ -1,0 +1,94 @@
+\doxysection{Pros\+Controller.\+cpp}
+\hypertarget{_pros_controller_8cpp_source}{}\label{_pros_controller_8cpp_source}\index{src/pros\_adapters/ProsController.cpp@{src/pros\_adapters/ProsController.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}pros\_adapters/ProsController.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00003}00003\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacepros__adapters}{pros\_adapters}}}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00004}00004\ \{}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00005}\mbox{\hyperlink{classpros__adapters_1_1_pros_controller_ae4501b3575681337ac1dde230bfe6da1}{00005}}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_ae4501b3575681337ac1dde230bfe6da1}{ProsController::ProsController}}(std::unique\_ptr<pros::Controller>\&\ controller)\ :\ m\_controller\{std::move(controller)\}}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00008}00008\ \}}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00010}\mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a5fc09b7e62ffdbdcf54f8d67a83411b5}{00010}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a5fc09b7e62ffdbdcf54f8d67a83411b5}{ProsController::taskLoop}}(\textcolor{keywordtype}{void}*\ params)}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00012}00012\ \ \ \ \ \textcolor{keywordtype}{void}**\ parameters\{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}**\textcolor{keyword}{>}(params)\};}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00013}00013\ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller}{ProsController}}*\ controller\{\textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classpros__adapters_1_1_pros_controller}{ProsController}}*\textcolor{keyword}{>}(parameters[0])\};}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00015}00015\ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00017}00017\ \ \ \ \ \ \ \ \ controller-\/>\mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a86951c313c6da6e6a35b4b7351b706b3}{taskUpdate}}();}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00018}00018\ \ \ \ \ \ \ \ \ pros::delay(\mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a32c24b63096e5fb37304cf254973e027}{TASK\_DELAY}});}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00019}00019\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00020}00020\ \}}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00022}\mbox{\hyperlink{classpros__adapters_1_1_pros_controller_ac69d7c0a35390115babd6c12fb57ad51}{00022}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_ac69d7c0a35390115babd6c12fb57ad51}{ProsController::updateRumble}}()}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00023}00023\ \{}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00024}00024\ \ \ \ \ uint32\_t\ time\{pros::millis()\};}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00025}00025\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_controller_ac944708965e0259f0a7726ca38209e11}{new\_rumble\_pattern}}\ \&\&\ time\ -\/\ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_ac81de0d469ca97dcb5062527a4a961b5}{last\_rumble\_refresh}}\ >=\ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_abd3849092a8ada7bc62ada49aca2b303}{RUMBLE\_REFRESH\_RATE}})}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00026}00026\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a9313fe01312047063320d5de5750fd45}{m\_controller}})}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a9313fe01312047063320d5de5750fd45}{m\_controller}}-\/>rumble(\mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a7961ba269f9b44ab0fdddbc7b147b5a6}{rumble\_pattern}});}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_ac944708965e0259f0a7726ca38209e11}{new\_rumble\_pattern}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_ac81de0d469ca97dcb5062527a4a961b5}{last\_rumble\_refresh}}\ =\ time;}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00032}00032\ \}}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00034}\mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a86951c313c6da6e6a35b4b7351b706b3}{00034}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a86951c313c6da6e6a35b4b7351b706b3}{ProsController::taskUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00035}00035\ \{}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00036}00036\ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a94fa2b33aeb172c8762b4c3c13bd10bf}{mutex}}.take();}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00037}00037\ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_ac69d7c0a35390115babd6c12fb57ad51}{updateRumble}}();}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00038}00038\ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a94fa2b33aeb172c8762b4c3c13bd10bf}{mutex}}.give();}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00039}00039\ \}}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00041}\mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a7e425f33980f040752c06b98d6348784}{00041}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a7e425f33980f040752c06b98d6348784}{ProsController::initialize}}()}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00042}00042\ \{}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00044}00044\ \}}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00046}\mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a4eb8bcd1f86bde77a32533752e870dbb}{00046}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a4eb8bcd1f86bde77a32533752e870dbb}{ProsController::run}}()}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00047}00047\ \{}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00048}00048\ \ \ \ \ \textcolor{keywordtype}{void}**\ params\{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}**\textcolor{keyword}{>}(malloc(1\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{void}*)))\};}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00049}00049\ \ \ \ \ params[0]\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00050}00050\ \ \ \ \ pros::Task\ controllerTask\{\&\mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a5fc09b7e62ffdbdcf54f8d67a83411b5}{ProsController::taskLoop}},\ params\};}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00051}00051\ \}}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00053}\mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a231a892c12f017e714799e2546c880b7}{00053}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a231a892c12f017e714799e2546c880b7}{ProsController::getAnalog}}(\mbox{\hyperlink{namespacewisco_1_1user_ae202ce004590703fcc95a178670c7e93}{wisco::user::EControllerAnalog}}\ analog\_channel)}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00054}00054\ \{}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00055}00055\ \ \ \ \ \textcolor{keywordtype}{double}\ value\{\};}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_controller_ab7c2fc39de88f594c578f989d7e27bf7}{ANALOG\_MAP}}.contains(analog\_channel))}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a9313fe01312047063320d5de5750fd45}{m\_controller}})}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ value\ =\ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a9313fe01312047063320d5de5750fd45}{m\_controller}}-\/>get\_analog(\mbox{\hyperlink{classpros__adapters_1_1_pros_controller_ab7c2fc39de88f594c578f989d7e27bf7}{ANALOG\_MAP}}.at(analog\_channel))\ *\ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_afe7d1668e96fb7c96211564827a85828}{ANALOG\_CONVERSION}};}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00059}00059\ \ \ \ \ \textcolor{keywordflow}{return}\ value;}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00060}00060\ \}}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00062}\mbox{\hyperlink{classpros__adapters_1_1_pros_controller_acb3b6a5a94c4a1a887dd4774481c284b}{00062}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_acb3b6a5a94c4a1a887dd4774481c284b}{ProsController::getDigital}}(\mbox{\hyperlink{namespacewisco_1_1user_a794210ea2b8a8e3185b71b59a934ea30}{wisco::user::EControllerDigital}}\ digital\_channel)}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00063}00063\ \{}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00064}00064\ \ \ \ \ \textcolor{keywordtype}{bool}\ value\{\};}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00065}00065\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a5c87a5d08e4e7c7b2c14f92ac0e54e18}{DIGITAL\_MAP}}.contains(digital\_channel))}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a9313fe01312047063320d5de5750fd45}{m\_controller}})}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ value\ =\ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a9313fe01312047063320d5de5750fd45}{m\_controller}}-\/>get\_digital(\mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a5c87a5d08e4e7c7b2c14f92ac0e54e18}{DIGITAL\_MAP}}.at(digital\_channel));}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00068}00068\ \ \ \ \ \textcolor{keywordflow}{return}\ value;}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00069}00069\ \}}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00071}\mbox{\hyperlink{classpros__adapters_1_1_pros_controller_af880ec77c26dfff5a6803221178c9bf9}{00071}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_af880ec77c26dfff5a6803221178c9bf9}{ProsController::getNewDigital}}(\mbox{\hyperlink{namespacewisco_1_1user_a794210ea2b8a8e3185b71b59a934ea30}{wisco::user::EControllerDigital}}\ digital\_channel)}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00072}00072\ \{}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00073}00073\ \ \ \ \ \textcolor{keywordtype}{bool}\ value\{\};}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00074}00074\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a5c87a5d08e4e7c7b2c14f92ac0e54e18}{DIGITAL\_MAP}}.contains(digital\_channel))}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a9313fe01312047063320d5de5750fd45}{m\_controller}})}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ value\ =\ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a9313fe01312047063320d5de5750fd45}{m\_controller}}-\/>get\_digital\_new\_press(\mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a5c87a5d08e4e7c7b2c14f92ac0e54e18}{DIGITAL\_MAP}}.at(digital\_channel));}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{keywordflow}{return}\ value;}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00078}00078\ \}}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00080}\mbox{\hyperlink{classpros__adapters_1_1_pros_controller_ace94b287f1b1b79743e53a72d4ab5f48}{00080}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_ace94b287f1b1b79743e53a72d4ab5f48}{ProsController::rumble}}(std::string\ pattern)}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00081}00081\ \{}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00082}00082\ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a94fa2b33aeb172c8762b4c3c13bd10bf}{mutex}}.take();}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00083}00083\ \ \ \ \ \textcolor{keywordflow}{for}\ (uint8\_t\ i\{0\};\ i\ <\ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a82faa0d512ef6c81fd02b6279d023865}{MAX\_RUMBLE\_LENGTH}};\ ++i)}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a7961ba269f9b44ab0fdddbc7b147b5a6}{rumble\_pattern}}[i]\ =\ pattern[i];}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00085}00085\ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_ac944708965e0259f0a7726ca38209e11}{new\_rumble\_pattern}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00086}00086\ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_controller_a94fa2b33aeb172c8762b4c3c13bd10bf}{mutex}}.give();}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00087}00087\ \}}
+\DoxyCodeLine{\Hypertarget{_pros_controller_8cpp_source_l00088}00088\ \}\ \textcolor{comment}{//\ namespace\ pros\_adapters}}
+
+\end{DoxyCode}

@@ -1,0 +1,41 @@
+\doxysection{Pros\+Rotation.\+hpp}
+\hypertarget{_pros_rotation_8hpp_source}{}\label{_pros_rotation_8hpp_source}\index{include/pros\_adapters/ProsRotation.hpp@{include/pros\_adapters/ProsRotation.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ PROS\_ADAPTERS\_PROS\_ROTATION\_HPP}}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00002}00002\ \textcolor{preprocessor}{\#define\ PROS\_ADAPTERS\_PROS\_ROTATION\_HPP}}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}pros/rotation.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}wisco/io/IRotationSensor.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00015}00015\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacepros__adapters}{pros\_adapters}}}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00016}00016\ \{}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00023}\mbox{\hyperlink{classpros__adapters_1_1_pros_rotation}{00023}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classpros__adapters_1_1_pros_rotation}{ProsRotation}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classwisco_1_1io_1_1_i_rotation_sensor}{wisco::io::IRotationSensor}}}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00024}00024\ \{}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00025}00025\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00030}\mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_af2c69aaf5c76f86585e8c4e44fac0220}{00030}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_af2c69aaf5c76f86585e8c4e44fac0220}{UNIT\_CONVERSION}}\{18000\ /\ M\_PI\};}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00036}\mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_a418a48373bdd4a21992befe7de2ed41f}{00036}}\ \ \ \ \ std::unique\_ptr<pros::Rotation>\ \mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_a418a48373bdd4a21992befe7de2ed41f}{m\_sensor}}\{\};}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00038}00038\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00044}00044\ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_a2b28a33e80504765aab242e443d36fa5}{ProsRotation}}(std::unique\_ptr<pros::Rotation>\&\ sensor);}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_a36f7a18b0612025f93f409d223879eab}{initialize}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_af69309c5e55de0808d33c27b9f4f75ae}{reset}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00063}00063\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_a8418691b6a6570e39b07bd11199efe7e}{getRotation}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00070}00070\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_a8c8b8387a8f3c54346f76b03e20f0e86}{setRotation}}(\textcolor{keywordtype}{double}\ rotation)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00077}00077\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_rotation_ac2e0f90e5a70a6da897098ccbe44f657}{getAngle}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00078}00078\ \};}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00079}00079\ \}}
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_pros_rotation_8hpp_source_l00081}00081\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

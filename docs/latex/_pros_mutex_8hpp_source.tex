@@ -1,0 +1,30 @@
+\doxysection{Pros\+Mutex.\+hpp}
+\hypertarget{_pros_mutex_8hpp_source}{}\label{_pros_mutex_8hpp_source}\index{include/pros\_adapters/ProsMutex.hpp@{include/pros\_adapters/ProsMutex.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_pros_mutex_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ PROS\_ADAPTERS\_PROS\_MUTEX\_HPP}}
+\DoxyCodeLine{\Hypertarget{_pros_mutex_8hpp_source_l00002}00002\ \textcolor{preprocessor}{\#define\ PROS\_ADAPTERS\_PROS\_MUTEX\_HPP}}
+\DoxyCodeLine{\Hypertarget{_pros_mutex_8hpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_pros_mutex_8hpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{_pros_mutex_8hpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_pros_mutex_8hpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}pros/rtos.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_pros_mutex_8hpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}wisco/rtos/IMutex.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_pros_mutex_8hpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_pros_mutex_8hpp_source_l00014}00014\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacepros__adapters}{pros\_adapters}}}
+\DoxyCodeLine{\Hypertarget{_pros_mutex_8hpp_source_l00015}00015\ \{}
+\DoxyCodeLine{\Hypertarget{_pros_mutex_8hpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_pros_mutex_8hpp_source_l00022}\mbox{\hyperlink{classpros__adapters_1_1_pros_mutex}{00022}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classpros__adapters_1_1_pros_mutex}{ProsMutex}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_mutex}{wisco::rtos::IMutex}}}
+\DoxyCodeLine{\Hypertarget{_pros_mutex_8hpp_source_l00023}00023\ \{}
+\DoxyCodeLine{\Hypertarget{_pros_mutex_8hpp_source_l00024}00024\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_pros_mutex_8hpp_source_l00029}\mbox{\hyperlink{classpros__adapters_1_1_pros_mutex_abcb74f6da700edf0844164109f9d58c9}{00029}}\ \ \ \ \ pros::Mutex\ \mbox{\hyperlink{classpros__adapters_1_1_pros_mutex_abcb74f6da700edf0844164109f9d58c9}{mutex}}\{\};}
+\DoxyCodeLine{\Hypertarget{_pros_mutex_8hpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_pros_mutex_8hpp_source_l00031}00031\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_pros_mutex_8hpp_source_l00036}00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_mutex_a5378aafb343ffe1c427e258f706fb7c9}{take}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_pros_mutex_8hpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_pros_mutex_8hpp_source_l00042}00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_mutex_a817638694c8c8d2dc2cfecfcbed3ac2e}{give}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_pros_mutex_8hpp_source_l00043}00043\ \};}
+\DoxyCodeLine{\Hypertarget{_pros_mutex_8hpp_source_l00044}00044\ \}}
+\DoxyCodeLine{\Hypertarget{_pros_mutex_8hpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_pros_mutex_8hpp_source_l00046}00046\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,96 @@
+\doxysection{pros\+\_\+adapters\+::Pros\+Clock Class Reference}
+\hypertarget{classpros__adapters_1_1_pros_clock}{}\label{classpros__adapters_1_1_pros_clock}\index{pros\_adapters::ProsClock@{pros\_adapters::ProsClock}}
+
+
+Pros rtos clock adapter for the wisco rtos IClock interface.  
+
+
+Inheritance diagram for pros\+\_\+adapters\+::Pros\+Clock\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classpros__adapters_1_1_pros_clock}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_clock}{wisco\+::rtos\+::\+IClock}} $>$ \mbox{\hyperlink{classpros__adapters_1_1_pros_clock_a596fac1f863492bf59ef279523048131}{clone}} () const override
+\begin{DoxyCompactList}\small\item\em Clones the IClock object. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{classpros__adapters_1_1_pros_clock_a63a7313dfab82e6c167a9a4e5f67b7f9}{get\+Time}} () override
+\begin{DoxyCompactList}\small\item\em Get the system clock time in milliseconds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_clock}{wisco\+::rtos\+::\+IClock}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IClock} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classwisco_1_1rtos_1_1_i_clock}{IClock} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Pros rtos clock adapter for the wisco rtos IClock interface. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Sandvig 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_pros_clock_8hpp_source_l00021}{21}} of file \mbox{\hyperlink{_pros_clock_8hpp_source}{Pros\+Clock.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classpros__adapters_1_1_pros_clock_a596fac1f863492bf59ef279523048131}\label{classpros__adapters_1_1_pros_clock_a596fac1f863492bf59ef279523048131} 
+\index{pros\_adapters::ProsClock@{pros\_adapters::ProsClock}!clone@{clone}}
+\index{clone@{clone}!pros\_adapters::ProsClock@{pros\_adapters::ProsClock}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_clock}{wisco\+::rtos\+::\+IClock}} $>$ pros\+\_\+adapters\+::\+Pros\+Clock\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clones the IClock object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::unique\+\_\+ptr$<$\+IClock$>$ The cloned IClock object 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_clock_a17591c6b642a68dcd25f3c2e8297c9d9}{wisco\+::rtos\+::\+IClock}}.
+
+
+
+Definition at line \mbox{\hyperlink{_pros_clock_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{_pros_clock_8cpp_source}{Pros\+Clock.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00006\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keywordflow}{return}\ std::unique\_ptr<wisco::rtos::IClock>(std::make\_unique<ProsClock>(*\textcolor{keyword}{this}));}
+\DoxyCodeLine{00008\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_clock_a63a7313dfab82e6c167a9a4e5f67b7f9}\label{classpros__adapters_1_1_pros_clock_a63a7313dfab82e6c167a9a4e5f67b7f9} 
+\index{pros\_adapters::ProsClock@{pros\_adapters::ProsClock}!getTime@{getTime}}
+\index{getTime@{getTime}!pros\_adapters::ProsClock@{pros\_adapters::ProsClock}}
+\doxysubsubsection{\texorpdfstring{getTime()}{getTime()}}
+{\footnotesize\ttfamily uint32\+\_\+t pros\+\_\+adapters\+::\+Pros\+Clock\+::get\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the system clock time in milliseconds. 
+
+\begin{DoxyReturn}{Returns}
+uint32\+\_\+t The system clock time in milliseconds 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_clock_a8ba326170780240f340d00efdd8cab54}{wisco\+::rtos\+::\+IClock}}.
+
+
+
+Definition at line \mbox{\hyperlink{_pros_clock_8cpp_source_l00010}{10}} of file \mbox{\hyperlink{_pros_clock_8cpp_source}{Pros\+Clock.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordflow}{return}\ pros::millis();}
+\DoxyCodeLine{00013\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,125 @@
+\doxysection{wisco\+::IProfile Class Reference}
+\hypertarget{classwisco_1_1_i_profile}{}\label{classwisco_1_1_i_profile}\index{wisco::IProfile@{wisco::IProfile}}
+
+
+Interface for the profiles in the system.  
+
+
+Inheritance diagram for wisco\+::IProfile\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classwisco_1_1_i_profile}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classwisco_1_1_i_profile_a390aa384ea36055905adc79be31c5a29}\label{classwisco_1_1_i_profile_a390aa384ea36055905adc79be31c5a29} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IProfile} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classwisco_1_1_i_profile}{IProfile} object. \end{DoxyCompactList}\item 
+virtual std\+::string \mbox{\hyperlink{classwisco_1_1_i_profile_a2ec4a2fba23e5e3394aa9a88869c564e}{get\+Name}} ()=0
+\begin{DoxyCompactList}\small\item\em Get the name of the profile. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classwisco_1_1_i_profile_ab5ba0ad49d15f5583ea2f1cedcc88163}{get\+Control\+Mode}} (\mbox{\hyperlink{namespacewisco_1_1user_ad0f1edab901df0274a6e4491cd08a6e4}{user\+::\+EControl\+Type}} control\+\_\+type) const =0
+\begin{DoxyCompactList}\small\item\em Get the control mode for a specific control type. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{namespacewisco_1_1user_ae202ce004590703fcc95a178670c7e93}{user\+::\+EController\+Analog}} \mbox{\hyperlink{classwisco_1_1_i_profile_aab81c4f5779c24fba2e4a89f24d0ae5c}{get\+Analog\+Control\+Mapping}} (\mbox{\hyperlink{namespacewisco_1_1user_aaf30d49a57c83d6cd21d1bce912a4267}{user\+::\+EControl}} control) const =0
+\begin{DoxyCompactList}\small\item\em Get the mapping of a control to analog inputs. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{namespacewisco_1_1user_a794210ea2b8a8e3185b71b59a934ea30}{user\+::\+EController\+Digital}} \mbox{\hyperlink{classwisco_1_1_i_profile_abda0f9d48c8fcc9afe5b5070d1b37253}{get\+Digital\+Control\+Mapping}} (\mbox{\hyperlink{namespacewisco_1_1user_aaf30d49a57c83d6cd21d1bce912a4267}{user\+::\+EControl}} control) const =0
+\begin{DoxyCompactList}\small\item\em Get the mapping of a control to digital inputs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for the profiles in the system. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Sandvig 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_i_profile_8hpp_source_l00024}{24}} of file \mbox{\hyperlink{_i_profile_8hpp_source}{IProfile.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classwisco_1_1_i_profile_a2ec4a2fba23e5e3394aa9a88869c564e}\label{classwisco_1_1_i_profile_a2ec4a2fba23e5e3394aa9a88869c564e} 
+\index{wisco::IProfile@{wisco::IProfile}!getName@{getName}}
+\index{getName@{getName}!wisco::IProfile@{wisco::IProfile}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily virtual std\+::string wisco\+::\+IProfile\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the name of the profile. 
+
+\begin{DoxyReturn}{Returns}
+std\+::string The name of the profile 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classwisco_1_1profiles_1_1_henry_profile_a70655ac613b89fad28c3d483f597232f}{wisco\+::profiles\+::\+Henry\+Profile}}, and \mbox{\hyperlink{classwisco_1_1profiles_1_1_john_profile_a96badd371fac1b33a53a14c229d57b50}{wisco\+::profiles\+::\+John\+Profile}}.
+
+\Hypertarget{classwisco_1_1_i_profile_ab5ba0ad49d15f5583ea2f1cedcc88163}\label{classwisco_1_1_i_profile_ab5ba0ad49d15f5583ea2f1cedcc88163} 
+\index{wisco::IProfile@{wisco::IProfile}!getControlMode@{getControlMode}}
+\index{getControlMode@{getControlMode}!wisco::IProfile@{wisco::IProfile}}
+\doxysubsubsection{\texorpdfstring{getControlMode()}{getControlMode()}}
+{\footnotesize\ttfamily virtual int wisco\+::\+IProfile\+::get\+Control\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacewisco_1_1user_ad0f1edab901df0274a6e4491cd08a6e4}{user\+::\+EControl\+Type}}}]{control\+\_\+type }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the control mode for a specific control type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em control\+\_\+type} & The control type \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int The control mode 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classwisco_1_1profiles_1_1_henry_profile_adf4558b8b7a7d1f1dca404596ee235e0}{wisco\+::profiles\+::\+Henry\+Profile}}, and \mbox{\hyperlink{classwisco_1_1profiles_1_1_john_profile_abca23ad9cbb6371bbd8c41d1b78edf94}{wisco\+::profiles\+::\+John\+Profile}}.
+
+\Hypertarget{classwisco_1_1_i_profile_aab81c4f5779c24fba2e4a89f24d0ae5c}\label{classwisco_1_1_i_profile_aab81c4f5779c24fba2e4a89f24d0ae5c} 
+\index{wisco::IProfile@{wisco::IProfile}!getAnalogControlMapping@{getAnalogControlMapping}}
+\index{getAnalogControlMapping@{getAnalogControlMapping}!wisco::IProfile@{wisco::IProfile}}
+\doxysubsubsection{\texorpdfstring{getAnalogControlMapping()}{getAnalogControlMapping()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{namespacewisco_1_1user_ae202ce004590703fcc95a178670c7e93}{user\+::\+EController\+Analog}} wisco\+::\+IProfile\+::get\+Analog\+Control\+Mapping (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacewisco_1_1user_aaf30d49a57c83d6cd21d1bce912a4267}{user\+::\+EControl}}}]{control }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the mapping of a control to analog inputs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em control} & The control \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{namespacewisco_1_1user_ae202ce004590703fcc95a178670c7e93}{user\+::\+EController\+Analog} The mapping of this control to a analog input 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classwisco_1_1profiles_1_1_henry_profile_a378af9112cf05b1de3fd98b15e941f17}{wisco\+::profiles\+::\+Henry\+Profile}}, and \mbox{\hyperlink{classwisco_1_1profiles_1_1_john_profile_a0345db5a7250d7b2371935ca32392b49}{wisco\+::profiles\+::\+John\+Profile}}.
+
+\Hypertarget{classwisco_1_1_i_profile_abda0f9d48c8fcc9afe5b5070d1b37253}\label{classwisco_1_1_i_profile_abda0f9d48c8fcc9afe5b5070d1b37253} 
+\index{wisco::IProfile@{wisco::IProfile}!getDigitalControlMapping@{getDigitalControlMapping}}
+\index{getDigitalControlMapping@{getDigitalControlMapping}!wisco::IProfile@{wisco::IProfile}}
+\doxysubsubsection{\texorpdfstring{getDigitalControlMapping()}{getDigitalControlMapping()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{namespacewisco_1_1user_a794210ea2b8a8e3185b71b59a934ea30}{user\+::\+EController\+Digital}} wisco\+::\+IProfile\+::get\+Digital\+Control\+Mapping (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacewisco_1_1user_aaf30d49a57c83d6cd21d1bce912a4267}{user\+::\+EControl}}}]{control }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the mapping of a control to digital inputs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em control} & The control \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{namespacewisco_1_1user_a794210ea2b8a8e3185b71b59a934ea30}{user\+::\+EController\+Digital} The mapping of this control to a digital input 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classwisco_1_1profiles_1_1_henry_profile_a0ff82e85509e95b751684e9b03aa3223}{wisco\+::profiles\+::\+Henry\+Profile}}, and \mbox{\hyperlink{classwisco_1_1profiles_1_1_john_profile_a3cb5a4ae8e182e3d2d0492f9c5404730}{wisco\+::profiles\+::\+John\+Profile}}.
+

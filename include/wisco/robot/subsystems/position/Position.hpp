@@ -40,11 +40,40 @@ namespace position
  */
 struct Position
 {
+    /**
+     * @brief The X-coordinate
+     * 
+     */
     double x{};
+
+    /**
+     * @brief The Y-coordinate
+     * 
+     */
     double y{};
+
+    /**
+     * @brief The angle
+     * 
+     */
     double theta{};
+
+    /**
+     * @brief The X-velocity
+     * 
+     */
     double xV{};
+
+    /**
+     * @brief The Y-velocity
+     * 
+     */
     double yV{};
+
+    /**
+     * @brief The angular velocity
+     * 
+     */
     double thetaV{};
 };
 } // namespace position

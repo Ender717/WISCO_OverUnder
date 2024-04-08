@@ -30,12 +30,27 @@ class MenuAdapter : public IMenu
 {
 private:
     /**
-     * @brief The option names
+     * @brief The alliance option name
      * 
      */
     static constexpr char ALLIANCE_OPTION_NAME[]{"ALLIANCE"};
+
+    /**
+     * @brief The autonomous option name
+     * 
+     */
     static constexpr char AUTONOMOUS_OPTION_NAME[]{"AUTON"};
+
+    /**
+     * @brief The configuration option name
+     * 
+     */
     static constexpr char CONFIGURATION_OPTION_NAME[]{"CONFIG"};
+
+    /**
+     * @brief The profile option name
+     * 
+     */
     static constexpr char PROFILE_OPTION_NAME[]{"PROFILE"};
 
     /**

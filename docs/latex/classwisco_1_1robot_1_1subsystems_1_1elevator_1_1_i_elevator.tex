@@ -1,0 +1,106 @@
+\doxysection{wisco\+::robot\+::subsystems\+::elevator\+::IElevator Class Reference}
+\hypertarget{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_i_elevator}{}\label{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_i_elevator}\index{wisco::robot::subsystems::elevator::IElevator@{wisco::robot::subsystems::elevator::IElevator}}
+
+
+Interface for elevators.  
+
+
+Inheritance diagram for wisco\+::robot\+::subsystems\+::elevator\+::IElevator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_i_elevator}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_i_elevator_a5c03980d0f4b2830b064dd8e132e7888}\label{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_i_elevator_a5c03980d0f4b2830b064dd8e132e7888} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IElevator} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_i_elevator}{IElevator} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_i_elevator_a632f016182833e13fdbb6a076ac02337}{initialize}} ()=0
+\begin{DoxyCompactList}\small\item\em Initializes the elevator. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_i_elevator_a9e1b358644d371383d181cc5ecd6d6b9}{run}} ()=0
+\begin{DoxyCompactList}\small\item\em Runs the elevator. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_i_elevator_a76c455d902e64ea3a0074060e2cc4849}{get\+Position}} ()=0
+\begin{DoxyCompactList}\small\item\em Get the position of the elevator in inches. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_i_elevator_adfd81386cd18f5d16adb363b8da5f73f}{set\+Position}} (double position)=0
+\begin{DoxyCompactList}\small\item\em Set the position of the elevator in inches. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for elevators. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Sandvig 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_i_elevator_8hpp_source_l00041}{41}} of file \mbox{\hyperlink{_i_elevator_8hpp_source}{IElevator.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_i_elevator_a632f016182833e13fdbb6a076ac02337}\label{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_i_elevator_a632f016182833e13fdbb6a076ac02337} 
+\index{wisco::robot::subsystems::elevator::IElevator@{wisco::robot::subsystems::elevator::IElevator}!initialize@{initialize}}
+\index{initialize@{initialize}!wisco::robot::subsystems::elevator::IElevator@{wisco::robot::subsystems::elevator::IElevator}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily virtual void wisco\+::robot\+::subsystems\+::elevator\+::\+IElevator\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Initializes the elevator. 
+
+
+
+Implemented in \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_a3efce7ec19ad19bb8ea81f0ab7dcedbe}{wisco\+::robot\+::subsystems\+::elevator\+::\+PIDElevator}}.
+
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_i_elevator_a9e1b358644d371383d181cc5ecd6d6b9}\label{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_i_elevator_a9e1b358644d371383d181cc5ecd6d6b9} 
+\index{wisco::robot::subsystems::elevator::IElevator@{wisco::robot::subsystems::elevator::IElevator}!run@{run}}
+\index{run@{run}!wisco::robot::subsystems::elevator::IElevator@{wisco::robot::subsystems::elevator::IElevator}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily virtual void wisco\+::robot\+::subsystems\+::elevator\+::\+IElevator\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Runs the elevator. 
+
+
+
+Implemented in \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_aa5511111591749da78bdcc3c682c6a65}{wisco\+::robot\+::subsystems\+::elevator\+::\+PIDElevator}}.
+
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_i_elevator_a76c455d902e64ea3a0074060e2cc4849}\label{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_i_elevator_a76c455d902e64ea3a0074060e2cc4849} 
+\index{wisco::robot::subsystems::elevator::IElevator@{wisco::robot::subsystems::elevator::IElevator}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!wisco::robot::subsystems::elevator::IElevator@{wisco::robot::subsystems::elevator::IElevator}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily virtual double wisco\+::robot\+::subsystems\+::elevator\+::\+IElevator\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the position of the elevator in inches. 
+
+\begin{DoxyReturn}{Returns}
+double The elevator position in inches 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_aa2a4bb61827ee0bc722bf27a000a0f13}{wisco\+::robot\+::subsystems\+::elevator\+::\+PIDElevator}}.
+
+\Hypertarget{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_i_elevator_adfd81386cd18f5d16adb363b8da5f73f}\label{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_i_elevator_adfd81386cd18f5d16adb363b8da5f73f} 
+\index{wisco::robot::subsystems::elevator::IElevator@{wisco::robot::subsystems::elevator::IElevator}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!wisco::robot::subsystems::elevator::IElevator@{wisco::robot::subsystems::elevator::IElevator}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily virtual void wisco\+::robot\+::subsystems\+::elevator\+::\+IElevator\+::set\+Position (\begin{DoxyParamCaption}\item[{double}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the position of the elevator in inches. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The elevator position in inches \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1elevator_1_1_p_i_d_elevator_a78ef51792f54d9773e83cf472ab69db9}{wisco\+::robot\+::subsystems\+::elevator\+::\+PIDElevator}}.
+

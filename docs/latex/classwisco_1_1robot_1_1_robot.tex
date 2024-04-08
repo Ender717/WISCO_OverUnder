@@ -1,0 +1,233 @@
+\doxysection{wisco\+::robot\+::Robot Class Reference}
+\hypertarget{classwisco_1_1robot_1_1_robot}{}\label{classwisco_1_1robot_1_1_robot}\index{wisco::robot::Robot@{wisco::robot::Robot}}
+
+
+A container class for subsystems.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1_robot_a242cee9e110b34f64c1fb4f6a1160340}{add\+Subsystem}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem}} $>$ \&subsystem)
+\begin{DoxyCompactList}\small\item\em Adds a subsystem to the robot. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classwisco_1_1robot_1_1_robot_ad6c09482ffa0159341d0a86dfd4a92be}{remove\+Subsystem}} (std\+::string subsystem\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Removes a subsystem from the robot. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1_robot_a2501fbde51d4c6d5973bafde69d7896a}{initialize}} ()
+\begin{DoxyCompactList}\small\item\em Initializes all subsystems in the robot. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1robot_1_1_robot_ab548a89a92c3642e3661bdb2ec6c7f46}{send\+Command}} (std\+::string subsystem\+\_\+name, std\+::string command\+\_\+name,...)
+\begin{DoxyCompactList}\small\item\em Sends a command to a subsystem. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classwisco_1_1robot_1_1_robot_a670ab0efe183ddccc8ceb21dd6b557b7}{get\+State}} (std\+::string subsystem\+\_\+name, std\+::string state\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Gets a state of a subsystem. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem}} $>$ $>$ \mbox{\hyperlink{classwisco_1_1robot_1_1_robot_a2df61818ebceeb6ced4cbd9728898a69}{subsystems}} \{\}
+\begin{DoxyCompactList}\small\item\em The subsystems contained in the robot. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A container class for subsystems. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Sandvig 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_robot_8hpp_source_l00030}{30}} of file \mbox{\hyperlink{_robot_8hpp_source}{Robot.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classwisco_1_1robot_1_1_robot_a242cee9e110b34f64c1fb4f6a1160340}\label{classwisco_1_1robot_1_1_robot_a242cee9e110b34f64c1fb4f6a1160340} 
+\index{wisco::robot::Robot@{wisco::robot::Robot}!addSubsystem@{addSubsystem}}
+\index{addSubsystem@{addSubsystem}!wisco::robot::Robot@{wisco::robot::Robot}}
+\doxysubsubsection{\texorpdfstring{addSubsystem()}{addSubsystem()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::\+Robot\+::add\+Subsystem (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem}} $>$ \&}]{subsystem }\end{DoxyParamCaption})}
+
+
+
+Adds a subsystem to the robot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em subsystem} & The subsystem being added to the robot \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_robot_8cpp_source_l00007}{7}} of file \mbox{\hyperlink{_robot_8cpp_source}{Robot.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1_robot_a2df61818ebceeb6ced4cbd9728898a69}{subsystems}}.push\_back(std::move(subsystem));}
+\DoxyCodeLine{00010\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1_robot_ad6c09482ffa0159341d0a86dfd4a92be}\label{classwisco_1_1robot_1_1_robot_ad6c09482ffa0159341d0a86dfd4a92be} 
+\index{wisco::robot::Robot@{wisco::robot::Robot}!removeSubsystem@{removeSubsystem}}
+\index{removeSubsystem@{removeSubsystem}!wisco::robot::Robot@{wisco::robot::Robot}}
+\doxysubsubsection{\texorpdfstring{removeSubsystem()}{removeSubsystem()}}
+{\footnotesize\ttfamily bool wisco\+::robot\+::\+Robot\+::remove\+Subsystem (\begin{DoxyParamCaption}\item[{std\+::string}]{subsystem\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Removes a subsystem from the robot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em subsystem\+\_\+name} & The name of the subsystem to remove from the robot \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true The subsystem was removed 
+
+false The subsystem was not contained in the robot 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_robot_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{_robot_8cpp_source}{Robot.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{bool}\ removed\{\textcolor{keyword}{false}\};}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\{\mbox{\hyperlink{classwisco_1_1robot_1_1_robot_a2df61818ebceeb6ced4cbd9728898a69}{subsystems}}.begin()\};\ it\ !=\ \mbox{\hyperlink{classwisco_1_1robot_1_1_robot_a2df61818ebceeb6ced4cbd9728898a69}{subsystems}}.end();\ ++it)}
+\DoxyCodeLine{00016\ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((*it)-\/>getName()\ ==\ subsystem\_name)}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1_robot_a2df61818ebceeb6ced4cbd9728898a69}{subsystems}}.erase(it);}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ removed\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00023\ \ \ \ \ \}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordflow}{return}\ removed;}
+\DoxyCodeLine{00025\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1_robot_a2501fbde51d4c6d5973bafde69d7896a}\label{classwisco_1_1robot_1_1_robot_a2501fbde51d4c6d5973bafde69d7896a} 
+\index{wisco::robot::Robot@{wisco::robot::Robot}!initialize@{initialize}}
+\index{initialize@{initialize}!wisco::robot::Robot@{wisco::robot::Robot}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::\+Robot\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initializes all subsystems in the robot. 
+
+
+
+Definition at line \mbox{\hyperlink{_robot_8cpp_source_l00027}{27}} of file \mbox{\hyperlink{_robot_8cpp_source}{Robot.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ subsystem\ :\ \mbox{\hyperlink{classwisco_1_1robot_1_1_robot_a2df61818ebceeb6ced4cbd9728898a69}{subsystems}})}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ subsystem-\/>\mbox{\hyperlink{classwisco_1_1robot_1_1_robot_a2501fbde51d4c6d5973bafde69d7896a}{initialize}}();}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ subsystem\ :\ \mbox{\hyperlink{classwisco_1_1robot_1_1_robot_a2df61818ebceeb6ced4cbd9728898a69}{subsystems}})}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ subsystem-\/>run();}
+\DoxyCodeLine{00033\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1_robot_ab548a89a92c3642e3661bdb2ec6c7f46}\label{classwisco_1_1robot_1_1_robot_ab548a89a92c3642e3661bdb2ec6c7f46} 
+\index{wisco::robot::Robot@{wisco::robot::Robot}!sendCommand@{sendCommand}}
+\index{sendCommand@{sendCommand}!wisco::robot::Robot@{wisco::robot::Robot}}
+\doxysubsubsection{\texorpdfstring{sendCommand()}{sendCommand()}}
+{\footnotesize\ttfamily void wisco\+::robot\+::\+Robot\+::send\+Command (\begin{DoxyParamCaption}\item[{std\+::string}]{subsystem\+\_\+name,  }\item[{std\+::string}]{command\+\_\+name,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+Sends a command to a subsystem. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em subsystem\+\_\+name} & The name of the subsystem \\
+\hline
+{\em command\+\_\+name} & The name of the command \\
+\hline
+{\em ...} & The parameters for the command \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_robot_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{_robot_8cpp_source}{Robot.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ va\_list\ args;}
+\DoxyCodeLine{00038\ \ \ \ \ va\_start(args,\ command\_name);}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ subsystem\ :\ \mbox{\hyperlink{classwisco_1_1robot_1_1_robot_a2df61818ebceeb6ced4cbd9728898a69}{subsystems}})}
+\DoxyCodeLine{00040\ \ \ \ \ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (subsystem-\/>getName()\ ==\ subsystem\_name)}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ subsystem-\/>command(command\_name,\ args);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \}}
+\DoxyCodeLine{00047\ \ \ \ \ va\_end(args);}
+\DoxyCodeLine{00048\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1robot_1_1_robot_a670ab0efe183ddccc8ceb21dd6b557b7}\label{classwisco_1_1robot_1_1_robot_a670ab0efe183ddccc8ceb21dd6b557b7} 
+\index{wisco::robot::Robot@{wisco::robot::Robot}!getState@{getState}}
+\index{getState@{getState}!wisco::robot::Robot@{wisco::robot::Robot}}
+\doxysubsubsection{\texorpdfstring{getState()}{getState()}}
+{\footnotesize\ttfamily void \texorpdfstring{$\ast$}{*} wisco\+::robot\+::\+Robot\+::get\+State (\begin{DoxyParamCaption}\item[{std\+::string}]{subsystem\+\_\+name,  }\item[{std\+::string}]{state\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Gets a state of a subsystem. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em subsystem\+\_\+name} & The name of the subsystem \\
+\hline
+{\em state\+\_\+name} & The name of the state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void\texorpdfstring{$\ast$}{*} The current value of that state 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_robot_8cpp_source_l00050}{50}} of file \mbox{\hyperlink{_robot_8cpp_source}{Robot.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00051\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}*\ state\{\textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ subsystem\ :\ \mbox{\hyperlink{classwisco_1_1robot_1_1_robot_a2df61818ebceeb6ced4cbd9728898a69}{subsystems}})}
+\DoxyCodeLine{00054\ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (subsystem-\/>getName()\ ==\ subsystem\_name)}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ state\ =\ subsystem-\/>state(state\_name);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordflow}{return}\ state;}
+\DoxyCodeLine{00062\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classwisco_1_1robot_1_1_robot_a2df61818ebceeb6ced4cbd9728898a69}\label{classwisco_1_1robot_1_1_robot_a2df61818ebceeb6ced4cbd9728898a69} 
+\index{wisco::robot::Robot@{wisco::robot::Robot}!subsystems@{subsystems}}
+\index{subsystems@{subsystems}!wisco::robot::Robot@{wisco::robot::Robot}}
+\doxysubsubsection{\texorpdfstring{subsystems}{subsystems}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classwisco_1_1robot_1_1_a_subsystem}{ASubsystem}}$>$ $>$ wisco\+::robot\+::\+Robot\+::subsystems \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The subsystems contained in the robot. 
+
+
+
+Definition at line \mbox{\hyperlink{_robot_8hpp_source_l00037}{37}} of file \mbox{\hyperlink{_robot_8hpp_source}{Robot.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00037\ \{\};}
+
+\end{DoxyCode}

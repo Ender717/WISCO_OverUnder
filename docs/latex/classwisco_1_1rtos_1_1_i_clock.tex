@@ -1,0 +1,72 @@
+\doxysection{wisco\+::rtos\+::IClock Class Reference}
+\hypertarget{classwisco_1_1rtos_1_1_i_clock}{}\label{classwisco_1_1rtos_1_1_i_clock}\index{wisco::rtos::IClock@{wisco::rtos::IClock}}
+
+
+Interface for an rtos system clock.  
+
+
+Inheritance diagram for wisco\+::rtos\+::IClock\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classwisco_1_1rtos_1_1_i_clock}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classwisco_1_1rtos_1_1_i_clock_a7c0dbc64bfc507d923137667dbfbe20a}\label{classwisco_1_1rtos_1_1_i_clock_a7c0dbc64bfc507d923137667dbfbe20a} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IClock} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classwisco_1_1rtos_1_1_i_clock}{IClock} object. \end{DoxyCompactList}\item 
+virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_clock}{IClock}} $>$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_clock_a17591c6b642a68dcd25f3c2e8297c9d9}{clone}} () const =0
+\begin{DoxyCompactList}\small\item\em Clones the \doxylink{classwisco_1_1rtos_1_1_i_clock}{IClock} object. \end{DoxyCompactList}\item 
+virtual uint32\+\_\+t \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_clock_a8ba326170780240f340d00efdd8cab54}{get\+Time}} ()=0
+\begin{DoxyCompactList}\small\item\em Get the clock time in milliseconds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for an rtos system clock. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Sandvig 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_i_clock_8hpp_source_l00028}{28}} of file \mbox{\hyperlink{_i_clock_8hpp_source}{IClock.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classwisco_1_1rtos_1_1_i_clock_a17591c6b642a68dcd25f3c2e8297c9d9}\label{classwisco_1_1rtos_1_1_i_clock_a17591c6b642a68dcd25f3c2e8297c9d9} 
+\index{wisco::rtos::IClock@{wisco::rtos::IClock}!clone@{clone}}
+\index{clone@{clone}!wisco::rtos::IClock@{wisco::rtos::IClock}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_clock}{IClock}} $>$ wisco\+::rtos\+::\+IClock\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Clones the \doxylink{classwisco_1_1rtos_1_1_i_clock}{IClock} object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::unique\+\_\+ptr$<$\+IClock$>$ The cloned \doxylink{classwisco_1_1rtos_1_1_i_clock}{IClock} object 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classpros__adapters_1_1_pros_clock_a596fac1f863492bf59ef279523048131}{pros\+\_\+adapters\+::\+Pros\+Clock}}.
+
+\Hypertarget{classwisco_1_1rtos_1_1_i_clock_a8ba326170780240f340d00efdd8cab54}\label{classwisco_1_1rtos_1_1_i_clock_a8ba326170780240f340d00efdd8cab54} 
+\index{wisco::rtos::IClock@{wisco::rtos::IClock}!getTime@{getTime}}
+\index{getTime@{getTime}!wisco::rtos::IClock@{wisco::rtos::IClock}}
+\doxysubsubsection{\texorpdfstring{getTime()}{getTime()}}
+{\footnotesize\ttfamily virtual uint32\+\_\+t wisco\+::rtos\+::\+IClock\+::get\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the clock time in milliseconds. 
+
+\begin{DoxyReturn}{Returns}
+uint32\+\_\+t The clock time in milliseconds 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classpros__adapters_1_1_pros_clock_a63a7313dfab82e6c167a9a4e5f67b7f9}{pros\+\_\+adapters\+::\+Pros\+Clock}}.
+

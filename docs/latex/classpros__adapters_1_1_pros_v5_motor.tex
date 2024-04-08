@@ -1,0 +1,569 @@
+\doxysection{pros\+\_\+adapters\+::Pros\+V5\+Motor Class Reference}
+\hypertarget{classpros__adapters_1_1_pros_v5_motor}{}\label{classpros__adapters_1_1_pros_v5_motor}\index{pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}}
+
+
+Pros v5 smart motor adapter for the wisco IMotor interface.  
+
+
+Inheritance diagram for pros\+\_\+adapters\+::Pros\+V5\+Motor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classpros__adapters_1_1_pros_v5_motor}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_ab08742e7a9a5a09d7d34f740adc7123f}{Pros\+V5\+Motor}} (std\+::unique\+\_\+ptr$<$ pros\+::\+Motor $>$ \&motor)
+\begin{DoxyCompactList}\small\item\em Construct a new Pros V5 Motor object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_ad885aaf16998d6c42b382d64f705be4a}{initialize}} () override
+\begin{DoxyCompactList}\small\item\em Initializes the motor. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_afe1b3bf8144a98f73a3cb574beff1813}{get\+Torque\+Constant}} () override
+\begin{DoxyCompactList}\small\item\em Get the torque constant of the motor. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_ae4ea5781e2a07451be90b86fb6c0b63f}{get\+Resistance}} () override
+\begin{DoxyCompactList}\small\item\em Get the resistance of the motor. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a1d8aa5d2bc5793e935d6b918a66ace88}{get\+Angular\+Velocity\+Constant}} () override
+\begin{DoxyCompactList}\small\item\em Get the angular velocity constant of the motor. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a3b269f6d79e3d6e4850289b32d8a5907}{get\+Gear\+Ratio}} () override
+\begin{DoxyCompactList}\small\item\em Get the gear ratio of the motor (1 if n/a) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a54458b8a3358af755b401cd2d561f11a}{get\+Angular\+Velocity}} () override
+\begin{DoxyCompactList}\small\item\em Get the angular velocity of the motor in radians/second. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_aa223526a1a2f3f40c18aee8efbf67217}{get\+Position}} () override
+\begin{DoxyCompactList}\small\item\em Get the position of the motor in total radians. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a8509f9fe3ed9388f1fa456e9426caf5a}{set\+Voltage}} (double volts) override
+\begin{DoxyCompactList}\small\item\em Set the voltage input to the motor in Volts. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classwisco_1_1io_1_1_i_motor}{wisco\+::io\+::\+IMotor}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IMotor} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classwisco_1_1io_1_1_i_motor}{IMotor} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::map$<$ pros\+::\+Motor\+Gears, double $>$ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_abc8f93a88733e6527268a1ea2bcad275}{cartridge\+\_\+map}}
+\begin{DoxyCompactList}\small\item\em Map from v5 motor cartridges to gear ratios. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ pros\+::\+Motor $>$ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a3f4465947d67b8583d4eaefd897aeea1}{m\+\_\+motor}} \{\}
+\begin{DoxyCompactList}\small\item\em The motor being adapted. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr double \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_ac58b82f23abe5838a01dc506c5d5decf}{NO\+\_\+\+CARTRIDGE}} \{1.\+0\}
+\begin{DoxyCompactList}\small\item\em The gear ratio if no cartridge is present. \end{DoxyCompactList}\item 
+static constexpr double \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_afd2aac4e7e94e9160c5af790ad1dd023}{TORQUE\+\_\+\+CONSTANT}} \{(2.\+1 / 36) / 2.\+5\}
+\begin{DoxyCompactList}\small\item\em The torque constant of the motor. \end{DoxyCompactList}\item 
+static constexpr double \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_aac1f3730f7349c50832130301443b9c1}{RESISTANCE}} \{3.\+2\}
+\begin{DoxyCompactList}\small\item\em The resistance of the motor in ohms. \end{DoxyCompactList}\item 
+static constexpr double \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a24903addbe405fde2cf89388b42b4698}{ANGULAR\+\_\+\+VELOCITY\+\_\+\+CONSTANT}} \{2.\+1\}
+\begin{DoxyCompactList}\small\item\em The angular velocity constant of the motor. \end{DoxyCompactList}\item 
+static constexpr double \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a98497db71713f604132880cdde3b7020}{VELOCITY\+\_\+\+CONVERSION}} \{2 \texorpdfstring{$\ast$}{*} M\+\_\+\+PI / 60\}
+\begin{DoxyCompactList}\small\item\em Converts motor velocity to radians/second. \end{DoxyCompactList}\item 
+static constexpr double \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a1e5d60ba5faf97337da1b877e23e29ac}{POSITION\+\_\+\+CONVERSION}} \{M\+\_\+\+PI / 25\}
+\begin{DoxyCompactList}\small\item\em Converts motor position to radians. \end{DoxyCompactList}\item 
+static constexpr double \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_ab7f02ab96b2c8dee23ac4e913324d25e}{VOLTAGE\+\_\+\+CONVERSION}} \{1000\}
+\begin{DoxyCompactList}\small\item\em Converts input voltage to millivolts. \end{DoxyCompactList}\item 
+static constexpr int \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_ad7ba424d4509a5d2e52c0891615ac592}{MAX\+\_\+\+MILLIVOLTS}} \{12000\}
+\begin{DoxyCompactList}\small\item\em The maximum output to the motor in millivolts. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Pros v5 smart motor adapter for the wisco IMotor interface. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Sandvig 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_pros_v5_motor_8hpp_source_l00024}{24}} of file \mbox{\hyperlink{_pros_v5_motor_8hpp_source}{Pros\+V5\+Motor.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classpros__adapters_1_1_pros_v5_motor_ab08742e7a9a5a09d7d34f740adc7123f}\label{classpros__adapters_1_1_pros_v5_motor_ab08742e7a9a5a09d7d34f740adc7123f} 
+\index{pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}!ProsV5Motor@{ProsV5Motor}}
+\index{ProsV5Motor@{ProsV5Motor}!pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}}
+\doxysubsubsection{\texorpdfstring{ProsV5Motor()}{ProsV5Motor()}}
+{\footnotesize\ttfamily pros\+\_\+adapters\+::\+Pros\+V5\+Motor\+::\+Pros\+V5\+Motor (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ pros\+::\+Motor $>$ \&}]{motor }\end{DoxyParamCaption})}
+
+
+
+Construct a new Pros V5 Motor object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em motor} & The motor being adapted \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_pros_v5_motor_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{_pros_v5_motor_8cpp_source}{Pros\+V5\+Motor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00005\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a3f4465947d67b8583d4eaefd897aeea1}{m\_motor}}\{std::move(motor)\}}
+\DoxyCodeLine{00006\ \{}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classpros__adapters_1_1_pros_v5_motor_ad885aaf16998d6c42b382d64f705be4a}\label{classpros__adapters_1_1_pros_v5_motor_ad885aaf16998d6c42b382d64f705be4a} 
+\index{pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}!initialize@{initialize}}
+\index{initialize@{initialize}!pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void pros\+\_\+adapters\+::\+Pros\+V5\+Motor\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Initializes the motor. 
+
+
+
+Implements \mbox{\hyperlink{classwisco_1_1io_1_1_i_motor_a7995fee21e4cd6ffb60345f916636a5b}{wisco\+::io\+::\+IMotor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_pros_v5_motor_8cpp_source_l00010}{10}} of file \mbox{\hyperlink{_pros_v5_motor_8cpp_source}{Pros\+V5\+Motor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a3f4465947d67b8583d4eaefd897aeea1}{m\_motor}})}
+\DoxyCodeLine{00013\ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a3f4465947d67b8583d4eaefd897aeea1}{m\_motor}}-\/>move\_voltage(0);}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a3f4465947d67b8583d4eaefd897aeea1}{m\_motor}}-\/>tare\_position();}
+\DoxyCodeLine{00016\ \ \ \ \ \}}
+\DoxyCodeLine{00017\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_v5_motor_afe1b3bf8144a98f73a3cb574beff1813}\label{classpros__adapters_1_1_pros_v5_motor_afe1b3bf8144a98f73a3cb574beff1813} 
+\index{pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}!getTorqueConstant@{getTorqueConstant}}
+\index{getTorqueConstant@{getTorqueConstant}!pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}}
+\doxysubsubsection{\texorpdfstring{getTorqueConstant()}{getTorqueConstant()}}
+{\footnotesize\ttfamily double pros\+\_\+adapters\+::\+Pros\+V5\+Motor\+::get\+Torque\+Constant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the torque constant of the motor. 
+
+\begin{DoxyReturn}{Returns}
+double The torque constant of the motor 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1io_1_1_i_motor_a69faeeb1136a25f0970b0bfb75df4576}{wisco\+::io\+::\+IMotor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_pros_v5_motor_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{_pros_v5_motor_8cpp_source}{Pros\+V5\+Motor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_afd2aac4e7e94e9160c5af790ad1dd023}{TORQUE\_CONSTANT}};}
+\DoxyCodeLine{00022\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_v5_motor_ae4ea5781e2a07451be90b86fb6c0b63f}\label{classpros__adapters_1_1_pros_v5_motor_ae4ea5781e2a07451be90b86fb6c0b63f} 
+\index{pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}!getResistance@{getResistance}}
+\index{getResistance@{getResistance}!pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}}
+\doxysubsubsection{\texorpdfstring{getResistance()}{getResistance()}}
+{\footnotesize\ttfamily double pros\+\_\+adapters\+::\+Pros\+V5\+Motor\+::get\+Resistance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the resistance of the motor. 
+
+\begin{DoxyReturn}{Returns}
+double The resistance of the motor 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1io_1_1_i_motor_a326ededec32b422e080f2c9a3370256b}{wisco\+::io\+::\+IMotor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_pros_v5_motor_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{_pros_v5_motor_8cpp_source}{Pros\+V5\+Motor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_aac1f3730f7349c50832130301443b9c1}{RESISTANCE}};}
+\DoxyCodeLine{00027\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_v5_motor_a1d8aa5d2bc5793e935d6b918a66ace88}\label{classpros__adapters_1_1_pros_v5_motor_a1d8aa5d2bc5793e935d6b918a66ace88} 
+\index{pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}!getAngularVelocityConstant@{getAngularVelocityConstant}}
+\index{getAngularVelocityConstant@{getAngularVelocityConstant}!pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}}
+\doxysubsubsection{\texorpdfstring{getAngularVelocityConstant()}{getAngularVelocityConstant()}}
+{\footnotesize\ttfamily double pros\+\_\+adapters\+::\+Pros\+V5\+Motor\+::get\+Angular\+Velocity\+Constant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the angular velocity constant of the motor. 
+
+\begin{DoxyReturn}{Returns}
+double The angular velocity constant of the motor 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1io_1_1_i_motor_afc3cd66b57de37513845c04aa8dd64c8}{wisco\+::io\+::\+IMotor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_pros_v5_motor_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{_pros_v5_motor_8cpp_source}{Pros\+V5\+Motor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a24903addbe405fde2cf89388b42b4698}{ANGULAR\_VELOCITY\_CONSTANT}};}
+\DoxyCodeLine{00032\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_v5_motor_a3b269f6d79e3d6e4850289b32d8a5907}\label{classpros__adapters_1_1_pros_v5_motor_a3b269f6d79e3d6e4850289b32d8a5907} 
+\index{pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}!getGearRatio@{getGearRatio}}
+\index{getGearRatio@{getGearRatio}!pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}}
+\doxysubsubsection{\texorpdfstring{getGearRatio()}{getGearRatio()}}
+{\footnotesize\ttfamily double pros\+\_\+adapters\+::\+Pros\+V5\+Motor\+::get\+Gear\+Ratio (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the gear ratio of the motor (1 if n/a) 
+
+\begin{DoxyReturn}{Returns}
+double The gear ratio of the motor 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1io_1_1_i_motor_a4fc7750d0576a94d890c28b4647aceb1}{wisco\+::io\+::\+IMotor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_pros_v5_motor_8cpp_source_l00034}{34}} of file \mbox{\hyperlink{_pros_v5_motor_8cpp_source}{Pros\+V5\+Motor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{double}\ ratio\{\};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a3f4465947d67b8583d4eaefd897aeea1}{m\_motor}})}
+\DoxyCodeLine{00039\ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ pros::MotorGears\ gearing\{\mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a3f4465947d67b8583d4eaefd897aeea1}{m\_motor}}-\/>get\_gearing()\};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_abc8f93a88733e6527268a1ea2bcad275}{cartridge\_map}}.contains(gearing))}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ ratio\ =\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_abc8f93a88733e6527268a1ea2bcad275}{cartridge\_map}}.at(gearing);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ ratio\ =\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_ac58b82f23abe5838a01dc506c5d5decf}{NO\_CARTRIDGE}};}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{return}\ ratio;}
+\DoxyCodeLine{00048\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_v5_motor_a54458b8a3358af755b401cd2d561f11a}\label{classpros__adapters_1_1_pros_v5_motor_a54458b8a3358af755b401cd2d561f11a} 
+\index{pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}!getAngularVelocity@{getAngularVelocity}}
+\index{getAngularVelocity@{getAngularVelocity}!pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}}
+\doxysubsubsection{\texorpdfstring{getAngularVelocity()}{getAngularVelocity()}}
+{\footnotesize\ttfamily double pros\+\_\+adapters\+::\+Pros\+V5\+Motor\+::get\+Angular\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the angular velocity of the motor in radians/second. 
+
+\begin{DoxyReturn}{Returns}
+double The angular velocity of the motor in radians/second 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1io_1_1_i_motor_a86bab759224965c2ef89571202ffa1bf}{wisco\+::io\+::\+IMotor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_pros_v5_motor_8cpp_source_l00050}{50}} of file \mbox{\hyperlink{_pros_v5_motor_8cpp_source}{Pros\+V5\+Motor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00051\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{double}\ angular\_velocity\{\};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a3f4465947d67b8583d4eaefd897aeea1}{m\_motor}})}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ angular\_velocity\ =\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a3f4465947d67b8583d4eaefd897aeea1}{m\_motor}}-\/>get\_actual\_velocity()\ *\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a98497db71713f604132880cdde3b7020}{VELOCITY\_CONVERSION}};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordflow}{return}\ angular\_velocity;}
+\DoxyCodeLine{00058\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_v5_motor_aa223526a1a2f3f40c18aee8efbf67217}\label{classpros__adapters_1_1_pros_v5_motor_aa223526a1a2f3f40c18aee8efbf67217} 
+\index{pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily double pros\+\_\+adapters\+::\+Pros\+V5\+Motor\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the position of the motor in total radians. 
+
+\begin{DoxyReturn}{Returns}
+double The total number of radians moved since last reset 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1io_1_1_i_motor_acc89b64cf207d3b1d5f201ca15a4d301}{wisco\+::io\+::\+IMotor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_pros_v5_motor_8cpp_source_l00060}{60}} of file \mbox{\hyperlink{_pros_v5_motor_8cpp_source}{Pros\+V5\+Motor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00061\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{double}\ angular\_velocity\{\};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a3f4465947d67b8583d4eaefd897aeea1}{m\_motor}})}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ angular\_velocity\ =\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a3f4465947d67b8583d4eaefd897aeea1}{m\_motor}}-\/>get\_position()\ *\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a1e5d60ba5faf97337da1b877e23e29ac}{POSITION\_CONVERSION}}\ /\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a3b269f6d79e3d6e4850289b32d8a5907}{getGearRatio}}());}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordflow}{return}\ angular\_velocity;}
+\DoxyCodeLine{00068\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_v5_motor_a8509f9fe3ed9388f1fa456e9426caf5a}\label{classpros__adapters_1_1_pros_v5_motor_a8509f9fe3ed9388f1fa456e9426caf5a} 
+\index{pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}!setVoltage@{setVoltage}}
+\index{setVoltage@{setVoltage}!pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}}
+\doxysubsubsection{\texorpdfstring{setVoltage()}{setVoltage()}}
+{\footnotesize\ttfamily void pros\+\_\+adapters\+::\+Pros\+V5\+Motor\+::set\+Voltage (\begin{DoxyParamCaption}\item[{double}]{volts }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the voltage input to the motor in Volts. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em volts} & The voltage input in Volts \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1io_1_1_i_motor_addcfba3076708c6eebc14c42537265a0}{wisco\+::io\+::\+IMotor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_pros_v5_motor_8cpp_source_l00070}{70}} of file \mbox{\hyperlink{_pros_v5_motor_8cpp_source}{Pros\+V5\+Motor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00071\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{int}\ millivolts\{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(volts\ *\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_ab7f02ab96b2c8dee23ac4e913324d25e}{VOLTAGE\_CONVERSION}})\};}
+\DoxyCodeLine{00073\ \ \ \ \ millivolts\ =\ std::min(millivolts,\ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_ad7ba424d4509a5d2e52c0891615ac592}{MAX\_MILLIVOLTS}});}
+\DoxyCodeLine{00074\ \ \ \ \ millivolts\ =\ std::max(millivolts,\ -\/\mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_ad7ba424d4509a5d2e52c0891615ac592}{MAX\_MILLIVOLTS}});}
+\DoxyCodeLine{00075\ \ \ \ \ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a3f4465947d67b8583d4eaefd897aeea1}{m\_motor}})}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a3f4465947d67b8583d4eaefd897aeea1}{m\_motor}}-\/>move\_voltage(millivolts);}
+\DoxyCodeLine{00078\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classpros__adapters_1_1_pros_v5_motor_abc8f93a88733e6527268a1ea2bcad275}\label{classpros__adapters_1_1_pros_v5_motor_abc8f93a88733e6527268a1ea2bcad275} 
+\index{pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}!cartridge\_map@{cartridge\_map}}
+\index{cartridge\_map@{cartridge\_map}!pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}}
+\doxysubsubsection{\texorpdfstring{cartridge\_map}{cartridge\_map}}
+{\footnotesize\ttfamily const std\+::map$<$pros\+::\+Motor\+Gears, double$>$ pros\+\_\+adapters\+::\+Pros\+V5\+Motor\+::cartridge\+\_\+map\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{pros::MotorGears::rpm\_100,\ 36.0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{pros::MotorGears::rpm\_200,\ 18.0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{pros::MotorGears::rpm\_600,\ 6.0\}}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Map from v5 motor cartridges to gear ratios. 
+
+
+
+Definition at line \mbox{\hyperlink{_pros_v5_motor_8hpp_source_l00031}{31}} of file \mbox{\hyperlink{_pros_v5_motor_8hpp_source}{Pros\+V5\+Motor.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00032\ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \{pros::MotorGears::rpm\_100,\ 36.0\},}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \{pros::MotorGears::rpm\_200,\ 18.0\},}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \{pros::MotorGears::rpm\_600,\ 6.0\}}
+\DoxyCodeLine{00036\ \ \ \ \ \};}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_v5_motor_ac58b82f23abe5838a01dc506c5d5decf}\label{classpros__adapters_1_1_pros_v5_motor_ac58b82f23abe5838a01dc506c5d5decf} 
+\index{pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}!NO\_CARTRIDGE@{NO\_CARTRIDGE}}
+\index{NO\_CARTRIDGE@{NO\_CARTRIDGE}!pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}}
+\doxysubsubsection{\texorpdfstring{NO\_CARTRIDGE}{NO\_CARTRIDGE}}
+{\footnotesize\ttfamily constexpr double pros\+\_\+adapters\+::\+Pros\+V5\+Motor\+::\+NO\+\_\+\+CARTRIDGE \{1.\+0\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The gear ratio if no cartridge is present. 
+
+
+
+Definition at line \mbox{\hyperlink{_pros_v5_motor_8hpp_source_l00042}{42}} of file \mbox{\hyperlink{_pros_v5_motor_8hpp_source}{Pros\+V5\+Motor.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00042\ \{1.0\};}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_v5_motor_afd2aac4e7e94e9160c5af790ad1dd023}\label{classpros__adapters_1_1_pros_v5_motor_afd2aac4e7e94e9160c5af790ad1dd023} 
+\index{pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}!TORQUE\_CONSTANT@{TORQUE\_CONSTANT}}
+\index{TORQUE\_CONSTANT@{TORQUE\_CONSTANT}!pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}}
+\doxysubsubsection{\texorpdfstring{TORQUE\_CONSTANT}{TORQUE\_CONSTANT}}
+{\footnotesize\ttfamily constexpr double pros\+\_\+adapters\+::\+Pros\+V5\+Motor\+::\+TORQUE\+\_\+\+CONSTANT \{(2.\+1 / 36) / 2.\+5\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The torque constant of the motor. 
+
+
+
+Definition at line \mbox{\hyperlink{_pros_v5_motor_8hpp_source_l00048}{48}} of file \mbox{\hyperlink{_pros_v5_motor_8hpp_source}{Pros\+V5\+Motor.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00048\ \{(2.1\ /\ 36)\ /\ 2.5\};}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_v5_motor_aac1f3730f7349c50832130301443b9c1}\label{classpros__adapters_1_1_pros_v5_motor_aac1f3730f7349c50832130301443b9c1} 
+\index{pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}!RESISTANCE@{RESISTANCE}}
+\index{RESISTANCE@{RESISTANCE}!pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}}
+\doxysubsubsection{\texorpdfstring{RESISTANCE}{RESISTANCE}}
+{\footnotesize\ttfamily constexpr double pros\+\_\+adapters\+::\+Pros\+V5\+Motor\+::\+RESISTANCE \{3.\+2\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The resistance of the motor in ohms. 
+
+
+
+Definition at line \mbox{\hyperlink{_pros_v5_motor_8hpp_source_l00054}{54}} of file \mbox{\hyperlink{_pros_v5_motor_8hpp_source}{Pros\+V5\+Motor.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00054\ \{3.2\};}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_v5_motor_a24903addbe405fde2cf89388b42b4698}\label{classpros__adapters_1_1_pros_v5_motor_a24903addbe405fde2cf89388b42b4698} 
+\index{pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}!ANGULAR\_VELOCITY\_CONSTANT@{ANGULAR\_VELOCITY\_CONSTANT}}
+\index{ANGULAR\_VELOCITY\_CONSTANT@{ANGULAR\_VELOCITY\_CONSTANT}!pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}}
+\doxysubsubsection{\texorpdfstring{ANGULAR\_VELOCITY\_CONSTANT}{ANGULAR\_VELOCITY\_CONSTANT}}
+{\footnotesize\ttfamily constexpr double pros\+\_\+adapters\+::\+Pros\+V5\+Motor\+::\+ANGULAR\+\_\+\+VELOCITY\+\_\+\+CONSTANT \{2.\+1\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The angular velocity constant of the motor. 
+
+
+
+Definition at line \mbox{\hyperlink{_pros_v5_motor_8hpp_source_l00060}{60}} of file \mbox{\hyperlink{_pros_v5_motor_8hpp_source}{Pros\+V5\+Motor.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00060\ \{2.1\};}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_v5_motor_a98497db71713f604132880cdde3b7020}\label{classpros__adapters_1_1_pros_v5_motor_a98497db71713f604132880cdde3b7020} 
+\index{pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}!VELOCITY\_CONVERSION@{VELOCITY\_CONVERSION}}
+\index{VELOCITY\_CONVERSION@{VELOCITY\_CONVERSION}!pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}}
+\doxysubsubsection{\texorpdfstring{VELOCITY\_CONVERSION}{VELOCITY\_CONVERSION}}
+{\footnotesize\ttfamily constexpr double pros\+\_\+adapters\+::\+Pros\+V5\+Motor\+::\+VELOCITY\+\_\+\+CONVERSION \{2 \texorpdfstring{$\ast$}{*} M\+\_\+\+PI / 60\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+Converts motor velocity to radians/second. 
+
+
+
+Definition at line \mbox{\hyperlink{_pros_v5_motor_8hpp_source_l00066}{66}} of file \mbox{\hyperlink{_pros_v5_motor_8hpp_source}{Pros\+V5\+Motor.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00066\ \{2\ *\ M\_PI\ /\ 60\};}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_v5_motor_a1e5d60ba5faf97337da1b877e23e29ac}\label{classpros__adapters_1_1_pros_v5_motor_a1e5d60ba5faf97337da1b877e23e29ac} 
+\index{pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}!POSITION\_CONVERSION@{POSITION\_CONVERSION}}
+\index{POSITION\_CONVERSION@{POSITION\_CONVERSION}!pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}}
+\doxysubsubsection{\texorpdfstring{POSITION\_CONVERSION}{POSITION\_CONVERSION}}
+{\footnotesize\ttfamily constexpr double pros\+\_\+adapters\+::\+Pros\+V5\+Motor\+::\+POSITION\+\_\+\+CONVERSION \{M\+\_\+\+PI / 25\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+Converts motor position to radians. 
+
+
+
+Definition at line \mbox{\hyperlink{_pros_v5_motor_8hpp_source_l00072}{72}} of file \mbox{\hyperlink{_pros_v5_motor_8hpp_source}{Pros\+V5\+Motor.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00072\ \{M\_PI\ /\ 25\};}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_v5_motor_ab7f02ab96b2c8dee23ac4e913324d25e}\label{classpros__adapters_1_1_pros_v5_motor_ab7f02ab96b2c8dee23ac4e913324d25e} 
+\index{pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}!VOLTAGE\_CONVERSION@{VOLTAGE\_CONVERSION}}
+\index{VOLTAGE\_CONVERSION@{VOLTAGE\_CONVERSION}!pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}}
+\doxysubsubsection{\texorpdfstring{VOLTAGE\_CONVERSION}{VOLTAGE\_CONVERSION}}
+{\footnotesize\ttfamily constexpr double pros\+\_\+adapters\+::\+Pros\+V5\+Motor\+::\+VOLTAGE\+\_\+\+CONVERSION \{1000\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+Converts input voltage to millivolts. 
+
+
+
+Definition at line \mbox{\hyperlink{_pros_v5_motor_8hpp_source_l00078}{78}} of file \mbox{\hyperlink{_pros_v5_motor_8hpp_source}{Pros\+V5\+Motor.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00078\ \{1000\};}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_v5_motor_ad7ba424d4509a5d2e52c0891615ac592}\label{classpros__adapters_1_1_pros_v5_motor_ad7ba424d4509a5d2e52c0891615ac592} 
+\index{pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}!MAX\_MILLIVOLTS@{MAX\_MILLIVOLTS}}
+\index{MAX\_MILLIVOLTS@{MAX\_MILLIVOLTS}!pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}}
+\doxysubsubsection{\texorpdfstring{MAX\_MILLIVOLTS}{MAX\_MILLIVOLTS}}
+{\footnotesize\ttfamily constexpr int pros\+\_\+adapters\+::\+Pros\+V5\+Motor\+::\+MAX\+\_\+\+MILLIVOLTS \{12000\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The maximum output to the motor in millivolts. 
+
+
+
+Definition at line \mbox{\hyperlink{_pros_v5_motor_8hpp_source_l00084}{84}} of file \mbox{\hyperlink{_pros_v5_motor_8hpp_source}{Pros\+V5\+Motor.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00084\ \{12000\};}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_v5_motor_a3f4465947d67b8583d4eaefd897aeea1}\label{classpros__adapters_1_1_pros_v5_motor_a3f4465947d67b8583d4eaefd897aeea1} 
+\index{pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}!m\_motor@{m\_motor}}
+\index{m\_motor@{m\_motor}!pros\_adapters::ProsV5Motor@{pros\_adapters::ProsV5Motor}}
+\doxysubsubsection{\texorpdfstring{m\_motor}{m\_motor}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$pros\+::\+Motor$>$ pros\+\_\+adapters\+::\+Pros\+V5\+Motor\+::m\+\_\+motor \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The motor being adapted. 
+
+
+
+Definition at line \mbox{\hyperlink{_pros_v5_motor_8hpp_source_l00090}{90}} of file \mbox{\hyperlink{_pros_v5_motor_8hpp_source}{Pros\+V5\+Motor.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00090\ \{\};}
+
+\end{DoxyCode}

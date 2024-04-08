@@ -39,6 +39,11 @@ namespace subsystems
 namespace drive
 {
 
+/**
+ * @brief The subsystem adapter for differential drives
+ * @author Nathan Sandvig
+ * 
+ */
 class DifferentialDriveSubsystem : public ASubsystem
 {
 private:

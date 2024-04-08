@@ -1,0 +1,160 @@
+\doxysection{Blue\+Configuration.\+hpp}
+\hypertarget{_blue_configuration_8hpp_source}{}\label{_blue_configuration_8hpp_source}\index{include/wisco/configs/BlueConfiguration.hpp@{include/wisco/configs/BlueConfiguration.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ WISCO\_CONFIGS\_BLUE\_CONFIGURATION\_HPP}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00002}00002\ \textcolor{preprocessor}{\#define\ WISCO\_CONFIGS\_BLUE\_CONFIGURATION\_HPP}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00004}00004\ \textcolor{comment}{//\ odometry\ includes}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}pros/motors.h"{}}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}pros\_adapters/ProsClock.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}pros\_adapters/ProsController.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}pros\_adapters/ProsDelayer.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}pros\_adapters/ProsHeading.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}pros\_adapters/ProsMutex.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}pros\_adapters/ProsRotation.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}pros\_adapters/ProsTask.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}wisco/hal/TrackingWheel.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}wisco/robot/subsystems/position/InertialOdometryBuilder.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}wisco/robot/subsystems/position/PositionSubsystem.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00017}00017\ \textcolor{comment}{//\ drive\ includes}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00018}00018\ \textcolor{preprocessor}{\#include\ "{}pros\_adapters/ProsV5Motor.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00019}00019\ \textcolor{preprocessor}{\#include\ "{}wisco/robot/subsystems/drive/DirectDifferentialDriveBuilder.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00020}00020\ \textcolor{preprocessor}{\#include\ "{}wisco/robot/subsystems/drive/KinematicDifferentialDriveBuilder.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00021}00021\ \textcolor{preprocessor}{\#include\ "{}wisco/robot/subsystems/drive/CurveVelocityProfile.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00022}00022\ \textcolor{preprocessor}{\#include\ "{}wisco/robot/subsystems/drive/DifferentialDriveSubsystem.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00024}00024\ \textcolor{comment}{//\ intake\ includes}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00025}00025\ \textcolor{preprocessor}{\#include\ "{}wisco/robot/subsystems/intake/PIDIntakeBuilder.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}wisco/robot/subsystems/intake/IntakeSubsystem.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00028}00028\ \textcolor{comment}{//\ elevator\ inclues}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}wisco/robot/subsystems/elevator/PIDElevatorBuilder.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}wisco/robot/subsystems/elevator/ElevatorSubsystem.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}wisco/IConfiguration.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00039}00039\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacewisco}{wisco}}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00040}00040\ \{}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00046}\mbox{\hyperlink{namespacewisco_1_1configs}{00046}}\ \textcolor{keyword}{namespace\ }configs}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00047}00047\ \{}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00054}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration}{00054}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration}{BlueConfiguration}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classwisco_1_1_i_configuration}{IConfiguration}}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00055}00055\ \{}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00056}00056\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00061}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a09e75a12b723b9c31ea85a02608dac66}{00061}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a09e75a12b723b9c31ea85a02608dac66}{CONFIGURATION\_NAME}}[]\{\textcolor{stringliteral}{"{}BLUE"{}}\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00067}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a80b9de75624fbbd4dd02161dcf68c770}{00067}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int8\_t\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a80b9de75624fbbd4dd02161dcf68c770}{ODOMETRY\_HEADING\_PORT}}\{9\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00073}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_ad7744b0733a56602dc79235f88ae70fe}{00073}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_ad7744b0733a56602dc79235f88ae70fe}{ODOMETRY\_HEADING\_TUNING\_CONSTANT}}\{1.014\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00079}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_ae2636368822c8d7a098715940bad4f49}{00079}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_ae2636368822c8d7a098715940bad4f49}{ODOMETRY\_LINEAR\_PORT}}\{8\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00085}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a5090c10d5a9a658e07207b5ee80f1444}{00085}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a5090c10d5a9a658e07207b5ee80f1444}{ODOMETRY\_LINEAR\_RADIUS}}\{1.22\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00091}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a3d065609d9207ef4bf44cb3745514262}{00091}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a3d065609d9207ef4bf44cb3745514262}{ODOMETRY\_LINEAR\_OFFSET}}\{3.35\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00097}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a01b2dfa8fc38c2347fe3642f451fe80c}{00097}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a01b2dfa8fc38c2347fe3642f451fe80c}{ODOMETRY\_STRAFE\_PORT}}\{2\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00103}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_ac7a3411f64a8936e4db21329a7915938}{00103}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_ac7a3411f64a8936e4db21329a7915938}{ODOMETRY\_STRAFE\_RADIUS}}\{1.22\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00109}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_acbef14b37598fd764a49a46bc1836f0b}{00109}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_acbef14b37598fd764a49a46bc1836f0b}{ODOMETRY\_STRAFE\_OFFSET}}\{4.6\};\ \ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00115}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a9473b31d3fb8c16a1481684baaf0030b}{00115}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a9473b31d3fb8c16a1481684baaf0030b}{DRIVE\_KINEMATIC}}\{\textcolor{keyword}{false}\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00121}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_ae21dfe0b94c15d888f0442841096b8d8}{00121}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_ae21dfe0b94c15d888f0442841096b8d8}{DRIVE\_VELOCITY\_PROFILE\_JERK\_RATE}}\{20.0\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00127}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a11d2621062314014a5bb64c240fd57c9}{00127}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a11d2621062314014a5bb64c240fd57c9}{DRIVE\_VELOCITY\_PROFILE\_MAX\_ACCELERATION}}\{5.0\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00133}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a863402ff5918dd7979d0999384d65a9f}{00133}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int8\_t\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a863402ff5918dd7979d0999384d65a9f}{DRIVE\_LEFT\_MOTOR\_1\_PORT}}\{11\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00139}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a09c743ff3afcf460140ce5936ef8b22b}{00139}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ pros::v5::MotorGears\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a09c743ff3afcf460140ce5936ef8b22b}{DRIVE\_LEFT\_MOTOR\_1\_GEARSET}}\{pros::E\_MOTOR\_GEARSET\_06\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00145}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_ac138fbcae57d9dba296bc0618292b22a}{00145}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int8\_t\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_ac138fbcae57d9dba296bc0618292b22a}{DRIVE\_LEFT\_MOTOR\_2\_PORT}}\{12\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00151}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a18c3e95772c369e3cefa696349e3691d}{00151}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ pros::v5::MotorGears\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a18c3e95772c369e3cefa696349e3691d}{DRIVE\_LEFT\_MOTOR\_2\_GEARSET}}\{pros::E\_MOTOR\_GEARSET\_06\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00157}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_aaffbc4740512442241434188f6b70056}{00157}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int8\_t\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_aaffbc4740512442241434188f6b70056}{DRIVE\_LEFT\_MOTOR\_3\_PORT}}\{-\/13\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00163}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a852f0237b36028491bbe6e69a9862c3e}{00163}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ pros::v5::MotorGears\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a852f0237b36028491bbe6e69a9862c3e}{DRIVE\_LEFT\_MOTOR\_3\_GEARSET}}\{pros::E\_MOTOR\_GEARSET\_06\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00169}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_aec8c509f19f53caff48f80e3e7dacd5d}{00169}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int8\_t\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_aec8c509f19f53caff48f80e3e7dacd5d}{DRIVE\_LEFT\_MOTOR\_4\_PORT}}\{-\/14\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00175}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a2c75e5a3cfea0196c3f424a8b24246d2}{00175}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ pros::v5::MotorGears\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a2c75e5a3cfea0196c3f424a8b24246d2}{DRIVE\_LEFT\_MOTOR\_4\_GEARSET}}\{pros::E\_MOTOR\_GEARSET\_06\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00181}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a573388948ac4d221b762366c44ae0ba3}{00181}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int8\_t\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a573388948ac4d221b762366c44ae0ba3}{DRIVE\_RIGHT\_MOTOR\_1\_PORT}}\{17\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00187}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_af546e449dde20ce0434fc6339f69f96f}{00187}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ pros::v5::MotorGears\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_af546e449dde20ce0434fc6339f69f96f}{DRIVE\_RIGHT\_MOTOR\_1\_GEARSET}}\{pros::E\_MOTOR\_GEARSET\_06\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00193}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a59fed907d8c65bbcb29fee5ce2182da5}{00193}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int8\_t\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a59fed907d8c65bbcb29fee5ce2182da5}{DRIVE\_RIGHT\_MOTOR\_2\_PORT}}\{18\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00199}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_afb388f88017f6dda54106eddf7b7995a}{00199}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ pros::v5::MotorGears\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_afb388f88017f6dda54106eddf7b7995a}{DRIVE\_RIGHT\_MOTOR\_2\_GEARSET}}\{pros::E\_MOTOR\_GEARSET\_06\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00205}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_aae341d44ea4403af9824297f4edb348a}{00205}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int8\_t\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_aae341d44ea4403af9824297f4edb348a}{DRIVE\_RIGHT\_MOTOR\_3\_PORT}}\{-\/19\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00211}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_aa3f74883e7b2b0828141813a82f6895b}{00211}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ pros::v5::MotorGears\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_aa3f74883e7b2b0828141813a82f6895b}{DRIVE\_RIGHT\_MOTOR\_3\_GEARSET}}\{pros::E\_MOTOR\_GEARSET\_06\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00217}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_aa51da8c7147ffe88455ae45308f82d83}{00217}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int8\_t\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_aa51da8c7147ffe88455ae45308f82d83}{DRIVE\_RIGHT\_MOTOR\_4\_PORT}}\{-\/20\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00223}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_ad026002d49613df4dc632e7c83e0ce84}{00223}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ pros::v5::MotorGears\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_ad026002d49613df4dc632e7c83e0ce84}{DRIVE\_RIGHT\_MOTOR\_4\_GEARSET}}\{pros::E\_MOTOR\_GEARSET\_06\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00230}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a95de09fded07a49e804bdd36a13fa619}{00230}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a95de09fded07a49e804bdd36a13fa619}{DRIVE\_VELOCITY\_TO\_VOLTAGE}}\{12.0\ /\ 1.43\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00231}00231\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00236}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_abd310e71097dbdbff99aae5ebec0cede}{00236}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_abd310e71097dbdbff99aae5ebec0cede}{DRIVE\_MASS}}\{9.89\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00237}00237\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00242}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_acaf68f0fb50ddd4fbd68390fa5424339}{00242}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_acaf68f0fb50ddd4fbd68390fa5424339}{DRIVE\_RADIUS}}\{6.5\ *\ 2.54\ /\ 100\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00248}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_aa2ddf7e8a4eb921eb9a0cd522660c42b}{00248}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_aa2ddf7e8a4eb921eb9a0cd522660c42b}{DRIVE\_MOMENT\_OF\_INERTIA}}\{19.887\ *\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_acaf68f0fb50ddd4fbd68390fa5424339}{DRIVE\_RADIUS}}\ *\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_abd310e71097dbdbff99aae5ebec0cede}{DRIVE\_MASS}}\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00249}00249\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00254}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a4e02a6671d21af042e1c7b51a5861d1a}{00254}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a4e02a6671d21af042e1c7b51a5861d1a}{DRIVE\_GEAR\_RATIO}}\{600.0\ /\ 331.4\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00255}00255\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00260}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a2f89121ad7c5490d60537cb168ebd911}{00260}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a2f89121ad7c5490d60537cb168ebd911}{DRIVE\_WHEEL\_RADIUS}}\{3.25\ *\ 2.54\ /\ 100\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00261}00261\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00266}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a27f8d013a129f1e420032395c54a945c}{00266}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a27f8d013a129f1e420032395c54a945c}{INTAKE\_KP}}\{\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00267}00267\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00272}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a601c8a2c241ba1ea2171e267188c4f1f}{00272}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a601c8a2c241ba1ea2171e267188c4f1f}{INTAKE\_KI}}\{\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00273}00273\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00278}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a333926675c56be14853b8e64b69423be}{00278}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a333926675c56be14853b8e64b69423be}{INTAKE\_KD}}\{\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00279}00279\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00284}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a237f7822825d8a62ab6ac58c11b959fe}{00284}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int8\_t\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a237f7822825d8a62ab6ac58c11b959fe}{INTAKE\_MOTOR\_1\_PORT}}\{\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00285}00285\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00290}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_af6cbe529b61bf72668996eace9387066}{00290}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ pros::v5::MotorGears\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_af6cbe529b61bf72668996eace9387066}{INTAKE\_MOTOR\_1\_GEARSET}}\{pros::E\_MOTOR\_GEARSET\_06\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00291}00291\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00296}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_ae2d2273f875eae25f16e6d9d1c3636a7}{00296}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int8\_t\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_ae2d2273f875eae25f16e6d9d1c3636a7}{INTAKE\_MOTOR\_2\_PORT}}\{\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00297}00297\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00302}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a95b6e0c17d1c45218d9b33c4d4aedd06}{00302}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ pros::v5::MotorGears\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a95b6e0c17d1c45218d9b33c4d4aedd06}{INTAKE\_MOTOR\_2\_GEARSET}}\{pros::E\_MOTOR\_GEARSET\_06\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00303}00303\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00308}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_aeefd50d239dcf087cbf47372701a81c3}{00308}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_aeefd50d239dcf087cbf47372701a81c3}{INTAKE\_ROLLER\_RADIUS}}\{\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00309}00309\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00314}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_afb0517670aec88e514eaed5a4e7b8979}{00314}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_afb0517670aec88e514eaed5a4e7b8979}{ELEVATOR\_KP}}\{\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00315}00315\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00320}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a9d532dbb7df6563b081ef342e269b7aa}{00320}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a9d532dbb7df6563b081ef342e269b7aa}{ELEVATOR\_KI}}\{\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00321}00321\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00326}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a613a34dff03425e844aea212f47d223d}{00326}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a613a34dff03425e844aea212f47d223d}{ELEVATOR\_KD}}\{\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00327}00327\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00332}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_aae7361eb3a06586ae42a4ec0c9379acb}{00332}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int8\_t\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_aae7361eb3a06586ae42a4ec0c9379acb}{ELEVATOR\_MOTOR\_1\_PORT}}\{\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00333}00333\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00338}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a976c23e847e9b0118ff62f4525e8de7f}{00338}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ pros::v5::MotorGears\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a976c23e847e9b0118ff62f4525e8de7f}{ELEVATOR\_MOTOR\_1\_GEARSET}}\{pros::E\_MOTOR\_GEARSET\_18\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00339}00339\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00344}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_ae315cc282468d549b82ccec7ea95cb28}{00344}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int8\_t\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_ae315cc282468d549b82ccec7ea95cb28}{ELEVATOR\_MOTOR\_2\_PORT}}\{\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00345}00345\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00350}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a3789f2d1e0e4f63bdb6f12944bf92674}{00350}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ pros::v5::MotorGears\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a3789f2d1e0e4f63bdb6f12944bf92674}{ELEVATOR\_MOTOR\_2\_GEARSET}}\{pros::E\_MOTOR\_GEARSET\_18\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00351}00351\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00356}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_ad173c89f8264962175db2ea929572c59}{00356}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int8\_t\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_ad173c89f8264962175db2ea929572c59}{ELEVATOR\_ROTATION\_SENSOR\_PORT}}\{\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00357}00357\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00362}\mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a45afb08fff9b98763c6ace5d24733450}{00362}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a45afb08fff9b98763c6ace5d24733450}{ELEVATOR\_INCHES\_PER\_RADIAN}}\{\};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00363}00363\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00364}00364\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00370}00370\ \ \ \ \ std::string\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_aa1b7820a8f7358d22f168b19bae64ffe}{getName}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00371}00371\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00377}00377\ \ \ \ \ std::shared\_ptr<user::IController>\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a8377a2caf773fe9c72bbcb86537ac31a}{buildController}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00378}00378\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00384}00384\ \ \ \ \ std::shared\_ptr<robot::Robot>\ \mbox{\hyperlink{classwisco_1_1configs_1_1_blue_configuration_a6a2fd5ace6ff13ada1b1c18a569629c1}{buildRobot}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00385}00385\ \};}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00386}00386\ \}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00387}00387\ \}}
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00388}00388\ }
+\DoxyCodeLine{\Hypertarget{_blue_configuration_8hpp_source_l00389}00389\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,185 @@
+\doxysection{wisco\+::io\+::IMotor Class Reference}
+\hypertarget{classwisco_1_1io_1_1_i_motor}{}\label{classwisco_1_1io_1_1_i_motor}\index{wisco::io::IMotor@{wisco::io::IMotor}}
+
+
+Interface for electric motors controlled by voltage.  
+
+
+Inheritance diagram for wisco\+::io\+::IMotor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classwisco_1_1io_1_1_i_motor}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classwisco_1_1io_1_1_i_motor_a583f077d9b7f3d55c7fbb3570f425abd}\label{classwisco_1_1io_1_1_i_motor_a583f077d9b7f3d55c7fbb3570f425abd} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IMotor} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classwisco_1_1io_1_1_i_motor}{IMotor} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classwisco_1_1io_1_1_i_motor_a7995fee21e4cd6ffb60345f916636a5b}{initialize}} ()=0
+\begin{DoxyCompactList}\small\item\em Initializes the motor. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classwisco_1_1io_1_1_i_motor_a69faeeb1136a25f0970b0bfb75df4576}{get\+Torque\+Constant}} ()=0
+\begin{DoxyCompactList}\small\item\em Get the torque constant of the motor. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classwisco_1_1io_1_1_i_motor_a326ededec32b422e080f2c9a3370256b}{get\+Resistance}} ()=0
+\begin{DoxyCompactList}\small\item\em Get the resistance of the motor. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classwisco_1_1io_1_1_i_motor_afc3cd66b57de37513845c04aa8dd64c8}{get\+Angular\+Velocity\+Constant}} ()=0
+\begin{DoxyCompactList}\small\item\em Get the angular velocity constant of the motor. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classwisco_1_1io_1_1_i_motor_a4fc7750d0576a94d890c28b4647aceb1}{get\+Gear\+Ratio}} ()=0
+\begin{DoxyCompactList}\small\item\em Get the gear ratio of the motor (1 if n/a) \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classwisco_1_1io_1_1_i_motor_a86bab759224965c2ef89571202ffa1bf}{get\+Angular\+Velocity}} ()=0
+\begin{DoxyCompactList}\small\item\em Get the angular velocity of the motor in radians/second. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classwisco_1_1io_1_1_i_motor_acc89b64cf207d3b1d5f201ca15a4d301}{get\+Position}} ()=0
+\begin{DoxyCompactList}\small\item\em Get the position of the motor in total radians. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classwisco_1_1io_1_1_i_motor_addcfba3076708c6eebc14c42537265a0}{set\+Voltage}} (double volts)=0
+\begin{DoxyCompactList}\small\item\em Set the voltage input to the motor in Volts. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for electric motors controlled by voltage. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Sandvig 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_i_motor_8hpp_source_l00024}{24}} of file \mbox{\hyperlink{_i_motor_8hpp_source}{IMotor.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classwisco_1_1io_1_1_i_motor_a7995fee21e4cd6ffb60345f916636a5b}\label{classwisco_1_1io_1_1_i_motor_a7995fee21e4cd6ffb60345f916636a5b} 
+\index{wisco::io::IMotor@{wisco::io::IMotor}!initialize@{initialize}}
+\index{initialize@{initialize}!wisco::io::IMotor@{wisco::io::IMotor}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily virtual void wisco\+::io\+::\+IMotor\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Initializes the motor. 
+
+
+
+Implemented in \mbox{\hyperlink{classpros__adapters_1_1_pros_e_x_p_motor_a5877cfa59f9449e29336ed61aa03a18c}{pros\+\_\+adapters\+::\+Pros\+EXPMotor}}, and \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_ad885aaf16998d6c42b382d64f705be4a}{pros\+\_\+adapters\+::\+Pros\+V5\+Motor}}.
+
+\Hypertarget{classwisco_1_1io_1_1_i_motor_a69faeeb1136a25f0970b0bfb75df4576}\label{classwisco_1_1io_1_1_i_motor_a69faeeb1136a25f0970b0bfb75df4576} 
+\index{wisco::io::IMotor@{wisco::io::IMotor}!getTorqueConstant@{getTorqueConstant}}
+\index{getTorqueConstant@{getTorqueConstant}!wisco::io::IMotor@{wisco::io::IMotor}}
+\doxysubsubsection{\texorpdfstring{getTorqueConstant()}{getTorqueConstant()}}
+{\footnotesize\ttfamily virtual double wisco\+::io\+::\+IMotor\+::get\+Torque\+Constant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the torque constant of the motor. 
+
+\begin{DoxyReturn}{Returns}
+double The torque constant of the motor 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classpros__adapters_1_1_pros_e_x_p_motor_af0b664201e9349ddb3544f85a08dc577}{pros\+\_\+adapters\+::\+Pros\+EXPMotor}}, and \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_afe1b3bf8144a98f73a3cb574beff1813}{pros\+\_\+adapters\+::\+Pros\+V5\+Motor}}.
+
+\Hypertarget{classwisco_1_1io_1_1_i_motor_a326ededec32b422e080f2c9a3370256b}\label{classwisco_1_1io_1_1_i_motor_a326ededec32b422e080f2c9a3370256b} 
+\index{wisco::io::IMotor@{wisco::io::IMotor}!getResistance@{getResistance}}
+\index{getResistance@{getResistance}!wisco::io::IMotor@{wisco::io::IMotor}}
+\doxysubsubsection{\texorpdfstring{getResistance()}{getResistance()}}
+{\footnotesize\ttfamily virtual double wisco\+::io\+::\+IMotor\+::get\+Resistance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the resistance of the motor. 
+
+\begin{DoxyReturn}{Returns}
+double The resistance of the motor 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classpros__adapters_1_1_pros_e_x_p_motor_a8f132cd22b8dd5acd3f8f139f70ef8e6}{pros\+\_\+adapters\+::\+Pros\+EXPMotor}}, and \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_ae4ea5781e2a07451be90b86fb6c0b63f}{pros\+\_\+adapters\+::\+Pros\+V5\+Motor}}.
+
+\Hypertarget{classwisco_1_1io_1_1_i_motor_afc3cd66b57de37513845c04aa8dd64c8}\label{classwisco_1_1io_1_1_i_motor_afc3cd66b57de37513845c04aa8dd64c8} 
+\index{wisco::io::IMotor@{wisco::io::IMotor}!getAngularVelocityConstant@{getAngularVelocityConstant}}
+\index{getAngularVelocityConstant@{getAngularVelocityConstant}!wisco::io::IMotor@{wisco::io::IMotor}}
+\doxysubsubsection{\texorpdfstring{getAngularVelocityConstant()}{getAngularVelocityConstant()}}
+{\footnotesize\ttfamily virtual double wisco\+::io\+::\+IMotor\+::get\+Angular\+Velocity\+Constant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the angular velocity constant of the motor. 
+
+\begin{DoxyReturn}{Returns}
+double The angular velocity constant of the motor 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classpros__adapters_1_1_pros_e_x_p_motor_ac383d5c09673cb3da2c2c90788df0406}{pros\+\_\+adapters\+::\+Pros\+EXPMotor}}, and \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a1d8aa5d2bc5793e935d6b918a66ace88}{pros\+\_\+adapters\+::\+Pros\+V5\+Motor}}.
+
+\Hypertarget{classwisco_1_1io_1_1_i_motor_a4fc7750d0576a94d890c28b4647aceb1}\label{classwisco_1_1io_1_1_i_motor_a4fc7750d0576a94d890c28b4647aceb1} 
+\index{wisco::io::IMotor@{wisco::io::IMotor}!getGearRatio@{getGearRatio}}
+\index{getGearRatio@{getGearRatio}!wisco::io::IMotor@{wisco::io::IMotor}}
+\doxysubsubsection{\texorpdfstring{getGearRatio()}{getGearRatio()}}
+{\footnotesize\ttfamily virtual double wisco\+::io\+::\+IMotor\+::get\+Gear\+Ratio (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the gear ratio of the motor (1 if n/a) 
+
+\begin{DoxyReturn}{Returns}
+double The gear ratio of the motor 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classpros__adapters_1_1_pros_e_x_p_motor_a3c468b33f0f49cbda1726058f7f8a4f7}{pros\+\_\+adapters\+::\+Pros\+EXPMotor}}, and \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a3b269f6d79e3d6e4850289b32d8a5907}{pros\+\_\+adapters\+::\+Pros\+V5\+Motor}}.
+
+\Hypertarget{classwisco_1_1io_1_1_i_motor_a86bab759224965c2ef89571202ffa1bf}\label{classwisco_1_1io_1_1_i_motor_a86bab759224965c2ef89571202ffa1bf} 
+\index{wisco::io::IMotor@{wisco::io::IMotor}!getAngularVelocity@{getAngularVelocity}}
+\index{getAngularVelocity@{getAngularVelocity}!wisco::io::IMotor@{wisco::io::IMotor}}
+\doxysubsubsection{\texorpdfstring{getAngularVelocity()}{getAngularVelocity()}}
+{\footnotesize\ttfamily virtual double wisco\+::io\+::\+IMotor\+::get\+Angular\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the angular velocity of the motor in radians/second. 
+
+\begin{DoxyReturn}{Returns}
+double The angular velocity of the motor in radians/second 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classpros__adapters_1_1_pros_e_x_p_motor_ae5eb9401bf19c1f55f5e39899d65afc6}{pros\+\_\+adapters\+::\+Pros\+EXPMotor}}, and \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a54458b8a3358af755b401cd2d561f11a}{pros\+\_\+adapters\+::\+Pros\+V5\+Motor}}.
+
+\Hypertarget{classwisco_1_1io_1_1_i_motor_acc89b64cf207d3b1d5f201ca15a4d301}\label{classwisco_1_1io_1_1_i_motor_acc89b64cf207d3b1d5f201ca15a4d301} 
+\index{wisco::io::IMotor@{wisco::io::IMotor}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!wisco::io::IMotor@{wisco::io::IMotor}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily virtual double wisco\+::io\+::\+IMotor\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the position of the motor in total radians. 
+
+\begin{DoxyReturn}{Returns}
+double The total number of radians moved since last reset 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_aa223526a1a2f3f40c18aee8efbf67217}{pros\+\_\+adapters\+::\+Pros\+V5\+Motor}}.
+
+\Hypertarget{classwisco_1_1io_1_1_i_motor_addcfba3076708c6eebc14c42537265a0}\label{classwisco_1_1io_1_1_i_motor_addcfba3076708c6eebc14c42537265a0} 
+\index{wisco::io::IMotor@{wisco::io::IMotor}!setVoltage@{setVoltage}}
+\index{setVoltage@{setVoltage}!wisco::io::IMotor@{wisco::io::IMotor}}
+\doxysubsubsection{\texorpdfstring{setVoltage()}{setVoltage()}}
+{\footnotesize\ttfamily virtual void wisco\+::io\+::\+IMotor\+::set\+Voltage (\begin{DoxyParamCaption}\item[{double}]{volts }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the voltage input to the motor in Volts. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em volts} & The voltage input in Volts \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classpros__adapters_1_1_pros_e_x_p_motor_af90f465bd6c43abf675158632c7656b9}{pros\+\_\+adapters\+::\+Pros\+EXPMotor}}, and \mbox{\hyperlink{classpros__adapters_1_1_pros_v5_motor_a8509f9fe3ed9388f1fa456e9426caf5a}{pros\+\_\+adapters\+::\+Pros\+V5\+Motor}}.
+

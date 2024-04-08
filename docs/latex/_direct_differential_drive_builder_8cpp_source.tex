@@ -1,0 +1,58 @@
+\doxysection{Direct\+Differential\+Drive\+Builder.\+cpp}
+\hypertarget{_direct_differential_drive_builder_8cpp_source}{}\label{_direct_differential_drive_builder_8cpp_source}\index{src/wisco/robot/subsystems/drive/DirectDifferentialDriveBuilder.cpp@{src/wisco/robot/subsystems/drive/DirectDifferentialDriveBuilder.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}wisco/robot/subsystems/drive/DirectDifferentialDriveBuilder.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00003}00003\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacewisco}{wisco}}}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00004}00004\ \{}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00005}00005\ \textcolor{keyword}{namespace\ }robot}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00007}00007\ \textcolor{keyword}{namespace\ }subsystems}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00009}00009\ \textcolor{keyword}{namespace\ }drive}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00011}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_builder_a7d7d2e4a0f4807fd3987e156f78b386c}{00011}}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_builder}{DirectDifferentialDriveBuilder}}*\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_builder_a7d7d2e4a0f4807fd3987e156f78b386c}{DirectDifferentialDriveBuilder::withLeftMotor}}(std::unique\_ptr<io::IMotor>\&\ left\_motor)}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00012}00012\ \{}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00013}00013\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_builder_a42fbcb752325469d6b22e3ece5c71c74}{m\_left\_motors}}.\mbox{\hyperlink{classwisco_1_1hal_1_1_motor_group_a1dacb45c197a4113533322b8402b1e4e}{addMotor}}(left\_motor);}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00014}00014\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00015}00015\ \}}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00017}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_builder_a4100edcb48fd94a22ecabc1bd1a2ee75}{00017}}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_builder}{DirectDifferentialDriveBuilder}}*\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_builder_a4100edcb48fd94a22ecabc1bd1a2ee75}{DirectDifferentialDriveBuilder::withRightMotor}}(std::unique\_ptr<io::IMotor>\&\ right\_motor)}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00018}00018\ \{}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00019}00019\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_builder_a1d5407ce8e23ab8133b53d3494bf615d}{m\_right\_motors}}.\mbox{\hyperlink{classwisco_1_1hal_1_1_motor_group_a1dacb45c197a4113533322b8402b1e4e}{addMotor}}(right\_motor);}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00020}00020\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00021}00021\ \}}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00023}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_builder_a2f6be38058365e5b530c98f007ff6efe}{00023}}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_builder}{DirectDifferentialDriveBuilder}}*\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_builder_a2f6be38058365e5b530c98f007ff6efe}{DirectDifferentialDriveBuilder::withVelocityToVoltage}}(\textcolor{keywordtype}{double}\ velocity\_to\_voltage)}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00024}00024\ \{}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00025}00025\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_builder_a46f79d2a0569378b9214a646faadb7e8}{m\_velocity\_to\_voltage}}\ =\ velocity\_to\_voltage;}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00027}00027\ \}}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00029}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_builder_a0840ed03ee277b7e83741fc98504e327}{00029}}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_builder}{DirectDifferentialDriveBuilder}}*\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_builder_a0840ed03ee277b7e83741fc98504e327}{DirectDifferentialDriveBuilder::withGearRatio}}(\textcolor{keywordtype}{double}\ gear\_ratio)}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00030}00030\ \{}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00031}00031\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_builder_ac9bf785cd3594ac916f8e5ff7160708b}{m\_gear\_ratio}}\ =\ gear\_ratio;}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00033}00033\ \}}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00035}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_builder_a13a3f54f46876a658d37ffdb4a4620ee}{00035}}\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_builder}{DirectDifferentialDriveBuilder}}*\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_builder_a13a3f54f46876a658d37ffdb4a4620ee}{DirectDifferentialDriveBuilder::withWheelRadius}}(\textcolor{keywordtype}{double}\ wheel\_radius)}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00036}00036\ \{}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00037}00037\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_builder_ae74bd7571ff5bbd4b61304464d031bca}{m\_wheel\_radius}}\ =\ wheel\_radius;}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00039}00039\ \}}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00041}\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_builder_a7720319c3c782f2520fefc099767924a}{00041}}\ std::unique\_ptr<IDifferentialDrive>\ \mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_builder_a7720319c3c782f2520fefc099767924a}{DirectDifferentialDriveBuilder::build}}()}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00042}00042\ \{}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00043}00043\ \ \ \ \ std::unique\_ptr<DirectDifferentialDrive>\ differential\_drive\{std::make\_unique<DirectDifferentialDrive>()\};}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00044}00044\ \ \ \ \ differential\_drive-\/>setLeftMotors(\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_builder_a42fbcb752325469d6b22e3ece5c71c74}{m\_left\_motors}});}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00045}00045\ \ \ \ \ differential\_drive-\/>setRightMotors(\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_builder_a1d5407ce8e23ab8133b53d3494bf615d}{m\_right\_motors}});}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00046}00046\ \ \ \ \ differential\_drive-\/>setVelocityToVoltage(\mbox{\hyperlink{classwisco_1_1robot_1_1subsystems_1_1drive_1_1_direct_differential_drive_builder_a46f79d2a0569378b9214a646faadb7e8}{m\_velocity\_to\_voltage}});}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{return}\ differential\_drive;}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00048}00048\ \}}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00049}00049\ \}}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00050}00050\ \}}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00051}00051\ \}}
+\DoxyCodeLine{\Hypertarget{_direct_differential_drive_builder_8cpp_source_l00052}00052\ \}}
+
+\end{DoxyCode}

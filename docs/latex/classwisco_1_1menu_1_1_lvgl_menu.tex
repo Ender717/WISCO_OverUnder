@@ -1,0 +1,815 @@
+\doxysection{wisco\+::menu\+::Lvgl\+Menu Class Reference}
+\hypertarget{classwisco_1_1menu_1_1_lvgl_menu}{}\label{classwisco_1_1menu_1_1_lvgl_menu}\index{wisco::menu::LvglMenu@{wisco::menu::LvglMenu}}
+
+
+Controls an lvgl-\/based menu selection system.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a419ea3f60f4f59008761a1769b672689}{add\+Option}} (\mbox{\hyperlink{structwisco_1_1menu_1_1_option}{Option}} option)
+\begin{DoxyCompactList}\small\item\em Adds an option to the menu system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a70dbe13b29f2cc47dc6e937be38482e2}{remove\+Option}} (const std\+::string \&option\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Removes an option from the menu system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a542d1fdf9f1800677182d40c8b2bbebf}{draw\+Main\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Draws the main menu screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a08f1e3acf528c354a7b5d24ad12abe26}{draw\+Settings\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Draws the settings menu screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_abbe1a71e48a5161a324adcbec6bd1ed4}{set\+Complete}} ()
+\begin{DoxyCompactList}\small\item\em Set the menu selection to complete. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_ad177bac01084d693bb642b01ca84b16f}{read\+Configuration}} ()
+\begin{DoxyCompactList}\small\item\em Reads the configuration of the menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a128a65e833c940430bb264afd99cb92d}{write\+Configuration}} ()
+\begin{DoxyCompactList}\small\item\em Writes the configuration of the menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a82f1a642589a3ddd9d00901d6a4f8ec3}{display\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Displays the menu. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_afa7588b532071448c467ade5ba9a7230}{selection\+Complete}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the selection process is complete. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a585f99981d7252960ffe1be0c56e3e45}{get\+Selection}} (const std\+::string \&option\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Get the selection for an option. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a97bf2963fca7ac55475a092b88449529}{initialize\+Styles}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the styles for the class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structwisco_1_1menu_1_1_option}{Option}} $>$ \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a86e30178d5fc528778e9cddfe54d932d}{options}} \{\}
+\begin{DoxyCompactList}\small\item\em The options available in the menu. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_ae4a91468941ad8b88180452d5aea63d2}{complete}} \{false\}
+\begin{DoxyCompactList}\small\item\em Whether or not selection is complete. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr char \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_ad3c547928f360700ae4f4ff725963d6e}{CONFIGURATION\+\_\+\+FILE}} \mbox{[}$\,$\mbox{]} \{"{}/usd/system/menu\+\_\+data.\+txt"{}\}
+\begin{DoxyCompactList}\small\item\em The path of the file that stores the configuration. \end{DoxyCompactList}\item 
+static constexpr int \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a98345d0c5a32554cfcba799e568942b7}{COLUMN\+\_\+\+WIDTH}} \{16\}
+\begin{DoxyCompactList}\small\item\em The width of a column on the status page. \end{DoxyCompactList}\item 
+static constexpr int \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a7565d9d8ad1f2235c78a70c7aecb500e}{BUTTONS\+\_\+\+PER\+\_\+\+LINE}} \{2\}
+\begin{DoxyCompactList}\small\item\em The number of buttons to display on a line. \end{DoxyCompactList}\item 
+static lv\+\_\+style\+\_\+t \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_ab950e8215270977c782aa0e9fa7e11bb}{button\+\_\+default\+\_\+style}}
+\begin{DoxyCompactList}\small\item\em The default style for a button. \end{DoxyCompactList}\item 
+static lv\+\_\+style\+\_\+t \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a54bca685e09939dc65c7c07fe8ba926e}{button\+\_\+pressed\+\_\+style}}
+\begin{DoxyCompactList}\small\item\em The pressed style for a button. \end{DoxyCompactList}\item 
+static lv\+\_\+style\+\_\+t \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a7ffcb9ed804d4866af1ec68431a084f7}{container\+\_\+default\+\_\+style}}
+\begin{DoxyCompactList}\small\item\em The default style for a container. \end{DoxyCompactList}\item 
+static lv\+\_\+style\+\_\+t \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_afa89c9833717a11810021dcf46c7e6f6}{container\+\_\+pressed\+\_\+style}}
+\begin{DoxyCompactList}\small\item\em The pressed style for a container. \end{DoxyCompactList}\item 
+static lv\+\_\+style\+\_\+t \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_afa8d4347fca2e18ee0e52de4de5bb890}{button\+\_\+matrix\+\_\+main\+\_\+style}}
+\begin{DoxyCompactList}\small\item\em The background style for a button matrix. \end{DoxyCompactList}\item 
+static lv\+\_\+style\+\_\+t \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_adf3db67ac756da53b55cd74d06b52306}{button\+\_\+matrix\+\_\+items\+\_\+style}}
+\begin{DoxyCompactList}\small\item\em The button style for a button matrix. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_aeae710b75cdedbeeafe18c9b79de8015}{styles\+\_\+initialized}} = false
+\begin{DoxyCompactList}\small\item\em Whether or not the styles have been initialized. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Controls an lvgl-\/based menu selection system. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Sandvig 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8hpp_source_l00060}{60}} of file \mbox{\hyperlink{_lvgl_menu_8hpp_source}{Lvgl\+Menu.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classwisco_1_1menu_1_1_lvgl_menu_a97bf2963fca7ac55475a092b88449529}\label{classwisco_1_1menu_1_1_lvgl_menu_a97bf2963fca7ac55475a092b88449529} 
+\index{wisco::menu::LvglMenu@{wisco::menu::LvglMenu}!initializeStyles@{initializeStyles}}
+\index{initializeStyles@{initializeStyles}!wisco::menu::LvglMenu@{wisco::menu::LvglMenu}}
+\doxysubsubsection{\texorpdfstring{initializeStyles()}{initializeStyles()}}
+{\footnotesize\ttfamily void wisco\+::menu\+::\+Lvgl\+Menu\+::initialize\+Styles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Initializes the styles for the class. 
+
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8cpp_source_l00062}{62}} of file \mbox{\hyperlink{_lvgl_menu_8cpp_source}{Lvgl\+Menu.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00063\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_aeae710b75cdedbeeafe18c9b79de8015}{styles\_initialized}})}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ default\ button\ style}}
+\DoxyCodeLine{00068\ \ \ \ \ lv\_style\_init(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_ab950e8215270977c782aa0e9fa7e11bb}{button\_default\_style}});}
+\DoxyCodeLine{00069\ \ \ \ \ lv\_style\_set\_radius(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_ab950e8215270977c782aa0e9fa7e11bb}{button\_default\_style}},\ 5);}
+\DoxyCodeLine{00070\ \ \ \ \ lv\_style\_set\_bg\_opa(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_ab950e8215270977c782aa0e9fa7e11bb}{button\_default\_style}},\ LV\_OPA\_100);}
+\DoxyCodeLine{00071\ \ \ \ \ lv\_style\_set\_bg\_color(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_ab950e8215270977c782aa0e9fa7e11bb}{button\_default\_style}},\ lv\_color\_make(192,\ 192,\ 192));}
+\DoxyCodeLine{00072\ \ \ \ \ lv\_style\_set\_bg\_grad\_color(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_ab950e8215270977c782aa0e9fa7e11bb}{button\_default\_style}},\ lv\_color\_darken(lv\_color\_make(192,\ 192,\ 192),\ 8));}
+\DoxyCodeLine{00073\ \ \ \ \ lv\_style\_set\_border\_opa(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_ab950e8215270977c782aa0e9fa7e11bb}{button\_default\_style}},\ LV\_OPA\_100);}
+\DoxyCodeLine{00074\ \ \ \ \ lv\_style\_set\_border\_width(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_ab950e8215270977c782aa0e9fa7e11bb}{button\_default\_style}},\ 2);}
+\DoxyCodeLine{00075\ \ \ \ \ lv\_style\_set\_border\_color(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_ab950e8215270977c782aa0e9fa7e11bb}{button\_default\_style}},\ lv\_color\_black());}
+\DoxyCodeLine{00076\ \ \ \ \ lv\_style\_set\_text\_color(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_ab950e8215270977c782aa0e9fa7e11bb}{button\_default\_style}},\ lv\_color\_black());}
+\DoxyCodeLine{00077\ \ \ \ \ lv\_style\_set\_text\_font(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_ab950e8215270977c782aa0e9fa7e11bb}{button\_default\_style}},\ \&lv\_font\_montserrat\_20);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ pressed\ button\ style}}
+\DoxyCodeLine{00080\ \ \ \ \ lv\_style\_init(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a54bca685e09939dc65c7c07fe8ba926e}{button\_pressed\_style}});}
+\DoxyCodeLine{00081\ \ \ \ \ lv\_style\_set\_radius(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a54bca685e09939dc65c7c07fe8ba926e}{button\_pressed\_style}},\ 5);}
+\DoxyCodeLine{00082\ \ \ \ \ lv\_style\_set\_bg\_opa(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a54bca685e09939dc65c7c07fe8ba926e}{button\_pressed\_style}},\ LV\_OPA\_100);}
+\DoxyCodeLine{00083\ \ \ \ \ lv\_style\_set\_translate\_y(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a54bca685e09939dc65c7c07fe8ba926e}{button\_pressed\_style}},\ 3);}
+\DoxyCodeLine{00084\ \ \ \ \ lv\_style\_set\_shadow\_ofs\_y(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a54bca685e09939dc65c7c07fe8ba926e}{button\_pressed\_style}},\ 3);}
+\DoxyCodeLine{00085\ \ \ \ \ lv\_style\_set\_bg\_color(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a54bca685e09939dc65c7c07fe8ba926e}{button\_pressed\_style}},\ lv\_color\_darken(lv\_color\_make(192,\ 192,\ 192),\ 16));}
+\DoxyCodeLine{00086\ \ \ \ \ lv\_style\_set\_bg\_grad\_color(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a54bca685e09939dc65c7c07fe8ba926e}{button\_pressed\_style}},\ lv\_color\_darken(lv\_color\_make(192,\ 192,\ 192),\ 24));}
+\DoxyCodeLine{00087\ \ \ \ \ lv\_style\_set\_border\_opa(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a54bca685e09939dc65c7c07fe8ba926e}{button\_pressed\_style}},\ LV\_OPA\_100);}
+\DoxyCodeLine{00088\ \ \ \ \ lv\_style\_set\_border\_width(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a54bca685e09939dc65c7c07fe8ba926e}{button\_pressed\_style}},\ 2);}
+\DoxyCodeLine{00089\ \ \ \ \ lv\_style\_set\_border\_color(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a54bca685e09939dc65c7c07fe8ba926e}{button\_pressed\_style}},\ lv\_color\_black());}
+\DoxyCodeLine{00090\ \ \ \ \ lv\_style\_set\_text\_color(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a54bca685e09939dc65c7c07fe8ba926e}{button\_pressed\_style}},\ lv\_color\_black());}
+\DoxyCodeLine{00091\ \ \ \ \ lv\_style\_set\_text\_font(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a54bca685e09939dc65c7c07fe8ba926e}{button\_pressed\_style}},\ \&lv\_font\_montserrat\_20);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ default\ container\ style}}
+\DoxyCodeLine{00094\ \ \ \ \ lv\_style\_init(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a7ffcb9ed804d4866af1ec68431a084f7}{container\_default\_style}});}
+\DoxyCodeLine{00095\ \ \ \ \ lv\_style\_set\_radius(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a7ffcb9ed804d4866af1ec68431a084f7}{container\_default\_style}},\ 0);}
+\DoxyCodeLine{00096\ \ \ \ \ lv\_style\_set\_bg\_opa(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a7ffcb9ed804d4866af1ec68431a084f7}{container\_default\_style}},\ LV\_OPA\_100);}
+\DoxyCodeLine{00097\ \ \ \ \ lv\_style\_set\_bg\_color(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a7ffcb9ed804d4866af1ec68431a084f7}{container\_default\_style}},\ lv\_color\_make(0,\ 104,\ 179));}
+\DoxyCodeLine{00098\ \ \ \ \ lv\_style\_set\_border\_width(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_afa89c9833717a11810021dcf46c7e6f6}{container\_pressed\_style}},\ 0);}
+\DoxyCodeLine{00099\ \ \ \ \ lv\_style\_set\_text\_color(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a7ffcb9ed804d4866af1ec68431a084f7}{container\_default\_style}},\ lv\_color\_white());}
+\DoxyCodeLine{00100\ \ \ \ \ lv\_style\_set\_text\_align(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a7ffcb9ed804d4866af1ec68431a084f7}{container\_default\_style}},\ LV\_TEXT\_ALIGN\_CENTER);}
+\DoxyCodeLine{00101\ \ \ \ \ lv\_style\_set\_pad\_ver(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a7ffcb9ed804d4866af1ec68431a084f7}{container\_default\_style}},\ 10);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ pressed\ container\ style}}
+\DoxyCodeLine{00104\ \ \ \ \ lv\_style\_init(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_afa89c9833717a11810021dcf46c7e6f6}{container\_pressed\_style}});}
+\DoxyCodeLine{00105\ \ \ \ \ lv\_style\_set\_radius(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_afa89c9833717a11810021dcf46c7e6f6}{container\_pressed\_style}},\ 0);}
+\DoxyCodeLine{00106\ \ \ \ \ lv\_style\_set\_bg\_opa(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_afa89c9833717a11810021dcf46c7e6f6}{container\_pressed\_style}},\ LV\_OPA\_100);}
+\DoxyCodeLine{00107\ \ \ \ \ lv\_style\_set\_bg\_color(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_afa89c9833717a11810021dcf46c7e6f6}{container\_pressed\_style}},\ lv\_color\_make(244,\ 115,\ 33));}
+\DoxyCodeLine{00108\ \ \ \ \ lv\_style\_set\_border\_width(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_afa89c9833717a11810021dcf46c7e6f6}{container\_pressed\_style}},\ 0);}
+\DoxyCodeLine{00109\ \ \ \ \ lv\_style\_set\_text\_color(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_afa89c9833717a11810021dcf46c7e6f6}{container\_pressed\_style}},\ lv\_color\_black());}
+\DoxyCodeLine{00110\ \ \ \ \ lv\_style\_set\_text\_align(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_afa89c9833717a11810021dcf46c7e6f6}{container\_pressed\_style}},\ LV\_TEXT\_ALIGN\_CENTER);}
+\DoxyCodeLine{00111\ \ \ \ \ lv\_style\_set\_pad\_ver(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a7ffcb9ed804d4866af1ec68431a084f7}{container\_default\_style}},\ 10);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ button\ matrix\ main\ style}}
+\DoxyCodeLine{00114\ \ \ \ \ lv\_style\_init(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_afa8d4347fca2e18ee0e52de4de5bb890}{button\_matrix\_main\_style}});}
+\DoxyCodeLine{00115\ \ \ \ \ lv\_style\_set\_bg\_color(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_afa8d4347fca2e18ee0e52de4de5bb890}{button\_matrix\_main\_style}},\ lv\_color\_make(173,\ 205,\ 234));}
+\DoxyCodeLine{00116\ \ \ \ \ lv\_style\_set\_border\_width(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_afa8d4347fca2e18ee0e52de4de5bb890}{button\_matrix\_main\_style}},\ 0);}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ button\ matrix\ items\ style}}
+\DoxyCodeLine{00119\ \ \ \ \ lv\_style\_init(\&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_adf3db67ac756da53b55cd74d06b52306}{button\_matrix\_items\_style}});}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{comment}{//\ Set\ the\ style\ initialization\ flag}}
+\DoxyCodeLine{00122\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_aeae710b75cdedbeeafe18c9b79de8015}{styles\_initialized}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00123\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_lvgl_menu_a419ea3f60f4f59008761a1769b672689}\label{classwisco_1_1menu_1_1_lvgl_menu_a419ea3f60f4f59008761a1769b672689} 
+\index{wisco::menu::LvglMenu@{wisco::menu::LvglMenu}!addOption@{addOption}}
+\index{addOption@{addOption}!wisco::menu::LvglMenu@{wisco::menu::LvglMenu}}
+\doxysubsubsection{\texorpdfstring{addOption()}{addOption()}}
+{\footnotesize\ttfamily void wisco\+::menu\+::\+Lvgl\+Menu\+::add\+Option (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwisco_1_1menu_1_1_option}{Option}}}]{option }\end{DoxyParamCaption})}
+
+
+
+Adds an option to the menu system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em option} & The option being added \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8cpp_source_l00125}{125}} of file \mbox{\hyperlink{_lvgl_menu_8cpp_source}{Lvgl\+Menu.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00126\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a86e30178d5fc528778e9cddfe54d932d}{options}}.push\_back(option);}
+\DoxyCodeLine{00128\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_lvgl_menu_a70dbe13b29f2cc47dc6e937be38482e2}\label{classwisco_1_1menu_1_1_lvgl_menu_a70dbe13b29f2cc47dc6e937be38482e2} 
+\index{wisco::menu::LvglMenu@{wisco::menu::LvglMenu}!removeOption@{removeOption}}
+\index{removeOption@{removeOption}!wisco::menu::LvglMenu@{wisco::menu::LvglMenu}}
+\doxysubsubsection{\texorpdfstring{removeOption()}{removeOption()}}
+{\footnotesize\ttfamily void wisco\+::menu\+::\+Lvgl\+Menu\+::remove\+Option (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{option\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Removes an option from the menu system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em option\+\_\+name} & The name of the option to remove \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8cpp_source_l00130}{130}} of file \mbox{\hyperlink{_lvgl_menu_8cpp_source}{Lvgl\+Menu.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00131\ \{}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\{\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a86e30178d5fc528778e9cddfe54d932d}{options}}.begin()\};\ it\ !=\ \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a86e30178d5fc528778e9cddfe54d932d}{options}}.end();\ ++it)}
+\DoxyCodeLine{00133\ \ \ \ \ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (option\_name\ ==\ it-\/>name)}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a86e30178d5fc528778e9cddfe54d932d}{options}}.erase(it);}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00139\ \ \ \ \ \}}
+\DoxyCodeLine{00140\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_lvgl_menu_a542d1fdf9f1800677182d40c8b2bbebf}\label{classwisco_1_1menu_1_1_lvgl_menu_a542d1fdf9f1800677182d40c8b2bbebf} 
+\index{wisco::menu::LvglMenu@{wisco::menu::LvglMenu}!drawMainMenu@{drawMainMenu}}
+\index{drawMainMenu@{drawMainMenu}!wisco::menu::LvglMenu@{wisco::menu::LvglMenu}}
+\doxysubsubsection{\texorpdfstring{drawMainMenu()}{drawMainMenu()}}
+{\footnotesize\ttfamily void wisco\+::menu\+::\+Lvgl\+Menu\+::draw\+Main\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draws the main menu screen. 
+
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8cpp_source_l00142}{142}} of file \mbox{\hyperlink{_lvgl_menu_8cpp_source}{Lvgl\+Menu.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00143\ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{comment}{//\ Set\ the\ background\ color\ to\ light\ blue}}
+\DoxyCodeLine{00145\ \ \ \ \ lv\_obj\_set\_style\_bg\_color(lv\_scr\_act(),\ lv\_color\_make(173,\ 205,\ 234),\ 0);}
+\DoxyCodeLine{00146\ \ \ \ \ lv\_obj\_refresh\_style(lv\_scr\_act(),\ LV\_PART\_MAIN,\ LV\_STYLE\_BG\_COLOR);}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ big\ line\ at\ the\ bottom}}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keyword}{static}\ lv\_point\_t\ big\_line\_points[]\ =\ \{\ \{0,\ 205\},\ \{480,\ 205\}\ \};}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keyword}{static}\ lv\_style\_t\ big\_line\_style;}
+\DoxyCodeLine{00151\ \ \ \ \ lv\_style\_init(\&big\_line\_style);}
+\DoxyCodeLine{00152\ \ \ \ \ lv\_style\_set\_line\_width(\&big\_line\_style,\ 55);}
+\DoxyCodeLine{00153\ \ \ \ \ lv\_style\_set\_line\_color(\&big\_line\_style,\ lv\_color\_make(0,\ 104,\ 179));}
+\DoxyCodeLine{00154\ \ \ \ \ lv\_style\_set\_line\_rounded(\&big\_line\_style,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00155\ \ \ \ \ lv\_obj\_t*\ big\_line\ =\ lv\_line\_create(lv\_scr\_act());}
+\DoxyCodeLine{00156\ \ \ \ \ lv\_line\_set\_points(big\_line,\ big\_line\_points,\ 2);}
+\DoxyCodeLine{00157\ \ \ \ \ lv\_obj\_add\_style(big\_line,\ \&big\_line\_style,\ 0);}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ stripe\ on\ the\ line\ at\ the\ bottom}}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keyword}{static}\ lv\_point\_t\ stripe\_line\_points[]\ =\ \{\ \{0,\ 220\},\ \{480,\ 220\}\ \};}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keyword}{static}\ lv\_style\_t\ stripe\_line\_style;}
+\DoxyCodeLine{00162\ \ \ \ \ lv\_style\_init(\&stripe\_line\_style);}
+\DoxyCodeLine{00163\ \ \ \ \ lv\_style\_set\_line\_width(\&stripe\_line\_style,\ 13);}
+\DoxyCodeLine{00164\ \ \ \ \ lv\_style\_set\_line\_color(\&stripe\_line\_style,\ lv\_color\_make(244,\ 115,\ 33));}
+\DoxyCodeLine{00165\ \ \ \ \ lv\_style\_set\_line\_rounded(\&stripe\_line\_style,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00166\ \ \ \ \ lv\_obj\_t*\ stripe\_line\ =\ lv\_line\_create(lv\_scr\_act());}
+\DoxyCodeLine{00167\ \ \ \ \ lv\_line\_set\_points(stripe\_line,\ stripe\_line\_points,\ 2);}
+\DoxyCodeLine{00168\ \ \ \ \ lv\_obj\_add\_style(stripe\_line,\ \&stripe\_line\_style,\ 0);}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ left\ diagonal\ line}}
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keyword}{static}\ lv\_point\_t\ left\_diagonal\_line\_points[]\ =\ \{\ \{320,\ 190\},\ \{510,\ 0\}\ \};}
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keyword}{static}\ lv\_style\_t\ left\_diagonal\_line\_style;}
+\DoxyCodeLine{00173\ \ \ \ \ lv\_style\_init(\&left\_diagonal\_line\_style);}
+\DoxyCodeLine{00174\ \ \ \ \ lv\_style\_set\_line\_width(\&left\_diagonal\_line\_style,\ 23);}
+\DoxyCodeLine{00175\ \ \ \ \ lv\_style\_set\_line\_color(\&left\_diagonal\_line\_style,\ lv\_color\_make(0,\ 104,\ 179));}
+\DoxyCodeLine{00176\ \ \ \ \ lv\_style\_set\_line\_rounded(\&left\_diagonal\_line\_style,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00177\ \ \ \ \ lv\_obj\_t*\ left\_diagonal\_line\ =\ lv\_line\_create(lv\_scr\_act());}
+\DoxyCodeLine{00178\ \ \ \ \ lv\_line\_set\_points(left\_diagonal\_line,\ left\_diagonal\_line\_points,\ 2);}
+\DoxyCodeLine{00179\ \ \ \ \ lv\_obj\_add\_style(left\_diagonal\_line,\ \&left\_diagonal\_line\_style,\ 0);}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ right\ diagonal\ line}}
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keyword}{static}\ lv\_point\_t\ right\_diagonal\_line\_points[]\ =\ \{\ \{370,\ 190\},\ \{560,\ 0\}\ \};}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keyword}{static}\ lv\_style\_t\ right\_diagonal\_line\_style;}
+\DoxyCodeLine{00184\ \ \ \ \ lv\_style\_init(\&right\_diagonal\_line\_style);}
+\DoxyCodeLine{00185\ \ \ \ \ lv\_style\_set\_line\_width(\&right\_diagonal\_line\_style,\ 23);}
+\DoxyCodeLine{00186\ \ \ \ \ lv\_style\_set\_line\_color(\&right\_diagonal\_line\_style,\ lv\_color\_make(0,\ 104,\ 179));}
+\DoxyCodeLine{00187\ \ \ \ \ lv\_style\_set\_line\_rounded(\&right\_diagonal\_line\_style,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00188\ \ \ \ \ lv\_obj\_t*\ right\_diagonal\_line\ =\ lv\_line\_create(lv\_scr\_act());}
+\DoxyCodeLine{00189\ \ \ \ \ lv\_line\_set\_points(right\_diagonal\_line,\ right\_diagonal\_line\_points,\ 2);}
+\DoxyCodeLine{00190\ \ \ \ \ lv\_obj\_add\_style(right\_diagonal\_line,\ \&right\_diagonal\_line\_style,\ 0);}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{comment}{//\ Add\ the\ WISCOBOTS\ text}}
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keyword}{static}\ lv\_style\_t\ team\_name\_label\_style;}
+\DoxyCodeLine{00194\ \ \ \ \ lv\_style\_init(\&team\_name\_label\_style);}
+\DoxyCodeLine{00195\ \ \ \ \ lv\_style\_set\_text\_font(\&team\_name\_label\_style,\ \&pros\_font\_dejavu\_mono\_30);}
+\DoxyCodeLine{00196\ \ \ \ \ lv\_style\_set\_text\_color(\&team\_name\_label\_style,\ lv\_color\_make(244,\ 115,\ 33));}
+\DoxyCodeLine{00197\ \ \ \ \ lv\_obj\_t*\ team\_name\_label\ =\ lv\_label\_create(lv\_scr\_act());}
+\DoxyCodeLine{00198\ \ \ \ \ lv\_obj\_add\_style(team\_name\_label,\ \&team\_name\_label\_style,\ 0);}
+\DoxyCodeLine{00199\ \ \ \ \ lv\_label\_set\_text(team\_name\_label,\ \textcolor{stringliteral}{"{}wiscobots"{}});}
+\DoxyCodeLine{00200\ \ \ \ \ lv\_obj\_align(team\_name\_label,\ LV\_ALIGN\_BOTTOM\_MID,\ 0,\ -\/26);}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{comment}{//\ Add\ the\ status\ label}}
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{keyword}{static}\ lv\_style\_t\ status\_label\_style;}
+\DoxyCodeLine{00204\ \ \ \ \ lv\_style\_init(\&status\_label\_style);}
+\DoxyCodeLine{00205\ \ \ \ \ lv\_style\_set\_border\_width(\&status\_label\_style,\ 2);}
+\DoxyCodeLine{00206\ \ \ \ \ lv\_style\_set\_pad\_all(\&status\_label\_style,\ 3);}
+\DoxyCodeLine{00207\ \ \ \ \ lv\_style\_set\_border\_color(\&status\_label\_style,\ lv\_color\_make(0,\ 104,\ 179));}
+\DoxyCodeLine{00208\ \ \ \ \ lv\_style\_set\_text\_color(\&status\_label\_style,\ lv\_color\_black());}
+\DoxyCodeLine{00209\ \ \ \ \ lv\_obj\_t*\ status\_label\ =\ lv\_label\_create(lv\_scr\_act());}
+\DoxyCodeLine{00210\ \ \ \ \ lv\_obj\_add\_style(status\_label,\ \&status\_label\_style,\ 0);}
+\DoxyCodeLine{00211\ \ \ \ \ std::string\ status\_text\{\};}
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{keywordflow}{for}\ (Option\&\ option\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a86e30178d5fc528778e9cddfe54d932d}{options}})}
+\DoxyCodeLine{00213\ \ \ \ \ \{}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (option.name\ !=\ \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a86e30178d5fc528778e9cddfe54d932d}{options}}.front().name)}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ status\_text\ +=\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ status\_text\ +=\ option.name;}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ status\_text\ +=\ \textcolor{stringliteral}{"{}:"{}};}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (uint8\_t\ i\{0\};\ i\ <\ \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a98345d0c5a32554cfcba799e568942b7}{COLUMN\_WIDTH}}\ -\/\ option.name.length()\ -\/\ 1;\ ++i)}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ status\_text\ +=\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ status\_text\ +=\ option.choices[option.selected];}
+\DoxyCodeLine{00221\ \ \ \ \ \}}
+\DoxyCodeLine{00222\ \ \ \ \ lv\_label\_set\_text\_fmt(status\_label,\ \textcolor{stringliteral}{"{}\%s"{}},\ status\_text.c\_str());}
+\DoxyCodeLine{00223\ \ \ \ \ lv\_obj\_align(status\_label,\ LV\_ALIGN\_TOP\_LEFT,\ 20,\ 100);}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{comment}{//\ Add\ the\ start\ button}}
+\DoxyCodeLine{00226\ \ \ \ \ lv\_obj\_t*\ start\_button\ =\ lv\_btn\_create(lv\_scr\_act());}
+\DoxyCodeLine{00227\ \ \ \ \ lv\_obj\_remove\_style\_all(start\_button);}
+\DoxyCodeLine{00228\ \ \ \ \ lv\_obj\_add\_style(start\_button,\ \&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_ab950e8215270977c782aa0e9fa7e11bb}{button\_default\_style}},\ 0);}
+\DoxyCodeLine{00229\ \ \ \ \ lv\_obj\_add\_style(start\_button,\ \&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a54bca685e09939dc65c7c07fe8ba926e}{button\_pressed\_style}},\ LV\_STATE\_PRESSED);}
+\DoxyCodeLine{00230\ \ \ \ \ lv\_obj\_set\_size(start\_button,\ 160,\ 70);}
+\DoxyCodeLine{00231\ \ \ \ \ lv\_obj\_align(start\_button,\ LV\_ALIGN\_TOP\_LEFT,\ 20,\ 15);}
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}*\ start\_user\_data[]\{\ \textcolor{keyword}{this}\ \};}
+\DoxyCodeLine{00233\ \ \ \ \ lv\_obj\_add\_event\_cb(start\_button,\ \mbox{\hyperlink{namespacewisco_1_1menu_a217b7356d6ed8e2636647a1d6a37c2b4}{startButtonEventHandler}},\ LV\_EVENT\_CLICKED,\ start\_user\_data);}
+\DoxyCodeLine{00234\ \ \ \ \ lv\_obj\_t\ *\ start\_button\_label\ =\ lv\_label\_create(start\_button);}
+\DoxyCodeLine{00235\ \ \ \ \ lv\_label\_set\_text(start\_button\_label,\ \textcolor{stringliteral}{"{}START"{}});}
+\DoxyCodeLine{00236\ \ \ \ \ lv\_obj\_center(start\_button\_label);}
+\DoxyCodeLine{00237\ }
+\DoxyCodeLine{00238\ \ \ \ \ \textcolor{comment}{//\ Add\ the\ settings\ button}}
+\DoxyCodeLine{00239\ \ \ \ \ lv\_obj\_t\ *\ settings\_button\ =\ lv\_btn\_create(lv\_scr\_act());}
+\DoxyCodeLine{00240\ \ \ \ \ lv\_obj\_remove\_style\_all(settings\_button);}
+\DoxyCodeLine{00241\ \ \ \ \ lv\_obj\_add\_style(settings\_button,\ \&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_ab950e8215270977c782aa0e9fa7e11bb}{button\_default\_style}},\ 0);}
+\DoxyCodeLine{00242\ \ \ \ \ lv\_obj\_add\_style(settings\_button,\ \&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a54bca685e09939dc65c7c07fe8ba926e}{button\_pressed\_style}},\ LV\_STATE\_PRESSED);}
+\DoxyCodeLine{00243\ \ \ \ \ lv\_obj\_set\_size(settings\_button,\ 70,\ 70);}
+\DoxyCodeLine{00244\ \ \ \ \ lv\_obj\_align(settings\_button,\ LV\_ALIGN\_TOP\_LEFT,\ 190,\ 15);}
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}*\ settings\_user\_data[]\{\ \textcolor{keyword}{this}\ \};}
+\DoxyCodeLine{00246\ \ \ \ \ lv\_obj\_add\_event\_cb(settings\_button,\ \mbox{\hyperlink{namespacewisco_1_1menu_a6bbcbac2a9513c21e372022e98c5f9d9}{settingsButtonEventHandler}},\ LV\_EVENT\_CLICKED,\ settings\_user\_data);}
+\DoxyCodeLine{00247\ \ \ \ \ lv\_obj\_t\ *\ settings\_button\_label\ =\ lv\_label\_create(settings\_button);}
+\DoxyCodeLine{00248\ \ \ \ \ lv\_label\_set\_text(settings\_button\_label,\ LV\_SYMBOL\_SETTINGS);}
+\DoxyCodeLine{00249\ \ \ \ \ lv\_obj\_center(settings\_button\_label);}
+\DoxyCodeLine{00250\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_lvgl_menu_a08f1e3acf528c354a7b5d24ad12abe26}\label{classwisco_1_1menu_1_1_lvgl_menu_a08f1e3acf528c354a7b5d24ad12abe26} 
+\index{wisco::menu::LvglMenu@{wisco::menu::LvglMenu}!drawSettingsMenu@{drawSettingsMenu}}
+\index{drawSettingsMenu@{drawSettingsMenu}!wisco::menu::LvglMenu@{wisco::menu::LvglMenu}}
+\doxysubsubsection{\texorpdfstring{drawSettingsMenu()}{drawSettingsMenu()}}
+{\footnotesize\ttfamily void wisco\+::menu\+::\+Lvgl\+Menu\+::draw\+Settings\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draws the settings menu screen. 
+
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8cpp_source_l00252}{252}} of file \mbox{\hyperlink{_lvgl_menu_8cpp_source}{Lvgl\+Menu.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00253\ \{}
+\DoxyCodeLine{00254\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ menu}}
+\DoxyCodeLine{00255\ \ \ \ \ lv\_obj\_t*\ menu\{lv\_menu\_create(lv\_scr\_act())\};}
+\DoxyCodeLine{00256\ \ \ \ \ lv\_menu\_set\_mode\_root\_back\_btn(menu,\ LV\_MENU\_ROOT\_BACK\_BTN\_ENABLED);}
+\DoxyCodeLine{00257\ \ \ \ \ lv\_obj\_set\_style\_bg\_color(menu,\ lv\_color\_make(0,\ 104,\ 179),\ 0);}
+\DoxyCodeLine{00258\ \ \ \ \ lv\_obj\_set\_size(menu,\ lv\_disp\_get\_hor\_res(NULL),\ lv\_disp\_get\_ver\_res(NULL));}
+\DoxyCodeLine{00259\ \ \ \ \ lv\_obj\_center(menu);}
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00261\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ root\ page}}
+\DoxyCodeLine{00262\ \ \ \ \ lv\_obj\_t*\ root\_page\{lv\_menu\_page\_create(menu,\ NULL)\};}
+\DoxyCodeLine{00263\ \ \ \ \ lv\_obj\_set\_style\_pad\_hor(root\_page,\ lv\_obj\_get\_style\_pad\_left(lv\_menu\_get\_main\_header(menu),\ 0),\ 0);}
+\DoxyCodeLine{00264\ \ \ \ \ lv\_obj\_t*\ section\{lv\_menu\_section\_create(root\_page)\};}
+\DoxyCodeLine{00265\ \ \ \ \ lv\_menu\_set\_sidebar\_page(menu,\ root\_page);}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00267\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ back\ button}}
+\DoxyCodeLine{00268\ \ \ \ \ lv\_obj\_t*\ back\_btn\{lv\_menu\_get\_sidebar\_header\_back\_btn(menu)\};}
+\DoxyCodeLine{00269\ \ \ \ \ lv\_obj\_remove\_style\_all(back\_btn);}
+\DoxyCodeLine{00270\ \ \ \ \ lv\_obj\_add\_style(back\_btn,\ \&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_ab950e8215270977c782aa0e9fa7e11bb}{button\_default\_style}},\ 0);}
+\DoxyCodeLine{00271\ \ \ \ \ lv\_obj\_add\_style(back\_btn,\ \&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a54bca685e09939dc65c7c07fe8ba926e}{button\_pressed\_style}},\ LV\_STATE\_PRESSED);}
+\DoxyCodeLine{00272\ \ \ \ \ lv\_obj\_set\_style\_text\_font(back\_btn,\ \&lv\_font\_montserrat\_14,\ 0);}
+\DoxyCodeLine{00273\ \ \ \ \ lv\_obj\_set\_style\_text\_font(back\_btn,\ \&lv\_font\_montserrat\_14,\ LV\_STATE\_PRESSED);}
+\DoxyCodeLine{00274\ \ \ \ \ lv\_obj\_set\_style\_pad\_all(back\_btn,\ 3,\ 0);}
+\DoxyCodeLine{00275\ \ \ \ \ lv\_obj\_set\_style\_pad\_all(back\_btn,\ 3,\ LV\_STATE\_PRESSED);}
+\DoxyCodeLine{00276\ \ \ \ \ lv\_obj\_set\_style\_translate\_y(back\_btn,\ 0,\ LV\_STATE\_PRESSED);}
+\DoxyCodeLine{00277\ \ \ \ \ lv\_obj\_set\_style\_shadow\_ofs\_y(back\_btn,\ 0,\ LV\_STATE\_PRESSED);}
+\DoxyCodeLine{00278\ \ \ \ \ lv\_obj\_t*\ back\_btn\_label\{lv\_label\_create(back\_btn)\};}
+\DoxyCodeLine{00279\ \ \ \ \ lv\_label\_set\_text(back\_btn\_label,\ \textcolor{stringliteral}{"{}\ \ \ Back"{}});}
+\DoxyCodeLine{00280\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}*\ back\_user\_data[]\{\ \textcolor{keyword}{nullptr},\ \textcolor{keyword}{nullptr}\ \};}
+\DoxyCodeLine{00281\ \ \ \ \ back\_user\_data[0]\ =\ menu;}
+\DoxyCodeLine{00282\ \ \ \ \ back\_user\_data[1]\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00283\ \ \ \ \ lv\_obj\_add\_event\_cb(menu,\ \mbox{\hyperlink{namespacewisco_1_1menu_a023f3edb93f334e391206e8fa41552e3}{settingsBackButtonEventHandler}},\ LV\_EVENT\_CLICKED,\ back\_user\_data);}
+\DoxyCodeLine{00284\ }
+\DoxyCodeLine{00285\ \ \ \ \ \textcolor{keyword}{static}\ std::vector<std::shared\_ptr<std::vector<const\ char*>>>\ option\_button\_matrix\_maps\{\};}
+\DoxyCodeLine{00286\ \ \ \ \ \textcolor{keyword}{static}\ std::vector<void*>\ option\_button\_matrix\_user\_data\{\};}
+\DoxyCodeLine{00287\ \ \ \ \ \textcolor{keywordflow}{for}\ (Option\&\ option\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a86e30178d5fc528778e9cddfe54d932d}{options}})}
+\DoxyCodeLine{00288\ \ \ \ \ \{}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ lv\_obj\_t*\ option\_page\{lv\_menu\_page\_create(menu,\ NULL)\};}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ lv\_obj\_set\_style\_pad\_hor(option\_page,\ lv\_obj\_get\_style\_pad\_left(lv\_menu\_get\_main\_header(menu),\ 0),\ 0);}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ lv\_menu\_separator\_create(option\_page);}
+\DoxyCodeLine{00292\ }
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ std::shared\_ptr<std::vector<const\ char*>>\ option\_button\_matrix\_map\{std::make\_shared<std::vector<const\ char*>>()\};}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ uint8\_t\ line\_counter\{\};}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::string\&\ choice\ :\ option.choices)}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (line\_counter\ >=\ \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a7565d9d8ad1f2235c78a70c7aecb500e}{BUTTONS\_PER\_LINE}})}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ option\_button\_matrix\_map-\/>push\_back(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ line\_counter\ =\ 0;}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ option\_button\_matrix\_map-\/>push\_back(choice.c\_str());}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ ++line\_counter;}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ option\_button\_matrix\_map-\/>push\_back(\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ option\_button\_matrix\_maps.push\_back(option\_button\_matrix\_map);}
+\DoxyCodeLine{00307\ }
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ lv\_obj\_t*\ option\_button\_matrix\{lv\_btnmatrix\_create(option\_page)\};}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ lv\_btnmatrix\_set\_map(option\_button\_matrix,\ option\_button\_matrix\_map-\/>data());}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ lv\_btnmatrix\_set\_one\_checked(option\_button\_matrix,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ lv\_btnmatrix\_set\_btn\_ctrl\_all(option\_button\_matrix,\ LV\_BTNMATRIX\_CTRL\_CHECKABLE);}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ lv\_btnmatrix\_set\_btn\_ctrl(option\_button\_matrix,\ option.selected,\ LV\_BTNMATRIX\_CTRL\_CHECKED);}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ lv\_obj\_add\_style(option\_button\_matrix,\ \&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_afa8d4347fca2e18ee0e52de4de5bb890}{button\_matrix\_main\_style}},\ LV\_PART\_MAIN);}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ lv\_obj\_set\_size(option\_button\_matrix,\ 300,\ 220);}
+\DoxyCodeLine{00315\ }
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ option\_user\_data[]\{\ \textcolor{keyword}{nullptr}\ \};}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ option\_user\_data[0]\ =\ \&option;}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ option\_button\_matrix\_user\_data.push\_back(option\_user\_data);}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ lv\_obj\_add\_event\_cb(option\_button\_matrix,\ \mbox{\hyperlink{namespacewisco_1_1menu_adf87c5eecd1826aab3a0bd5957f73f87}{settingsButtonMatrixEventHandler}},\ LV\_EVENT\_VALUE\_CHANGED,\ \&option);}
+\DoxyCodeLine{00320\ }
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ lv\_obj\_t*\ option\_menu\_container\{lv\_menu\_cont\_create(section)\};}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ lv\_obj\_remove\_style\_all(option\_menu\_container);}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ lv\_obj\_add\_style(option\_menu\_container,\ \&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a7ffcb9ed804d4866af1ec68431a084f7}{container\_default\_style}},\ 0);}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ lv\_obj\_add\_style(option\_menu\_container,\ \&\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_afa89c9833717a11810021dcf46c7e6f6}{container\_pressed\_style}},\ LV\_STATE\_CHECKED);}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ lv\_obj\_t*\ option\_menu\_container\_label\{lv\_label\_create(option\_menu\_container)\};}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ lv\_label\_set\_text(option\_menu\_container\_label,\ option.name.c\_str());}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ lv\_menu\_set\_load\_page\_event(menu,\ option\_menu\_container,\ option\_page);}
+\DoxyCodeLine{00328\ \ \ \ \ \}}
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00330\ \ \ \ \ lv\_event\_send(lv\_obj\_get\_child(lv\_obj\_get\_child(lv\_menu\_get\_cur\_sidebar\_page(menu),\ 0),\ 0),\ LV\_EVENT\_CLICKED,\ NULL);}
+\DoxyCodeLine{00331\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_lvgl_menu_abbe1a71e48a5161a324adcbec6bd1ed4}\label{classwisco_1_1menu_1_1_lvgl_menu_abbe1a71e48a5161a324adcbec6bd1ed4} 
+\index{wisco::menu::LvglMenu@{wisco::menu::LvglMenu}!setComplete@{setComplete}}
+\index{setComplete@{setComplete}!wisco::menu::LvglMenu@{wisco::menu::LvglMenu}}
+\doxysubsubsection{\texorpdfstring{setComplete()}{setComplete()}}
+{\footnotesize\ttfamily void wisco\+::menu\+::\+Lvgl\+Menu\+::set\+Complete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Set the menu selection to complete. 
+
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8cpp_source_l00333}{333}} of file \mbox{\hyperlink{_lvgl_menu_8cpp_source}{Lvgl\+Menu.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00334\ \{}
+\DoxyCodeLine{00335\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_ae4a91468941ad8b88180452d5aea63d2}{complete}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00336\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_lvgl_menu_ad177bac01084d693bb642b01ca84b16f}\label{classwisco_1_1menu_1_1_lvgl_menu_ad177bac01084d693bb642b01ca84b16f} 
+\index{wisco::menu::LvglMenu@{wisco::menu::LvglMenu}!readConfiguration@{readConfiguration}}
+\index{readConfiguration@{readConfiguration}!wisco::menu::LvglMenu@{wisco::menu::LvglMenu}}
+\doxysubsubsection{\texorpdfstring{readConfiguration()}{readConfiguration()}}
+{\footnotesize\ttfamily void wisco\+::menu\+::\+Lvgl\+Menu\+::read\+Configuration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads the configuration of the menu. 
+
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8cpp_source_l00338}{338}} of file \mbox{\hyperlink{_lvgl_menu_8cpp_source}{Lvgl\+Menu.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00339\ \{}
+\DoxyCodeLine{00340\ \ \ \ \ std::ifstream\ configuration\_file\{\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_ad3c547928f360700ae4f4ff725963d6e}{CONFIGURATION\_FILE}}\};}
+\DoxyCodeLine{00341\ \ \ \ \ \textcolor{keywordflow}{if}\ (configuration\_file.fail())}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00343\ }
+\DoxyCodeLine{00344\ \ \ \ \ std::string\ option\_name\{\};}
+\DoxyCodeLine{00345\ \ \ \ \ \textcolor{keywordflow}{while}\ (configuration\_file\ >>\ option\_name)}
+\DoxyCodeLine{00346\ \ \ \ \ \{}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ std::string\ option\_selection\{\};}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (configuration\_file\ >>\ option\_selection)}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (Option\&\ option\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a86e30178d5fc528778e9cddfe54d932d}{options}})}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (option\_name\ ==\ option.name)}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (uint8\_t\ i\{0\};\ i\ <\ option.choices.size();\ ++i)}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (option\_selection\ ==\ option.choices[i])}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ option.selected\ =\ i;}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00364\ \ \ \ \ \}}
+\DoxyCodeLine{00365\ }
+\DoxyCodeLine{00366\ \ \ \ \ configuration\_file.close();}
+\DoxyCodeLine{00367\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_lvgl_menu_a128a65e833c940430bb264afd99cb92d}\label{classwisco_1_1menu_1_1_lvgl_menu_a128a65e833c940430bb264afd99cb92d} 
+\index{wisco::menu::LvglMenu@{wisco::menu::LvglMenu}!writeConfiguration@{writeConfiguration}}
+\index{writeConfiguration@{writeConfiguration}!wisco::menu::LvglMenu@{wisco::menu::LvglMenu}}
+\doxysubsubsection{\texorpdfstring{writeConfiguration()}{writeConfiguration()}}
+{\footnotesize\ttfamily void wisco\+::menu\+::\+Lvgl\+Menu\+::write\+Configuration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Writes the configuration of the menu. 
+
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8cpp_source_l00369}{369}} of file \mbox{\hyperlink{_lvgl_menu_8cpp_source}{Lvgl\+Menu.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00370\ \{}
+\DoxyCodeLine{00371\ \ \ \ \ std::ofstream\ configuration\_file\{\mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_ad3c547928f360700ae4f4ff725963d6e}{CONFIGURATION\_FILE}}\};}
+\DoxyCodeLine{00372\ \ \ \ \ \textcolor{keywordflow}{if}\ (configuration\_file.fail())}
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00374\ }
+\DoxyCodeLine{00375\ \ \ \ \ \textcolor{keywordflow}{for}\ (Option\ option\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a86e30178d5fc528778e9cddfe54d932d}{options}})}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ configuration\_file\ <<\ option.name\ <<\ \textcolor{stringliteral}{'\ '}\ <<\ option.choices[option.selected]\ <<\ std::endl;}
+\DoxyCodeLine{00377\ }
+\DoxyCodeLine{00378\ \ \ \ \ configuration\_file.close();}
+\DoxyCodeLine{00379\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_lvgl_menu_a82f1a642589a3ddd9d00901d6a4f8ec3}\label{classwisco_1_1menu_1_1_lvgl_menu_a82f1a642589a3ddd9d00901d6a4f8ec3} 
+\index{wisco::menu::LvglMenu@{wisco::menu::LvglMenu}!displayMenu@{displayMenu}}
+\index{displayMenu@{displayMenu}!wisco::menu::LvglMenu@{wisco::menu::LvglMenu}}
+\doxysubsubsection{\texorpdfstring{displayMenu()}{displayMenu()}}
+{\footnotesize\ttfamily void wisco\+::menu\+::\+Lvgl\+Menu\+::display\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Displays the menu. 
+
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8cpp_source_l00381}{381}} of file \mbox{\hyperlink{_lvgl_menu_8cpp_source}{Lvgl\+Menu.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00382\ \{}
+\DoxyCodeLine{00383\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a97bf2963fca7ac55475a092b88449529}{initializeStyles}}();}
+\DoxyCodeLine{00384\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_ad177bac01084d693bb642b01ca84b16f}{readConfiguration}}();}
+\DoxyCodeLine{00385\ \ \ \ \ \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a542d1fdf9f1800677182d40c8b2bbebf}{drawMainMenu}}();}
+\DoxyCodeLine{00386\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_lvgl_menu_afa7588b532071448c467ade5ba9a7230}\label{classwisco_1_1menu_1_1_lvgl_menu_afa7588b532071448c467ade5ba9a7230} 
+\index{wisco::menu::LvglMenu@{wisco::menu::LvglMenu}!selectionComplete@{selectionComplete}}
+\index{selectionComplete@{selectionComplete}!wisco::menu::LvglMenu@{wisco::menu::LvglMenu}}
+\doxysubsubsection{\texorpdfstring{selectionComplete()}{selectionComplete()}}
+{\footnotesize\ttfamily bool wisco\+::menu\+::\+Lvgl\+Menu\+::selection\+Complete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the selection process is complete. 
+
+\begin{DoxyReturn}{Returns}
+true The selection process is complete 
+
+false The selection process is not complete 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8cpp_source_l00388}{388}} of file \mbox{\hyperlink{_lvgl_menu_8cpp_source}{Lvgl\+Menu.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00389\ \{}
+\DoxyCodeLine{00390\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_ae4a91468941ad8b88180452d5aea63d2}{complete}};}
+\DoxyCodeLine{00391\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_lvgl_menu_a585f99981d7252960ffe1be0c56e3e45}\label{classwisco_1_1menu_1_1_lvgl_menu_a585f99981d7252960ffe1be0c56e3e45} 
+\index{wisco::menu::LvglMenu@{wisco::menu::LvglMenu}!getSelection@{getSelection}}
+\index{getSelection@{getSelection}!wisco::menu::LvglMenu@{wisco::menu::LvglMenu}}
+\doxysubsubsection{\texorpdfstring{getSelection()}{getSelection()}}
+{\footnotesize\ttfamily std\+::string wisco\+::menu\+::\+Lvgl\+Menu\+::get\+Selection (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{option\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Get the selection for an option. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em option\+\_\+name} & The name of the option \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string The selection for that option 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8cpp_source_l00393}{393}} of file \mbox{\hyperlink{_lvgl_menu_8cpp_source}{Lvgl\+Menu.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00394\ \{}
+\DoxyCodeLine{00395\ \ \ \ \ std::string\ selection\{\};}
+\DoxyCodeLine{00396\ \ \ \ \ \textcolor{keywordflow}{for}\ (Option\&\ option\ :\ \mbox{\hyperlink{classwisco_1_1menu_1_1_lvgl_menu_a86e30178d5fc528778e9cddfe54d932d}{options}})}
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ if\ (option\_name\ ==\ option.name)}
+\DoxyCodeLine{00398\ \ \ \ \ \ \ \ \ \ \ \ \ selection\ =\ option.choices[option.selected];}
+\DoxyCodeLine{00399\ \ \ \ \ \textcolor{keywordflow}{return}\ selection;}
+\DoxyCodeLine{00400\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classwisco_1_1menu_1_1_lvgl_menu_ad3c547928f360700ae4f4ff725963d6e}\label{classwisco_1_1menu_1_1_lvgl_menu_ad3c547928f360700ae4f4ff725963d6e} 
+\index{wisco::menu::LvglMenu@{wisco::menu::LvglMenu}!CONFIGURATION\_FILE@{CONFIGURATION\_FILE}}
+\index{CONFIGURATION\_FILE@{CONFIGURATION\_FILE}!wisco::menu::LvglMenu@{wisco::menu::LvglMenu}}
+\doxysubsubsection{\texorpdfstring{CONFIGURATION\_FILE}{CONFIGURATION\_FILE}}
+{\footnotesize\ttfamily constexpr char wisco\+::menu\+::\+Lvgl\+Menu\+::\+CONFIGURATION\+\_\+\+FILE\mbox{[}$\,$\mbox{]} \{"{}/usd/system/menu\+\_\+data.\+txt"{}\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The path of the file that stores the configuration. 
+
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{_lvgl_menu_8hpp_source}{Lvgl\+Menu.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00067\ \{\textcolor{stringliteral}{"{}/usd/system/menu\_data.txt"{}}\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_lvgl_menu_a98345d0c5a32554cfcba799e568942b7}\label{classwisco_1_1menu_1_1_lvgl_menu_a98345d0c5a32554cfcba799e568942b7} 
+\index{wisco::menu::LvglMenu@{wisco::menu::LvglMenu}!COLUMN\_WIDTH@{COLUMN\_WIDTH}}
+\index{COLUMN\_WIDTH@{COLUMN\_WIDTH}!wisco::menu::LvglMenu@{wisco::menu::LvglMenu}}
+\doxysubsubsection{\texorpdfstring{COLUMN\_WIDTH}{COLUMN\_WIDTH}}
+{\footnotesize\ttfamily constexpr int wisco\+::menu\+::\+Lvgl\+Menu\+::\+COLUMN\+\_\+\+WIDTH \{16\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The width of a column on the status page. 
+
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8hpp_source_l00073}{73}} of file \mbox{\hyperlink{_lvgl_menu_8hpp_source}{Lvgl\+Menu.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00073\ \{16\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_lvgl_menu_a7565d9d8ad1f2235c78a70c7aecb500e}\label{classwisco_1_1menu_1_1_lvgl_menu_a7565d9d8ad1f2235c78a70c7aecb500e} 
+\index{wisco::menu::LvglMenu@{wisco::menu::LvglMenu}!BUTTONS\_PER\_LINE@{BUTTONS\_PER\_LINE}}
+\index{BUTTONS\_PER\_LINE@{BUTTONS\_PER\_LINE}!wisco::menu::LvglMenu@{wisco::menu::LvglMenu}}
+\doxysubsubsection{\texorpdfstring{BUTTONS\_PER\_LINE}{BUTTONS\_PER\_LINE}}
+{\footnotesize\ttfamily constexpr int wisco\+::menu\+::\+Lvgl\+Menu\+::\+BUTTONS\+\_\+\+PER\+\_\+\+LINE \{2\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The number of buttons to display on a line. 
+
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8hpp_source_l00079}{79}} of file \mbox{\hyperlink{_lvgl_menu_8hpp_source}{Lvgl\+Menu.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00079\ \{2\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_lvgl_menu_ab950e8215270977c782aa0e9fa7e11bb}\label{classwisco_1_1menu_1_1_lvgl_menu_ab950e8215270977c782aa0e9fa7e11bb} 
+\index{wisco::menu::LvglMenu@{wisco::menu::LvglMenu}!button\_default\_style@{button\_default\_style}}
+\index{button\_default\_style@{button\_default\_style}!wisco::menu::LvglMenu@{wisco::menu::LvglMenu}}
+\doxysubsubsection{\texorpdfstring{button\_default\_style}{button\_default\_style}}
+{\footnotesize\ttfamily lv\+\_\+style\+\_\+t wisco\+::menu\+::\+Lvgl\+Menu\+::button\+\_\+default\+\_\+style\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The default style for a button. 
+
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8hpp_source_l00085}{85}} of file \mbox{\hyperlink{_lvgl_menu_8hpp_source}{Lvgl\+Menu.\+hpp}}.
+
+\Hypertarget{classwisco_1_1menu_1_1_lvgl_menu_a54bca685e09939dc65c7c07fe8ba926e}\label{classwisco_1_1menu_1_1_lvgl_menu_a54bca685e09939dc65c7c07fe8ba926e} 
+\index{wisco::menu::LvglMenu@{wisco::menu::LvglMenu}!button\_pressed\_style@{button\_pressed\_style}}
+\index{button\_pressed\_style@{button\_pressed\_style}!wisco::menu::LvglMenu@{wisco::menu::LvglMenu}}
+\doxysubsubsection{\texorpdfstring{button\_pressed\_style}{button\_pressed\_style}}
+{\footnotesize\ttfamily lv\+\_\+style\+\_\+t wisco\+::menu\+::\+Lvgl\+Menu\+::button\+\_\+pressed\+\_\+style\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The pressed style for a button. 
+
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8hpp_source_l00091}{91}} of file \mbox{\hyperlink{_lvgl_menu_8hpp_source}{Lvgl\+Menu.\+hpp}}.
+
+\Hypertarget{classwisco_1_1menu_1_1_lvgl_menu_a7ffcb9ed804d4866af1ec68431a084f7}\label{classwisco_1_1menu_1_1_lvgl_menu_a7ffcb9ed804d4866af1ec68431a084f7} 
+\index{wisco::menu::LvglMenu@{wisco::menu::LvglMenu}!container\_default\_style@{container\_default\_style}}
+\index{container\_default\_style@{container\_default\_style}!wisco::menu::LvglMenu@{wisco::menu::LvglMenu}}
+\doxysubsubsection{\texorpdfstring{container\_default\_style}{container\_default\_style}}
+{\footnotesize\ttfamily lv\+\_\+style\+\_\+t wisco\+::menu\+::\+Lvgl\+Menu\+::container\+\_\+default\+\_\+style\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The default style for a container. 
+
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8hpp_source_l00097}{97}} of file \mbox{\hyperlink{_lvgl_menu_8hpp_source}{Lvgl\+Menu.\+hpp}}.
+
+\Hypertarget{classwisco_1_1menu_1_1_lvgl_menu_afa89c9833717a11810021dcf46c7e6f6}\label{classwisco_1_1menu_1_1_lvgl_menu_afa89c9833717a11810021dcf46c7e6f6} 
+\index{wisco::menu::LvglMenu@{wisco::menu::LvglMenu}!container\_pressed\_style@{container\_pressed\_style}}
+\index{container\_pressed\_style@{container\_pressed\_style}!wisco::menu::LvglMenu@{wisco::menu::LvglMenu}}
+\doxysubsubsection{\texorpdfstring{container\_pressed\_style}{container\_pressed\_style}}
+{\footnotesize\ttfamily lv\+\_\+style\+\_\+t wisco\+::menu\+::\+Lvgl\+Menu\+::container\+\_\+pressed\+\_\+style\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The pressed style for a container. 
+
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8hpp_source_l00103}{103}} of file \mbox{\hyperlink{_lvgl_menu_8hpp_source}{Lvgl\+Menu.\+hpp}}.
+
+\Hypertarget{classwisco_1_1menu_1_1_lvgl_menu_afa8d4347fca2e18ee0e52de4de5bb890}\label{classwisco_1_1menu_1_1_lvgl_menu_afa8d4347fca2e18ee0e52de4de5bb890} 
+\index{wisco::menu::LvglMenu@{wisco::menu::LvglMenu}!button\_matrix\_main\_style@{button\_matrix\_main\_style}}
+\index{button\_matrix\_main\_style@{button\_matrix\_main\_style}!wisco::menu::LvglMenu@{wisco::menu::LvglMenu}}
+\doxysubsubsection{\texorpdfstring{button\_matrix\_main\_style}{button\_matrix\_main\_style}}
+{\footnotesize\ttfamily lv\+\_\+style\+\_\+t wisco\+::menu\+::\+Lvgl\+Menu\+::button\+\_\+matrix\+\_\+main\+\_\+style\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The background style for a button matrix. 
+
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8hpp_source_l00109}{109}} of file \mbox{\hyperlink{_lvgl_menu_8hpp_source}{Lvgl\+Menu.\+hpp}}.
+
+\Hypertarget{classwisco_1_1menu_1_1_lvgl_menu_adf3db67ac756da53b55cd74d06b52306}\label{classwisco_1_1menu_1_1_lvgl_menu_adf3db67ac756da53b55cd74d06b52306} 
+\index{wisco::menu::LvglMenu@{wisco::menu::LvglMenu}!button\_matrix\_items\_style@{button\_matrix\_items\_style}}
+\index{button\_matrix\_items\_style@{button\_matrix\_items\_style}!wisco::menu::LvglMenu@{wisco::menu::LvglMenu}}
+\doxysubsubsection{\texorpdfstring{button\_matrix\_items\_style}{button\_matrix\_items\_style}}
+{\footnotesize\ttfamily lv\+\_\+style\+\_\+t wisco\+::menu\+::\+Lvgl\+Menu\+::button\+\_\+matrix\+\_\+items\+\_\+style\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The button style for a button matrix. 
+
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8hpp_source_l00115}{115}} of file \mbox{\hyperlink{_lvgl_menu_8hpp_source}{Lvgl\+Menu.\+hpp}}.
+
+\Hypertarget{classwisco_1_1menu_1_1_lvgl_menu_aeae710b75cdedbeeafe18c9b79de8015}\label{classwisco_1_1menu_1_1_lvgl_menu_aeae710b75cdedbeeafe18c9b79de8015} 
+\index{wisco::menu::LvglMenu@{wisco::menu::LvglMenu}!styles\_initialized@{styles\_initialized}}
+\index{styles\_initialized@{styles\_initialized}!wisco::menu::LvglMenu@{wisco::menu::LvglMenu}}
+\doxysubsubsection{\texorpdfstring{styles\_initialized}{styles\_initialized}}
+{\footnotesize\ttfamily bool wisco\+::menu\+::\+Lvgl\+Menu\+::styles\+\_\+initialized = false\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Whether or not the styles have been initialized. 
+
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8hpp_source_l00121}{121}} of file \mbox{\hyperlink{_lvgl_menu_8hpp_source}{Lvgl\+Menu.\+hpp}}.
+
+\Hypertarget{classwisco_1_1menu_1_1_lvgl_menu_a86e30178d5fc528778e9cddfe54d932d}\label{classwisco_1_1menu_1_1_lvgl_menu_a86e30178d5fc528778e9cddfe54d932d} 
+\index{wisco::menu::LvglMenu@{wisco::menu::LvglMenu}!options@{options}}
+\index{options@{options}!wisco::menu::LvglMenu@{wisco::menu::LvglMenu}}
+\doxysubsubsection{\texorpdfstring{options}{options}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{structwisco_1_1menu_1_1_option}{Option}}$>$ wisco\+::menu\+::\+Lvgl\+Menu\+::options \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The options available in the menu. 
+
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8hpp_source_l00127}{127}} of file \mbox{\hyperlink{_lvgl_menu_8hpp_source}{Lvgl\+Menu.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00127\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{classwisco_1_1menu_1_1_lvgl_menu_ae4a91468941ad8b88180452d5aea63d2}\label{classwisco_1_1menu_1_1_lvgl_menu_ae4a91468941ad8b88180452d5aea63d2} 
+\index{wisco::menu::LvglMenu@{wisco::menu::LvglMenu}!complete@{complete}}
+\index{complete@{complete}!wisco::menu::LvglMenu@{wisco::menu::LvglMenu}}
+\doxysubsubsection{\texorpdfstring{complete}{complete}}
+{\footnotesize\ttfamily bool wisco\+::menu\+::\+Lvgl\+Menu\+::complete \{false\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Whether or not selection is complete. 
+
+
+
+Definition at line \mbox{\hyperlink{_lvgl_menu_8hpp_source_l00133}{133}} of file \mbox{\hyperlink{_lvgl_menu_8hpp_source}{Lvgl\+Menu.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00133\ \{\textcolor{keyword}{false}\};}
+
+\end{DoxyCode}

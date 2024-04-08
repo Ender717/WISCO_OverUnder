@@ -1,0 +1,73 @@
+\doxysection{api.\+h}
+\hypertarget{api_8h_source}{}\label{api_8h_source}\index{include/api.h@{include/api.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00019}00019\ \textcolor{preprocessor}{\#ifndef\ \_PROS\_API\_H\_}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00020}00020\ \textcolor{preprocessor}{\#define\ \_PROS\_API\_H\_}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00022}00022\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00023}00023\ \textcolor{preprocessor}{\#include\ <cerrno>}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00024}00024\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00025}00025\ \textcolor{preprocessor}{\#include\ <cstdbool>}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00026}00026\ \textcolor{preprocessor}{\#include\ <cstddef>}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00027}00027\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00028}00028\ \textcolor{preprocessor}{\#include\ <cstdio>}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00030}00030\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00031}00031\ \textcolor{preprocessor}{\#else\ }\textcolor{comment}{/*\ (not)\ \_\_cplusplus\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00032}00032\ \textcolor{preprocessor}{\#include\ <errno.h>}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00033}00033\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00034}00034\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00035}00035\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00036}00036\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00037}00037\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00038}00038\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00039}00039\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00040}00040\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_cplusplus\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00042}00042\ \textcolor{preprocessor}{\#define\ PROS\_VERSION\_MAJOR\ 4}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00043}00043\ \textcolor{preprocessor}{\#define\ PROS\_VERSION\_MINOR\ 0}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00044}00044\ \textcolor{preprocessor}{\#define\ PROS\_VERSION\_PATCH\ 6}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00045}00045\ \textcolor{preprocessor}{\#define\ PROS\_VERSION\_STRING\ "{}4.0.6"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00047}00047\ \textcolor{preprocessor}{\#include\ "{}pros/adi.h"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00048}00048\ \textcolor{preprocessor}{\#include\ "{}pros/colors.h"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00049}00049\ \textcolor{preprocessor}{\#include\ "{}pros/device.h"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00050}00050\ \textcolor{preprocessor}{\#include\ "{}pros/distance.h"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00051}00051\ \textcolor{preprocessor}{\#include\ "{}pros/error.h"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00052}00052\ \textcolor{preprocessor}{\#include\ "{}pros/ext\_adi.h"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00053}00053\ \textcolor{preprocessor}{\#include\ "{}pros/gps.h"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00054}00054\ \textcolor{preprocessor}{\#include\ "{}pros/imu.h"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00055}00055\ \textcolor{preprocessor}{\#include\ "{}pros/link.h"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00056}00056\ \textcolor{preprocessor}{\#include\ "{}pros/llemu.h"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00057}00057\ \textcolor{preprocessor}{\#include\ "{}pros/misc.h"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00058}00058\ \textcolor{preprocessor}{\#include\ "{}pros/motors.h"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00059}00059\ \textcolor{preprocessor}{\#include\ "{}pros/optical.h"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00060}00060\ \textcolor{preprocessor}{\#include\ "{}pros/rotation.h"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00061}00061\ \textcolor{preprocessor}{\#include\ "{}pros/rtos.h"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00062}00062\ \textcolor{preprocessor}{\#include\ "{}pros/screen.h"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00063}00063\ \textcolor{preprocessor}{\#include\ "{}pros/vision.h"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00065}00065\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00066}00066\ \textcolor{preprocessor}{\#include\ "{}pros/adi.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00067}00067\ \textcolor{preprocessor}{\#include\ "{}pros/colors.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00068}00068\ \textcolor{preprocessor}{\#include\ "{}pros/device.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00069}00069\ \textcolor{preprocessor}{\#include\ "{}pros/distance.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00070}00070\ \textcolor{preprocessor}{\#include\ "{}pros/gps.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00071}00071\ \textcolor{preprocessor}{\#include\ "{}pros/imu.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00072}00072\ \textcolor{preprocessor}{\#include\ "{}pros/link.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00073}00073\ \textcolor{preprocessor}{\#include\ "{}pros/llemu.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00074}00074\ \textcolor{preprocessor}{\#include\ "{}pros/misc.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00075}00075\ \textcolor{preprocessor}{\#include\ "{}pros/motor\_group.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00076}00076\ \textcolor{preprocessor}{\#include\ "{}pros/motors.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00077}00077\ \textcolor{preprocessor}{\#include\ "{}pros/optical.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00078}00078\ \textcolor{preprocessor}{\#include\ "{}pros/rotation.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00079}00079\ \textcolor{preprocessor}{\#include\ "{}pros/rtos.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00080}00080\ \textcolor{preprocessor}{\#include\ "{}pros/screen.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00081}00081\ \textcolor{preprocessor}{\#include\ "{}pros/vision.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00082}00082\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{api_8h_source_l00084}00084\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ \_PROS\_API\_H\_}}
+
+\end{DoxyCode}

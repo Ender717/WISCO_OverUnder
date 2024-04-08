@@ -1,0 +1,205 @@
+\doxysection{pros\+\_\+adapters\+::Pros\+Task Class Reference}
+\hypertarget{classpros__adapters_1_1_pros_task}{}\label{classpros__adapters_1_1_pros_task}\index{pros\_adapters::ProsTask@{pros\_adapters::ProsTask}}
+
+
+Pros rtos task adapter for the wisco rtos ITask interface.  
+
+
+Inheritance diagram for pros\+\_\+adapters\+::Pros\+Task\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classpros__adapters_1_1_pros_task}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classpros__adapters_1_1_pros_task_a30afa3c547a8f08fa43e76f092d78ee1}{start}} (void(\texorpdfstring{$\ast$}{*}function)(void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}parameters) override
+\begin{DoxyCompactList}\small\item\em Starts the task. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpros__adapters_1_1_pros_task_aa0f3bb37a875916722acc17b969274b6}{remove}} () override
+\begin{DoxyCompactList}\small\item\em Removes the task from the system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpros__adapters_1_1_pros_task_ad9c833ad5d4287920c84767b559c8280}{suspend}} () override
+\begin{DoxyCompactList}\small\item\em Suspends the task in the scheduler. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpros__adapters_1_1_pros_task_af076ff0b6ef4a4cd03846b3b65462b72}{resume}} () override
+\begin{DoxyCompactList}\small\item\em Resumes the task in the scheduler. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpros__adapters_1_1_pros_task_aa7462094256ceefdf827b59baf2f1e13}{join}} () override
+\begin{DoxyCompactList}\small\item\em Waits for the task to finish. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_task}{wisco\+::rtos\+::\+ITask}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+ITask} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classwisco_1_1rtos_1_1_i_task}{ITask} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ pros\+::\+Task $>$ \mbox{\hyperlink{classpros__adapters_1_1_pros_task_a7f87959ac1a4c127d01819bd887d3103}{task}} \{\}
+\begin{DoxyCompactList}\small\item\em The pros task being adapted. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Pros rtos task adapter for the wisco rtos ITask interface. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Sandvig 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_pros_task_8hpp_source_l00022}{22}} of file \mbox{\hyperlink{_pros_task_8hpp_source}{Pros\+Task.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classpros__adapters_1_1_pros_task_a30afa3c547a8f08fa43e76f092d78ee1}\label{classpros__adapters_1_1_pros_task_a30afa3c547a8f08fa43e76f092d78ee1} 
+\index{pros\_adapters::ProsTask@{pros\_adapters::ProsTask}!start@{start}}
+\index{start@{start}!pros\_adapters::ProsTask@{pros\_adapters::ProsTask}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void pros\+\_\+adapters\+::\+Pros\+Task\+::start (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*})}]{function,  }\item[{void \texorpdfstring{$\ast$}{*}}]{parameters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Starts the task. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em function} & The function to run in the task \\
+\hline
+{\em parameters} & The parameters for the function \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_task_af1b1ec39832ba24f8c5d39dddb1901ba}{wisco\+::rtos\+::\+ITask}}.
+
+
+
+Definition at line \mbox{\hyperlink{_pros_task_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{_pros_task_8cpp_source}{Pros\+Task.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00006\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_task_a7f87959ac1a4c127d01819bd887d3103}{task}}\ =\ std::make\_unique<pros::Task>(function,\ parameters);}
+\DoxyCodeLine{00008\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_task_aa0f3bb37a875916722acc17b969274b6}\label{classpros__adapters_1_1_pros_task_aa0f3bb37a875916722acc17b969274b6} 
+\index{pros\_adapters::ProsTask@{pros\_adapters::ProsTask}!remove@{remove}}
+\index{remove@{remove}!pros\_adapters::ProsTask@{pros\_adapters::ProsTask}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily void pros\+\_\+adapters\+::\+Pros\+Task\+::remove (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Removes the task from the system. 
+
+
+
+Implements \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_task_adb5dd967b78d2de0d86e7522859649c4}{wisco\+::rtos\+::\+ITask}}.
+
+
+
+Definition at line \mbox{\hyperlink{_pros_task_8cpp_source_l00010}{10}} of file \mbox{\hyperlink{_pros_task_8cpp_source}{Pros\+Task.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_task_a7f87959ac1a4c127d01819bd887d3103}{task}}-\/>remove();}
+\DoxyCodeLine{00013\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_task_ad9c833ad5d4287920c84767b559c8280}\label{classpros__adapters_1_1_pros_task_ad9c833ad5d4287920c84767b559c8280} 
+\index{pros\_adapters::ProsTask@{pros\_adapters::ProsTask}!suspend@{suspend}}
+\index{suspend@{suspend}!pros\_adapters::ProsTask@{pros\_adapters::ProsTask}}
+\doxysubsubsection{\texorpdfstring{suspend()}{suspend()}}
+{\footnotesize\ttfamily void pros\+\_\+adapters\+::\+Pros\+Task\+::suspend (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Suspends the task in the scheduler. 
+
+
+
+Implements \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_task_af9bf15cc06831f02c5d3fae04d257049}{wisco\+::rtos\+::\+ITask}}.
+
+
+
+Definition at line \mbox{\hyperlink{_pros_task_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{_pros_task_8cpp_source}{Pros\+Task.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_task_a7f87959ac1a4c127d01819bd887d3103}{task}}-\/>suspend();}
+\DoxyCodeLine{00018\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_task_af076ff0b6ef4a4cd03846b3b65462b72}\label{classpros__adapters_1_1_pros_task_af076ff0b6ef4a4cd03846b3b65462b72} 
+\index{pros\_adapters::ProsTask@{pros\_adapters::ProsTask}!resume@{resume}}
+\index{resume@{resume}!pros\_adapters::ProsTask@{pros\_adapters::ProsTask}}
+\doxysubsubsection{\texorpdfstring{resume()}{resume()}}
+{\footnotesize\ttfamily void pros\+\_\+adapters\+::\+Pros\+Task\+::resume (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Resumes the task in the scheduler. 
+
+
+
+Implements \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_task_adaf60d9e7ca8726024a5b1b9e028322b}{wisco\+::rtos\+::\+ITask}}.
+
+
+
+Definition at line \mbox{\hyperlink{_pros_task_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{_pros_task_8cpp_source}{Pros\+Task.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_task_a7f87959ac1a4c127d01819bd887d3103}{task}}-\/>resume();}
+\DoxyCodeLine{00023\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classpros__adapters_1_1_pros_task_aa7462094256ceefdf827b59baf2f1e13}\label{classpros__adapters_1_1_pros_task_aa7462094256ceefdf827b59baf2f1e13} 
+\index{pros\_adapters::ProsTask@{pros\_adapters::ProsTask}!join@{join}}
+\index{join@{join}!pros\_adapters::ProsTask@{pros\_adapters::ProsTask}}
+\doxysubsubsection{\texorpdfstring{join()}{join()}}
+{\footnotesize\ttfamily void pros\+\_\+adapters\+::\+Pros\+Task\+::join (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Waits for the task to finish. 
+
+
+
+Implements \mbox{\hyperlink{classwisco_1_1rtos_1_1_i_task_ac6ff41ab293601e1c1874b77634df706}{wisco\+::rtos\+::\+ITask}}.
+
+
+
+Definition at line \mbox{\hyperlink{_pros_task_8cpp_source_l00025}{25}} of file \mbox{\hyperlink{_pros_task_8cpp_source}{Pros\+Task.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{classpros__adapters_1_1_pros_task_a7f87959ac1a4c127d01819bd887d3103}{task}}-\/>join();}
+\DoxyCodeLine{00028\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classpros__adapters_1_1_pros_task_a7f87959ac1a4c127d01819bd887d3103}\label{classpros__adapters_1_1_pros_task_a7f87959ac1a4c127d01819bd887d3103} 
+\index{pros\_adapters::ProsTask@{pros\_adapters::ProsTask}!task@{task}}
+\index{task@{task}!pros\_adapters::ProsTask@{pros\_adapters::ProsTask}}
+\doxysubsubsection{\texorpdfstring{task}{task}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$pros\+::\+Task$>$ pros\+\_\+adapters\+::\+Pros\+Task\+::task \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The pros task being adapted. 
+
+
+
+Definition at line \mbox{\hyperlink{_pros_task_8hpp_source_l00029}{29}} of file \mbox{\hyperlink{_pros_task_8hpp_source}{Pros\+Task.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00029\ \{\};}
+
+\end{DoxyCode}
