@@ -8,7 +8,8 @@ namespace subsystems
 {
 namespace elevator
 {
-ElevatorSubsystem::ElevatorSubsystem(std::unique_ptr<IElevator>& elevator) : m_elevator{std::move(elevator)}
+ElevatorSubsystem::ElevatorSubsystem(std::unique_ptr<IElevator>& elevator) 
+: ASubsystem{SUBSYSTEM_NAME}, m_elevator{std::move(elevator)}
 {
 
 }

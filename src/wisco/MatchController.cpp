@@ -3,7 +3,7 @@
 namespace wisco
 {
 MatchController::MatchController(std::unique_ptr<IMenu>& menu, const std::shared_ptr<rtos::IClock>& clock, std::unique_ptr<rtos::IDelayer>& delayer) : 
-	m_menu{std::move(menu)}, m_clock{clock}, m_delayer{std::move(delayer)}, opcontrol_manager{clock, delayer}
+	m_menu{std::move(menu)}, m_clock{clock}, m_delayer{std::move(delayer)}, opcontrol_manager{m_clock, m_delayer}
 {
 
 }
@@ -24,6 +24,7 @@ void MatchController::initialize()
 	opcontrol_manager.setProfile(system_configuration.profile);
 	controller = system_configuration.configuration->buildController();
 	robot = system_configuration.configuration->buildRobot();
+
 	if (robot)
 	{
 		robot->initialize();

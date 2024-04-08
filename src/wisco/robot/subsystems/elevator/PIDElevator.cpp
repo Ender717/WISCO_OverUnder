@@ -1,4 +1,6 @@
 #include "wisco/robot/subsystems/elevator/PIDElevator.hpp"
+#include "pros/screen.hpp"
+#include <cmath>
 
 namespace wisco
 {
@@ -30,7 +32,11 @@ void PIDElevator::updatePosition()
     if (m_mutex)
         m_mutex->take();
 
-    double voltage{m_pid.getControlValue(getPosition(), m_position)};
+    double current_position{getPosition()};
+    pros::screen::print(pros::E_TEXT_LARGE_CENTER, 1, "Current: %6.2f", current_position);
+    pros::screen::print(pros::E_TEXT_LARGE_CENTER, 3, "Target: %6.2f", m_position);
+    
+    double voltage{m_pid.getControlValue(current_position, m_position)};
     m_motors.setVoltage(voltage);
 
     if (m_mutex)
@@ -64,6 +70,8 @@ double PIDElevator::getPosition()
     }
     else
     {
+        double revolutions{m_motors.getPosition() / (2 * M_PI)};
+        pros::screen::print(pros::E_TEXT_LARGE_CENTER, 5, "Revolutions: %6.3f", revolutions);
         position = m_motors.getPosition() * m_inches_per_radian;
     }
     return position;

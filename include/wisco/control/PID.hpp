@@ -86,7 +86,7 @@ public:
      * @param ki The integral constant
      * @param kd The derivative constant
      */
-    PID(std::unique_ptr<rtos::IClock>& clock, double kp, double ki, double kd);
+    PID(const std::unique_ptr<rtos::IClock>& clock, double kp, double ki, double kd);
 
     /**
      * @brief Construct a new PID object

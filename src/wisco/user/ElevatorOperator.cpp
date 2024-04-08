@@ -1,5 +1,4 @@
 #include "wisco/user/ElevatorOperator.hpp"
-#include "EControllerDigital.hpp"
 
 namespace wisco
 {
@@ -103,26 +102,6 @@ void ElevatorOperator::updatePresetLadder(EControllerDigital in, EControllerDigi
         switch (toggle_state)
         {
         case EToggleState::IN:
-            updateElevatorPosition(FIELD_POSITION);
-            toggle_state = EToggleState::FIELD;
-            break;
-        case EToggleState::FIELD:
-            updateElevatorPosition(MATCH_LOAD_POSITION);
-            toggle_state = EToggleState::MATCH_LOAD;
-            break;
-        case EToggleState::MATCH_LOAD:
-            updateElevatorPosition(OUT_POSITION);
-            toggle_state = EToggleState::OUT;
-            break;
-        case EToggleState::OUT:
-            break;
-        }
-    }
-    else if (!move_in && move_out)
-    {
-        switch (toggle_state)
-        {
-        case EToggleState::IN:
             break;
         case EToggleState::FIELD:
             updateElevatorPosition(IN_POSITION);
@@ -135,6 +114,26 @@ void ElevatorOperator::updatePresetLadder(EControllerDigital in, EControllerDigi
         case EToggleState::OUT:
             updateElevatorPosition(MATCH_LOAD_POSITION);
             toggle_state = EToggleState::MATCH_LOAD;
+            break;
+        }
+    }
+    else if (!move_in && move_out)
+    {
+        switch (toggle_state)
+        {
+        case EToggleState::IN:
+            updateElevatorPosition(FIELD_POSITION);
+            toggle_state = EToggleState::FIELD;
+            break;
+        case EToggleState::FIELD:
+            updateElevatorPosition(MATCH_LOAD_POSITION);
+            toggle_state = EToggleState::MATCH_LOAD;
+            break;
+        case EToggleState::MATCH_LOAD:
+            updateElevatorPosition(OUT_POSITION);
+            toggle_state = EToggleState::OUT;
+            break;
+        case EToggleState::OUT:
             break;
         }
     }

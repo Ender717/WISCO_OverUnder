@@ -202,7 +202,7 @@ std::shared_ptr<robot::Robot> BlueConfiguration::buildRobot()
     };
     std::unique_ptr<wisco::robot::ASubsystem> elevator_subsystem{std::make_unique<wisco::robot::subsystems::elevator::ElevatorSubsystem>(pid_elevator)};
     robot->addSubsystem(elevator_subsystem);
-    
+
     return robot;
 }
 }

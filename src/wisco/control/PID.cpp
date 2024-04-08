@@ -4,8 +4,8 @@ namespace wisco
 {
 namespace control
 {
-PID::PID(std::unique_ptr<rtos::IClock>& clock, double kp, double ki, double kd)
-    : m_clock{std::move(clock)}, m_kp{kp}, m_ki{ki}, m_kd{kd}
+PID::PID(const std::unique_ptr<rtos::IClock>& clock, double kp, double ki, double kd)
+    : m_clock{clock->clone()}, m_kp{kp}, m_ki{ki}, m_kd{kd}
 {
 
 }

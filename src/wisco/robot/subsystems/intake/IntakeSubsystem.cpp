@@ -8,7 +8,8 @@ namespace subsystems
 {
 namespace intake
 {
-IntakeSubsystem::IntakeSubsystem(std::unique_ptr<IIntake>& intake) : m_intake{std::move(intake)}
+IntakeSubsystem::IntakeSubsystem(std::unique_ptr<IIntake>& intake) 
+    : ASubsystem{SUBSYSTEM_NAME}, m_intake{std::move(intake)}
 {
 
 }

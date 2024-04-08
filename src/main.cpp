@@ -25,7 +25,9 @@ void initialize()
 
 	}
 	else
+	{
 		match_controller.initialize();
+	}
 }
 
 /**
@@ -40,7 +42,9 @@ void disabled()
 
 	}
 	else
+	{
 		match_controller.disabled();
+	}
 }
 
 /**
@@ -59,7 +63,9 @@ void competition_initialize()
 
 	}
 	else
+	{
 		match_controller.competitionInitialize();
+	}
 }
 
 /**
@@ -80,7 +86,9 @@ void autonomous()
 
 	}
 	else
+	{
 		match_controller.autonomous();
+	}
 }
 
 /**
@@ -114,5 +122,7 @@ void opcontrol()
 		}
 	}
 	else
+	{
 		match_controller.operatorControl();
+	}
 }

@@ -84,7 +84,7 @@ private:
      * @brief The out position for the elevator
      * 
      */
-    static constexpr double OUT_POSITION{20.0};
+    static constexpr double OUT_POSITION{18.0};
 
     /**
      * @brief The user input controller

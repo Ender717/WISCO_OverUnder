@@ -1,4 +1,5 @@
 #include "pros_adapters/ProsV5Motor.hpp"
+#include "pros/screen.hpp"
 
 namespace pros_adapters
 {
@@ -59,12 +60,14 @@ double ProsV5Motor::getAngularVelocity()
 
 double ProsV5Motor::getPosition()
 {
-    double angular_velocity{};
+    double position{};
 
     if (m_motor)
-        angular_velocity = m_motor->get_position() * (POSITION_CONVERSION / getGearRatio());
+    {
+        position = (m_motor->get_position() / getGearRatio()) * POSITION_CONVERSION;
+    }
 
-    return angular_velocity;
+    return position;
 }
 
 void ProsV5Motor::setVoltage(double volts)

@@ -130,7 +130,7 @@ private:
 	 * @brief The first left drive motor port
 	 * 
 	 */
-	static constexpr int8_t DRIVE_LEFT_MOTOR_1_PORT{11};
+	static constexpr int8_t DRIVE_LEFT_MOTOR_1_PORT{-1};
 
 	/**
 	 * @brief The first left drive motor gearset
@@ -142,7 +142,7 @@ private:
 	 * @brief The second left drive motor port
 	 * 
 	 */
-	static constexpr int8_t DRIVE_LEFT_MOTOR_2_PORT{12};
+	static constexpr int8_t DRIVE_LEFT_MOTOR_2_PORT{-2};
 
 	/**
 	 * @brief The second left drive motor gearset
@@ -154,7 +154,7 @@ private:
 	 * @brief The third left drive motor port
 	 * 
 	 */
-	static constexpr int8_t DRIVE_LEFT_MOTOR_3_PORT{-13};
+	static constexpr int8_t DRIVE_LEFT_MOTOR_3_PORT{3};
 
 	/**
 	 * @brief The third left drive motor gearset
@@ -166,7 +166,7 @@ private:
 	 * @brief The fourth left drive motor port
 	 * 
 	 */
-	static constexpr int8_t DRIVE_LEFT_MOTOR_4_PORT{-14};
+	static constexpr int8_t DRIVE_LEFT_MOTOR_4_PORT{4};
 
 	/**
 	 * @brief The fourth left drive motor gearset
@@ -178,7 +178,7 @@ private:
 	 * @brief The first right drive motor port
 	 * 
 	 */
-	static constexpr int8_t DRIVE_RIGHT_MOTOR_1_PORT{17};
+	static constexpr int8_t DRIVE_RIGHT_MOTOR_1_PORT{-7};
 
 	/**
 	 * @brief The first right drive motor gearset
@@ -190,7 +190,7 @@ private:
 	 * @brief The second right drive motor port
 	 * 
 	 */
-	static constexpr int8_t DRIVE_RIGHT_MOTOR_2_PORT{18};
+	static constexpr int8_t DRIVE_RIGHT_MOTOR_2_PORT{-8};
 
 	/**
 	 * @brief The second right drive motor gearset
@@ -202,7 +202,7 @@ private:
 	 * @brief The third right drive motor port
 	 * 
 	 */
-	static constexpr int8_t DRIVE_RIGHT_MOTOR_3_PORT{-19};
+	static constexpr int8_t DRIVE_RIGHT_MOTOR_3_PORT{9};
 
 	/**
 	 * @brief The third right drive motor gearset
@@ -214,7 +214,7 @@ private:
 	 * @brief The fourth right drive motor port
 	 * 
 	 */
-	static constexpr int8_t DRIVE_RIGHT_MOTOR_4_PORT{-20};
+	static constexpr int8_t DRIVE_RIGHT_MOTOR_4_PORT{10};
 
 	/**
 	 * @brief The fourth right drive motor gearset
@@ -263,25 +263,25 @@ private:
 	 * @brief The KP for the intake PID
 	 * 
 	 */
-	static constexpr double INTAKE_KP{};
+	static constexpr double INTAKE_KP{1.0};
 
 	/**
 	 * @brief The KI for the intake PID
 	 * 
 	 */
-	static constexpr double INTAKE_KI{};
+	static constexpr double INTAKE_KI{0.0};
 
 	/**
 	 * @brief The KD for the intake PID
 	 * 
 	 */
-	static constexpr double INTAKE_KD{};
+	static constexpr double INTAKE_KD{0.0};
 
 	/**
 	 * @brief The first intake motor port
 	 * 
 	 */
-	static constexpr int8_t INTAKE_MOTOR_1_PORT{};
+	static constexpr int8_t INTAKE_MOTOR_1_PORT{-12};
 
 	/**
 	 * @brief The first intake motor gearset
@@ -293,7 +293,7 @@ private:
 	 * @brief The second intake motor port
 	 * 
 	 */
-	static constexpr int8_t INTAKE_MOTOR_2_PORT{};
+	static constexpr int8_t INTAKE_MOTOR_2_PORT{19};
 
 	/**
 	 * @brief The second intake motor gearset
@@ -305,31 +305,31 @@ private:
 	 * @brief The radius of the intake roller
 	 * 
 	 */
-	static constexpr double INTAKE_ROLLER_RADIUS{};
+	static constexpr double INTAKE_ROLLER_RADIUS{1};
 
 	/**
 	 * @brief The KP for the elevator PID
 	 * 
 	 */
-	static constexpr double ELEVATOR_KP{};
+	static constexpr double ELEVATOR_KP{6.0};
 
 	/**
 	 * @brief The KI for the elevator PID
 	 * 
 	 */
-	static constexpr double ELEVATOR_KI{};
+	static constexpr double ELEVATOR_KI{0.0};
 
 	/**
 	 * @brief The KD for the elevator PID
 	 * 
 	 */
-	static constexpr double ELEVATOR_KD{};
+	static constexpr double ELEVATOR_KD{0.0};
 
 	/**
 	 * @brief The first elevator motor port
 	 * 
 	 */
-	static constexpr int8_t ELEVATOR_MOTOR_1_PORT{};
+	static constexpr int8_t ELEVATOR_MOTOR_1_PORT{-11};
 
 	/**
 	 * @brief The first elevator motor gearset
@@ -341,7 +341,7 @@ private:
 	 * @brief The second elevator motor port
 	 * 
 	 */
-	static constexpr int8_t ELEVATOR_MOTOR_2_PORT{};
+	static constexpr int8_t ELEVATOR_MOTOR_2_PORT{20};
 
 	/**
 	 * @brief The second elevator motor gearset
@@ -359,7 +359,7 @@ private:
 	 * @brief The number of inches moved per radian on the elevator
 	 * 
 	 */
-	static constexpr double ELEVATOR_INCHES_PER_RADIAN{};
+	static constexpr double ELEVATOR_INCHES_PER_RADIAN{17.0 / (0.8 * 2 * M_PI)};
 
 public:
     /**
