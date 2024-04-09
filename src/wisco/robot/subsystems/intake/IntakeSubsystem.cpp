@@ -8,8 +8,8 @@ namespace subsystems
 {
 namespace intake
 {
-IntakeSubsystem::IntakeSubsystem(std::unique_ptr<IIntake>& intake) 
-    : ASubsystem{SUBSYSTEM_NAME}, m_intake{std::move(intake)}
+IntakeSubsystem::IntakeSubsystem(std::unique_ptr<IIntake>& intake, std::unique_ptr<IBallDetector>& ball_detector) 
+    : ASubsystem{SUBSYSTEM_NAME}, m_intake{std::move(intake)}, m_ball_detector{std::move(ball_detector)}
 {
 
 }
@@ -48,6 +48,16 @@ void* IntakeSubsystem::state(std::string state_name)
     {
         double* velocity{new double{m_intake->getVelocity()}};
         result = velocity;
+    }
+    else if (state_name == GET_BALL_DISTANCE_STATE_NAME)
+    {
+        double* distance{new double{m_ball_detector->getBallDistance()}};
+        result = distance;
+    }
+    else if (state_name == GET_BALL_ANGLE_STATE_NAME)
+    {
+        double* angle{new double{m_ball_detector->getBallAngle()}};
+        result = angle;
     }
 
     return result;

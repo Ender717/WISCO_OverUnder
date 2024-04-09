@@ -1,4 +1,5 @@
 #include "wisco/configs/BlueConfiguration.hpp"
+#include "wisco/robot/subsystems/intake/DistanceVisionBallDetectorBuilder.hpp"
 
 namespace wisco
 {
@@ -182,7 +183,19 @@ std::shared_ptr<robot::Robot> BlueConfiguration::buildRobot()
         withRollerRadius(INTAKE_ROLLER_RADIUS)->
         build()
     };
-    std::unique_ptr<wisco::robot::ASubsystem> intake_subsystem{std::make_unique<wisco::robot::subsystems::intake::IntakeSubsystem>(pid_intake)};
+    wisco::robot::subsystems::intake::DistanceVisionBallDetectorBuilder distance_vision_ball_detector_builder{};
+    if (BALL_DETECTOR_DISTANCE_PORT)
+    {
+        std::unique_ptr<pros::Distance> ball_detector_pros_distance{std::make_unique<pros::Distance>(BALL_DETECTOR_DISTANCE_PORT)};
+        std::unique_ptr<wisco::io::IDistanceSensor> ball_detector_pros_distance_sensor{std::make_unique<pros_adapters::ProsDistance>(ball_detector_pros_distance, BALL_DETECTOR_DISTANCE_CONSTANT, BALL_DETECTOR_DISTANCE_OFFSET)};
+        distance_vision_ball_detector_builder.withDistanceSensor(ball_detector_pros_distance_sensor);
+    }
+    std::unique_ptr<wisco::robot::subsystems::intake::IBallDetector> distance_vision_ball_detector
+    {
+        distance_vision_ball_detector_builder.
+        build()
+    };
+    std::unique_ptr<wisco::robot::ASubsystem> intake_subsystem{std::make_unique<wisco::robot::subsystems::intake::IntakeSubsystem>(pid_intake, distance_vision_ball_detector)};
     robot->addSubsystem(intake_subsystem);
 
     // Elevator creation

@@ -25,9 +25,10 @@
 
 // intake includes
 #include "wisco/robot/subsystems/intake/PIDIntakeBuilder.hpp"
+#include "wisco/robot/subsystems/intake/DistanceVisionBallDetectorBuilder.hpp"
 #include "wisco/robot/subsystems/intake/IntakeSubsystem.hpp"
 
-// elevator inclues
+// elevator includes
 #include "wisco/robot/subsystems/elevator/PIDElevatorBuilder.hpp"
 #include "wisco/robot/subsystems/elevator/ElevatorSubsystem.hpp"
 
@@ -344,6 +345,24 @@ private:
 	 * 
 	 */
 	static constexpr double INTAKE_ROLLER_RADIUS{1};
+
+	/**
+	 * @brief The port for the ball detector distance sensor
+	 * 
+	 */
+	static constexpr int8_t BALL_DETECTOR_DISTANCE_PORT{};
+
+	/**
+	 * @brief The tuning constant for the ball detector distance sensor
+	 * 
+	 */
+	static constexpr double BALL_DETECTOR_DISTANCE_CONSTANT{};
+
+	/**
+	 * @brief The tuning offset for the ball detector distance sensor
+	 * 
+	 */
+	static constexpr double BALL_DETECTOR_DISTANCE_OFFSET{};
 
 	/**
 	 * @brief The KP for the elevator PID

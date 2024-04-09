@@ -5,6 +5,7 @@
 
 #include "wisco/robot/ASubsystem.hpp"
 #include "wisco/robot/subsystems/intake/IIntake.hpp"
+#include "wisco/robot/subsystems/intake/IBallDetector.hpp"
 
 /**
  * @brief Namespace for all library code
@@ -71,18 +72,37 @@ private:
     static constexpr char GET_VELOCITY_STATE_NAME[]{"GET VELOCITY"};
 
     /**
+     * @brief The name of the get ball distance command
+     * 
+     */
+    static constexpr char GET_BALL_DISTANCE_STATE_NAME[]{"GET BALL DISTANCE"};
+
+    /**
+     * @brief The name of the get ball angle command
+     * 
+     */
+    static constexpr char GET_BALL_ANGLE_STATE_NAME[]{"GET BALL ANGLE"};
+
+    /**
      * @brief The intake being adapted
      * 
      */
     std::unique_ptr<IIntake> m_intake{};
+
+    /**
+     * @brief The ball detector being adapted
+     * 
+     */
+    std::unique_ptr<IBallDetector> m_ball_detector{};
 
 public:
     /**
      * @brief Construct a new Intake Subsystem object
      * 
      * @param intake The intake being adapted
+     * @param ball_detector The ball detector being adapted
      */
-    IntakeSubsystem(std::unique_ptr<IIntake>& intake);
+    IntakeSubsystem(std::unique_ptr<IIntake>& intake, std::unique_ptr<IBallDetector>& ball_detector);
     
 	/**
 	 * @brief Initializes the subsystem
