@@ -48,7 +48,22 @@ std::shared_ptr<robot::Robot> BlueConfiguration::buildRobot()
         withStrafeDistanceTrackingOffset(ODOMETRY_STRAFE_OFFSET)->
         build()
     };
-    std::unique_ptr<wisco::robot::ASubsystem> odometry_subsystem{std::make_unique<wisco::robot::subsystems::position::PositionSubsystem>(inertial_odometry)};
+    robot::subsystems::position::DistancePositionResetterBuilder distance_position_resetter_builder{};
+    if (RESETTER_DISTANCE_PORT)
+    {
+        std::unique_ptr<pros::Distance> resetter_pros_distance{std::make_unique<pros::Distance>(RESETTER_DISTANCE_PORT)};
+        std::unique_ptr<wisco::io::IDistanceSensor> resetter_pros_distance_sensor{std::make_unique<pros_adapters::ProsDistance>(resetter_pros_distance, RESETTER_DISTANCE_CONSTANT, RESETTER_DISTANCE_OFFSET)};
+        distance_position_resetter_builder.withDistanceSensor(resetter_pros_distance_sensor);
+    }
+    std::unique_ptr<wisco::robot::subsystems::position::IPositionResetter> distance_position_resetter
+    {
+        distance_position_resetter_builder.
+        withLocalX(RESETTER_OFFSET_X)->
+        withLocalY(RESETTER_OFFSET_Y)->
+        withLocalTheta(RESETTER_OFFSET_THETA)->
+        build()
+    };
+    std::unique_ptr<wisco::robot::ASubsystem> odometry_subsystem{std::make_unique<wisco::robot::subsystems::position::PositionSubsystem>(inertial_odometry, distance_position_resetter)};
     robot->addSubsystem(odometry_subsystem);
 
     // Drive creation

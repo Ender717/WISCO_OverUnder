@@ -6,12 +6,14 @@
 #include "pros_adapters/ProsClock.hpp"
 #include "pros_adapters/ProsController.hpp"
 #include "pros_adapters/ProsDelayer.hpp"
+#include "pros_adapters/ProsDistance.hpp"
 #include "pros_adapters/ProsHeading.hpp"
 #include "pros_adapters/ProsMutex.hpp"
 #include "pros_adapters/ProsRotation.hpp"
 #include "pros_adapters/ProsTask.hpp"
 #include "wisco/hal/TrackingWheel.hpp"
 #include "wisco/robot/subsystems/position/InertialOdometryBuilder.hpp"
+#include "wisco/robot/subsystems/position/DistancePositionResetterBuilder.hpp"
 #include "wisco/robot/subsystems/position/PositionSubsystem.hpp"
 
 // drive includes
@@ -106,7 +108,43 @@ private:
 	 * @brief The offset of the odometry strafe distance tracking wheel
 	 * 
 	 */
-	static constexpr double ODOMETRY_STRAFE_OFFSET{4.6};	
+	static constexpr double ODOMETRY_STRAFE_OFFSET{4.6};
+
+	/**
+	 * @brief The port for the resetter distance sensor
+	 * 
+	 */
+	static constexpr int8_t RESETTER_DISTANCE_PORT{};
+
+	/**
+	 * @brief The tuning constant for the resetter distance sensor
+	 * 
+	 */
+	static constexpr double RESETTER_DISTANCE_CONSTANT{};
+
+	/**
+	 * @brief The tuning offset for the resetter distance sensor
+	 * 
+	 */
+	static constexpr double RESETTER_DISTANCE_OFFSET{};
+
+	/**
+	 * @brief The x-offset of the resetter
+	 * 
+	 */
+	static constexpr double RESETTER_OFFSET_X{};
+
+	/**
+	 * @brief The y-offset of the resetter
+	 * 
+	 */
+	static constexpr double RESETTER_OFFSET_Y{};
+
+	/**
+	 * @brief The angle-offset of the resetter
+	 * 
+	 */
+	static constexpr double RESETTER_OFFSET_THETA{};
 
 	/**
 	 * @brief Whether to use the kinematic drive model or not

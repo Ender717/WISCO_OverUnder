@@ -5,6 +5,7 @@
 
 #include "wisco/robot/ASubsystem.hpp"
 #include "IPositionTracker.hpp"
+#include "IPositionResetter.hpp"
 
 /**
  * @brief Namespace for all library code
@@ -59,6 +60,18 @@ private:
     static constexpr char SET_POSITION_COMMAND_NAME[]{"SET POSITION"};
 
     /**
+     * @brief The name of the reset x command
+     * 
+     */
+    static constexpr char RESET_X_COMMAND_NAME[]{"RESET X"};
+
+    /**
+     * @brief The name of the reset y command
+     * 
+     */
+    static constexpr char RESET_Y_COMMAND_NAME[]{"RESET Y"};
+
+    /**
      * @brief The name of the get position command
      * 
      */
@@ -70,13 +83,21 @@ private:
      */
     std::unique_ptr<IPositionTracker> m_position_tracker{};
 
+    /**
+     * @brief The position resetter being adapted
+     * 
+     */
+    std::unique_ptr<IPositionResetter> m_position_resetter{};
+
 public:
     /**
      * @brief Construct a new Position Subsystem object
      * 
      * @param position_tracker The position tracker being adapted
+     * @param position_resetter The position resetter being adapted
      */
-    PositionSubsystem(std::unique_ptr<IPositionTracker>& position_tracker);
+    PositionSubsystem(std::unique_ptr<IPositionTracker>& position_tracker, 
+                      std::unique_ptr<IPositionResetter>& position_resetter);
 
     /**
 	 * @brief Initializes the subsystem

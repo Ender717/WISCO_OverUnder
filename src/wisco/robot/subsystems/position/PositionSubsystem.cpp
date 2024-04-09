@@ -9,8 +9,11 @@ namespace subsystems
 {
 namespace position
 {
-PositionSubsystem::PositionSubsystem(std::unique_ptr<IPositionTracker>& position_tracker)
-    : ASubsystem{SUBSYSTEM_NAME}, m_position_tracker{std::move(position_tracker)}
+PositionSubsystem::PositionSubsystem(std::unique_ptr<IPositionTracker>& position_tracker,
+                                     std::unique_ptr<IPositionResetter>& position_resetter)
+    : ASubsystem{SUBSYSTEM_NAME}, 
+    m_position_tracker{std::move(position_tracker)},
+    m_position_resetter{std::move(position_resetter)}
 {
 
 }
@@ -31,6 +34,26 @@ void PositionSubsystem::command(std::string command_name, va_list& args)
     {
         Position position{va_arg(args, double), va_arg(args, double), va_arg(args, double)};
         m_position_tracker->setPosition(position);
+    }
+    else if (command_name == RESET_X_COMMAND_NAME)
+    {
+        if (m_position_tracker && m_position_resetter)
+        {
+            Position position{m_position_tracker->getPosition()};
+            double reset_x{m_position_resetter->getResetX(position.theta)};
+            position.x = reset_x;
+            m_position_tracker->setPosition(position);
+        }
+    }
+    else if (command_name == RESET_Y_COMMAND_NAME)
+    {
+        if (m_position_tracker && m_position_resetter)
+        {
+            Position position{m_position_tracker->getPosition()};
+            double reset_y{m_position_resetter->getResetY(position.theta)};
+            position.y = reset_y;
+            m_position_tracker->setPosition(position);
+        }
     }
 }
 

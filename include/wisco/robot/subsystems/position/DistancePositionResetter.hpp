@@ -1,6 +1,8 @@
 #ifndef WISCO_ROBOT_SUBSYSTEMS_POSITION_DISTANCE_POSITION_RESETTER_HPP
 #define WISCO_ROBOT_SUBSYSTEMS_POSITION_DISTANCE_POSITION_RESETTER_HPP
 
+#include <algorithm>
+#include <cmath>
 #include <memory>
 
 #include "wisco/io/IDistanceSensor.hpp"
@@ -47,6 +49,18 @@ class DistancePositionResetter : public IPositionResetter
 {
 private:
     /**
+     * @brief The coordinate of the near wall
+     * 
+     */
+    static constexpr double NEAR_WALL{0};
+
+    /**
+     * @brief The coordinate of the far wall
+     * 
+     */
+    static constexpr double FAR_WALL{144};
+    
+    /**
      * @brief The distance sensor used to reset the position
      * 
      */
@@ -69,6 +83,14 @@ private:
      * 
      */
     double m_local_theta{};
+
+    /**
+     * @brief Binds radian values between pi and -pi
+     * 
+     * @param radians The raw radian value
+     * @return double The bound radian value
+     */
+    double bindRadians(double radians);
 
 public:
     /**
