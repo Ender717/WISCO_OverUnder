@@ -20,12 +20,18 @@ PositionSubsystem::PositionSubsystem(std::unique_ptr<IPositionTracker>& position
 
 void PositionSubsystem::initialize()
 {
-    m_position_tracker->initialize();
+    if (m_position_tracker)
+        m_position_tracker->initialize();
+    if (m_position_resetter)
+        m_position_resetter->initialize();
 }
 
 void PositionSubsystem::run()
 {
-    m_position_tracker->run();
+    if (m_position_tracker)
+        m_position_tracker->run();
+    if (m_position_resetter)
+        m_position_resetter->run();
 }
 
 void PositionSubsystem::command(std::string command_name, va_list& args)

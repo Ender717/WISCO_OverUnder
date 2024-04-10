@@ -18,12 +18,16 @@ void IntakeSubsystem::initialize()
 {
     if (m_intake)
         m_intake->initialize();
+    if (m_ball_detector)
+        m_ball_detector->initialize();
 }
 
 void IntakeSubsystem::run()
 {
     if (m_intake)
         m_intake->run();
+    if (m_ball_detector)
+        m_ball_detector->run();
 }
 
 void IntakeSubsystem::command(std::string command_name, va_list& args)
