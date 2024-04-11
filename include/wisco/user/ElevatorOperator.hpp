@@ -72,7 +72,7 @@ private:
      * @brief The field position for the elevator
      * 
      */
-    static constexpr double FIELD_POSITION{4.0};
+    static constexpr double FIELD_POSITION{3.0};
 
     /**
      * @brief The match loading position for the elevator

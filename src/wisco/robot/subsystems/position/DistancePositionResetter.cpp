@@ -19,7 +19,8 @@ double DistancePositionResetter::bindRadians(double radians)
 
 void DistancePositionResetter::initialize()
 {
-    m_distance_sensor->initialize();
+    if (m_distance_sensor)
+        m_distance_sensor->initialize();
 }
 
 void DistancePositionResetter::run()
@@ -58,7 +59,8 @@ double DistancePositionResetter::getResetY(double theta)
 
 void DistancePositionResetter::setDistanceSensor(std::unique_ptr<io::IDistanceSensor>& distance_sensor)
 {
-    m_distance_sensor = std::move(distance_sensor);
+    if (distance_sensor)
+        m_distance_sensor = std::move(distance_sensor);
 }
 
 void DistancePositionResetter::setLocalX(double local_x)

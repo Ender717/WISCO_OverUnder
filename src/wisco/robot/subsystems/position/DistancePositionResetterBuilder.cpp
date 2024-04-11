@@ -10,7 +10,7 @@ namespace position
 {
 DistancePositionResetterBuilder* DistancePositionResetterBuilder::withDistanceSensor(std::unique_ptr<io::IDistanceSensor>& distance_sensor)
 {
-    m_distance_sensor = std::move(m_distance_sensor);
+    m_distance_sensor = std::move(distance_sensor);
     return this;
 }
 
