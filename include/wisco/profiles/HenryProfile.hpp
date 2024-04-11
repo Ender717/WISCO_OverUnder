@@ -43,7 +43,7 @@ private:
 	const std::map<user::EControlType, int> CONTROL_MODE_MAP
 	{
 		{user::EControlType::DRIVE, static_cast<int>(user::EChassisControlMode::SPLIT_ARCADE_LEFT)},
-		{user::EControlType::ELEVATOR, static_cast<int>(user::EElevatorControlMode::PRESET_TOGGLE_LADDER)},
+		{user::EControlType::ELEVATOR, static_cast<int>(user::EElevatorControlMode::PRESET_TOGGLE_LADDER_INTAKE)},
 		{user::EControlType::INTAKE, static_cast<int>(user::EIntakeControlMode::SPLIT_HOLD)}
 	};
 

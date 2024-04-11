@@ -51,6 +51,7 @@ void DifferentialDriveOperator::updateTank()
 {
     double left_voltage{m_controller->getAnalog(EControllerAnalog::JOYSTICK_LEFT_Y) * VOLTAGE_CONVERSION};
     double right_voltage{m_controller->getAnalog(EControllerAnalog::JOYSTICK_RIGHT_Y) * VOLTAGE_CONVERSION};
+    updateDriveVoltage(left_voltage, right_voltage);
 }
 
 DifferentialDriveOperator::DifferentialDriveOperator(const std::shared_ptr<user::IController>& controller, 

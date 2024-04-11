@@ -78,7 +78,7 @@ private:
      * @brief The match loading position for the elevator
      * 
      */
-    static constexpr double MATCH_LOAD_POSITION{7.0};
+    static constexpr double MATCH_LOAD_POSITION{8.0};
 
     /**
      * @brief The out position for the elevator
@@ -156,6 +156,16 @@ private:
      * @param out The digital control for the next position outward
      */
     void updatePresetLadder(EControllerDigital in, EControllerDigital out);
+
+    /**
+     * @brief Updates the elevator position based on a ladder toggle system with an intake override
+     * 
+     * @param in The digital control for the next position inward
+     * @param out The digital control for the next position outward
+     * @param intake The digital control for the intake
+     * @param outtake The digital control for the outtake
+     */
+    void updatePresetLadderIntake(EControllerDigital in, EControllerDigital out, EControllerDigital intake, EControllerDigital outtake);
 
 public:
     /**

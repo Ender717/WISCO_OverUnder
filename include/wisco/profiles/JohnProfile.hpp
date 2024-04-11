@@ -6,6 +6,7 @@
 #include "wisco/IProfile.hpp"
 
 #include "wisco/user/EChassisControlMode.hpp"
+#include "wisco/user/EElevatorControlMode.hpp"
 #include "wisco/user/EIntakeControlMode.hpp"
 
 /**
@@ -42,6 +43,7 @@ private:
 	const std::map<user::EControlType, int> CONTROL_MODE_MAP
 	{
 		{user::EControlType::DRIVE, static_cast<int>(user::EChassisControlMode::TANK)},
+		{user::EControlType::ELEVATOR, static_cast<int>(user::EElevatorControlMode::PRESET_TOGGLE_LADDER_INTAKE)},
 		{user::EControlType::INTAKE, static_cast<int>(user::EIntakeControlMode::SPLIT_HOLD)}
 	};
 
@@ -57,6 +59,8 @@ private:
      */
     const std::map<user::EControl, user::EControllerDigital> DIGITAL_CONTROL_MAP
 	{
+		{user::EControl::ELEVATOR_IN, user::EControllerDigital::TRIGGER_RIGHT_BOTTOM},
+		{user::EControl::ELEVATOR_OUT, user::EControllerDigital::TRIGGER_RIGHT_TOP},
 		{user::EControl::INTAKE_IN, user::EControllerDigital::TRIGGER_LEFT_TOP},
 		{user::EControl::INTAKE_OUT, user::EControllerDigital::TRIGGER_LEFT_BOTTOM}
 	};

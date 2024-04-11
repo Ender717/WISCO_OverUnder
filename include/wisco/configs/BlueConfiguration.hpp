@@ -23,6 +23,12 @@
 #include "wisco/robot/subsystems/drive/CurveVelocityProfile.hpp"
 #include "wisco/robot/subsystems/drive/DifferentialDriveSubsystem.hpp"
 
+// hang includes
+#include "pros_adapters/ProsPiston.hpp"
+#include "wisco/robot/subsystems/hang/PistonClawBuilder.hpp"
+#include "wisco/robot/subsystems/hang/PistonToggleArmBuilder.hpp"
+#include "wisco/robot/subsystems/hang/HangSubsystem.hpp"
+
 // intake includes
 #include "wisco/robot/subsystems/intake/PIDIntakeBuilder.hpp"
 #include "wisco/robot/subsystems/intake/DistanceVisionBallDetectorBuilder.hpp"
@@ -417,6 +423,60 @@ private:
 	 * 
 	 */
 	static constexpr double ELEVATOR_INCHES_PER_RADIAN{17.0 / (0.8 * 2 * M_PI)};
+
+	/**
+	 * @brief The first hang claw piston port
+	 * 
+	 */
+	static constexpr char HANG_CLAW_PISTON_1_PORT{};
+
+	/**
+	 * @brief The first hang claw piston's extended state
+	 * 
+	 */
+	static constexpr bool HANG_CLAW_PISTON_1_EXTENDED_STATE{};
+
+	/**
+	 * @brief The hang claw piston state when the claw is closed
+	 * 
+	 */
+	static constexpr bool HANG_CLAW_CLOSED_STATE{};
+
+	/**
+	 * @brief The first hang arm piston port
+	 * 
+	 */
+	static constexpr char HANG_ARM_PISTON_1_PORT{};
+
+	/**
+	 * @brief The first hang arm piston's extended state
+	 * 
+	 */
+	static constexpr bool HANG_ARM_PISTON_1_EXTENDED_STATE{};
+
+	/**
+	 * @brief The hang arm piston state when the arm is up
+	 * 
+	 */
+	static constexpr bool HANG_ARM_UP_STATE{};
+
+	/**
+	 * @brief The hang distance sensor port
+	 * 
+	 */
+	static constexpr int8_t HANG_DISTANCE_PORT{};
+
+	/**
+	 * @brief The hang distance sensor tuning constant
+	 * 
+	 */
+	static constexpr double HANG_DISTANCE_CONSTANT{};
+
+	/**
+	 * @brief The hang distance sensor tuning offset
+	 * 
+	 */
+	static constexpr double HANG_DISTANCE_OFFSET{};
 
 public:
     /**

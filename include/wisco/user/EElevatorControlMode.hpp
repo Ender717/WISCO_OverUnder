@@ -27,7 +27,8 @@ enum class EElevatorControlMode
     MANUAL,
     PRESET_SPLIT,
     PRESET_TOGGLE_SINGLE,
-    PRESET_TOGGLE_LADDER
+    PRESET_TOGGLE_LADDER,
+    PRESET_TOGGLE_LADDER_INTAKE
 };
 } // namespace user
 } // namespace wisco
