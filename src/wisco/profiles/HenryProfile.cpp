@@ -17,6 +17,11 @@ int HenryProfile::getControlMode(user::EControlType control_type) const
     return mode;
 }
 
+void HenryProfile::setControlMode(user::EControlType control_type, int control_mode)
+{
+    CONTROL_MODE_MAP[control_type] = control_mode;
+}
+
 user::EControllerAnalog HenryProfile::getAnalogControlMapping(user::EControl control) const
 {
     user::EControllerAnalog analog{user::EControllerAnalog::NONE};

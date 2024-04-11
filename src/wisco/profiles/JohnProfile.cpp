@@ -18,6 +18,11 @@ int JohnProfile::getControlMode(user::EControlType control_type) const
     return mode;
 }
 
+void JohnProfile::setControlMode(user::EControlType control_type, int control_mode)
+{
+    CONTROL_MODE_MAP[control_type] = control_mode;
+}
+
 user::EControllerAnalog JohnProfile::getAnalogControlMapping(user::EControl control) const
 {
     user::EControllerAnalog analog{user::EControllerAnalog::NONE};

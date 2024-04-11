@@ -46,6 +46,14 @@ public:
 	virtual int getControlMode(user::EControlType control_type) const = 0;
 
 	/**
+	 * @brief Set the control mode for a specific control type
+	 * 
+	 * @param control_type The control type
+	 * @param control_mode The control mode
+	 */
+	virtual void setControlMode(user::EControlType control_type, int control_mode) = 0;
+
+	/**
 	 * @brief Get the mapping of a control to analog inputs
 	 *
 	 * @param control The control

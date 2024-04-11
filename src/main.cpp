@@ -22,7 +22,10 @@ void initialize()
 	*/
 	if (TESTING)
 	{
-
+		for (int8_t i{}; i < 22; ++i)
+		{
+			pros::c::motor_set_brake_mode(i, MOTOR_BRAKE_BRAKE);
+		}
 	}
 	else
 	{
@@ -108,18 +111,7 @@ void opcontrol()
 {
 	if (TESTING)
 	{
-		pros::Controller controller{pros::E_CONTROLLER_MASTER};
-		pros::MotorGroup intakeMotors{9, -10};
-		pros::MotorGroup elevatorMotors{1, -2};
 
-		while (true)
-		{
-			int intakePower{controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y)};
-			int elevatorPower{controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y)};
-			intakeMotors.move(intakePower);
-			elevatorMotors.move(elevatorPower);
-			pros::delay(10);
-		}
 	}
 	else
 	{

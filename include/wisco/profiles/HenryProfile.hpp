@@ -40,7 +40,7 @@ private:
      * @brief The control modes for the profile
      * 
      */
-	const std::map<user::EControlType, int> CONTROL_MODE_MAP
+	std::map<user::EControlType, int> CONTROL_MODE_MAP
 	{
 		{user::EControlType::DRIVE, static_cast<int>(user::EChassisControlMode::SPLIT_ARCADE_LEFT)},
 		{user::EControlType::ELEVATOR, static_cast<int>(user::EElevatorControlMode::PRESET_TOGGLE_LADDER_INTAKE)},
@@ -80,6 +80,14 @@ public:
 	 * @return int The control mode
 	 */
 	int getControlMode(user::EControlType control_type) const override;
+
+	/**
+	 * @brief Set the control mode for a specific control type
+	 * 
+	 * @param control_type The control type
+	 * @param control_mode The control mode
+	 */
+	void setControlMode(user::EControlType control_type, int control_mode) override;
 
 	/**
 	 * @brief Get the mapping of a control to analog inputs
