@@ -39,7 +39,19 @@ enum class EControl
     HANG_TOGGLE,
     INTAKE_IN,
     INTAKE_OUT,
-    INTAKE_TOGGLE
+    INTAKE_TOGGLE,
+    WINGS_HOLD,
+    WINGS_IN,
+    WINGS_OUT,
+    WINGS_TOGGLE,
+    WINGS_LEFT_HOLD,
+    WINGS_LEFT_IN,
+    WINGS_LEFT_OUT,
+    WINGS_LEFT_TOGGLE,
+    WINGS_RIGHT_HOLD,
+    WINGS_RIGHT_IN,
+    WINGS_RIGHT_OUT,
+    WINGS_RIGHT_TOGGLE
 };
 } // namespace user
 } // namespace wisco

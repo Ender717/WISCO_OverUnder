@@ -9,6 +9,7 @@
 #include "wisco/user/EElevatorControlMode.hpp"
 #include "wisco/user/EHangControlMode.hpp"
 #include "wisco/user/EIntakeControlMode.hpp"
+#include "wisco/user/EWingsControlMode.hpp"
 
 /**
  * @brief Namespace for all library code
@@ -46,7 +47,8 @@ private:
 		{user::EControlType::DRIVE, static_cast<int>(user::EChassisControlMode::TANK)},
 		{user::EControlType::ELEVATOR, static_cast<int>(user::EElevatorControlMode::PRESET_TOGGLE_LADDER_INTAKE)},
 		{user::EControlType::HANG, static_cast<int>(user::EHangControlMode::PRESET_TOGGLE_LADDER)},
-		{user::EControlType::INTAKE, static_cast<int>(user::EIntakeControlMode::SPLIT_HOLD)}
+		{user::EControlType::INTAKE, static_cast<int>(user::EIntakeControlMode::SPLIT_HOLD)},
+		{user::EControlType::WINGS, static_cast<int>(user::EWingsControlMode::DUAL_HOLD)}
 	};
 
     /**
@@ -66,7 +68,8 @@ private:
 		{user::EControl::HANG_NEXT, user::EControllerDigital::BUTTON_A},
 		{user::EControl::HANG_PREVIOUS, user::EControllerDigital::BUTTON_B},
 		{user::EControl::INTAKE_IN, user::EControllerDigital::TRIGGER_LEFT_TOP},
-		{user::EControl::INTAKE_OUT, user::EControllerDigital::TRIGGER_LEFT_BOTTOM}
+		{user::EControl::INTAKE_OUT, user::EControllerDigital::TRIGGER_LEFT_BOTTOM},
+		{user::EControl::WINGS_HOLD, user::EControllerDigital::SCUFF_RIGHT_REAR}
 	};
 
 public:

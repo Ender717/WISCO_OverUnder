@@ -8,6 +8,12 @@ namespace subsystems
 {
 namespace wings
 {
+WingsSubsystem::WingsSubsystem(std::unique_ptr<IWings>& wings)
+    : m_wings{std::move(wings)}
+{
+
+}
+
 void WingsSubsystem::initialize()
 {
     if (m_wings)

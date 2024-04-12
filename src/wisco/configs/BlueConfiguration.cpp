@@ -1,5 +1,4 @@
 #include "wisco/configs/BlueConfiguration.hpp"
-#include "wisco/robot/subsystems/intake/DistanceVisionBallDetectorBuilder.hpp"
 
 namespace wisco
 {
@@ -228,7 +227,7 @@ std::shared_ptr<robot::Robot> BlueConfiguration::buildRobot()
         withInchesPerRadian(ELEVATOR_INCHES_PER_RADIAN)->
         build()
     };
-        std::unique_ptr<pros::Distance> elevator_pros_distance{std::make_unique<pros::Distance>(ELEVATOR_DISTANCE_PORT)};
+    std::unique_ptr<pros::Distance> elevator_pros_distance{std::make_unique<pros::Distance>(ELEVATOR_DISTANCE_PORT)};
     std::unique_ptr<wisco::io::IDistanceSensor> elevator_pros_distance_sensor{std::make_unique<pros_adapters::ProsDistance>(elevator_pros_distance, ELEVATOR_DISTANCE_CONSTANT, ELEVATOR_DISTANCE_OFFSET)};
     std::unique_ptr<wisco::robot::ASubsystem> elevator_subsystem{std::make_unique<wisco::robot::subsystems::elevator::ElevatorSubsystem>(pid_elevator, elevator_pros_distance_sensor)};
     robot->addSubsystem(elevator_subsystem);
@@ -266,6 +265,23 @@ std::shared_ptr<robot::Robot> BlueConfiguration::buildRobot()
     };
     std::unique_ptr<wisco::robot::ASubsystem> hang_subsystem{std::make_unique<wisco::robot::subsystems::hang::HangSubsystem>(piston_claw, piston_arm, piston_winch)};
     robot->addSubsystem(hang_subsystem);
+
+    // Wings subsystem
+    wisco::robot::subsystems::wings::PistonWingsBuilder piston_wings_builder{};
+    std::unique_ptr<pros::adi::DigitalOut> left_wing_pros_piston_1{std::make_unique<pros::adi::DigitalOut>(LEFT_WING_PISTON_1_PORT)};
+    std::unique_ptr<wisco::io::IPiston> left_wing_pros_piston_1_piston{std::make_unique<pros_adapters::ProsPiston>(left_wing_pros_piston_1, LEFT_WING_PISTON_1_EXTENDED_STATE)};
+    std::unique_ptr<pros::adi::DigitalOut> right_wing_pros_piston_1{std::make_unique<pros::adi::DigitalOut>(RIGHT_WING_PISTON_1_PORT)};
+    std::unique_ptr<wisco::io::IPiston> right_wing_pros_piston_1_piston{std::make_unique<pros_adapters::ProsPiston>(right_wing_pros_piston_1, RIGHT_WING_PISTON_1_EXTENDED_STATE)};
+    std::unique_ptr<wisco::robot::subsystems::wings::IWings> piston_wings
+    {
+        piston_wings_builder.
+        withLeftPiston(left_wing_pros_piston_1_piston)->
+        withRightPiston(right_wing_pros_piston_1_piston)->
+        withOutState(WINGS_OUT_STATE)->
+        build()
+    };
+    std::unique_ptr<wisco::robot::ASubsystem> wings_subsystem{std::make_unique<wisco::robot::subsystems::wings::WingsSubsystem>(piston_wings)};
+    robot->addSubsystem(wings_subsystem);
 
     return robot;
 }

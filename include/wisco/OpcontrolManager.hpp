@@ -13,6 +13,7 @@
 #include "user/ElevatorOperator.hpp"
 #include "user/HangOperator.hpp"
 #include "user/IntakeOperator.hpp"
+#include "user/WingsOperator.hpp"
 
 /**
  * @brief Namespace for all library code

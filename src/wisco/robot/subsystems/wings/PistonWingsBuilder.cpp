@@ -28,7 +28,7 @@ PistonWingsBuilder* PistonWingsBuilder::withOutState(bool out_state)
 
 std::unique_ptr<IWings> PistonWingsBuilder::build()
 {
-    std::unique_ptr<PistonWings> piston_wings{};
+    std::unique_ptr<PistonWings> piston_wings{std::make_unique<PistonWings>()};
     piston_wings->setLeftPistons(m_left_pistons);
     piston_wings->setRightPistons(m_right_pistons);
     piston_wings->setOutState(m_out_state);

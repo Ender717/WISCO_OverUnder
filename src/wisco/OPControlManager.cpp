@@ -24,6 +24,7 @@ void OPControlManager::runOpcontrol(std::shared_ptr<user::IController> controlle
     user::ElevatorOperator elevator_operator{controller, robot};
     user::HangOperator hang_operator{controller, robot};
     user::IntakeOperator intake_operator{controller, robot};
+    user::WingsOperator wings_operator{controller, robot};
     uint32_t current_time{};
     while (true)
     {
@@ -33,6 +34,7 @@ void OPControlManager::runOpcontrol(std::shared_ptr<user::IController> controlle
         elevator_operator.setElevatorPosition(m_profile);
         hang_operator.setHangState(m_profile);
         intake_operator.setIntakeVoltage(m_profile);
+        wings_operator.setWingsPosition(m_profile);
 
         m_delayer->delayUntil(current_time + CONTROL_DELAY);
     }

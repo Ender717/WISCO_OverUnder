@@ -39,6 +39,10 @@
 #include "wisco/robot/subsystems/elevator/PIDElevatorBuilder.hpp"
 #include "wisco/robot/subsystems/elevator/ElevatorSubsystem.hpp"
 
+// wings includes
+#include "wisco/robot/subsystems/wings/PistonWingsBuilder.hpp"
+#include "wisco/robot/subsystems/wings/WingsSubsystem.hpp"
+
 #include "wisco/IConfiguration.hpp"
 
 /**
@@ -489,13 +493,43 @@ private:
 	 * @brief The first hang winch piston's extended state
 	 * 
 	 */
-	static constexpr char HANG_WINCH_PISTON_1_EXTENDED_STATE{};
+	static constexpr bool HANG_WINCH_PISTON_1_EXTENDED_STATE{};
 
 	/**
 	 * @brief The hang winch piston state when the winch is engaged
 	 * 
 	 */
 	static constexpr bool HANG_WINCH_ENGAGED_STATE{};
+
+	/**
+	 * @brief The first left wing piston port
+	 * 
+	 */
+	static constexpr char LEFT_WING_PISTON_1_PORT{};
+
+	/**
+	 * @brief The first left wing piston's extended state
+	 * 
+	 */
+	static constexpr bool LEFT_WING_PISTON_1_EXTENDED_STATE{};
+
+	/**
+	 * @brief The first right wing piston port
+	 * 
+	 */
+	static constexpr char RIGHT_WING_PISTON_1_PORT{};
+
+	/**
+	 * @brief The first right wing piston's extended state
+	 * 
+	 */
+	static constexpr bool RIGHT_WING_PISTON_1_EXTENDED_STATE{};
+
+	/**
+	 * @brief The wing piston state when the wings are out
+	 * 
+	 */
+	static constexpr bool WINGS_OUT_STATE{};
 
 public:
     /**

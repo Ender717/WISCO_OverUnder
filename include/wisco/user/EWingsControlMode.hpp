@@ -1,5 +1,5 @@
-#ifndef WISCO_USER_E_CONTROL_TYPE_HPP
-#define WISCO_USER_E_CONTROL_TYPE_HPP
+#ifndef WISCO_USER_E_WINGS_CONTROL_MODE_HPP
+#define WISCO_USER_E_WINGS_CONTROL_MODE_HPP
 
 /**
  * @brief Namespace for all library code
@@ -18,17 +18,18 @@ namespace user
 {
 
 /**
- * @brief Defines all different control types
+ * @brief Defines all different wings control formats
  * @author Nathan Sandvig
  * 
  */
-enum class EControlType
+enum class EWingsControlMode
 {
-    DRIVE,
-    ELEVATOR,
-    HANG,
-    INTAKE,
-    WINGS
+    DUAL_HOLD,
+    DUAL_SPLIT,
+    DUAL_TOGGLE,
+    SINGLE_HOLD,
+    SINGLE_SPLIT,
+    SINGLE_TOGGLE
 };
 } // namespace user
 } // namespace wisco
