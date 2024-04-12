@@ -27,6 +27,7 @@
 #include "pros_adapters/ProsPiston.hpp"
 #include "wisco/robot/subsystems/hang/PistonClawBuilder.hpp"
 #include "wisco/robot/subsystems/hang/PistonToggleArmBuilder.hpp"
+#include "wisco/robot/subsystems/hang/PistonWinchBuilder.hpp"
 #include "wisco/robot/subsystems/hang/HangSubsystem.hpp"
 
 // intake includes
@@ -459,6 +460,24 @@ private:
 	 * 
 	 */
 	static constexpr bool HANG_ARM_UP_STATE{};
+
+	/**
+	 * @brief The first hang winch piston port
+	 * 
+	 */
+	static constexpr char HANG_WINCH_PISTON_1_PORT{};
+
+	/**
+	 * @brief The first hang winch piston's extended state
+	 * 
+	 */
+	static constexpr char HANG_WINCH_PISTON_1_EXTENDED_STATE{};
+
+	/**
+	 * @brief The hang winch piston state when the winch is engaged
+	 * 
+	 */
+	static constexpr bool HANG_WINCH_ENGAGED_STATE{};
 
 	/**
 	 * @brief The hang distance sensor port

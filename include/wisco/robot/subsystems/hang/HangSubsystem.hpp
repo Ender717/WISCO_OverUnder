@@ -8,6 +8,7 @@
 #include "wisco/io/IDistanceSensor.hpp"
 #include "IClaw.hpp"
 #include "IToggleArm.hpp"
+#include "IWinch.hpp"
 
 /**
  * @brief Namespace for all library code
@@ -80,6 +81,18 @@ private:
     static constexpr char RAISE_ARM_COMMAND_NAME[]{"RAISE ARM"};
 
     /**
+     * @brief The name of the engage winch command
+     * 
+     */
+    static constexpr char ENGAGE_WINCH_COMMAND_NAME[]{"ENGAGE WINCH"};
+
+    /**
+     * @brief The name of the disengage winch command
+     * 
+     */
+    static constexpr char DISENGAGE_WINCH_COMMAND_NAME[]{"DISENGAGE WINCH"};
+
+    /**
      * @brief The name of the claw closed state
      * 
      */
@@ -104,6 +117,18 @@ private:
     static constexpr char ARM_UP_STATE_NAME[]{"ARM UP"};
 
     /**
+     * @brief The name of the winch engaged state
+     * 
+     */
+    static constexpr char WINCH_ENGAGED_STATE_NAME[]{"WINCH ENGAGED"};
+
+    /**
+     * @brief The name of the winch disengaged state
+     * 
+     */
+    static constexpr char WINCH_DISENGAGED_STATE_NAME[]{"WINCH DISENGAGED"};
+
+    /**
      * @brief The name of the cap distance state
      * 
      */
@@ -122,6 +147,12 @@ private:
     std::unique_ptr<IToggleArm> m_toggle_arm{};
 
     /**
+     * @brief The winch being adapted
+     * 
+     */
+    std::unique_ptr<IWinch> m_winch{};
+
+    /**
      * @brief The distance sensor being adapted
      * 
      */
@@ -133,9 +164,13 @@ public:
      * 
      * @param claw The claw being adapted
      * @param toggle_arm The toggle arm being adapted
+     * @param winch The winch being adapted
      * @param distance_sensor The distance sensor being adapted
      */
-    HangSubsystem(std::unique_ptr<IClaw>& claw, std::unique_ptr<IToggleArm>& toggle_arm, std::unique_ptr<io::IDistanceSensor>& distance_sensor);
+    HangSubsystem(std::unique_ptr<IClaw>& claw, 
+                  std::unique_ptr<IToggleArm>& toggle_arm, 
+                  std::unique_ptr<IWinch>& winch, 
+                  std::unique_ptr<io::IDistanceSensor>& distance_sensor);
 	
     /**
 	 * @brief Initializes the subsystem

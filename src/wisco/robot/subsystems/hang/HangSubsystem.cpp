@@ -8,10 +8,14 @@ namespace subsystems
 {
 namespace hang
 {
-HangSubsystem::HangSubsystem(std::unique_ptr<IClaw>& claw, std::unique_ptr<IToggleArm>& toggle_arm, std::unique_ptr<io::IDistanceSensor>& distance_sensor) 
+HangSubsystem::HangSubsystem(std::unique_ptr<IClaw>& claw, 
+                             std::unique_ptr<IToggleArm>& toggle_arm, 
+                             std::unique_ptr<IWinch>& winch,
+                             std::unique_ptr<io::IDistanceSensor>& distance_sensor) 
     : ASubsystem{SUBSYSTEM_NAME}, 
       m_claw{std::move(claw)},
       m_toggle_arm{std::move(toggle_arm)},
+      m_winch{std::move(winch)},
       m_distance_sensor{std::move(distance_sensor)}
 {
 
@@ -23,6 +27,8 @@ void HangSubsystem::initialize()
         m_claw->initialize();
     if (m_toggle_arm)
         m_toggle_arm->initialize();
+    if (m_winch)
+        m_winch->initialize();
     if (m_distance_sensor)
         m_distance_sensor->initialize();
 }
@@ -33,6 +39,8 @@ void HangSubsystem::run()
         m_claw->run();
     if (m_toggle_arm)
         m_toggle_arm->run();
+    if (m_winch)
+        m_winch->run();
 }
 
 void HangSubsystem::command(std::string command_name, va_list& args)
@@ -56,6 +64,16 @@ void HangSubsystem::command(std::string command_name, va_list& args)
     {
         if (m_toggle_arm)
             m_toggle_arm->setDown();
+    }
+    else if (command_name == ENGAGE_WINCH_COMMAND_NAME)
+    {
+        if (m_winch)
+            m_winch->engage();
+    }
+    else if (command_name == DISENGAGE_WINCH_COMMAND_NAME)
+    {
+        if (m_winch)
+            m_winch->disengage();
     }
 }
 
@@ -93,6 +111,22 @@ void* HangSubsystem::state(std::string state_name)
         {
             bool* up{new bool{m_toggle_arm->isUp()}};
             result = up;
+        }
+    }
+    else if (state_name == WINCH_ENGAGED_STATE_NAME)
+    {
+        if (m_winch)
+        {
+            bool* engaged{new bool{m_winch->isEngaged()}};
+            result = engaged;
+        }
+    }
+    else if (state_name == WINCH_DISENGAGED_STATE_NAME)
+    {
+        if (m_winch)
+        {
+            bool* disengaged{new bool{m_winch->isDisengaged()}};
+            result = disengaged;
         }
     }
     else if (state_name == CAP_DISTANCE_STATE_NAME)
