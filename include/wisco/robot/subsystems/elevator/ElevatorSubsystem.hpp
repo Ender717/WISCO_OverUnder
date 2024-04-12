@@ -3,6 +3,7 @@
 
 #include <memory>
 
+#include "wisco/io/IDistanceSensor.hpp"
 #include "wisco/robot/ASubsystem.hpp"
 #include "wisco/robot/subsystems/elevator/IElevator.hpp"
 
@@ -65,18 +66,31 @@ private:
     static constexpr char GET_POSITION_STATE_NAME[]{"GET POSITION"};
 
     /**
+     * @brief The name of the cap distance state
+     * 
+     */
+    static constexpr char CAP_DISTANCE_STATE_NAME[]{"CAP DISTANCE"};
+
+    /**
      * @brief The elevator being adapted
      * 
      */
     std::unique_ptr<IElevator> m_elevator{};
+
+    /**
+     * @brief The distance sensor being adapted
+     * 
+     */
+    std::unique_ptr<io::IDistanceSensor> m_distance_sensor{};
 
 public:
     /**
      * @brief Construct a new ELEVATOR Subsystem object
      * 
      * @param elevator The elevator being adapted
+     * @param distance_sensor The distance sensor being adapted
      */
-    ElevatorSubsystem(std::unique_ptr<IElevator>& elevator);
+    ElevatorSubsystem(std::unique_ptr<IElevator>& elevator, std::unique_ptr<io::IDistanceSensor>& distance_sensor);
     
 	/**
 	 * @brief Initializes the subsystem

@@ -8,8 +8,8 @@ namespace subsystems
 {
 namespace elevator
 {
-ElevatorSubsystem::ElevatorSubsystem(std::unique_ptr<IElevator>& elevator) 
-: ASubsystem{SUBSYSTEM_NAME}, m_elevator{std::move(elevator)}
+ElevatorSubsystem::ElevatorSubsystem(std::unique_ptr<IElevator>& elevator, std::unique_ptr<io::IDistanceSensor>& distance_sensor) 
+: ASubsystem{SUBSYSTEM_NAME}, m_elevator{std::move(elevator)}, m_distance_sensor{std::move(distance_sensor)}
 {
 
 }
@@ -18,6 +18,8 @@ void ElevatorSubsystem::initialize()
 {
     if (m_elevator)
         m_elevator->initialize();
+    if (m_distance_sensor)
+        m_distance_sensor->initialize();
 }
 
 void ElevatorSubsystem::run()
@@ -43,6 +45,14 @@ void* ElevatorSubsystem::state(std::string state_name)
     {
         double* position{new double{m_elevator->getPosition()}};
         result = position;
+    }
+    else if (state_name == CAP_DISTANCE_STATE_NAME)
+    {
+        if (m_distance_sensor)
+        {
+            double* distance{new double{m_distance_sensor->getDistance()}};
+            result = distance;
+        }
     }
 
     return result;

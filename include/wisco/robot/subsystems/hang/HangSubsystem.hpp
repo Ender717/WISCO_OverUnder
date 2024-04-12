@@ -129,12 +129,6 @@ private:
     static constexpr char WINCH_DISENGAGED_STATE_NAME[]{"WINCH DISENGAGED"};
 
     /**
-     * @brief The name of the cap distance state
-     * 
-     */
-    static constexpr char CAP_DISTANCE_STATE_NAME[]{"CAP DISTANCE"};
-
-    /**
      * @brief The claw being adapted
      * 
      */
@@ -152,12 +146,6 @@ private:
      */
     std::unique_ptr<IWinch> m_winch{};
 
-    /**
-     * @brief The distance sensor being adapted
-     * 
-     */
-    std::unique_ptr<io::IDistanceSensor> m_distance_sensor{};
-
 public:
     /**
      * @brief Construct a new Hang Subsystem object
@@ -165,12 +153,10 @@ public:
      * @param claw The claw being adapted
      * @param toggle_arm The toggle arm being adapted
      * @param winch The winch being adapted
-     * @param distance_sensor The distance sensor being adapted
      */
     HangSubsystem(std::unique_ptr<IClaw>& claw, 
                   std::unique_ptr<IToggleArm>& toggle_arm, 
-                  std::unique_ptr<IWinch>& winch, 
-                  std::unique_ptr<io::IDistanceSensor>& distance_sensor);
+                  std::unique_ptr<IWinch>& winch);
 	
     /**
 	 * @brief Initializes the subsystem

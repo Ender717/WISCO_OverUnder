@@ -10,13 +10,11 @@ namespace hang
 {
 HangSubsystem::HangSubsystem(std::unique_ptr<IClaw>& claw, 
                              std::unique_ptr<IToggleArm>& toggle_arm, 
-                             std::unique_ptr<IWinch>& winch,
-                             std::unique_ptr<io::IDistanceSensor>& distance_sensor) 
+                             std::unique_ptr<IWinch>& winch) 
     : ASubsystem{SUBSYSTEM_NAME}, 
       m_claw{std::move(claw)},
       m_toggle_arm{std::move(toggle_arm)},
-      m_winch{std::move(winch)},
-      m_distance_sensor{std::move(distance_sensor)}
+      m_winch{std::move(winch)}
 {
 
 }
@@ -29,8 +27,6 @@ void HangSubsystem::initialize()
         m_toggle_arm->initialize();
     if (m_winch)
         m_winch->initialize();
-    if (m_distance_sensor)
-        m_distance_sensor->initialize();
 }
 
 void HangSubsystem::run()
@@ -127,14 +123,6 @@ void* HangSubsystem::state(std::string state_name)
         {
             bool* disengaged{new bool{m_winch->isDisengaged()}};
             result = disengaged;
-        }
-    }
-    else if (state_name == CAP_DISTANCE_STATE_NAME)
-    {
-        if (m_distance_sensor)
-        {
-            double* distance{new double{m_distance_sensor->getDistance()}};
-            result = distance;
         }
     }
 

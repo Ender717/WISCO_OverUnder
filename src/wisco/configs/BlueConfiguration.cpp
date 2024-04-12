@@ -228,7 +228,9 @@ std::shared_ptr<robot::Robot> BlueConfiguration::buildRobot()
         withInchesPerRadian(ELEVATOR_INCHES_PER_RADIAN)->
         build()
     };
-    std::unique_ptr<wisco::robot::ASubsystem> elevator_subsystem{std::make_unique<wisco::robot::subsystems::elevator::ElevatorSubsystem>(pid_elevator)};
+        std::unique_ptr<pros::Distance> elevator_pros_distance{std::make_unique<pros::Distance>(ELEVATOR_DISTANCE_PORT)};
+    std::unique_ptr<wisco::io::IDistanceSensor> elevator_pros_distance_sensor{std::make_unique<pros_adapters::ProsDistance>(elevator_pros_distance, ELEVATOR_DISTANCE_CONSTANT, ELEVATOR_DISTANCE_OFFSET)};
+    std::unique_ptr<wisco::robot::ASubsystem> elevator_subsystem{std::make_unique<wisco::robot::subsystems::elevator::ElevatorSubsystem>(pid_elevator, elevator_pros_distance_sensor)};
     robot->addSubsystem(elevator_subsystem);
 
     // Hang creation
@@ -262,9 +264,7 @@ std::shared_ptr<robot::Robot> BlueConfiguration::buildRobot()
         withEngagedState(HANG_WINCH_ENGAGED_STATE)->
         build()
     };
-    std::unique_ptr<pros::Distance> hang_pros_distance{std::make_unique<pros::Distance>(HANG_DISTANCE_PORT)};
-    std::unique_ptr<wisco::io::IDistanceSensor> hang_pros_distance_sensor{std::make_unique<pros_adapters::ProsDistance>(hang_pros_distance, HANG_DISTANCE_CONSTANT, HANG_DISTANCE_OFFSET)};
-    std::unique_ptr<wisco::robot::ASubsystem> hang_subsystem{std::make_unique<wisco::robot::subsystems::hang::HangSubsystem>(piston_claw, piston_arm, piston_winch, hang_pros_distance_sensor)};
+    std::unique_ptr<wisco::robot::ASubsystem> hang_subsystem{std::make_unique<wisco::robot::subsystems::hang::HangSubsystem>(piston_claw, piston_arm, piston_winch)};
     robot->addSubsystem(hang_subsystem);
 
     return robot;

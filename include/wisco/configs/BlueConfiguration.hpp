@@ -426,6 +426,24 @@ private:
 	static constexpr double ELEVATOR_INCHES_PER_RADIAN{17.0 / (0.8 * 2 * M_PI)};
 
 	/**
+	 * @brief The elevator distance sensor port
+	 * 
+	 */
+	static constexpr int8_t ELEVATOR_DISTANCE_PORT{};
+
+	/**
+	 * @brief The elevator distance sensor tuning constant
+	 * 
+	 */
+	static constexpr double ELEVATOR_DISTANCE_CONSTANT{};
+
+	/**
+	 * @brief The elevator distance sensor tuning offset
+	 * 
+	 */
+	static constexpr double ELEVATOR_DISTANCE_OFFSET{};
+
+	/**
 	 * @brief The first hang claw piston port
 	 * 
 	 */
@@ -478,24 +496,6 @@ private:
 	 * 
 	 */
 	static constexpr bool HANG_WINCH_ENGAGED_STATE{};
-
-	/**
-	 * @brief The hang distance sensor port
-	 * 
-	 */
-	static constexpr int8_t HANG_DISTANCE_PORT{};
-
-	/**
-	 * @brief The hang distance sensor tuning constant
-	 * 
-	 */
-	static constexpr double HANG_DISTANCE_CONSTANT{};
-
-	/**
-	 * @brief The hang distance sensor tuning offset
-	 * 
-	 */
-	static constexpr double HANG_DISTANCE_OFFSET{};
 
 public:
     /**
