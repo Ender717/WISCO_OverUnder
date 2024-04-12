@@ -41,7 +41,53 @@ namespace wings
 class IWings
 {
 public:
+    /**
+     * @brief Destroy the IWings object
+     * 
+     */
+    virtual ~IWings() = default;
 
+    /**
+     * @brief Initializes the wings
+     * 
+     */
+    virtual void initialize() = 0;
+
+    /**
+     * @brief Runs the wings
+     * 
+     */
+    virtual void run() = 0;
+
+    /**
+     * @brief Sets the position of the left wing
+     * 
+     * @param out True for out, false for in
+     */
+    virtual void setLeftWing(bool out) = 0;
+
+    /**
+     * @brief Sets the position of the right wing
+     * 
+     * @param out True for out, false for in
+     */
+    virtual void setRightWing(bool out) = 0;
+
+    /**
+     * @brief Gets the position of the left wing
+     * 
+     * @return true The wing is out
+     * @return false The wing is in
+     */
+    virtual bool getLeftWing() = 0;
+
+    /**
+     * @brief Gets the position of the right wing
+     * 
+     * @return true The wing is out
+     * @return false The wing is in
+     */
+    virtual bool getRightWing() = 0;
 };
 } // namespace wings
 } // namespace subsystems
