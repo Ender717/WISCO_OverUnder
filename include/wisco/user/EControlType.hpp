@@ -26,6 +26,7 @@ enum class EControlType
 {
     DRIVE,
     ELEVATOR,
+    HANG,
     INTAKE
 };
 } // namespace user

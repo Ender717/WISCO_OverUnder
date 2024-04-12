@@ -41,7 +41,7 @@ private:
         INACTIVE,
         RAISED,
         GRABBED,
-        HANGING
+        HUNG
     };
 
     /**
@@ -103,6 +103,66 @@ private:
      * 
      */
     EToggleState toggle_state{EToggleState::INACTIVE};
+
+    /**
+     * @brief Closes the claw
+     * 
+     */
+    void closeClaw();
+
+    /**
+     * @brief Opens the claw
+     * 
+     */
+    void openClaw();
+
+    /**
+     * @brief Lowers the arm
+     * 
+     */
+    void lowerArm();
+
+    /**
+     * @brief Raises the arm
+     * 
+     */
+    void raiseArm();
+
+    /**
+     * @brief Engages the winch
+     * 
+     */
+    void engageWinch();
+
+    /**
+     * @brief Disengages the winch
+     * 
+     */
+    void disengageWinch();
+
+    /**
+     * @brief Sets the hang to the inactive state
+     * 
+     */
+    void setInactiveState();
+
+    /**
+     * @brief Sets the hang to the raised state
+     * 
+     */
+    void setRaisedState();
+
+    /**
+     * @brief Sets the hang to the grabbed state
+     * 
+     */
+    void setGrabbedState();
+
+    /**
+     * @brief Sets the hang to the hung state
+     * 
+     */
+    void setHungState();
 
     /**
      * @brief Updates the hang state based on preset split control

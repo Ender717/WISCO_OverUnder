@@ -22,6 +22,7 @@ void OPControlManager::runOpcontrol(std::shared_ptr<user::IController> controlle
 {
     user::DifferentialDriveOperator drive_operator{controller, robot};
     user::ElevatorOperator elevator_operator{controller, robot};
+    user::HangOperator hang_operator{controller, robot};
     user::IntakeOperator intake_operator{controller, robot};
     uint32_t current_time{};
     while (true)
@@ -30,6 +31,7 @@ void OPControlManager::runOpcontrol(std::shared_ptr<user::IController> controlle
         
         drive_operator.setDriveVoltage(static_cast<user::EChassisControlMode>(m_profile->getControlMode(user::EControlType::DRIVE)));
         elevator_operator.setElevatorPosition(m_profile);
+        hang_operator.setHangState(m_profile);
         intake_operator.setIntakeVoltage(m_profile);
 
         m_delayer->delayUntil(current_time + CONTROL_DELAY);

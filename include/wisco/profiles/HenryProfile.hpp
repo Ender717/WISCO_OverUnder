@@ -7,6 +7,7 @@
 
 #include "wisco/user/EChassisControlMode.hpp"
 #include "wisco/user/EElevatorControlMode.hpp"
+#include "wisco/user/EHangControlMode.hpp"
 #include "wisco/user/EIntakeControlMode.hpp"
 
 /**
@@ -44,6 +45,7 @@ private:
 	{
 		{user::EControlType::DRIVE, static_cast<int>(user::EChassisControlMode::SPLIT_ARCADE_LEFT)},
 		{user::EControlType::ELEVATOR, static_cast<int>(user::EElevatorControlMode::PRESET_TOGGLE_LADDER_INTAKE)},
+		{user::EControlType::HANG, static_cast<int>(user::EHangControlMode::PRESET_TOGGLE_LADDER)},
 		{user::EControlType::INTAKE, static_cast<int>(user::EIntakeControlMode::SPLIT_HOLD)}
 	};
 
@@ -61,6 +63,8 @@ private:
 	{
 		{user::EControl::ELEVATOR_IN, user::EControllerDigital::TRIGGER_RIGHT_BOTTOM},
 		{user::EControl::ELEVATOR_OUT, user::EControllerDigital::TRIGGER_RIGHT_TOP},
+		{user::EControl::HANG_NEXT, user::EControllerDigital::BUTTON_A},
+		{user::EControl::HANG_PREVIOUS, user::EControllerDigital::BUTTON_B},
 		{user::EControl::INTAKE_IN, user::EControllerDigital::TRIGGER_LEFT_TOP},
 		{user::EControl::INTAKE_OUT, user::EControllerDigital::TRIGGER_LEFT_BOTTOM}
 	};

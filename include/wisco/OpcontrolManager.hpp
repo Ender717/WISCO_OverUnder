@@ -11,6 +11,7 @@
 
 #include "user/DifferentialDriveOperator.hpp"
 #include "user/ElevatorOperator.hpp"
+#include "user/HangOperator.hpp"
 #include "user/IntakeOperator.hpp"
 
 /**
