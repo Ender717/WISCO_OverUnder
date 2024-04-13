@@ -1,4 +1,5 @@
 #include "pros_adapters/ProsV5Motor.hpp"
+#include "pros/motors.h"
 #include "pros/screen.hpp"
 
 namespace pros_adapters
@@ -14,6 +15,7 @@ void ProsV5Motor::initialize()
     {
         m_motor->move_voltage(0);
         m_motor->tare_position();
+        m_motor->set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
     }
 }
 
