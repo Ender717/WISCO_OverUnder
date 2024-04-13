@@ -1,12 +1,12 @@
-#ifndef WISCO_USER_INTAKE_OPERATOR_HPP
-#define WISCO_USER_INTAKE_OPERATOR_HPP
+#ifndef WISCO_USER_INTAKE_INTAKE_OPERATOR_HPP
+#define WISCO_USER_INTAKE_INTAKE_OPERATOR_HPP
 
 #include <memory>
 
 #include "wisco/robot/Robot.hpp"
 #include "wisco/user/IController.hpp"
 #include "wisco/IProfile.hpp"
-#include "wisco/user/EIntakeControlMode.hpp"
+#include "EIntakeControlMode.hpp"
 
 /**
  * @brief Namespace for all library code
@@ -22,6 +22,14 @@ namespace wisco
  * 
  */
 namespace user
+{
+
+/**
+ * @brief Namespace for all intake user control components
+ * @author Nathan Sandvig
+ * 
+ */
+namespace intake
 {
 
 /**
@@ -127,6 +135,7 @@ public:
      */
     void setIntakeVoltage(const std::unique_ptr<IProfile>& profile);
 };
+} // namespace intake
 } // namespace user
 } // namespace wisco
 

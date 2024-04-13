@@ -1,5 +1,5 @@
-#ifndef WISCO_USER_DRIVE_OPERATOR_HPP
-#define WISCO_USER_DRIVE_OPERATOR_HPP
+#ifndef WISCO_USER_DRIVE_DRIVE_OPERATOR_HPP
+#define WISCO_USER_DRIVE_DRIVE_OPERATOR_HPP
 
 #include <memory>
 
@@ -21,6 +21,14 @@ namespace wisco
  * 
  */
 namespace user
+{
+
+/**
+ * @brief Namespace for all drive user control components
+ * @author Nathan Sandvig
+ * 
+ */
+namespace drive
 {
 
 /**
@@ -124,6 +132,7 @@ public:
      */
     void setDriveVoltage(EChassisControlMode control_mode);
 };
+} // namespace drive
 } // namespace user
 } // namespace wisco
 

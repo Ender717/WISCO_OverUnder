@@ -5,11 +5,11 @@
 
 #include "wisco/IProfile.hpp"
 
-#include "wisco/user/EChassisControlMode.hpp"
-#include "wisco/user/EElevatorControlMode.hpp"
-#include "wisco/user/EHangControlMode.hpp"
-#include "wisco/user/EIntakeControlMode.hpp"
-#include "wisco/user/EWingsControlMode.hpp"
+#include "wisco/user/drive/EChassisControlMode.hpp"
+#include "wisco/user/elevator/EElevatorControlMode.hpp"
+#include "wisco/user/hang/EHangControlMode.hpp"
+#include "wisco/user/intake/EIntakeControlMode.hpp"
+#include "wisco/user/wings/EWingsControlMode.hpp"
 
 /**
  * @brief Namespace for all library code
@@ -44,11 +44,11 @@ private:
      */
 	std::map<user::EControlType, int> CONTROL_MODE_MAP
 	{
-		{user::EControlType::DRIVE, static_cast<int>(user::EChassisControlMode::TANK)},
-		{user::EControlType::ELEVATOR, static_cast<int>(user::EElevatorControlMode::PRESET_TOGGLE_LADDER_INTAKE)},
-		{user::EControlType::HANG, static_cast<int>(user::EHangControlMode::PRESET_TOGGLE_LADDER)},
-		{user::EControlType::INTAKE, static_cast<int>(user::EIntakeControlMode::SPLIT_HOLD)},
-		{user::EControlType::WINGS, static_cast<int>(user::EWingsControlMode::DUAL_HOLD)}
+		{user::EControlType::DRIVE, static_cast<int>(user::drive::EChassisControlMode::TANK)},
+		{user::EControlType::ELEVATOR, static_cast<int>(user::elevator::EElevatorControlMode::PRESET_TOGGLE_LADDER_INTAKE)},
+		{user::EControlType::HANG, static_cast<int>(user::hang::EHangControlMode::PRESET_TOGGLE_LADDER)},
+		{user::EControlType::INTAKE, static_cast<int>(user::intake::EIntakeControlMode::SPLIT_HOLD)},
+		{user::EControlType::WINGS, static_cast<int>(user::wings::EWingsControlMode::DUAL_HOLD)}
 	};
 
     /**

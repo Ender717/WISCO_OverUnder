@@ -9,11 +9,11 @@
 #include "user/IController.hpp"
 #include "robot/Robot.hpp"
 
-#include "user/DifferentialDriveOperator.hpp"
-#include "user/ElevatorOperator.hpp"
-#include "user/HangOperator.hpp"
-#include "user/IntakeOperator.hpp"
-#include "user/WingsOperator.hpp"
+#include "user/drive/DifferentialDriveOperator.hpp"
+#include "user/elevator/ElevatorOperator.hpp"
+#include "user/hang/HangOperator.hpp"
+#include "user/intake/IntakeOperator.hpp"
+#include "user/wings/WingsOperator.hpp"
 
 /**
  * @brief Namespace for all library code

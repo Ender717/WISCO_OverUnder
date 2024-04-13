@@ -20,17 +20,17 @@ void OPControlManager::initializeOpcontrol(std::shared_ptr<user::IController> co
 
 void OPControlManager::runOpcontrol(std::shared_ptr<user::IController> controller, std::shared_ptr<robot::Robot> robot)
 {
-    user::DifferentialDriveOperator drive_operator{controller, robot};
-    user::ElevatorOperator elevator_operator{controller, robot};
-    user::HangOperator hang_operator{controller, robot};
-    user::IntakeOperator intake_operator{controller, robot};
-    user::WingsOperator wings_operator{controller, robot};
+    user::drive::DifferentialDriveOperator drive_operator{controller, robot};
+    user::elevator::ElevatorOperator elevator_operator{controller, robot};
+    user::hang::HangOperator hang_operator{controller, robot};
+    user::intake::IntakeOperator intake_operator{controller, robot};
+    user::wings::WingsOperator wings_operator{controller, robot};
     uint32_t current_time{};
     while (true)
     {
         current_time = m_clock->getTime();
         
-        drive_operator.setDriveVoltage(static_cast<user::EChassisControlMode>(m_profile->getControlMode(user::EControlType::DRIVE)));
+        drive_operator.setDriveVoltage(static_cast<user::drive::EChassisControlMode>(m_profile->getControlMode(user::EControlType::DRIVE)));
         elevator_operator.setElevatorPosition(m_profile);
         hang_operator.setHangState(m_profile);
         intake_operator.setIntakeVoltage(m_profile);

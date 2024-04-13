@@ -1,8 +1,10 @@
-#include "wisco/user/DifferentialDriveOperator.hpp"
+#include "wisco/user/drive/DifferentialDriveOperator.hpp"
 
 namespace wisco
 {
 namespace user
+{
+namespace drive
 {
 void DifferentialDriveOperator::updateDriveVoltage(double left_voltage, double right_voltage)
 {
@@ -88,5 +90,6 @@ void DifferentialDriveOperator::setDriveVoltage(EChassisControlMode control_mode
             break;
     }
 }
+} // namespace drive
 } // namespace user
 } // namespace wisco

@@ -1,8 +1,10 @@
-#include "wisco/user/ElevatorOperator.hpp"
+#include "wisco/user/elevator/ElevatorOperator.hpp"
 
 namespace wisco
 {
 namespace user
+{
+namespace elevator
 {
 ElevatorOperator::ElevatorOperator(const std::shared_ptr<user::IController>& controller, 
                                    const std::shared_ptr<robot::Robot>& robot)
@@ -226,5 +228,6 @@ void ElevatorOperator::setElevatorPosition(const std::unique_ptr<IProfile>& prof
         break;
     }
 }
+} // namespace elevator
 } // namespace user
 } // namespace wisco

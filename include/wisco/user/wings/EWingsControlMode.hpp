@@ -1,5 +1,5 @@
-#ifndef WISCO_USER_E_WINGS_CONTROL_MODE_HPP
-#define WISCO_USER_E_WINGS_CONTROL_MODE_HPP
+#ifndef WISCO_USER_WINGS_E_WINGS_CONTROL_MODE_HPP
+#define WISCO_USER_WINGS_E_WINGS_CONTROL_MODE_HPP
 
 /**
  * @brief Namespace for all library code
@@ -16,6 +16,14 @@ namespace wisco
  */
 namespace user
 {
+    
+/**
+ * @brief Namespace for all wings user control components
+ * @author Nathan Sandvig
+ * 
+ */
+namespace wings
+{
 
 /**
  * @brief Defines all different wings control formats
@@ -31,6 +39,7 @@ enum class EWingsControlMode
     SINGLE_SPLIT,
     SINGLE_TOGGLE
 };
+} // namespace wings
 } // namespace user
 } // namespace wisco
 

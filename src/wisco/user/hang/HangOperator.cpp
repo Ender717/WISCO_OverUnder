@@ -1,8 +1,10 @@
-#include "wisco/user/HangOperator.hpp"
+#include "wisco/user/hang/HangOperator.hpp"
 
 namespace wisco
 {
 namespace user
+{
+namespace hang
 {
 HangOperator::HangOperator(const std::shared_ptr<user::IController>& controller, 
                            const std::shared_ptr<robot::Robot>& robot)
@@ -211,5 +213,6 @@ void HangOperator::setHangState(const std::unique_ptr<IProfile>& profile)
             break;
     }
 }
+} // namespace hang
 } // namespace user
 } // namespace wisco

@@ -1,5 +1,5 @@
-#ifndef WISCO_USER_E_CHASSIS_CONTROL_MODE_HPP
-#define WISCO_USER_E_CHASSIS_CONTROL_MODE_HPP
+#ifndef WISCO_USER_DRIVE_E_CHASSIS_CONTROL_MODE_HPP
+#define WISCO_USER_DRIVE_E_CHASSIS_CONTROL_MODE_HPP
 
 /**
  * @brief Namespace for all library code
@@ -18,6 +18,14 @@ namespace user
 {
 
 /**
+ * @brief Namespace for all drive user control components
+ * @author Nathan Sandvig
+ * 
+ */
+namespace drive
+{
+
+/**
  * @brief Defines all different chassis control formats
  * @author Nathan Sandvig
  * 
@@ -30,6 +38,7 @@ enum class EChassisControlMode
     SPLIT_ARCADE_RIGHT,
     TANK
 };
+} // namespace drive
 } // namespace user
 } // namespace wisco
 

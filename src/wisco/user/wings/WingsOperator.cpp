@@ -1,8 +1,10 @@
-#include "wisco/user/WingsOperator.hpp"
+#include "wisco/user/wings/WingsOperator.hpp"
 
 namespace wisco
 {
 namespace user
+{
+namespace wings
 {
 WingsOperator::WingsOperator(const std::shared_ptr<user::IController>& controller, 
                              const std::shared_ptr<robot::Robot>& robot)
@@ -176,5 +178,6 @@ void WingsOperator::setWingsPosition(const std::unique_ptr<IProfile>& profile)
             break;
     }
 }
+} // namespace wings
 } // namespace user
 } // namespace wisco

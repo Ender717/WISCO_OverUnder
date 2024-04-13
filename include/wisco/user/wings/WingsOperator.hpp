@@ -1,12 +1,12 @@
-#ifndef WISCO_USER_WINGS_OPERATOR_HPP
-#define WISCO_USER_WINGS_OPERATOR_HPP
+#ifndef WISCO_USER_WINGS_WINGS_OPERATOR_HPP
+#define WISCO_USER_WINGS_WINGS_OPERATOR_HPP
 
 #include <memory>
 
 #include "wisco/robot/Robot.hpp"
 #include "wisco/user/IController.hpp"
 #include "wisco/IProfile.hpp"
-#include "wisco/user/EWingsControlMode.hpp"
+#include "EWingsControlMode.hpp"
 
 /**
  * @brief Namespace for all library code
@@ -22,6 +22,14 @@ namespace wisco
  * 
  */
 namespace user
+{
+
+/**
+ * @brief Namespace for all wings user control components
+ * @author Nathan Sandvig
+ * 
+ */
+namespace wings
 {
 
 /**
@@ -176,6 +184,7 @@ public:
      */
     void setWingsPosition(const std::unique_ptr<IProfile>& profile);
 };
+} // namespace wings
 } // namespace user
 } // namespace wisco
 

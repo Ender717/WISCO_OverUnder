@@ -1,12 +1,12 @@
-#ifndef WISCO_USER_HANG_OPERATOR_HPP
-#define WISCO_USER_HANG_OPERATOR_HPP
+#ifndef WISCO_USER_HANG_HANG_OPERATOR_HPP
+#define WISCO_USER_HANG_HANG_OPERATOR_HPP
 
 #include <memory>
 
 #include "wisco/robot/Robot.hpp"
 #include "wisco/user/IController.hpp"
 #include "wisco/IProfile.hpp"
-#include "wisco/user/EHangControlMode.hpp"
+#include "EHangControlMode.hpp"
 
 /**
  * @brief Namespace for all library code
@@ -22,6 +22,14 @@ namespace wisco
  * 
  */
 namespace user
+{
+
+/**
+ * @brief Namespace for all hang user control components
+ * @author Nathan Sandvig
+ * 
+ */
+namespace hang
 {
 
 /**
@@ -214,6 +222,7 @@ public:
      */
     void setHangState(const std::unique_ptr<IProfile>& profile);
 };
+} // namespace hang
 } // namespace user
 } // namespace wisco
 

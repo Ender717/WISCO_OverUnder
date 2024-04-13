@@ -1,8 +1,10 @@
-#include "wisco/user/IntakeOperator.hpp"
+#include "wisco/user/intake/IntakeOperator.hpp"
 
 namespace wisco
 {
 namespace user
+{
+namespace intake
 {
 void IntakeOperator::updateIntakeVoltage(double voltage)
 {
@@ -96,5 +98,6 @@ void IntakeOperator::setIntakeVoltage(const std::unique_ptr<IProfile>& profile)
         break;
     }
 }
+} // namespace intake
 } // namespace user
 } // namespace wisco

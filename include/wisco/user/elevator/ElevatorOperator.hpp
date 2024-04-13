@@ -1,12 +1,12 @@
-#ifndef WISCO_USER_ELEVATOR_OPERATOR_HPP
-#define WISCO_USER_ELEVATOR_OPERATOR_HPP
+#ifndef WISCO_USER_ELEVATOR_ELEVATOR_OPERATOR_HPP
+#define WISCO_USER_ELEVATOR_ELEVATOR_OPERATOR_HPP
 
 #include <memory>
 
 #include "wisco/robot/Robot.hpp"
 #include "wisco/user/IController.hpp"
 #include "wisco/IProfile.hpp"
-#include "wisco/user/EElevatorControlMode.hpp"
+#include "EElevatorControlMode.hpp"
 
 /**
  * @brief Namespace for all library code
@@ -22,6 +22,14 @@ namespace wisco
  * 
  */
 namespace user
+{
+
+/**
+ * @brief Namespace for all elevator user control components
+ * @author Nathan Sandvig
+ * 
+ */
+namespace elevator
 {
 
 /**
@@ -184,6 +192,7 @@ public:
      */
     void setElevatorPosition(const std::unique_ptr<IProfile>& profile);
 };
+} // namespace elevator
 } // namespace user
 } // namespace wisco
 
