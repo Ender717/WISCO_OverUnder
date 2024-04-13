@@ -41,37 +41,37 @@ public:
      * @brief The first control point
      * 
      */
-    Point control_1{};
+    Point k0{};
 
     /**
      * @brief The second control point
      * 
      */
-    Point control_2{};
+    Point c0{};
 
     /**
      * @brief The third control point
      * 
      */
-    Point control_3{};
+    Point c1{};
 
     /**
      * @brief The fourth control point
      * 
      */
-    Point control_4{};
+    Point c2{};
 
     /**
      * @brief The fifth control point
      * 
      */
-    Point control_5{};
+    Point c3{};
 
     /**
      * @brief The sixth control point
      * 
      */
-    Point control_6{};
+    Point k1{};
 
     /**
      * @brief Construct a new Quintic Bezier object

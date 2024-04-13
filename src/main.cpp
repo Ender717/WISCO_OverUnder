@@ -1,5 +1,6 @@
 #include "main.h"
-#include "pros/misc.h"
+#include "wisco/control/path/QuinticBezierSpline.hpp"
+#include "pros/screen.hpp"
 
 #define TESTING false
 
@@ -22,11 +23,30 @@ void initialize()
 	*/
 	if (TESTING)
 	{
-		for (int8_t i{}; i < 22; ++i)
+		std::vector<wisco::control::path::Point> control_points
 		{
-			pros::c::motor_set_brake_mode(i, MOTOR_BRAKE_BRAKE);
+			wisco::control::path::Point{36.0, 24.0},
+			wisco::control::path::Point{36.0, 36.0},
+			wisco::control::path::Point{60.0, 36.0},
+			wisco::control::path::Point{60.0, 60.0},
+			wisco::control::path::Point{60.0, 84.0},
+			wisco::control::path::Point{36.0, 108.0},
+			wisco::control::path::Point{36.0, 132.0}
+		};
+		std::vector<wisco::control::path::Point> spline{wisco::control::path::QuinticBezierSpline::calculate(control_points)};
+
+		pros::screen::set_pen(pros::Color::yellow);
+		for (auto point : spline)
+		{
+			pros::screen::fill_circle(static_cast<int16_t>(point.getX()), static_cast<int16_t>(point.getY()), 1);
 		}
-	}
+		pros::screen::set_pen(pros::Color::red);
+		for (auto point : control_points)
+		{
+			pros::screen::fill_circle(static_cast<int16_t>(point.getX()), static_cast<int16_t>(point.getY()), 3);
+		}
+		while (true);
+	}	
 	else
 	{
 		match_controller.initialize();

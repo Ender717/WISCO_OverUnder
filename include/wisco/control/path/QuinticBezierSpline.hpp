@@ -38,12 +38,12 @@ class QuinticBezierSpline
 {
 public:
     /**
-     * @brief Calculates the smooth spline from the quintic beziers
+     * @brief Calculates a smooth spline using quintic beziers
      * 
-     * @param quintic_beziers The quintic beziers in the spline
+     * @param control_points The control points for the spline
      * @return std::vector<Point> The points in the spline
      */
-    static std::vector<Point> calculate(std::vector<QuinticBezier>& quintic_beziers);
+    static std::vector<Point> calculate(std::vector<Point>& control_points);
 };
 } // namespace path
 } // namespace control

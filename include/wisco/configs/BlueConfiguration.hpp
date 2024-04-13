@@ -86,7 +86,7 @@ private:
 	 * @brief The port for the odometry heading sensor
 	 * 
 	 */
-	static constexpr int8_t ODOMETRY_HEADING_PORT{9};
+	static constexpr int8_t ODOMETRY_HEADING_PORT{17};
 
 	/**
 	 * @brief The tuning constant for the odometry heading sensor
@@ -98,7 +98,7 @@ private:
 	 * @brief The port for the odometry linear distance tracking sensor
 	 * 
 	 */
-	static constexpr uint8_t ODOMETRY_LINEAR_PORT{8};
+	static constexpr uint8_t ODOMETRY_LINEAR_PORT{15};
 
 	/**
 	 * @brief The radius of the odometry linear distance tracking wheel
@@ -116,7 +116,7 @@ private:
 	 * @brief The port for the odometry strafe distance tracking sensor
 	 * 
 	 */
-	static constexpr uint8_t ODOMETRY_STRAFE_PORT{2};
+	static constexpr uint8_t ODOMETRY_STRAFE_PORT{16};
 
 	/**
 	 * @brief The radius of the odometry strafe distance tracking wheel
@@ -134,13 +134,13 @@ private:
 	 * @brief The port for the resetter distance sensor
 	 * 
 	 */
-	static constexpr int8_t RESETTER_DISTANCE_PORT{};
+	static constexpr int8_t RESETTER_DISTANCE_PORT{14};
 
 	/**
 	 * @brief The tuning constant for the resetter distance sensor
 	 * 
 	 */
-	static constexpr double RESETTER_DISTANCE_CONSTANT{};
+	static constexpr double RESETTER_DISTANCE_CONSTANT{1.0};
 
 	/**
 	 * @brief The tuning offset for the resetter distance sensor
@@ -369,13 +369,13 @@ private:
 	 * @brief The port for the ball detector distance sensor
 	 * 
 	 */
-	static constexpr int8_t BALL_DETECTOR_DISTANCE_PORT{};
+	static constexpr int8_t BALL_DETECTOR_DISTANCE_PORT{5};
 
 	/**
 	 * @brief The tuning constant for the ball detector distance sensor
 	 * 
 	 */
-	static constexpr double BALL_DETECTOR_DISTANCE_CONSTANT{};
+	static constexpr double BALL_DETECTOR_DISTANCE_CONSTANT{1.0};
 
 	/**
 	 * @brief The tuning offset for the ball detector distance sensor
