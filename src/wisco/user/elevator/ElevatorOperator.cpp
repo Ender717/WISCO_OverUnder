@@ -21,9 +21,38 @@ double ElevatorOperator::getElevatorPosition()
     return position;
 }
 
+double ElevatorOperator::getCapDistance()
+{
+    double* result{static_cast<double*>(m_robot->getState(ELEVATOR_SUBSYSTEM_NAME, CAP_DISTANCE_STATE_NAME))};
+    double distance{*result};
+    delete result;
+    return distance;
+}
+
+bool ElevatorOperator::getHangArmUp()
+{
+    bool* result{static_cast<bool*>(m_robot->getState(HANG_SUBSYSTEM_NAME, HANG_ARM_UP_STATE_NAME))};
+    bool hang_arm_up{*result};
+    delete result;
+    return hang_arm_up;
+}
+
 void ElevatorOperator::updateElevatorPosition(double position)
 {
     m_robot->sendCommand(ELEVATOR_SUBSYSTEM_NAME, SET_POSITION_COMMAND, position);
+}
+
+void ElevatorOperator::updatePoleHangPosition()
+{
+    if (getHangArmUp())
+    {
+        double distance{getCapDistance()};
+        if (distance != 0 && distance < CAP_DETECTED_DISTANCE)
+        {
+            double position{getElevatorPosition()};
+            updateElevatorPosition(position - (distance - POLE_HANG_DISTANCE));
+        }
+    }
 }
 
 void ElevatorOperator::updateManual(EControllerDigital in, EControllerDigital out)
@@ -42,7 +71,7 @@ void ElevatorOperator::updateManual(EControllerDigital in, EControllerDigital ou
     }
     else if (move_out)
     {
-        updateElevatorPosition(OUT_POSITION);
+        updateElevatorPosition(PARTNER_HANG_POSITION);
         manual_input = true;
     }
     else if (manual_input)
@@ -52,21 +81,24 @@ void ElevatorOperator::updateManual(EControllerDigital in, EControllerDigital ou
     }
 }
 
-void ElevatorOperator::updatePresetSplit(EControllerDigital in, EControllerDigital field, EControllerDigital match_load, EControllerDigital out)
+void ElevatorOperator::updatePresetSplit(EControllerDigital in, EControllerDigital field, EControllerDigital match_load, EControllerDigital pole_hang, EControllerDigital partner_hang)
 {
     bool move_in{m_controller->getNewDigital(in)};
     bool move_field{m_controller->getNewDigital(field)};
     bool move_match_load{m_controller->getNewDigital(match_load)};
-    bool move_out{m_controller->getNewDigital(out)};
+    bool move_pole_hang{m_controller->getNewDigital(pole_hang)};
+    bool move_partner_hang{m_controller->getNewDigital(partner_hang)};
 
-    if (move_in && !move_field && !move_match_load && !move_out)
+    if (move_in && !move_field && !move_match_load && !move_pole_hang && !move_partner_hang)
         updateElevatorPosition(IN_POSITION);
-    else if (!move_in && move_field && !move_match_load && !move_out)
+    else if (!move_in && move_field && !move_match_load && !move_pole_hang && !move_partner_hang)
         updateElevatorPosition(FIELD_POSITION);
-    else if (!move_in && !move_field && move_match_load && !move_out)
+    else if (!move_in && !move_field && move_match_load && !move_pole_hang && !move_partner_hang)
         updateElevatorPosition(MATCH_LOAD_POSITION);
-    else if (!move_in && !move_field && !move_match_load && move_out)
-        updateElevatorPosition(OUT_POSITION);
+    else if (!move_in && !move_field && !move_match_load && move_pole_hang && !move_partner_hang)
+        updateElevatorPosition(POLE_HANG_POSITION);
+    else if (!move_in && !move_field && !move_match_load && !move_pole_hang && move_partner_hang)
+        updateElevatorPosition(PARTNER_HANG_POSITION);
 }
 
 void ElevatorOperator::updatePresetToggle(EControllerDigital toggle)
@@ -84,10 +116,14 @@ void ElevatorOperator::updatePresetToggle(EControllerDigital toggle)
             toggle_state = EToggleState::MATCH_LOAD;
             break;
         case EToggleState::MATCH_LOAD:
-            updateElevatorPosition(OUT_POSITION);
-            toggle_state = EToggleState::OUT;
+            updateElevatorPosition(POLE_HANG_POSITION);
+            toggle_state = EToggleState::POLE_HANG;
             break;
-        case EToggleState::OUT:
+        case EToggleState::POLE_HANG:
+            updateElevatorPosition(PARTNER_HANG_POSITION);
+            toggle_state = EToggleState::PARTNER_HANG;
+            break;
+        case EToggleState::PARTNER_HANG:
             updateElevatorPosition(IN_POSITION);
             toggle_state = EToggleState::IN;
             break;
@@ -99,6 +135,7 @@ void ElevatorOperator::updatePresetLadder(EControllerDigital in, EControllerDigi
 {
     bool move_in{m_controller->getNewDigital(in)};
     bool move_out{m_controller->getNewDigital(out)};
+
     if (move_in && !move_out)
     {
         switch (toggle_state)
@@ -113,9 +150,12 @@ void ElevatorOperator::updatePresetLadder(EControllerDigital in, EControllerDigi
             updateElevatorPosition(FIELD_POSITION);
             toggle_state = EToggleState::FIELD;
             break;
-        case EToggleState::OUT:
+        case EToggleState::POLE_HANG:
             updateElevatorPosition(MATCH_LOAD_POSITION);
             toggle_state = EToggleState::MATCH_LOAD;
+        case EToggleState::PARTNER_HANG:
+            updateElevatorPosition(POLE_HANG_POSITION);
+            toggle_state = EToggleState::POLE_HANG;
             break;
         }
     }
@@ -132,10 +172,14 @@ void ElevatorOperator::updatePresetLadder(EControllerDigital in, EControllerDigi
             toggle_state = EToggleState::MATCH_LOAD;
             break;
         case EToggleState::MATCH_LOAD:
-            updateElevatorPosition(OUT_POSITION);
-            toggle_state = EToggleState::OUT;
+            updateElevatorPosition(POLE_HANG_POSITION);
+            toggle_state = EToggleState::POLE_HANG;
             break;
-        case EToggleState::OUT:
+        case EToggleState::POLE_HANG:
+            updateElevatorPosition(PARTNER_HANG_POSITION);
+            toggle_state = EToggleState::PARTNER_HANG;
+            break;
+        case EToggleState::PARTNER_HANG:
             break;
         }
     }
@@ -147,6 +191,7 @@ void ElevatorOperator::updatePresetLadderIntake(EControllerDigital in, EControll
     bool move_out{m_controller->getNewDigital(out)};
     bool move_intake{m_controller->getNewDigital(intake)};
     bool move_outtake{m_controller->getNewDigital(outtake)};
+
     if (move_intake && toggle_state == EToggleState::IN)
     {
         updateElevatorPosition(FIELD_POSITION);
@@ -171,9 +216,13 @@ void ElevatorOperator::updatePresetLadderIntake(EControllerDigital in, EControll
             updateElevatorPosition(FIELD_POSITION);
             toggle_state = EToggleState::FIELD;
             break;
-        case EToggleState::OUT:
+        case EToggleState::POLE_HANG:
             updateElevatorPosition(MATCH_LOAD_POSITION);
             toggle_state = EToggleState::MATCH_LOAD;
+            break;
+        case EToggleState::PARTNER_HANG:
+            updateElevatorPosition(POLE_HANG_POSITION);
+            toggle_state = EToggleState::POLE_HANG;
             break;
         }
     }
@@ -190,10 +239,14 @@ void ElevatorOperator::updatePresetLadderIntake(EControllerDigital in, EControll
             toggle_state = EToggleState::MATCH_LOAD;
             break;
         case EToggleState::MATCH_LOAD:
-            updateElevatorPosition(OUT_POSITION);
-            toggle_state = EToggleState::OUT;
+            updateElevatorPosition(POLE_HANG_POSITION);
+            toggle_state = EToggleState::POLE_HANG;
             break;
-        case EToggleState::OUT:
+        case EToggleState::POLE_HANG:
+            updateElevatorPosition(PARTNER_HANG_POSITION);
+            toggle_state = EToggleState::PARTNER_HANG;
+            break;
+        case EToggleState::PARTNER_HANG:
             break;
         }
     }
@@ -204,6 +257,8 @@ void ElevatorOperator::setElevatorPosition(const std::unique_ptr<IProfile>& prof
     EControllerDigital in{profile->getDigitalControlMapping(EControl::ELEVATOR_IN)};
     EControllerDigital field{profile->getDigitalControlMapping(EControl::ELEVATOR_FIELD)};
     EControllerDigital match_load{profile->getDigitalControlMapping(EControl::ELEVATOR_MATCH_LOAD)};
+    EControllerDigital pole_hang{profile->getDigitalControlMapping(EControl::ELEVATOR_POLE_HANG)};
+    EControllerDigital partner_hang{profile->getDigitalControlMapping(EControl::ELEVATOR_PARTNER_HANG)};
     EControllerDigital out{profile->getDigitalControlMapping(EControl::ELEVATOR_OUT)};
     EControllerDigital toggle{profile->getDigitalControlMapping(EControl::ELEVATOR_TOGGLE)};
     EControllerDigital intake{profile->getDigitalControlMapping(EControl::INTAKE_IN)};
@@ -215,7 +270,7 @@ void ElevatorOperator::setElevatorPosition(const std::unique_ptr<IProfile>& prof
         updateManual(in, out);
         break;
     case EElevatorControlMode::PRESET_SPLIT:
-        updatePresetSplit(in, field, match_load, out);
+        updatePresetSplit(in, field, match_load, pole_hang, partner_hang);
         break;
     case EElevatorControlMode::PRESET_TOGGLE_LADDER:
         updatePresetLadder(in, out);
@@ -227,6 +282,9 @@ void ElevatorOperator::setElevatorPosition(const std::unique_ptr<IProfile>& prof
         updatePresetLadderIntake(in, out, intake, outtake);
         break;
     }
+
+    if (toggle_state == EToggleState::POLE_HANG)
+        updatePoleHangPosition();
 }
 } // namespace elevator
 } // namespace user

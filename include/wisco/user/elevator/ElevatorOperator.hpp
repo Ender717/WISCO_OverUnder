@@ -49,7 +49,8 @@ private:
         IN,
         FIELD,
         MATCH_LOAD,
-        OUT
+        POLE_HANG,
+        PARTNER_HANG
     };
 
     /**
@@ -57,6 +58,12 @@ private:
      * 
      */
     static constexpr char ELEVATOR_SUBSYSTEM_NAME[]{"ELEVATOR"};
+
+    /**
+     * @brief The name of the hang subsystem
+     * 
+     */
+    static constexpr char HANG_SUBSYSTEM_NAME[]{"HANG"};
 
     /**
      * @brief The command to set elevator position
@@ -69,6 +76,18 @@ private:
      * 
      */
     static constexpr char GET_POSITION_STATE[]{"GET POSITION"};
+
+    /**
+     * @brief The name of the cap distance state
+     * 
+     */
+    static constexpr char CAP_DISTANCE_STATE_NAME[]{"CAP DISTANCE"};
+
+    /**
+     * @brief The name of the hang arm up state
+     * 
+     */
+    static constexpr char HANG_ARM_UP_STATE_NAME[]{"ARM UP"};
 
     /**
      * @brief The in position for the elevator
@@ -89,10 +108,28 @@ private:
     static constexpr double MATCH_LOAD_POSITION{8.0};
 
     /**
-     * @brief The out position for the elevator
+     * @brief The pole hang position for the elevator
      * 
      */
-    static constexpr double OUT_POSITION{18.0};
+    static constexpr double POLE_HANG_POSITION{16.0};
+
+    /**
+     * @brief The partner hang position for the elevator
+     * 
+     */
+    static constexpr double PARTNER_HANG_POSITION{18.0};
+
+    /**
+     * @brief The distance to the cap for a pole hang
+     * 
+     */
+    static constexpr double POLE_HANG_DISTANCE{2.0};
+
+    /**
+     * @brief The distance within which a cap is considered detected
+     * 
+     */
+    static constexpr double CAP_DETECTED_DISTANCE{5.0};
 
     /**
      * @brief The user input controller
@@ -126,11 +163,32 @@ private:
     double getElevatorPosition();
 
     /**
+     * @brief Gets the current cap distance
+     * 
+     * @return double The current cap distance
+     */
+    double getCapDistance();
+
+    /**
+     * @brief Get the hang arm up state
+     * 
+     * @return true The hang arm is up
+     * @return false The hang arm is down
+     */
+    bool getHangArmUp();
+
+    /**
      * @brief Updates the position of the elevator subsystem
      * 
      * @param position The elevator position
      */
     void updateElevatorPosition(double position);
+
+    /**
+     * @brief Updates the pole hang position using the distance sensor
+     * 
+     */
+    void updatePoleHangPosition();
 
     /**
      * @brief Updates the elevator position based on manual control
@@ -146,9 +204,10 @@ private:
      * @param in The digital control for the in position
      * @param field The digital control for the field position
      * @param match_load The digital control for the match load position
-     * @param out The digital control for the out position
+     * @param pole_hang The digital control for the pole hang position
+     * @param partner_hang The digital control for the partner hang position
      */
-    void updatePresetSplit(EControllerDigital in, EControllerDigital field, EControllerDigital match_load, EControllerDigital out);
+    void updatePresetSplit(EControllerDigital in, EControllerDigital field, EControllerDigital match_load, EControllerDigital pole_hang, EControllerDigital partner_hang);
 
     /**
      * @brief Updates the elevator position based on a toggle
