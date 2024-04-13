@@ -28,6 +28,7 @@ enum class EControlType
     ELEVATOR,
     HANG,
     INTAKE,
+    LOADER,
     WINGS
 };
 } // namespace user

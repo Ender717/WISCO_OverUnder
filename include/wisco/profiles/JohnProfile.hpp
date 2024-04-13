@@ -9,6 +9,7 @@
 #include "wisco/user/elevator/EElevatorControlMode.hpp"
 #include "wisco/user/hang/EHangControlMode.hpp"
 #include "wisco/user/intake/EIntakeControlMode.hpp"
+#include "wisco/user/loader/ELoaderControlMode.hpp"
 #include "wisco/user/wings/EWingsControlMode.hpp"
 
 /**
@@ -48,6 +49,7 @@ private:
 		{user::EControlType::ELEVATOR, static_cast<int>(user::elevator::EElevatorControlMode::PRESET_TOGGLE_LADDER_INTAKE)},
 		{user::EControlType::HANG, static_cast<int>(user::hang::EHangControlMode::PRESET_TOGGLE_LADDER)},
 		{user::EControlType::INTAKE, static_cast<int>(user::intake::EIntakeControlMode::SPLIT_HOLD)},
+		{user::EControlType::LOADER, static_cast<int>(user::loader::ELoaderControlMode::MACRO)},
 		{user::EControlType::WINGS, static_cast<int>(user::wings::EWingsControlMode::DUAL_HOLD)}
 	};
 
@@ -69,6 +71,7 @@ private:
 		{user::EControl::HANG_PREVIOUS, user::EControllerDigital::BUTTON_B},
 		{user::EControl::INTAKE_IN, user::EControllerDigital::TRIGGER_LEFT_TOP},
 		{user::EControl::INTAKE_OUT, user::EControllerDigital::TRIGGER_LEFT_BOTTOM},
+		{user::EControl::LOADER_TOGGLE, user::EControllerDigital::DPAD_LEFT},
 		{user::EControl::WINGS_HOLD, user::EControllerDigital::SCUFF_RIGHT_REAR}
 	};
 
