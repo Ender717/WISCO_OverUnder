@@ -29,6 +29,7 @@ enum class EControlType
     HANG,
     INTAKE,
     LOADER,
+    UMBRELLA,
     WINGS
 };
 } // namespace user

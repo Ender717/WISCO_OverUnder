@@ -14,6 +14,7 @@
 #include "user/hang/HangOperator.hpp"
 #include "user/intake/IntakeOperator.hpp"
 #include "user/loader/LoaderOperator.hpp"
+#include "user/umbrella/UmbrellaOperator.hpp"
 #include "user/wings/WingsOperator.hpp"
 
 /**

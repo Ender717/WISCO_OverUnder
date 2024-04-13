@@ -1,4 +1,5 @@
 #include "wisco/OPControlManager.hpp"
+#include "user/umbrella/UmbrellaOperator.hpp"
 
 namespace wisco
 {
@@ -25,6 +26,7 @@ void OPControlManager::runOpcontrol(std::shared_ptr<user::IController> controlle
     user::hang::HangOperator hang_operator{controller, robot};
     user::intake::IntakeOperator intake_operator{controller, robot};
     user::loader::LoaderOperator loader_operator{controller, robot};
+    user::umbrella::UmbrellaOperator umbrella_operator{controller, robot};
     user::wings::WingsOperator wings_operator{controller, robot};
     uint32_t current_time{};
     while (true)
@@ -36,6 +38,7 @@ void OPControlManager::runOpcontrol(std::shared_ptr<user::IController> controlle
         hang_operator.setHangState(m_profile);
         intake_operator.setIntakeVoltage(m_profile);
         loader_operator.setLoaderPosition(m_profile);
+        umbrella_operator.setUmbrellaPosition(m_profile);
         wings_operator.setWingsPosition(m_profile);
 
         m_delayer->delayUntil(current_time + CONTROL_DELAY);

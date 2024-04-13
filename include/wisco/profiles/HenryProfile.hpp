@@ -10,6 +10,7 @@
 #include "wisco/user/hang/EHangControlMode.hpp"
 #include "wisco/user/intake/EIntakeControlMode.hpp"
 #include "wisco/user/loader/ELoaderControlMode.hpp"
+#include "wisco/user/umbrella/EUmbrellaControlMode.hpp"
 #include "wisco/user/wings/EWingsControlMode.hpp"
 
 /**
@@ -50,6 +51,7 @@ private:
 		{user::EControlType::HANG, static_cast<int>(user::hang::EHangControlMode::PRESET_TOGGLE_LADDER)},
 		{user::EControlType::INTAKE, static_cast<int>(user::intake::EIntakeControlMode::SPLIT_HOLD)},
 		{user::EControlType::LOADER, static_cast<int>(user::loader::ELoaderControlMode::SINGLE_TOGGLE)},
+		{user::EControlType::UMBRELLA, static_cast<int>(user::umbrella::EUmbrellaControlMode::SINGLE_TOGGLE)},
 		{user::EControlType::WINGS, static_cast<int>(user::wings::EWingsControlMode::DUAL_TOGGLE)}
 	};
 
@@ -72,6 +74,7 @@ private:
 		{user::EControl::INTAKE_IN, user::EControllerDigital::TRIGGER_LEFT_TOP},
 		{user::EControl::INTAKE_OUT, user::EControllerDigital::TRIGGER_LEFT_BOTTOM},
 		{user::EControl::LOADER_TOGGLE, user::EControllerDigital::DPAD_LEFT},
+		{user::EControl::UMBRELLA_TOGGLE, user::EControllerDigital::DPAD_DOWN},
 		{user::EControl::WINGS_TOGGLE, user::EControllerDigital::SCUFF_LEFT_REAR}
 	};
 
