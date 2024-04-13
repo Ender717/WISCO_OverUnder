@@ -39,6 +39,10 @@
 #include "wisco/robot/subsystems/elevator/PIDElevatorBuilder.hpp"
 #include "wisco/robot/subsystems/elevator/ElevatorSubsystem.hpp"
 
+// loader includes
+#include "wisco/robot/subsystems/loader/PIDLoaderBuilder.hpp"
+#include "wisco/robot/subsystems/loader/LoaderSubsystem.hpp"
+
 // wings includes
 #include "wisco/robot/subsystems/wings/PistonWingsBuilder.hpp"
 #include "wisco/robot/subsystems/wings/WingsSubsystem.hpp"
@@ -500,6 +504,54 @@ private:
 	 * 
 	 */
 	static constexpr bool HANG_WINCH_ENGAGED_STATE{};
+
+		/**
+	 * @brief The KP for the loader PID
+	 * 
+	 */
+	static constexpr double LOADER_KP{6.0};
+
+	/**
+	 * @brief The KI for the loader PID
+	 * 
+	 */
+	static constexpr double LOADER_KI{0.0};
+
+	/**
+	 * @brief The KD for the loader PID
+	 * 
+	 */
+	static constexpr double LOADER_KD{0.0};
+
+	/**
+	 * @brief The first loader motor port
+	 * 
+	 */
+	static constexpr int8_t LOADER_MOTOR_1_PORT{-11};
+
+	/**
+	 * @brief The first loader motor gearset
+	 * 
+	 */
+	static constexpr pros::v5::MotorGears LOADER_MOTOR_1_GEARSET{pros::E_MOTOR_GEARSET_36};
+
+	/**
+	 * @brief The loader position when loaded
+	 * 
+	 */
+	static constexpr double LOADER_LOADED_POSITION{5 * M_PI / 6};
+
+	/**
+	 * @brief The loader position when ready
+	 * 
+	 */
+	static constexpr double LOADER_READY_POSITION{0};
+
+	/**
+	 * @brief The loader position tolerance
+	 * 
+	 */
+	static constexpr double LOADER_POSITION_TOLERANCE{M_PI / 18};
 
 	/**
 	 * @brief The first left wing piston port

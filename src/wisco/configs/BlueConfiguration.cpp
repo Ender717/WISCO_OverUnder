@@ -266,6 +266,32 @@ std::shared_ptr<robot::Robot> BlueConfiguration::buildRobot()
     std::unique_ptr<wisco::robot::ASubsystem> hang_subsystem{std::make_unique<wisco::robot::subsystems::hang::HangSubsystem>(piston_claw, piston_arm, piston_winch)};
     robot->addSubsystem(hang_subsystem);
 
+    // Loader creation
+    wisco::robot::subsystems::loader::PIDLoaderBuilder pid_loader_builder{};
+    std::unique_ptr<wisco::rtos::IClock> loader_pros_clock{std::make_unique<pros_adapters::ProsClock>()};
+    std::unique_ptr<wisco::rtos::IDelayer> loader_pros_delayer{std::make_unique<pros_adapters::ProsDelayer>()};
+    std::unique_ptr<wisco::rtos::IMutex> loader_pros_mutex{std::make_unique<pros_adapters::ProsMutex>()};
+    std::unique_ptr<wisco::rtos::ITask> loader_pros_task{std::make_unique<pros_adapters::ProsTask>()};
+    wisco::control::PID loader_pid{loader_pros_clock, LOADER_KP, LOADER_KI, LOADER_KD};
+    std::unique_ptr<pros::Motor> loader_pros_motor_1{std::make_unique<pros::Motor>(LOADER_MOTOR_1_PORT, LOADER_MOTOR_1_GEARSET)};
+    std::unique_ptr<wisco::io::IMotor> loader_pros_motor_1_motor{std::make_unique<pros_adapters::ProsV5Motor>(loader_pros_motor_1)};
+    std::unique_ptr<wisco::robot::subsystems::loader::ILoader> pid_loader
+    {
+        pid_loader_builder.
+        withClock(loader_pros_clock)->
+        withDelayer(loader_pros_delayer)->
+        withMutex(loader_pros_mutex)->
+        withTask(loader_pros_task)->
+        withPID(loader_pid)->
+        withMotor(loader_pros_motor_1_motor)->
+        withMatchLoadPosition(LOADER_LOADED_POSITION)->
+        withReadyPosition(LOADER_READY_POSITION)->
+        withPositionTolerance(LOADER_POSITION_TOLERANCE)->
+        build()
+    };
+    std::unique_ptr<wisco::robot::ASubsystem> loader_subsystem{std::make_unique<wisco::robot::subsystems::loader::LoaderSubsystem>(pid_loader)};
+    robot->addSubsystem(loader_subsystem);
+
     // Wings subsystem
     wisco::robot::subsystems::wings::PistonWingsBuilder piston_wings_builder{};
     std::unique_ptr<pros::adi::DigitalOut> left_wing_pros_piston_1{std::make_unique<pros::adi::DigitalOut>(LEFT_WING_PISTON_1_PORT)};
