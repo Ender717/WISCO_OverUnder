@@ -4,6 +4,7 @@
 #include <memory>
 #include <string>
 
+#include "control/ControlSystem.hpp"
 #include "robot/Robot.hpp"
 
 /**
@@ -39,13 +40,15 @@ public:
 	 * @brief Initialize the autonomous
 	 *
 	 */
-	virtual void initialize(std::shared_ptr<robot::Robot> robot) = 0;
+	virtual void initialize(std::shared_ptr<control::ControlSystem> control_system, 
+							std::shared_ptr<robot::Robot> robot) = 0;
 
 	/**
 	 * @brief Run the autonomous
 	 *
 	 */
-	virtual void run(std::shared_ptr<robot::Robot> robot) = 0;
+	virtual void run(std::shared_ptr<control::ControlSystem> control_system, 
+					 std::shared_ptr<robot::Robot> robot) = 0;
 };
 
 } // namespace wisco

@@ -44,13 +44,15 @@ public:
 	 * @brief Initialize the autonomous
 	 *
 	 */
-	void initialize(std::shared_ptr<robot::Robot> robot) override;
+	void initialize(std::shared_ptr<control::ControlSystem> control_system, 
+					std::shared_ptr<robot::Robot> robot) override;
 
 	/**
 	 * @brief Run the autonomous
 	 *
 	 */
-	void run(std::shared_ptr<robot::Robot> robot) override;
+	void run(std::shared_ptr<control::ControlSystem> control_system, 
+			 std::shared_ptr<robot::Robot> robot) override;
 };
 }
 }

@@ -9,6 +9,13 @@ std::string BlueConfiguration::getName()
     return CONFIGURATION_NAME;
 }
 
+std::shared_ptr<control::ControlSystem> BlueConfiguration::buildControlSystem()
+{
+    std::shared_ptr<control::ControlSystem> control_system{std::make_shared<control::ControlSystem>()};
+
+    return control_system;
+}
+
 std::shared_ptr<user::IController> BlueConfiguration::buildController()
 {
     std::unique_ptr<pros::Controller> pros_controller{std::make_unique<pros::Controller>(pros::E_CONTROLLER_MASTER)};
@@ -18,7 +25,7 @@ std::shared_ptr<user::IController> BlueConfiguration::buildController()
 
 std::shared_ptr<robot::Robot> BlueConfiguration::buildRobot()
 {
-    std::shared_ptr<robot::Robot> robot{std::make_unique<robot::Robot>()};
+    std::shared_ptr<robot::Robot> robot{std::make_shared<robot::Robot>()};
 
     // Odometry creation
     robot::subsystems::position::InertialOdometryBuilder inertial_odometry_builder{};

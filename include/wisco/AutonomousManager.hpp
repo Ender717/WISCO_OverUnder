@@ -38,16 +38,20 @@ public:
 	/**
 	 * @brief Initialize the autonomous routine
 	 *
+	 * @param control_system The control system
 	 * @param robot The robot being controlled
 	 */
-	void initializeAutonomous(std::shared_ptr<robot::Robot> robot);
+	void initializeAutonomous(std::shared_ptr<control::ControlSystem> control_system,
+							  std::shared_ptr<robot::Robot> robot);
 
 	/**
 	 * @brief Run the autonomous routine
 	 *
+	 * @param control_system The control system
 	 * @param robot The robot being controlled
 	 */
-	void runAutonomous(std::shared_ptr<robot::Robot> robot);
+	void runAutonomous(std::shared_ptr<control::ControlSystem> control_system,
+					   std::shared_ptr<robot::Robot> robot);
 };
 
 } // namespace wisco

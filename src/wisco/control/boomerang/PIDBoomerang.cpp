@@ -89,7 +89,7 @@ void PIDBoomerang::updateVelocity(robot::subsystems::position::Position position
 {
     double x_error{carrot_point.getX() - position.x};
     double y_error{carrot_point.getY() - position.y};
-    double rotational_error{position.theta - std::atan2(y_error, x_error)};
+    double rotational_error{bindRadians(position.theta - std::atan2(y_error, x_error))};
     double linear_error{std::sin(rotational_error) * std::sqrt(std::pow(x_error, 2) + std::pow(y_error, 2))};
 
     double linear_control{m_linear_pid.getControlValue(0, linear_error)};

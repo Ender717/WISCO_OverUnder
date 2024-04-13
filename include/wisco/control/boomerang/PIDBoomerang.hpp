@@ -4,6 +4,8 @@
 #include <cmath>
 #include <memory>
 
+#include "wisco/utils/UtilityFunctions.hpp"
+
 #include "wisco/robot/Robot.hpp"
 #include "wisco/robot/subsystems/drive/Velocity.hpp"
 #include "wisco/robot/subsystems/position/Position.hpp"

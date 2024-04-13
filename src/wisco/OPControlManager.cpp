@@ -14,12 +14,16 @@ void OPControlManager::setProfile(std::unique_ptr<IProfile>& profile)
     m_profile = std::move(profile);
 }
 
-void OPControlManager::initializeOpcontrol(std::shared_ptr<user::IController> controller, std::shared_ptr<robot::Robot> robot)
+void OPControlManager::initializeOpcontrol(std::shared_ptr<control::ControlSystem> control_system,
+                                           std::shared_ptr<user::IController> controller, 
+                                           std::shared_ptr<robot::Robot> robot)
 {
 
 }
 
-void OPControlManager::runOpcontrol(std::shared_ptr<user::IController> controller, std::shared_ptr<robot::Robot> robot)
+void OPControlManager::runOpcontrol(std::shared_ptr<control::ControlSystem> control_system,
+                                    std::shared_ptr<user::IController> controller, 
+                                    std::shared_ptr<robot::Robot> robot)
 {
     user::drive::DifferentialDriveOperator drive_operator{controller, robot};
     user::elevator::ElevatorOperator elevator_operator{controller, robot};

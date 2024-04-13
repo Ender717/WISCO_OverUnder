@@ -22,20 +22,22 @@ void MatchController::initialize()
 		system_configuration = m_menu->getSystemConfiguration();
 	autonomous_manager.setAutonomous(system_configuration.autonomous);
 	opcontrol_manager.setProfile(system_configuration.profile);
+	control_system = system_configuration.configuration->buildControlSystem();
 	controller = system_configuration.configuration->buildController();
 	robot = system_configuration.configuration->buildRobot();
 
 	if (robot)
-	{
 		robot->initialize();
-		autonomous_manager.initializeAutonomous(robot);
-		if (controller)
-		{
-			controller->initialize();
-			controller->run();
-			opcontrol_manager.initializeOpcontrol(controller, robot);
-		}
+	if (control_system)
+		control_system->initialize();
+	if (controller)
+	{
+		controller->initialize();
+		controller->run();
 	}
+	
+	autonomous_manager.initializeAutonomous(control_system, robot);
+	opcontrol_manager.initializeOpcontrol(control_system, controller, robot);
 }
 
 void MatchController::disabled()
@@ -51,12 +53,12 @@ void MatchController::competitionInitialize()
 void MatchController::autonomous()
 {
 	if (robot)
-		autonomous_manager.runAutonomous(robot);
+		autonomous_manager.runAutonomous(control_system, robot);
 }
 
 void MatchController::operatorControl()
 {
 	if (controller && robot)
-		opcontrol_manager.runOpcontrol(controller, robot);
+		opcontrol_manager.runOpcontrol(control_system, controller, robot);
 }
 } // namespace wisco

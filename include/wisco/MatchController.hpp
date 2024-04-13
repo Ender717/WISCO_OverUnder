@@ -6,6 +6,7 @@
 #include "AutonomousManager.hpp"
 #include "OpcontrolManager.hpp"
 #include "IMenu.hpp"
+#include "control/ControlSystem.hpp"
 #include "user/IController.hpp"
 #include "robot/Robot.hpp"
 
@@ -60,6 +61,12 @@ private:
 	 * 
 	 */
 	OPControlManager opcontrol_manager{m_clock, m_delayer};
+	
+	/**
+	 * @brief The control system
+	 * 
+	 */
+	std::shared_ptr<control::ControlSystem> control_system{};
 
 	/**
 	 * @brief The user input controller

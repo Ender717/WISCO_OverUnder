@@ -9,12 +9,14 @@ std::string OrangeMatchAuton::getName()
     return AUTONOMOUS_NAME;
 }
 
-void OrangeMatchAuton::initialize(std::shared_ptr<robot::Robot> robot)
+void OrangeMatchAuton::initialize(std::shared_ptr<control::ControlSystem> control_system, 
+					              std::shared_ptr<robot::Robot> robot)
 {
 
 }
 
-void OrangeMatchAuton::run(std::shared_ptr<robot::Robot> robot)
+void OrangeMatchAuton::run(std::shared_ptr<control::ControlSystem> control_system, 
+					       std::shared_ptr<robot::Robot> robot)
 {
     
 }

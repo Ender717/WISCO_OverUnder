@@ -6,6 +6,7 @@
 #include "rtos/IClock.hpp"
 #include "rtos/IDelayer.hpp"
 #include "IProfile.hpp"
+#include "control/ControlSystem.hpp"
 #include "user/IController.hpp"
 #include "robot/Robot.hpp"
 
@@ -76,18 +77,24 @@ public:
 	/**
 	 * @brief Initialize the operator control
 	 *
+	 * @param control_system The control system
 	 * @param controller The controller for the robot
 	 * @param robot The robot being controlled
 	 */
-	void initializeOpcontrol(std::shared_ptr<user::IController> controller, std::shared_ptr<robot::Robot> robot);
+	void initializeOpcontrol(std::shared_ptr<control::ControlSystem> control_system,
+							 std::shared_ptr<user::IController> controller, 
+							 std::shared_ptr<robot::Robot> robot);
 
 	/**
 	 * @brief Run the operator control
 	 *
+	 * @param control_system
 	 * @param controller The controller for the robot
 	 * @param robot The robot being controlled
 	 */
-	void runOpcontrol(std::shared_ptr<user::IController> controller, std::shared_ptr<robot::Robot> robot);
+	void runOpcontrol(std::shared_ptr<control::ControlSystem> control_system,
+					  std::shared_ptr<user::IController> controller, 
+					  std::shared_ptr<robot::Robot> robot);
 };
 
 } // namespace wisco

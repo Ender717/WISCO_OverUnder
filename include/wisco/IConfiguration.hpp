@@ -4,6 +4,7 @@
 #include <memory>
 #include <string>
 
+#include "wisco/control/ControlSystem.hpp"
 #include "user/IController.hpp"
 #include "robot/Robot.hpp"
 
@@ -35,6 +36,13 @@ public:
 	 * @return std::string The name of the configuration
 	 */
 	virtual std::string getName() = 0;
+
+	/**
+	 * @brief Build a control system using this configuration
+	 * 
+	 * @return std::shared_ptr<control::ControlSystem> The control system built by this configuration
+	 */
+	virtual std::shared_ptr<control::ControlSystem> buildControlSystem() = 0;
 
 	/**
 	 * @brief Build a controller using this configuration
