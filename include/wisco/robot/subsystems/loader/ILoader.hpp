@@ -63,7 +63,13 @@ public:
      * @brief Does one match load
      * 
      */
-    virtual void doMatchLoad() = 0;
+    virtual void doLoad() = 0;
+
+    /**
+     * @brief Gets the system ready for another match load
+     * 
+     */
+    virtual void doReady() = 0;
 
     /**
      * @brief Checks if the match load is loaded

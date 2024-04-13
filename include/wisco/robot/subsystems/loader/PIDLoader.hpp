@@ -53,6 +53,19 @@ class PIDLoader : public ILoader
 {
 private:
     /**
+     * @brief The states the loader can be in
+     * @author Nathan Sandvig
+     * 
+     */
+    enum class EState
+    {
+        READY,
+        LOADING,
+        LOADED,
+        READYING
+    };
+
+    /**
      * @brief The loop delay on the task
      * 
      */
@@ -120,6 +133,12 @@ private:
     double m_position_tolerance{};
 
     /**
+     * @brief The state of the loader
+     * 
+     */
+    EState state{EState::READY};
+
+    /**
      * @brief The position setting of the loader
      * 
      */
@@ -143,6 +162,13 @@ private:
      */
     void updatePosition();
 
+    /**
+     * @brief Gets the position of the loader
+     * 
+     * @return double The position of the loader
+     */
+    double getPosition();
+
 public:
     /**
      * @brief Initializes the loader
@@ -160,7 +186,13 @@ public:
      * @brief Does one match load
      * 
      */
-    void doMatchLoad() override;
+    void doLoad() override;
+
+    /**
+     * @brief Gets the system ready for another match load
+     * 
+     */
+    void doReady() override;
 
     /**
      * @brief Checks if the match load is loaded
