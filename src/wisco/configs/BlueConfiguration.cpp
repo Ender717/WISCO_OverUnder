@@ -292,7 +292,21 @@ std::shared_ptr<robot::Robot> BlueConfiguration::buildRobot()
     std::unique_ptr<wisco::robot::ASubsystem> loader_subsystem{std::make_unique<wisco::robot::subsystems::loader::LoaderSubsystem>(pid_loader)};
     robot->addSubsystem(loader_subsystem);
 
-    // Wings subsystem
+    // Umbrella creation
+    wisco::robot::subsystems::umbrella::PistonUmbrellaBuilder piston_umbrella_builder{};
+    std::unique_ptr<pros::adi::DigitalOut> umbrella_pros_piston_1{std::make_unique<pros::adi::DigitalOut>(UMBRELLA_PISTON_1_PORT)};
+    std::unique_ptr<wisco::io::IPiston> umbrella_pros_piston_1_piston{std::make_unique<pros_adapters::ProsPiston>(umbrella_pros_piston_1, UMBRELLA_PISTON_1_EXTENDED_STATE)};
+    std::unique_ptr<wisco::robot::subsystems::umbrella::IUmbrella> piston_umbrella
+    {
+        piston_umbrella_builder.
+        withPiston(umbrella_pros_piston_1_piston)->
+        withOutState(UMBRELLA_OUT_STATE)->
+        build()
+    };
+    std::unique_ptr<wisco::robot::ASubsystem> umbrella_subsystem{std::make_unique<wisco::robot::subsystems::umbrella::UmbrellaSubsystem>(piston_umbrella)};
+    robot->addSubsystem(umbrella_subsystem);
+
+    // Wings creation
     wisco::robot::subsystems::wings::PistonWingsBuilder piston_wings_builder{};
     std::unique_ptr<pros::adi::DigitalOut> left_wing_pros_piston_1{std::make_unique<pros::adi::DigitalOut>(LEFT_WING_PISTON_1_PORT)};
     std::unique_ptr<wisco::io::IPiston> left_wing_pros_piston_1_piston{std::make_unique<pros_adapters::ProsPiston>(left_wing_pros_piston_1, LEFT_WING_PISTON_1_EXTENDED_STATE)};

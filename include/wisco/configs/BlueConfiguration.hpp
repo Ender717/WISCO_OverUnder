@@ -43,6 +43,10 @@
 #include "wisco/robot/subsystems/loader/PIDLoaderBuilder.hpp"
 #include "wisco/robot/subsystems/loader/LoaderSubsystem.hpp"
 
+// umbrella includes
+#include "wisco/robot/subsystems/umbrella/PistonUmbrellaBuilder.hpp"
+#include "wisco/robot/subsystems/umbrella/UmbrellaSubsystem.hpp"
+
 // wings includes
 #include "wisco/robot/subsystems/wings/PistonWingsBuilder.hpp"
 #include "wisco/robot/subsystems/wings/WingsSubsystem.hpp"
@@ -552,6 +556,24 @@ private:
 	 * 
 	 */
 	static constexpr double LOADER_POSITION_TOLERANCE{M_PI / 18};
+
+	/**
+	 * @brief The first umbrella piston port
+	 * 
+	 */
+	static constexpr int8_t UMBRELLA_PISTON_1_PORT{};
+
+	/**
+	 * @brief The first umbrella piston's extended state
+	 * 
+	 */
+	static constexpr bool UMBRELLA_PISTON_1_EXTENDED_STATE{};
+
+	/**
+	 * @brief The umbrella piston state when the umbrella is out
+	 * 
+	 */
+	static constexpr bool UMBRELLA_OUT_STATE{};
 
 	/**
 	 * @brief The first left wing piston port
