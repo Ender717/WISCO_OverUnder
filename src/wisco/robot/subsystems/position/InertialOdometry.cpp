@@ -127,6 +127,9 @@ void InertialOdometry::setPosition(Position position)
     if (m_mutex)
         m_mutex->take();
     m_position = position;
+    if (m_heading_sensor)
+        m_heading_sensor->setRotation(position.theta);
+    last_heading = position.theta;
     if (m_mutex)
         m_mutex->give();
 }

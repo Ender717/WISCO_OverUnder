@@ -39,6 +39,33 @@ bool BlueMatchAuton::boomerangTargetReached(std::shared_ptr<control::ControlSyst
 	return target_reached;
 }
 
+void BlueMatchAuton::odometrySetPosition(std::shared_ptr<robot::Robot> robot,
+										 double x, double y, double theta)
+{
+	if (robot)
+	{
+		robot::subsystems::position::Position position{x, y, theta};
+		robot->sendCommand(ODOMETRY_SUBSYSTEM_NAME, ODOMETRY_SET_POSITION_COMMAND_NAME, position);
+	}
+}
+
+robot::subsystems::position::Position BlueMatchAuton::odometryGetPosition(std::shared_ptr<robot::Robot> robot)
+{
+	robot::subsystems::position::Position position{};
+
+	if (robot)
+	{
+		robot::subsystems::position::Position* result{static_cast<robot::subsystems::position::Position*>(robot->getState(ODOMETRY_SUBSYSTEM_NAME, ODOMETRY_GET_POSITION_STATE_NAME))};
+		if (result)
+		{
+			position = *result;
+			delete result;
+		}
+	}
+
+	return position;
+}
+
 std::string BlueMatchAuton::getName()
 {
     return AUTONOMOUS_NAME;
@@ -53,7 +80,8 @@ void BlueMatchAuton::initialize(std::shared_ptr<control::ControlSystem> control_
 void BlueMatchAuton::run(std::shared_ptr<control::ControlSystem> control_system, 
 					     std::shared_ptr<robot::Robot> robot)
 {
-    boomerangGoToPoint(control_system, robot, 48.0, 24.0, 0.0, 0.0);
+	odometrySetPosition(robot, 0, 0, 0);
+    boomerangGoToPoint(control_system, robot, 36.0, 48.0, 24.0, M_PI / 4);
 }
 }
 }

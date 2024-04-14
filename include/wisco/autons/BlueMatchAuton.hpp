@@ -1,6 +1,10 @@
 #ifndef WISCO_AUTONS_BLUE_MATCH_AUTON_HPP
 #define WISCO_AUTONS_BLUE_MATCH_AUTON_HPP
 
+#include <cmath>
+
+#include "wisco/robot/subsystems/position/Position.hpp"
+
 #include "wisco/IAutonomous.hpp"
 
 /**
@@ -39,6 +43,12 @@ private:
 	static constexpr char BOOMERANG_CONTROL_NAME[]{"BOOMERANG"};
 
 	/**
+	 * @brief The name of the odometry subsystem
+	 * 
+	 */
+	static constexpr char ODOMETRY_SUBSYSTEM_NAME[]{"POSITION TRACKER"};
+
+	/**
 	 * @brief The name of the boomerang go to position command
 	 * 
 	 */
@@ -57,10 +67,22 @@ private:
 	static constexpr char BOOMERANG_RESUME_COMMAND_NAME[]{"RESUME"};
 
 	/**
+	 * @brief The name of the odometry set position command
+	 * 
+	 */
+	static constexpr char ODOMETRY_SET_POSITION_COMMAND_NAME[]{"SET POSITION"};
+
+	/**
 	 * @brief The name of the boomerang target reached state
 	 * 
 	 */
 	static constexpr char BOOMERANG_TARGET_REACHED_STATE_NAME[]{"TARGET REACHED"};
+
+	/**
+	 * @brief The name of the odometry get position state
+	 * 
+	 */
+	static constexpr char ODOMETRY_GET_POSITION_STATE_NAME[]{"GET POSITION"};
 
 	/**
 	 * @brief Calls the boomerang go to point command
@@ -98,6 +120,25 @@ private:
 	 * @return false The boomerang target has not been reached
 	 */
 	bool boomerangTargetReached(std::shared_ptr<control::ControlSystem> control_system);
+
+	/**
+	 * @brief Sets the odometry position
+	 * 
+	 * @param robot The robot
+	 * @param x The x-coordinate
+	 * @param y The y-coordinate
+	 * @param theta The angle
+	 */
+	void odometrySetPosition(std::shared_ptr<robot::Robot> robot, 
+							 double x, double y, double theta);
+
+	/**
+	 * @brief Gets the odometry position
+	 * 
+	 * @param robot The robot
+	 * @return robot::subsystems::position::Position The odometry position
+	 */
+	robot::subsystems::position::Position odometryGetPosition(std::shared_ptr<robot::Robot> robot);
 
 public:
     /**

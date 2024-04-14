@@ -114,7 +114,7 @@ private:
 	 * @brief The offset of the odometry linear distance tracking wheel
 	 * 
 	 */
-	static constexpr double ODOMETRY_LINEAR_OFFSET{3.35};
+	static constexpr double ODOMETRY_LINEAR_OFFSET{-3.35};
 
 	/**
 	 * @brief The port for the odometry strafe distance tracking sensor
@@ -286,10 +286,10 @@ private:
 
 	/**
 	 * @brief The conversion from velocity to voltage on the drive
-	 * Current calculation = 12 volts to 1.43 meters per second
+	 * Current calculation = 12 volts to 16 inches per second
 	 * 
 	 */
-	static constexpr double DRIVE_VELOCITY_TO_VOLTAGE{12.0 / 1.43};
+	static constexpr double DRIVE_VELOCITY_TO_VOLTAGE{12.0 / 60.0};
 
 	/**
 	 * @brief The mass of the drive
@@ -391,7 +391,7 @@ private:
 	 * @brief The proportional constant for the boomerang linear pid controller
 	 * 
 	 */
-	static constexpr double BOOMERANG_LINEAR_KP{1.0};
+	static constexpr double BOOMERANG_LINEAR_KP{11.0};
 
 	/**
 	 * @brief The integral constant for the boomerang linear pid controller
@@ -403,13 +403,13 @@ private:
 	 * @brief The derivative constant for the boomerang linear pid controller
 	 * 
 	 */
-	static constexpr double BOOMERANG_LINEAR_KD{};
+	static constexpr double BOOMERANG_LINEAR_KD{640.0};
 
 	/**
 	 * @brief The proportional constant for the boomerang rotational pid controller
 	 * 
 	 */
-	static constexpr double BOOMERANG_ROTATIONAL_KP{};
+	static constexpr double BOOMERANG_ROTATIONAL_KP{320.0};
 
 	/**
 	 * @brief The integral constant for the boomerang rotational pid controller
@@ -421,19 +421,19 @@ private:
 	 * @brief The derivative constant for the boomerang rotational pid controller
 	 * 
 	 */
-	static constexpr double BOOMERANG_ROTATIONAL_KD{};
+	static constexpr double BOOMERANG_ROTATIONAL_KD{4800.0};
 
 	/**
 	 * @brief The lead ratio for the boomerang controller
 	 * 
 	 */
-	static constexpr double BOOMERANG_LEAD{0.5};
+	static constexpr double BOOMERANG_LEAD{0.12};
 
 	/**
 	 * @brief The target tolerance for the boomerang controller
 	 * 
 	 */
-	static constexpr double BOOMERANG_TARGET_TOLERANCE{};
+	static constexpr double BOOMERANG_TARGET_TOLERANCE{1.0};
 
 	/**
 	 * @brief The KP for the elevator PID

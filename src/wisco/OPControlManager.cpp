@@ -25,6 +25,8 @@ void OPControlManager::runOpcontrol(std::shared_ptr<control::ControlSystem> cont
                                     std::shared_ptr<user::IController> controller, 
                                     std::shared_ptr<robot::Robot> robot)
 {
+    control_system->sendCommand("BOOMERANG", "PAUSE");
+    
     user::drive::DifferentialDriveOperator drive_operator{controller, robot};
     user::elevator::ElevatorOperator elevator_operator{controller, robot};
     user::hang::HangOperator hang_operator{controller, robot};
