@@ -54,7 +54,7 @@ private:
 	 * @brief The autonomous management object
 	 *
 	 */
-	AutonomousManager autonomous_manager{};
+	AutonomousManager autonomous_manager{m_clock, m_delayer};
 
 	/**
 	 * @brief The opcontrol management object

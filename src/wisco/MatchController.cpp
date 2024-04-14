@@ -3,7 +3,8 @@
 namespace wisco
 {
 MatchController::MatchController(std::unique_ptr<IMenu>& menu, const std::shared_ptr<rtos::IClock>& clock, std::unique_ptr<rtos::IDelayer>& delayer) : 
-	m_menu{std::move(menu)}, m_clock{clock}, m_delayer{std::move(delayer)}, opcontrol_manager{m_clock, m_delayer}
+	m_menu{std::move(menu)}, m_clock{clock}, m_delayer{std::move(delayer)},
+	autonomous_manager{m_clock, m_delayer}, opcontrol_manager{m_clock, m_delayer}
 {
 
 }

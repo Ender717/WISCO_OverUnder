@@ -3,6 +3,8 @@
 
 #include <memory>
 
+#include "wisco/rtos/IClock.hpp"
+#include "wisco/rtos/IDelayer.hpp"
 #include "IAutonomous.hpp"
 
 /**
@@ -27,7 +29,27 @@ private:
 	 */
 	std::unique_ptr<IAutonomous> m_autonomous{};
 
+	/**
+	 * @brief The rtos clock
+	 * 
+	 */
+	std::shared_ptr<rtos::IClock> m_clock{};
+
+	/**
+	 * @brief The rtos delayer
+	 * 
+	 */
+	std::unique_ptr<rtos::IDelayer> m_delayer{};
+
 public:
+	/**
+	 * @brief Construct a new AutonomousManager object
+	 * 
+	 * @param clock The rtos clock
+	 * @param delayer The rtos delayer
+	 */
+	AutonomousManager(const std::shared_ptr<rtos::IClock>& clock, const std::unique_ptr<rtos::IDelayer>& delayer);
+
 	/**
 	 * @brief Set the autonomous routine
 	 *

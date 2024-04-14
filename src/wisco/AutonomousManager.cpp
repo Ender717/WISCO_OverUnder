@@ -2,6 +2,11 @@
 
 namespace wisco
 {
+AutonomousManager::AutonomousManager(const std::shared_ptr<rtos::IClock>& clock, const std::unique_ptr<rtos::IDelayer>& delayer) 
+    : m_clock{clock}, m_delayer{delayer->clone()}
+{
+
+}
 
 void AutonomousManager::setAutonomous(std::unique_ptr<IAutonomous>& autonomous)
 {
@@ -19,6 +24,6 @@ void AutonomousManager::runAutonomous(std::shared_ptr<control::ControlSystem> co
                                       std::shared_ptr<robot::Robot> robot)
 {
     if (m_autonomous)
-        m_autonomous->run(control_system, robot);
+        m_autonomous->run(m_clock, m_delayer, control_system, robot);
 }
 }

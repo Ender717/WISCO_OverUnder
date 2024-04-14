@@ -15,8 +15,10 @@ void OrangeMatchAuton::initialize(std::shared_ptr<control::ControlSystem> contro
 
 }
 
-void OrangeMatchAuton::run(std::shared_ptr<control::ControlSystem> control_system, 
-					       std::shared_ptr<robot::Robot> robot)
+void OrangeMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
+						  std::unique_ptr<rtos::IDelayer>& delayer,
+						  std::shared_ptr<control::ControlSystem> control_system, 
+					      std::shared_ptr<robot::Robot> robot)
 {
     
 }

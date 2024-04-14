@@ -43,6 +43,8 @@ public:
 	/**
 	 * @brief Initialize the autonomous
 	 *
+	 * @param control_system The control system
+	 * @param robot The robot
 	 */
 	void initialize(std::shared_ptr<control::ControlSystem> control_system, 
 					std::shared_ptr<robot::Robot> robot) override;
@@ -50,8 +52,14 @@ public:
 	/**
 	 * @brief Run the autonomous
 	 *
+	 * @param clock The rtos clock
+	 * @param delayer The rtos delayer
+	 * @param control_system The control system
+	 * @param robot The robot
 	 */
-	void run(std::shared_ptr<control::ControlSystem> control_system, 
+	void run(std::shared_ptr<rtos::IClock> clock,
+			 std::unique_ptr<rtos::IDelayer>& delayer,
+			 std::shared_ptr<control::ControlSystem> control_system, 
 			 std::shared_ptr<robot::Robot> robot) override;
 };
 }

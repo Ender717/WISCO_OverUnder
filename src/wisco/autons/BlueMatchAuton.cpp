@@ -77,8 +77,10 @@ void BlueMatchAuton::initialize(std::shared_ptr<control::ControlSystem> control_
 
 }
 
-void BlueMatchAuton::run(std::shared_ptr<control::ControlSystem> control_system, 
-					     std::shared_ptr<robot::Robot> robot)
+void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
+						  std::unique_ptr<rtos::IDelayer>& delayer,
+						  std::shared_ptr<control::ControlSystem> control_system, 
+					      std::shared_ptr<robot::Robot> robot)
 {
 	odometrySetPosition(robot, 0, 0, 0);
     boomerangGoToPoint(control_system, robot, 36.0, 48.0, 24.0, M_PI / 4);

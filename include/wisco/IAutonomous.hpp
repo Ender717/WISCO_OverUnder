@@ -4,6 +4,8 @@
 #include <memory>
 #include <string>
 
+#include "rtos/IClock.hpp"
+#include "rtos/IDelayer.hpp"
 #include "control/ControlSystem.hpp"
 #include "robot/Robot.hpp"
 
@@ -39,6 +41,8 @@ public:
 	/**
 	 * @brief Initialize the autonomous
 	 *
+	 * @param control_system The control system
+	 * @param robot The robot
 	 */
 	virtual void initialize(std::shared_ptr<control::ControlSystem> control_system, 
 							std::shared_ptr<robot::Robot> robot) = 0;
@@ -46,8 +50,14 @@ public:
 	/**
 	 * @brief Run the autonomous
 	 *
+	 * @param clock The rtos clock
+	 * @param delayer The rtos delayer
+	 * @param control_system The control system
+	 * @param robot The robot
 	 */
-	virtual void run(std::shared_ptr<control::ControlSystem> control_system, 
+	virtual void run(std::shared_ptr<rtos::IClock> clock,
+					 std::unique_ptr<rtos::IDelayer>& delayer,
+					 std::shared_ptr<control::ControlSystem> control_system, 
 					 std::shared_ptr<robot::Robot> robot) = 0;
 };
 
