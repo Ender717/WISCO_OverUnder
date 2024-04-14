@@ -13,6 +13,29 @@ std::shared_ptr<control::ControlSystem> BlueConfiguration::buildControlSystem()
 {
     std::shared_ptr<control::ControlSystem> control_system{std::make_shared<control::ControlSystem>()};
 
+    std::unique_ptr<rtos::IClock> pros_clock{std::make_unique<pros_adapters::ProsClock>()};
+    std::unique_ptr<rtos::IDelayer> pros_delayer{std::make_unique<pros_adapters::ProsDelayer>()};
+
+    wisco::control::boomerang::PIDBoomerangBuilder pid_boomerang_builder{};
+    std::unique_ptr<rtos::IMutex> boomerang_pros_mutex{std::make_unique<pros_adapters::ProsMutex>()};
+    std::unique_ptr<rtos::ITask> boomerang_pros_task{std::make_unique<pros_adapters::ProsTask>()};
+    wisco::control::PID boomerang_linear_pid{pros_clock, BOOMERANG_LINEAR_KP, BOOMERANG_LINEAR_KI, BOOMERANG_LINEAR_KD};
+    wisco::control::PID boomerang_rotational_pid{pros_clock, BOOMERANG_ROTATIONAL_KP, BOOMERANG_ROTATIONAL_KI, BOOMERANG_ROTATIONAL_KD};
+    std::unique_ptr<wisco::control::boomerang::IBoomerang> pid_boomerang
+    {
+        pid_boomerang_builder.
+        withDelayer(pros_delayer)->
+        withMutex(boomerang_pros_mutex)->
+        withTask(boomerang_pros_task)->
+        withLinearPID(boomerang_linear_pid)->
+        withRotationalPID(boomerang_rotational_pid)->
+        withLead(BOOMERANG_LEAD)->
+        withTargetTolerance(BOOMERANG_TARGET_TOLERANCE)->
+        build()
+    };
+    std::unique_ptr<wisco::control::AControl> boomerang_control{std::make_unique<wisco::control::boomerang::BoomerangControl>(pid_boomerang)};
+    control_system->addControl(boomerang_control);
+
     return control_system;
 }
 

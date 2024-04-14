@@ -51,6 +51,10 @@
 #include "wisco/robot/subsystems/wings/PistonWingsBuilder.hpp"
 #include "wisco/robot/subsystems/wings/WingsSubsystem.hpp"
 
+// boomerang includes
+#include "wisco/control/boomerang/PIDBoomerangBuilder.hpp"
+#include "wisco/control/boomerang/BoomerangControl.hpp"
+
 #include "wisco/IConfiguration.hpp"
 
 /**
@@ -382,6 +386,54 @@ private:
 	 * 
 	 */
 	static constexpr double BALL_DETECTOR_DISTANCE_OFFSET{};
+
+	/**
+	 * @brief The proportional constant for the boomerang linear pid controller
+	 * 
+	 */
+	static constexpr double BOOMERANG_LINEAR_KP{1.0};
+
+	/**
+	 * @brief The integral constant for the boomerang linear pid controller
+	 * 
+	 */
+	static constexpr double BOOMERANG_LINEAR_KI{};
+
+	/**
+	 * @brief The derivative constant for the boomerang linear pid controller
+	 * 
+	 */
+	static constexpr double BOOMERANG_LINEAR_KD{};
+
+	/**
+	 * @brief The proportional constant for the boomerang rotational pid controller
+	 * 
+	 */
+	static constexpr double BOOMERANG_ROTATIONAL_KP{};
+
+	/**
+	 * @brief The integral constant for the boomerang rotational pid controller
+	 * 
+	 */
+	static constexpr double BOOMERANG_ROTATIONAL_KI{};
+
+	/**
+	 * @brief The derivative constant for the boomerang rotational pid controller
+	 * 
+	 */
+	static constexpr double BOOMERANG_ROTATIONAL_KD{};
+
+	/**
+	 * @brief The lead ratio for the boomerang controller
+	 * 
+	 */
+	static constexpr double BOOMERANG_LEAD{0.5};
+
+	/**
+	 * @brief The target tolerance for the boomerang controller
+	 * 
+	 */
+	static constexpr double BOOMERANG_TARGET_TOLERANCE{};
 
 	/**
 	 * @brief The KP for the elevator PID
