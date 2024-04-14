@@ -102,7 +102,7 @@ private:
 	 * @brief The port for the odometry linear distance tracking sensor
 	 * 
 	 */
-	static constexpr uint8_t ODOMETRY_LINEAR_PORT{15};
+	static constexpr int8_t ODOMETRY_LINEAR_PORT{15};
 
 	/**
 	 * @brief The radius of the odometry linear distance tracking wheel
@@ -120,13 +120,13 @@ private:
 	 * @brief The port for the odometry strafe distance tracking sensor
 	 * 
 	 */
-	static constexpr uint8_t ODOMETRY_STRAFE_PORT{16};
+	static constexpr int8_t ODOMETRY_STRAFE_PORT{16};
 
 	/**
 	 * @brief The radius of the odometry strafe distance tracking wheel
 	 * 
 	 */
-	static constexpr double ODOMETRY_STRAFE_RADIUS{1.22};
+	static constexpr double ODOMETRY_STRAFE_RADIUS{-1.22};
 
 	/**
 	 * @brief The offset of the odometry strafe distance tracking wheel

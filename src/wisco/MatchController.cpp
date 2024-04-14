@@ -52,13 +52,11 @@ void MatchController::competitionInitialize()
 
 void MatchController::autonomous()
 {
-	if (robot)
-		autonomous_manager.runAutonomous(control_system, robot);
+	autonomous_manager.runAutonomous(control_system, robot);
 }
 
 void MatchController::operatorControl()
 {
-	if (controller && robot)
-		opcontrol_manager.runOpcontrol(control_system, controller, robot);
+	opcontrol_manager.runOpcontrol(control_system, controller, robot);
 }
 } // namespace wisco

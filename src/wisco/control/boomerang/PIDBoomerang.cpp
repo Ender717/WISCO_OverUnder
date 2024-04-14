@@ -1,4 +1,6 @@
 #include "wisco/control/boomerang/PIDBoomerang.hpp"
+#include "pros/screen.h"
+#include "pros/screen.hpp"
 
 namespace wisco
 {
@@ -49,7 +51,9 @@ void PIDBoomerang::setDriveVelocity(robot::subsystems::drive::Velocity velocity)
 {
     if (control_robot)
     {
-        control_robot->sendCommand(DRIVE_SUBSYSTEM_NAME, DRIVE_SET_VELOCITY_COMMAND_NAME, velocity);
+        //pros::screen::print(pros::E_TEXT_LARGE_CENTER, 1, "Left V: %7.2f", velocity.left_velocity);
+        //pros::screen::print(pros::E_TEXT_LARGE_CENTER, 3, "Right V: %7.2f", velocity.right_velocity);
+        //control_robot->sendCommand(DRIVE_SUBSYSTEM_NAME, DRIVE_SET_VELOCITY_COMMAND_NAME, velocity);
     }
 }
 
@@ -89,15 +93,25 @@ void PIDBoomerang::updateVelocity(robot::subsystems::position::Position position
 {
     double x_error{carrot_point.getX() - position.x};
     double y_error{carrot_point.getY() - position.y};
+    pros::screen::print(pros::E_TEXT_LARGE_CENTER, 1, "Robot X: %7.2f", position.x);
+    pros::screen::print(pros::E_TEXT_LARGE_CENTER, 3, "Robot Y: %7.2f", position.y);
+    pros::screen::print(pros::E_TEXT_LARGE_CENTER, 5, "Robot A: %7.2f", position.theta);
+
     double rotational_error{bindRadians(position.theta - std::atan2(y_error, x_error))};
     double linear_error{std::sin(rotational_error) * std::sqrt(std::pow(x_error, 2) + std::pow(y_error, 2))};
+    pros::screen::print(pros::E_TEXT_LARGE_CENTER, 7, "Linear: %7.2f", linear_error);
 
     double linear_control{m_linear_pid.getControlValue(0, linear_error)};
     double rotational_control{m_rotational_pid.getControlValue(0, rotational_error)};
 
     double velocity_constant{motion_velocity / linear_control};
-    double left_velocity{(linear_control - rotational_control) * velocity_constant};
-    double right_velocity{(linear_control + rotational_control) * velocity_constant};
+    double left_velocity{linear_control - rotational_control};
+    double right_velocity{linear_control + rotational_control};
+    if (std::abs((left_velocity + right_velocity) / 2) > motion_velocity)
+    {
+        left_velocity *= velocity_constant;
+        right_velocity *= velocity_constant;
+    }
     robot::subsystems::drive::Velocity velocity{left_velocity, right_velocity};
     setDriveVelocity(velocity);
 }

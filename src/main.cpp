@@ -1,5 +1,6 @@
 #include "main.h"
-#include "wisco/control/path/QuinticBezierSpline.hpp"
+#include "pros/rotation.hpp"
+#include "pros/screen.h"
 #include "pros/screen.hpp"
 
 #define TESTING false
@@ -14,38 +15,15 @@ static wisco::MatchController match_controller{MatchControllerFactory::createMat
  */
 void initialize()
 {
-	/*
-	auto drive_test{wisco::testing::TestFactory::createDriveTest()};
-	drive_test->initialize();
-	drive_test->runLinearTest();
-	pros::delay(2000);
-	drive_test->runTurningTest();
-	*/
 	if (TESTING)
 	{
-		std::vector<wisco::control::path::Point> control_points
+		static constexpr int8_t PORT{-16};
+		pros::Rotation rotation{PORT};
+		while (true)
 		{
-			wisco::control::path::Point{36.0, 24.0},
-			wisco::control::path::Point{36.0, 36.0},
-			wisco::control::path::Point{60.0, 36.0},
-			wisco::control::path::Point{60.0, 60.0},
-			wisco::control::path::Point{60.0, 84.0},
-			wisco::control::path::Point{36.0, 108.0},
-			wisco::control::path::Point{36.0, 132.0}
-		};
-		std::vector<wisco::control::path::Point> spline{wisco::control::path::QuinticBezierSpline::calculate(control_points)};
-
-		pros::screen::set_pen(pros::Color::yellow);
-		for (auto point : spline)
-		{
-			pros::screen::fill_circle(static_cast<int16_t>(point.getX()), static_cast<int16_t>(point.getY()), 1);
+			pros::screen::print(pros::E_TEXT_LARGE_CENTER, 3, "Value: %8d", rotation.get_position());
+			pros::delay(10);
 		}
-		pros::screen::set_pen(pros::Color::red);
-		for (auto point : control_points)
-		{
-			pros::screen::fill_circle(static_cast<int16_t>(point.getX()), static_cast<int16_t>(point.getY()), 3);
-		}
-		while (true);
 	}	
 	else
 	{

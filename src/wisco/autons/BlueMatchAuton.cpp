@@ -53,7 +53,7 @@ void BlueMatchAuton::initialize(std::shared_ptr<control::ControlSystem> control_
 void BlueMatchAuton::run(std::shared_ptr<control::ControlSystem> control_system, 
 					     std::shared_ptr<robot::Robot> robot)
 {
-    
+    boomerangGoToPoint(control_system, robot, 48.0, 24.0, 0.0, 0.0);
 }
 }
 }
