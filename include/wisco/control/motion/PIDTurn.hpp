@@ -1,5 +1,5 @@
-#ifndef WISCO_CONTROL_BOOMERANG_PID_BOOMERANG_HPP
-#define WISCO_CONTROL_BOOMERANG_PID_BOOMERANG_HPP
+#ifndef WISCO_CONTROL_MOTION_PID_TURN_HPP
+#define WISCO_CONTROL_MOTION_PID_TURN_HPP
 
 #include <cmath>
 #include <memory>
@@ -12,11 +12,9 @@
 #include "wisco/rtos/IDelayer.hpp"
 #include "wisco/rtos/IMutex.hpp"
 #include "wisco/rtos/ITask.hpp"
-
-#include "wisco/control/path/Point.hpp"
 #include "wisco/control/PID.hpp"
 
-#include "IBoomerang.hpp"
+#include "ITurn.hpp"
 
 /**
  * @brief Namespace for all library code
@@ -35,19 +33,19 @@ namespace control
 {
 
 /**
- * @brief Namespace for boomerang controller components
+ * @brief Namespace for basic motion controls
  * @author Nathan Sandvig
  * 
  */
-namespace boomerang
+namespace motion
 {
 
 /**
- * @brief Boomerang controller for the robot drivetrain
+ * @brief Interface for turn motion controls
  * @author Nathan Sandvig
  * 
  */
-class PIDBoomerang : public IBoomerang
+class PIDTurn : public ITurn
 {
 private:
     /**
@@ -81,6 +79,12 @@ private:
     static constexpr char ODOMETRY_GET_POSITION_STATE_NAME[]{"GET POSITION"};
 
     /**
+     * @brief The distance to calculate a point at for turn to angle
+     * 
+     */
+    static constexpr double TURN_TO_ANGLE_DISTANCE{120000};
+
+    /**
      * @brief The task loop function for background updates
      * 
      * @param params The task parameters
@@ -106,22 +110,10 @@ private:
     std::unique_ptr<rtos::ITask> m_task{};
 
     /**
-     * @brief The linear PID controller
+     * @brief The PID controller
      * 
      */
-    PID m_linear_pid{};
-
-    /**
-     * @brief The rotational PID controller
-     * 
-     */
-    PID m_rotational_pid{};
-
-    /**
-     * @brief The lead ratio for the carrot point
-     * 
-     */
-    double m_lead{};
+    PID m_pid{};
 
     /**
      * @brief The acceptable tolerance to reach the target
@@ -136,10 +128,16 @@ private:
     std::shared_ptr<robot::Robot> control_robot{};
 
     /**
-     * @brief The motion velocity in inches per second
+     * @brief The turn direction
      * 
      */
-    double motion_velocity{};
+    ETurnDirection turn_direction{};
+
+    /**
+     * @brief The turn velocity in radians per second
+     * 
+     */
+    double turn_velocity{};
     
     /**
      * @brief The target x-coordinate
@@ -152,12 +150,6 @@ private:
      * 
      */
     double target_y{};
-
-    /**
-     * @brief The target angle
-     * 
-     */
-    double target_theta{};
 
     /**
      * @brief Whether or not the motion has been paused
@@ -192,52 +184,55 @@ private:
     robot::subsystems::position::Position getOdometryPosition();
 
     /**
-     * @brief Calculates the distance to the target position
+     * @brief Calculates the angle to the target position
      * 
      * @param position The current position
-     * @return double The distance to the target position
+     * @return double The angle to the target position
      */
-    double calculateDistanceToTarget(wisco::robot::subsystems::position::Position position);
+    double calculateAngleToTarget(wisco::robot::subsystems::position::Position position);
 
     /**
-     * @brief Calculates the carrot point
+     * @brief Calculates the velocity of the drive
      * 
-     * @param distance The distance to the target point
-     * @return path::Point The carrot point
+     * @param robot_angle The robot angle
+     * @param target_angle The angle to the target point
+     * @return robot::subsystems::drive::Velocity The drive velocity
      */
-    path::Point calculateCarrotPoint(double distance);
+    robot::subsystems::drive::Velocity calculateDriveVelocity(double robot_angle, double target_angle);
 
+public:
     /**
-     * @brief Updates the drive velocity
-     * 
-     * @param position The current position
-     * @param carrot_point The carrot point
-     */
-    void updateVelocity(robot::subsystems::position::Position position, path::Point carrot_point);
-
-public: 
-    /**
-     * @brief Initializes the boomerang controller
+     * @brief Initializes the turn
      * 
      */
     void initialize() override;
 
     /**
-     * @brief Runs the boomerang controller
+     * @brief Runs the turn
      * 
      */
     void run() override;
 
     /**
-     * @brief Moves to the target position
+     * @brief Turns to the target angle
      * 
      * @param robot The robot
-     * @param velocity The motion velocity
+     * @param velocity The angular velocity
+     * @param theta The target angle
+     * @param direction The turn direction (default AUTO)
+     */
+    void turnToAngle(const std::shared_ptr<robot::Robot>& robot, double velocity, double theta, ETurnDirection direction = ETurnDirection::AUTO) override;
+
+    /**
+     * @brief Turns to the target point
+     * 
+     * @param robot The robot
+     * @param velocity The angular velocity
      * @param x The target x-coordinate
      * @param y The target y-coordinate
-     * @param theta The target angle
+     * @param direction The turn direction (default AUTO)
      */
-    void goToPosition(const std::shared_ptr<robot::Robot>& robot, double velocity, double x, double y, double theta) override;
+    void turnToPoint(const std::shared_ptr<robot::Robot>& robot, double velocity, double x, double y, ETurnDirection direction = ETurnDirection::AUTO) override;
 
     /**
      * @brief Pauses the current motion
@@ -281,25 +276,11 @@ public:
     void setTask(std::unique_ptr<rtos::ITask>& task);
 
     /**
-     * @brief Sets the linear PID controller
+     * @brief Sets the PID controller
      * 
-     * @param pid The linear PID controller
+     * @param pid The PID controller
      */
-    void setLinearPID(PID linear_pid);
-
-    /**
-     * @brief Sets the rotational PID controller
-     * 
-     * @param rotational_pid The rotational PID controller
-     */
-    void setRotationalPID(PID rotational_pid);
-
-    /**
-     * @brief Sets the lead ratio
-     * 
-     * @param lead The lead ratio
-     */
-    void setLead(double lead);
+    void setPID(PID pid);
 
     /**
      * @brief Sets the target tolerance
@@ -308,7 +289,7 @@ public:
      */
     void setTargetTolerance(double target_tolerance);
 };
-} // namespace boomerang
+} // namespace motion
 } // namespace control
 } // namespace wisco
 
