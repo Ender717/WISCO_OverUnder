@@ -10,8 +10,7 @@ namespace elevator
 {
 void PIDElevator::taskLoop(void* params)
 {
-    void** parameters{static_cast<void**>(params)};
-    PIDElevator* instance{static_cast<PIDElevator*>(parameters[0])};
+    PIDElevator* instance{static_cast<PIDElevator*>(params)};
 
     while (true)
     {
@@ -50,11 +49,7 @@ void PIDElevator::initialize()
 void PIDElevator::run()
 {
     if (m_task)
-    {
-        void** params{static_cast<void**>(malloc(1 * sizeof(void*)))};
-        params[0] = this;
-        m_task->start(&PIDElevator::taskLoop, params);
-    }
+        m_task->start(&PIDElevator::taskLoop, this);
 }
 
 double PIDElevator::getPosition()

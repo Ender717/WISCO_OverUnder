@@ -76,6 +76,7 @@ public:
 	void sendCommand(std::string control_name, std::string command_name, ...);
 
 	/**
+	 * @todo Change to a template to remove memory allocation
 	 * @brief Gets a state of a control
 	 *
 	 * @param control_name The name of the control

@@ -184,11 +184,12 @@ private:
 	 * @param robot The robot
 	 * @param velocity The turn velocity
 	 * @param theta The target angle
+	 * @param reversed Whether or not to turn to face away from the point
 	 * @param direction The turn direction (default auto)
 	 */
 	void motionTurnToAngle(std::shared_ptr<control::ControlSystem> control_system, 
 							std::shared_ptr<robot::Robot> robot, 
-							double velocity, double theta, 
+							double velocity, double theta, bool reversed = false,
 							control::motion::ETurnDirection direction = control::motion::ETurnDirection::AUTO);
 
 	/**
@@ -199,11 +200,12 @@ private:
 	 * @param velocity The turn velocity
 	 * @param x The target x-coordinate
 	 * @param y The target y-coordinate
+	 * @param reversed Whether or not to turn to face away from the point
 	 * @param direction The turn direction (default auto)
 	 */
 	void motionTurnToPoint(std::shared_ptr<control::ControlSystem> control_system, 
 							std::shared_ptr<robot::Robot> robot, 
-							double velocity, double x, double y, 
+							double velocity, double x, double y, bool reversed = false,
 							control::motion::ETurnDirection direction = control::motion::ETurnDirection::AUTO);
 
 	/**

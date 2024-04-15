@@ -10,8 +10,7 @@ namespace drive
 {
 void KinematicDifferentialDrive::taskLoop(void* params)
 {
-    void** parameters{static_cast<void**>(params)};
-    KinematicDifferentialDrive* instance{static_cast<KinematicDifferentialDrive*>(parameters[0])};
+    KinematicDifferentialDrive* instance{static_cast<KinematicDifferentialDrive*>(params)};
 
     while (true)
     {
@@ -83,11 +82,7 @@ void KinematicDifferentialDrive::initialize()
 void KinematicDifferentialDrive::run()
 {
     if (m_task)
-    {
-        void** params{static_cast<void**>(malloc(1 * sizeof(void*)))};
-        params[0] = this;
-        m_task->start(&KinematicDifferentialDrive::taskLoop, params);
-    }
+        m_task->start(&KinematicDifferentialDrive::taskLoop, this);
 }
 
 Velocity KinematicDifferentialDrive::getVelocity()

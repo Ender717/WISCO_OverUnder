@@ -10,8 +10,7 @@ namespace loader
 {
 void PIDLoader::taskLoop(void* params)
 {
-    void** parameters{static_cast<void**>(params)};
-    PIDLoader* instance{static_cast<PIDLoader*>(parameters[0])};
+    PIDLoader* instance{static_cast<PIDLoader*>(params)};
 
     while (true)
     {
@@ -71,11 +70,7 @@ void PIDLoader::initialize()
 void PIDLoader::run()
 {
     if (m_task)
-    {
-        void** params{static_cast<void**>(malloc(1 * sizeof(void*)))};
-        params[0] = this;
-        m_task->start(&PIDLoader::taskLoop, params);
-    }
+        m_task->start(&PIDLoader::taskLoop, this);
 }
 
 void PIDLoader::doLoad()

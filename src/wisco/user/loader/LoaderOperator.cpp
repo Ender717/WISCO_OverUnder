@@ -26,17 +26,31 @@ void LoaderOperator::doReady()
 
 bool LoaderOperator::isLoaded()
 {
-    bool* result{static_cast<bool*>(m_robot->getState(SUBSYSTEM_NAME, IS_LOADED_STATE_NAME))};
-    bool loaded{*result};
-    delete result;
+    bool loaded{};
+    if (m_robot)
+    {
+        bool* result{static_cast<bool*>(m_robot->getState(SUBSYSTEM_NAME, IS_LOADED_STATE_NAME))};
+        if (result)
+        {
+            loaded = *result;
+            delete result;
+        }
+    }
     return loaded;
 }
 
 bool LoaderOperator::isReady()
 {
-    bool* result{static_cast<bool*>(m_robot->getState(SUBSYSTEM_NAME, IS_READY_STATE_NAME))};
-    bool ready{*result};
-    delete result;
+    bool ready{};
+    if (m_robot)
+    {
+        bool* result{static_cast<bool*>(m_robot->getState(SUBSYSTEM_NAME, IS_READY_STATE_NAME))};
+        if (result)
+        {
+            ready = *result;
+            delete result;
+        }
+    }
     return ready;
 }
 

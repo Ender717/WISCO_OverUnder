@@ -14,9 +14,7 @@ std::vector<Point> QuinticBezierSpline::calculate(std::vector<Point>& control_po
     // Create the beziers
     std::vector<QuinticBezier> beziers{};
     for (int i{}; i < control_points.size() - 1; i += 3)
-    {
         beziers.push_back(QuinticBezier{control_points[i], Point{}, control_points[i + 1], control_points[i + 2], Point{}, control_points[i + 3]});
-    }
 
     // Calculate the smoothing points
     beziers[0].c0 = (beziers[0].k0 + beziers[0].c1) / 2.0;
@@ -32,12 +30,9 @@ std::vector<Point> QuinticBezierSpline::calculate(std::vector<Point>& control_po
     // Calculate the spline
     std::vector<Point> spline{};
     for (auto& bezier : beziers)
-    {
         for (double t{0.0}; t < 1.0; t += 0.02)
-        {
             spline.push_back(bezier.calculatePoint(t));
-        }
-    }
+
     return spline;
 }
 } // namespace path

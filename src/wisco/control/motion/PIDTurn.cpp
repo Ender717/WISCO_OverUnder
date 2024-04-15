@@ -1,6 +1,4 @@
 #include "wisco/control/motion/PIDTurn.hpp"
-#include "pros/screen.h"
-#include "pros/screen.hpp"
 
 namespace wisco
 {
@@ -10,8 +8,7 @@ namespace motion
 {
 void PIDTurn::taskLoop(void* params)
 {
-    void** parameters{static_cast<void**>(params)};
-    PIDTurn* instance{static_cast<PIDTurn*>(parameters[0])};
+    PIDTurn* instance{static_cast<PIDTurn*>(params)};
 
     while (true)
     {
@@ -28,6 +25,8 @@ void PIDTurn::taskUpdate()
     {
         auto position{getOdometryPosition()};
         double target_angle{calculateAngleToTarget(position)};
+        if (turn_reversed)
+            target_angle += M_PI;
         double error{bindRadians(target_angle - position.theta)};
         if (std::abs(error) < m_target_tolerance && std::abs(position.thetaV) < m_target_velocity)
         {
@@ -105,7 +104,8 @@ robot::subsystems::drive::Velocity PIDTurn::calculateDriveVelocity(double robot_
             error -= 2 * M_PI;
         else if (turn_direction == ETurnDirection::COUNTERCLOCKWISE && error < 0)
             error += 2 * M_PI;
-        if (std::abs(error) < M_PI)
+
+        if (std::abs(error) < M_PI / 2)
             forced_direction_reached = true;
     }
 
@@ -124,14 +124,10 @@ void PIDTurn::initialize()
 void PIDTurn::run()
 {
     if (m_task)
-    {
-        void** params{static_cast<void**>(malloc(1 * sizeof(void*)))};
-        params[0] = this;
-        m_task->start(&PIDTurn::taskLoop, params);
-    }
+        m_task->start(&PIDTurn::taskLoop, this);
 }
 
-void PIDTurn::turnToAngle(const std::shared_ptr<robot::Robot>& robot, double velocity, double theta, ETurnDirection direction)
+void PIDTurn::turnToAngle(const std::shared_ptr<robot::Robot>& robot, double velocity, double theta, bool reversed, ETurnDirection direction)
 {
     if (m_mutex)
         m_mutex->take();
@@ -144,6 +140,7 @@ void PIDTurn::turnToAngle(const std::shared_ptr<robot::Robot>& robot, double vel
 
     turn_direction = direction;
     turn_velocity = velocity * drive_radius;
+    turn_reversed = reversed;
     target_x = position.x + (TURN_TO_ANGLE_DISTANCE * std::cos(theta));
     target_y = position.y + (TURN_TO_ANGLE_DISTANCE * std::sin(theta));
     target_reached = false;
@@ -153,7 +150,7 @@ void PIDTurn::turnToAngle(const std::shared_ptr<robot::Robot>& robot, double vel
         m_mutex->give();
 }
 
-void PIDTurn::turnToPoint(const std::shared_ptr<robot::Robot>& robot, double velocity, double x, double y, ETurnDirection direction)
+void PIDTurn::turnToPoint(const std::shared_ptr<robot::Robot>& robot, double velocity, double x, double y, bool reversed, ETurnDirection direction)
 {
     if (m_mutex)
         m_mutex->take();
@@ -165,6 +162,7 @@ void PIDTurn::turnToPoint(const std::shared_ptr<robot::Robot>& robot, double vel
 
     turn_direction = direction;
     turn_velocity = velocity * drive_radius;
+    turn_reversed = reversed;
     target_x = x;
     target_y = y;
     target_reached = false;

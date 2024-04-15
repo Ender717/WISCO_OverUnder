@@ -63,9 +63,10 @@ public:
      * @param robot The robot
      * @param velocity The angular velocity
      * @param theta The target angle
+     * @param reversed Whether or not to turn to face away from the angle
      * @param direction The turn direction (default AUTO)
      */
-    virtual void turnToAngle(const std::shared_ptr<robot::Robot>& robot, double velocity, double theta, ETurnDirection direction = ETurnDirection::AUTO) = 0;
+    virtual void turnToAngle(const std::shared_ptr<robot::Robot>& robot, double velocity, double theta, bool reversed = false, ETurnDirection direction = ETurnDirection::AUTO) = 0;
 
     /**
      * @brief Turns to the target point
@@ -74,9 +75,10 @@ public:
      * @param velocity The angular velocity
      * @param x The target x-coordinate
      * @param y The target y-coordinate
+     * @param reversed Whether or not to turn to face away from the point
      * @param direction The turn direction (default AUTO)
      */
-    virtual void turnToPoint(const std::shared_ptr<robot::Robot>& robot, double velocity, double x, double y, ETurnDirection direction = ETurnDirection::AUTO) = 0;
+    virtual void turnToPoint(const std::shared_ptr<robot::Robot>& robot, double velocity, double x, double y, bool reversed = false, ETurnDirection direction = ETurnDirection::AUTO) = 0;
 
     /**
      * @brief Pauses the current motion

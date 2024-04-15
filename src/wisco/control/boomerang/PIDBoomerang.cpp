@@ -8,8 +8,7 @@ namespace boomerang
 {
 void PIDBoomerang::taskLoop(void* params)
 {
-    void** parameters{static_cast<void**>(params)};
-    PIDBoomerang* instance{static_cast<PIDBoomerang*>(parameters[0])};
+    PIDBoomerang* instance{static_cast<PIDBoomerang*>(params)};
 
     while (true)
     {
@@ -117,11 +116,7 @@ void PIDBoomerang::initialize()
 void PIDBoomerang::run()
 {
     if (m_task)
-    {
-        void** params{static_cast<void**>(malloc(1 * sizeof(void*)))};
-        params[0] = this;
-        m_task->start(&PIDBoomerang::taskLoop, params);
-    }
+        m_task->start(&PIDBoomerang::taskLoop, this);
 }
 
 void PIDBoomerang::goToPosition(const std::shared_ptr<robot::Robot>& robot, double velocity, double x, double y, double theta)

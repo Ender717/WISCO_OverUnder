@@ -10,8 +10,7 @@ namespace intake
 {
 void PIDIntake::taskLoop(void* params)
 {
-    void** parameters{static_cast<void**>(params)};
-    PIDIntake* instance{static_cast<PIDIntake*>(parameters[0])};
+    PIDIntake* instance{static_cast<PIDIntake*>(params)};
 
     while (true)
     {
@@ -48,11 +47,7 @@ void PIDIntake::initialize()
 void PIDIntake::run()
 {
     if (m_task)
-    {
-        void** params{static_cast<void**>(malloc(1 * sizeof(void*)))};
-        params[0] = this;
-        m_task->start(&PIDIntake::taskLoop, params);
-    }
+        m_task->start(&PIDIntake::taskLoop, this);
 }
 
 double PIDIntake::getVelocity()

@@ -32,8 +32,9 @@ void MotionControl::command(std::string command_name, va_list& args)
         std::shared_ptr<robot::Robot> robot{*static_cast<std::shared_ptr<robot::Robot>*>(robot_ptr)};
         double velocity{va_arg(args, double)};
         double theta{va_arg(args, double)};
+        bool reversed{va_arg(args, bool)};
         ETurnDirection direction{va_arg(args, ETurnDirection)};
-        m_turn->turnToAngle(robot, velocity, theta, direction);
+        m_turn->turnToAngle(robot, velocity, theta, reversed, direction);
     }
     else if (command_name == TURN_TO_POINT_COMMAND_NAME)
     {
@@ -42,8 +43,9 @@ void MotionControl::command(std::string command_name, va_list& args)
         double velocity{va_arg(args, double)};
         double x{va_arg(args, double)};
         double y{va_arg(args, double)};
+        bool reversed{va_arg(args, bool)};
         ETurnDirection direction{va_arg(args, ETurnDirection)};
-        m_turn->turnToPoint(robot, velocity, x, y, direction);
+        m_turn->turnToPoint(robot, velocity, x, y, reversed, direction);
     }
     else if (command_name == PAUSE_TURN_COMMAND_NAME)
     {

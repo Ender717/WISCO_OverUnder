@@ -11,8 +11,7 @@ namespace position
 {
 void InertialOdometry::taskLoop(void* params)
 {
-    void** parameters{static_cast<void**>(params)};
-    InertialOdometry* instance{static_cast<InertialOdometry*>(parameters[0])};
+    InertialOdometry* instance{static_cast<InertialOdometry*>(params)};
 
     while (true)
     {
@@ -115,11 +114,7 @@ void InertialOdometry::initialize()
 void InertialOdometry::run()
 {
     if (m_task)
-    {
-        void** params{static_cast<void**>(malloc(1 * sizeof(void*)))};
-        params[0] = this;
-        m_task->start(&InertialOdometry::taskLoop, params);
-    }
+        m_task->start(&InertialOdometry::taskLoop, this);
 }
 
 void InertialOdometry::setPosition(Position position)

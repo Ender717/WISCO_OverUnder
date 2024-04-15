@@ -150,6 +150,12 @@ private:
      * 
      */
     double turn_velocity{};
+
+    /**
+     * @brief Whether or not the turn should be reversed
+     * 
+     */
+    bool turn_reversed{};
     
     /**
      * @brief The target x-coordinate
@@ -244,9 +250,11 @@ public:
      * @param robot The robot
      * @param velocity The angular velocity
      * @param theta The target angle
+     * @param reversed Whether or not to turn to face away from the point
      * @param direction The turn direction (default AUTO)
      */
-    void turnToAngle(const std::shared_ptr<robot::Robot>& robot, double velocity, double theta, ETurnDirection direction = ETurnDirection::AUTO) override;
+    void turnToAngle(const std::shared_ptr<robot::Robot>& robot, double velocity, double theta, 
+                     bool reversed = false, ETurnDirection direction = ETurnDirection::AUTO) override;
 
     /**
      * @brief Turns to the target point
@@ -255,9 +263,11 @@ public:
      * @param velocity The angular velocity
      * @param x The target x-coordinate
      * @param y The target y-coordinate
+     * @param reversed Whether or not to turn to face away from the point
      * @param direction The turn direction (default AUTO)
      */
-    void turnToPoint(const std::shared_ptr<robot::Robot>& robot, double velocity, double x, double y, ETurnDirection direction = ETurnDirection::AUTO) override;
+    void turnToPoint(const std::shared_ptr<robot::Robot>& robot, double velocity, double x, double y, 
+                     bool reversed = false, ETurnDirection direction = ETurnDirection::AUTO) override;
 
     /**
      * @brief Pauses the current motion

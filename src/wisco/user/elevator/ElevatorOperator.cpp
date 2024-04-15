@@ -15,26 +15,47 @@ ElevatorOperator::ElevatorOperator(const std::shared_ptr<user::IController>& con
 
 double ElevatorOperator::getElevatorPosition()
 {
-    double* result{static_cast<double*>(m_robot->getState(ELEVATOR_SUBSYSTEM_NAME, GET_POSITION_STATE))};
-    double position{*result};
-    delete result;
+    double position{};
+    if (m_robot)
+    {
+        double* result{static_cast<double*>(m_robot->getState(ELEVATOR_SUBSYSTEM_NAME, GET_POSITION_STATE))};
+        if (result)
+        {
+            position = *result;
+            delete result;
+        }
+    }
     return position;
 }
 
 double ElevatorOperator::getCapDistance()
 {
-    double* result{static_cast<double*>(m_robot->getState(ELEVATOR_SUBSYSTEM_NAME, CAP_DISTANCE_STATE_NAME))};
-    double distance{*result};
-    delete result;
+    double distance{};
+    if (m_robot)
+    {
+        double* result{static_cast<double*>(m_robot->getState(ELEVATOR_SUBSYSTEM_NAME, CAP_DISTANCE_STATE_NAME))};
+        if (result)
+        {
+            distance = *result;
+            delete result;
+        }
+    }
     return distance;
 }
 
 bool ElevatorOperator::getHangArmUp()
 {
-    bool* result{static_cast<bool*>(m_robot->getState(HANG_SUBSYSTEM_NAME, HANG_ARM_UP_STATE_NAME))};
-    bool hang_arm_up{*result};
-    delete result;
-    return hang_arm_up;
+    bool arm_up{};
+    if (m_robot)
+    {
+        bool* result{static_cast<bool*>(m_robot->getState(HANG_SUBSYSTEM_NAME, HANG_ARM_UP_STATE_NAME))};
+        if (result)
+        {
+            arm_up = *result;
+            delete result;
+        }
+    }
+    return arm_up;
 }
 
 void ElevatorOperator::updateElevatorPosition(double position)

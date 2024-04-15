@@ -41,8 +41,7 @@ void DistanceBooleanSensor::reset()
         value = distance < m_lower_threshold;
         break;
     case DistanceBooleanMode::BETWEEN_THRESHOLD:
-        value = (distance > m_lower_threshold &&
-                    distance < m_upper_threshold);
+        value = (distance > m_lower_threshold && distance < m_upper_threshold);
         break;
     }
 }
@@ -68,8 +67,7 @@ bool DistanceBooleanSensor::getValue()
             value = distance < m_lower_threshold;
         break;
     case DistanceBooleanMode::BETWEEN_THRESHOLD:
-        value = (distance > m_lower_threshold &&
-                    distance < m_upper_threshold);
+        value = (distance > m_lower_threshold && distance < m_upper_threshold);
         break;
     }
 

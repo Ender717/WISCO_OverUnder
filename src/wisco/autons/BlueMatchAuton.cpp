@@ -68,20 +68,20 @@ robot::subsystems::position::Position BlueMatchAuton::odometryGetPosition(std::s
 
 void BlueMatchAuton::motionTurnToAngle(std::shared_ptr<control::ControlSystem> control_system, 
 									   std::shared_ptr<robot::Robot> robot, 
-									   double velocity, double theta, 
+									   double velocity, double theta, bool reversed,
 									   control::motion::ETurnDirection direction)
 {
 	if (control_system)
-		control_system->sendCommand(MOTION_CONTROL_NAME, MOTION_TURN_TO_ANGLE_COMMAND_NAME, &robot, velocity, theta, direction);
+		control_system->sendCommand(MOTION_CONTROL_NAME, MOTION_TURN_TO_ANGLE_COMMAND_NAME, &robot, velocity, theta, reversed, direction);
 }
 
 void BlueMatchAuton::motionTurnToPoint(std::shared_ptr<control::ControlSystem> control_system, 
 									   std::shared_ptr<robot::Robot> robot, 
-									   double velocity, double x, double y, 
+									   double velocity, double x, double y, bool reversed,
 									   control::motion::ETurnDirection direction)
 {
 	if (control_system)
-		control_system->sendCommand(MOTION_CONTROL_NAME, MOTION_TURN_TO_POINT_COMMAND_NAME, &robot, velocity, x, y, direction);
+		control_system->sendCommand(MOTION_CONTROL_NAME, MOTION_TURN_TO_POINT_COMMAND_NAME, &robot, velocity, x, y, reversed, direction);
 }
 
 void BlueMatchAuton::motionPauseTurn(std::shared_ptr<control::ControlSystem> control_system)
@@ -128,7 +128,7 @@ void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
 					      std::shared_ptr<robot::Robot> robot)
 {
 	odometrySetPosition(robot, 0, 0, 0);
-    motionTurnToPoint(control_system, robot, 2 * M_PI, 48.0, 48.0, control::motion::ETurnDirection::CLOCKWISE);
+    motionTurnToPoint(control_system, robot, 2 * M_PI, 48.0, 48.0, false, control::motion::ETurnDirection::CLOCKWISE);
 }
 }
 }

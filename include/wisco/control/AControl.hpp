@@ -98,6 +98,7 @@ public:
 	virtual void command(std::string command_name, va_list& args) = 0;
 
 	/**
+	 * @todo Change to template to remove memory allocation
 	 * @brief Gets a state of the control
 	 *
 	 * @param state_name The name of the state to get
