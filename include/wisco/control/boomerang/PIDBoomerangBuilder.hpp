@@ -104,7 +104,7 @@ public:
     /**
      * @brief Adds a linear PID controller to the build
      * 
-     * @param pid The linear PID controller
+     * @param linear_pid The linear PID controller
      * @return PIDBoomerangBuilder* This object for build chaining
      */
     PIDBoomerangBuilder* withLinearPID(PID linear_pid);

@@ -60,7 +60,7 @@ public:
     /**
      * @brief Adds a piston to the build
      * 
-     * @param pistons The piston
+     * @param piston The piston
      * @return This object for build chaining
      */
     PistonWinchBuilder* withPiston(std::unique_ptr<io::IPiston>& piston);

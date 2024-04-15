@@ -23,6 +23,11 @@ namespace wisco
 namespace control
 {
 
+/**
+ * @brief A container class for controls
+ * @author Nathan Sandvig
+ * 
+ */
 class ControlSystem
 {
 private:

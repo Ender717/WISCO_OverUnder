@@ -283,7 +283,7 @@ public:
     /**
      * @brief Sets the linear PID controller
      * 
-     * @param pid The linear PID controller
+     * @param linear_pid The linear PID controller
      */
     void setLinearPID(PID linear_pid);
 

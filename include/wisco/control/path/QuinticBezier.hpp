@@ -116,7 +116,7 @@ public:
     /**
      * @brief Copy assignment operator for QuinticBezier
      * 
-     * @param copy The QuinticBezier on the right hand side of the operator
+     * @param rhs The QuinticBezier on the right hand side of the operator
      * @return QuinticBezier& This QuinticBezier with the control points of the other QuinticBezier
      */
     QuinticBezier& operator=(const QuinticBezier& rhs) = default;
