@@ -90,6 +90,18 @@ public:
 	virtual void run() = 0;
 
 	/**
+	 * @brief Pauses the control
+	 * 
+	 */
+	virtual void pause() = 0;
+
+	/**
+	 * @brief Resumes the control
+	 * 
+	 */
+	virtual void resume() = 0;
+
+	/**
 	 * @brief Runs a command for the control
 	 *
 	 * @param command_name The name of the command to run

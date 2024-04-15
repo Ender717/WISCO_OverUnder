@@ -30,12 +30,12 @@ void WingsSubsystem::command(std::string command_name, va_list& args)
 {
     if (command_name == SET_LEFT_WING_COMMAND_NAME)
     {
-        bool out{va_arg(args, bool)};
+        bool out{static_cast<bool>(va_arg(args, int))};
         m_wings->setLeftWing(out);
     }
     else if (command_name == SET_RIGHT_WING_COMMAND_NAME)
     {
-        bool out{va_arg(args, bool)};
+        bool out{static_cast<bool>(va_arg(args, int))};
         m_wings->setRightWing(out);
     }
 }

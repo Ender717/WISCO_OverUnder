@@ -12,18 +12,6 @@ void BlueMatchAuton::boomerangGoToPoint(std::shared_ptr<control::ControlSystem> 
 		control_system->sendCommand(BOOMERANG_CONTROL_NAME, BOOMERANG_GO_TO_POSITION_COMMAND_NAME, &robot, velocity, x, y, theta);
 }
 
-void BlueMatchAuton::boomerangPause(std::shared_ptr<control::ControlSystem> control_system)
-{
-	if (control_system)
-		control_system->sendCommand(BOOMERANG_CONTROL_NAME, BOOMERANG_PAUSE_COMMAND_NAME);
-}
-
-void BlueMatchAuton::boomerangResume(std::shared_ptr<control::ControlSystem> control_system)
-{
-	if (control_system)
-		control_system->sendCommand(BOOMERANG_CONTROL_NAME, BOOMERANG_RESUME_COMMAND_NAME);
-}
-
 bool BlueMatchAuton::boomerangTargetReached(std::shared_ptr<control::ControlSystem> control_system)
 {
 	bool target_reached{};
@@ -72,7 +60,7 @@ void BlueMatchAuton::motionTurnToAngle(std::shared_ptr<control::ControlSystem> c
 									   control::motion::ETurnDirection direction)
 {
 	if (control_system)
-		control_system->sendCommand(MOTION_CONTROL_NAME, MOTION_TURN_TO_ANGLE_COMMAND_NAME, &robot, velocity, theta, reversed, direction);
+		control_system->sendCommand(MOTION_CONTROL_NAME, MOTION_TURN_TO_ANGLE_COMMAND_NAME, &robot, velocity, theta, static_cast<int>(reversed), direction);
 }
 
 void BlueMatchAuton::motionTurnToPoint(std::shared_ptr<control::ControlSystem> control_system, 
@@ -81,19 +69,7 @@ void BlueMatchAuton::motionTurnToPoint(std::shared_ptr<control::ControlSystem> c
 									   control::motion::ETurnDirection direction)
 {
 	if (control_system)
-		control_system->sendCommand(MOTION_CONTROL_NAME, MOTION_TURN_TO_POINT_COMMAND_NAME, &robot, velocity, x, y, reversed, direction);
-}
-
-void BlueMatchAuton::motionPauseTurn(std::shared_ptr<control::ControlSystem> control_system)
-{
-	if (control_system)
-		control_system->sendCommand(MOTION_CONTROL_NAME, MOTION_PAUSE_TURN_COMMAND_NAME);
-}
-
-void BlueMatchAuton::motionResumeTurn(std::shared_ptr<control::ControlSystem> control_system)
-{
-	if (control_system)
-		control_system->sendCommand(MOTION_CONTROL_NAME, MOTION_RESUME_TURN_COMMAND_NAME);
+		control_system->sendCommand(MOTION_CONTROL_NAME, MOTION_TURN_TO_POINT_COMMAND_NAME, &robot, velocity, x, y, static_cast<int>(reversed), direction);
 }
 
 bool BlueMatchAuton::motionTurnTargetReached(std::shared_ptr<control::ControlSystem> control_system)

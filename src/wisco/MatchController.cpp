@@ -11,10 +11,10 @@ MatchController::MatchController(std::unique_ptr<IMenu>& menu, const std::shared
 
 void MatchController::initialize(bool fast_init)
 {
-	if (m_menu && !fast_init)
+	if (m_menu)
 	{
 		m_menu->display();
-		while (m_delayer && !m_menu->isStarted())
+		while (m_delayer && !m_menu->isStarted() && !fast_init)
 			m_delayer->delay(MENU_DELAY);
 	}
 

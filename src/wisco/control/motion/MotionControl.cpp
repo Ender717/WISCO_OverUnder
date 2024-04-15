@@ -24,36 +24,64 @@ void MotionControl::run()
         m_turn->run();
 }
 
+void MotionControl::pause()
+{
+    switch (active_motion)
+    {
+    case EMotion::TURN:
+        if (m_turn)
+            m_turn->pause();
+        break;
+    default:
+        break;
+    }
+}
+
+void MotionControl::resume()
+{
+    switch (active_motion)
+    {
+    case EMotion::TURN:
+        if (m_turn)
+            m_turn->resume();
+        break;
+    default:
+        break;
+    }
+}
+
 void MotionControl::command(std::string command_name, va_list& args)
 {
     if (command_name == TURN_TO_ANGLE_COMMAND_NAME)
     {
+        if (active_motion != EMotion::TURN)
+        {
+            pause();
+            active_motion = EMotion::TURN;
+        }
         void* robot_ptr{va_arg(args, void*)};
         std::shared_ptr<robot::Robot> robot{*static_cast<std::shared_ptr<robot::Robot>*>(robot_ptr)};
         double velocity{va_arg(args, double)};
         double theta{va_arg(args, double)};
-        bool reversed{va_arg(args, bool)};
+        bool reversed{static_cast<bool>(va_arg(args, int))};
         ETurnDirection direction{va_arg(args, ETurnDirection)};
         m_turn->turnToAngle(robot, velocity, theta, reversed, direction);
     }
     else if (command_name == TURN_TO_POINT_COMMAND_NAME)
     {
+        if (active_motion != EMotion::TURN)
+        {
+            pause();
+            active_motion = EMotion::TURN;
+        }
         void* robot_ptr{va_arg(args, void*)};
         std::shared_ptr<robot::Robot> robot{*static_cast<std::shared_ptr<robot::Robot>*>(robot_ptr)};
         double velocity{va_arg(args, double)};
         double x{va_arg(args, double)};
         double y{va_arg(args, double)};
-        bool reversed{va_arg(args, bool)};
+        bool reversed{static_cast<bool>(va_arg(args, int))};
         ETurnDirection direction{va_arg(args, ETurnDirection)};
         m_turn->turnToPoint(robot, velocity, x, y, reversed, direction);
-    }
-    else if (command_name == PAUSE_TURN_COMMAND_NAME)
-    {
-        m_turn->pause();
-    }
-    else if (command_name == RESUME_TURN_COMMAND_NAME)
-    {
-        m_turn->resume();
     }
 }
 

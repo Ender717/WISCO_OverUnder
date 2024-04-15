@@ -37,6 +37,12 @@ private:
 	 */
 	std::vector<std::unique_ptr<AControl>> controls{};
 
+	/**
+	 * @brief The active control
+	 * 
+	 */
+	std::string active_control{};
+
 public:
 	/**
 	 * @brief Adds a control to the robot
@@ -53,6 +59,18 @@ public:
 	 * @return false The control was not contained in the robot
 	 */
 	bool removeControl(std::string control_name);
+
+	/**
+	 * @brief Pauses the control system
+	 * 
+	 */
+	void pause();
+
+	/**
+	 * @brief Resumes the control system
+	 * 
+	 */
+	void resume();
 
 	/**
 	 * @brief Initializes all controls in the system

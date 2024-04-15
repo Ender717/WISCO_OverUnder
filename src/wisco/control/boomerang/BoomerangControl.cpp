@@ -24,6 +24,18 @@ void BoomerangControl::run()
         m_boomerang->run();
 }
 
+void BoomerangControl::pause()
+{
+    if (m_boomerang)
+        m_boomerang->pause();
+}
+
+void BoomerangControl::resume()
+{
+    if (m_boomerang)
+        m_boomerang->resume();
+}
+
 void BoomerangControl::command(std::string command_name, va_list& args)
 {
     if (command_name == GO_TO_POSITION_COMMAND_NAME)
@@ -35,14 +47,6 @@ void BoomerangControl::command(std::string command_name, va_list& args)
         double y{va_arg(args, double)};
         double theta{va_arg(args, double)};
         m_boomerang->goToPosition(robot, velocity, x, y, theta);
-    }
-    else if (command_name == PAUSE_COMMAND_NAME)
-    {
-        m_boomerang->pause();
-    }
-    else if (command_name == RESUME_COMMAND_NAME)
-    {
-        m_boomerang->resume();
     }
 }
 

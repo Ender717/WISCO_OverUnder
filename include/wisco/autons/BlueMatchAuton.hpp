@@ -56,18 +56,6 @@ private:
 	static constexpr char BOOMERANG_GO_TO_POSITION_COMMAND_NAME[]{"GO TO POSITION"};
 
 	/**
-	 * @brief The name of the boomerang pause command
-	 * 
-	 */
-	static constexpr char BOOMERANG_PAUSE_COMMAND_NAME[]{"PAUSE"};
-
-	/**
-	 * @brief The name of the boomerang resume command
-	 * 
-	 */
-	static constexpr char BOOMERANG_RESUME_COMMAND_NAME[]{"RESUME"};
-
-	/**
 	 * @brief The name of the odometry set position command
 	 * 
 	 */
@@ -104,18 +92,6 @@ private:
     static constexpr char MOTION_TURN_TO_POINT_COMMAND_NAME[]{"TURN TO POINT"};
 
     /**
-     * @brief The name of the motion pause turn command
-     * 
-     */
-    static constexpr char MOTION_PAUSE_TURN_COMMAND_NAME[]{"PAUSE TURN"};
-
-    /**
-     * @brief The name of the motion resume turn command
-     * 
-     */
-    static constexpr char MOTION_RESUME_TURN_COMMAND_NAME[]{"RESUME TURN"};
-
-    /**
      * @brief The name of the motion turn target reached state
      * 
      */
@@ -134,20 +110,6 @@ private:
 	void boomerangGoToPoint(std::shared_ptr<control::ControlSystem> control_system, 
 							std::shared_ptr<robot::Robot> robot, 
 							double velocity, double x, double y, double theta);
-
-	/**
-	 * @brief Pauses the boomerang motion
-	 * 
-	 * @param control_system The control system
-	 */
-	void boomerangPause(std::shared_ptr<control::ControlSystem> control_system);
-
-	/**
-	 * @brief Resumes the boomerang motion
-	 * 
-	 * @param control_system The control system
-	 */
-	void boomerangResume(std::shared_ptr<control::ControlSystem> control_system);
 
 	/**
 	 * @brief Checks if the boomerang target has been reached
@@ -207,20 +169,6 @@ private:
 							std::shared_ptr<robot::Robot> robot, 
 							double velocity, double x, double y, bool reversed = false,
 							control::motion::ETurnDirection direction = control::motion::ETurnDirection::AUTO);
-
-	/**
-	 * @brief Pauses the motion turn
-	 * 
-	 * @param control_system The control system
-	 */
-	void motionPauseTurn(std::shared_ptr<control::ControlSystem> control_system);
-
-	/**
-	 * @brief Resumes the motion turn
-	 * 
-	 * @param control_system The control system
-	 */
-	void motionResumeTurn(std::shared_ptr<control::ControlSystem> control_system);
 
 	/**
 	 * @brief Checks if the motion turn target has been reached

@@ -36,8 +36,38 @@ void ControlSystem::run()
 		control->run();
 }
 
+void ControlSystem::pause()
+{
+	for (auto& control : controls)
+	{
+		if (control->getName() == active_control)
+		{
+			control->pause();
+			break;
+		}
+	}
+}
+
+void ControlSystem::resume()
+{
+	for (auto& control : controls)
+	{
+		if (control->getName() == active_control)
+		{
+			control->resume();
+			break;
+		}
+	}
+}
+
 void ControlSystem::sendCommand(std::string control_name, std::string command_name, ...)
 {
+	if (control_name != active_control)
+	{
+		pause();
+		active_control = control_name;
+	}
+
 	va_list args;
 	va_start(args, command_name);
 	for (auto& control : controls)

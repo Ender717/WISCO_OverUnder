@@ -51,18 +51,6 @@ private:
     static constexpr char GO_TO_POSITION_COMMAND_NAME[]{"GO TO POSITION"};
 
     /**
-     * @brief The name of the pause command
-     * 
-     */
-    static constexpr char PAUSE_COMMAND_NAME[]{"PAUSE"};
-
-    /**
-     * @brief The name of the resume command
-     * 
-     */
-    static constexpr char RESUME_COMMAND_NAME[]{"RESUME"};
-
-    /**
      * @brief The name of the target reached state
      * 
      */
@@ -93,6 +81,18 @@ public:
 	 * 
 	 */
 	void run() override;
+
+    /**
+     * @brief Pauses the control
+     * 
+     */
+    void pause() override;
+
+    /**
+     * @brief Resumes the control
+     * 
+     */
+    void resume() override;
 
 	/**
 	 * @brief Runs a command for the control

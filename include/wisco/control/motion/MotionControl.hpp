@@ -39,6 +39,16 @@ class MotionControl : public AControl
 {
 private:
     /**
+     * @brief The types of motions
+     * 
+     */
+    enum class EMotion
+    {
+        NONE,
+        TURN
+    };
+
+    /**
      * @brief The name of the control
      * 
      */
@@ -57,18 +67,6 @@ private:
     static constexpr char TURN_TO_POINT_COMMAND_NAME[]{"TURN TO POINT"};
 
     /**
-     * @brief The name of the pause turn command
-     * 
-     */
-    static constexpr char PAUSE_TURN_COMMAND_NAME[]{"PAUSE TURN"};
-
-    /**
-     * @brief The name of the resume turn command
-     * 
-     */
-    static constexpr char RESUME_TURN_COMMAND_NAME[]{"RESUME TURN"};
-
-    /**
      * @brief The name of the turn target reached state
      * 
      */
@@ -79,6 +77,12 @@ private:
      * 
      */
     std::unique_ptr<ITurn> m_turn{};
+
+    /**
+     * @brief The current active motion
+     * 
+     */
+    EMotion active_motion{EMotion::NONE};
 
 public:
     /**
@@ -99,6 +103,18 @@ public:
 	 * 
 	 */
 	void run() override;
+
+    /**
+     * @brief Pauses the control
+     * 
+     */
+    void pause() override;
+
+    /**
+     * @brief Resumes the control
+     * 
+     */
+    void resume() override;
 
 	/**
 	 * @brief Runs a command for the control
