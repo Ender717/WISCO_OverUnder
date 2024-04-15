@@ -55,10 +55,16 @@ public:
 	bool removeControl(std::string control_name);
 
 	/**
-	 * @brief Initializes all controls in the robot
+	 * @brief Initializes all controls in the system
 	 *
 	 */
 	void initialize();
+
+	/**
+	 * @brief Runs all controls in the system
+	 * 
+	 */
+	void run();
 
 	/**
 	 * @brief Sends a command to a control

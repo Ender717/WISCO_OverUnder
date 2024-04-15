@@ -28,6 +28,10 @@ void ControlSystem::initialize()
 {
 	for (auto& control : controls)
 		control->initialize();
+}
+
+void ControlSystem::run()
+{
 	for (auto& control : controls)
 		control->run();
 }

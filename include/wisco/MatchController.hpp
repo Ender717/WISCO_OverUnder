@@ -94,7 +94,7 @@ public:
 	 * @brief Runs the robot initialization code
 	 *
 	 */
-	void initialize();
+	void initialize(bool fast_init);
 
 	/**
 	 * @brief Runs the robot disablement code

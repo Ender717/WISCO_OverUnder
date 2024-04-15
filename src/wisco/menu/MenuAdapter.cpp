@@ -80,9 +80,12 @@ bool MenuAdapter::isStarted()
     return lvgl_menu.selectionComplete();
 }
 
-SystemConfiguration MenuAdapter::getSystemConfiguration()
+SystemConfiguration MenuAdapter::getSystemConfiguration(bool read_only)
 {
     SystemConfiguration system_configuration{};
+
+    if (read_only)
+        lvgl_menu.readConfiguration();
 
     for (std::unique_ptr<IAlliance>& alliance : alliances)
     {
