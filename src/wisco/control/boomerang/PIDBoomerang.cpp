@@ -199,7 +199,7 @@ void PIDBoomerang::setLead(double lead)
     m_lead = lead;
 }
 
-void PIDBoomerang::PIDBoomerang::setTargetTolerance(double target_tolerance)
+void PIDBoomerang::setTargetTolerance(double target_tolerance)
 {
     m_target_tolerance = target_tolerance;
 }
