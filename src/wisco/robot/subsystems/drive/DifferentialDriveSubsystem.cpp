@@ -1,5 +1,4 @@
 #include "wisco/robot/subsystems/drive/DifferentialDriveSubsystem.hpp"
-#include "Velocity.hpp"
 
 namespace wisco
 {
@@ -50,6 +49,11 @@ void* DifferentialDriveSubsystem::state(std::string state_name)
     {
         Velocity* velocity{new Velocity{m_differential_drive->getVelocity()}};
         result = velocity;
+    }
+    else if (state_name == GET_RADIUS_STATE_NAME)
+    {
+        double* radius{new double{m_differential_drive->getRadius()}};
+        result = radius;
     }
 
     return result;

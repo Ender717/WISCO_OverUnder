@@ -1,4 +1,6 @@
 #include "wisco/control/motion/PIDTurn.hpp"
+#include "pros/screen.h"
+#include "pros/screen.hpp"
 
 namespace wisco
 {
@@ -26,7 +28,8 @@ void PIDTurn::taskUpdate()
     {
         auto position{getOdometryPosition()};
         double target_angle{calculateAngleToTarget(position)};
-        if (bindRadians(target_angle - position.theta) < m_target_tolerance)
+        double error{bindRadians(target_angle - position.theta)};
+        if (std::abs(error) < m_target_tolerance && std::abs(position.thetaV) < m_target_velocity)
         {
             target_reached = true;
             robot::subsystems::drive::Velocity stop{0, 0};
@@ -49,6 +52,23 @@ void PIDTurn::setDriveVelocity(robot::subsystems::drive::Velocity velocity)
 {
     if (control_robot)
         control_robot->sendCommand(DRIVE_SUBSYSTEM_NAME, DRIVE_SET_VELOCITY_COMMAND_NAME, velocity);
+}
+
+double PIDTurn::getDriveRadius()
+{
+    double radius{};
+
+    if (control_robot)
+    {
+        double* result{static_cast<double*>(control_robot->getState(DRIVE_SUBSYSTEM_NAME, DRIVE_GET_RADIUS_STATE_NAME))};
+        if (result)
+        {
+            radius = *result;
+            delete result;
+        }
+    }
+    
+    return radius;
 }
 
 robot::subsystems::position::Position PIDTurn::getOdometryPosition()
@@ -79,10 +99,15 @@ double PIDTurn::calculateAngleToTarget(wisco::robot::subsystems::position::Posit
 robot::subsystems::drive::Velocity PIDTurn::calculateDriveVelocity(double robot_angle, double target_angle)
 {
     double error{bindRadians(target_angle - robot_angle)};
-    if (turn_direction == ETurnDirection::CLOCKWISE && error > 0)
-        error -= 2 * M_PI;
-    else if (turn_direction == ETurnDirection::COUNTERCLOCKWISE && error < 0)
-        error += 2 * M_PI;
+    if (!forced_direction_reached)
+    {
+        if (turn_direction == ETurnDirection::CLOCKWISE && error > 0)
+            error -= 2 * M_PI;
+        else if (turn_direction == ETurnDirection::COUNTERCLOCKWISE && error < 0)
+            error += 2 * M_PI;
+        if (std::abs(error) < M_PI)
+            forced_direction_reached = true;
+    }
 
     double control_value{m_pid.getControlValue(0, error)};
     if (std::abs(control_value) > turn_velocity)
@@ -114,13 +139,15 @@ void PIDTurn::turnToAngle(const std::shared_ptr<robot::Robot>& robot, double vel
     m_pid.reset();
 
     control_robot = robot;
+    double drive_radius{getDriveRadius()};
     auto position{getOdometryPosition()};
 
     turn_direction = direction;
-    turn_velocity = velocity;
+    turn_velocity = velocity * drive_radius;
     target_x = position.x + (TURN_TO_ANGLE_DISTANCE * std::cos(theta));
     target_y = position.y + (TURN_TO_ANGLE_DISTANCE * std::sin(theta));
     target_reached = false;
+    forced_direction_reached = false;
 
     if (m_mutex)
         m_mutex->give();
@@ -134,13 +161,14 @@ void PIDTurn::turnToPoint(const std::shared_ptr<robot::Robot>& robot, double vel
     m_pid.reset();
 
     control_robot = robot;
-    auto position{getOdometryPosition()};
+    double drive_radius{getDriveRadius()};
 
     turn_direction = direction;
-    turn_velocity = velocity;
+    turn_velocity = velocity * drive_radius;
     target_x = x;
     target_y = y;
     target_reached = false;
+    forced_direction_reached = false;
 
     if (m_mutex)
         m_mutex->give();
@@ -195,9 +223,14 @@ void PIDTurn::setPID(PID pid)
     m_pid = pid;
 }
 
-void PIDTurn::PIDTurn::setTargetTolerance(double target_tolerance)
+void PIDTurn::setTargetTolerance(double target_tolerance)
 {
     m_target_tolerance = target_tolerance;
+}
+
+void PIDTurn::setTargetVelocity(double target_velocity)
+{
+    m_target_velocity = target_velocity;
 }
 } // namespace motion
 } // namespace control

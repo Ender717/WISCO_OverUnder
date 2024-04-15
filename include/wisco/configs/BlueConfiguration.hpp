@@ -55,6 +55,10 @@
 #include "wisco/control/boomerang/PIDBoomerangBuilder.hpp"
 #include "wisco/control/boomerang/BoomerangControl.hpp"
 
+// motion includes
+#include "wisco/control/motion/PIDTurnBuilder.hpp"
+#include "wisco/control/motion/MotionControl.hpp"
+
 #include "wisco/IConfiguration.hpp"
 
 /**
@@ -301,7 +305,7 @@ private:
 	 * @brief The radius of the drive
 	 * 
 	 */
-	static constexpr double DRIVE_RADIUS{6.5 * 2.54 / 100};
+	static constexpr double DRIVE_RADIUS{6.0625};//{6.5 * 2.54 / 100};
 
 	/**
 	 * @brief The moment of inertia of the drive
@@ -608,6 +612,36 @@ private:
 	 * 
 	 */
 	static constexpr double LOADER_POSITION_TOLERANCE{M_PI / 18};
+
+	/**
+	 * @brief The proportional constant for the turn pid controller
+	 * 
+	 */
+	static constexpr double TURN_KP{160.0};
+
+	/**
+	 * @brief The integral constant for the turn pid controller
+	 * 
+	 */
+	static constexpr double TURN_KI{};
+
+	/**
+	 * @brief The derivative constant for the turn pid controller
+	 * 
+	 */
+	static constexpr double TURN_KD{12000.0};
+
+	/**
+	 * @brief The target tolerance for the turn controller
+	 * 
+	 */
+	static constexpr double TURN_TARGET_TOLERANCE{1.0 * M_PI / 180};
+
+	/**
+	 * @brief The target velocity for the turn controller
+	 * 
+	 */
+	static constexpr double TURN_TARGET_VELOCITY{1.0 * M_PI / 180};
 
 	/**
 	 * @brief The first umbrella piston port

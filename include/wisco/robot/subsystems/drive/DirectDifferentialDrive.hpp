@@ -75,6 +75,12 @@ private:
      */
     double m_wheel_radius{};
 
+    /**
+     * @brief The radius of the drive
+     * 
+     */
+    double m_radius{};
+
 public:
     /**
      * @brief Initializes the differential drive
@@ -111,6 +117,13 @@ public:
     void setVoltage(double left_voltage, double right_voltage) override;
 
     /**
+     * @brief Gets the radius of the drive
+     * 
+     * @return double The radius of the drive
+     */
+    double getRadius() override;
+
+    /**
      * @brief Set the left drive motors
      * 
      * @param left_motors The motors on the left side of the drive
@@ -144,6 +157,13 @@ public:
      * @param wheel_radius The wheel radius of the drive
      */
     void setWheelRadius(double wheel_radius);
+
+    /**
+     * @brief Set the drive radius
+     * 
+     * @param radius The drive radius
+     */
+    void setRadius(double radius);
 };
 } // namespace drive
 } // namespace subsystems

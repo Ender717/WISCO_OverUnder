@@ -82,6 +82,13 @@ public:
      * @param right_voltage The voltage for the right side of the drive
      */
     virtual void setVoltage(double left_voltage, double right_voltage) = 0;
+
+    /**
+     * @brief Gets the radius of the drive
+     * 
+     * @return double The radius of the drive
+     */
+    virtual double getRadius() = 0;
 };
 } // namespace drive
 } // namespace subsystems

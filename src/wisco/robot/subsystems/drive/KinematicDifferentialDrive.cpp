@@ -117,6 +117,11 @@ void KinematicDifferentialDrive::setVoltage(double left_voltage, double right_vo
     m_right_motors.setVoltage(right_voltage);
 }
 
+double KinematicDifferentialDrive::getRadius()
+{
+    return m_radius;
+}
+
 void KinematicDifferentialDrive::setDelayer(std::unique_ptr<rtos::IDelayer>& delayer)
 {
     m_delayer = std::move(delayer);

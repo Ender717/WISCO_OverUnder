@@ -38,12 +38,19 @@ DirectDifferentialDriveBuilder* DirectDifferentialDriveBuilder::withWheelRadius(
     return this;
 }
 
+DirectDifferentialDriveBuilder* DirectDifferentialDriveBuilder::withRadius(double radius)
+{
+    m_radius = radius;
+    return this;
+}
+
 std::unique_ptr<IDifferentialDrive> DirectDifferentialDriveBuilder::build()
 {
     std::unique_ptr<DirectDifferentialDrive> differential_drive{std::make_unique<DirectDifferentialDrive>()};
     differential_drive->setLeftMotors(m_left_motors);
     differential_drive->setRightMotors(m_right_motors);
     differential_drive->setVelocityToVoltage(m_velocity_to_voltage);
+    differential_drive->setRadius(m_radius);
     return differential_drive;
 }
 }

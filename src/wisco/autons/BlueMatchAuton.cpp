@@ -66,6 +66,51 @@ robot::subsystems::position::Position BlueMatchAuton::odometryGetPosition(std::s
 	return position;
 }
 
+void BlueMatchAuton::motionTurnToAngle(std::shared_ptr<control::ControlSystem> control_system, 
+									   std::shared_ptr<robot::Robot> robot, 
+									   double velocity, double theta, 
+									   control::motion::ETurnDirection direction)
+{
+	if (control_system)
+		control_system->sendCommand(MOTION_CONTROL_NAME, MOTION_TURN_TO_ANGLE_COMMAND_NAME, &robot, velocity, theta, direction);
+}
+
+void BlueMatchAuton::motionTurnToPoint(std::shared_ptr<control::ControlSystem> control_system, 
+									   std::shared_ptr<robot::Robot> robot, 
+									   double velocity, double x, double y, 
+									   control::motion::ETurnDirection direction)
+{
+	if (control_system)
+		control_system->sendCommand(MOTION_CONTROL_NAME, MOTION_TURN_TO_POINT_COMMAND_NAME, &robot, velocity, x, y, direction);
+}
+
+void BlueMatchAuton::motionPauseTurn(std::shared_ptr<control::ControlSystem> control_system)
+{
+	if (control_system)
+		control_system->sendCommand(MOTION_CONTROL_NAME, MOTION_PAUSE_TURN_COMMAND_NAME);
+}
+
+void BlueMatchAuton::motionResumeTurn(std::shared_ptr<control::ControlSystem> control_system)
+{
+	if (control_system)
+		control_system->sendCommand(MOTION_CONTROL_NAME, MOTION_RESUME_TURN_COMMAND_NAME);
+}
+
+bool BlueMatchAuton::motionTurnTargetReached(std::shared_ptr<control::ControlSystem> control_system)
+{
+	bool target_reached{};
+	if (control_system)
+	{
+		bool* result{static_cast<bool*>(control_system->getState(MOTION_CONTROL_NAME, MOTION_TURN_TARGET_REACHED_STATE_NAME))};
+		if (result)
+		{
+			target_reached = *result;
+			delete result;
+		}
+	}
+	return target_reached;
+}
+
 std::string BlueMatchAuton::getName()
 {
     return AUTONOMOUS_NAME;
@@ -83,7 +128,7 @@ void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
 					      std::shared_ptr<robot::Robot> robot)
 {
 	odometrySetPosition(robot, 0, 0, 0);
-    boomerangGoToPoint(control_system, robot, 36.0, 48.0, 24.0, M_PI / 4);
+    motionTurnToPoint(control_system, robot, 2 * M_PI, 48.0, 48.0, control::motion::ETurnDirection::CLOCKWISE);
 }
 }
 }

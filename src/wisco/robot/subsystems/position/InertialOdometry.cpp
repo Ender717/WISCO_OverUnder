@@ -77,9 +77,9 @@ void InertialOdometry::updatePosition()
 
     if (m_clock)
     {
-        m_position.xV = global_x * time_change / TIME_UNIT_CONVERTER;
-        m_position.yV = global_y * time_change / TIME_UNIT_CONVERTER;
-        m_position.thetaV = heading_change * time_change / TIME_UNIT_CONVERTER;
+        m_position.xV = global_x / (time_change / TIME_UNIT_CONVERTER);
+        m_position.yV = global_y / (time_change / TIME_UNIT_CONVERTER);
+        m_position.thetaV = heading_change / (time_change / TIME_UNIT_CONVERTER);
     }
 
     last_heading = current_heading;

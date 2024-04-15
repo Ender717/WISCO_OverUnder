@@ -233,6 +233,13 @@ public:
     void setVoltage(double left_voltage, double right_voltage) override;
 
     /**
+     * @brief Gets the radius of the drive
+     * 
+     * @return double The radius of the drive
+     */
+    double getRadius() override;
+
+    /**
      * @brief Set the rtos delayer
      * 
      * @param delayer The rtos delayer

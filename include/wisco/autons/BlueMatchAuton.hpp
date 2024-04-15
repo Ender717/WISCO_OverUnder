@@ -3,6 +3,7 @@
 
 #include <cmath>
 
+#include "wisco/control/motion/ETurnDirection.hpp"
 #include "wisco/robot/subsystems/position/Position.hpp"
 
 #include "wisco/IAutonomous.hpp"
@@ -84,6 +85,42 @@ private:
 	 */
 	static constexpr char ODOMETRY_GET_POSITION_STATE_NAME[]{"GET POSITION"};
 
+    /**
+     * @brief The name of the motion control
+     * 
+     */
+    static constexpr char MOTION_CONTROL_NAME[]{"MOTION"};
+
+    /**
+     * @brief The name of the motion turn to angle command
+     * 
+     */
+    static constexpr char MOTION_TURN_TO_ANGLE_COMMAND_NAME[]{"TURN TO ANGLE"};
+
+    /**
+     * @brief The name of the motion turn to point command
+     * 
+     */
+    static constexpr char MOTION_TURN_TO_POINT_COMMAND_NAME[]{"TURN TO POINT"};
+
+    /**
+     * @brief The name of the motion pause turn command
+     * 
+     */
+    static constexpr char MOTION_PAUSE_TURN_COMMAND_NAME[]{"PAUSE TURN"};
+
+    /**
+     * @brief The name of the motion resume turn command
+     * 
+     */
+    static constexpr char MOTION_RESUME_TURN_COMMAND_NAME[]{"RESUME TURN"};
+
+    /**
+     * @brief The name of the motion turn target reached state
+     * 
+     */
+    static constexpr char MOTION_TURN_TARGET_REACHED_STATE_NAME[]{"TURN TARGET REACHED"};
+
 	/**
 	 * @brief Calls the boomerang go to point command
 	 * 
@@ -139,6 +176,58 @@ private:
 	 * @return robot::subsystems::position::Position The odometry position
 	 */
 	robot::subsystems::position::Position odometryGetPosition(std::shared_ptr<robot::Robot> robot);
+
+	/**
+	 * @brief Calls the motion turn to angle command
+	 * 
+	 * @param control_system The control system
+	 * @param robot The robot
+	 * @param velocity The turn velocity
+	 * @param theta The target angle
+	 * @param direction The turn direction (default auto)
+	 */
+	void motionTurnToAngle(std::shared_ptr<control::ControlSystem> control_system, 
+							std::shared_ptr<robot::Robot> robot, 
+							double velocity, double theta, 
+							control::motion::ETurnDirection direction = control::motion::ETurnDirection::AUTO);
+
+	/**
+	 * @brief Calls the motion turn to point command
+	 * 
+	 * @param control_system The control system
+	 * @param robot The robot
+	 * @param velocity The turn velocity
+	 * @param x The target x-coordinate
+	 * @param y The target y-coordinate
+	 * @param direction The turn direction (default auto)
+	 */
+	void motionTurnToPoint(std::shared_ptr<control::ControlSystem> control_system, 
+							std::shared_ptr<robot::Robot> robot, 
+							double velocity, double x, double y, 
+							control::motion::ETurnDirection direction = control::motion::ETurnDirection::AUTO);
+
+	/**
+	 * @brief Pauses the motion turn
+	 * 
+	 * @param control_system The control system
+	 */
+	void motionPauseTurn(std::shared_ptr<control::ControlSystem> control_system);
+
+	/**
+	 * @brief Resumes the motion turn
+	 * 
+	 * @param control_system The control system
+	 */
+	void motionResumeTurn(std::shared_ptr<control::ControlSystem> control_system);
+
+	/**
+	 * @brief Checks if the motion turn target has been reached
+	 * 
+	 * @param control_system The control system
+	 * @return true The motion turn target has been reached
+	 * @return false The motion turn target has not been reached
+	 */
+	bool motionTurnTargetReached(std::shared_ptr<control::ControlSystem> control_system);
 
 public:
     /**

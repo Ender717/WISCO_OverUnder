@@ -73,6 +73,12 @@ private:
     static constexpr char DRIVE_SET_VELOCITY_COMMAND_NAME[]{"SET VELOCITY"};
 
     /**
+     * @brief The name of the drive get radius command
+     * 
+     */
+    static constexpr char DRIVE_GET_RADIUS_STATE_NAME[]{"GET RADIUS"};
+
+    /**
      * @brief The name of the odometry get position command
      * 
      */
@@ -122,6 +128,12 @@ private:
     double m_target_tolerance{};
 
     /**
+     * @brief The acceptable velocity to reach the target
+     * 
+     */
+    double m_target_velocity{};
+
+    /**
      * @brief The robot being controlled
      * 
      */
@@ -164,6 +176,12 @@ private:
     bool target_reached{};
 
     /**
+     * @brief Whether or not the forced direction has been reached
+     * 
+     */
+    bool forced_direction_reached{};
+
+    /**
      * @brief Runs all the object-specific updates in the task loop
      * 
      */
@@ -175,6 +193,13 @@ private:
      * @param velocity The velocity for the drive
      */
     void setDriveVelocity(robot::subsystems::drive::Velocity velocity);
+
+    /**
+     * @brief Get the radius of the drive
+     * 
+     * @return double The radius of the drive
+     */
+    double getDriveRadius();
 
     /**
      * @brief Get the position from the odometry
@@ -288,6 +313,13 @@ public:
      * @param target_tolerance The motion target tolerance
      */
     void setTargetTolerance(double target_tolerance);
+
+    /**
+     * @brief Sets the target velocity
+     * 
+     * @param target_velocity The motion target velocity
+     */
+    void setTargetVelocity(double target_velocity);
 };
 } // namespace motion
 } // namespace control

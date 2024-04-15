@@ -75,6 +75,12 @@ private:
      */
     double m_wheel_radius{};
 
+    /**
+     * @brief The radius of the drive
+     * 
+     */
+    double m_radius{};
+
 public:
     /**
      * @brief Add a left drive motor to the build
@@ -115,6 +121,14 @@ public:
      * @return KinematicDifferentialDriveBuilder* This object for build chaining
      */
     DirectDifferentialDriveBuilder* withWheelRadius(double wheel_radius);
+
+    /**
+     * @brief Adds the drive radius to the build
+     * 
+     * @param radius The drive radius
+     * @return DirectDifferentialDriveBuilder* This object for build chaining
+     */
+    DirectDifferentialDriveBuilder* withRadius(double radius);
 
     /**
      * @brief Builds the differential drive system

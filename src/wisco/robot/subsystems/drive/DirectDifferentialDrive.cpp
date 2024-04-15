@@ -41,6 +41,11 @@ void DirectDifferentialDrive::setVoltage(double left_voltage, double right_volta
     m_right_motors.setVoltage(right_voltage);
 }
 
+double DirectDifferentialDrive::getRadius()
+{
+    return m_radius;
+}
+
 void DirectDifferentialDrive::setLeftMotors(hal::MotorGroup& left_motors)
 {
     m_left_motors = left_motors;
@@ -64,6 +69,11 @@ void DirectDifferentialDrive::setGearRatio(double gear_ratio)
 void DirectDifferentialDrive::setWheelRadius(double wheel_radius)
 {
     m_wheel_radius = wheel_radius;
+}
+
+void DirectDifferentialDrive::setRadius(double radius)
+{
+    m_radius = radius;
 }
 }
 }

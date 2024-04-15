@@ -36,6 +36,24 @@ std::shared_ptr<control::ControlSystem> BlueConfiguration::buildControlSystem()
     std::unique_ptr<wisco::control::AControl> boomerang_control{std::make_unique<wisco::control::boomerang::BoomerangControl>(pid_boomerang)};
     control_system->addControl(boomerang_control);
 
+    wisco::control::motion::PIDTurnBuilder pid_turn_builder{};
+    std::unique_ptr<rtos::IMutex> turn_pros_mutex{std::make_unique<pros_adapters::ProsMutex>()};
+    std::unique_ptr<rtos::ITask> turn_pros_task{std::make_unique<pros_adapters::ProsTask>()};
+    wisco::control::PID turn_pid{pros_clock, TURN_KP, TURN_KI, TURN_KD};
+    std::unique_ptr<wisco::control::motion::ITurn> pid_turn
+    {
+        pid_turn_builder.
+        withDelayer(pros_delayer)->
+        withMutex(turn_pros_mutex)->
+        withTask(turn_pros_task)->
+        withPID(turn_pid)->
+        withTargetTolerance(TURN_TARGET_TOLERANCE)->
+        withTargetVelocity(TURN_TARGET_VELOCITY)->
+        build()
+    };
+    std::unique_ptr<wisco::control::AControl> motion_control{std::make_unique<wisco::control::motion::MotionControl>(pid_turn)};
+    control_system->addControl(motion_control);
+
     return control_system;
 }
 
@@ -182,6 +200,7 @@ std::shared_ptr<robot::Robot> BlueConfiguration::buildRobot()
             withVelocityToVoltage(DRIVE_VELOCITY_TO_VOLTAGE)->
             withGearRatio(DRIVE_GEAR_RATIO)->
             withWheelRadius(DRIVE_WHEEL_RADIUS)->
+            withRadius(DRIVE_RADIUS)->
             build()
         };
         std::unique_ptr<wisco::robot::ASubsystem> drive_subsystem{std::make_unique<wisco::robot::subsystems::drive::DifferentialDriveSubsystem>(differential_drive)};

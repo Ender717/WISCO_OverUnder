@@ -72,6 +72,12 @@ private:
     static constexpr char GET_VELOCITY_STATE_NAME[]{"GET VELOCITY"};
 
     /**
+     * @brief The name of the get radius state
+     * 
+     */
+    static constexpr char GET_RADIUS_STATE_NAME[]{"GET RADIUS"};
+
+    /**
      * @brief The differential drive being adapted
      * 
      */
