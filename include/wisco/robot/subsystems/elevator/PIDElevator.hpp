@@ -121,6 +121,12 @@ private:
     double m_position{};
 
     /**
+     * @brief Whether or not the elevator is calibrating
+     * 
+     */
+    bool calibrating{};
+
+    /**
      * @brief Runs all the object-specific updates in the task loop
      * 
      */
@@ -158,6 +164,20 @@ public:
      * @param position The position of the elevator
      */
     void setPosition(double position) override;
+
+    /**
+     * @brief Calibrates the elevator position
+     * 
+     */
+    void calibrate() override;
+
+    /**
+     * @brief Checks if the elevator is calibrating
+     * 
+     * @return true The elevator is calibrating
+     * @return false The elevator is not calibrating
+     */
+    bool isCalibrating() override;
 
     /**
      * @brief Set the rtos clock

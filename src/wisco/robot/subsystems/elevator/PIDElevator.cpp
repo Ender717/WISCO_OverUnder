@@ -20,6 +20,15 @@ void PIDElevator::taskLoop(void* params)
 
 void PIDElevator::taskUpdate()
 {
+    if (calibrating)
+    {
+        m_motors.setVoltage(-12);
+        m_delayer->delay(TASK_DELAY);
+        while (m_motors.getAngularVelocity() < 0.0)
+            m_delayer->delay(TASK_DELAY);
+        m_motors.setPosition(0);
+        calibrating = false;
+    }
     updatePosition();
     m_delayer->delay(TASK_DELAY);
 }
@@ -75,6 +84,22 @@ void PIDElevator::setPosition(double position)
 
     if (m_mutex)
         m_mutex->give();
+}
+
+void PIDElevator::calibrate()
+{
+    if (m_mutex)
+        m_mutex->take();
+    
+    calibrating = true;
+
+    if (m_mutex)
+        m_mutex->give();
+}
+
+bool PIDElevator::isCalibrating()
+{
+    return calibrating;
 }
 
 void PIDElevator::setClock(const std::unique_ptr<rtos::IClock>& clock)

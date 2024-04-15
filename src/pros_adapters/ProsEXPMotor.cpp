@@ -46,9 +46,26 @@ double ProsEXPMotor::getAngularVelocity()
     return angular_velocity;
 }
 
+double ProsEXPMotor::getPosition()
+{
+    double position{position_offset};
+
+    if (m_motor)
+        position += m_motor->get_position() * POSITION_CONVERSION;
+
+    return position;
+}
+
 void ProsEXPMotor::setVoltage(double volts)
 {
     if (m_motor)
         m_motor->move_voltage(volts * VOLTAGE_CONVERSION);
+}
+
+void ProsEXPMotor::setPosition(double position)
+{
+    position_offset = position;
+    if (m_motor)
+        m_motor->tare_position();
 }
 } // namespace pros_adapters

@@ -72,6 +72,20 @@ public:
      * @param position The elevator position in inches
      */
     virtual void setPosition(double position) = 0;
+
+    /**
+     * @brief Calibrates the elevator position
+     * 
+     */
+    virtual void calibrate() = 0;
+
+    /**
+     * @brief Checks if the elevator is calibrating
+     * 
+     * @return true The elevator is calibrating
+     * @return false The elevator is not calibrating
+     */
+    virtual bool isCalibrating() = 0;
 };
 } // namespace elevator
 } // namespace subsystems

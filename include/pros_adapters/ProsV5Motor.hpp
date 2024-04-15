@@ -69,7 +69,7 @@ private:
      * @brief Converts motor position to radians
      * 
      */
-    static constexpr double POSITION_CONVERSION{M_PI / 25};
+    static constexpr double POSITION_CONVERSION{2 * M_PI / (900 / 18.0)};
 
     /**
      * @brief Converts input voltage to millivolts
@@ -88,6 +88,12 @@ private:
      * 
      */
     std::unique_ptr<pros::Motor> m_motor{};
+
+    /**
+     * @brief The position offset
+     * 
+     */
+    double position_offset{};
 
 public:
     /**
@@ -151,6 +157,13 @@ public:
      * @param volts The voltage input in Volts
      */
     void setVoltage(double volts) override;
+
+    /**
+     * @brief Set the position of the motor in radians
+     * 
+     * @param position The position of the motor
+     */
+    void setPosition(double position) override;
 };
 } // namespace pros_adapters
 

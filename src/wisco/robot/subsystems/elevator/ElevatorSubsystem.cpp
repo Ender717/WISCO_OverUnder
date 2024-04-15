@@ -35,6 +35,10 @@ void ElevatorSubsystem::command(std::string command_name, va_list& args)
         double position{va_arg(args, double)};
         m_elevator->setPosition(position);
     }
+    else if (command_name == CALIBRATE_COMMAND_NAME)
+    {
+        m_elevator->calibrate();
+    }
 }
 
 void* ElevatorSubsystem::state(std::string state_name)
@@ -53,6 +57,11 @@ void* ElevatorSubsystem::state(std::string state_name)
             double* distance{new double{m_distance_sensor->getDistance()}};
             result = distance;
         }
+    }
+    else if (state_name == IS_CALIBRATING_STATE_NAME)
+    {
+        bool* calibrating{new bool{m_elevator->isCalibrating()}};
+        result = calibrating;
     }
 
     return result;

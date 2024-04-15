@@ -67,6 +67,7 @@ private:
      */
     const std::map<user::EControl, user::EControllerDigital> DIGITAL_CONTROL_MAP
 	{
+		{user::EControl::ELEVATOR_CALIBRATE, user::EControllerDigital::DPAD_RIGHT},
 		{user::EControl::ELEVATOR_IN, user::EControllerDigital::TRIGGER_RIGHT_BOTTOM},
 		{user::EControl::ELEVATOR_OUT, user::EControllerDigital::TRIGGER_RIGHT_TOP},
 		{user::EControl::HANG_NEXT, user::EControllerDigital::BUTTON_A},
