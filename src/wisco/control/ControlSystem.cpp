@@ -75,6 +75,7 @@ void ControlSystem::sendCommand(std::string control_name, std::string command_na
 		if (control->getName() == control_name)
 		{
 			control->command(command_name, args);
+			control->resume();
 			break;
 		}
 	}

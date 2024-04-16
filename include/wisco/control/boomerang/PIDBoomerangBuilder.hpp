@@ -76,6 +76,12 @@ class PIDBoomerangBuilder
      */
     double m_target_tolerance{};
 
+    /**
+     * @brief The acceptable velocity to reach the target
+     * 
+     */
+    double m_target_velocity{};
+
 public: 
     /**
      * @brief Adds an rtos delayer to the build
@@ -132,6 +138,14 @@ public:
      * @return PIDBoomerangBuilder* This object for build chaining
      */
     PIDBoomerangBuilder* withTargetTolerance(double target_tolerance);
+
+    /**
+     * @brief Adds a target velocity to the build
+     * 
+     * @param target_velocity The motion target velocity
+     * @return PIDBoomerangBuilder* This object for build chaining
+     */
+    PIDBoomerangBuilder* withTargetVelocity(double target_velocity);
 
     /**
      * @brief Builds the PID boomerang controller

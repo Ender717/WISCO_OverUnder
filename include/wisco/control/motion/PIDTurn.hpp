@@ -179,7 +179,7 @@ private:
      * @brief Whether or not the target point has been reached
      * 
      */
-    bool target_reached{};
+    bool target_reached{true};
 
     /**
      * @brief Whether or not the forced direction has been reached

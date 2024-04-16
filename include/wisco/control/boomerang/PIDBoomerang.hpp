@@ -130,6 +130,12 @@ private:
     double m_target_tolerance{};
 
     /**
+     * @brief The acceptable velocity to reach the target
+     * 
+     */
+    double m_target_velocity{};
+
+    /**
      * @brief The robot being controlled
      * 
      */
@@ -169,7 +175,7 @@ private:
      * @brief Whether or not the target point has been reached
      * 
      */
-    bool target_reached{};
+    bool target_reached{true};
 
     /**
      * @brief Runs all the object-specific updates in the task loop
@@ -307,6 +313,13 @@ public:
      * @param target_tolerance The motion target tolerance
      */
     void setTargetTolerance(double target_tolerance);
+
+    /**
+     * @brief Sets the target velocity
+     * 
+     * @param target_velocity The motion target velocity
+     */
+    void setTargetVelocity(double target_velocity);
 };
 } // namespace boomerang
 } // namespace control

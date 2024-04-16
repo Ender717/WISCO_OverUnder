@@ -16,12 +16,12 @@ WingsOperator::WingsOperator(const std::shared_ptr<user::IController>& controlle
 
 void WingsOperator::setLeftWing(bool out)
 {
-    m_robot->sendCommand(WINGS_SUBSYSTEM_NAME, SET_LEFT_WING_COMMAND, out);
+    m_robot->sendCommand(WINGS_SUBSYSTEM_NAME, SET_LEFT_WING_COMMAND, static_cast<int>(out));
 }
 
 void WingsOperator::setRightWing(bool out)
 {
-    m_robot->sendCommand(WINGS_SUBSYSTEM_NAME, SET_RIGHT_WING_COMMAND, out);
+    m_robot->sendCommand(WINGS_SUBSYSTEM_NAME, SET_RIGHT_WING_COMMAND, static_cast<int>(out));
 }
 
 void WingsOperator::setWings(bool out)

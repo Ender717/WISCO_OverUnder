@@ -44,7 +44,7 @@ double ProsV5Motor::getGearRatio()
         else
             ratio = NO_CARTRIDGE;
     }
-    
+
     return ratio;
 }
 
@@ -63,7 +63,7 @@ double ProsV5Motor::getPosition()
     double position{position_offset};
 
     if (m_motor)
-        position += (m_motor->get_position() / getGearRatio()) * POSITION_CONVERSION;
+        position += m_motor->get_position() * POSITION_CONVERSION;
 
     return position;
 }

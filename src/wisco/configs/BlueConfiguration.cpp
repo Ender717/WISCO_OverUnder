@@ -31,6 +31,7 @@ std::shared_ptr<control::ControlSystem> BlueConfiguration::buildControlSystem()
         withRotationalPID(boomerang_rotational_pid)->
         withLead(BOOMERANG_LEAD)->
         withTargetTolerance(BOOMERANG_TARGET_TOLERANCE)->
+        withTargetVelocity(BOOMERANG_TARGET_VELOCITY)->
         build()
     };
     std::unique_ptr<wisco::control::AControl> boomerang_control{std::make_unique<wisco::control::boomerang::BoomerangControl>(pid_boomerang)};

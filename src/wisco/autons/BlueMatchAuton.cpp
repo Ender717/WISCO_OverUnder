@@ -104,7 +104,15 @@ void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
 					      std::shared_ptr<robot::Robot> robot)
 {
 	odometrySetPosition(robot, 0, 0, 0);
-    motionTurnToPoint(control_system, robot, 2 * M_PI, 48.0, 48.0, false, control::motion::ETurnDirection::CLOCKWISE);
+    boomerangGoToPoint(control_system, robot, 36.0, -48.0, -24.0, M_PI / 4);
+	while (!boomerangTargetReached(control_system))
+		delayer->delay(10);
+	motionTurnToAngle(control_system, robot, 2 * M_PI, M_PI / 4);
+	while (!motionTurnTargetReached(control_system))
+		delayer->delay(10);
+	boomerangGoToPoint(control_system, robot, 36.0, 0.0, 0.0, 0);
+	while (!boomerangTargetReached(control_system))
+		delayer->delay(10);
 }
 }
 }

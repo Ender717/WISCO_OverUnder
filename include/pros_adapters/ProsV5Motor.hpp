@@ -69,7 +69,7 @@ private:
      * @brief Converts motor position to radians
      * 
      */
-    static constexpr double POSITION_CONVERSION{2 * M_PI / (900 / 18.0)};
+    static constexpr double POSITION_CONVERSION{M_PI / 180.0};
 
     /**
      * @brief Converts input voltage to millivolts

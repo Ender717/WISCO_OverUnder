@@ -413,7 +413,7 @@ private:
 	 * @brief The proportional constant for the boomerang rotational pid controller
 	 * 
 	 */
-	static constexpr double BOOMERANG_ROTATIONAL_KP{320.0};
+	static constexpr double BOOMERANG_ROTATIONAL_KP{640.0};
 
 	/**
 	 * @brief The integral constant for the boomerang rotational pid controller
@@ -425,7 +425,7 @@ private:
 	 * @brief The derivative constant for the boomerang rotational pid controller
 	 * 
 	 */
-	static constexpr double BOOMERANG_ROTATIONAL_KD{4800.0};
+	static constexpr double BOOMERANG_ROTATIONAL_KD{12000.0};
 
 	/**
 	 * @brief The lead ratio for the boomerang controller
@@ -438,6 +438,12 @@ private:
 	 * 
 	 */
 	static constexpr double BOOMERANG_TARGET_TOLERANCE{1.0};
+
+	/**
+	 * @brief The target velocity for the boomerang controller
+	 * 
+	 */
+	static constexpr double BOOMERANG_TARGET_VELOCITY{1.0};
 
 	/**
 	 * @brief The KP for the elevator PID
@@ -569,7 +575,7 @@ private:
 	 * @brief The KP for the loader PID
 	 * 
 	 */
-	static constexpr double LOADER_KP{6.0};
+	static constexpr double LOADER_KP{32.0};
 
 	/**
 	 * @brief The KI for the loader PID
@@ -581,13 +587,13 @@ private:
 	 * @brief The KD for the loader PID
 	 * 
 	 */
-	static constexpr double LOADER_KD{0.0};
+	static constexpr double LOADER_KD{700.0};
 
 	/**
 	 * @brief The first loader motor port
 	 * 
 	 */
-	static constexpr int8_t LOADER_MOTOR_1_PORT{-11};
+	static constexpr int8_t LOADER_MOTOR_1_PORT{6};
 
 	/**
 	 * @brief The first loader motor gearset
@@ -599,7 +605,7 @@ private:
 	 * @brief The loader position when loaded
 	 * 
 	 */
-	static constexpr double LOADER_LOADED_POSITION{5 * M_PI / 6};
+	static constexpr double LOADER_LOADED_POSITION{M_PI};
 
 	/**
 	 * @brief The loader position when ready
@@ -665,31 +671,31 @@ private:
 	 * @brief The first left wing piston port
 	 * 
 	 */
-	static constexpr char LEFT_WING_PISTON_1_PORT{};
+	static constexpr char LEFT_WING_PISTON_1_PORT{'A'};
 
 	/**
 	 * @brief The first left wing piston's extended state
 	 * 
 	 */
-	static constexpr bool LEFT_WING_PISTON_1_EXTENDED_STATE{};
+	static constexpr bool LEFT_WING_PISTON_1_EXTENDED_STATE{true};
 
 	/**
 	 * @brief The first right wing piston port
 	 * 
 	 */
-	static constexpr char RIGHT_WING_PISTON_1_PORT{};
+	static constexpr char RIGHT_WING_PISTON_1_PORT{'B'};
 
 	/**
 	 * @brief The first right wing piston's extended state
 	 * 
 	 */
-	static constexpr bool RIGHT_WING_PISTON_1_EXTENDED_STATE{};
+	static constexpr bool RIGHT_WING_PISTON_1_EXTENDED_STATE{true};
 
 	/**
 	 * @brief The wing piston state when the wings are out
 	 * 
 	 */
-	static constexpr bool WINGS_OUT_STATE{};
+	static constexpr bool WINGS_OUT_STATE{true};
 
 public:
     /**

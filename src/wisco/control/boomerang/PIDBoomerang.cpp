@@ -25,7 +25,8 @@ void PIDBoomerang::taskUpdate()
     {
         auto position{getOdometryPosition()};
         double distance{calculateDistanceToTarget(position)};
-        if (distance < m_target_tolerance)
+        double velocity{std::sqrt(std::pow(position.xV, 2) + std::pow(position.yV, 2))};
+        if (distance < m_target_tolerance && velocity < m_target_velocity)
         {
             target_reached = true;
             robot::subsystems::drive::Velocity stop{0, 0};
@@ -89,6 +90,8 @@ void PIDBoomerang::updateVelocity(robot::subsystems::position::Position position
     
     double rotational_error{bindRadians(std::atan2(y_error, x_error) - position.theta)};
     double linear_error{std::cos(rotational_error) * std::sqrt(std::pow(x_error, 2) + std::pow(y_error, 2))};
+    if (linear_error < 0)
+        rotational_error = bindRadians(rotational_error + M_PI);
 
     double linear_control{m_linear_pid.getControlValue(0, linear_error)};
     double rotational_control{m_rotational_pid.getControlValue(0, rotational_error)};
@@ -130,6 +133,14 @@ void PIDBoomerang::goToPosition(const std::shared_ptr<robot::Robot>& robot, doub
     target_y = y;
     target_theta = theta;
     target_reached = false;
+
+    auto position{getOdometryPosition()};
+    double x_error{target_x - position.x};
+    double y_error{target_y - position.y};
+    double target_angle{std::atan2(y_error, x_error)};
+    double angle_error{bindRadians(target_angle - position.theta)};
+    if (std::abs(angle_error) > M_PI / 2)
+        target_theta = bindRadians(target_theta + M_PI);
 
     if (m_mutex)
         m_mutex->give();
@@ -197,6 +208,11 @@ void PIDBoomerang::setLead(double lead)
 void PIDBoomerang::setTargetTolerance(double target_tolerance)
 {
     m_target_tolerance = target_tolerance;
+}
+
+void PIDBoomerang::setTargetVelocity(double target_velocity)
+{
+    m_target_velocity = target_velocity;
 }
 } // namespace boomerang
 } // namespace control

@@ -63,7 +63,7 @@ private:
      * @brief Converts motor encoder ticks to radians
      * 
      */
-    static constexpr double POSITION_CONVERSION{2 * M_PI / 900};
+    static constexpr double POSITION_CONVERSION{2 * M_PI / 180};
 
     /**
      * @brief The motor being adapted

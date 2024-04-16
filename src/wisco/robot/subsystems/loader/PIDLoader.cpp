@@ -78,7 +78,7 @@ void PIDLoader::doLoad()
     if (m_mutex)
         m_mutex->take();
 
-    if (state == EState::READY)
+    if (state != EState::LOADED)
     {
         state = EState::LOADING;
         target_position = m_match_load_position;
@@ -93,7 +93,7 @@ void PIDLoader::doReady()
     if (m_mutex)
         m_mutex->take();
 
-    if (state == EState::LOADED)
+    if (state != EState::READY)
     {
         state = EState::READYING;
         target_position = m_ready_position;

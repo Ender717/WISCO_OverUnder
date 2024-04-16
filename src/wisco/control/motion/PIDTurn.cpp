@@ -1,6 +1,4 @@
 #include "wisco/control/motion/PIDTurn.hpp"
-#include "pros/screen.h"
-#include "pros/screen.hpp"
 
 namespace wisco
 {
@@ -30,7 +28,6 @@ void PIDTurn::taskUpdate()
         if (turn_reversed)
             target_angle += M_PI;
         double error{bindRadians(target_angle - position.theta)};
-        pros::screen::print(pros::E_TEXT_LARGE_CENTER, 1, "Error: %7.2f", error);
         if (std::abs(error) < m_target_tolerance && std::abs(position.thetaV) < m_target_velocity)
         {
             target_reached = true;
