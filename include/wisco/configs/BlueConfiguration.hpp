@@ -351,25 +351,13 @@ private:
 	 * @brief The first intake motor port
 	 * 
 	 */
-	static constexpr int8_t INTAKE_MOTOR_1_PORT{-12};
+	static constexpr int8_t INTAKE_MOTOR_1_PORT{19};
 
 	/**
 	 * @brief The first intake motor gearset
 	 * 
 	 */
 	static constexpr pros::v5::MotorGears INTAKE_MOTOR_1_GEARSET{pros::E_MOTOR_GEARSET_06};
-
-	/**
-	 * @brief The second intake motor port
-	 * 
-	 */
-	static constexpr int8_t INTAKE_MOTOR_2_PORT{19};
-
-	/**
-	 * @brief The second intake motor gearset
-	 * 
-	 */
-	static constexpr pros::v5::MotorGears INTAKE_MOTOR_2_GEARSET{pros::E_MOTOR_GEARSET_06};
 
 	/**
 	 * @brief The radius of the intake roller
@@ -501,7 +489,7 @@ private:
 	 * @brief The number of inches moved per radian on the elevator
 	 * 
 	 */
-	static constexpr double ELEVATOR_INCHES_PER_RADIAN{17.0 / (0.8 * 2 * M_PI)};
+	static constexpr double ELEVATOR_INCHES_PER_RADIAN{2 * 0.625};
 
 	/**
 	 * @brief The elevator distance sensor port
@@ -615,7 +603,7 @@ private:
 	 * @brief The loader position when ready
 	 * 
 	 */
-	static constexpr double LOADER_READY_POSITION{0};
+	static constexpr double LOADER_READY_POSITION{-M_PI / 18};
 
 	/**
 	 * @brief The loader position tolerance

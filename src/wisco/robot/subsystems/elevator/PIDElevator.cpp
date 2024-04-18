@@ -22,12 +22,16 @@ void PIDElevator::taskUpdate()
 {
     if (calibrating)
     {
+        if (m_mutex)
+            m_mutex->take();
         m_motors.setVoltage(-12);
         m_delayer->delay(TASK_DELAY);
         while (m_motors.getAngularVelocity() < 0.0)
             m_delayer->delay(TASK_DELAY);
         m_motors.setPosition(0);
         calibrating = false;
+        if (m_mutex)
+            m_mutex->give();
     }
     updatePosition();
     m_delayer->delay(TASK_DELAY);
