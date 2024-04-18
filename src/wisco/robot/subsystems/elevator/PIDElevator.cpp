@@ -20,35 +20,28 @@ void PIDElevator::taskLoop(void* params)
 
 void PIDElevator::taskUpdate()
 {
-    if (calibrating)
+    if (m_mutex)
+        m_mutex->take();
+    uint32_t calibration_time{UINT32_MAX};
+    if (m_clock)
+        calibration_time = m_clock->getTime() - calibrate_time;
+    if (calibrating && m_motors.getAngularVelocity() >= 0.0 && calibration_time >= 500)
     {
-        if (m_mutex)
-            m_mutex->take();
-        m_motors.setVoltage(-12);
-        m_delayer->delay(TASK_DELAY);
-        while (m_motors.getAngularVelocity() < 0.0)
-            m_delayer->delay(TASK_DELAY);
         m_motors.setPosition(0);
         calibrating = false;
-        if (m_mutex)
-            m_mutex->give();
     }
-    updatePosition();
+    if (!calibrating)
+        updatePosition();
+    if (m_mutex)
+        m_mutex->give();
     m_delayer->delay(TASK_DELAY);
 }
 
 void PIDElevator::updatePosition()
 {
-    if (m_mutex)
-        m_mutex->take();
-
     double current_position{getPosition()};
-    
     double voltage{m_pid.getControlValue(current_position, m_position)};
     m_motors.setVoltage(voltage);
-
-    if (m_mutex)
-        m_mutex->give();
 }
 
 void PIDElevator::initialize()
@@ -96,6 +89,9 @@ void PIDElevator::calibrate()
         m_mutex->take();
     
     calibrating = true;
+    m_motors.setVoltage(-12.0);
+    if (m_clock)
+        calibrate_time = m_clock->getTime();
 
     if (m_mutex)
         m_mutex->give();

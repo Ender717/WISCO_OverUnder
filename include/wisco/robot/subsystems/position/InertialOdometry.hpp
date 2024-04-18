@@ -57,19 +57,13 @@ private:
      * @brief The loop delay on the task
      * 
      */
-    static constexpr uint8_t TASK_DELAY{10};
+    static constexpr uint8_t TASK_DELAY{20};
 
     /**
      * @brief Converts the time units for velocity
      * 
      */
     static constexpr double TIME_UNIT_CONVERTER{1000};
-
-    /**
-     * @brief The size of the velocity buffer
-     * 
-     */
-    static constexpr uint8_t VELOCITY_BUFFER{4};
 
     /**
      * @brief The task loop function for background updates
@@ -139,30 +133,6 @@ private:
      * 
      */
     Position m_position{};
-
-    /**
-     * @brief The buffer for xV
-     * 
-     */
-    double x_velocity[VELOCITY_BUFFER]{};
-
-    /**
-     * @brief The buffer for yV
-     * 
-     */
-    double y_velocity[VELOCITY_BUFFER]{};
-
-    /**
-     * @brief The buffer for thetaV
-     * 
-     */
-    double theta_velocity[VELOCITY_BUFFER]{};
-
-    /**
-     * @brief The current velocity index
-     * 
-     */
-    uint8_t velocity_index{};
 
     /**
      * @brief The last value of the heading sensor

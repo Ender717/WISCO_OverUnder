@@ -441,7 +441,7 @@ private:
 	 * @brief The KP for the elevator PID
 	 * 
 	 */
-	static constexpr double ELEVATOR_KP{6.0};
+	static constexpr double ELEVATOR_KP{24.0};
 
 	/**
 	 * @brief The KI for the elevator PID
@@ -453,7 +453,7 @@ private:
 	 * @brief The KD for the elevator PID
 	 * 
 	 */
-	static constexpr double ELEVATOR_KD{0.0};
+	static constexpr double ELEVATOR_KD{256.0};
 
 	/**
 	 * @brief The first elevator motor port

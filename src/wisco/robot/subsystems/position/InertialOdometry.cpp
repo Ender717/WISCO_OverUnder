@@ -76,24 +76,9 @@ void InertialOdometry::updatePosition()
 
     if (time_change)
     {
-        x_velocity[velocity_index] = global_x / (time_change / TIME_UNIT_CONVERTER);
-        y_velocity[velocity_index] = global_y / (time_change / TIME_UNIT_CONVERTER);
-        theta_velocity[velocity_index] = heading_change / (time_change / TIME_UNIT_CONVERTER);
-        velocity_index = (velocity_index + 1) % VELOCITY_BUFFER;
-
-        double xV{};
-        double yV{};
-        double thetaV{};
-        for (uint8_t i{}; i < VELOCITY_BUFFER; ++i)
-        {
-            xV += x_velocity[i];
-            yV += y_velocity[i];
-            thetaV += theta_velocity[i];
-        }
-
-        m_position.xV = xV / VELOCITY_BUFFER;
-        m_position.yV = yV / VELOCITY_BUFFER;
-        m_position.thetaV = thetaV / VELOCITY_BUFFER;
+        m_position.xV = global_x / (time_change / TIME_UNIT_CONVERTER);
+        m_position.yV = global_y / (time_change / TIME_UNIT_CONVERTER);
+        m_position.thetaV = heading_change / (time_change / TIME_UNIT_CONVERTER);
     }
 
     last_heading = current_heading;
