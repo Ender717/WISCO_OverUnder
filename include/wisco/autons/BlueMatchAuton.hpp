@@ -4,6 +4,8 @@
 #include <cmath>
 
 #include "wisco/control/motion/ETurnDirection.hpp"
+#include "wisco/control/path/QuinticBezierSpline.hpp"
+#include "wisco/robot/subsystems/drive/Velocity.hpp"
 #include "wisco/robot/subsystems/position/Position.hpp"
 
 #include "wisco/IAutonomous.hpp"
@@ -44,6 +46,12 @@ private:
 	static constexpr char BOOMERANG_CONTROL_NAME[]{"BOOMERANG"};
 
 	/**
+	 * @brief The name of the path following control
+	 * 
+	 */
+	static constexpr char PATH_FOLLOWING_CONTROL_NAME[]{"PATH FOLLOWING"};
+
+	/**
 	 * @brief The name of the odometry subsystem
 	 * 
 	 */
@@ -56,6 +64,18 @@ private:
 	static constexpr char BOOMERANG_GO_TO_POSITION_COMMAND_NAME[]{"GO TO POSITION"};
 
 	/**
+	 * @brief The name of the path following follow path command
+	 * 
+	 */
+	static constexpr char PATH_FOLLOWING_FOLLOW_PATH_COMMAND_NAME[]{"FOLLOW PATH"};
+
+	/**
+	 * @brief The name of the path following set velocity command
+	 * 
+	 */
+	static constexpr char PATH_FOLLOWING_SET_VELOCITY_COMMAND_NAME[]{"SET VELOCITY"};
+
+	/**
 	 * @brief The name of the odometry set position command
 	 * 
 	 */
@@ -66,6 +86,12 @@ private:
 	 * 
 	 */
 	static constexpr char BOOMERANG_TARGET_REACHED_STATE_NAME[]{"TARGET REACHED"};
+
+	/**
+	 * @brief The name of the path following target reached state
+	 * 
+	 */
+	static constexpr char PATH_FOLLOWING_TARGET_REACHED_STATE_NAME[]{"TARGET REACHED"};
 
 	/**
 	 * @brief The name of the odometry get position state
@@ -178,6 +204,39 @@ private:
 	 * @return false The motion turn target has not been reached
 	 */
 	bool motionTurnTargetReached(std::shared_ptr<control::ControlSystem> control_system);
+
+	/**
+	 * @brief Calls the path following follow path command
+	 * 
+	 * @param control_system The control system
+	 * @param robot The robot
+	 * @param path The path to follow
+	 * @param velocity The path following velocity
+	 */
+	void pathFollowingFollowPath(std::shared_ptr<control::ControlSystem> control_system, 
+								 std::shared_ptr<robot::Robot> robot, 
+								 std::vector<control::path::Point> path,
+								 double velocity);
+
+	/**
+	 * @brief Sets the velocity of the pure pursuit system
+	 * 
+	 * @param control_system The control system
+	 * @param velocity The path following velocity
+	 */
+	void pathFollowingSetVelocity(std::shared_ptr<control::ControlSystem> control_system,
+								  double velocity);
+
+	/**
+	 * @brief Checks if the path following target has been reached
+	 * 
+	 * @param control_system The control system
+	 * @return true The path following target has been reached
+	 * @return false The path following target has not been reached
+	 */
+	bool pathFollowingTargetReached(std::shared_ptr<control::ControlSystem> control_system);
+
+	std::vector<control::path::Point> test_path{};
 
 public:
     /**

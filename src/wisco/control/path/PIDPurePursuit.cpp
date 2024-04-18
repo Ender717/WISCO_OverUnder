@@ -36,6 +36,7 @@ void PIDPurePursuit::taskUpdate()
         }
         else
         {
+            updateFoundPoints(position);
             Point follow_point{calculateFollowPoint(position)};
             updateVelocity(position, follow_point);
         }
@@ -78,7 +79,23 @@ double PIDPurePursuit::calculateDistanceToTarget(wisco::robot::subsystems::posit
     return target_distance;
 }
 
-Point PIDPurePursuit::calculateFollowPoint(wisco::robot::subsystems::position::Position position)
+void PIDPurePursuit::updateFoundPoints(robot::subsystems::position::Position position)
+{
+    bool loop{true};
+    while (loop && found_index < control_path.size() - 1)
+    {
+        loop = false;
+        Point next_point{control_path[found_index + 1]};
+        double next_distance{distance(position.x, position.y, next_point.getX(), next_point.getY())};
+        if (next_distance <= m_follow_distance)
+        {
+            ++found_index;
+            loop = true;
+        }
+    }
+}
+
+Point PIDPurePursuit::calculateFollowPoint(robot::subsystems::position::Position position)
 {   
     Point follow_point{};
     
@@ -199,6 +216,17 @@ void PIDPurePursuit::followPath(const std::shared_ptr<robot::Robot>& robot, cons
     found_index = 0;
     motion_velocity = velocity;
     target_reached = false;
+
+    if (m_mutex)
+        m_mutex->give();
+}
+
+void PIDPurePursuit::setVelocity(double velocity)
+{
+    if (m_mutex)
+        m_mutex->take();
+    
+    motion_velocity = velocity;
 
     if (m_mutex)
         m_mutex->give();

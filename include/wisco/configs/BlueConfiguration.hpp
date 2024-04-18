@@ -59,6 +59,10 @@
 #include "wisco/control/motion/PIDTurnBuilder.hpp"
 #include "wisco/control/motion/MotionControl.hpp"
 
+// pure pursuit includes
+#include "wisco/control/path/PIDPurePursuitBuilder.hpp"
+#include "wisco/control/path/PathFollowingControl.hpp"
+
 #include "wisco/IConfiguration.hpp"
 
 /**
@@ -618,6 +622,60 @@ private:
 	 * 
 	 */
 	static constexpr double LOADER_POSITION_TOLERANCE{M_PI / 18};
+
+	/**
+	 * @brief The proportional constant for the pure pursuit linear pid controller
+	 * 
+	 */
+	static constexpr double PURE_PURSUIT_LINEAR_KP{12.0};
+
+	/**
+	 * @brief The integral constant for the pure pursuit linear pid controller
+	 * 
+	 */
+	static constexpr double PURE_PURSUIT_LINEAR_KI{};
+
+	/**
+	 * @brief The derivative constant for the pure pursuit linear pid controller
+	 * 
+	 */
+	static constexpr double PURE_PURSUIT_LINEAR_KD{640.0};
+
+	/**
+	 * @brief The proportional constant for the pure pursuit rotational pid controller
+	 * 
+	 */
+	static constexpr double PURE_PURSUIT_ROTATIONAL_KP{640.0};
+
+	/**
+	 * @brief The integral constant for the pure pursuit rotational pid controller
+	 * 
+	 */
+	static constexpr double PURE_PURSUIT_ROTATIONAL_KI{};
+
+	/**
+	 * @brief The derivative constant for the pure pursuit rotational pid controller
+	 * 
+	 */
+	static constexpr double PURE_PURSUIT_ROTATIONAL_KD{10000.0};
+
+	/**
+	 * @brief The follow distance for the pure pursuit controller
+	 * 
+	 */
+	static constexpr double PURE_PURSUIT_FOLLOW_DISTANCE{12.0};
+
+	/**
+	 * @brief The target tolerance for the pure pursuit controller
+	 * 
+	 */
+	static constexpr double PURE_PURSUIT_TARGET_TOLERANCE{3.0};
+
+	/**
+	 * @brief The target velocity for the pure pursuit controller
+	 * 
+	 */
+	static constexpr double PURE_PURSUIT_TARGET_VELOCITY{1.0};
 
 	/**
 	 * @brief The proportional constant for the turn pid controller

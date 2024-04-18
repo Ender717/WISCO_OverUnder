@@ -55,6 +55,27 @@ std::shared_ptr<control::ControlSystem> BlueConfiguration::buildControlSystem()
     std::unique_ptr<wisco::control::AControl> motion_control{std::make_unique<wisco::control::motion::MotionControl>(pid_turn)};
     control_system->addControl(motion_control);
 
+    wisco::control::path::PIDPurePursuitBuilder pid_pure_pursuit_builder{};
+    std::unique_ptr<rtos::IMutex> pure_pursuit_pros_mutex{std::make_unique<pros_adapters::ProsMutex>()};
+    std::unique_ptr<rtos::ITask> pure_pursuit_pros_task{std::make_unique<pros_adapters::ProsTask>()};
+    wisco::control::PID pure_pursuit_linear_pid{pros_clock, PURE_PURSUIT_LINEAR_KP, PURE_PURSUIT_LINEAR_KI, PURE_PURSUIT_LINEAR_KD};
+    wisco::control::PID pure_pursuit_rotational_pid{pros_clock, PURE_PURSUIT_ROTATIONAL_KP, PURE_PURSUIT_ROTATIONAL_KI, PURE_PURSUIT_ROTATIONAL_KD};
+    std::unique_ptr<wisco::control::path::IPathFollower> pid_pure_pursuit
+    {
+        pid_pure_pursuit_builder.
+        withDelayer(pros_delayer)->
+        withMutex(pure_pursuit_pros_mutex)->
+        withTask(pure_pursuit_pros_task)->
+        withLinearPID(pure_pursuit_linear_pid)->
+        withRotationalPID(pure_pursuit_rotational_pid)->
+        withFollowDistance(PURE_PURSUIT_FOLLOW_DISTANCE)->
+        withTargetTolerance(PURE_PURSUIT_TARGET_TOLERANCE)->
+        withTargetVelocity(PURE_PURSUIT_TARGET_VELOCITY)->
+        build()
+    };
+    std::unique_ptr<wisco::control::AControl> pure_pursuit_control{std::make_unique<wisco::control::path::PathFollowingControl>(pid_pure_pursuit)};
+    control_system->addControl(pure_pursuit_control);
+
     return control_system;
 }
 

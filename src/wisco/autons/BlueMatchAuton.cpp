@@ -1,4 +1,6 @@
 #include "wisco/autons/BlueMatchAuton.hpp"
+#include "pros/screen.h"
+#include "pros/screen.hpp"
 
 namespace wisco
 {
@@ -87,6 +89,37 @@ bool BlueMatchAuton::motionTurnTargetReached(std::shared_ptr<control::ControlSys
 	return target_reached;
 }
 
+void BlueMatchAuton::pathFollowingFollowPath(std::shared_ptr<control::ControlSystem> control_system, 
+											 std::shared_ptr<robot::Robot> robot, 
+											 std::vector<control::path::Point> path,
+											 double velocity)
+{
+	if (control_system)
+		control_system->sendCommand(PATH_FOLLOWING_CONTROL_NAME, PATH_FOLLOWING_FOLLOW_PATH_COMMAND_NAME, &robot, &path, velocity);
+}
+
+void BlueMatchAuton::pathFollowingSetVelocity(std::shared_ptr<control::ControlSystem> control_system,
+											  double velocity)
+{
+	if (control_system)
+		control_system->sendCommand(PATH_FOLLOWING_CONTROL_NAME, PATH_FOLLOWING_SET_VELOCITY_COMMAND_NAME, velocity);
+}
+
+bool BlueMatchAuton::pathFollowingTargetReached(std::shared_ptr<control::ControlSystem> control_system)
+{
+	bool target_reached{};
+	if (control_system)
+	{
+		bool* result{static_cast<bool*>(control_system->getState(PATH_FOLLOWING_CONTROL_NAME, PATH_FOLLOWING_TARGET_REACHED_STATE_NAME))};
+		if (result)
+		{
+			target_reached = *result;
+			delete result;
+		}
+	}
+	return target_reached;
+}
+
 std::string BlueMatchAuton::getName()
 {
     return AUTONOMOUS_NAME;
@@ -95,7 +128,17 @@ std::string BlueMatchAuton::getName()
 void BlueMatchAuton::initialize(std::shared_ptr<control::ControlSystem> control_system, 
 					            std::shared_ptr<robot::Robot> robot)
 {
-
+	std::vector<control::path::Point> test_path_control_points
+	{
+		control::path::Point{0.0, 0.0},
+		control::path::Point{24.0, 0.0},
+		control::path::Point{48.0, 0.0},
+		control::path::Point{48.0, 24.0},
+		control::path::Point{48.0, 48.0},
+		control::path::Point{24.0, 48.0},
+		control::path::Point{0.0, 48.0}
+	};
+	test_path = control::path::QuinticBezierSpline::calculate(test_path_control_points);
 }
 
 void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
@@ -104,15 +147,23 @@ void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
 					      std::shared_ptr<robot::Robot> robot)
 {
 	odometrySetPosition(robot, 0, 0, 0);
-    boomerangGoToPoint(control_system, robot, 36.0, -48.0, -24.0, M_PI / 4);
-	while (!boomerangTargetReached(control_system))
-		delayer->delay(10);
-	motionTurnToAngle(control_system, robot, 2 * M_PI, M_PI / 4);
-	while (!motionTurnTargetReached(control_system))
-		delayer->delay(10);
-	boomerangGoToPoint(control_system, robot, 36.0, 0.0, 0.0, 0);
-	while (!boomerangTargetReached(control_system))
-		delayer->delay(10);
+    pathFollowingFollowPath(control_system, robot, test_path, 36.0);
+	bool paused{false};
+	while (!pathFollowingTargetReached(control_system))
+	{
+		auto position{odometryGetPosition(robot)};
+		pros::screen::print(pros::E_TEXT_LARGE_CENTER, 1, "xV: %7.2f", position.xV);
+		if (position.y > 42.0 && position.x < 36.0 && std::abs(position.xV) < 2.0 && !paused)
+		{
+			control_system->pause();
+			paused = true;
+			robot->sendCommand("DIFFERENTIAL DRIVE", "SET VELOCITY", robot::subsystems::drive::Velocity{-24, -24});
+			delayer->delay(300);
+			control_system->resume();
+		}
+		if (delayer)
+			delayer->delay(10);
+	}
 }
 }
 }

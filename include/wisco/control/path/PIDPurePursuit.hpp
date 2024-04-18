@@ -198,6 +198,13 @@ private:
     double calculateDistanceToTarget(robot::subsystems::position::Position position);
 
     /**
+     * @brief Updates the found points
+     * 
+     * @param position The current robot position
+     */
+    void updateFoundPoints(robot::subsystems::position::Position position);
+
+    /**
      * @brief Calculates the follow point
      * 
      * @param position The current robot position
