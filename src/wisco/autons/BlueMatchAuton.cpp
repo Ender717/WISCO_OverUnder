@@ -153,7 +153,7 @@ void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
 	{
 		auto position{odometryGetPosition(robot)};
 		pros::screen::print(pros::E_TEXT_LARGE_CENTER, 1, "xV: %7.2f", position.xV);
-		if (position.y > 42.0 && position.x < 36.0 && std::abs(position.xV) < 2.0 && !paused)
+		if (position.y > 42.0 && position.x < 36.0 && std::abs(position.xV) < 8.0 && !paused)
 		{
 			control_system->pause();
 			paused = true;
