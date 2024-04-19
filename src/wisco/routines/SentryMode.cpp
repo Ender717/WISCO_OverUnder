@@ -4,11 +4,12 @@ namespace wisco
 {
 namespace routines
 {
-void SentryMode::taskLoop(void* params)
+void SentryMode::taskHandler(void* params)
 {
     SentryMode* instance{static_cast<SentryMode*>(params)};
 
-    while (true)
+    instance->taskRun();
+    while (!instance->isFinished())
     {
         instance->taskUpdate();
     }
@@ -128,29 +129,110 @@ bool SentryMode::turnTargetReached()
     return target_reached;
 }
 
+bool SentryMode::pointExists(control::path::Point point)
+{
+    return point.getX() != 0 || point.getY() != 0;
+}
+
 bool SentryMode::isValid(control::path::Point point)
 {
     bool valid{false};
     auto position{getOdometryPosition()};
     
     if (position.x < 72.0)
+    {
         valid = (point.getX() > 27.0 && point.getX() < 69.0) &&
                 (point.getY() > 3.0 && point.getY() < 71.0);
+    }
     else
+    {
         valid = (point.getX() > 75.0 && point.getX() < 117.0) &&
                 (point.getY() > 3.0 && point.getY() < 83.0);
-
+    }
+    
     return valid;
 }
 
 void SentryMode::updateSearch()
 {
+	if (!pointExists(ball_point_2) && !turnTargetReached())
+	{
+		auto position{getOdometryPosition()};
+		double ball_distance{getBallDistance()};
+		double ball_x{position.x + (ball_distance * std::cos(position.theta))};
+		double ball_y{position.y + (ball_distance * std::sin(position.theta))};
+		control::path::Point ball_point{ball_x, ball_y};
+		if (isValid(ball_point))
+		{
+			if (!pointExists(ball_point_1))
+            {
+				ball_point_1 = ball_point;
+            } else
+            {
+                ball_point_2 = ball_point;
 
+                // CALCULATE BALL COORDINATE
+
+                // TURN TO FACE BALL
+
+                state = EState::TURN;
+            }
+		}
+	} else if (turnTargetReached())
+    {
+        finished = true;
+    }
+
+}
+
+void SentryMode::updateTurn()
+{
+    if (turnTargetReached())
+    {
+        auto position{getOdometryPosition()};
+        double ball_distance{distance(position.x, position.y, ball.getX(), ball.getY())};
+        elevator_distance = std::min(ball_distance - ELEVATOR_OFFSET, ELEVATOR_OUT);
+        setElevatorPosition(elevator_distance);
+        setIntakeVoltage(INTAKE_VOLTAGE);
+        double target_angle{std::atan2(ball.getY() - position.y, ball.getX() - position.x)};
+        double target_distance{elevator_distance + ELEVATOR_OFFSET};
+        boomerangGoToPoint(ball.getX(), ball.getY(), target_angle, BOOMERANG_VELOCITY);
+        state = EState::GRAB;
+    }
 }
 
 void SentryMode::updateGrab()
 {
+    auto position{getOdometryPosition()};
+    double ball_distance{distance(position.x, position.y, ball.getX(), ball.getY())};
+    
+    bool grabbed{true};
+    if (distance(position.x, position.y, ball.getX(), ball.getY()) < elevator_distance + ELEVATOR_OFFSET)
+        m_control_system->pause();
+    else
+        grabbed = false;
 
+    if (getElevatorPosition() < elevator_distance - ELEVATOR_TOLERANCE)
+        grabbed = false;
+    
+    if (grabbed)
+    {
+        setElevatorPosition(ELEVATOR_BALL);
+        state = EState::HOLD;
+    }
+}
+
+void SentryMode::updateHold()
+{
+    if (getElevatorPosition() < ELEVATOR_BALL + ELEVATOR_TOLERANCE)
+        finished = true;
+}
+
+void SentryMode::taskRun()
+{
+    turnToAngle(m_end_angle, TURN_VELOCITY, false, m_direction);
+	m_delayer->delay(TURN_START_DELAY);
+	turnToAngle(m_end_angle, SCAN_VELOCITY, false, m_direction);
 }
 
 void SentryMode::taskUpdate()
@@ -164,8 +246,14 @@ void SentryMode::taskUpdate()
         case EState::SEARCH:
             updateSearch();
             break;
+        case EState::TURN:
+            updateTurn();
+            break;
         case EState::GRAB:
             updateGrab();
+            break;
+        case EState::HOLD:
+            updateHold();
             break;
         }
     }
@@ -175,9 +263,20 @@ void SentryMode::taskUpdate()
         m_delayer->delay(TASK_DELAY);
 }
 
-void SentryMode::run(double end_angle)
+void SentryMode::run(double end_angle, control::motion::ETurnDirection direction)
 {
-
+    state = EState::SEARCH;
+    ball_point_1.setX(0);
+    ball_point_1.setY(0);
+    ball_point_2.setX(0);
+    ball_point_2.setY(0);
+    m_end_angle = end_angle;
+    m_direction = direction;
+    if (m_task)
+    {
+        m_task->remove();
+        m_task->start(&SentryMode::taskHandler, this);
+    }
 }
 
 void SentryMode::pause()

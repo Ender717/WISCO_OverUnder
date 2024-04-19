@@ -1,6 +1,7 @@
 #ifndef WISCO_ROUTINES_SENTRY_MODE_HPP
 #define WISCO_ROUTINES_SENTRY_MODE_HPP
 
+#include <cfloat>
 #include <cmath>
 #include <memory>
 
@@ -48,7 +49,9 @@ private:
     enum class EState
     {
         SEARCH,
-        GRAB
+        TURN,
+        GRAB,
+        HOLD
     };
 
     /**
@@ -62,6 +65,12 @@ private:
      * 
      */
     static constexpr double BALL_WIDTH{4.0};
+
+    /**
+     * @brief The velocity for boomerang motions
+     * 
+     */
+    static constexpr double BOOMERANG_VELOCITY{36.0};
 
     /**
      * @brief The position of the elevator when holding a ball
@@ -94,17 +103,29 @@ private:
     static constexpr double INTAKE_VOLTAGE{12};
 
     /**
-     * @brief The velocity to turn for sentry mode
+     * @brief The delay to jump start the turn
      * 
      */
-    static constexpr double TURN_VELOCITY{4 * M_PI / 5};
+    static constexpr uint8_t TURN_START_DELAY{20};
 
     /**
-     * @brief The task loop function for background updates
+     * @brief The velocity to scan for sentry mode
+     * 
+     */
+    static constexpr double SCAN_VELOCITY{4 * M_PI / 5};
+
+    /**
+     * @brief The velocity to turn
+     * 
+     */
+    static constexpr double TURN_VELOCITY{2 * M_PI};
+
+    /**
+     * @brief The task handler function
      * 
      * @param params The task parameters
      */
-    static void taskLoop(void* params);
+    static void taskHandler(void* params);
 
     /**
      * @brief The rtos clock
@@ -159,6 +180,30 @@ private:
      * 
      */
     control::path::Point ball_point_2{};
+
+    /**
+     * @brief The angle to stop at if no balls are detected
+     * 
+     */
+    double m_end_angle{};
+
+    /**
+     * @brief The direction to rotate
+     * 
+     */
+    control::motion::ETurnDirection m_direction{};
+
+    /**
+     * @brief The location of the ball
+     * 
+     */
+    control::path::Point ball{};
+
+    /**
+     * @brief The distance setting for the elevator when grabbing
+     * 
+     */
+    double elevator_distance{};
 
     /**
      * @brief Whether or not sentry mode has finished
@@ -263,6 +308,15 @@ private:
     bool turnTargetReached();
 
     /**
+     * @brief Checks if a point exists
+     * 
+     * @param point The input point
+     * @return true The point exists (non-zero values)
+     * @return false The point does not exist (zero values)
+     */
+    bool pointExists(control::path::Point point);
+
+    /**
      * @brief Checks if a point is valid for sentry mode
      * 
      * @param point The point
@@ -278,10 +332,28 @@ private:
     void updateSearch();
 
     /**
+     * @brief Updates the turn state
+     * 
+     */
+    void updateTurn();
+
+    /**
      * @brief Updates the grab state
      * 
      */
     void updateGrab();
+
+    /**
+     * @brief Updates the hold state
+     * 
+     */
+    void updateHold();
+
+    /**
+     * @brief Runs all the object specific task code
+     * 
+     */
+    void taskRun();
 
     /**
      * @brief Runs all the object-specific updates in the task loop
@@ -311,8 +383,9 @@ public:
      * @brief Runs sentry mode
      * 
      * @param end_angle The angle to end at if no balls are found
+     * @param direction The direction to turn
      */
-    void run(double end_angle);
+    void run(double end_angle, control::motion::ETurnDirection direction);
 
     /**
      * @brief Pauses sentry mode
