@@ -171,7 +171,7 @@ bool BlueMatchAuton::validSentryPointGoal(control::path::Point point)
 {
 	bool valid{true};
 
-	if (point.getX() < 69.0 || point.getX() > 142.0)
+	if (point.getX() < 75.0 || point.getX() > 142.0)
 		valid = false;
 
 	if (point.getY() > 84.0 || point.getY() < 2.0)
@@ -322,7 +322,7 @@ void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
 						  std::shared_ptr<control::ControlSystem> control_system, 
 					      std::shared_ptr<robot::Robot> robot)
 {
-	odometrySetPosition(robot, 12.0, 12.0, 0);
+	odometrySetPosition(robot, 96.0, 48.0, M_PI / 2);
 	bool sentry{true};
 	auto position{odometryGetPosition(robot)};
 	while (sentry)
@@ -330,21 +330,36 @@ void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
 		sentry = sentryMode(clock, delayer, control_system, robot, false, 10000, control::motion::ETurnDirection::COUNTERCLOCKWISE);
 		if (sentry)
 		{
-			motionTurnToPoint(control_system, robot, 2 * M_PI, 36.0, 12.0);
+			motionTurnToPoint(control_system, robot, 2 * M_PI, 108.0, 60.0);
 			while (!motionTurnTargetReached(control_system))
 				delayer->delay(20);
+
 			position = odometryGetPosition(robot);
-			boomerangGoToPoint(control_system, robot, 36.0, 36.0, 12.0, position.theta);
+			boomerangGoToPoint(control_system, robot, 36.0, 108.0, 60.0, position.theta);
 			while (!boomerangTargetReached(control_system))
 				delayer->delay(20);
-			motionTurnToAngle(control_system, robot, 2 * M_PI, -M_PI / 2);
+
+			motionTurnToAngle(control_system, robot, 2 * M_PI, 0);
 			while (!motionTurnTargetReached(control_system))
 				delayer->delay(20);
+
 			robot->sendCommand("ELEVATOR", "SET POSITION", 0.0);
 			robot->sendCommand("INTAKE", "SET VOLTAGE", -12.0);
 			while (elevatorGetPosition(robot) > 0.5)
 				delayer->delay(20);
-			motionTurnToAngle(control_system, robot, 2 * M_PI, 0);
+			
+			robot->sendCommand("DIFFERENTIAL DRIVE", "SET VOLTAGE", 12.0, 12.0);
+			position = odometryGetPosition(robot);
+			while (position.x < 110.0 || position.xV > 8.0)
+			{
+				delayer->delay(20);
+				position = odometryGetPosition(robot);
+			}
+
+			robot->sendCommand("DIFFERENTIAL DRIVE", "SET VOLTAGE", -12.0, -12.0);
+			delayer->delay(200);
+
+			motionTurnToAngle(control_system, robot, 2 * M_PI, M_PI / 2);
 			while (!motionTurnTargetReached(control_system))
 				delayer->delay(20);
 		}
