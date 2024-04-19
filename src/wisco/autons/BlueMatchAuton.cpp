@@ -322,18 +322,19 @@ void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
 						  std::shared_ptr<control::ControlSystem> control_system, 
 					      std::shared_ptr<robot::Robot> robot)
 {
-	odometrySetPosition(robot, 96.0, 48.0, M_PI / 2);
+	odometrySetPosition(robot, 108.0, 60.0, M_PI / 2);
 
 	std::unique_ptr<rtos::IMutex> sentry_mutex{std::make_unique<pros_adapters::ProsMutex>()};
 	std::unique_ptr<rtos::ITask> sentry_task{std::make_unique<pros_adapters::ProsTask>()};
 	routines::SentryMode sentry_mode{clock, delayer, sentry_mutex, sentry_task, control_system, robot};
+	sentry_mode.run();
 
 	bool sentry{true};
 	auto position{odometryGetPosition(robot)};
 	double last_ball_angle{};
 	while (sentry)
 	{
-		sentry_mode.run(-M_PI, control::motion::ETurnDirection::COUNTERCLOCKWISE);
+		sentry_mode.doSentryMode(-M_PI, control::motion::ETurnDirection::COUNTERCLOCKWISE);
 		while (!sentry_mode.isFinished())
 			delayer->delay(10);
 		sentry = sentry_mode.ballFound();

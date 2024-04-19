@@ -48,6 +48,7 @@ private:
      */
     enum class EState
     {
+        START,
         SEARCH,
         TURN,
         GRAB,
@@ -127,11 +128,11 @@ private:
     static constexpr double TURN_VELOCITY{2 * M_PI};
 
     /**
-     * @brief The task handler function
+     * @brief The task loop function
      * 
      * @param params The task parameters
      */
-    static void taskHandler(void* params);
+    static void taskLoop(void* params);
 
     /**
      * @brief The rtos clock
@@ -204,6 +205,12 @@ private:
      * 
      */
     control::path::Point ball{};
+
+    /**
+     * @brief The time the routine started
+     * 
+     */
+    uint32_t start_time{};
 
     /**
      * @brief The distance setting for the elevator when grabbing
@@ -332,6 +339,12 @@ private:
     bool isValid(control::path::Point point);
 
     /**
+     * @brief Updates the start state
+     * 
+     */
+    void updateStart();
+
+    /**
      * @brief Updates the search state
      * 
      */
@@ -354,12 +367,6 @@ private:
      * 
      */
     void updateHold();
-
-    /**
-     * @brief Runs all the object specific task code
-     * 
-     */
-    void taskRun();
 
     /**
      * @brief Runs all the object-specific updates in the task loop
@@ -387,11 +394,17 @@ public:
 
     /**
      * @brief Runs sentry mode
+     *  
+     */
+    void run();
+
+    /**
+     * @brief Does a sentry mode routine
      * 
      * @param end_angle The angle to end at if no balls are found
      * @param direction The direction to turn
      */
-    void run(double end_angle, control::motion::ETurnDirection direction);
+    void doSentryMode(double end_agle, control::motion::ETurnDirection direction);
 
     /**
      * @brief Pauses sentry mode

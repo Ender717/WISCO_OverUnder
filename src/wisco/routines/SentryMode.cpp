@@ -16,12 +16,11 @@ SentryMode::SentryMode(const std::shared_ptr<rtos::IClock>& clock,
 {
 
 }
-void SentryMode::taskHandler(void* params)
+void SentryMode::taskLoop(void* params)
 {
     SentryMode* instance{static_cast<SentryMode*>(params)};
 
-    instance->taskRun();
-    while (!instance->isFinished())
+    while (true)
     {
         instance->taskUpdate();
     }
@@ -165,6 +164,15 @@ bool SentryMode::isValid(control::path::Point point)
     return valid;
 }
 
+void SentryMode::updateStart()
+{
+    if (m_clock->getTime() >= start_time + TURN_START_DELAY)
+    {
+	    turnToAngle(m_end_angle, SCAN_VELOCITY, false, m_direction);
+        state = EState::SEARCH;
+    }
+}
+
 void SentryMode::updateSearch()
 {
 	if (!pointExists(ball_point_2) && !turnTargetReached())
@@ -179,7 +187,8 @@ void SentryMode::updateSearch()
 			if (!pointExists(ball_point_1))
             {
 				ball_point_1 = ball_point;
-            } else
+            }
+            else
             {
                 ball_point_2 = ball_point;
 
@@ -189,14 +198,15 @@ void SentryMode::updateSearch()
 
                 // Find the estimated ball coordinate
                 double scan_angle{std::atan2(ball_point_2.getX() - ball_point_1.getX(), ball_point_2.getY() - ball_point_1.getY())};
-                ball.setX(ball_point_1.getX() + ((BALL_WIDTH - assumed_error) * std::cos(scan_angle)));
-                ball.setY(ball_point_1.getY() + ((BALL_WIDTH - assumed_error) * std::sin(scan_angle)));
+                ball.setX(ball_point_1.getX() + (((BALL_WIDTH / 2) - assumed_error) * std::cos(scan_angle)));
+                ball.setY(ball_point_1.getY() + (((BALL_WIDTH / 2) - assumed_error) * std::sin(scan_angle)));
 
                 turnToPoint(ball.getX(), ball.getY(), TURN_VELOCITY);
                 state = EState::TURN;
             }
 		}
-	} else if (turnTargetReached())
+	} 
+    else if (turnTargetReached())
     {
         finished = true;
     }
@@ -213,7 +223,6 @@ void SentryMode::updateTurn()
         setElevatorPosition(elevator_distance);
         setIntakeVoltage(INTAKE_VOLTAGE);
         double target_angle{std::atan2(ball.getY() - position.y, ball.getX() - position.x)};
-        double target_distance{elevator_distance + ELEVATOR_OFFSET + MOTION_OFFSET};
         boomerangGoToPoint(ball.getX(), ball.getY(), target_angle, BOOMERANG_VELOCITY);
         state = EState::GRAB;
     }
@@ -225,7 +234,8 @@ void SentryMode::updateGrab()
     double ball_distance{distance(position.x, position.y, ball.getX(), ball.getY())};
     
     bool grabbed{true};
-    if (distance(position.x, position.y, ball.getX(), ball.getY()) < elevator_distance + ELEVATOR_OFFSET)
+    double target_distance{elevator_distance + ELEVATOR_OFFSET - MOTION_OFFSET};
+    if (distance(position.x, position.y, ball.getX(), ball.getY()) < target_distance)
         m_control_system->pause();
     else
         grabbed = false;
@@ -246,13 +256,6 @@ void SentryMode::updateHold()
         finished = true;
 }
 
-void SentryMode::taskRun()
-{
-    turnToAngle(m_end_angle, TURN_VELOCITY, false, m_direction);
-	m_delayer->delay(TURN_START_DELAY);
-	turnToAngle(m_end_angle, SCAN_VELOCITY, false, m_direction);
-}
-
 void SentryMode::taskUpdate()
 {
     if (m_mutex)
@@ -261,6 +264,9 @@ void SentryMode::taskUpdate()
     {
         switch (state)
         {
+        case EState::START:
+            updateStart();
+            break;
         case EState::SEARCH:
             updateSearch();
             break;
@@ -281,20 +287,27 @@ void SentryMode::taskUpdate()
         m_delayer->delay(TASK_DELAY);
 }
 
-void SentryMode::run(double end_angle, control::motion::ETurnDirection direction)
+void SentryMode::run()
 {
-    state = EState::SEARCH;
+    if (m_task)
+        m_task->start(&SentryMode::taskLoop, this);
+}
+
+void SentryMode::doSentryMode(double end_angle, control::motion::ETurnDirection direction)
+{
+    if (m_mutex)
+        m_mutex->take();
+    state = EState::START;
     ball_point_1.setX(0);
     ball_point_1.setY(0);
     ball_point_2.setX(0);
     ball_point_2.setY(0);
     m_end_angle = end_angle;
     m_direction = direction;
-    if (m_task)
-    {
-        m_task->remove();
-        m_task->start(&SentryMode::taskHandler, this);
-    }
+    paused = false;
+    turnToAngle(m_end_angle, TURN_VELOCITY, false, m_direction);
+    if (m_mutex)
+        m_mutex->give();
 }
 
 void SentryMode::pause()
