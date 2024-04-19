@@ -3,6 +3,10 @@
 
 #include <cmath>
 
+#include "pros_adapters/ProsMutex.hpp"
+#include "pros_adapters/ProsTask.hpp"
+
+#include "wisco/routines/SentryMode.hpp"
 #include "wisco/utils/UtilityFunctions.hpp"
 #include "wisco/control/motion/ETurnDirection.hpp"
 #include "wisco/control/path/QuinticBezierSpline.hpp"

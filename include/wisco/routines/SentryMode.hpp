@@ -137,7 +137,7 @@ private:
      * @brief The rtos clock
      * 
      */
-    std::unique_ptr<rtos::IClock> m_clock{};
+    std::shared_ptr<rtos::IClock> m_clock{};
 
     /**
      * @brief The rtos delayer
@@ -378,7 +378,7 @@ public:
      * @param control_system The control system
      * @param robot The robot
      */
-    SentryMode(const std::unique_ptr<rtos::IClock>& clock,
+    SentryMode(const std::shared_ptr<rtos::IClock>& clock,
                const std::unique_ptr<rtos::IDelayer>& delayer,
                std::unique_ptr<rtos::IMutex>& mutex,
                std::unique_ptr<rtos::ITask>& task,

@@ -323,21 +323,38 @@ void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
 					      std::shared_ptr<robot::Robot> robot)
 {
 	odometrySetPosition(robot, 96.0, 48.0, M_PI / 2);
+
+	std::unique_ptr<rtos::IMutex> sentry_mutex{std::make_unique<pros_adapters::ProsMutex>()};
+	std::unique_ptr<rtos::ITask> sentry_task{std::make_unique<pros_adapters::ProsTask>()};
+	routines::SentryMode sentry_mode{clock, delayer, sentry_mutex, sentry_task, control_system, robot};
+
 	bool sentry{true};
 	auto position{odometryGetPosition(robot)};
+	double last_ball_angle{};
 	while (sentry)
 	{
-		sentry = sentryMode(clock, delayer, control_system, robot, false, 10000, control::motion::ETurnDirection::COUNTERCLOCKWISE);
+		sentry_mode.run(-M_PI, control::motion::ETurnDirection::COUNTERCLOCKWISE);
+		while (!sentry_mode.isFinished())
+			delayer->delay(10);
+		sentry = sentry_mode.ballFound();
 		if (sentry)
 		{
-			motionTurnToPoint(control_system, robot, 2 * M_PI, 108.0, 60.0);
-			while (!motionTurnTargetReached(control_system))
-				delayer->delay(20);
-
 			position = odometryGetPosition(robot);
-			boomerangGoToPoint(control_system, robot, 36.0, 108.0, 60.0, position.theta);
-			while (!boomerangTargetReached(control_system))
-				delayer->delay(20);
+			last_ball_angle = position.theta;
+			double target_distance{distance(position.x, position.y, 108.0, 60.0)};
+			if (target_distance > 6.0)
+			{
+				double target_angle{angle(position.x, position.y, 108.0, 60.0)};
+				bool reversed{std::abs(bindRadians(target_angle - position.theta)) > M_PI / 2};
+				motionTurnToPoint(control_system, robot, 2 * M_PI, 108.0, 60.0, reversed);
+				while (!motionTurnTargetReached(control_system))
+					delayer->delay(20);
+
+				position = odometryGetPosition(robot);
+				boomerangGoToPoint(control_system, robot, 36.0, 108.0, 60.0, position.theta);
+				while (!boomerangTargetReached(control_system))
+					delayer->delay(20);
+			}
 
 			motionTurnToAngle(control_system, robot, 2 * M_PI, 0);
 			while (!motionTurnTargetReached(control_system))
@@ -359,7 +376,7 @@ void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
 			robot->sendCommand("DIFFERENTIAL DRIVE", "SET VOLTAGE", -12.0, -12.0);
 			delayer->delay(200);
 
-			motionTurnToAngle(control_system, robot, 2 * M_PI, M_PI / 2);
+			motionTurnToAngle(control_system, robot, 2 * M_PI, last_ball_angle);
 			while (!motionTurnTargetReached(control_system))
 				delayer->delay(20);
 		}

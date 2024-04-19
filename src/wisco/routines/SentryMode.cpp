@@ -4,6 +4,18 @@ namespace wisco
 {
 namespace routines
 {
+SentryMode::SentryMode(const std::shared_ptr<rtos::IClock>& clock,
+                       const std::unique_ptr<rtos::IDelayer>& delayer,
+                       std::unique_ptr<rtos::IMutex>& mutex,
+                       std::unique_ptr<rtos::ITask>& task,
+                       const std::shared_ptr<control::ControlSystem>& control_system,
+                       const std::shared_ptr<robot::Robot>& robot)
+    : m_clock{clock->clone()}, m_delayer{delayer->clone()},
+      m_mutex{std::move(mutex)}, m_task{std::move(task)},
+      m_control_system{control_system}, m_robot{robot}
+{
+
+}
 void SentryMode::taskHandler(void* params)
 {
     SentryMode* instance{static_cast<SentryMode*>(params)};
