@@ -171,10 +171,16 @@ void SentryMode::updateSearch()
             {
                 ball_point_2 = ball_point;
 
-                // CALCULATE BALL COORDINATE
+                // Estimate error from ball edge to first point
+                double scan_distance{distance(ball_point_1.getX(), ball_point_1.getY(), ball_point_2.getX(), ball_point_2.getY())};
+                double assumed_error{std::min(BALL_WIDTH - scan_distance, scan_distance) / 2};
 
-                // TURN TO FACE BALL
+                // Find the estimated ball coordinate
+                double scan_angle{std::atan2(ball_point_2.getX() - ball_point_1.getX(), ball_point_2.getY() - ball_point_1.getY())};
+                ball.setX(ball_point_1.getX() + ((BALL_WIDTH - assumed_error) * std::cos(scan_angle)));
+                ball.setY(ball_point_1.getY() + ((BALL_WIDTH - assumed_error) * std::sin(scan_angle)));
 
+                turnToPoint(ball.getX(), ball.getY(), TURN_VELOCITY);
                 state = EState::TURN;
             }
 		}
@@ -195,7 +201,7 @@ void SentryMode::updateTurn()
         setElevatorPosition(elevator_distance);
         setIntakeVoltage(INTAKE_VOLTAGE);
         double target_angle{std::atan2(ball.getY() - position.y, ball.getX() - position.x)};
-        double target_distance{elevator_distance + ELEVATOR_OFFSET};
+        double target_distance{elevator_distance + ELEVATOR_OFFSET + MOTION_OFFSET};
         boomerangGoToPoint(ball.getX(), ball.getY(), target_angle, BOOMERANG_VELOCITY);
         state = EState::GRAB;
     }

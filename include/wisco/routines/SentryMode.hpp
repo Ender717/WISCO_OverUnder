@@ -103,6 +103,12 @@ private:
     static constexpr double INTAKE_VOLTAGE{12};
 
     /**
+     * @brief The extra distance to move towards a ball
+     * 
+     */
+    static constexpr double MOTION_OFFSET{2};
+
+    /**
      * @brief The delay to jump start the turn
      * 
      */
