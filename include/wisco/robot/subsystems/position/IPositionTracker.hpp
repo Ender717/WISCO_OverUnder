@@ -74,6 +74,27 @@ public:
      * @return Position The position of the system
      */
     virtual Position getPosition() = 0;
+
+    /**
+     * @brief Sets the x-coordinate of the position
+     * 
+     * @param x The new x-coordinate
+     */
+    virtual void setX(double x) = 0;
+
+    /**
+     * @brief Sets the y-coordinate of the position
+     * 
+     * @param y The new y-coordinate
+     */
+    virtual void setY(double y) = 0;
+
+    /**
+     * @brief Sets the angle of the position
+     * 
+     * @param theta The new angle
+     */
+    virtual void setTheta(double theta) = 0;
 };
 } // namespace position
 } // namespace subsystems

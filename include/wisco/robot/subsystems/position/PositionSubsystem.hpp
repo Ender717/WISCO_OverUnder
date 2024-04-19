@@ -60,6 +60,24 @@ private:
     static constexpr char SET_POSITION_COMMAND_NAME[]{"SET POSITION"};
 
     /**
+     * @brief The name of the set x command
+     * 
+     */
+    static constexpr char SET_X_COMMAND_NAME[]{"SET X"};
+
+    /**
+     * @brief The name of the set y command
+     * 
+     */
+    static constexpr char SET_Y_COMMAND_NAME[]{"SET Y"};
+
+    /**
+     * @brief The name of the set theta command
+     * 
+     */
+    static constexpr char SET_THETA_COMMAND_NAME[]{"SET THETA"};
+
+    /**
      * @brief The name of the reset x command
      * 
      */

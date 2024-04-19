@@ -41,14 +41,37 @@ void PositionSubsystem::command(std::string command_name, va_list& args)
         Position position{va_arg(args, double), va_arg(args, double), va_arg(args, double)};
         m_position_tracker->setPosition(position);
     }
+    else if (command_name == SET_X_COMMAND_NAME)
+    {
+        if (m_position_tracker)
+        {
+            double x{va_arg(args, double)};
+            m_position_tracker->setX(x);
+        }
+    }
+    else if (command_name == SET_Y_COMMAND_NAME)
+    {
+        if (m_position_tracker)
+        {
+            double y{va_arg(args, double)};
+            m_position_tracker->setY(y);
+        }
+    }
+    else if (command_name == SET_THETA_COMMAND_NAME)
+    {
+        if (m_position_tracker)
+        {
+            double theta{va_arg(args, double)};
+            m_position_tracker->setTheta(theta);
+        }
+    }
     else if (command_name == RESET_X_COMMAND_NAME)
     {
         if (m_position_tracker && m_position_resetter)
         {
             Position position{m_position_tracker->getPosition()};
             double reset_x{m_position_resetter->getResetX(position.theta)};
-            position.x = reset_x;
-            m_position_tracker->setPosition(position);
+            m_position_tracker->setX(reset_x);
         }
     }
     else if (command_name == RESET_Y_COMMAND_NAME)
@@ -57,8 +80,7 @@ void PositionSubsystem::command(std::string command_name, va_list& args)
         {
             Position position{m_position_tracker->getPosition()};
             double reset_y{m_position_resetter->getResetY(position.theta)};
-            position.y = reset_y;
-            m_position_tracker->setPosition(position);
+            m_position_tracker->setY(reset_y);
         }
     }
 }

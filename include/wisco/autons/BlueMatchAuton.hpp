@@ -3,6 +3,7 @@
 
 #include <cmath>
 
+#include "wisco/utils/UtilityFunctions.hpp"
 #include "wisco/control/motion/ETurnDirection.hpp"
 #include "wisco/control/path/QuinticBezierSpline.hpp"
 #include "wisco/robot/subsystems/drive/Velocity.hpp"
@@ -147,6 +148,22 @@ private:
 	bool boomerangTargetReached(std::shared_ptr<control::ControlSystem> control_system);
 
 	/**
+	 * @brief Gets the position of the elevator
+	 * 
+	 * @param robot The robot
+	 * @return double The position of the elevator
+	 */
+	double elevatorGetPosition(std::shared_ptr<robot::Robot> robot);
+
+	/**
+	 * @brief Gets the distance to a ball from the intake
+	 * 
+	 * @param robot The robot
+	 * @return double The distance to a ball
+	 */
+	double intakeBallDistance(std::shared_ptr<robot::Robot> robot);
+
+	/**
 	 * @brief Sets the odometry position
 	 * 
 	 * @param robot The robot
@@ -235,6 +252,44 @@ private:
 	 * @return false The path following target has not been reached
 	 */
 	bool pathFollowingTargetReached(std::shared_ptr<control::ControlSystem> control_system);
+
+	/**
+	 * @brief Checks if the point is valid for sentry mode near the loading zone
+	 * 
+	 * @param point The point
+	 * @return true The point is valid for sentry mode
+	 * @return false The point is not valid for sentry mode
+	 */
+	bool validSentryPointLoad(control::path::Point point);
+
+	/**
+	 * @brief Checks if the point is valid for sentry mode near the goal
+	 * 
+	 * @param point The point
+	 * @return true The point is valid for sentry mode
+	 * @return false The point is not valid for sentry mode
+	 */
+	bool validSentryPointGoal(control::path::Point point);
+
+	/**
+	 * @brief Detects a ball using sentry mode
+	 * 
+	 * @param clock The rtos clock
+	 * @param delayer The rtos delayer
+	 * @param control_system The control system
+	 * @param robot The robot
+	 * @param new_ball Whether or not to wait for a new ball signature
+	 * @param timeout The amount of time to spend in sentry mode
+	 * @param direction The direction to turn
+	 * @return true Sentry mode got a ball
+	 * @return false Sentry mode didn't get a ball
+	 */
+	bool sentryMode(std::shared_ptr<rtos::IClock> clock,
+					std::unique_ptr<rtos::IDelayer>& delayer,
+					std::shared_ptr<control::ControlSystem> control_system, 
+					std::shared_ptr<robot::Robot> robot,
+					bool new_ball, uint32_t timeout,
+					control::motion::ETurnDirection direction);
 
 	std::vector<control::path::Point> test_path{};
 

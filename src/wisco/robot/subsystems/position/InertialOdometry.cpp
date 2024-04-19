@@ -1,4 +1,5 @@
 #include "wisco/robot/subsystems/position/InertialOdometry.hpp"
+#include "pros/screen.h"
 #include "pros/screen.hpp"
 
 namespace wisco
@@ -73,6 +74,9 @@ void InertialOdometry::updatePosition()
     m_position.x += global_x;
     m_position.y += global_y;
     m_position.theta = current_heading;
+    pros::screen::print(pros::E_TEXT_LARGE_CENTER, 1, "X: %7.2f", m_position.x);
+    pros::screen::print(pros::E_TEXT_LARGE_CENTER, 3, "Y: %7.2f", m_position.y);
+    pros::screen::print(pros::E_TEXT_LARGE_CENTER, 5, "T: %7.2f", m_position.theta);
 
     if (time_change)
     {
@@ -138,6 +142,39 @@ Position InertialOdometry::getPosition()
     if (m_mutex)
         m_mutex->give();
     return position;
+}
+
+void InertialOdometry::setX(double x)
+{
+    if (m_mutex)
+        m_mutex->take();
+    
+    m_position.x = x;
+
+    if (m_mutex)
+        m_mutex->give();
+}
+
+void InertialOdometry::setY(double y)
+{
+    if (m_mutex)
+        m_mutex->take();
+    
+    m_position.y = y;
+
+    if (m_mutex)
+        m_mutex->give();
+}
+
+void InertialOdometry::setTheta(double theta)
+{
+    if (m_mutex)
+        m_mutex->take();
+    
+    m_position.theta = theta;
+
+    if (m_mutex)
+        m_mutex->give();
 }
 
 void InertialOdometry::setClock(std::unique_ptr<rtos::IClock>& clock)

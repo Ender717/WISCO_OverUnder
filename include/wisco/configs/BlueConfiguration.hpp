@@ -128,7 +128,7 @@ private:
 	 * @brief The port for the odometry strafe distance tracking sensor
 	 * 
 	 */
-	static constexpr int8_t ODOMETRY_STRAFE_PORT{16};
+	static constexpr int8_t ODOMETRY_STRAFE_PORT{18};
 
 	/**
 	 * @brief The radius of the odometry strafe distance tracking wheel
@@ -164,19 +164,19 @@ private:
 	 * @brief The x-offset of the resetter
 	 * 
 	 */
-	static constexpr double RESETTER_OFFSET_X{};
+	static constexpr double RESETTER_OFFSET_X{-6.125};
 
 	/**
 	 * @brief The y-offset of the resetter
 	 * 
 	 */
-	static constexpr double RESETTER_OFFSET_Y{};
+	static constexpr double RESETTER_OFFSET_Y{5.500};
 
 	/**
 	 * @brief The angle-offset of the resetter
 	 * 
 	 */
-	static constexpr double RESETTER_OFFSET_THETA{};
+	static constexpr double RESETTER_OFFSET_THETA{M_PI / 2};
 
 	/**
 	 * @brief Whether to use the kinematic drive model or not
@@ -381,7 +381,7 @@ private:
 	 * @brief The tuning offset for the ball detector distance sensor
 	 * 
 	 */
-	static constexpr double BALL_DETECTOR_DISTANCE_OFFSET{};
+	static constexpr double BALL_DETECTOR_DISTANCE_OFFSET{3.5};
 
 	/**
 	 * @brief The proportional constant for the boomerang linear pid controller
@@ -429,7 +429,7 @@ private:
 	 * @brief The target tolerance for the boomerang controller
 	 * 
 	 */
-	static constexpr double BOOMERANG_TARGET_TOLERANCE{1.0};
+	static constexpr double BOOMERANG_TARGET_TOLERANCE{3.0};
 
 	/**
 	 * @brief The target velocity for the boomerang controller
@@ -687,7 +687,7 @@ private:
 	 * @brief The target tolerance for the turn controller
 	 * 
 	 */
-	static constexpr double TURN_TARGET_TOLERANCE{1.0 * M_PI / 180};
+	static constexpr double TURN_TARGET_TOLERANCE{4.0 * M_PI / 180};
 
 	/**
 	 * @brief The target velocity for the turn controller
