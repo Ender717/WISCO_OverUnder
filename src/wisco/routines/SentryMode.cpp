@@ -215,14 +215,13 @@ void SentryMode::updateSearch()
 
 void SentryMode::updateTurn()
 {
-    if (turnTargetReached())
+    auto position{getOdometryPosition()};
+    double target_angle{angle(position.x, position.y, ball.getX(), ball.getY())};
+    if (std::abs(bindRadians(target_angle - position.theta)) < AIM_TOLERANCE)
     {
-        auto position{getOdometryPosition()};
-        double ball_distance{distance(position.x, position.y, ball.getX(), ball.getY())};
-        elevator_distance = std::min(ball_distance - ELEVATOR_OFFSET, ELEVATOR_OUT);
-        setElevatorPosition(elevator_distance);
+        m_control_system->pause();
+        setElevatorPosition(ELEVATOR_OUT);
         setIntakeVoltage(INTAKE_VOLTAGE);
-        double target_angle{std::atan2(ball.getY() - position.y, ball.getX() - position.x)};
         boomerangGoToPoint(ball.getX(), ball.getY(), target_angle, BOOMERANG_VELOCITY);
         state = EState::GRAB;
     }
@@ -232,19 +231,10 @@ void SentryMode::updateGrab()
 {
     auto position{getOdometryPosition()};
     double ball_distance{distance(position.x, position.y, ball.getX(), ball.getY())};
-    
-    bool grabbed{true};
-    double target_distance{elevator_distance + ELEVATOR_OFFSET - MOTION_OFFSET};
-    if (distance(position.x, position.y, ball.getX(), ball.getY()) < target_distance)
-        m_control_system->pause();
-    else
-        grabbed = false;
-
-    if (getElevatorPosition() < elevator_distance - ELEVATOR_TOLERANCE)
-        grabbed = false;
-    
-    if (grabbed)
+    double elevator_position{getElevatorPosition()};
+    if (ball_distance + MOTION_OFFSET < elevator_position + ELEVATOR_OFFSET)
     {
+        m_control_system->pause();
         setElevatorPosition(ELEVATOR_BALL);
         state = EState::HOLD;
     }
@@ -304,7 +294,12 @@ void SentryMode::doSentryMode(double end_angle, control::motion::ETurnDirection 
     ball_point_2.setY(0);
     m_end_angle = end_angle;
     m_direction = direction;
+    ball.setX(0);
+    ball.setY(0);
+    start_time = m_clock->getTime();
+    elevator_distance = 0;
     paused = false;
+    finished = false;
     turnToAngle(m_end_angle, TURN_VELOCITY, false, m_direction);
     if (m_mutex)
         m_mutex->give();
@@ -331,6 +326,11 @@ void SentryMode::resume()
 bool SentryMode::ballFound()
 {
     return (ball_point_2.getX() != 0 || ball_point_2.getY() != 0);
+}
+
+control::path::Point SentryMode::getBall()
+{
+    return ball;
 }
 
 bool SentryMode::isFinished()

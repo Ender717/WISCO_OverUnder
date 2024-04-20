@@ -4,20 +4,52 @@ namespace wisco
 {
 namespace autons
 {
-void BlueMatchAuton::boomerangGoToPoint(std::shared_ptr<control::ControlSystem> control_system, 
-						std::shared_ptr<robot::Robot> robot, 
-						double velocity, double x, double y, double theta)
+uint32_t BlueMatchAuton::getTime()
 {
-	if (control_system)
-		control_system->sendCommand(BOOMERANG_CONTROL_NAME, BOOMERANG_GO_TO_POSITION_COMMAND_NAME, &robot, velocity, x, y, theta);
+	uint32_t time{};
+	if (m_clock)
+		time = m_clock->getTime();
+	return time;
 }
 
-bool BlueMatchAuton::boomerangTargetReached(std::shared_ptr<control::ControlSystem> control_system)
+void BlueMatchAuton::delay(uint32_t millis)
+{
+	if (m_delayer)
+		m_delayer->delay(millis);
+}
+
+void BlueMatchAuton::pauseControlSystem()
+{
+	if (m_control_system)
+		m_control_system->pause();
+}
+
+void BlueMatchAuton::resumeControlSystem()
+{
+	if (m_control_system)
+		m_control_system->resume();
+}
+
+void BlueMatchAuton::goToPoint(double x, double y, double theta, double velocity)
+{
+	if (m_control_system && m_robot)
+		m_control_system->sendCommand("BOOMERANG", "GO TO POSITION", &m_robot, velocity, x, y, theta);
+}
+
+void BlueMatchAuton::driveStraight(double distance, double velocity)
+{
+	auto position{getOdometryPosition()};
+	double target_x{position.x + (distance * std::cos(position.theta))};
+	double target_y{position.y + (distance * std::sin(position.theta))};
+	goToPoint(target_x, target_y, position.theta, velocity);
+}
+
+bool BlueMatchAuton::boomerangTargetReached()
 {
 	bool target_reached{};
-	if (control_system)
+	if (m_control_system)
 	{
-		bool* result{static_cast<bool*>(control_system->getState(BOOMERANG_CONTROL_NAME, BOOMERANG_TARGET_REACHED_STATE_NAME))};
+		bool* result{static_cast<bool*>(m_control_system->getState("BOOMERANG", "TARGET REACHED"))};
 		if (result)
 		{
 			target_reached = *result;
@@ -27,27 +59,122 @@ bool BlueMatchAuton::boomerangTargetReached(std::shared_ptr<control::ControlSyst
 	return target_reached;
 }
 
-double BlueMatchAuton::intakeBallDistance(std::shared_ptr<robot::Robot> robot)
+void BlueMatchAuton::turnToAngle(double theta, double velocity, bool reversed, 
+								 control::motion::ETurnDirection direction)
 {
-	double ball_distance{};
-	if (robot)
+	if (m_control_system && m_robot)
+		m_control_system->sendCommand("MOTION", "TURN TO ANGLE", &m_robot, velocity, theta, static_cast<int>(reversed), direction);
+}
+
+void BlueMatchAuton::turnToPoint(double x, double y, double velocity, bool reversed,
+								 control::motion::ETurnDirection direction)
+{
+	if (m_control_system && m_robot)
+		m_control_system->sendCommand("MOTION", "TURN TO POINT", &m_robot, velocity, x, y, static_cast<int>(reversed), direction);
+}
+
+bool BlueMatchAuton::turnTargetReached()
+{
+	bool target_reached{};
+	if (m_control_system)
 	{
-		double* result{static_cast<double*>(robot->getState("INTAKE", "GET BALL DISTANCE"))};
+		bool* result{static_cast<bool*>(m_control_system->getState("MOTION", "TURN TARGET REACHED"))};
 		if (result)
 		{
-			ball_distance = *result;
+			target_reached = *result;
 			delete result;
 		}
 	}
-	return ball_distance;
+	return target_reached;
 }
 
-double BlueMatchAuton::elevatorGetPosition(std::shared_ptr<robot::Robot> robot)
+void BlueMatchAuton::followPath(std::vector<control::path::Point>& path, double velocity)
+{
+	if (m_control_system && m_robot)
+		m_control_system->sendCommand("PATH FOLLOWING", "FOLLOW PATH", &m_robot, &path, velocity);
+}
+
+void BlueMatchAuton::setPathFollowingVelocity(double velocity)
+{
+	if (m_control_system)
+		m_control_system->sendCommand("PATH FOLLOWING", "SET VELOCITY", velocity);
+}
+
+bool BlueMatchAuton::pathFollowingTargetReached()
+{
+	bool target_reached{};
+	if (m_control_system)
+	{
+		bool* result{static_cast<bool*>(m_control_system->getState("PATH FOLLOWING", "TARGET REACHED"))};
+		if (result)
+		{
+			target_reached = *result;
+			delete result;
+		}
+	}
+	return target_reached;
+}
+
+void BlueMatchAuton::setDriveVelocity(double left, double right)
+{
+	if (m_robot)
+		m_robot->sendCommand("DIFFERENTIAL DRIVE", "SET VELOCITY", left, right);
+}
+
+void BlueMatchAuton::setDriveVoltage(double left, double right)
+{
+	if (m_robot)
+		m_robot->sendCommand("DIFFERENTIAL DRIVE", "SET VOLTAGE", left, right);
+}
+
+robot::subsystems::drive::Velocity BlueMatchAuton::getDriveVelocity()
+{
+	robot::subsystems::drive::Velocity velocity{};
+	if (m_robot)
+	{
+		robot::subsystems::drive::Velocity* result{static_cast<robot::subsystems::drive::Velocity*>(m_robot->getState("DIFFERENTIAL DRIVE", "GET VELOCITY"))};
+		if (result)
+		{
+			velocity = *result;
+			delete result;
+		}
+	}
+	return velocity;
+}
+
+double BlueMatchAuton::getDriveRadius()
+{
+	double radius{};
+	if (m_robot)
+	{
+		double* result{static_cast<double*>(m_robot->getState("DIFFERENTIAL DRIVE", "GET RADIUS"))};
+		if (result)
+		{
+			radius = *result;
+			delete result;
+		}
+	}
+	return radius;
+}
+
+void BlueMatchAuton::setElevatorPosition(double position)
+{
+	if (m_robot)
+		m_robot->sendCommand("ELEVATOR", "SET POSITION", position);
+}
+
+void BlueMatchAuton::calibrateElevator()
+{
+	if (m_robot)
+		m_robot->sendCommand("ELEVATOR", "CALIBRATE");
+}
+
+double BlueMatchAuton::getElevatorPosition()
 {
 	double position{};
-	if (robot)
+	if (m_robot)
 	{
-		double* result{static_cast<double*>(robot->getState("ELEVATOR", "GET POSITION"))};
+		double* result{static_cast<double*>(m_robot->getState("ELEVATOR", "GET POSITION"))};
 		if (result)
 		{
 			position = *result;
@@ -57,243 +184,401 @@ double BlueMatchAuton::elevatorGetPosition(std::shared_ptr<robot::Robot> robot)
 	return position;
 }
 
-void BlueMatchAuton::odometrySetPosition(std::shared_ptr<robot::Robot> robot,
-										 double x, double y, double theta)
+bool BlueMatchAuton::elevatorIsCalibrating()
 {
-	if (robot)
+	bool calibrating{};
+	if (m_robot)
 	{
-		robot::subsystems::position::Position position{x, y, theta};
-		robot->sendCommand(ODOMETRY_SUBSYSTEM_NAME, ODOMETRY_SET_POSITION_COMMAND_NAME, position);
+		bool* result{static_cast<bool*>(m_robot->getState("ELEVATOR", "IS CALIBRATING"))};
+		if (result)
+		{
+			calibrating = *result;
+			delete result;
+		}
 	}
+	return calibrating;
 }
 
-robot::subsystems::position::Position BlueMatchAuton::odometryGetPosition(std::shared_ptr<robot::Robot> robot)
+double BlueMatchAuton::getCapDistance()
+{
+	double distance{};
+	if (m_robot)
+	{
+		double* result{static_cast<double*>(m_robot->getState("ELEVATOR", "CAP DISTANCE"))};
+		if (result)
+		{
+			distance = *result;
+			delete result;
+		}
+	}
+	return distance;
+}
+
+void BlueMatchAuton::closeClaw()
+{
+	if (m_robot)
+		m_robot->sendCommand("HANG", "CLOSE CLAW");
+}
+
+void BlueMatchAuton::openClaw()
+{
+	if (m_robot)
+		m_robot->sendCommand("HANG", "OPEN CLAW");
+}
+
+void BlueMatchAuton::raiseArm()
+{
+	if (m_robot)
+		m_robot->sendCommand("HANG", "RAISE ARM");
+}
+
+void BlueMatchAuton::lowerArm()
+{
+	if (m_robot)
+		m_robot->sendCommand("HANG", "LOWER ARM");
+}
+
+void BlueMatchAuton::engageWinch()
+{
+	if (m_robot)
+		m_robot->sendCommand("HANG", "ENGAGE WINCH");
+}
+
+void BlueMatchAuton::disengageWinch()
+{
+	if (m_robot)
+		m_robot->sendCommand("HANG", "DISENGAGE WINCH");
+}
+
+bool BlueMatchAuton::clawClosed()
+{
+	bool closed{};
+	if (m_robot)
+	{
+		bool* result{static_cast<bool*>(m_robot->getState("HANG", "CLAW CLOSED"))};
+		if (result)
+		{
+			closed = *result;
+			delete result;
+		}
+	}
+	return closed;
+}
+
+bool BlueMatchAuton::clawOpen()
+{
+	bool open{};
+	if (m_robot)
+	{
+		bool* result{static_cast<bool*>(m_robot->getState("HANG", "CLAW OPEN"))};
+		if (result)
+		{
+			open = *result;
+			delete result;
+		}
+	}
+	return open;
+}
+
+bool BlueMatchAuton::armRaised()
+{
+	bool raised{};
+	if (m_robot)
+	{
+		bool* result{static_cast<bool*>(m_robot->getState("HANG", "ARM RAISED"))};
+		if (result)
+		{
+			raised = *result;
+			delete result;
+		}
+	}
+	return raised;
+}
+
+bool BlueMatchAuton::armLowered()
+{
+	bool lowered{};
+	if (m_robot)
+	{
+		bool* result{static_cast<bool*>(m_robot->getState("HANG", "ARM LOWERED"))};
+		if (result)
+		{
+			lowered = *result;
+			delete result;
+		}
+	}
+	return lowered;
+}
+
+bool BlueMatchAuton::winchEngaged()
+{
+	bool engaged{};
+	if (m_robot)
+	{
+		bool* result{static_cast<bool*>(m_robot->getState("HANG", "WINCH ENGAGED"))};
+		if (result)
+		{
+			engaged = *result;
+			delete result;
+		}
+	}
+	return engaged;
+}
+
+bool BlueMatchAuton::winchDisengaged()
+{
+	bool disengaged{};
+	if (m_robot)
+	{
+		bool* result{static_cast<bool*>(m_robot->getState("HANG", "WINCH DISENGAGED"))};
+		if (result)
+		{
+			disengaged = *result;
+			delete result;
+		}
+	}
+	return disengaged;
+}
+
+void BlueMatchAuton::setIntakeVelocity(double velocity)
+{
+	if (m_robot)
+		m_robot->sendCommand("INTAKE", "SET VELOCITY", velocity);
+}
+
+void BlueMatchAuton::setIntakeVoltage(double voltage)
+{
+	if (m_robot)
+		m_robot->sendCommand("INTAKE", "SET VOLTAGE", voltage);
+}
+
+double BlueMatchAuton::getIntakeVelocity()
+{
+	double velocity{};
+	if (m_robot)
+	{
+		double* result{static_cast<double*>(m_robot->getState("INTAKE", "GET VELOCITY"))};
+		if (result)
+		{
+			velocity = *result;
+			delete result;
+		}
+	}
+	return velocity;
+}
+
+double BlueMatchAuton::getBallDistance()
+{
+	double distance{};
+	if (m_robot)
+	{
+		double* result{static_cast<double*>(m_robot->getState("INTAKE", "GET BALL DISTANCE"))};
+		if (result)
+		{
+			distance = *result;
+			delete result;
+		}
+	}
+	return distance;
+}
+
+double BlueMatchAuton::getBallAngle()
+{
+	double angle{};
+	if (m_robot)
+	{
+		double* result{static_cast<double*>(m_robot->getState("INTAKE", "GET BALL ANGLE"))};
+		if (result)
+		{
+			angle = *result;
+			delete result;
+		}
+	}
+	return angle;
+}
+
+void BlueMatchAuton::loadLoader()
+{
+	if (m_robot)
+		m_robot->sendCommand("LOADER", "DO LOAD");
+}
+
+void BlueMatchAuton::readyLoader()
+{
+	if (m_robot)
+		m_robot->sendCommand("LOADER", "DO READY");
+}
+
+bool BlueMatchAuton::isLoaderLoaded()
+{
+	bool loaded{};
+	if (m_robot)
+	{
+		bool* result{static_cast<bool*>(m_robot->getState("LOADER", "IS LOADED"))};
+		if (result)
+		{
+			loaded = *result;
+			delete result;
+		}
+	}
+	return loaded;
+}
+
+bool BlueMatchAuton::isLoaderReady()
+{
+	bool ready{};
+	if (m_robot)
+	{
+		bool* result{static_cast<bool*>(m_robot->getState("LOADER", "IS READY"))};
+		if (result)
+		{
+			ready = *result;
+			delete result;
+		}
+	}
+	return ready;
+}
+
+void BlueMatchAuton::setOdometryPosition(double x, double y, double theta)
+{
+	if (m_robot)
+		m_robot->sendCommand("POSITION TRACKER", "SET POSITION", x, y, theta);
+}
+
+void BlueMatchAuton::setOdometryX(double x)
+{
+	if (m_robot)
+		m_robot->sendCommand("POSITION TRACKER", "SET X", x);
+}
+
+void BlueMatchAuton::setOdometryY(double y)
+{
+	if (m_robot)
+		m_robot->sendCommand("POSITION TRACKER", "SET Y", y);
+}
+
+void BlueMatchAuton::setOdometryTheta(double theta)
+{
+	if (m_robot)
+		m_robot->sendCommand("POSITION TRACKER", "SET THETA", theta);
+}
+
+void BlueMatchAuton::resetOdometryX()
+{
+	if (m_robot)
+		m_robot->sendCommand("POSITION TRACKER", "RESET X");
+}
+
+void BlueMatchAuton::resetOdometryY()
+{
+	if (m_robot)
+		m_robot->sendCommand("POSITION TRACKER", "RESET Y");
+}
+
+robot::subsystems::position::Position BlueMatchAuton::getOdometryPosition()
 {
 	robot::subsystems::position::Position position{};
-
-	if (robot)
+	if (m_robot)
 	{
-		robot::subsystems::position::Position* result{static_cast<robot::subsystems::position::Position*>(robot->getState(ODOMETRY_SUBSYSTEM_NAME, ODOMETRY_GET_POSITION_STATE_NAME))};
+		robot::subsystems::position::Position* result{static_cast<robot::subsystems::position::Position*>(m_robot->getState("POSITION TRACKER", "GET POSITION"))};
 		if (result)
 		{
 			position = *result;
 			delete result;
 		}
 	}
-
 	return position;
 }
 
-void BlueMatchAuton::motionTurnToAngle(std::shared_ptr<control::ControlSystem> control_system, 
-									   std::shared_ptr<robot::Robot> robot, 
-									   double velocity, double theta, bool reversed,
-									   control::motion::ETurnDirection direction)
+double BlueMatchAuton::getOdometryVelocity()
 {
-	if (control_system)
-		control_system->sendCommand(MOTION_CONTROL_NAME, MOTION_TURN_TO_ANGLE_COMMAND_NAME, &robot, velocity, theta, static_cast<int>(reversed), direction);
+	auto position{getOdometryPosition()};
+	double velocity{std::sqrt(std::pow(position.xV, 2) + std::pow(position.yV, 2))};
+	return velocity;
 }
 
-void BlueMatchAuton::motionTurnToPoint(std::shared_ptr<control::ControlSystem> control_system, 
-									   std::shared_ptr<robot::Robot> robot, 
-									   double velocity, double x, double y, bool reversed,
-									   control::motion::ETurnDirection direction)
+void BlueMatchAuton::setUmbrellaIn()
 {
-	if (control_system)
-		control_system->sendCommand(MOTION_CONTROL_NAME, MOTION_TURN_TO_POINT_COMMAND_NAME, &robot, velocity, x, y, static_cast<int>(reversed), direction);
+	if (m_robot)
+		m_robot->sendCommand("UMBRELLA", "SET IN");
 }
 
-bool BlueMatchAuton::motionTurnTargetReached(std::shared_ptr<control::ControlSystem> control_system)
+void BlueMatchAuton::setUmbrellaOut()
 {
-	bool target_reached{};
-	if (control_system)
+	if (m_robot)
+		m_robot->sendCommand("UMBRELLA", "SET OUT");
+}
+
+bool BlueMatchAuton::isUmbrellaIn()
+{
+	bool in{};
+	if (m_robot)
 	{
-		bool* result{static_cast<bool*>(control_system->getState(MOTION_CONTROL_NAME, MOTION_TURN_TARGET_REACHED_STATE_NAME))};
+		bool* result{static_cast<bool*>(m_robot->getState("UMBRELLA", "IS IN"))};
 		if (result)
 		{
-			target_reached = *result;
+			in = *result;
 			delete result;
 		}
 	}
-	return target_reached;
+	return in;
 }
 
-void BlueMatchAuton::pathFollowingFollowPath(std::shared_ptr<control::ControlSystem> control_system, 
-											 std::shared_ptr<robot::Robot> robot, 
-											 std::vector<control::path::Point> path,
-											 double velocity)
+bool BlueMatchAuton::isUmbrellaOut()
 {
-	if (control_system)
-		control_system->sendCommand(PATH_FOLLOWING_CONTROL_NAME, PATH_FOLLOWING_FOLLOW_PATH_COMMAND_NAME, &robot, &path, velocity);
-}
-
-void BlueMatchAuton::pathFollowingSetVelocity(std::shared_ptr<control::ControlSystem> control_system,
-											  double velocity)
-{
-	if (control_system)
-		control_system->sendCommand(PATH_FOLLOWING_CONTROL_NAME, PATH_FOLLOWING_SET_VELOCITY_COMMAND_NAME, velocity);
-}
-
-bool BlueMatchAuton::pathFollowingTargetReached(std::shared_ptr<control::ControlSystem> control_system)
-{
-	bool target_reached{};
-	if (control_system)
+	bool out{};
+	if (m_robot)
 	{
-		bool* result{static_cast<bool*>(control_system->getState(PATH_FOLLOWING_CONTROL_NAME, PATH_FOLLOWING_TARGET_REACHED_STATE_NAME))};
+		bool* result{static_cast<bool*>(m_robot->getState("UMBRELLA", "IS OUT"))};
 		if (result)
 		{
-			target_reached = *result;
+			out = *result;
 			delete result;
 		}
 	}
-	return target_reached;
+	return out;
 }
 
-bool BlueMatchAuton::validSentryPointLoad(control::path::Point point)
+void BlueMatchAuton::setLeftWing(bool out)
 {
-	bool valid{true};
-
-	if (point.getX() > 69.0 || point.getX() < 2.0)
-		valid = false;
-
-	if (point.getY() > 72.0 || point.getY() < 2.0)
-		valid = false;
-
-	if (point.getX() > 45.0 && point.getY() > 21.0 && point.getY() < 27.0)
-		valid = false;
-
-	if (point.getX() < 26.0 && point.getY() > 44.0)
-		valid = false;
-
-	return valid;
+	if (m_robot)
+		m_robot->sendCommand("WINGS", "SET LEFT WING", static_cast<int>(out));
 }
 
-bool BlueMatchAuton::validSentryPointGoal(control::path::Point point)
+void BlueMatchAuton::setRightWing(bool out)
 {
-	bool valid{true};
-
-	if (point.getX() < 75.0 || point.getX() > 142.0)
-		valid = false;
-
-	if (point.getY() > 84.0 || point.getY() < 2.0)
-		valid = false;
-	
-	if (point.getX() < 99.0 && point.getY() > 21.0 && point.getY() < 27.0)
-		valid = false;
-
-	if (point.getX() > 118.0 && point.getY() > 44.0)
-		valid = false;
-
-	return valid;
+	if (m_robot)
+		m_robot->sendCommand("WINGS", "SET RIGHT WING", static_cast<int>(out));
 }
 
-bool BlueMatchAuton::sentryMode(std::shared_ptr<rtos::IClock> clock,
-						  		std::unique_ptr<rtos::IDelayer>& delayer,
-						  		std::shared_ptr<control::ControlSystem> control_system, 
-								std::shared_ptr<robot::Robot> robot,
-								bool new_ball, uint32_t timeout, 
-								control::motion::ETurnDirection direction)
+bool BlueMatchAuton::isLeftWingOut()
 {
-	uint32_t start_time{clock->getTime()};
-	bool found{};
-	auto position{odometryGetPosition(robot)};
-	double ball_distance{intakeBallDistance(robot)};
-	control::path::Point ball_start_point{};
-	if (new_ball)
+	bool out{};
+	if (m_robot)
 	{
-		double ball_x{position.x + (ball_distance * std::cos(position.theta))};
-		double ball_y{position.y + (ball_distance * std::sin(position.theta))};
-		control::path::Point ball_point{ball_x, ball_y};
-		if (position.x < 72.0 && validSentryPointLoad(ball_point) ||
-			position.x > 72.0 && validSentryPointGoal(ball_point))
-			ball_start_point = ball_point;
-		else
-			new_ball = false;
+		bool* result{static_cast<bool*>(m_robot->getState("WINGS", "GET LEFT WING"))};
+		if (result)
+		{
+			out = *result;
+			delete result;
+		}
 	}
-	control::path::Point ball_end_point{ball_start_point};
-	motionTurnToAngle(control_system, robot, 2 * M_PI, position.theta + M_PI, false, direction);
-	delayer->delay(20);
-	motionTurnToAngle(control_system, robot, 4 * M_PI / 5, position.theta + M_PI, false, direction);
-	while (start_time + timeout > clock->getTime() && !found && !motionTurnTargetReached(control_system))
+	return out;
+}
+
+bool BlueMatchAuton::isRightWingOut()
+{
+	bool out{};
+	if (m_robot)
 	{
-		position = odometryGetPosition(robot);
-		ball_distance = intakeBallDistance(robot);
-		double ball_x{position.x + (ball_distance * std::cos(position.theta))};
-		double ball_y{position.y + (ball_distance * std::sin(position.theta))};
-		control::path::Point ball_point{ball_x, ball_y};
-		if ((position.x < 72.0 && validSentryPointLoad(ball_point)) ||
-			(position.x > 72.0 && validSentryPointGoal(ball_point)))
+		bool* result{static_cast<bool*>(m_robot->getState("WINGS", "GET RIGHT WING"))};
+		if (result)
 		{
-			if (ball_start_point.getX() == 0 && ball_start_point.getY() == 0)
-				ball_start_point = ball_point;
-			ball_end_point = ball_point;
-			if (distance(ball_start_point.getX(), ball_start_point.getY(),
-						 ball_end_point.getX(), ball_end_point.getY()) > 6.0)
-			{
-				if (new_ball)
-				{
-					new_ball = false;
-					ball_start_point.setX(0);
-					ball_start_point.setY(0);
-					ball_end_point.setX(0);
-					ball_end_point.setY(0);
-				}
-				else
-				{
-					found = true;
-				}
-			}
+			out = *result;
+			delete result;
 		}
-		else if (ball_end_point.getX() == 0 && ball_end_point.getY() == 0)
-		{
-			new_ball = false;
-			ball_start_point.setX(0);
-			ball_start_point.setY(0);
-		}
-		else 
-		{
-			found = true;
-		}
-		delayer->delay(5);
 	}
-	control_system->pause();
-
-	control::path::Point ball{(ball_start_point + ball_end_point) / 2};
-
-	if (ball.getX() != 0 || ball.getY() != 0)
-	{
-		motionTurnToPoint(control_system, robot, 2 * M_PI, ball.getX(), ball.getY());
-		while (!motionTurnTargetReached(control_system))
-			delayer->delay(10);
-
-		position = odometryGetPosition(robot);
-		ball_distance = distance(position.x, position.y, ball.getX(), ball.getY());
-		double elevator_distance{std::min(ball_distance - 5, 15.0)};
-
-		robot->sendCommand("ELEVATOR", "SET POSITION", elevator_distance);
-		robot->sendCommand("INTAKE", "SET VOLTAGE", 12.0);
-
-		position = odometryGetPosition(robot);
-		double target_angle{std::atan2(ball.getY() - position.y, ball.getX() - position.x)};
-		double target_distance{elevator_distance + 6};
-		if (distance(position.x, position.y, ball.getX(), ball.getY()) > target_distance)
-		{
-			boomerangGoToPoint(control_system, robot, 36.0, ball.getX(), ball.getY(), target_angle);
-			while (distance(position.x, position.y, ball.getX(), ball.getY()) > target_distance)
-			{
-				delayer->delay(10);
-				position = odometryGetPosition(robot);
-			}
-			control_system->pause();
-		}
-		while (elevatorGetPosition(robot) < elevator_distance - 1)
-			delayer->delay(10);
-
-		robot->sendCommand("ELEVATOR", "SET POSITION", 3.25);
-		while (elevatorGetPosition(robot) > 4.0)
-			delayer->delay(10);
-	}
-
-	return intakeBallDistance(robot) < 12.0;
+	return out;
 }
 
 std::string BlueMatchAuton::getName()
@@ -304,17 +589,23 @@ std::string BlueMatchAuton::getName()
 void BlueMatchAuton::initialize(std::shared_ptr<control::ControlSystem> control_system, 
 					            std::shared_ptr<robot::Robot> robot)
 {
-	std::vector<control::path::Point> test_path_control_points
+	m_control_system = control_system;
+	m_robot = robot;
+
+	std::vector<control::path::Point> alley_path_control_points
 	{
-		control::path::Point{0.0, 0.0},
-		control::path::Point{24.0, 0.0},
-		control::path::Point{48.0, 0.0},
-		control::path::Point{48.0, 24.0},
-		control::path::Point{48.0, 48.0},
-		control::path::Point{24.0, 48.0},
-		control::path::Point{0.0, 48.0}
+		control::path::Point{25.0, 13.0},
+		control::path::Point{32.0, 10.0},
+		control::path::Point{48.0, 9.0},
+		control::path::Point{62.0, 9.0},
+		control::path::Point{75.0, 9.0},
+		control::path::Point{82.0, 9.0},
+		control::path::Point{96.0, 9.0},
+		control::path::Point{107.0, 9.0},
+		control::path::Point{117.0, 12.0},
+		control::path::Point{120.0, 18.0},
 	};
-	test_path = control::path::QuinticBezierSpline::calculate(test_path_control_points);
+	alley_path = control::path::QuinticBezierSpline::calculate(alley_path_control_points);
 }
 
 void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
@@ -322,64 +613,326 @@ void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
 						  std::shared_ptr<control::ControlSystem> control_system, 
 					      std::shared_ptr<robot::Robot> robot)
 {
-	odometrySetPosition(robot, 108.0, 60.0, M_PI / 2);
+	m_clock = clock;
+	m_delayer = std::move(delayer);
+	m_control_system = control_system;
+	m_robot = robot;
 
+	// Set the starting position
+	double start_x{17.0}, start_y{17.0}, start_theta{-3 * M_PI / 4};
+	setOdometryPosition(start_x, start_y, start_theta);
+
+	// Do match loads
+	uint8_t match_loads{6};
+	uint32_t match_load_delay{400};
+	for (uint8_t i{}; i < match_loads; ++i)
+	{
+		loadLoader();
+		while (!isLoaderLoaded())
+			delay(LOOP_DELAY);
+		readyLoader();
+		while (!isLoaderReady())
+			delay(LOOP_DELAY);
+		if (i < match_loads - 1)
+			delay(match_load_delay);
+	}
+
+	// Turn to the start of the alley
+	setUmbrellaOut();
+	double alley_start_x{25.0}, alley_start_y{13.0}, alley_start_theta{-M_PI / 6};
+	turnToPoint(alley_start_x, alley_start_y, TURN_VELOCITY, true);
+	while (!turnTargetReached())
+		delay(LOOP_DELAY);
+
+	// Extend both wings
+	setLeftWing(true);
+	setRightWing(true);
+
+	// Move to the start of the alley
+	goToPoint(alley_start_x, alley_start_y, alley_start_theta, MOTION_VELOCITY);
+	while (!boomerangTargetReached())
+		delay(LOOP_DELAY);
+
+	// Turn to face down the alley
+	double alley_x{48.0}, alley_y{10.0};
+	turnToPoint(alley_x, alley_y, TURN_VELOCITY, true);
+	while (!turnTargetReached())
+		delay(LOOP_DELAY);
+
+	// Follow the alley path
+	double alley_velocity{40.0}, alley_stop_y{16.0}, alley_stop{6.0};
+	followPath(alley_path, alley_velocity);
+	while (!pathFollowingTargetReached())
+	{
+		// Once we get close to the match load bar, slow down
+		if (getOdometryPosition().x > 78.0)
+			setPathFollowingVelocity(alley_velocity / 2);
+		// If we get stuck, back up and retry
+		if (getOdometryVelocity() < alley_stop && getOdometryPosition().y < alley_stop_y)
+		{
+			pauseControlSystem();
+			double collision_voltage{-12.0};
+			uint32_t collision_time{500};
+			setDriveVelocity(collision_voltage, collision_voltage);
+			delay(collision_time);
+			resumeControlSystem();
+		}
+		delay(LOOP_DELAY);
+	}
+	pauseControlSystem();
+
+	// Turn to face the goal shove start point
+	double goal_shove_x{128.0}, goal_shove_y{29.0};
+	turnToPoint(goal_shove_x, goal_shove_y, TURN_VELOCITY, true);
+	while (!turnTargetReached())
+		delay(LOOP_DELAY);
+
+	// Move to the goal shove start point
+	auto position{getOdometryPosition()};
+	double target_angle{angle(position.x, position.y, goal_shove_x, goal_shove_y)};
+	goToPoint(goal_shove_x, goal_shove_y, target_angle, MOTION_VELOCITY);
+	while (!boomerangTargetReached())
+		delay(LOOP_DELAY);
+
+	// Turn to face the goal
+	double side_goal_x{134.0}, side_goal_y{48.0}, side_goal_collision{36.0};
+	turnToPoint(side_goal_x, side_goal_y, TURN_VELOCITY, true);
+	while (!turnTargetReached())
+		delay(LOOP_DELAY);
+
+	// Ram the goal with passion
+	setDriveVoltage(-MAX_VOLTAGE, -MAX_VOLTAGE);
+	while (getOdometryVelocity() < STOP_VELOCITY || getOdometryPosition().y < side_goal_collision)
+		delay(LOOP_DELAY);
+	while (getOdometryVelocity() > STOP_VELOCITY)
+		delay(LOOP_DELAY);
+	setDriveVoltage(0, 0);
+
+	// Turn to face the goal shove start point
+	turnToPoint(goal_shove_x, goal_shove_y, TURN_VELOCITY);
+	while (!turnTargetReached())
+		delay(LOOP_DELAY);
+
+	// Move to the goal shove start point
+	position = getOdometryPosition();
+	target_angle = angle(position.x, position.y, goal_shove_x, goal_shove_y);
+	goToPoint(goal_shove_x, goal_shove_y, target_angle, MOTION_VELOCITY);
+	while (!boomerangTargetReached())
+		delay(LOOP_DELAY);
+
+	// Turn to face the goal
+	turnToPoint(side_goal_x, side_goal_y, TURN_VELOCITY, true);
+	while (!turnTargetReached())
+		delay(LOOP_DELAY);
+
+	// Ram the goal with passion part 2
+	setDriveVoltage(-MAX_VOLTAGE, -MAX_VOLTAGE);
+	while (getOdometryVelocity() < STOP_VELOCITY || getOdometryPosition().y < side_goal_collision)
+		delay(LOOP_DELAY);
+	while (getOdometryVelocity() > STOP_VELOCITY)
+		delay(LOOP_DELAY);
+	setDriveVoltage(0, 0);
+
+	// Turn to face the match load position
+	double alliance_ball_x{134.0}, alliance_ball_y{10.0}, alliance_ball_theta{-M_PI / 4};
+	double alliance_ball_distance{17.0};
+	double alliance_load_x{alliance_ball_x - (alliance_ball_distance * std::cos(alliance_ball_theta))};
+	double alliance_load_y{alliance_ball_y - (alliance_ball_distance * std::sin(alliance_ball_theta))};
+	turnToPoint(alliance_load_x, alliance_load_y, TURN_VELOCITY);
+	while (!turnTargetReached())
+		delay(LOOP_DELAY);
+
+	// Move to the match load position
+	position = getOdometryPosition();
+	target_angle = angle(position.x, position.y, alliance_load_x, alliance_load_y);
+	goToPoint(alliance_load_x, alliance_load_y, target_angle, MOTION_VELOCITY);
+	while (!boomerangTargetReached())
+		delay(LOOP_DELAY);
+	setUmbrellaIn();
+
+	// Turn to face the alliance triball
+	setLeftWing(false);
+	setRightWing(false);
+	turnToPoint(alliance_ball_x, alliance_ball_y, TURN_VELOCITY);
+	while (!turnTargetReached())
+		delay(LOOP_DELAY);
+
+	// Grab the alliance triball
+	double alliance_ball_velocity{12.0}, alliance_ball_elevator{9.0};
+	goToPoint(alliance_ball_x, alliance_ball_y, alliance_ball_theta, alliance_ball_velocity);
+	setElevatorPosition(alliance_ball_elevator);
+	setIntakeVoltage(MAX_VOLTAGE);
+	while (std::abs(getElevatorPosition() - alliance_ball_elevator) > ELEVATOR_TOLERANCE)
+		delay(LOOP_DELAY);
+	pauseControlSystem();
+
+	// Back away from the alliance triball
+	double load_bar_distance{-8.0};
+	driveStraight(load_bar_distance, MOTION_VELOCITY);
+	while (!boomerangTargetReached())
+		delay(LOOP_DELAY);
+
+	// Suck in the alliance ball
+	double ball_elevator{3.25};
+	setElevatorPosition(ball_elevator);
+	while (std::abs(getElevatorPosition() - ball_elevator) > ELEVATOR_TOLERANCE)
+		delay(LOOP_DELAY);
+
+	// Turn to face the goal shove start point
+	turnToPoint(goal_shove_x, goal_shove_y, TURN_VELOCITY);
+	while (!turnTargetReached())
+		delay(LOOP_DELAY);
+
+	// Move to the goal shove start point
+	position = getOdometryPosition();
+	target_angle = angle(position.x, position.y, goal_shove_x, goal_shove_y);
+	goToPoint(goal_shove_x, goal_shove_y, target_angle, MOTION_VELOCITY);
+	while (!boomerangTargetReached())
+		delay(LOOP_DELAY);
+
+	// Turn to face the goal
+	turnToPoint(side_goal_x, side_goal_y, TURN_VELOCITY);
+	while (!turnTargetReached())
+		delay(LOOP_DELAY);
+
+	// Let go of the alliance triball
+	double triball_release_elevator{0};
+	setElevatorPosition(triball_release_elevator);
+	setIntakeVoltage(-MAX_VOLTAGE);
+	while (std::abs(getElevatorPosition() - triball_release_elevator) > ELEVATOR_TOLERANCE)
+		delay(LOOP_DELAY);
+	setIntakeVoltage(0);
+	
+	// Ram the goal with passion part 3
+	setDriveVoltage(MAX_VOLTAGE, MAX_VOLTAGE);
+	while (getOdometryVelocity() < STOP_VELOCITY || getOdometryPosition().y < side_goal_collision)
+		delay(LOOP_DELAY);
+	while (getOdometryVelocity() > STOP_VELOCITY)
+		delay(LOOP_DELAY);
+	setDriveVoltage(0, 0);
+
+	// Turn to face the midfield entrance
+	double entrance_x{108.0}, entrance_y{14.0};
+	turnToPoint(entrance_x, entrance_y, TURN_VELOCITY, true);
+	while (!turnTargetReached())
+		delay(LOOP_DELAY);
+
+	// Move to the goal shove start point
+	position = getOdometryPosition();
+	target_angle = angle(position.x, position.y, entrance_x, entrance_y);
+	goToPoint(entrance_x, entrance_y, target_angle, MOTION_VELOCITY);
+	while (!boomerangTargetReached())
+		delay(LOOP_DELAY);
+
+	// Turn to face the front of the goal
+	double sentry_x{108.0}, sentry_y{62.0};
+	turnToPoint(sentry_x, sentry_y, TURN_VELOCITY, true);
+	while (!turnTargetReached())
+		delay(LOOP_DELAY);
+
+	// Move to the front of the goal
+	setLeftWing(true);
+	setRightWing(true);
+	double sweep_velocity{24.0};
+	position = getOdometryPosition();
+	target_angle = angle(position.x, position.y, sentry_x, sentry_y);
+	goToPoint(sentry_x, sentry_y, target_angle, sweep_velocity);
+	while (!boomerangTargetReached())
+		delay(LOOP_DELAY);
+
+	// Turn to face forward
+	turnToAngle(M_PI / 3, TURN_VELOCITY);
+	while (!turnTargetReached())
+		delay(LOOP_DELAY);
+
+	// Start sentry mode
 	std::unique_ptr<rtos::IMutex> sentry_mutex{std::make_unique<pros_adapters::ProsMutex>()};
 	std::unique_ptr<rtos::ITask> sentry_task{std::make_unique<pros_adapters::ProsTask>()};
-	routines::SentryMode sentry_mode{clock, delayer, sentry_mutex, sentry_task, control_system, robot};
+	static routines::SentryMode sentry_mode{m_clock, m_delayer, sentry_mutex, sentry_task, m_control_system, m_robot};
 	sentry_mode.run();
 
 	bool sentry{true};
-	auto position{odometryGetPosition(robot)};
-	double last_ball_angle{};
+	position = getOdometryPosition();
+	control::path::Point last_ball{};
 	while (sentry)
 	{
-		sentry_mode.doSentryMode(-M_PI, control::motion::ETurnDirection::COUNTERCLOCKWISE);
+		sentry_mode.doSentryMode(-M_PI / 3, control::motion::ETurnDirection::COUNTERCLOCKWISE);
 		while (!sentry_mode.isFinished())
-			delayer->delay(10);
+			delay(LOOP_DELAY);
 		sentry = sentry_mode.ballFound();
 		if (sentry)
 		{
-			position = odometryGetPosition(robot);
-			last_ball_angle = position.theta;
-			double target_distance{distance(position.x, position.y, 108.0, 60.0)};
-			if (target_distance > 6.0)
-			{
-				double target_angle{angle(position.x, position.y, 108.0, 60.0)};
-				bool reversed{std::abs(bindRadians(target_angle - position.theta)) > M_PI / 2};
-				motionTurnToPoint(control_system, robot, 2 * M_PI, 108.0, 60.0, reversed);
-				while (!motionTurnTargetReached(control_system))
-					delayer->delay(20);
+			position = getOdometryPosition();
+			last_ball = sentry_mode.getBall();
 
-				position = odometryGetPosition(robot);
-				boomerangGoToPoint(control_system, robot, 36.0, 108.0, 60.0, position.theta);
-				while (!boomerangTargetReached(control_system))
-					delayer->delay(20);
+			double target_distance{distance(position.x, position.y, 108.0, 62.0)};
+			if (target_distance > 3.0)
+			{
+				double target_angle{angle(position.x, position.y, 108.0, 62.0)};
+
+				bool reversed{std::abs(bindRadians(target_angle - position.theta)) > M_PI / 2};
+				turnToPoint(104.0, 62.0, 2 * M_PI, reversed);
+				if (reversed)
+					target_angle = bindRadians(target_angle + M_PI);
+				while (!turnTargetReached() && std::abs(position.theta - target_angle) > M_PI / 36)
+				{
+					delay(LOOP_DELAY);
+					position = getOdometryPosition();
+					target_angle = angle(position.x, position.y, 104.0, 62.0);
+					if (reversed)
+						target_angle = bindRadians(target_angle + M_PI);
+				}
+
+				position = getOdometryPosition();
+				goToPoint(108.0, 62.0, position.theta, 48.0);
+				target_distance = distance(position.x, position.y, 108.0, 62.0);
+				while (target_distance > 3.0)
+				{
+					delay(LOOP_DELAY);
+					position = getOdometryPosition();
+					target_distance = distance(position.x, position.y, 108.0, 62.0);
+				}
+				control_system->pause();
 			}
 
-			motionTurnToAngle(control_system, robot, 2 * M_PI, 0);
-			while (!motionTurnTargetReached(control_system))
-				delayer->delay(20);
+			turnToAngle(0, 2 * M_PI);
+			position = getOdometryPosition();
+			while (std::abs(bindRadians(position.theta)) > M_PI / 36)
+			{
+				if (std::abs(bindRadians(position.theta)) < M_PI / 18)
+				{
+					robot->sendCommand("ELEVATOR", "SET POSITION", 0.0);
+					robot->sendCommand("INTAKE", "SET VOLTAGE", -12.0);
+				}
+				delay(LOOP_DELAY);
+				position = getOdometryPosition();
+			}
+			control_system->pause();
 
 			robot->sendCommand("ELEVATOR", "SET POSITION", 0.0);
 			robot->sendCommand("INTAKE", "SET VOLTAGE", -12.0);
-			while (elevatorGetPosition(robot) > 0.5)
-				delayer->delay(20);
-			
+			while (getElevatorPosition() > 1.0)
+				delay(LOOP_DELAY);
 			robot->sendCommand("DIFFERENTIAL DRIVE", "SET VOLTAGE", 12.0, 12.0);
-			position = odometryGetPosition(robot);
-			while (position.x < 110.0 || position.xV > 8.0)
+			position = getOdometryPosition();
+			while (position.x < 110.0 || position.xV > 16.0)
 			{
-				delayer->delay(20);
-				position = odometryGetPosition(robot);
+				delay(LOOP_DELAY);
+				position = getOdometryPosition();
 			}
-
 			robot->sendCommand("DIFFERENTIAL DRIVE", "SET VOLTAGE", -12.0, -12.0);
 			delayer->delay(200);
 
-			motionTurnToAngle(control_system, robot, 2 * M_PI, last_ball_angle);
-			while (!motionTurnTargetReached(control_system))
-				delayer->delay(20);
+			position = getOdometryPosition();
+			turnToPoint(last_ball.getX(), last_ball.getY(), 2 * M_PI);
+			double target_angle{angle(position.x, position.y, last_ball.getX(), last_ball.getY())};
+			while (!turnTargetReached() && std::abs(position.theta - target_angle) > M_PI / 36)
+			{
+				delay(LOOP_DELAY);
+				position = getOdometryPosition();
+				target_angle = angle(position.x, position.y, last_ball.getX(), last_ball.getY());
+			}
+			control_system->pause();
 		}
 	}
 }

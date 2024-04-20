@@ -597,13 +597,13 @@ private:
 	 * @brief The loader position when loaded
 	 * 
 	 */
-	static constexpr double LOADER_LOADED_POSITION{M_PI};
+	static constexpr double LOADER_LOADED_POSITION{5 * M_PI / 6};
 
 	/**
 	 * @brief The loader position when ready
 	 * 
 	 */
-	static constexpr double LOADER_READY_POSITION{-M_PI / 18};
+	static constexpr double LOADER_READY_POSITION{-M_PI / 36};
 
 	/**
 	 * @brief The loader position tolerance
@@ -699,19 +699,19 @@ private:
 	 * @brief The first umbrella piston port
 	 * 
 	 */
-	static constexpr int8_t UMBRELLA_PISTON_1_PORT{};
+	static constexpr int8_t UMBRELLA_PISTON_1_PORT{'C'};
 
 	/**
 	 * @brief The first umbrella piston's extended state
 	 * 
 	 */
-	static constexpr bool UMBRELLA_PISTON_1_EXTENDED_STATE{};
+	static constexpr bool UMBRELLA_PISTON_1_EXTENDED_STATE{true};
 
 	/**
 	 * @brief The umbrella piston state when the umbrella is out
 	 * 
 	 */
-	static constexpr bool UMBRELLA_OUT_STATE{};
+	static constexpr bool UMBRELLA_OUT_STATE{true};
 
 	/**
 	 * @brief The first left wing piston port

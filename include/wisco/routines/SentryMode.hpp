@@ -61,6 +61,8 @@ private:
      */
     static constexpr uint8_t TASK_DELAY{10};
 
+    static constexpr double AIM_TOLERANCE{M_PI / 36};
+
     /**
      * @brief The width of the ball at the distance sensor height
      * 
@@ -107,7 +109,7 @@ private:
      * @brief The extra distance to move towards a ball
      * 
      */
-    static constexpr double MOTION_OFFSET{2};
+    static constexpr double MOTION_OFFSET{0};
 
     /**
      * @brief The delay to jump start the turn
@@ -119,7 +121,7 @@ private:
      * @brief The velocity to scan for sentry mode
      * 
      */
-    static constexpr double SCAN_VELOCITY{4 * M_PI / 5};
+    static constexpr double SCAN_VELOCITY{4 * M_PI / 3};
 
     /**
      * @brief The velocity to turn
@@ -425,6 +427,13 @@ public:
      * @return false A ball has not been found
      */
     bool ballFound();
+
+    /**
+     * @brief Get the coordinates of the ball
+     * 
+     * @return control::path::Point The coordinates of the ball
+     */
+    control::path::Point getBall();
 
     /**
      * @brief Checks if sentry mode is finished
