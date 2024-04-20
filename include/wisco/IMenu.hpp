@@ -70,9 +70,10 @@ public:
 	/**
 	 * @brief Get the system configuration information
 	 *
+	 * @param read_only Whether or not to read the data instead of using the menu data
 	 * @return SystemConfiguration The system configuration information
 	 */
-	virtual SystemConfiguration getSystemConfiguration() = 0;
+	virtual SystemConfiguration getSystemConfiguration(bool read_only = false) = 0;
 };
 } // namespace wisco
 

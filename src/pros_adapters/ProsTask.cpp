@@ -9,21 +9,25 @@ void ProsTask::start(void (*function)(void*), void* parameters)
 
 void ProsTask::remove()
 {
-    task->remove();
+    if (task)
+        task->remove();
 }
 
 void ProsTask::suspend()
 {
-    task->suspend();
+    if (task)
+        task->suspend();
 }
 
 void ProsTask::resume()
 {
-    task->resume();
+    if (task)
+        task->resume();
 }
 
 void ProsTask::join()
 {
-    task->join();
+    if (task)
+        task->join();
 }
 } // namespace pros_adapters

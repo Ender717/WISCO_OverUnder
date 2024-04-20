@@ -60,6 +60,12 @@ public:
 	void initialize();
 
 	/**
+	 * @brief Runs all subsystems in the robot
+	 * 
+	 */
+	void run();	
+
+	/**
 	 * @brief Sends a command to a subsystem
 	 *
 	 * @param subsystem_name The name of the subsystem

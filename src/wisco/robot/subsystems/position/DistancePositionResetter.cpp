@@ -38,7 +38,10 @@ double DistancePositionResetter::getResetX(double theta)
         double wall_theta{bindRadians(theta + m_local_theta)};
         bool near_wall{std::abs(wall_theta) > M_PI / 2};
         if (near_wall)
+        {
+            theta = bindRadians(theta + M_PI);
             wall_theta = bindRadians(wall_theta + M_PI);
+        }
         double sensor_distance{distance * std::cos(wall_theta)};
         double local_x_distance{m_local_x * std::cos(theta)};
         double local_y_distance{m_local_y * std::cos(bindRadians(theta + (M_PI / 2)))};

@@ -37,6 +37,12 @@ private:
 	 */
 	std::vector<std::unique_ptr<AControl>> controls{};
 
+	/**
+	 * @brief The active control
+	 * 
+	 */
+	std::string active_control{};
+
 public:
 	/**
 	 * @brief Adds a control to the robot
@@ -55,10 +61,28 @@ public:
 	bool removeControl(std::string control_name);
 
 	/**
-	 * @brief Initializes all controls in the robot
+	 * @brief Pauses the control system
+	 * 
+	 */
+	void pause();
+
+	/**
+	 * @brief Resumes the control system
+	 * 
+	 */
+	void resume();
+
+	/**
+	 * @brief Initializes all controls in the system
 	 *
 	 */
 	void initialize();
+
+	/**
+	 * @brief Runs all controls in the system
+	 * 
+	 */
+	void run();
 
 	/**
 	 * @brief Sends a command to a control
@@ -70,6 +94,7 @@ public:
 	void sendCommand(std::string control_name, std::string command_name, ...);
 
 	/**
+	 * @todo Change to a template to remove memory allocation
 	 * @brief Gets a state of a control
 	 *
 	 * @param control_name The name of the control

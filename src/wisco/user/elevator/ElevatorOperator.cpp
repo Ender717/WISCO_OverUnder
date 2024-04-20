@@ -13,28 +13,70 @@ ElevatorOperator::ElevatorOperator(const std::shared_ptr<user::IController>& con
 
 }
 
+void ElevatorOperator::calibrateElevator()
+{
+    if (m_robot)
+        m_robot->sendCommand(ELEVATOR_SUBSYSTEM_NAME, CALIBRATE_COMMAND_NAME);
+}
+
 double ElevatorOperator::getElevatorPosition()
 {
-    double* result{static_cast<double*>(m_robot->getState(ELEVATOR_SUBSYSTEM_NAME, GET_POSITION_STATE))};
-    double position{*result};
-    delete result;
+    double position{};
+    if (m_robot)
+    {
+        double* result{static_cast<double*>(m_robot->getState(ELEVATOR_SUBSYSTEM_NAME, GET_POSITION_STATE))};
+        if (result)
+        {
+            position = *result;
+            delete result;
+        }
+    }
     return position;
 }
 
 double ElevatorOperator::getCapDistance()
 {
-    double* result{static_cast<double*>(m_robot->getState(ELEVATOR_SUBSYSTEM_NAME, CAP_DISTANCE_STATE_NAME))};
-    double distance{*result};
-    delete result;
+    double distance{};
+    if (m_robot)
+    {
+        double* result{static_cast<double*>(m_robot->getState(ELEVATOR_SUBSYSTEM_NAME, CAP_DISTANCE_STATE_NAME))};
+        if (result)
+        {
+            distance = *result;
+            delete result;
+        }
+    }
     return distance;
+}
+
+bool ElevatorOperator::isCalibrating()
+{
+    bool calibrating{};
+    if (m_robot)
+    {
+        bool* result{static_cast<bool*>(m_robot->getState(ELEVATOR_SUBSYSTEM_NAME, IS_CALIBRATING_STATE_NAME))};
+        if (result)
+        {
+            calibrating = *result;
+            delete result;
+        }
+    }
+    return calibrating;
 }
 
 bool ElevatorOperator::getHangArmUp()
 {
-    bool* result{static_cast<bool*>(m_robot->getState(HANG_SUBSYSTEM_NAME, HANG_ARM_UP_STATE_NAME))};
-    bool hang_arm_up{*result};
-    delete result;
-    return hang_arm_up;
+    bool arm_up{};
+    if (m_robot)
+    {
+        bool* result{static_cast<bool*>(m_robot->getState(HANG_SUBSYSTEM_NAME, HANG_ARM_UP_STATE_NAME))};
+        if (result)
+        {
+            arm_up = *result;
+            delete result;
+        }
+    }
+    return arm_up;
 }
 
 void ElevatorOperator::updateElevatorPosition(double position)
@@ -254,6 +296,7 @@ void ElevatorOperator::updatePresetLadderIntake(EControllerDigital in, EControll
 
 void ElevatorOperator::setElevatorPosition(const std::unique_ptr<IProfile>& profile)
 {
+    EControllerDigital calibrate{profile->getDigitalControlMapping(EControl::ELEVATOR_CALIBRATE)};
     EControllerDigital in{profile->getDigitalControlMapping(EControl::ELEVATOR_IN)};
     EControllerDigital field{profile->getDigitalControlMapping(EControl::ELEVATOR_FIELD)};
     EControllerDigital match_load{profile->getDigitalControlMapping(EControl::ELEVATOR_MATCH_LOAD)};
@@ -264,27 +307,33 @@ void ElevatorOperator::setElevatorPosition(const std::unique_ptr<IProfile>& prof
     EControllerDigital intake{profile->getDigitalControlMapping(EControl::INTAKE_IN)};
     EControllerDigital outtake{profile->getDigitalControlMapping(EControl::INTAKE_OUT)};
 
-    switch (static_cast<EElevatorControlMode>(profile->getControlMode(EControlType::ELEVATOR)))
-    {
-    case EElevatorControlMode::MANUAL:
-        updateManual(in, out);
-        break;
-    case EElevatorControlMode::PRESET_SPLIT:
-        updatePresetSplit(in, field, match_load, pole_hang, partner_hang);
-        break;
-    case EElevatorControlMode::PRESET_TOGGLE_LADDER:
-        updatePresetLadder(in, out);
-        break;
-    case EElevatorControlMode::PRESET_TOGGLE_SINGLE:
-        updatePresetToggle(toggle);
-        break;
-    case EElevatorControlMode::PRESET_TOGGLE_LADDER_INTAKE:
-        updatePresetLadderIntake(in, out, intake, outtake);
-        break;
-    }
+    if (m_controller->getNewDigital(calibrate))
+        calibrateElevator();    
 
-    if (toggle_state == EToggleState::POLE_HANG)
-        updatePoleHangPosition();
+    if (!isCalibrating())
+    {
+        switch (static_cast<EElevatorControlMode>(profile->getControlMode(EControlType::ELEVATOR)))
+        {
+        case EElevatorControlMode::MANUAL:
+            updateManual(in, out);
+            break;
+        case EElevatorControlMode::PRESET_SPLIT:
+            updatePresetSplit(in, field, match_load, pole_hang, partner_hang);
+            break;
+        case EElevatorControlMode::PRESET_TOGGLE_LADDER:
+            updatePresetLadder(in, out);
+            break;
+        case EElevatorControlMode::PRESET_TOGGLE_SINGLE:
+            updatePresetToggle(toggle);
+            break;
+        case EElevatorControlMode::PRESET_TOGGLE_LADDER_INTAKE:
+            updatePresetLadderIntake(in, out, intake, outtake);
+            break;
+        }
+
+        if (toggle_state == EToggleState::POLE_HANG)
+            updatePoleHangPosition();
+    }
 }
 } // namespace elevator
 } // namespace user

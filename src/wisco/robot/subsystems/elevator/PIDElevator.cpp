@@ -10,8 +10,7 @@ namespace elevator
 {
 void PIDElevator::taskLoop(void* params)
 {
-    void** parameters{static_cast<void**>(params)};
-    PIDElevator* instance{static_cast<PIDElevator*>(parameters[0])};
+    PIDElevator* instance{static_cast<PIDElevator*>(params)};
 
     while (true)
     {
@@ -21,22 +20,28 @@ void PIDElevator::taskLoop(void* params)
 
 void PIDElevator::taskUpdate()
 {
-    updatePosition();
+    if (m_mutex)
+        m_mutex->take();
+    uint32_t calibration_time{UINT32_MAX};
+    if (m_clock)
+        calibration_time = m_clock->getTime() - calibrate_time;
+    if (calibrating && m_motors.getAngularVelocity() >= 0.0 && calibration_time >= 500)
+    {
+        m_motors.setPosition(0);
+        calibrating = false;
+    }
+    if (!calibrating)
+        updatePosition();
+    if (m_mutex)
+        m_mutex->give();
     m_delayer->delay(TASK_DELAY);
 }
 
 void PIDElevator::updatePosition()
 {
-    if (m_mutex)
-        m_mutex->take();
-
     double current_position{getPosition()};
-    
     double voltage{m_pid.getControlValue(current_position, m_position)};
     m_motors.setVoltage(voltage);
-
-    if (m_mutex)
-        m_mutex->give();
 }
 
 void PIDElevator::initialize()
@@ -50,11 +55,7 @@ void PIDElevator::initialize()
 void PIDElevator::run()
 {
     if (m_task)
-    {
-        void** params{static_cast<void**>(malloc(1 * sizeof(void*)))};
-        params[0] = this;
-        m_task->start(&PIDElevator::taskLoop, params);
-    }
+        m_task->start(&PIDElevator::taskLoop, this);
 }
 
 double PIDElevator::getPosition()
@@ -80,6 +81,25 @@ void PIDElevator::setPosition(double position)
 
     if (m_mutex)
         m_mutex->give();
+}
+
+void PIDElevator::calibrate()
+{
+    if (m_mutex)
+        m_mutex->take();
+    
+    calibrating = true;
+    m_motors.setVoltage(-12.0);
+    if (m_clock)
+        calibrate_time = m_clock->getTime();
+
+    if (m_mutex)
+        m_mutex->give();
+}
+
+bool PIDElevator::isCalibrating()
+{
+    return calibrating;
 }
 
 void PIDElevator::setClock(const std::unique_ptr<rtos::IClock>& clock)

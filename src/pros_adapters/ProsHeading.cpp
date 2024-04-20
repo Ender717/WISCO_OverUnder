@@ -16,6 +16,7 @@ void ProsHeading::initialize()
         {
             m_sensor->reset();
             pros::delay(3000);
+            m_sensor->set_data_rate(5);
         }
     }
 }

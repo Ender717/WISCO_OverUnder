@@ -84,6 +84,13 @@ public:
      * @param volts The voltage input in Volts
      */
     virtual void setVoltage(double volts) = 0;
+
+    /**
+     * @brief Set the position of the motor in radians
+     * 
+     * @param position The position of the motor
+     */
+    virtual void setPosition(double position) = 0;
 };
 }
 }

@@ -72,6 +72,12 @@ private:
     static constexpr char SET_POSITION_COMMAND[]{"SET POSITION"};
 
     /**
+     * @brief The command to calibrate the elevator
+     * 
+     */
+    static constexpr char CALIBRATE_COMMAND_NAME[]{"CALIBRATE"};
+
+    /**
      * @brief The state to get elevator position
      * 
      */
@@ -82,6 +88,12 @@ private:
      * 
      */
     static constexpr char CAP_DISTANCE_STATE_NAME[]{"CAP DISTANCE"};
+
+    /**
+     * @brief The name of the is calibrating state
+     * 
+     */
+    static constexpr char IS_CALIBRATING_STATE_NAME[]{"IS CALIBRATING"};
 
     /**
      * @brief The name of the hang arm up state
@@ -99,7 +111,7 @@ private:
      * @brief The field position for the elevator
      * 
      */
-    static constexpr double FIELD_POSITION{3.0};
+    static constexpr double FIELD_POSITION{3.3};
 
     /**
      * @brief The match loading position for the elevator
@@ -156,6 +168,12 @@ private:
     bool manual_input{};
 
     /**
+     * @brief Calibrates the elevator
+     * 
+     */
+    void calibrateElevator();
+
+    /**
      * @brief Gets the current elevator position
      * 
      * @return double The current elevator position
@@ -168,6 +186,14 @@ private:
      * @return double The current cap distance
      */
     double getCapDistance();
+
+    /**
+     * @brief Checks if the elevator is calibrating
+     * 
+     * @return true The elevator is calibrating
+     * @return false The elevator is not calibrating
+     */
+    bool isCalibrating();
 
     /**
      * @brief Get the hang arm up state

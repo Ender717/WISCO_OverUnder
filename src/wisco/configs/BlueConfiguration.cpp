@@ -31,6 +31,7 @@ std::shared_ptr<control::ControlSystem> BlueConfiguration::buildControlSystem()
         withRotationalPID(boomerang_rotational_pid)->
         withLead(BOOMERANG_LEAD)->
         withTargetTolerance(BOOMERANG_TARGET_TOLERANCE)->
+        withTargetVelocity(BOOMERANG_TARGET_VELOCITY)->
         build()
     };
     std::unique_ptr<wisco::control::AControl> boomerang_control{std::make_unique<wisco::control::boomerang::BoomerangControl>(pid_boomerang)};
@@ -53,6 +54,27 @@ std::shared_ptr<control::ControlSystem> BlueConfiguration::buildControlSystem()
     };
     std::unique_ptr<wisco::control::AControl> motion_control{std::make_unique<wisco::control::motion::MotionControl>(pid_turn)};
     control_system->addControl(motion_control);
+
+    wisco::control::path::PIDPurePursuitBuilder pid_pure_pursuit_builder{};
+    std::unique_ptr<rtos::IMutex> pure_pursuit_pros_mutex{std::make_unique<pros_adapters::ProsMutex>()};
+    std::unique_ptr<rtos::ITask> pure_pursuit_pros_task{std::make_unique<pros_adapters::ProsTask>()};
+    wisco::control::PID pure_pursuit_linear_pid{pros_clock, PURE_PURSUIT_LINEAR_KP, PURE_PURSUIT_LINEAR_KI, PURE_PURSUIT_LINEAR_KD};
+    wisco::control::PID pure_pursuit_rotational_pid{pros_clock, PURE_PURSUIT_ROTATIONAL_KP, PURE_PURSUIT_ROTATIONAL_KI, PURE_PURSUIT_ROTATIONAL_KD};
+    std::unique_ptr<wisco::control::path::IPathFollower> pid_pure_pursuit
+    {
+        pid_pure_pursuit_builder.
+        withDelayer(pros_delayer)->
+        withMutex(pure_pursuit_pros_mutex)->
+        withTask(pure_pursuit_pros_task)->
+        withLinearPID(pure_pursuit_linear_pid)->
+        withRotationalPID(pure_pursuit_rotational_pid)->
+        withFollowDistance(PURE_PURSUIT_FOLLOW_DISTANCE)->
+        withTargetTolerance(PURE_PURSUIT_TARGET_TOLERANCE)->
+        withTargetVelocity(PURE_PURSUIT_TARGET_VELOCITY)->
+        build()
+    };
+    std::unique_ptr<wisco::control::AControl> pure_pursuit_control{std::make_unique<wisco::control::path::PathFollowingControl>(pid_pure_pursuit)};
+    control_system->addControl(pure_pursuit_control);
 
     return control_system;
 }
@@ -216,8 +238,6 @@ std::shared_ptr<robot::Robot> BlueConfiguration::buildRobot()
     wisco::control::PID intake_pid{intake_pros_clock, INTAKE_KP, INTAKE_KI, INTAKE_KD};
     std::unique_ptr<pros::Motor> intake_pros_motor_1{std::make_unique<pros::Motor>(INTAKE_MOTOR_1_PORT, INTAKE_MOTOR_1_GEARSET)};
     std::unique_ptr<wisco::io::IMotor> intake_pros_motor_1_motor{std::make_unique<pros_adapters::ProsV5Motor>(intake_pros_motor_1)};
-    std::unique_ptr<pros::Motor> intake_pros_motor_2{std::make_unique<pros::Motor>(INTAKE_MOTOR_2_PORT, INTAKE_MOTOR_2_GEARSET)};
-    std::unique_ptr<wisco::io::IMotor> intake_pros_motor_2_motor{std::make_unique<pros_adapters::ProsV5Motor>(intake_pros_motor_2)};
     std::unique_ptr<wisco::robot::subsystems::intake::IIntake> pid_intake
     {
         pid_intake_builder.
@@ -227,7 +247,6 @@ std::shared_ptr<robot::Robot> BlueConfiguration::buildRobot()
         withTask(intake_pros_task)->
         withPID(intake_pid)->
         withMotor(intake_pros_motor_1_motor)->
-        withMotor(intake_pros_motor_2_motor)->
         withRollerRadius(INTAKE_ROLLER_RADIUS)->
         build()
     };

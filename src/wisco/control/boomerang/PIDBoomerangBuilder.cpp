@@ -48,6 +48,12 @@ PIDBoomerangBuilder* PIDBoomerangBuilder::withTargetTolerance(double target_tole
     return this;
 }
 
+PIDBoomerangBuilder* PIDBoomerangBuilder::withTargetVelocity(double target_velocity)
+{
+    m_target_velocity = target_velocity;
+    return this;
+}
+
 std::unique_ptr<IBoomerang> PIDBoomerangBuilder::build()
 {
     std::unique_ptr<PIDBoomerang> pid_boomerang{std::make_unique<PIDBoomerang>()};
@@ -58,6 +64,7 @@ std::unique_ptr<IBoomerang> PIDBoomerangBuilder::build()
     pid_boomerang->setRotationalPID(m_rotational_pid);
     pid_boomerang->setLead(m_lead);
     pid_boomerang->setTargetTolerance(m_target_tolerance);
+    pid_boomerang->setTargetVelocity(m_target_velocity);
     return pid_boomerang;
 }
 }

@@ -52,7 +52,7 @@ private:
 		{user::EControlType::INTAKE, static_cast<int>(user::intake::EIntakeControlMode::SPLIT_HOLD)},
 		{user::EControlType::LOADER, static_cast<int>(user::loader::ELoaderControlMode::MACRO)},
 		{user::EControlType::UMBRELLA, static_cast<int>(user::umbrella::EUmbrellaControlMode::SINGLE_TOGGLE)},
-		{user::EControlType::WINGS, static_cast<int>(user::wings::EWingsControlMode::DUAL_HOLD)}
+		{user::EControlType::WINGS, static_cast<int>(user::wings::EWingsControlMode::DUAL_TOGGLE)}
 	};
 
     /**
@@ -67,6 +67,7 @@ private:
      */
     const std::map<user::EControl, user::EControllerDigital> DIGITAL_CONTROL_MAP
 	{
+		{user::EControl::ELEVATOR_CALIBRATE, user::EControllerDigital::DPAD_UP},
 		{user::EControl::ELEVATOR_IN, user::EControllerDigital::TRIGGER_RIGHT_BOTTOM},
 		{user::EControl::ELEVATOR_OUT, user::EControllerDigital::TRIGGER_RIGHT_TOP},
 		{user::EControl::HANG_NEXT, user::EControllerDigital::BUTTON_A},
@@ -75,7 +76,7 @@ private:
 		{user::EControl::INTAKE_OUT, user::EControllerDigital::TRIGGER_LEFT_BOTTOM},
 		{user::EControl::LOADER_TOGGLE, user::EControllerDigital::DPAD_LEFT},
 		{user::EControl::UMBRELLA_TOGGLE, user::EControllerDigital::DPAD_DOWN},
-		{user::EControl::WINGS_HOLD, user::EControllerDigital::SCUFF_RIGHT_REAR}
+		{user::EControl::WINGS_TOGGLE, user::EControllerDigital::SCUFF_RIGHT_REAR}
 	};
 
 public:

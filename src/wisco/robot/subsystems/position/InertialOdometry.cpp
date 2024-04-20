@@ -1,4 +1,5 @@
 #include "wisco/robot/subsystems/position/InertialOdometry.hpp"
+#include "pros/screen.h"
 #include "pros/screen.hpp"
 
 namespace wisco
@@ -11,8 +12,7 @@ namespace position
 {
 void InertialOdometry::taskLoop(void* params)
 {
-    void** parameters{static_cast<void**>(params)};
-    InertialOdometry* instance{static_cast<InertialOdometry*>(parameters[0])};
+    InertialOdometry* instance{static_cast<InertialOdometry*>(params)};
 
     while (true)
     {
@@ -74,8 +74,11 @@ void InertialOdometry::updatePosition()
     m_position.x += global_x;
     m_position.y += global_y;
     m_position.theta = current_heading;
+    //pros::screen::print(pros::E_TEXT_LARGE_CENTER, 1, "X: %7.2f", m_position.x);
+    //pros::screen::print(pros::E_TEXT_LARGE_CENTER, 3, "Y: %7.2f", m_position.y);
+    //pros::screen::print(pros::E_TEXT_LARGE_CENTER, 5, "T: %7.2f", m_position.theta);
 
-    if (m_clock)
+    if (time_change)
     {
         m_position.xV = global_x / (time_change / TIME_UNIT_CONVERTER);
         m_position.yV = global_y / (time_change / TIME_UNIT_CONVERTER);
@@ -115,11 +118,7 @@ void InertialOdometry::initialize()
 void InertialOdometry::run()
 {
     if (m_task)
-    {
-        void** params{static_cast<void**>(malloc(1 * sizeof(void*)))};
-        params[0] = this;
-        m_task->start(&InertialOdometry::taskLoop, params);
-    }
+        m_task->start(&InertialOdometry::taskLoop, this);
 }
 
 void InertialOdometry::setPosition(Position position)
@@ -143,6 +142,39 @@ Position InertialOdometry::getPosition()
     if (m_mutex)
         m_mutex->give();
     return position;
+}
+
+void InertialOdometry::setX(double x)
+{
+    if (m_mutex)
+        m_mutex->take();
+    
+    m_position.x = x;
+
+    if (m_mutex)
+        m_mutex->give();
+}
+
+void InertialOdometry::setY(double y)
+{
+    if (m_mutex)
+        m_mutex->take();
+    
+    m_position.y = y;
+
+    if (m_mutex)
+        m_mutex->give();
+}
+
+void InertialOdometry::setTheta(double theta)
+{
+    if (m_mutex)
+        m_mutex->take();
+    
+    m_position.theta = theta;
+
+    if (m_mutex)
+        m_mutex->give();
 }
 
 void InertialOdometry::setClock(std::unique_ptr<rtos::IClock>& clock)

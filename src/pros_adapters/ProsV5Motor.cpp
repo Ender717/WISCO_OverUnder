@@ -1,6 +1,4 @@
 #include "pros_adapters/ProsV5Motor.hpp"
-#include "pros/motors.h"
-#include "pros/screen.hpp"
 
 namespace pros_adapters
 {
@@ -46,7 +44,7 @@ double ProsV5Motor::getGearRatio()
         else
             ratio = NO_CARTRIDGE;
     }
-    
+
     return ratio;
 }
 
@@ -62,12 +60,10 @@ double ProsV5Motor::getAngularVelocity()
 
 double ProsV5Motor::getPosition()
 {
-    double position{};
+    double position{position_offset};
 
     if (m_motor)
-    {
-        position = (m_motor->get_position() / getGearRatio()) * POSITION_CONVERSION;
-    }
+        position += m_motor->get_position() * POSITION_CONVERSION;
 
     return position;
 }
@@ -80,5 +76,11 @@ void ProsV5Motor::setVoltage(double volts)
     
     if (m_motor)
         m_motor->move_voltage(millivolts);
+}
+
+void ProsV5Motor::setPosition(double position)
+{
+    position_offset = position;
+    m_motor->tare_position();
 }
 } // namespace pros_adapters

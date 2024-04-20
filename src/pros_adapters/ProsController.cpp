@@ -9,8 +9,7 @@ ProsController::ProsController(std::unique_ptr<pros::Controller>& controller) : 
 
 void ProsController::taskLoop(void* params)
 {
-    void** parameters{static_cast<void**>(params)};
-    ProsController* controller{static_cast<ProsController*>(parameters[0])};
+    ProsController* controller{static_cast<ProsController*>(params)};
 
     while (true)
     {
@@ -45,9 +44,7 @@ void ProsController::initialize()
 
 void ProsController::run()
 {
-    void** params{static_cast<void**>(malloc(1 * sizeof(void*)))};
-    params[0] = this;
-    pros::Task controllerTask{&ProsController::taskLoop, params};
+    pros::Task controller_task{&ProsController::taskLoop, this};
 }
 
 double ProsController::getAnalog(wisco::user::EControllerAnalog analog_channel)

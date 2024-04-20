@@ -28,6 +28,10 @@ void Robot::initialize()
 {
 	for (auto& subsystem : subsystems)
 		subsystem->initialize();
+}
+
+void Robot::run()
+{
 	for (auto& subsystem : subsystems)
 		subsystem->run();
 }

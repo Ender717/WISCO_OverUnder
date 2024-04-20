@@ -59,6 +59,10 @@
 #include "wisco/control/motion/PIDTurnBuilder.hpp"
 #include "wisco/control/motion/MotionControl.hpp"
 
+// pure pursuit includes
+#include "wisco/control/path/PIDPurePursuitBuilder.hpp"
+#include "wisco/control/path/PathFollowingControl.hpp"
+
 #include "wisco/IConfiguration.hpp"
 
 /**
@@ -124,7 +128,7 @@ private:
 	 * @brief The port for the odometry strafe distance tracking sensor
 	 * 
 	 */
-	static constexpr int8_t ODOMETRY_STRAFE_PORT{16};
+	static constexpr int8_t ODOMETRY_STRAFE_PORT{18};
 
 	/**
 	 * @brief The radius of the odometry strafe distance tracking wheel
@@ -160,19 +164,19 @@ private:
 	 * @brief The x-offset of the resetter
 	 * 
 	 */
-	static constexpr double RESETTER_OFFSET_X{};
+	static constexpr double RESETTER_OFFSET_X{-6.125};
 
 	/**
 	 * @brief The y-offset of the resetter
 	 * 
 	 */
-	static constexpr double RESETTER_OFFSET_Y{};
+	static constexpr double RESETTER_OFFSET_Y{5.500};
 
 	/**
 	 * @brief The angle-offset of the resetter
 	 * 
 	 */
-	static constexpr double RESETTER_OFFSET_THETA{};
+	static constexpr double RESETTER_OFFSET_THETA{M_PI / 2};
 
 	/**
 	 * @brief Whether to use the kinematic drive model or not
@@ -347,25 +351,13 @@ private:
 	 * @brief The first intake motor port
 	 * 
 	 */
-	static constexpr int8_t INTAKE_MOTOR_1_PORT{-12};
+	static constexpr int8_t INTAKE_MOTOR_1_PORT{19};
 
 	/**
 	 * @brief The first intake motor gearset
 	 * 
 	 */
 	static constexpr pros::v5::MotorGears INTAKE_MOTOR_1_GEARSET{pros::E_MOTOR_GEARSET_06};
-
-	/**
-	 * @brief The second intake motor port
-	 * 
-	 */
-	static constexpr int8_t INTAKE_MOTOR_2_PORT{19};
-
-	/**
-	 * @brief The second intake motor gearset
-	 * 
-	 */
-	static constexpr pros::v5::MotorGears INTAKE_MOTOR_2_GEARSET{pros::E_MOTOR_GEARSET_06};
 
 	/**
 	 * @brief The radius of the intake roller
@@ -389,7 +381,7 @@ private:
 	 * @brief The tuning offset for the ball detector distance sensor
 	 * 
 	 */
-	static constexpr double BALL_DETECTOR_DISTANCE_OFFSET{};
+	static constexpr double BALL_DETECTOR_DISTANCE_OFFSET{3.5};
 
 	/**
 	 * @brief The proportional constant for the boomerang linear pid controller
@@ -413,7 +405,7 @@ private:
 	 * @brief The proportional constant for the boomerang rotational pid controller
 	 * 
 	 */
-	static constexpr double BOOMERANG_ROTATIONAL_KP{320.0};
+	static constexpr double BOOMERANG_ROTATIONAL_KP{640.0};
 
 	/**
 	 * @brief The integral constant for the boomerang rotational pid controller
@@ -425,7 +417,7 @@ private:
 	 * @brief The derivative constant for the boomerang rotational pid controller
 	 * 
 	 */
-	static constexpr double BOOMERANG_ROTATIONAL_KD{4800.0};
+	static constexpr double BOOMERANG_ROTATIONAL_KD{12000.0};
 
 	/**
 	 * @brief The lead ratio for the boomerang controller
@@ -437,13 +429,19 @@ private:
 	 * @brief The target tolerance for the boomerang controller
 	 * 
 	 */
-	static constexpr double BOOMERANG_TARGET_TOLERANCE{1.0};
+	static constexpr double BOOMERANG_TARGET_TOLERANCE{3.0};
+
+	/**
+	 * @brief The target velocity for the boomerang controller
+	 * 
+	 */
+	static constexpr double BOOMERANG_TARGET_VELOCITY{1.0};
 
 	/**
 	 * @brief The KP for the elevator PID
 	 * 
 	 */
-	static constexpr double ELEVATOR_KP{6.0};
+	static constexpr double ELEVATOR_KP{24.0};
 
 	/**
 	 * @brief The KI for the elevator PID
@@ -455,7 +453,7 @@ private:
 	 * @brief The KD for the elevator PID
 	 * 
 	 */
-	static constexpr double ELEVATOR_KD{0.0};
+	static constexpr double ELEVATOR_KD{256.0};
 
 	/**
 	 * @brief The first elevator motor port
@@ -491,7 +489,7 @@ private:
 	 * @brief The number of inches moved per radian on the elevator
 	 * 
 	 */
-	static constexpr double ELEVATOR_INCHES_PER_RADIAN{17.0 / (0.8 * 2 * M_PI)};
+	static constexpr double ELEVATOR_INCHES_PER_RADIAN{2 * 0.625};
 
 	/**
 	 * @brief The elevator distance sensor port
@@ -569,7 +567,7 @@ private:
 	 * @brief The KP for the loader PID
 	 * 
 	 */
-	static constexpr double LOADER_KP{6.0};
+	static constexpr double LOADER_KP{32.0};
 
 	/**
 	 * @brief The KI for the loader PID
@@ -581,13 +579,13 @@ private:
 	 * @brief The KD for the loader PID
 	 * 
 	 */
-	static constexpr double LOADER_KD{0.0};
+	static constexpr double LOADER_KD{700.0};
 
 	/**
 	 * @brief The first loader motor port
 	 * 
 	 */
-	static constexpr int8_t LOADER_MOTOR_1_PORT{-11};
+	static constexpr int8_t LOADER_MOTOR_1_PORT{6};
 
 	/**
 	 * @brief The first loader motor gearset
@@ -605,13 +603,67 @@ private:
 	 * @brief The loader position when ready
 	 * 
 	 */
-	static constexpr double LOADER_READY_POSITION{0};
+	static constexpr double LOADER_READY_POSITION{-M_PI / 36};
 
 	/**
 	 * @brief The loader position tolerance
 	 * 
 	 */
 	static constexpr double LOADER_POSITION_TOLERANCE{M_PI / 18};
+
+	/**
+	 * @brief The proportional constant for the pure pursuit linear pid controller
+	 * 
+	 */
+	static constexpr double PURE_PURSUIT_LINEAR_KP{12.0};
+
+	/**
+	 * @brief The integral constant for the pure pursuit linear pid controller
+	 * 
+	 */
+	static constexpr double PURE_PURSUIT_LINEAR_KI{};
+
+	/**
+	 * @brief The derivative constant for the pure pursuit linear pid controller
+	 * 
+	 */
+	static constexpr double PURE_PURSUIT_LINEAR_KD{640.0};
+
+	/**
+	 * @brief The proportional constant for the pure pursuit rotational pid controller
+	 * 
+	 */
+	static constexpr double PURE_PURSUIT_ROTATIONAL_KP{640.0};
+
+	/**
+	 * @brief The integral constant for the pure pursuit rotational pid controller
+	 * 
+	 */
+	static constexpr double PURE_PURSUIT_ROTATIONAL_KI{};
+
+	/**
+	 * @brief The derivative constant for the pure pursuit rotational pid controller
+	 * 
+	 */
+	static constexpr double PURE_PURSUIT_ROTATIONAL_KD{10000.0};
+
+	/**
+	 * @brief The follow distance for the pure pursuit controller
+	 * 
+	 */
+	static constexpr double PURE_PURSUIT_FOLLOW_DISTANCE{12.0};
+
+	/**
+	 * @brief The target tolerance for the pure pursuit controller
+	 * 
+	 */
+	static constexpr double PURE_PURSUIT_TARGET_TOLERANCE{3.0};
+
+	/**
+	 * @brief The target velocity for the pure pursuit controller
+	 * 
+	 */
+	static constexpr double PURE_PURSUIT_TARGET_VELOCITY{1.0};
 
 	/**
 	 * @brief The proportional constant for the turn pid controller
@@ -635,7 +687,7 @@ private:
 	 * @brief The target tolerance for the turn controller
 	 * 
 	 */
-	static constexpr double TURN_TARGET_TOLERANCE{1.0 * M_PI / 180};
+	static constexpr double TURN_TARGET_TOLERANCE{4.0 * M_PI / 180};
 
 	/**
 	 * @brief The target velocity for the turn controller
@@ -647,49 +699,49 @@ private:
 	 * @brief The first umbrella piston port
 	 * 
 	 */
-	static constexpr int8_t UMBRELLA_PISTON_1_PORT{};
+	static constexpr int8_t UMBRELLA_PISTON_1_PORT{'C'};
 
 	/**
 	 * @brief The first umbrella piston's extended state
 	 * 
 	 */
-	static constexpr bool UMBRELLA_PISTON_1_EXTENDED_STATE{};
+	static constexpr bool UMBRELLA_PISTON_1_EXTENDED_STATE{true};
 
 	/**
 	 * @brief The umbrella piston state when the umbrella is out
 	 * 
 	 */
-	static constexpr bool UMBRELLA_OUT_STATE{};
+	static constexpr bool UMBRELLA_OUT_STATE{true};
 
 	/**
 	 * @brief The first left wing piston port
 	 * 
 	 */
-	static constexpr char LEFT_WING_PISTON_1_PORT{};
+	static constexpr char LEFT_WING_PISTON_1_PORT{'A'};
 
 	/**
 	 * @brief The first left wing piston's extended state
 	 * 
 	 */
-	static constexpr bool LEFT_WING_PISTON_1_EXTENDED_STATE{};
+	static constexpr bool LEFT_WING_PISTON_1_EXTENDED_STATE{true};
 
 	/**
 	 * @brief The first right wing piston port
 	 * 
 	 */
-	static constexpr char RIGHT_WING_PISTON_1_PORT{};
+	static constexpr char RIGHT_WING_PISTON_1_PORT{'B'};
 
 	/**
 	 * @brief The first right wing piston's extended state
 	 * 
 	 */
-	static constexpr bool RIGHT_WING_PISTON_1_EXTENDED_STATE{};
+	static constexpr bool RIGHT_WING_PISTON_1_EXTENDED_STATE{true};
 
 	/**
 	 * @brief The wing piston state when the wings are out
 	 * 
 	 */
-	static constexpr bool WINGS_OUT_STATE{};
+	static constexpr bool WINGS_OUT_STATE{true};
 
 public:
     /**

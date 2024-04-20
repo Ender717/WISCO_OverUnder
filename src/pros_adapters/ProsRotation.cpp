@@ -12,6 +12,7 @@ void ProsRotation::initialize()
     if (m_sensor)
     {
         m_sensor->reset();
+        m_sensor->set_data_rate(5);
     }
 }
 

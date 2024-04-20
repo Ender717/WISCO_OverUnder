@@ -1,10 +1,11 @@
-#ifndef WISCO_CONTROL_MOTION_MOTION_CONTROL_HPP
-#define WISCO_CONTROL_MOTION_MOTION_CONTROL_HPP
+#ifndef WISCO_CONTROL_PATH_PATH_FOLLOWING_CONTROLLER_HPP
+#define WISCO_CONTROL_PATH_PATH_FOLLOWING_CONTROLLER_HPP
 
 #include <memory>
 
 #include "wisco/control/AControl.hpp"
-#include "ITurn.hpp"
+
+#include "IPathFollower.hpp"
 
 /**
  * @brief Namespace for all library code
@@ -23,74 +24,57 @@ namespace control
 {
 
 /**
- * @brief Namespace for basic motion controls
+ * @brief Namespace for path components
  * @author Nathan Sandvig
  * 
  */
-namespace motion
+namespace path
 {
 
 /**
- * @brief Control adapter for the motion controller
+ * @brief Control adapter for path following algorithms
  * @author Nathan Sandvig
  * 
  */
-class MotionControl : public AControl
+class PathFollowingControl : public AControl
 {
-private:
-    /**
-     * @brief The types of motions
-     * 
-     */
-    enum class EMotion
-    {
-        NONE,
-        TURN
-    };
-
     /**
      * @brief The name of the control
      * 
      */
-    static constexpr char CONTROL_NAME[]{"MOTION"};
+    static constexpr char CONTROL_NAME[]{"PATH FOLLOWING"};
 
     /**
-     * @brief The name of the turn to angle command
+     * @brief The name of the follow path command
      * 
      */
-    static constexpr char TURN_TO_ANGLE_COMMAND_NAME[]{"TURN TO ANGLE"};
+    static constexpr char FOLLOW_PATH_COMMAND_NAME[]{"FOLLOW PATH"};
 
     /**
-     * @brief The name of the turn to point command
+     * @brief The name of the set velocity command
      * 
      */
-    static constexpr char TURN_TO_POINT_COMMAND_NAME[]{"TURN TO POINT"};
+    static constexpr char SET_VELOCITY_COMMAND_NAME[]{"SET VELOCITY"};
 
     /**
-     * @brief The name of the turn target reached state
+     * @brief The name of the target reached state
      * 
      */
-    static constexpr char TURN_TARGET_REACHED_STATE_NAME[]{"TURN TARGET REACHED"};
+    static constexpr char TARGET_REACHED_STATE_NAME[]{"TARGET REACHED"};
 
     /**
-     * @brief The turn controller being adapted
+     * @brief The path following controller being adapted
      * 
      */
-    std::unique_ptr<ITurn> m_turn{};
-
-    /**
-     * @brief The current active motion
-     * 
-     */
-    EMotion active_motion{EMotion::NONE};
+    std::unique_ptr<IPathFollower> m_path_follower{};
 
 public:
     /**
-     * @brief Construct a new Motion Control object
+     * @brief Construct a new Path Following Control object
      * 
-     * @param turn The turn controller being adapted
+     * @param path_follower The path following controller being adapted
      */
-    MotionControl(std::unique_ptr<ITurn>& turn);
+    PathFollowingControl(std::unique_ptr<IPathFollower>& path_follower);
 
 	/**
 	 * @brief Initializes the control
@@ -132,7 +116,7 @@ public:
 	 */
 	void* state(std::string state_name) override;
 };
-} // namespace motion
+} // namespace path
 } // namespace control
 } // namespace wisco
 

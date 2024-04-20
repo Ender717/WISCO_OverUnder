@@ -57,7 +57,7 @@ private:
      * @brief The loop delay on the task
      * 
      */
-    static constexpr uint8_t TASK_DELAY{10};
+    static constexpr uint8_t TASK_DELAY{20};
 
     /**
      * @brief Converts the time units for velocity
@@ -196,6 +196,27 @@ public:
      * @return Position The position of the system
      */
     Position getPosition() override;
+
+    /**
+     * @brief Sets the x-coordinate of the position
+     * 
+     * @param x The new x-coordinate
+     */
+    void setX(double x) override;
+
+    /**
+     * @brief Sets the y-coordinate of the position
+     * 
+     * @param y The new y-coordinate
+     */
+    void setY(double y) override;
+
+    /**
+     * @brief Sets the angle of the position
+     * 
+     * @param theta The new angle
+     */
+    void setTheta(double theta) override;
 
     /**
      * @brief Set the system clock

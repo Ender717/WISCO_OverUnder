@@ -60,10 +60,22 @@ private:
     static constexpr char SET_POSITION_COMMAND_NAME[]{"SET POSITION"};
 
     /**
+     * @brief The name of the calibrate command
+     * 
+     */
+    static constexpr char CALIBRATE_COMMAND_NAME[]{"CALIBRATE"};
+
+    /**
      * @brief The name of the get velocity command
      * 
      */
     static constexpr char GET_POSITION_STATE_NAME[]{"GET POSITION"};
+
+    /**
+     * @brief The name of the is calibrating state
+     * 
+     */
+    static constexpr char IS_CALIBRATING_STATE_NAME[]{"IS CALIBRATING"};
 
     /**
      * @brief The name of the cap distance state

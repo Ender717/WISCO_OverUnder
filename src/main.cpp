@@ -27,7 +27,8 @@ void initialize()
 	}	
 	else
 	{
-		match_controller.initialize();
+		bool fast_init{pros::competition::is_connected() && !pros::competition::is_disabled()};
+		match_controller.initialize(fast_init);
 	}
 }
 

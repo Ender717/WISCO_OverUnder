@@ -60,10 +60,22 @@ private:
     static constexpr double VOLTAGE_CONVERSION{1000};
 
     /**
+     * @brief Converts motor encoder ticks to radians
+     * 
+     */
+    static constexpr double POSITION_CONVERSION{2 * M_PI / 180};
+
+    /**
      * @brief The motor being adapted
      * 
      */
     std::unique_ptr<pros::Motor> m_motor{};
+
+    /**
+     * @brief The position offset
+     * 
+     */
+    double position_offset{};
 
 public:
     /**
@@ -115,11 +127,25 @@ public:
     double getAngularVelocity() override;
 
     /**
+     * @brief Get the position of the motor in total radians
+     * 
+     * @return double The total number of radians moved since last reset
+     */
+    double getPosition() override;
+
+    /**
      * @brief Set the voltage input to the motor in Volts
      * 
      * @param volts The voltage input in Volts
      */
     void setVoltage(double volts) override;
+
+    /**
+     * @brief Set the position of the motor in radians
+     * 
+     * @param position The position of the motor
+     */
+    void setPosition(double position) override;
 };
 } // namespace pros_adapters
 

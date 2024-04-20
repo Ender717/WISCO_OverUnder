@@ -101,6 +101,13 @@ public:
     void setVoltage(double volts);
 
     /**
+     * @brief Set the position of the motors in radians
+     * 
+     * @param position The position of the motors
+     */
+    void setPosition(double position);
+
+    /**
      * @brief Override for the assignment operator for MotorGroup
      * 
      * @param rhs The MotorGroup object on the right hand side of the operator

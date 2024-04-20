@@ -90,6 +90,18 @@ public:
 	virtual void run() = 0;
 
 	/**
+	 * @brief Pauses the control
+	 * 
+	 */
+	virtual void pause() = 0;
+
+	/**
+	 * @brief Resumes the control
+	 * 
+	 */
+	virtual void resume() = 0;
+
+	/**
 	 * @brief Runs a command for the control
 	 *
 	 * @param command_name The name of the command to run
@@ -98,6 +110,7 @@ public:
 	virtual void command(std::string command_name, va_list& args) = 0;
 
 	/**
+	 * @todo Change to template to remove memory allocation
 	 * @brief Gets a state of the control
 	 *
 	 * @param state_name The name of the state to get

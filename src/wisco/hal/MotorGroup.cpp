@@ -97,6 +97,13 @@ void MotorGroup::setVoltage(double volts)
             motor->setVoltage(volts);
 }
 
+void MotorGroup::setPosition(double position)
+{
+    for (auto& motor : motors)
+        if (motor)
+            motor->setPosition(position);
+}
+
 MotorGroup& MotorGroup::operator=(MotorGroup& rhs)
 {
     motors.clear();

@@ -129,9 +129,10 @@ public:
     /**
      * @brief Get the System Configuration settings
      * 
+     * @param read_only Whether or not to read the data instead of using the menu data
      * @return SystemConfiguration The system configuration settings
      */
-    SystemConfiguration getSystemConfiguration() override;
+    SystemConfiguration getSystemConfiguration(bool read_only = false) override;
 };
 }
 }

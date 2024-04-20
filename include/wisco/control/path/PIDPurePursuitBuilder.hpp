@@ -1,7 +1,7 @@
-#ifndef WISCO_CONTROL_BOOMERANG_PID_BOOMERANG_BUILDER_HPP
-#define WISCO_CONTROL_BOOMERANG_PID_BOOMERANG_BUILDER_HPP
+#ifndef WISCO_CONTROL_PATH_PID_PURE_PURSUIT_BUILDER_HPP
+#define WISCO_CONTROL_PATH_PID_PURE_PURSUIT_BUILDER_HPP
 
-#include "PIDBoomerang.hpp"
+#include "PIDPurePursuit.hpp"
 
 /**
  * @brief Namespace for all library code
@@ -20,19 +20,19 @@ namespace control
 {
 
 /**
- * @brief Namespace for boomerang controller components
+ * @brief Namespace for path components
  * @author Nathan Sandvig
  * 
  */
-namespace boomerang
+namespace path
 {
 
 /**
- * @brief Builder class for PID boomerang controllers
+ * @brief Builder class for PID pure pursuit controllers
  * @author Nathan Sandvig
  * 
  */
-class PIDBoomerangBuilder
+class PIDPurePursuitBuilder
 {
     /**
      * @brief The rtos delayer
@@ -65,10 +65,10 @@ class PIDBoomerangBuilder
     PID m_rotational_pid{};
 
     /**
-     * @brief The lead ratio for the carrot point
+     * @brief The follow distance
      * 
      */
-    double m_lead{};
+    double m_follow_distance{};
 
     /**
      * @brief The acceptable tolerance to reach the target
@@ -87,72 +87,72 @@ public:
      * @brief Adds an rtos delayer to the build
      * 
      * @param delayer The rtos delayer
-     * @return PIDBoomerangBuilder* This object for build chaining
+     * @return PIDPurePursuitBuilder* This object for build chaining
      */
-    PIDBoomerangBuilder* withDelayer(const std::unique_ptr<rtos::IDelayer>& delayer);
+    PIDPurePursuitBuilder* withDelayer(const std::unique_ptr<rtos::IDelayer>& delayer);
 
     /**
      * @brief Adds an rtos mutex to the build
      * 
      * @param mutex The rtos mutex
-     * @return PIDBoomerangBuilder* This object for build chaining
+     * @return PIDPurePursuitBuilder* This object for build chaining
      */
-    PIDBoomerangBuilder* withMutex(std::unique_ptr<rtos::IMutex>& mutex);
+    PIDPurePursuitBuilder* withMutex(std::unique_ptr<rtos::IMutex>& mutex);
 
     /**
      * @brief Adds an rtos task to the build
      * 
      * @param task The rtos task
-     * @return PIDBoomerangBuilder* This object for build chaining
+     * @return PIDPurePursuitBuilder* This object for build chaining
      */
-    PIDBoomerangBuilder* withTask(std::unique_ptr<rtos::ITask>& task);
+    PIDPurePursuitBuilder* withTask(std::unique_ptr<rtos::ITask>& task);
 
     /**
      * @brief Adds a linear PID controller to the build
      * 
      * @param linear_pid The linear PID controller
-     * @return PIDBoomerangBuilder* This object for build chaining
+     * @return PIDPurePursuitBuilder* This object for build chaining
      */
-    PIDBoomerangBuilder* withLinearPID(PID linear_pid);
+    PIDPurePursuitBuilder* withLinearPID(PID linear_pid);
 
     /**
      * @brief Adds a rotational PID controller to the build
      * 
      * @param rotational_pid The rotational PID controller
-     * @return PIDBoomerangBuilder* This object for build chaining
+     * @return PIDPurePursuitBuilder* This object for build chaining
      */
-    PIDBoomerangBuilder* withRotationalPID(PID rotational_pid);
+    PIDPurePursuitBuilder* withRotationalPID(PID rotational_pid);
 
     /**
-     * @brief Adds a lead ratio to the build
+     * @brief Adds a follow distance to the build
      * 
-     * @param lead The lead ratio
-     * @return PIDBoomerangBuilder* This object for build chaining
+     * @param follow_distance The follow distance
+     * @return PIDPurePursuitBuilder* This object for build chaining
      */
-    PIDBoomerangBuilder* withLead(double lead);
+    PIDPurePursuitBuilder* withFollowDistance(double follow_distance);
 
     /**
      * @brief Adds a target tolerance to the build
      * 
      * @param target_tolerance The motion target tolerance
-     * @return PIDBoomerangBuilder* This object for build chaining
+     * @return PIDPurePursuitBuilder* This object for build chaining
      */
-    PIDBoomerangBuilder* withTargetTolerance(double target_tolerance);
+    PIDPurePursuitBuilder* withTargetTolerance(double target_tolerance);
 
     /**
      * @brief Adds a target velocity to the build
      * 
      * @param target_velocity The motion target velocity
-     * @return PIDBoomerangBuilder* This object for build chaining
+     * @return PIDPurePursuitBuilder* This object for build chaining
      */
-    PIDBoomerangBuilder* withTargetVelocity(double target_velocity);
+    PIDPurePursuitBuilder* withTargetVelocity(double target_velocity);
 
     /**
-     * @brief Builds the PID boomerang controller
+     * @brief Builds the PID pure pursuit controller
      * 
-     * @return std::unique_ptr<IBoomerang> The PID boomerang controller as a boomerang interface object
+     * @return std::unique_ptr<IPathFollower> The PID pure pursuit controller as a path follower interface object
      */
-    std::unique_ptr<IBoomerang> build();
+    std::unique_ptr<IPathFollower> build();
 };
 } // namespace boomerang
 } // namespace control

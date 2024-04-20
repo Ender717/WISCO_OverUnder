@@ -24,6 +24,7 @@ namespace user
  */
 enum class EControl
 {
+    ELEVATOR_CALIBRATE,
     ELEVATOR_IN,
     ELEVATOR_FIELD,
     ELEVATOR_MATCH_LOAD,
