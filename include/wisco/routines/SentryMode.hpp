@@ -121,7 +121,7 @@ private:
      * @brief The velocity to scan for sentry mode
      * 
      */
-    static constexpr double SCAN_VELOCITY{4 * M_PI / 3};
+    static constexpr double SCAN_VELOCITY{3 * M_PI / 4};
 
     /**
      * @brief The velocity to turn
@@ -182,13 +182,13 @@ private:
      * @brief The first ball point
      * 
      */
-    control::path::Point ball_point_1{};
+    control::path::Point ball_point{};
 
     /**
-     * @brief The second ball point
+     * @brief The last angle of the robot
      * 
      */
-    control::path::Point ball_point_2{};
+    double last_theta{};
 
     /**
      * @brief The angle to stop at if no balls are detected

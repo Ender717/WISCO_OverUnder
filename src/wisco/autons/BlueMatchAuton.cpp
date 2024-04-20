@@ -601,7 +601,7 @@ void BlueMatchAuton::initialize(std::shared_ptr<control::ControlSystem> control_
 		control::path::Point{75.0, 9.0},
 		control::path::Point{82.0, 9.0},
 		control::path::Point{96.0, 9.0},
-		control::path::Point{107.0, 9.0},
+		control::path::Point{110.0, 9.0},
 		control::path::Point{117.0, 12.0},
 		control::path::Point{120.0, 18.0},
 	};
@@ -624,7 +624,7 @@ void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
 
 	// Do match loads
 	uint8_t match_loads{6};
-	uint32_t match_load_delay{400};
+	uint32_t match_load_delay{600};
 	for (uint8_t i{}; i < match_loads; ++i)
 	{
 		loadLoader();
@@ -702,8 +702,7 @@ void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
 
 	// Ram the goal with passion
 	setDriveVoltage(-MAX_VOLTAGE, -MAX_VOLTAGE);
-	while (getOdometryVelocity() < STOP_VELOCITY || getOdometryPosition().y < side_goal_collision)
-		delay(LOOP_DELAY);
+	delay(300);
 	while (getOdometryVelocity() > STOP_VELOCITY)
 		delay(LOOP_DELAY);
 	setDriveVoltage(0, 0);
@@ -727,8 +726,7 @@ void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
 
 	// Ram the goal with passion part 2
 	setDriveVoltage(-MAX_VOLTAGE, -MAX_VOLTAGE);
-	while (getOdometryVelocity() < STOP_VELOCITY || getOdometryPosition().y < side_goal_collision)
-		delay(LOOP_DELAY);
+	delay(300);
 	while (getOdometryVelocity() > STOP_VELOCITY)
 		delay(LOOP_DELAY);
 	setDriveVoltage(0, 0);
@@ -758,12 +756,15 @@ void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
 		delay(LOOP_DELAY);
 
 	// Grab the alliance triball
-	double alliance_ball_velocity{12.0}, alliance_ball_elevator{9.0};
+	double alliance_ball_velocity{12.0}, alliance_ball_elevator{7.0}, grab_distance{14};
 	goToPoint(alliance_ball_x, alliance_ball_y, alliance_ball_theta, alliance_ball_velocity);
 	setElevatorPosition(alliance_ball_elevator);
 	setIntakeVoltage(MAX_VOLTAGE);
+	while (distance(getOdometryPosition().x, getOdometryPosition().y, alliance_ball_x, alliance_ball_y) > grab_distance)
+		delay(LOOP_DELAY);
 	while (std::abs(getElevatorPosition() - alliance_ball_elevator) > ELEVATOR_TOLERANCE)
 		delay(LOOP_DELAY);
+	delay(500);
 	pauseControlSystem();
 
 	// Back away from the alliance triball
@@ -791,7 +792,8 @@ void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
 		delay(LOOP_DELAY);
 
 	// Turn to face the goal
-	turnToPoint(side_goal_x, side_goal_y, TURN_VELOCITY);
+	double front_side_goal_x{side_goal_x - 4};
+	turnToPoint(front_side_goal_x, side_goal_y, TURN_VELOCITY);
 	while (!turnTargetReached())
 		delay(LOOP_DELAY);
 
@@ -805,14 +807,13 @@ void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
 	
 	// Ram the goal with passion part 3
 	setDriveVoltage(MAX_VOLTAGE, MAX_VOLTAGE);
-	while (getOdometryVelocity() < STOP_VELOCITY || getOdometryPosition().y < side_goal_collision)
-		delay(LOOP_DELAY);
+	delay(300);
 	while (getOdometryVelocity() > STOP_VELOCITY)
 		delay(LOOP_DELAY);
-	setDriveVoltage(0, 0);
+	setDriveVoltage(0, 0);	
 
 	// Turn to face the midfield entrance
-	double entrance_x{108.0}, entrance_y{14.0};
+	double entrance_x{104.0}, entrance_y{14.0};
 	turnToPoint(entrance_x, entrance_y, TURN_VELOCITY, true);
 	while (!turnTargetReached())
 		delay(LOOP_DELAY);
@@ -825,23 +826,27 @@ void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
 		delay(LOOP_DELAY);
 
 	// Turn to face the front of the goal
-	double sentry_x{108.0}, sentry_y{62.0};
-	turnToPoint(sentry_x, sentry_y, TURN_VELOCITY, true);
+	double sentry_x{94.0}, sentry_y{65.0};
+	turnToPoint(sentry_x, sentry_y, TURN_VELOCITY);
 	while (!turnTargetReached())
 		delay(LOOP_DELAY);
 
 	// Move to the front of the goal
-	setLeftWing(true);
-	setRightWing(true);
-	double sweep_velocity{24.0};
+	double sweep_velocity{20.0};
 	position = getOdometryPosition();
 	target_angle = angle(position.x, position.y, sentry_x, sentry_y);
 	goToPoint(sentry_x, sentry_y, target_angle, sweep_velocity);
 	while (!boomerangTargetReached())
 		delay(LOOP_DELAY);
 
+	// Back up slightly
+	uint32_t back_up_delay{100};
+	setDriveVoltage(-MAX_VOLTAGE, -MAX_VOLTAGE);
+	delay(back_up_delay);
+	setDriveVoltage(0, 0);
+
 	// Turn to face forward
-	turnToAngle(M_PI / 3, TURN_VELOCITY);
+	turnToAngle(5 * M_PI / 12, TURN_VELOCITY);
 	while (!turnTargetReached())
 		delay(LOOP_DELAY);
 
@@ -854,9 +859,10 @@ void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
 	bool sentry{true};
 	position = getOdometryPosition();
 	control::path::Point last_ball{};
+	double sentry_goal_x{94.0}, sentry_goal_y{62.0};
 	while (sentry)
 	{
-		sentry_mode.doSentryMode(-M_PI / 3, control::motion::ETurnDirection::COUNTERCLOCKWISE);
+		sentry_mode.doSentryMode(-5 * M_PI / 12, control::motion::ETurnDirection::COUNTERCLOCKWISE);
 		while (!sentry_mode.isFinished())
 			delay(LOOP_DELAY);
 		sentry = sentry_mode.ballFound();
@@ -864,33 +870,32 @@ void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
 		{
 			position = getOdometryPosition();
 			last_ball = sentry_mode.getBall();
-
-			double target_distance{distance(position.x, position.y, 108.0, 62.0)};
+			double target_distance{distance(position.x, position.y, sentry_goal_x, sentry_goal_y)};
 			if (target_distance > 3.0)
 			{
-				double target_angle{angle(position.x, position.y, 108.0, 62.0)};
+				double target_angle{angle(position.x, position.y, sentry_goal_x, sentry_goal_y)};
 
 				bool reversed{std::abs(bindRadians(target_angle - position.theta)) > M_PI / 2};
-				turnToPoint(104.0, 62.0, 2 * M_PI, reversed);
+				turnToPoint(sentry_goal_x, sentry_goal_y, 2 * M_PI, reversed);
 				if (reversed)
 					target_angle = bindRadians(target_angle + M_PI);
 				while (!turnTargetReached() && std::abs(position.theta - target_angle) > M_PI / 36)
 				{
 					delay(LOOP_DELAY);
 					position = getOdometryPosition();
-					target_angle = angle(position.x, position.y, 104.0, 62.0);
+					target_angle = angle(position.x, position.y, sentry_goal_x, sentry_goal_y);
 					if (reversed)
 						target_angle = bindRadians(target_angle + M_PI);
 				}
 
 				position = getOdometryPosition();
-				goToPoint(108.0, 62.0, position.theta, 48.0);
-				target_distance = distance(position.x, position.y, 108.0, 62.0);
+				goToPoint(sentry_goal_x, sentry_goal_y, position.theta, 48.0);
+				target_distance = distance(position.x, position.y, sentry_goal_x, sentry_goal_y);
 				while (target_distance > 3.0)
 				{
 					delay(LOOP_DELAY);
 					position = getOdometryPosition();
-					target_distance = distance(position.x, position.y, 108.0, 62.0);
+					target_distance = distance(position.x, position.y, sentry_goal_x, sentry_goal_y);
 				}
 				control_system->pause();
 			}
@@ -921,7 +926,7 @@ void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
 				position = getOdometryPosition();
 			}
 			robot->sendCommand("DIFFERENTIAL DRIVE", "SET VOLTAGE", -12.0, -12.0);
-			delay(200);
+			delay(300);
 
 			position = getOdometryPosition();
 			turnToPoint(last_ball.getX(), last_ball.getY(), 2 * M_PI);

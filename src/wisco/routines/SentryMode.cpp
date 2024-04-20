@@ -1,4 +1,7 @@
 #include "wisco/routines/SentryMode.hpp"
+#include "pros/screen.h"
+#include "pros/screen.hpp"
+#include <iostream>
 
 namespace wisco
 {
@@ -157,7 +160,7 @@ bool SentryMode::isValid(control::path::Point point)
     }
     else
     {
-        valid = (point.getX() > 75.0 && point.getX() < 117.0) &&
+        valid = (point.getX() > 75.0 && point.getX() < 112.0) &&
                 (point.getY() > 3.0 && point.getY() < 83.0);
     }
     
@@ -168,6 +171,7 @@ void SentryMode::updateStart()
 {
     if (m_clock->getTime() >= start_time + TURN_START_DELAY)
     {
+        std::cout << "Search" << std::endl;
 	    turnToAngle(m_end_angle, SCAN_VELOCITY, false, m_direction);
         state = EState::SEARCH;
     }
@@ -175,42 +179,38 @@ void SentryMode::updateStart()
 
 void SentryMode::updateSearch()
 {
-	if (!pointExists(ball_point_2) && !turnTargetReached())
+    auto position{getOdometryPosition()};
+    double angular_velocity{position.theta - last_theta};
+    last_theta = position.theta;
+    if (turnTargetReached())
+    {
+        std::cout << "Finished" << std::endl;
+        finished = true;
+    }
+	else
 	{
-		auto position{getOdometryPosition()};
 		double ball_distance{getBallDistance()};
 		double ball_x{position.x + (ball_distance * std::cos(position.theta))};
 		double ball_y{position.y + (ball_distance * std::sin(position.theta))};
-		control::path::Point ball_point{ball_x, ball_y};
-		if (isValid(ball_point))
+        std::cout << "Distance: " << ball_distance << ", X: " << ball_x << ", Y: " << ball_y << std::endl;
+		control::path::Point ball_point_temp{ball_x, ball_y};
+		if (isValid(ball_point_temp))
 		{
-			if (!pointExists(ball_point_1))
-            {
-				ball_point_1 = ball_point;
-            }
-            else
-            {
-                ball_point_2 = ball_point;
+            ball_point = ball_point_temp;
+            // Estimate error from ball edge to first point
+            double scan_distance{ball_distance * std::sin(angular_velocity)};
+            double assumed_error{std::min(BALL_WIDTH - scan_distance, scan_distance) / 2};
 
-                // Estimate error from ball edge to first point
-                double scan_distance{distance(ball_point_1.getX(), ball_point_1.getY(), ball_point_2.getX(), ball_point_2.getY())};
-                double assumed_error{std::min(BALL_WIDTH - scan_distance, scan_distance) / 2};
+            // Find the estimated ball coordinate
+            double scan_angle{position.theta + (M_PI / 2)};
+            ball.setX(ball_point.getX() + (((BALL_WIDTH / 2) - assumed_error) * std::cos(scan_angle)));
+            ball.setY(ball_point.getY() + (((BALL_WIDTH / 2) - assumed_error) * std::sin(scan_angle)));
 
-                // Find the estimated ball coordinate
-                double scan_angle{std::atan2(ball_point_2.getX() - ball_point_1.getX(), ball_point_2.getY() - ball_point_1.getY())};
-                ball.setX(ball_point_1.getX() + (((BALL_WIDTH / 2) - assumed_error) * std::cos(scan_angle)));
-                ball.setY(ball_point_1.getY() + (((BALL_WIDTH / 2) - assumed_error) * std::sin(scan_angle)));
-
-                turnToPoint(ball.getX(), ball.getY(), TURN_VELOCITY);
-                state = EState::TURN;
-            }
+            std::cout << "Turn" << std::endl;
+            turnToPoint(ball.getX(), ball.getY(), TURN_VELOCITY);
+            state = EState::TURN;
 		}
 	} 
-    else if (turnTargetReached())
-    {
-        finished = true;
-    }
-
 }
 
 void SentryMode::updateTurn()
@@ -219,6 +219,7 @@ void SentryMode::updateTurn()
     double target_angle{angle(position.x, position.y, ball.getX(), ball.getY())};
     if (std::abs(bindRadians(target_angle - position.theta)) < AIM_TOLERANCE)
     {
+        std::cout << "Grab" << std::endl;
         m_control_system->pause();
         setElevatorPosition(ELEVATOR_OUT);
         setIntakeVoltage(INTAKE_VOLTAGE);
@@ -234,6 +235,7 @@ void SentryMode::updateGrab()
     double elevator_position{getElevatorPosition()};
     if (ball_distance + MOTION_OFFSET < elevator_position + ELEVATOR_OFFSET)
     {
+        std::cout << "Hold" << std::endl;
         m_control_system->pause();
         setElevatorPosition(ELEVATOR_BALL);
         state = EState::HOLD;
@@ -243,7 +245,10 @@ void SentryMode::updateGrab()
 void SentryMode::updateHold()
 {
     if (getElevatorPosition() < ELEVATOR_BALL + ELEVATOR_TOLERANCE)
+    {
+        std::cout << "Finished" << std::endl;
         finished = true;
+    }
 }
 
 void SentryMode::taskUpdate()
@@ -288,10 +293,8 @@ void SentryMode::doSentryMode(double end_angle, control::motion::ETurnDirection 
     if (m_mutex)
         m_mutex->take();
     state = EState::START;
-    ball_point_1.setX(0);
-    ball_point_1.setY(0);
-    ball_point_2.setX(0);
-    ball_point_2.setY(0);
+    ball_point.setX(0);
+    ball_point.setY(0);
     m_end_angle = end_angle;
     m_direction = direction;
     ball.setX(0);
@@ -301,6 +304,7 @@ void SentryMode::doSentryMode(double end_angle, control::motion::ETurnDirection 
     paused = false;
     finished = false;
     turnToAngle(m_end_angle, TURN_VELOCITY, false, m_direction);
+    std::cout << "Start" << std::endl;
     if (m_mutex)
         m_mutex->give();
 }
@@ -325,7 +329,7 @@ void SentryMode::resume()
 
 bool SentryMode::ballFound()
 {
-    return (ball_point_2.getX() != 0 || ball_point_2.getY() != 0);
+    return pointExists(ball_point);
 }
 
 control::path::Point SentryMode::getBall()
