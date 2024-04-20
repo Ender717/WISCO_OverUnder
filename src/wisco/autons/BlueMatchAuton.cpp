@@ -921,7 +921,7 @@ void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
 				position = getOdometryPosition();
 			}
 			robot->sendCommand("DIFFERENTIAL DRIVE", "SET VOLTAGE", -12.0, -12.0);
-			delayer->delay(200);
+			delay(200);
 
 			position = getOdometryPosition();
 			turnToPoint(last_ball.getX(), last_ball.getY(), 2 * M_PI);
