@@ -1,6 +1,7 @@
 #ifndef PROS_ADAPTERS_PROS_VISION_HPP
 #define PROS_ADAPTERS_PROS_VISION_HPP
 
+#include <cmath>
 #include <map>
 #include <memory>
 
@@ -40,7 +41,7 @@ private:
      * @brief Conversion from pixels to radians
      * 
      */
-    static constexpr double RADIANS_PER_PIXEL{0.0033691482};
+    static constexpr double RADIANS_PER_PIXEL{61.0 / PIXEL_WIDTH * (M_PI / 180)};
 
     /**
      * @brief The object signature for blue triballs

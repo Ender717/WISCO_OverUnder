@@ -51,9 +51,8 @@ private:
      */
     enum class EState
     {
-        START,
         SEARCH,
-        TURN,
+        TARGET,
         GRAB,
         HOLD
     };
@@ -62,15 +61,13 @@ private:
      * @brief The loop delay for the background task
      * 
      */
-    static constexpr uint8_t TASK_DELAY{20};
-
-    static constexpr double AIM_TOLERANCE{M_PI / 36};
+    static constexpr uint8_t TASK_DELAY{5};
 
     /**
-     * @brief The width of the ball at the distance sensor height
+     * @brief The tolerance for the aim on targetting
      * 
      */
-    static constexpr double BALL_WIDTH{4.0};
+    static constexpr double AIM_TOLERANCE{M_PI / 72};
 
     /**
      * @brief The velocity for boomerang motions
@@ -114,25 +111,23 @@ private:
      */
     static constexpr double MOTION_OFFSET{0};
 
-    static constexpr double READ_RANGE{M_PI / 18};
-
     /**
-     * @brief The range to ignore triballs that have already been seen
+     * @brief The minimum object size to be visually targetted
      * 
      */
-    static constexpr double IGNORE_RANGE{M_PI / 18};
+    static constexpr double MINIMUM_OBJECT_SIZE{0.09};
 
     /**
-     * @brief The delay to jump start the turn
+     * @brief The distance to turn before resuming a search after skipping
      * 
      */
-    static constexpr uint8_t TURN_START_DELAY{20};
+    static constexpr double SKIP_DISTANCE{M_PI / 18};
 
     /**
-     * @brief The velocity to scan for sentry mode
+     * @brief The delay to wait for a distance sensor measurement
      * 
      */
-    static constexpr double SCAN_VELOCITY{2 * M_PI / 3};
+    static constexpr uint32_t DISTANCE_DELAY{20};
 
     /**
      * @brief The velocity to turn
@@ -196,18 +191,6 @@ private:
     EState state{};
 
     /**
-     * @brief The first ball point
-     * 
-     */
-    control::path::Point ball_point{};
-
-    /**
-     * @brief The last angle of the robot
-     * 
-     */
-    double last_theta{};
-
-    /**
      * @brief The last distance sensor reading
      * 
      */
@@ -220,22 +203,22 @@ private:
     double m_end_angle{};
 
     /**
-     * @brief whether or not to skip
+     * @brief The target angle for a search ball
      * 
      */
-    bool skip{};
+    double target_angle{};
 
     /**
-     * @brief Whether or not to ignore balls in the ignore range
+     * @brief The angle to skip to
      * 
      */
     double skip_angle{};
 
     /**
-     * @brief Whether or not distance is being measured
+     * @brief The time the distance measurement started
      * 
      */
-    bool measuring_distance{};
+    uint32_t distance_time{};
 
     /**
      * @brief The direction to rotate
@@ -248,12 +231,6 @@ private:
      * 
      */
     control::path::Point ball{};
-
-    /**
-     * @brief The time the routine started
-     * 
-     */
-    uint32_t start_time{};
 
     /**
      * @brief The distance setting for the elevator when grabbing
@@ -389,22 +366,16 @@ private:
     bool isValid(control::path::Point point);
 
     /**
-     * @brief Updates the start state
-     * 
-     */
-    void updateStart();
-
-    /**
      * @brief Updates the search state
      * 
      */
     void updateSearch();
 
     /**
-     * @brief Updates the turn state
+     * @brief Updates the target state
      * 
      */
-    void updateTurn();
+    void updateTarget();
 
     /**
      * @brief Updates the grab state

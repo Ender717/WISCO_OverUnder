@@ -1,7 +1,4 @@
 #include "wisco/routines/SentryMode.hpp"
-#include "pros/screen.h"
-#include "pros/screen.hpp"
-#include <iostream>
 
 namespace wisco
 {
@@ -184,185 +181,74 @@ bool SentryMode::isValid(control::path::Point point)
     return valid;
 }
 
-void SentryMode::updateStart()
-{
-    if (m_clock->getTime() >= start_time + TURN_START_DELAY)
-    {
-        std::cout << "Search" << std::endl;
-	    turnToAngle(m_end_angle, SCAN_VELOCITY, false, m_direction);
-        state = EState::SEARCH;
-    }
-}
-
 void SentryMode::updateSearch()
 {
     auto position{getOdometryPosition()};
-    double angular_velocity{position.theta - last_theta};
-    last_theta = position.theta;
-    if (std::abs(bindRadians(position.theta - m_end_angle)) < AIM_TOLERANCE)
+    if (turnTargetReached())
     {
-        std::cout << "Finished" << std::endl;
         finished = true;
     }
-	else
-	{
+    else if (skip_angle == 0.0
+        || (m_direction == control::motion::ETurnDirection::CLOCKWISE && position.theta < skip_angle)
+        || (m_direction == control::motion::ETurnDirection::COUNTERCLOCKWISE && position.theta > skip_angle))
+    {
         auto objects{getBallVisionObjects()};
-        bool slow{};
+        double triball_angle{DBL_MAX};
         for (auto object : objects)
         {
             for (auto object_id : m_alliance->getVisionObjectIDs("TRIBALL"))
             {
-                if (object.id == object_id && object.horizontal > 0.0 && object.horizontal < READ_RANGE)
+                if (object.id == object_id && object.width > MINIMUM_OBJECT_SIZE
+                    && ((object.horizontal > 0.0 && object.horizontal < triball_angle && m_direction == control::motion::ETurnDirection::COUNTERCLOCKWISE)
+                    || (object.horizontal < 0.0 && object.horizontal > triball_angle && m_direction == control::motion::ETurnDirection::CLOCKWISE)))
                 {
-                    slow = true;
-                    turnToAngle(m_end_angle, SCAN_VELOCITY, false, m_direction);
+                    triball_angle = object.horizontal;
                 }
             }
         }
-        if (!slow)
-            turnToAngle(m_end_angle, TURN_VELOCITY, false, m_direction);
-
-        double ball_distance{getBallDistance()};
-		double ball_x{position.x + (ball_distance * std::cos(position.theta))};
-		double ball_y{position.y + (ball_distance * std::sin(position.theta))};
-        std::cout << "Distance: " << ball_distance << ", X: " << ball_x << ", Y: " << ball_y << std::endl;
-		control::path::Point ball_point_temp{ball_x, ball_y};
-		if (isValid(ball_point_temp))
-		{
-            ball_point = ball_point_temp;
-            // Estimate error from ball edge to first point
-            double scan_distance{ball_distance * std::sin(angular_velocity)};
-            double assumed_error{std::min(BALL_WIDTH - scan_distance, scan_distance) / 2};
-
-            // Find the estimated ball coordinate
-            double scan_angle{position.theta + (M_PI / 2)};
-            ball.setX(ball_point.getX() + (((BALL_WIDTH / 2) - assumed_error) * std::cos(scan_angle)));
-            ball.setY(ball_point.getY() + (((BALL_WIDTH / 2) - assumed_error) * std::sin(scan_angle)));
-
-            std::cout << "Turn" << std::endl;
-            turnToPoint(ball.getX(), ball.getY(), TURN_VELOCITY);
-            state = EState::TURN;
-		}
-
-        /*
-        if (skip)
+        if (triball_angle != DBL_MAX)
         {
-            std::cout << "Skipping" << std::endl;
-            if (std::abs(bindRadians(position.theta - skip_angle)) < AIM_TOLERANCE)
-            {
-                skip = false;
-            }
+            distance_time = 0;
+            target_angle = triball_angle + position.theta;
+            turnToAngle(target_angle, TURN_VELOCITY);
+            state = EState::TARGET;
         }
-        else
+    }
+}
+
+void SentryMode::updateTarget()
+{
+    auto position{getOdometryPosition()};
+    double ball_distance{getBallDistance()};
+    if (std::abs(bindRadians(target_angle - position.theta)) < AIM_TOLERANCE)
+    {
+        if (distance_time == 0)
         {
-            auto objects{getBallVisionObjects()};
-            std::vector<io::VisionObject> ball_objects{};
-            for (auto object : objects)
+            last_distance = ball_distance;
+            distance_time = m_clock->getTime();
+        }
+        else if (m_clock->getTime() > distance_time + DISTANCE_DELAY || last_distance != ball_distance)
+        {
+            double ball_distance{getBallDistance()};
+            double ball_x{position.x + (ball_distance * std::cos(position.theta))};
+            double ball_y{position.y + (ball_distance * std::sin(position.theta))};
+            control::path::Point ball_point_temp{ball_x, ball_y};
+            if (isValid(ball_point_temp))
             {
-                for (auto object_id : m_alliance->getVisionObjectIDs("TRIBALL"))
-                {
-                    if (object.id == object_id)
-                    {
-                        ball_objects.push_back(object);
-                    }
-                }
-            }
-            double closest_ball{};
-            for (auto ball_object : ball_objects)
-            {
-                if (ball_object.horizontal > -IGNORE_RANGE)
-                {
-                    if (closest_ball == 0.0 || ball_object.horizontal < closest_ball)
-                    {
-                        closest_ball = ball_object.horizontal;
-                    }
-                }
-            }
-            if (closest_ball != 0.0)
-            {
-                std::cout << "Closest ball: " << closest_ball << std::endl;
-                turnToPoint(ball.getX(), ball.getY(), TURN_VELOCITY);
-                if (closest_ball < AIM_TOLERANCE)
-                {
-                    std::cout << "Within aim tolerance" << std::endl;
-                    double ball_distance{getBallDistance()};
-                    if (!measuring_distance)
-                    {
-                        last_distance = ball_distance;
-                        measuring_distance = true;
-                    }
-                    else if (ball_distance != last_distance)
-                    {
-                        std::cout << "Measured distance: " << ball_distance << std::endl;
-                        measuring_distance = false;
-                        double ball_x{position.x + (ball_distance * std::cos(position.theta))};
-                        double ball_y{position.y + (ball_distance * std::sin(position.theta))};
-                        control::path::Point ball_point_temp{ball_x, ball_y};
-                        if (!isValid(ball_point_temp))
-                        {
-                            std::cout << "Starting skip" << std::endl;
-                            skip = true;
-                            skip_angle = position.theta + (3 * IGNORE_RANGE / 2);
-                        }
-                        else 
-                        {
-                            ball = ball_point_temp;
-                            double target_angle{angle(position.x, position.y, ball.getX(), ball.getY())};
-                            std::cout << "Grab" << std::endl;
-                            m_control_system->pause();
-                            setElevatorPosition(ELEVATOR_OUT);
-                            setIntakeVoltage(INTAKE_VOLTAGE);
-                            boomerangGoToPoint(ball.getX(), ball.getY(), target_angle, BOOMERANG_VELOCITY);
-                            state = EState::GRAB;
-                        }
-                    }
-                }
+                ball = ball_point_temp;
+                m_control_system->pause();
+                setElevatorPosition(ELEVATOR_OUT);
+                setIntakeVoltage(INTAKE_VOLTAGE);
+                boomerangGoToPoint(ball.getX(), ball.getY(), target_angle, BOOMERANG_VELOCITY);
+                state = EState::GRAB;
             }
             else
             {
+                skip_angle = bindRadians(position.theta + SKIP_DISTANCE);
                 turnToAngle(m_end_angle, TURN_VELOCITY, false, m_direction);
+                state = EState::SEARCH;
             }
         }
-        */
-
-        /*
-		double ball_distance{getBallDistance()};
-		double ball_x{position.x + (ball_distance * std::cos(position.theta))};
-		double ball_y{position.y + (ball_distance * std::sin(position.theta))};
-        std::cout << "Distance: " << ball_distance << ", X: " << ball_x << ", Y: " << ball_y << std::endl;
-		control::path::Point ball_point_temp{ball_x, ball_y};
-		if (isValid(ball_point_temp))
-		{
-            ball_point = ball_point_temp;
-            // Estimate error from ball edge to first point
-            double scan_distance{ball_distance * std::sin(angular_velocity)};
-            double assumed_error{std::min(BALL_WIDTH - scan_distance, scan_distance) / 2};
-
-            // Find the estimated ball coordinate
-            double scan_angle{position.theta + (M_PI / 2)};
-            ball.setX(ball_point.getX() + (((BALL_WIDTH / 2) - assumed_error) * std::cos(scan_angle)));
-            ball.setY(ball_point.getY() + (((BALL_WIDTH / 2) - assumed_error) * std::sin(scan_angle)));
-
-            std::cout << "Turn" << std::endl;
-            turnToPoint(ball.getX(), ball.getY(), TURN_VELOCITY);
-            state = EState::TURN;
-		}
-        */
-	} 
-}
-
-void SentryMode::updateTurn()
-{
-    auto position{getOdometryPosition()};
-    double target_angle{angle(position.x, position.y, ball.getX(), ball.getY())};
-    if (std::abs(bindRadians(target_angle - position.theta)) < AIM_TOLERANCE)
-    {
-        std::cout << "Grab" << std::endl;
-        m_control_system->pause();
-        setElevatorPosition(ELEVATOR_OUT);
-        setIntakeVoltage(INTAKE_VOLTAGE);
-        boomerangGoToPoint(ball.getX(), ball.getY(), target_angle, BOOMERANG_VELOCITY);
-        state = EState::GRAB;
     }
 }
 
@@ -373,7 +259,6 @@ void SentryMode::updateGrab()
     double elevator_position{getElevatorPosition()};
     if (ball_distance + MOTION_OFFSET < elevator_position + ELEVATOR_OFFSET)
     {
-        std::cout << "Hold" << std::endl;
         m_control_system->pause();
         setElevatorPosition(ELEVATOR_BALL);
         state = EState::HOLD;
@@ -383,10 +268,7 @@ void SentryMode::updateGrab()
 void SentryMode::updateHold()
 {
     if (getElevatorPosition() < ELEVATOR_BALL + ELEVATOR_TOLERANCE)
-    {
-        std::cout << "Finished" << std::endl;
         finished = true;
-    }
 }
 
 void SentryMode::taskUpdate()
@@ -397,14 +279,11 @@ void SentryMode::taskUpdate()
     {
         switch (state)
         {
-        case EState::START:
-            updateStart();
-            break;
         case EState::SEARCH:
             updateSearch();
             break;
-        case EState::TURN:
-            updateTurn();
+        case EState::TARGET:
+            updateTarget();
             break;
         case EState::GRAB:
             updateGrab();
@@ -430,25 +309,20 @@ void SentryMode::doSentryMode(double end_angle, control::motion::ETurnDirection 
 {
     if (m_mutex)
         m_mutex->take();
-    state = EState::START;
-    ball_point.setX(0);
-    ball_point.setY(0);
-    last_theta = getOdometryPosition().theta;
-    last_distance = getBallDistance();
-    skip = false;
-    skip_angle = 0;
-    measuring_distance = false;
+    state = EState::SEARCH;
+    last_distance = 0;
     m_end_angle = end_angle;
+    target_angle = 0;
+    skip_angle = 0;
+    distance_time = 0;
     m_direction = direction;
     ball.setX(0);
     ball.setY(0);
-    start_time = m_clock->getTime();
     elevator_distance = 0;
-    paused = false;
     finished = false;
+    paused = false;
     m_control_system->pause();
     turnToAngle(m_end_angle, TURN_VELOCITY, false, m_direction);
-    std::cout << "Start" << std::endl;
     if (m_mutex)
         m_mutex->give();
 }
@@ -473,7 +347,7 @@ void SentryMode::resume()
 
 bool SentryMode::ballFound()
 {
-    return pointExists(ball_point);
+    return pointExists(ball);
 }
 
 control::path::Point SentryMode::getBall()
