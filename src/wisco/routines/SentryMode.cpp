@@ -206,6 +206,45 @@ void SentryMode::updateSearch()
     }
 	else
 	{
+        auto objects{getBallVisionObjects()};
+        bool slow{};
+        for (auto object : objects)
+        {
+            for (auto object_id : m_alliance->getVisionObjectIDs("TRIBALL"))
+            {
+                if (object.id == object_id && object.horizontal > 0.0 && object.horizontal < READ_RANGE)
+                {
+                    slow = true;
+                    turnToAngle(m_end_angle, SCAN_VELOCITY, false, m_direction);
+                }
+            }
+        }
+        if (!slow)
+            turnToAngle(m_end_angle, TURN_VELOCITY, false, m_direction);
+
+        double ball_distance{getBallDistance()};
+		double ball_x{position.x + (ball_distance * std::cos(position.theta))};
+		double ball_y{position.y + (ball_distance * std::sin(position.theta))};
+        std::cout << "Distance: " << ball_distance << ", X: " << ball_x << ", Y: " << ball_y << std::endl;
+		control::path::Point ball_point_temp{ball_x, ball_y};
+		if (isValid(ball_point_temp))
+		{
+            ball_point = ball_point_temp;
+            // Estimate error from ball edge to first point
+            double scan_distance{ball_distance * std::sin(angular_velocity)};
+            double assumed_error{std::min(BALL_WIDTH - scan_distance, scan_distance) / 2};
+
+            // Find the estimated ball coordinate
+            double scan_angle{position.theta + (M_PI / 2)};
+            ball.setX(ball_point.getX() + (((BALL_WIDTH / 2) - assumed_error) * std::cos(scan_angle)));
+            ball.setY(ball_point.getY() + (((BALL_WIDTH / 2) - assumed_error) * std::sin(scan_angle)));
+
+            std::cout << "Turn" << std::endl;
+            turnToPoint(ball.getX(), ball.getY(), TURN_VELOCITY);
+            state = EState::TURN;
+		}
+
+        /*
         if (skip)
         {
             std::cout << "Skipping" << std::endl;
@@ -284,6 +323,7 @@ void SentryMode::updateSearch()
                 turnToAngle(m_end_angle, TURN_VELOCITY, false, m_direction);
             }
         }
+        */
 
         /*
 		double ball_distance{getBallDistance()};

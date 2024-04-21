@@ -114,6 +114,8 @@ private:
      */
     static constexpr double MOTION_OFFSET{0};
 
+    static constexpr double READ_RANGE{M_PI / 18};
+
     /**
      * @brief The range to ignore triballs that have already been seen
      * 
@@ -130,7 +132,7 @@ private:
      * @brief The velocity to scan for sentry mode
      * 
      */
-    static constexpr double SCAN_VELOCITY{4 * M_PI / 3};
+    static constexpr double SCAN_VELOCITY{2 * M_PI / 3};
 
     /**
      * @brief The velocity to turn
