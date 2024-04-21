@@ -7,6 +7,7 @@
 // TODO vision sensor
 
 #include "IBallDetector.hpp"
+#include "wisco/io/IVisionSensor.hpp"
 
 /**
  * @brief Namespace for all library code
@@ -54,7 +55,11 @@ private:
      */
     std::unique_ptr<io::IDistanceSensor> m_distance_sensor{};
 
-    // TODO vision sensor
+    /**
+     * @brief The vision sensor
+     * 
+     */
+    std::unique_ptr<io::IVisionSensor> m_vision_sensor{};
 
 public:
     /**
@@ -77,11 +82,11 @@ public:
     double getBallDistance() override;
 
     /**
-     * @brief Get the angle to the ball
+     * @brief Get the ball vision objects
      * 
-     * @return double The angle to the ball
+     * @return std::vector<io::VisionObject> The ball vision objects
      */
-    double getBallAngle() override;
+    std::vector<io::VisionObject> getBallVisionObjects() override;
 
     /**
      * @brief Sets the distance sensor
@@ -89,6 +94,13 @@ public:
      * @param distance_sensor The distance sensor
      */
     void setDistanceSensor(std::unique_ptr<io::IDistanceSensor>& distance_sensor);
+
+    /**
+     * @brief Sets the vision sensor
+     * 
+     * @param vision_sensor The vision sensor
+     */
+    void setVisionSensor(std::unique_ptr<io::IVisionSensor>& vision_sensor);
 };
 } // namespace intake
 } // namespace subsystems

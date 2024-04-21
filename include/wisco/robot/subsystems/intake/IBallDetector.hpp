@@ -1,6 +1,10 @@
 #ifndef WISCO_ROBOT_SUBSYSTEMS_INTAKE_I_BALL_DETECTOR_HPP
 #define WISCO_ROBOT_SUBSYSTEMS_INTAKE_I_BALL_DETECTOR_HPP
 
+#include <vector>
+
+#include "wisco/io/VisionObject.hpp"
+
 /**
  * @brief Namespace for all library code
  * @author Nathan Sandvig
@@ -67,11 +71,11 @@ public:
     virtual double getBallDistance() = 0;
 
     /**
-     * @brief Get the angle to the ball
+     * @brief Get the ball vision objects
      * 
-     * @return double The angle to the ball
+     * @return std::vector<io::VisionObject> The ball vision objects
      */
-    virtual double getBallAngle() = 0;
+    virtual std::vector<io::VisionObject> getBallVisionObjects() = 0;
 };
 } // namespace intake
 } // namespace subsystems

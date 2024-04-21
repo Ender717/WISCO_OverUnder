@@ -5,6 +5,7 @@
 
 #include "wisco/rtos/IClock.hpp"
 #include "wisco/rtos/IDelayer.hpp"
+#include "IAlliance.hpp"
 #include "IAutonomous.hpp"
 
 /**
@@ -23,6 +24,12 @@ namespace wisco
 class AutonomousManager
 {
 private:
+	/**
+	 * @brief The alliance
+	 * 
+	 */
+	std::shared_ptr<IAlliance> m_alliance{};
+
 	/**
 	 * @brief The autonomous routine
 	 *
@@ -49,6 +56,13 @@ public:
 	 * @param delayer The rtos delayer
 	 */
 	AutonomousManager(const std::shared_ptr<rtos::IClock>& clock, const std::unique_ptr<rtos::IDelayer>& delayer);
+
+	/**
+	 * @brief Set the alliance
+	 * 
+	 * @param alliance The alliance
+	 */
+	void setAlliance(const std::shared_ptr<IAlliance>& alliance);
 
 	/**
 	 * @brief Set the autonomous routine

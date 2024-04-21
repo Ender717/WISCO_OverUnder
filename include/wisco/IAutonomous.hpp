@@ -4,6 +4,7 @@
 #include <memory>
 #include <string>
 
+#include "IAlliance.hpp"
 #include "rtos/IClock.hpp"
 #include "rtos/IDelayer.hpp"
 #include "control/ControlSystem.hpp"
@@ -50,12 +51,14 @@ public:
 	/**
 	 * @brief Run the autonomous
 	 *
+	 * @param alliance The alliance
 	 * @param clock The rtos clock
 	 * @param delayer The rtos delayer
 	 * @param control_system The control system
 	 * @param robot The robot
 	 */
-	virtual void run(std::shared_ptr<rtos::IClock> clock,
+	virtual void run(std::shared_ptr<IAlliance> alliance,
+					 std::shared_ptr<rtos::IClock> clock,
 					 std::unique_ptr<rtos::IDelayer>& delayer,
 					 std::shared_ptr<control::ControlSystem> control_system, 
 					 std::shared_ptr<robot::Robot> robot) = 0;

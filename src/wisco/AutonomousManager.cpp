@@ -13,6 +13,11 @@ void AutonomousManager::setAutonomous(std::unique_ptr<IAutonomous>& autonomous)
     m_autonomous = std::move(autonomous);
 }
 
+void AutonomousManager::setAlliance(const std::shared_ptr<IAlliance>& alliance)
+{
+    m_alliance = alliance;
+}
+
 void AutonomousManager::initializeAutonomous(std::shared_ptr<control::ControlSystem> control_system,
                                              std::shared_ptr<robot::Robot> robot)
 {
@@ -24,6 +29,6 @@ void AutonomousManager::runAutonomous(std::shared_ptr<control::ControlSystem> co
                                       std::shared_ptr<robot::Robot> robot)
 {
     if (m_autonomous)
-        m_autonomous->run(m_clock, m_delayer, control_system, robot);
+        m_autonomous->run(m_alliance, m_clock, m_delayer, control_system, robot);
 }
 }

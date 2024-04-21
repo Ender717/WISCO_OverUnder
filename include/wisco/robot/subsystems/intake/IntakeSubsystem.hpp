@@ -78,10 +78,10 @@ private:
     static constexpr char GET_BALL_DISTANCE_STATE_NAME[]{"GET BALL DISTANCE"};
 
     /**
-     * @brief The name of the get ball angle command
+     * @brief The name of the get ball vision objects command
      * 
      */
-    static constexpr char GET_BALL_ANGLE_STATE_NAME[]{"GET BALL ANGLE"};
+    static constexpr char GET_BALL_VISION_OBJECTS_STATE_NAME[]{"GET BALL VISION OBJECTS"};
 
     /**
      * @brief The intake being adapted

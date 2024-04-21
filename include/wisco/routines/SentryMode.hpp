@@ -4,8 +4,11 @@
 #include <cfloat>
 #include <cmath>
 #include <memory>
+#include <vector>
 
+#include "wisco/IAlliance.hpp"
 #include "wisco/control/ControlSystem.hpp"
+#include "wisco/io/VisionObject.hpp"
 #include "wisco/robot/Robot.hpp"
 #include "wisco/rtos/IClock.hpp"
 #include "wisco/rtos/IDelayer.hpp"
@@ -59,7 +62,7 @@ private:
      * @brief The loop delay for the background task
      * 
      */
-    static constexpr uint8_t TASK_DELAY{10};
+    static constexpr uint8_t TASK_DELAY{20};
 
     static constexpr double AIM_TOLERANCE{M_PI / 36};
 
@@ -112,6 +115,12 @@ private:
     static constexpr double MOTION_OFFSET{0};
 
     /**
+     * @brief The range to ignore triballs that have already been seen
+     * 
+     */
+    static constexpr double IGNORE_RANGE{M_PI / 72};
+
+    /**
      * @brief The delay to jump start the turn
      * 
      */
@@ -121,7 +130,7 @@ private:
      * @brief The velocity to scan for sentry mode
      * 
      */
-    static constexpr double SCAN_VELOCITY{3 * M_PI / 4};
+    static constexpr double SCAN_VELOCITY{2 * M_PI};
 
     /**
      * @brief The velocity to turn
@@ -135,6 +144,12 @@ private:
      * @param params The task parameters
      */
     static void taskLoop(void* params);
+
+    /**
+     * @brief The alliance
+     * 
+     */
+    std::shared_ptr<IAlliance> m_alliance{};
 
     /**
      * @brief The rtos clock
@@ -191,10 +206,34 @@ private:
     double last_theta{};
 
     /**
+     * @brief The last distance sensor reading
+     * 
+     */
+    double last_distance{};
+
+    /**
      * @brief The angle to stop at if no balls are detected
      * 
      */
     double m_end_angle{};
+
+    /**
+     * @brief whether or not to skip
+     * 
+     */
+    bool skip{};
+
+    /**
+     * @brief Whether or not to ignore balls in the ignore range
+     * 
+     */
+    double skip_angle{};
+
+    /**
+     * @brief Whether or not distance is being measured
+     * 
+     */
+    bool measuring_distance{};
 
     /**
      * @brief The direction to rotate
@@ -245,6 +284,13 @@ private:
      * @return double The distance to the ball
      */
     double getBallDistance();
+
+    /**
+     * @brief Get the ball vision objects
+     * 
+     * @return std::vector<io::VisionObject> The ball vision objects
+     */
+    std::vector<io::VisionObject> getBallVisionObjects();
 
     /**
      * @brief Get the position from odometry
@@ -380,6 +426,7 @@ public:
     /**
      * @brief Construct a new Sentry Mode object
      * 
+     * @param alliance The alliance
      * @param clock The rtos clock
      * @param delayer The rtos delayer
      * @param mutex The rtos mutex
@@ -387,7 +434,8 @@ public:
      * @param control_system The control system
      * @param robot The robot
      */
-    SentryMode(const std::shared_ptr<rtos::IClock>& clock,
+    SentryMode(const std::shared_ptr<IAlliance>& alliance,
+               const std::shared_ptr<rtos::IClock>& clock,
                const std::unique_ptr<rtos::IDelayer>& delayer,
                std::unique_ptr<rtos::IMutex>& mutex,
                std::unique_ptr<rtos::ITask>& task,

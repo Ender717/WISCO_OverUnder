@@ -12,6 +12,8 @@ void DistanceVisionBallDetector::initialize()
 {
     if (m_distance_sensor)
         m_distance_sensor->initialize();
+    if (m_vision_sensor)
+        m_vision_sensor->initialize();
 }
 
 void DistanceVisionBallDetector::run()
@@ -27,19 +29,28 @@ double DistanceVisionBallDetector::getBallDistance()
     return distance;
 }
 
-double DistanceVisionBallDetector::getBallAngle()
+std::vector<io::VisionObject> DistanceVisionBallDetector::getBallVisionObjects()
 {
-    double angle{};
+    std::vector<io::VisionObject> vision_objects{};
 
-    // TODO vision sensor
+    if (m_vision_sensor)
+        vision_objects = m_vision_sensor->getObjects();
 
-    return angle;
+    return vision_objects;
 }
 
 void DistanceVisionBallDetector::setDistanceSensor(std::unique_ptr<io::IDistanceSensor>& distance_sensor)
 {
-    m_distance_sensor = std::move(distance_sensor);
+    if (distance_sensor)
+        m_distance_sensor = std::move(distance_sensor);
 }
+
+void DistanceVisionBallDetector::setVisionSensor(std::unique_ptr<io::IVisionSensor>& vision_sensor)
+{
+    if (vision_sensor)
+        m_vision_sensor = std::move(vision_sensor);
+}
+
 } // namespace intake
 } // namespace subsystems
 } // namespace robot

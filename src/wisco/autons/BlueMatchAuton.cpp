@@ -608,10 +608,11 @@ void BlueMatchAuton::initialize(std::shared_ptr<control::ControlSystem> control_
 	alley_path = control::path::QuinticBezierSpline::calculate(alley_path_control_points);
 }
 
-void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
-						  std::unique_ptr<rtos::IDelayer>& delayer,
-						  std::shared_ptr<control::ControlSystem> control_system, 
-					      std::shared_ptr<robot::Robot> robot)
+void BlueMatchAuton::run(std::shared_ptr<IAlliance> alliance,
+						 std::shared_ptr<rtos::IClock> clock,
+						 std::unique_ptr<rtos::IDelayer>& delayer,
+						 std::shared_ptr<control::ControlSystem> control_system, 
+					     std::shared_ptr<robot::Robot> robot)
 {
 	m_clock = clock;
 	m_delayer = std::move(delayer);
@@ -853,7 +854,7 @@ void BlueMatchAuton::run(std::shared_ptr<rtos::IClock> clock,
 	// Start sentry mode
 	std::unique_ptr<rtos::IMutex> sentry_mutex{std::make_unique<pros_adapters::ProsMutex>()};
 	std::unique_ptr<rtos::ITask> sentry_task{std::make_unique<pros_adapters::ProsTask>()};
-	static routines::SentryMode sentry_mode{m_clock, m_delayer, sentry_mutex, sentry_task, m_control_system, m_robot};
+	static routines::SentryMode sentry_mode{alliance, m_clock, m_delayer, sentry_mutex, sentry_task, m_control_system, m_robot};
 	sentry_mode.run();
 
 	bool sentry{true};

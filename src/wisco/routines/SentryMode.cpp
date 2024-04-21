@@ -7,13 +7,15 @@ namespace wisco
 {
 namespace routines
 {
-SentryMode::SentryMode(const std::shared_ptr<rtos::IClock>& clock,
+SentryMode::SentryMode(const std::shared_ptr<IAlliance>& alliance,
+                       const std::shared_ptr<rtos::IClock>& clock,
                        const std::unique_ptr<rtos::IDelayer>& delayer,
                        std::unique_ptr<rtos::IMutex>& mutex,
                        std::unique_ptr<rtos::ITask>& task,
                        const std::shared_ptr<control::ControlSystem>& control_system,
                        const std::shared_ptr<robot::Robot>& robot)
-    : m_clock{clock->clone()}, m_delayer{delayer->clone()},
+    : m_alliance{alliance},
+      m_clock{clock->clone()}, m_delayer{delayer->clone()},
       m_mutex{std::move(mutex)}, m_task{std::move(task)},
       m_control_system{control_system}, m_robot{robot}
 {
@@ -57,6 +59,21 @@ double SentryMode::getBallDistance()
         }
     }
     return distance;
+}
+
+std::vector<io::VisionObject> SentryMode::getBallVisionObjects()
+{
+    std::vector<io::VisionObject> objects{};
+    if (m_robot)
+    {
+        std::vector<io::VisionObject>* result{static_cast<std::vector<io::VisionObject>*>(m_robot->getState("INTAKE", "GET BALL VISION OBJECTS"))};
+        if (result)
+        {
+            objects = *result;
+            delete result;
+        }
+    }
+    return objects;
 }
 
 robot::subsystems::position::Position SentryMode::getOdometryPosition()
@@ -182,13 +199,89 @@ void SentryMode::updateSearch()
     auto position{getOdometryPosition()};
     double angular_velocity{position.theta - last_theta};
     last_theta = position.theta;
-    if (turnTargetReached())
+    if (std::abs(bindRadians(position.theta - m_end_angle)) < AIM_TOLERANCE)
     {
         std::cout << "Finished" << std::endl;
         finished = true;
     }
 	else
 	{
+        if (skip)
+        {
+            if (std::abs(bindRadians(position.theta - skip_angle)) < AIM_TOLERANCE)
+            {
+                skip = false;
+            }
+        }
+        else
+        {
+            auto objects{getBallVisionObjects()};
+            std::vector<io::VisionObject> ball_objects{};
+            for (auto object : objects)
+            {
+                for (auto object_id : m_alliance->getVisionObjectIDs("TRIBALL"))
+                {
+                    if (object.id == object_id)
+                    {
+                        ball_objects.push_back(object);
+                    }
+                }
+            }
+            double closest_ball{};
+            for (auto ball_object : ball_objects)
+            {
+                if (ball_object.horizontal < IGNORE_RANGE)
+                {
+                    if (closest_ball == 0.0 || ball_object.horizontal < closest_ball)
+                    {
+                        closest_ball = ball_object.horizontal;
+                    }
+                }
+            }
+            if (closest_ball != 0.0)
+            {
+                turnToPoint(ball.getX(), ball.getY(), TURN_VELOCITY);
+                if (closest_ball < AIM_TOLERANCE)
+                {
+                    double ball_distance{getBallDistance()};
+                    if (!measuring_distance)
+                    {
+                        last_distance = ball_distance;
+                        measuring_distance = true;
+                    }
+                    else if (ball_distance != last_distance)
+                    {
+                        measuring_distance = false;
+                        double ball_x{position.x + (ball_distance * std::cos(position.theta))};
+                        double ball_y{position.y + (ball_distance * std::sin(position.theta))};
+                        control::path::Point ball_point_temp{ball_x, ball_y};
+                        if (!isValid(ball_point_temp))
+                        {
+                            skip = true;
+                            skip_angle = position.theta + (3 * IGNORE_RANGE / 2);
+
+                        }
+                        else 
+                        {
+                            ball = ball_point_temp;
+                            double target_angle{angle(position.x, position.y, ball.getX(), ball.getY())};
+                            std::cout << "Grab" << std::endl;
+                            m_control_system->pause();
+                            setElevatorPosition(ELEVATOR_OUT);
+                            setIntakeVoltage(INTAKE_VOLTAGE);
+                            boomerangGoToPoint(ball.getX(), ball.getY(), target_angle, BOOMERANG_VELOCITY);
+                            state = EState::GRAB;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                turnToAngle(m_end_angle, TURN_VELOCITY);
+            }
+        }
+
+        /*
 		double ball_distance{getBallDistance()};
 		double ball_x{position.x + (ball_distance * std::cos(position.theta))};
 		double ball_y{position.y + (ball_distance * std::sin(position.theta))};
@@ -210,6 +303,7 @@ void SentryMode::updateSearch()
             turnToPoint(ball.getX(), ball.getY(), TURN_VELOCITY);
             state = EState::TURN;
 		}
+        */
 	} 
 }
 

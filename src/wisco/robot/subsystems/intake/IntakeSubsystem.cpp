@@ -1,5 +1,6 @@
 #include "wisco/robot/subsystems/intake/IntakeSubsystem.hpp"
 
+
 namespace wisco
 {
 namespace robot
@@ -58,9 +59,9 @@ void* IntakeSubsystem::state(std::string state_name)
         double* distance{new double{m_ball_detector->getBallDistance()}};
         result = distance;
     }
-    else if (state_name == GET_BALL_ANGLE_STATE_NAME)
+    else if (state_name == GET_BALL_VISION_OBJECTS_STATE_NAME)
     {
-        double* angle{new double{m_ball_detector->getBallAngle()}};
+        std::vector<io::VisionObject>* angle{new std::vector<io::VisionObject>(m_ball_detector->getBallVisionObjects())};
         result = angle;
     }
 

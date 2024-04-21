@@ -45,7 +45,7 @@ std::vector<wisco::io::VisionObject> ProsVision::getObjects()
         {
             pros::vision_object_s_t vision_object{m_sensor->get_by_size(i)};
             wisco::io::EVisionObjectID object_id{SIGNATURE_ID_MAP.at(vision_object.signature)};
-            double horizontal{(vision_object.x_middle_coord - (PIXEL_WIDTH / 2.0)) * RADIANS_PER_PIXEL};
+            double horizontal{((PIXEL_WIDTH / 2.0) - vision_object.x_middle_coord) * RADIANS_PER_PIXEL};
             double vertical{((PIXEL_HEIGHT / 2.0) - vision_object.y_middle_coord) * RADIANS_PER_PIXEL};
             double width{vision_object.width * RADIANS_PER_PIXEL};
             double height{vision_object.height * RADIANS_PER_PIXEL};

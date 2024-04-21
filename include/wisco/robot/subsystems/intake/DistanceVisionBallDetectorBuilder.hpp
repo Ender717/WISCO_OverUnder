@@ -49,16 +49,28 @@ private:
      */
     std::unique_ptr<io::IDistanceSensor> m_distance_sensor{};
 
-    // TODO vision sensor
+    /**
+     * @brief The vision sensor
+     * 
+     */
+    std::unique_ptr<io::IVisionSensor> m_vision_sensor{};
 
 public:
     /**
      * @brief Adds a distance sensor to the build
      * 
      * @param distance_sensor The distance sensor
-     * @return This object for build chaining
+     * @return DistanceVisionBallDetectorBuilder* This object for build chaining
      */
     DistanceVisionBallDetectorBuilder* withDistanceSensor(std::unique_ptr<io::IDistanceSensor>& distance_sensor);
+
+    /**
+     * @brief Adds a vision sensor to the build
+     * 
+     * @param vision_sensor The vision sensor
+     * @return DistanceVisionBallDetectorBuilder* This object for build chaining
+     */
+    DistanceVisionBallDetectorBuilder* withVisionSensor(std::unique_ptr<io::IVisionSensor>& vision_sensor);
 
     /**
      * @brief Builds the distance vision ball detector
