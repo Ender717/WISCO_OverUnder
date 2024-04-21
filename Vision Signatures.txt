@@ -1,0 +1,17 @@
+vision::signature TRIBALL (1, -6085, -4631, -5358, -6297, -4381, -5339, 3.000, 0);
+vision::signature SIG_2 (2, 0, 0, 0, 0, 0, 0, 3.000, 0);
+vision::signature SIG_3 (3, 0, 0, 0, 0, 0, 0, 2.500, 0);
+vision::signature SIG_4 (4, 0, 0, 0, 0, 0, 0, 3.400, 0);
+vision::signature SIG_5 (5, 0, 0, 0, 0, 0, 0, 3.000, 0);
+vision::signature SIG_6 (6, 0, 0, 0, 0, 0, 0, 3.000, 0);
+vision::signature SIG_7 (7, 0, 0, 0, 0, 0, 0, 3.000, 0);
+vex::vision vision1 ( vex::PORT1, 50, TRIBALL, SIG_2, SIG_3, SIG_4, SIG_5, SIG_6, SIG_7 );
+
+vision::signature RED_TRIBALL (1, 8351, 10725, 9538, -2023, -1151, -1587, 2.000, 0);
+vision::signature GREEN_TRIBALL (2, -6317, -4729, -5523, -6093, -4147, -5120, 3.000, 0);
+vision::signature BLUE_TRIBALL (3, -3917, -3261, -3589, 8153, 9583, 8868, 3.000, 0);
+vision::signature SIG_4 (4, 0, 0, 0, 0, 0, 0, 3.400, 0);
+vision::signature SIG_5 (5, 0, 0, 0, 0, 0, 0, 3.000, 0);
+vision::signature SIG_6 (6, 0, 0, 0, 0, 0, 0, 3.000, 0);
+vision::signature SIG_7 (7, 0, 0, 0, 0, 0, 0, 3.000, 0);
+vex::vision vision1 ( vex::PORT1, 50, RED_TRIBALL, GREEN_TRIBALL, BLUE_TRIBALL, SIG_4, SIG_5, SIG_6, SIG_7 );

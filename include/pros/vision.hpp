@@ -24,6 +24,7 @@
 #include <cstdint>
 
 #include "pros/vision.h"
+#include "pros/device.hpp"
 
 namespace pros {
 inline namespace v5 {

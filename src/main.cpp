@@ -2,6 +2,7 @@
 #include "pros/rotation.hpp"
 #include "pros/screen.h"
 #include "pros/screen.hpp"
+#include "pros/vision.hpp"
 
 #define TESTING false
 
@@ -17,13 +18,7 @@ void initialize()
 {
 	if (TESTING)
 	{
-		static constexpr int8_t PORT{-16};
-		pros::Rotation rotation{PORT};
-		while (true)
-		{
-			pros::screen::print(pros::E_TEXT_LARGE_CENTER, 3, "Value: %8d", rotation.get_position());
-			pros::delay(10);
-		}
+
 	}	
 	else
 	{
@@ -110,7 +105,45 @@ void opcontrol()
 {
 	if (TESTING)
 	{
+		int vision_box_x{40}, vision_box_y{10};
+		int vision_width{316}, vision_height{212};
+		pros::screen::set_pen(pros::Color::white);
+		pros::screen::draw_rect(vision_box_x, vision_box_y, vision_box_x + vision_width + 2, vision_box_y + vision_height + 2);
+		pros::Vision vision_sensor(1);
+		pros::vision_signature_s_t blue_triball_sig = pros::c::vision_signature_from_utility(1, -3855, -2239, -3047, 5083, 9307, 7195, 2.000, 0);
+		vision_sensor.set_signature(1, &blue_triball_sig);
+		pros::vision_signature_s_t green_triball_sig = pros::c::vision_signature_from_utility(2, -6145, -4515, -5330, -6257, -4479, -5368, 3.100, 0);
+		vision_sensor.set_signature(2, &green_triball_sig);
+		pros::vision_signature_s_t red_triball_sig = pros::c::vision_signature_from_utility(3, 9305, 10661, 9983, -1959, -1279, -1619, 3.000, 0);
+		vision_sensor.set_signature(3, &red_triball_sig);
+		while (true)
+		{
+			pros::screen::set_eraser(pros::Color::black);
+			pros::screen::erase_rect(vision_box_x + 1, vision_box_y + 1, vision_box_x + vision_width + 1, vision_box_y + vision_height + 1);
 
+			for (uint8_t i{}; i < vision_sensor.get_object_count(); ++i)
+			{
+				pros::vision_object_s_t object = vision_sensor.get_by_size(i);
+				if (object.signature == 1)
+					pros::screen::set_pen(pros::Color::blue);
+				else if (object.signature == 2)
+					pros::screen::set_pen(pros::Color::lime_green);
+				else if (object.signature == 3)
+					pros::screen::set_pen(pros::Color::red);
+				else
+					pros::screen::set_pen(pros::Color::yellow);
+				int x0{object.x_middle_coord - (object.width / 2)};
+				int y0{object.y_middle_coord - (object.height / 2)};
+				int x1{object.x_middle_coord + (object.width / 2)};
+				int y1{object.y_middle_coord + (object.height / 2)};
+				x0 += vision_box_x + 1;
+				y0 += vision_box_y + 1;
+				x1 += vision_box_x + 1;
+				y1 += vision_box_y + 1;
+				pros::screen::fill_rect(x0, y0, x1, y1);
+			}
+			pros::delay(20);
+		}
 	}
 	else
 	{
