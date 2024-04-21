@@ -4,11 +4,11 @@ wisco::MatchController MatchControllerFactory::createMatchController()
 {
     // Menu creation
     std::unique_ptr<wisco::IMenu> lvgl_menu{std::make_unique<wisco::menu::MenuAdapter>()};
-    std::unique_ptr<wisco::IAlliance> blue_alliance{std::make_unique<wisco::alliances::BlueAlliance>()};
+    std::shared_ptr<wisco::IAlliance> blue_alliance{std::make_shared<wisco::alliances::BlueAlliance>()};
     lvgl_menu->addAlliance(blue_alliance);
-    std::unique_ptr<wisco::IAlliance> red_alliance{std::make_unique<wisco::alliances::RedAlliance>()};
+    std::shared_ptr<wisco::IAlliance> red_alliance{std::make_shared<wisco::alliances::RedAlliance>()};
     lvgl_menu->addAlliance(red_alliance);
-    std::unique_ptr<wisco::IAlliance> skills_alliance{std::make_unique<wisco::alliances::SkillsAlliance>()};
+    std::shared_ptr<wisco::IAlliance> skills_alliance{std::make_shared<wisco::alliances::SkillsAlliance>()};
     lvgl_menu->addAlliance(skills_alliance);
     std::unique_ptr<wisco::IAutonomous> blue_match_autonomous{std::make_unique<wisco::autons::BlueMatchAuton>()};
     lvgl_menu->addAutonomous(blue_match_autonomous);

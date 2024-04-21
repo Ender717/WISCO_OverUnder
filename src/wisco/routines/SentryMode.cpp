@@ -208,6 +208,7 @@ void SentryMode::updateSearch()
 	{
         if (skip)
         {
+            std::cout << "Skipping" << std::endl;
             if (std::abs(bindRadians(position.theta - skip_angle)) < AIM_TOLERANCE)
             {
                 skip = false;
@@ -230,7 +231,7 @@ void SentryMode::updateSearch()
             double closest_ball{};
             for (auto ball_object : ball_objects)
             {
-                if (ball_object.horizontal < IGNORE_RANGE)
+                if (ball_object.horizontal > -IGNORE_RANGE)
                 {
                     if (closest_ball == 0.0 || ball_object.horizontal < closest_ball)
                     {
@@ -240,9 +241,11 @@ void SentryMode::updateSearch()
             }
             if (closest_ball != 0.0)
             {
+                std::cout << "Closest ball: " << closest_ball << std::endl;
                 turnToPoint(ball.getX(), ball.getY(), TURN_VELOCITY);
                 if (closest_ball < AIM_TOLERANCE)
                 {
+                    std::cout << "Within aim tolerance" << std::endl;
                     double ball_distance{getBallDistance()};
                     if (!measuring_distance)
                     {
@@ -251,15 +254,16 @@ void SentryMode::updateSearch()
                     }
                     else if (ball_distance != last_distance)
                     {
+                        std::cout << "Measured distance: " << ball_distance << std::endl;
                         measuring_distance = false;
                         double ball_x{position.x + (ball_distance * std::cos(position.theta))};
                         double ball_y{position.y + (ball_distance * std::sin(position.theta))};
                         control::path::Point ball_point_temp{ball_x, ball_y};
                         if (!isValid(ball_point_temp))
                         {
+                            std::cout << "Starting skip" << std::endl;
                             skip = true;
                             skip_angle = position.theta + (3 * IGNORE_RANGE / 2);
-
                         }
                         else 
                         {
@@ -277,7 +281,7 @@ void SentryMode::updateSearch()
             }
             else
             {
-                turnToAngle(m_end_angle, TURN_VELOCITY);
+                turnToAngle(m_end_angle, TURN_VELOCITY, false, m_direction);
             }
         }
 
@@ -389,6 +393,11 @@ void SentryMode::doSentryMode(double end_angle, control::motion::ETurnDirection 
     state = EState::START;
     ball_point.setX(0);
     ball_point.setY(0);
+    last_theta = getOdometryPosition().theta;
+    last_distance = getBallDistance();
+    skip = false;
+    skip_angle = 0;
+    measuring_distance = false;
     m_end_angle = end_angle;
     m_direction = direction;
     ball.setX(0);
@@ -397,6 +406,7 @@ void SentryMode::doSentryMode(double end_angle, control::motion::ETurnDirection 
     elevator_distance = 0;
     paused = false;
     finished = false;
+    m_control_system->pause();
     turnToAngle(m_end_angle, TURN_VELOCITY, false, m_direction);
     std::cout << "Start" << std::endl;
     if (m_mutex)

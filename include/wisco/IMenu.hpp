@@ -30,7 +30,7 @@ public:
 	 * 
 	 * @param alliance The new alliance
 	 */
-	virtual void addAlliance(std::unique_ptr<IAlliance>& alliance) = 0;
+	virtual void addAlliance(const std::shared_ptr<IAlliance>& alliance) = 0;
 
 	/**
 	 * @brief Adds an autonomous routine to the menu system

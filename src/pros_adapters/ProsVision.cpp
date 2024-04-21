@@ -44,7 +44,9 @@ std::vector<wisco::io::VisionObject> ProsVision::getObjects()
         for (uint8_t i{}; i < object_count; ++i)
         {
             pros::vision_object_s_t vision_object{m_sensor->get_by_size(i)};
-            wisco::io::EVisionObjectID object_id{SIGNATURE_ID_MAP.at(vision_object.signature)};
+            wisco::io::EVisionObjectID object_id{wisco::io::EVisionObjectID::UNKNOWN};
+            if (SIGNATURE_ID_MAP.contains(vision_object.signature))
+                object_id = SIGNATURE_ID_MAP.at(vision_object.signature);
             double horizontal{((PIXEL_WIDTH / 2.0) - vision_object.x_middle_coord) * RADIANS_PER_PIXEL};
             double vertical{((PIXEL_HEIGHT / 2.0) - vision_object.y_middle_coord) * RADIANS_PER_PIXEL};
             double width{vision_object.width * RADIANS_PER_PIXEL};

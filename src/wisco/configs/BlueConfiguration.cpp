@@ -257,6 +257,12 @@ std::shared_ptr<robot::Robot> BlueConfiguration::buildRobot()
         std::unique_ptr<wisco::io::IDistanceSensor> ball_detector_pros_distance_sensor{std::make_unique<pros_adapters::ProsDistance>(ball_detector_pros_distance, BALL_DETECTOR_DISTANCE_CONSTANT, BALL_DETECTOR_DISTANCE_OFFSET)};
         distance_vision_ball_detector_builder.withDistanceSensor(ball_detector_pros_distance_sensor);
     }
+    if (BALL_DETECTOR_VISION_PORT)
+    {
+        std::unique_ptr<pros::Vision> ball_detector_pros_vision{std::make_unique<pros::Vision>(BALL_DETECTOR_VISION_PORT)};
+        std::unique_ptr<wisco::io::IVisionSensor> ball_detector_pros_vision_sensor{std::make_unique<pros_adapters::ProsVision>(ball_detector_pros_vision)};
+        distance_vision_ball_detector_builder.withVisionSensor(ball_detector_pros_vision_sensor);
+    }
     std::unique_ptr<wisco::robot::subsystems::intake::IBallDetector> distance_vision_ball_detector
     {
         distance_vision_ball_detector_builder.

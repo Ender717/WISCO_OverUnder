@@ -31,6 +31,7 @@
 #include "wisco/robot/subsystems/hang/HangSubsystem.hpp"
 
 // intake includes
+#include "pros_adapters/ProsVision.hpp"
 #include "wisco/robot/subsystems/intake/PIDIntakeBuilder.hpp"
 #include "wisco/robot/subsystems/intake/DistanceVisionBallDetectorBuilder.hpp"
 #include "wisco/robot/subsystems/intake/IntakeSubsystem.hpp"
@@ -382,6 +383,12 @@ private:
 	 * 
 	 */
 	static constexpr double BALL_DETECTOR_DISTANCE_OFFSET{3.5};
+
+	/**
+	 * @brief The port for the ball detector vision sensor
+	 * 
+	 */
+	static constexpr int8_t BALL_DETECTOR_VISION_PORT{16};
 
 	/**
 	 * @brief The proportional constant for the boomerang linear pid controller

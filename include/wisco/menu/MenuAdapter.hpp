@@ -57,7 +57,7 @@ private:
      * @brief The alliances available in the menu system
      * 
      */
-    std::vector<std::unique_ptr<IAlliance>> alliances{};
+    std::vector<std::shared_ptr<IAlliance>> alliances{};
 
     /**
      * @brief The autonomous routines available in the menu system
@@ -89,7 +89,7 @@ public:
 	 * 
 	 * @param alliance The new alliance
 	 */
-	void addAlliance(std::unique_ptr<IAlliance>& alliance) override;
+	void addAlliance(const std::shared_ptr<IAlliance>& alliance) override;
 
 	/**
 	 * @brief Adds an autonomous routine to the menu system

@@ -27,7 +27,7 @@ struct SystemConfiguration
 	 * @brief The system alliance
 	 *
 	 */
-	std::unique_ptr<IAlliance> alliance{};
+	std::shared_ptr<IAlliance> alliance{};
 
 	/**
 	 * @brief The system autonomous

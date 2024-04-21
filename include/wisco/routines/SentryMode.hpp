@@ -118,7 +118,7 @@ private:
      * @brief The range to ignore triballs that have already been seen
      * 
      */
-    static constexpr double IGNORE_RANGE{M_PI / 72};
+    static constexpr double IGNORE_RANGE{M_PI / 18};
 
     /**
      * @brief The delay to jump start the turn
@@ -130,7 +130,7 @@ private:
      * @brief The velocity to scan for sentry mode
      * 
      */
-    static constexpr double SCAN_VELOCITY{2 * M_PI};
+    static constexpr double SCAN_VELOCITY{4 * M_PI / 3};
 
     /**
      * @brief The velocity to turn

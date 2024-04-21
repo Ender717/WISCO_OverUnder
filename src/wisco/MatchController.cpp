@@ -21,6 +21,7 @@ void MatchController::initialize(bool fast_init)
 	SystemConfiguration system_configuration{};
 	if (m_menu)
 		system_configuration = m_menu->getSystemConfiguration(fast_init);
+	autonomous_manager.setAlliance(system_configuration.alliance);
 	autonomous_manager.setAutonomous(system_configuration.autonomous);
 	opcontrol_manager.setProfile(system_configuration.profile);
 	control_system = system_configuration.configuration->buildControlSystem();

@@ -5,14 +5,14 @@ namespace wisco
 {
 namespace menu
 {  
-void MenuAdapter::addAlliance(std::unique_ptr<IAlliance>& alliance)
+void MenuAdapter::addAlliance(const std::shared_ptr<IAlliance>& alliance)
 {
     bool unique{true};
-    for (std::unique_ptr<IAlliance>& existing_alliance : alliances)
+    for (auto& existing_alliance : alliances)
         if (existing_alliance->getName() == alliance->getName())
             unique = false;
     if (unique)
-        alliances.push_back(std::move(alliance));
+        alliances.push_back(alliance);
 }
 
 void MenuAdapter::addAutonomous(std::unique_ptr<IAutonomous>& autonomous)
@@ -48,7 +48,7 @@ void MenuAdapter::addProfile(std::unique_ptr<IProfile>& profile)
 void MenuAdapter::display()
 {
     std::vector<std::string> alliance_options{};
-    for (std::unique_ptr<IAlliance>& alliance : alliances)
+    for (auto& alliance : alliances)
         alliance_options.push_back(alliance->getName());
     Option alliance_option{ALLIANCE_OPTION_NAME, alliance_options};
 
@@ -87,11 +87,11 @@ SystemConfiguration MenuAdapter::getSystemConfiguration(bool read_only)
     if (read_only)
         lvgl_menu.readConfiguration();
 
-    for (std::unique_ptr<IAlliance>& alliance : alliances)
+    for (auto& alliance : alliances)
     {
         if (lvgl_menu.getSelection(ALLIANCE_OPTION_NAME) == alliance->getName())
         {
-            system_configuration.alliance = std::move(alliance);
+            system_configuration.alliance = alliance;
             break;
         }
     }
