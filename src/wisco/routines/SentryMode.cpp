@@ -1,4 +1,5 @@
 #include "wisco/routines/SentryMode.hpp"
+#include <iostream>
 
 namespace wisco
 {
@@ -174,8 +175,8 @@ bool SentryMode::isValid(control::path::Point point)
     }
     else
     {
-        valid = (point.getX() > 75.0 && point.getX() < 112.0) &&
-                (point.getY() > 3.0 && point.getY() < 83.0);
+        valid = (point.getX() > 73.5 && point.getX() < 112.0) &&
+                (point.getY() > 25.5 && point.getY() < 85.0);
     }
     
     return valid;
@@ -186,11 +187,12 @@ void SentryMode::updateSearch()
     auto position{getOdometryPosition()};
     if (turnTargetReached())
     {
+        std::cout << "Finished" << std::endl;
         finished = true;
     }
     else if (skip_angle == 0.0
-        || (m_direction == control::motion::ETurnDirection::CLOCKWISE && position.theta < skip_angle)
-        || (m_direction == control::motion::ETurnDirection::COUNTERCLOCKWISE && position.theta > skip_angle))
+        || (m_direction == control::motion::ETurnDirection::CLOCKWISE && bindRadians(skip_angle - position.theta) > 0)
+        || (m_direction == control::motion::ETurnDirection::COUNTERCLOCKWISE && bindRadians(skip_angle - position.theta) < 0))
     {
         auto objects{getBallVisionObjects()};
         double triball_angle{DBL_MAX};
@@ -212,6 +214,7 @@ void SentryMode::updateSearch()
             target_angle = triball_angle + position.theta;
             turnToAngle(target_angle, TURN_VELOCITY);
             state = EState::TARGET;
+            std::cout << "Target Angle: " << target_angle << std::endl;
         }
     }
 }
@@ -220,16 +223,18 @@ void SentryMode::updateTarget()
 {
     auto position{getOdometryPosition()};
     double ball_distance{getBallDistance()};
-    if (std::abs(bindRadians(target_angle - position.theta)) < AIM_TOLERANCE)
+    std::cout << "Angle: " << position.theta << std::endl;
+    if (std::abs(bindRadians(target_angle - position.theta)) < AIM_TOLERANCE || turnTargetReached())
     {
         if (distance_time == 0)
         {
             last_distance = ball_distance;
             distance_time = m_clock->getTime();
+            std::cout << "Time: " << distance_time << std::endl;
         }
         else if (m_clock->getTime() > distance_time + DISTANCE_DELAY || last_distance != ball_distance)
         {
-            double ball_distance{getBallDistance()};
+            std::cout << "Distance: " << ball_distance << std::endl;
             double ball_x{position.x + (ball_distance * std::cos(position.theta))};
             double ball_y{position.y + (ball_distance * std::sin(position.theta))};
             control::path::Point ball_point_temp{ball_x, ball_y};
@@ -241,12 +246,14 @@ void SentryMode::updateTarget()
                 setIntakeVoltage(INTAKE_VOLTAGE);
                 boomerangGoToPoint(ball.getX(), ball.getY(), target_angle, BOOMERANG_VELOCITY);
                 state = EState::GRAB;
+                std::cout << "Grab Ball: " << ball.getX() << ", " << ball.getY() << std::endl;
             }
             else
             {
                 skip_angle = bindRadians(position.theta + SKIP_DISTANCE);
                 turnToAngle(m_end_angle, TURN_VELOCITY, false, m_direction);
                 state = EState::SEARCH;
+                std::cout << "Skip to " << skip_angle * 180 / M_PI << std::endl;
             }
         }
     }
@@ -262,13 +269,17 @@ void SentryMode::updateGrab()
         m_control_system->pause();
         setElevatorPosition(ELEVATOR_BALL);
         state = EState::HOLD;
+        std::cout << "Hold" << std::endl;
     }
 }
 
 void SentryMode::updateHold()
 {
     if (getElevatorPosition() < ELEVATOR_BALL + ELEVATOR_TOLERANCE)
+    {
         finished = true;
+        std::cout << "Finished" << std::endl;
+    }
 }
 
 void SentryMode::taskUpdate()
@@ -323,6 +334,7 @@ void SentryMode::doSentryMode(double end_angle, control::motion::ETurnDirection 
     paused = false;
     m_control_system->pause();
     turnToAngle(m_end_angle, TURN_VELOCITY, false, m_direction);
+    std::cout << "Search" << std::endl;
     if (m_mutex)
         m_mutex->give();
 }

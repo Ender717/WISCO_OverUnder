@@ -4,6 +4,7 @@
 #include <memory>
 
 #include "wisco/control/AControl.hpp"
+#include "IDriveStraight.hpp"
 #include "ITurn.hpp"
 
 /**
@@ -45,6 +46,7 @@ private:
     enum class EMotion
     {
         NONE,
+        DRIVE_STRAIGHT,
         TURN
     };
 
@@ -53,6 +55,12 @@ private:
      * 
      */
     static constexpr char CONTROL_NAME[]{"MOTION"};
+
+    /**
+     * @brief The name of the drive straight command
+     * 
+     */
+    static constexpr char DRIVE_STRAIGHT_COMMAND_NAME[]{"DRIVE STRAIGHT"};
 
     /**
      * @brief The name of the turn to angle command
@@ -67,10 +75,22 @@ private:
     static constexpr char TURN_TO_POINT_COMMAND_NAME[]{"TURN TO POINT"};
 
     /**
+     * @brief The name of the drive straight target reached state
+     * 
+     */
+    static constexpr char DRIVE_STRAIGHT_TARGET_REACHED_STATE_NAME[]{"DRIVE STRAIGHT TARGET REACHED"};
+
+    /**
      * @brief The name of the turn target reached state
      * 
      */
     static constexpr char TURN_TARGET_REACHED_STATE_NAME[]{"TURN TARGET REACHED"};
+
+    /**
+     * @brief The drive straight controller being adapted
+     * 
+     */
+    std::unique_ptr<IDriveStraight> m_drive_straight{};
 
     /**
      * @brief The turn controller being adapted
@@ -88,9 +108,10 @@ public:
     /**
      * @brief Construct a new Motion Control object
      * 
+     * @param drive_straight The drive straight controller being adapted
      * @param turn The turn controller being adapted
      */
-    MotionControl(std::unique_ptr<ITurn>& turn);
+    MotionControl(std::unique_ptr<IDriveStraight>& drive_straight, std::unique_ptr<ITurn>& turn);
 
 	/**
 	 * @brief Initializes the control

@@ -141,20 +141,37 @@ private:
 	void goToPoint(double x, double y, double theta, double velocity);
 
 	/**
-	 * @brief Drives straight for a set distance
-	 * 
-	 * @param distance The distance to drive
-	 * @param velocity The motion velocity
-	 */
-	void driveStraight(double distance, double velocity);
-
-	/**
 	 * @brief Checks if the boomerang target has been reached
 	 * 
 	 * @return true The boomerang target has been reached
 	 * @return false The boomerang target has not been reached
 	 */
 	bool boomerangTargetReached();
+
+	/**
+	 * @brief Drives straight
+	 * 
+	 * @param distance The distance to drive (negative = reverse)
+	 * @param velocity The velocity to move
+	 */
+	void driveStraight(double distance, double velocity);
+
+	/**
+	 * @brief Drives straight with a specified angle
+	 * 
+	 * @param distance The distance to drive (negative = reverse)
+	 * @param velocity The velocity to move
+	 * @param theta The angle to keep pointed forward
+	 */
+	void driveStraight(double distance, double velocity, double theta);
+
+	/**
+	 * @brief Checks if the drive straight target has been reached
+	 * 
+	 * @return true The drive straight target has been reached
+	 * @return false The drive straight target has not been reached
+	 */
+	bool driveStraightTargetReached();
 
 	/**
 	 * @brief Calls the motion turn to angle command

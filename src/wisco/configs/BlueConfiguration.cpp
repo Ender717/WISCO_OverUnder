@@ -37,6 +37,23 @@ std::shared_ptr<control::ControlSystem> BlueConfiguration::buildControlSystem()
     std::unique_ptr<wisco::control::AControl> boomerang_control{std::make_unique<wisco::control::boomerang::BoomerangControl>(pid_boomerang)};
     control_system->addControl(boomerang_control);
 
+    wisco::control::motion::PIDDriveStraightBuilder pid_drive_straight_builder{};
+    std::unique_ptr<rtos::IMutex> drive_straight_pros_mutex{std::make_unique<pros_adapters::ProsMutex>()};
+    std::unique_ptr<rtos::ITask> drive_straight_pros_task{std::make_unique<pros_adapters::ProsTask>()};
+    wisco::control::PID drive_straight_linear_pid{pros_clock, DRIVE_STRAIGHT_LINEAR_KP, DRIVE_STRAIGHT_LINEAR_KI, DRIVE_STRAIGHT_LINEAR_KD};
+    wisco::control::PID drive_straight_rotational_pid{pros_clock, DRIVE_STRAIGHT_ROTATIONAL_KP, DRIVE_STRAIGHT_ROTATIONAL_KI, DRIVE_STRAIGHT_ROTATIONAL_KD};
+    std::unique_ptr<wisco::control::motion::IDriveStraight> pid_drive_straight
+    {
+        pid_drive_straight_builder.
+        withDelayer(pros_delayer)->
+        withMutex(drive_straight_pros_mutex)->
+        withTask(drive_straight_pros_task)->
+        withLinearPID(drive_straight_linear_pid)->
+        withRotationalPID(drive_straight_rotational_pid)->
+        withTargetTolerance(DRIVE_STRAIGHT_TARGET_TOLERANCE)->
+        withTargetVelocity(DRIVE_STRAIGHT_TARGET_VELOCITY)->
+        build()
+    };
     wisco::control::motion::PIDTurnBuilder pid_turn_builder{};
     std::unique_ptr<rtos::IMutex> turn_pros_mutex{std::make_unique<pros_adapters::ProsMutex>()};
     std::unique_ptr<rtos::ITask> turn_pros_task{std::make_unique<pros_adapters::ProsTask>()};
@@ -52,7 +69,7 @@ std::shared_ptr<control::ControlSystem> BlueConfiguration::buildControlSystem()
         withTargetVelocity(TURN_TARGET_VELOCITY)->
         build()
     };
-    std::unique_ptr<wisco::control::AControl> motion_control{std::make_unique<wisco::control::motion::MotionControl>(pid_turn)};
+    std::unique_ptr<wisco::control::AControl> motion_control{std::make_unique<wisco::control::motion::MotionControl>(pid_drive_straight, pid_turn)};
     control_system->addControl(motion_control);
 
     wisco::control::path::PIDPurePursuitBuilder pid_pure_pursuit_builder{};

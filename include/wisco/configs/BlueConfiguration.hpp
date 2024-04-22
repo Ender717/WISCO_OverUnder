@@ -57,6 +57,7 @@
 #include "wisco/control/boomerang/BoomerangControl.hpp"
 
 // motion includes
+#include "wisco/control/motion/PIDDriveStraightBuilder.hpp"
 #include "wisco/control/motion/PIDTurnBuilder.hpp"
 #include "wisco/control/motion/MotionControl.hpp"
 
@@ -445,6 +446,54 @@ private:
 	static constexpr double BOOMERANG_TARGET_VELOCITY{1.0};
 
 	/**
+	 * @brief The proportional constant for the drive straight linear pid controller
+	 * 
+	 */
+	static constexpr double DRIVE_STRAIGHT_LINEAR_KP{12.0};
+
+	/**
+	 * @brief The integral constant for the drive straight linear pid controller
+	 * 
+	 */
+	static constexpr double DRIVE_STRAIGHT_LINEAR_KI{};
+
+	/**
+	 * @brief The derivative constant for the drive straight linear pid controller
+	 * 
+	 */
+	static constexpr double DRIVE_STRAIGHT_LINEAR_KD{800.0};
+
+	/**
+	 * @brief The proportional constant for the drive straight rotational pid controller
+	 * 
+	 */
+	static constexpr double DRIVE_STRAIGHT_ROTATIONAL_KP{128.0};
+
+	/**
+	 * @brief The integral constant for the drive straight rotational pid controller
+	 * 
+	 */
+	static constexpr double DRIVE_STRAIGHT_ROTATIONAL_KI{0.001};
+
+	/**
+	 * @brief The derivative constant for the drive straight rotational pid controller
+	 * 
+	 */
+	static constexpr double DRIVE_STRAIGHT_ROTATIONAL_KD{800.0};
+
+	/**
+	 * @brief The target tolerance for the drive straight controller
+	 * 
+	 */
+	static constexpr double DRIVE_STRAIGHT_TARGET_TOLERANCE{2.0};
+
+	/**
+	 * @brief The target velocity for the drive straight controller
+	 * 
+	 */
+	static constexpr double DRIVE_STRAIGHT_TARGET_VELOCITY{1.0};
+
+	/**
 	 * @brief The KP for the elevator PID
 	 * 
 	 */
@@ -676,7 +725,7 @@ private:
 	 * @brief The proportional constant for the turn pid controller
 	 * 
 	 */
-	static constexpr double TURN_KP{160.0};
+	static constexpr double TURN_KP{180.0};
 
 	/**
 	 * @brief The integral constant for the turn pid controller
@@ -688,19 +737,19 @@ private:
 	 * @brief The derivative constant for the turn pid controller
 	 * 
 	 */
-	static constexpr double TURN_KD{12000.0};
+	static constexpr double TURN_KD{10000.0};
 
 	/**
 	 * @brief The target tolerance for the turn controller
 	 * 
 	 */
-	static constexpr double TURN_TARGET_TOLERANCE{4.0 * M_PI / 180};
+	static constexpr double TURN_TARGET_TOLERANCE{M_PI / 45};
 
 	/**
 	 * @brief The target velocity for the turn controller
 	 * 
 	 */
-	static constexpr double TURN_TARGET_VELOCITY{1.0 * M_PI / 180};
+	static constexpr double TURN_TARGET_VELOCITY{M_PI / 180};
 
 	/**
 	 * @brief The first umbrella piston port

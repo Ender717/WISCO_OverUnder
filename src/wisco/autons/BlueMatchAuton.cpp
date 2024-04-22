@@ -36,20 +36,39 @@ void BlueMatchAuton::goToPoint(double x, double y, double theta, double velocity
 		m_control_system->sendCommand("BOOMERANG", "GO TO POSITION", &m_robot, velocity, x, y, theta);
 }
 
-void BlueMatchAuton::driveStraight(double distance, double velocity)
-{
-	auto position{getOdometryPosition()};
-	double target_x{position.x + (distance * std::cos(position.theta))};
-	double target_y{position.y + (distance * std::sin(position.theta))};
-	goToPoint(target_x, target_y, position.theta, velocity);
-}
-
 bool BlueMatchAuton::boomerangTargetReached()
 {
 	bool target_reached{};
 	if (m_control_system)
 	{
 		bool* result{static_cast<bool*>(m_control_system->getState("BOOMERANG", "TARGET REACHED"))};
+		if (result)
+		{
+			target_reached = *result;
+			delete result;
+		}
+	}
+	return target_reached;
+}
+
+void BlueMatchAuton::driveStraight(double distance, double velocity)
+{
+	auto position{getOdometryPosition()};
+	driveStraight(distance, velocity, position.theta);
+}
+
+void BlueMatchAuton::driveStraight(double distance, double velocity, double theta)
+{
+	if (m_control_system && m_robot)
+		m_control_system->sendCommand("MOTION", "DRIVE STRAIGHT", &m_robot, distance, velocity, theta);
+}
+
+bool BlueMatchAuton::driveStraightTargetReached()
+{
+	bool target_reached{};
+	if (m_control_system)
+	{
+		bool* result{static_cast<bool*>(m_control_system->getState("MOTION", "DRIVE STRAIGHT TARGET REACHED"))};
 		if (result)
 		{
 			target_reached = *result;
@@ -619,6 +638,12 @@ void BlueMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	m_control_system = control_system;
 	m_robot = robot;
 
+	setOdometryPosition(0, 0, 0);
+	driveStraight(36.0, 48.0);
+	while (!driveStraightTargetReached())
+		delay(LOOP_DELAY);
+	return;
+
 	// Set the starting position
 	double start_x{17.0}, start_y{17.0}, start_theta{-3 * M_PI / 4};
 	setOdometryPosition(start_x, start_y, start_theta);
@@ -683,7 +708,7 @@ void BlueMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	pauseControlSystem();
 
 	// Turn to face the goal shove start point
-	double goal_shove_x{128.0}, goal_shove_y{29.0};
+	double goal_shove_x{130.0}, goal_shove_y{29.0};
 	turnToPoint(goal_shove_x, goal_shove_y, TURN_VELOCITY, true);
 	while (!turnTargetReached())
 		delay(LOOP_DELAY);
@@ -692,11 +717,11 @@ void BlueMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	auto position{getOdometryPosition()};
 	double target_angle{angle(position.x, position.y, goal_shove_x, goal_shove_y)};
 	goToPoint(goal_shove_x, goal_shove_y, target_angle, MOTION_VELOCITY);
-	while (!boomerangTargetReached())
+	while (!boomerangTargetReached() && (getOdometryPosition().y < 24.0 || getOdometryVelocity() > 4.0))
 		delay(LOOP_DELAY);
 
 	// Turn to face the goal
-	double side_goal_x{134.0}, side_goal_y{48.0}, side_goal_collision{36.0};
+	double side_goal_x{134.0}, side_goal_y{48.0}, side_goal_collision{32.0};
 	turnToPoint(side_goal_x, side_goal_y, TURN_VELOCITY, true);
 	while (!turnTargetReached())
 		delay(LOOP_DELAY);
@@ -717,7 +742,7 @@ void BlueMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	position = getOdometryPosition();
 	target_angle = angle(position.x, position.y, goal_shove_x, goal_shove_y);
 	goToPoint(goal_shove_x, goal_shove_y, target_angle, MOTION_VELOCITY);
-	while (!boomerangTargetReached())
+	while (!boomerangTargetReached() && (getOdometryPosition().y < 24.0 || getOdometryVelocity() > 4.0))
 		delay(LOOP_DELAY);
 
 	// Turn to face the goal
@@ -733,7 +758,7 @@ void BlueMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	setDriveVoltage(0, 0);
 
 	// Turn to face the match load position
-	double alliance_ball_x{134.0}, alliance_ball_y{10.0}, alliance_ball_theta{-M_PI / 4};
+	double alliance_ball_x{132.0}, alliance_ball_y{8.0}, alliance_ball_theta{-M_PI / 4};
 	double alliance_ball_distance{17.0};
 	double alliance_load_x{alliance_ball_x - (alliance_ball_distance * std::cos(alliance_ball_theta))};
 	double alliance_load_y{alliance_ball_y - (alliance_ball_distance * std::sin(alliance_ball_theta))};
@@ -789,7 +814,7 @@ void BlueMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	position = getOdometryPosition();
 	target_angle = angle(position.x, position.y, goal_shove_x, goal_shove_y);
 	goToPoint(goal_shove_x, goal_shove_y, target_angle, MOTION_VELOCITY);
-	while (!boomerangTargetReached())
+	while (!boomerangTargetReached() && (getOdometryPosition().y < 24.0 || getOdometryVelocity() > 4.0))
 		delay(LOOP_DELAY);
 
 	// Turn to face the goal
@@ -827,24 +852,18 @@ void BlueMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 		delay(LOOP_DELAY);
 
 	// Turn to face the front of the goal
-	double sentry_x{94.0}, sentry_y{65.0};
+	double sentry_x{104.0}, sentry_y{60.0};
 	turnToPoint(sentry_x, sentry_y, TURN_VELOCITY);
 	while (!turnTargetReached())
 		delay(LOOP_DELAY);
 
 	// Move to the front of the goal
-	double sweep_velocity{20.0};
+	double sweep_velocity{26.0};
 	position = getOdometryPosition();
 	target_angle = angle(position.x, position.y, sentry_x, sentry_y);
 	goToPoint(sentry_x, sentry_y, target_angle, sweep_velocity);
 	while (!boomerangTargetReached())
 		delay(LOOP_DELAY);
-
-	// Back up slightly
-	uint32_t back_up_delay{100};
-	setDriveVoltage(-MAX_VOLTAGE, -MAX_VOLTAGE);
-	delay(back_up_delay);
-	setDriveVoltage(0, 0);
 
 	// Turn to face forward
 	turnToAngle(5 * M_PI / 12, TURN_VELOCITY);
@@ -860,7 +879,7 @@ void BlueMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	bool sentry{true};
 	position = getOdometryPosition();
 	control::path::Point last_ball{};
-	double sentry_goal_x{94.0}, sentry_goal_y{62.0};
+	double sentry_goal_x{104.0}, sentry_goal_y{60.0};
 	while (sentry)
 	{
 		sentry_mode.doSentryMode(-5 * M_PI / 12, control::motion::ETurnDirection::COUNTERCLOCKWISE);
@@ -926,12 +945,19 @@ void BlueMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 				delay(LOOP_DELAY);
 				position = getOdometryPosition();
 			}
-			robot->sendCommand("DIFFERENTIAL DRIVE", "SET VOLTAGE", -12.0, -12.0);
-			delay(300);
+			
+			position = getOdometryPosition();
+			double target_angle{angle(position.x, position.y, sentry_goal_x, sentry_goal_y)};
+			goToPoint(sentry_goal_x, sentry_goal_y, target_angle, 48.0);
+			while (position.x > sentry_goal_x + 1)
+			{
+				delay(LOOP_DELAY);
+				position = getOdometryPosition();
+			}
 
 			position = getOdometryPosition();
 			turnToPoint(last_ball.getX(), last_ball.getY(), 2 * M_PI);
-			double target_angle{angle(position.x, position.y, last_ball.getX(), last_ball.getY())};
+			target_angle = angle(position.x, position.y, last_ball.getX(), last_ball.getY());
 			while (!turnTargetReached() && std::abs(position.theta - target_angle) > M_PI / 36)
 			{
 				delay(LOOP_DELAY);
