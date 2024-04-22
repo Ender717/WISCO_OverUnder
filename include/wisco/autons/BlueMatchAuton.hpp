@@ -2,10 +2,13 @@
 #define WISCO_AUTONS_BLUE_MATCH_AUTON_HPP
 
 #include <cmath>
+#include <cstdint>
+#include <vector>
 
 #include "pros_adapters/ProsMutex.hpp"
 #include "pros_adapters/ProsTask.hpp"
 
+#include "wisco/io/VisionObject.hpp"
 #include "wisco/routines/SentryMode.hpp"
 #include "wisco/utils/UtilityFunctions.hpp"
 #include "wisco/control/motion/ETurnDirection.hpp"
@@ -55,6 +58,12 @@ private:
 	 * 
 	 */
 	static constexpr double MAX_VOLTAGE{12.0};
+
+	/**
+	 * @brief The offset to the front of the robot for the elevator
+	 * 
+	 */
+	static constexpr double ELEVATOR_OFFSET{6.5};
 
 	/**
 	 * @brief The elevator position tolerance
@@ -137,8 +146,9 @@ private:
 	 * @param y The target y-coordinate
 	 * @param theta The target angle
 	 * @param velocity The motion velocity
+	 * @param timeout The milliseconds allowed before timing out
 	 */
-	void goToPoint(double x, double y, double theta, double velocity);
+	void goToPoint(double x, double y, double theta, double velocity, uint32_t timeout = UINT32_MAX);
 
 	/**
 	 * @brief Checks if the boomerang target has been reached
@@ -153,8 +163,9 @@ private:
 	 * 
 	 * @param distance The distance to drive (negative = reverse)
 	 * @param velocity The velocity to move
+	 * @param timeout The milliseconds allowed before timing out
 	 */
-	void driveStraight(double distance, double velocity);
+	void driveStraight(double distance, double velocity, uint32_t timeout = UINT32_MAX);
 
 	/**
 	 * @brief Drives straight with a specified angle
@@ -162,8 +173,26 @@ private:
 	 * @param distance The distance to drive (negative = reverse)
 	 * @param velocity The velocity to move
 	 * @param theta The angle to keep pointed forward
+	 * @param timeout The milliseconds allowed before timing out
 	 */
-	void driveStraight(double distance, double velocity, double theta);
+	void driveStraight(double distance, double velocity, double theta, uint32_t timeout = UINT32_MAX);
+
+	/**
+	 * @brief Drives straight to a target point
+	 * 
+	 * @param x The target x-coordinate
+	 * @param y The target y-coordinate
+	 * @param velocity The motion velocity
+	 * @param timeout The milliseconds allowed before timing out
+	 */
+	void driveStraightToPoint(double x, double y, double velocity, uint32_t timeout = UINT32_MAX);
+
+	/**
+	 * @brief Sets the velocity for DriveStraight
+	 * 
+	 * @param velocity The motion velocity
+	 */
+	void setDriveStraightVelocity(double velocity);
 
 	/**
 	 * @brief Checks if the drive straight target has been reached
@@ -179,9 +208,10 @@ private:
 	 * @param theta The target angle
 	 * @param velocity The turn velocity
 	 * @param reversed Whether or not to turn to face away from the point
+	 * @param timeout The milliseconds allowed before timing out
 	 * @param direction The turn direction (default auto)
 	 */
-	void turnToAngle(double theta, double velocity, bool reversed = false, 
+	void turnToAngle(double theta, double velocity, bool reversed = false, uint32_t timeout = UINT32_MAX,
 					 control::motion::ETurnDirection direction = control::motion::ETurnDirection::AUTO);
 
 	/**
@@ -191,9 +221,10 @@ private:
 	 * @param x The target x-coordinate
 	 * @param y The target y-coordinate
 	 * @param reversed Whether or not to turn to face away from the point
+	 * @param timeout The milliseconds allowed before timing out
 	 * @param direction The turn direction (default auto)
 	 */
-	void turnToPoint(double x, double y, double velocity, bool reversed = false,
+	void turnToPoint(double x, double y, double velocity, bool reversed = false, uint32_t timeout = UINT32_MAX,
 					 control::motion::ETurnDirection direction = control::motion::ETurnDirection::AUTO);
 
 	/**
@@ -261,8 +292,9 @@ private:
 	 * @brief Sets the position of the elevator
 	 * 
 	 * @param position The position of the elevator
+	 * @param timeout The milliseconds allowed before timing out
 	 */
-	void setElevatorPosition(double position);
+	void setElevatorPosition(double position, uint32_t timeout = UINT32_MAX);
 
 	/**
 	 * @brief Calibrates the elevator
@@ -405,11 +437,11 @@ private:
 	double getBallDistance();
 
 	/**
-	 * @brief Gets the angle to the ball
+	 * @brief Gets the vision objects of the balls
 	 * 
-	 * @return double The angle to the ball
+	 * @return std::vector<io::VisionObject> The ball vision object
 	 */
-	double getBallAngle();
+	std::vector<io::VisionObject> getBallVisionObjects();
 
 	/**
 	 * @brief Loads the loader

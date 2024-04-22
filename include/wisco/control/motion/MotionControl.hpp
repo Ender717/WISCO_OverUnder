@@ -63,6 +63,12 @@ private:
     static constexpr char DRIVE_STRAIGHT_COMMAND_NAME[]{"DRIVE STRAIGHT"};
 
     /**
+     * @brief The name of the set drive straight velocity command
+     * 
+     */
+    static constexpr char SET_DRIVE_STRAIGHT_VELOCITY_COMMAND_NAME[]{"SET DRIVE STRAIGHT VELOCITY"};
+
+    /**
      * @brief The name of the turn to angle command
      * 
      */

@@ -79,6 +79,13 @@ public:
                                double distance, double velocity, double theta) = 0;
 
     /**
+     * @brief Sets the velocity of the motion
+     * 
+     * @param velocity The velocity of the motion
+     */
+    virtual void setVelocity(double velocity) = 0;
+
+    /**
      * @brief Checks if the target has been reached
      * 
      * @return true The target has been reached

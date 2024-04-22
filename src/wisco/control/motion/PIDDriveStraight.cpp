@@ -132,6 +132,15 @@ void PIDDriveStraight::driveStraight(std::shared_ptr<robot::Robot> robot,
         m_mutex->give();
 }
 
+void PIDDriveStraight::setVelocity(double velocity)
+{
+    if (m_mutex)
+        m_mutex->take();
+    motion_velocity = velocity;
+    if (m_mutex)
+        m_mutex->give();
+}
+
 bool PIDDriveStraight::targetReached()
 {
     return target_reached;

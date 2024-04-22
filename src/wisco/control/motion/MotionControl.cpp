@@ -79,6 +79,12 @@ void MotionControl::command(std::string command_name, va_list& args)
         if (m_drive_straight)
             m_drive_straight->driveStraight(robot, distance, velocity, theta);
     }
+    else if (command_name == SET_DRIVE_STRAIGHT_VELOCITY_COMMAND_NAME)
+    {
+        double velocity{va_arg(args, double)};
+        if (m_drive_straight)
+            m_drive_straight->setVelocity(velocity);
+    }
     else if (command_name == TURN_TO_ANGLE_COMMAND_NAME)
     {
         if (active_motion != EMotion::TURN)

@@ -223,6 +223,13 @@ public:
                        double distance, double velocity, double theta) override;
 
     /**
+     * @brief Sets the velocity of the motion
+     * 
+     * @param velocity The velocity of the motion
+     */
+    void setVelocity(double velocity) override;
+
+    /**
      * @brief Checks if the target has been reached
      * 
      * @return true The target has been reached
