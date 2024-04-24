@@ -1,4 +1,6 @@
 #include "wisco/control/path/PIDPurePursuit.hpp"
+#include "pros/screen.h"
+#include "pros/screen.hpp"
 
 namespace wisco
 {
@@ -200,11 +202,12 @@ void PIDPurePursuit::updateVelocity(robot::subsystems::position::Position positi
     if (std::abs(rotational_error) > M_PI / 4)
         rotational_control = m_rotational_pid.getControlValue(0, rotational_error);
     else
-        rotational_control = (2 * getDriveRadius() * std::sin(rotational_error) / m_follow_distance) * linear_control;
+        rotational_control = (2 * getDriveRadius() * std::sin(rotational_error) / m_follow_distance) * std::abs(linear_control);
 
     double left_velocity{linear_control - rotational_control};
     double right_velocity{linear_control + rotational_control};
     robot::subsystems::drive::Velocity velocity{left_velocity, right_velocity};
+    //pros::screen::print(pros::E_TEXT_LARGE_CENTER, 9, "%7.2f, %7.2f", left_velocity, right_velocity);
     setDriveVelocity(velocity);
 }
 
