@@ -135,6 +135,12 @@ private:
     Position m_position{};
 
     /**
+     * @brief The heading offset
+     * 
+     */
+    double heading_offset{};
+
+    /**
      * @brief The last value of the heading sensor
      * 
      */

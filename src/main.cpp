@@ -109,7 +109,7 @@ void opcontrol()
 		int vision_width{316}, vision_height{212};
 		pros::screen::set_pen(pros::Color::white);
 		pros::screen::draw_rect(vision_box_x, vision_box_y, vision_box_x + vision_width + 2, vision_box_y + vision_height + 2);
-		pros::Vision vision_sensor(1);
+		pros::Vision vision_sensor(14);
 		pros::vision_signature_s_t blue_triball_sig = pros::c::vision_signature_from_utility(1, -3855, -2239, -3047, 5083, 9307, 7195, 2.000, 0);
 		vision_sensor.set_signature(1, &blue_triball_sig);
 		pros::vision_signature_s_t green_triball_sig = pros::c::vision_signature_from_utility(2, -6145, -4515, -5330, -6257, -4479, -5368, 3.100, 0);

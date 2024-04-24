@@ -37,7 +37,7 @@ void InertialOdometry::updatePosition()
     uint32_t current_time{};
 
     if (m_heading_sensor)
-        current_heading = m_heading_sensor->getRotation();
+        current_heading = m_heading_sensor->getRotation() + heading_offset;
     if (m_linear_distance_tracking_sensor)
         current_linear_distance = m_linear_distance_tracking_sensor->getDistance();
     if (m_strafe_distance_tracking_sensor)
@@ -171,6 +171,8 @@ void InertialOdometry::setTheta(double theta)
     if (m_mutex)
         m_mutex->take();
     
+    heading_offset = theta - m_position.theta;
+    last_heading = theta;
     m_position.theta = theta;
 
     if (m_mutex)

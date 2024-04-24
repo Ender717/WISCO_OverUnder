@@ -1,37 +1,22 @@
 #include "pros_adapters/ProsVision.hpp"
-#include "wisco/io/EVisionObjectID.hpp"
 
 namespace pros_adapters
 {
-ProsVision::ProsVision(std::unique_ptr<pros::Vision>& sensor)
+ProsVision::ProsVision(std::unique_ptr<pros::Vision>& sensor, std::vector<pros::vision_signature_s_t>& signatures)
     : m_sensor{std::move(sensor)}
 {
-
+    if (m_sensor)
+    {
+        for (auto& signature : signatures)
+        {
+            m_sensor->set_signature(signature.id, &signature);
+        }
+    }
 }
 
 void ProsVision::initialize()
 {
-    static pros::vision_signature_s_t blue_triball_signature
-    {
-        pros::c::vision_signature_from_utility
-        (BLUE_TRIBALL_SIGNATURE, -3665, -2917, -3292, 4135, 10193, 7164, 2.000, 0)
-    };
-    static pros::vision_signature_s_t green_triball_signature
-    {
-        pros::c::vision_signature_from_utility
-        (GREEN_TRIBALL_SIGNATURE, -5845, -4809, -5328, -5495, -4151, -4822, 3.100, 0)
-    };
-    static pros::vision_signature_s_t red_triball_signature
-    {
-        pros::c::vision_signature_from_utility
-        (RED_TRIBALL_SIGNATURE, 6481, 9637, 8060, -1387, -463, -924, 2.000, 0)
-    };
-    if (m_sensor)
-    {
-        m_sensor->set_signature(BLUE_TRIBALL_SIGNATURE, &blue_triball_signature);
-        m_sensor->set_signature(GREEN_TRIBALL_SIGNATURE, &green_triball_signature);
-        m_sensor->set_signature(RED_TRIBALL_SIGNATURE, &red_triball_signature);
-    }
+    
 }
 
 std::vector<wisco::io::VisionObject> ProsVision::getObjects()

@@ -278,7 +278,23 @@ std::shared_ptr<robot::Robot> OrangeConfiguration::buildRobot()
     if (BALL_DETECTOR_VISION_PORT)
     {
         std::unique_ptr<pros::Vision> ball_detector_pros_vision{std::make_unique<pros::Vision>(BALL_DETECTOR_VISION_PORT)};
-        std::unique_ptr<wisco::io::IVisionSensor> ball_detector_pros_vision_sensor{std::make_unique<pros_adapters::ProsVision>(ball_detector_pros_vision)};
+        static pros::vision_signature_s_t blue_triball_signature
+        {
+            pros::c::vision_signature_from_utility
+            (1, -3781, -2737, -3259, 6343, 8739, 7541, 2.000, 0)
+        };
+        static pros::vision_signature_s_t green_triball_signature
+        {
+            pros::c::vision_signature_from_utility
+            (2, -4905, -3161, -4033, -5599, -3543, -4571, 3.000, 0)
+        };
+        static pros::vision_signature_s_t red_triball_signature
+        {
+            pros::c::vision_signature_from_utility
+            (3, 6791, 9969, 8380, -1747, -865, -1306, 2.000, 0)
+        };
+        static std::vector<pros::vision_signature_s_t> signatures{blue_triball_signature, green_triball_signature, red_triball_signature};
+        std::unique_ptr<wisco::io::IVisionSensor> ball_detector_pros_vision_sensor{std::make_unique<pros_adapters::ProsVision>(ball_detector_pros_vision, signatures)};
         distance_vision_ball_detector_builder.withVisionSensor(ball_detector_pros_vision_sensor);
     }
     std::unique_ptr<wisco::robot::subsystems::intake::IBallDetector> distance_vision_ball_detector

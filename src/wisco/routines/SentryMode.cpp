@@ -200,7 +200,7 @@ bool SentryMode::isValid(control::path::Point point)
     if (position.x < 72.0)
     {
         valid = (point.getX() > 27.0 && point.getX() < 69.0) &&
-                (point.getY() > 3.0 && point.getY() < 71.0);
+                (point.getY() > 26.0 && point.getY() < 71.0);
     }
     else
     {
@@ -224,12 +224,16 @@ void SentryMode::updateSearch()
         || (m_direction == control::motion::ETurnDirection::COUNTERCLOCKWISE && bindRadians(skip_angle - position.theta) < 0))
     {
         auto objects{getBallVisionObjects()};
-        double triball_angle{DBL_MAX};
+        double triball_angle{m_direction == control::motion::ETurnDirection::CLOCKWISE ? -DBL_MAX : DBL_MAX};
         for (auto object : objects)
         {
             for (auto object_id : m_alliance->getVisionObjectIDs("TRIBALL"))
             {
-                if (object.id == object_id && object.width > MINIMUM_OBJECT_SIZE
+                double total_angle{bindRadians(position.theta + object.horizontal)};
+                bool in_range{(sign(bindRadians(m_end_angle - total_angle))
+                    == sign(bindRadians(m_end_angle - position.theta)))
+                    || std::abs(bindRadians(m_end_angle - total_angle)) > M_PI / 2};
+                if (object.id == object_id && object.width > MINIMUM_OBJECT_SIZE && in_range
                     && ((object.horizontal > 0.0 && object.horizontal < triball_angle && m_direction == control::motion::ETurnDirection::COUNTERCLOCKWISE)
                     || (object.horizontal < 0.0 && object.horizontal > triball_angle && m_direction == control::motion::ETurnDirection::CLOCKWISE)))
                 {
@@ -237,7 +241,7 @@ void SentryMode::updateSearch()
                 }
             }
         }
-        if (triball_angle != DBL_MAX)
+        if (triball_angle != DBL_MAX && triball_angle != -DBL_MAX)
         {
             distance_time = 0;
             target_angle = triball_angle + position.theta;
@@ -273,11 +277,11 @@ void SentryMode::updateTarget()
                 m_control_system->pause();
                 setElevatorPosition(ELEVATOR_OUT);
                 setIntakeVoltage(INTAKE_VOLTAGE);
-                double line_distance{(74.0 - position.y) / std::sin(position.theta)};
+                double line_location{position.x < 72.0 ? 62.0 : 74.0};
+                double line_distance{(line_location - position.y) / std::sin(position.theta)};
                 if (line_distance < 0)
                     line_distance = DBL_MAX;
                 driveStraight(std::min(ball_distance, line_distance), 48.0, target_angle);
-                //boomerangGoToPoint(ball.getX(), ball.getY(), target_angle, BOOMERANG_VELOCITY);
                 state = EState::GRAB;
                 std::cout << "Grab Ball: " << ball.getX() << ", " << ball.getY() << std::endl;
             }

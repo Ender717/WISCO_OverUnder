@@ -69,7 +69,7 @@ private:
 	 * @brief The elevator position tolerance
 	 * 
 	 */
-	static constexpr double ELEVATOR_TOLERANCE{0.5};
+	static constexpr double ELEVATOR_TOLERANCE{1.0};
 
 	/**
 	 * @brief The velocity for motions
@@ -147,8 +147,9 @@ private:
 	 * @param theta The target angle
 	 * @param velocity The motion velocity
 	 * @param timeout The milliseconds allowed before timing out
+	 * @param tolerance The allowed tolerance to end the motion early
 	 */
-	void goToPoint(double x, double y, double theta, double velocity, uint32_t timeout = UINT32_MAX);
+	void goToPoint(double x, double y, double theta, double velocity, uint32_t timeout = 0, double tolerance = 0.0);
 
 	/**
 	 * @brief Checks if the boomerang target has been reached
@@ -164,8 +165,9 @@ private:
 	 * @param distance The distance to drive (negative = reverse)
 	 * @param velocity The velocity to move
 	 * @param timeout The milliseconds allowed before timing out
+	 * @param tolerance The allowed tolerance to end the motion early
 	 */
-	void driveStraight(double distance, double velocity, uint32_t timeout = UINT32_MAX);
+	void driveStraight(double distance, double velocity, uint32_t timeout = 0, double tolerance = 0.0);
 
 	/**
 	 * @brief Drives straight with a specified angle
@@ -174,8 +176,9 @@ private:
 	 * @param velocity The velocity to move
 	 * @param theta The angle to keep pointed forward
 	 * @param timeout The milliseconds allowed before timing out
+	 * @param tolerance The allowed tolerance to end the motion early
 	 */
-	void driveStraight(double distance, double velocity, double theta, uint32_t timeout = UINT32_MAX);
+	void driveStraight(double distance, double velocity, double theta, uint32_t timeout = 0, double tolerance = 0.0);
 
 	/**
 	 * @brief Drives straight to a target point
@@ -184,8 +187,9 @@ private:
 	 * @param y The target y-coordinate
 	 * @param velocity The motion velocity
 	 * @param timeout The milliseconds allowed before timing out
+	 * @param tolerance The allowed tolerance to end the motion
 	 */
-	void driveStraightToPoint(double x, double y, double velocity, uint32_t timeout = UINT32_MAX);
+	void driveStraightToPoint(double x, double y, double velocity, uint32_t timeout = 0, double tolerance = 0.0);
 
 	/**
 	 * @brief Sets the velocity for DriveStraight
@@ -209,9 +213,10 @@ private:
 	 * @param velocity The turn velocity
 	 * @param reversed Whether or not to turn to face away from the point
 	 * @param timeout The milliseconds allowed before timing out
+	 * @param tolerance The allowed tolerance to end the motion early
 	 * @param direction The turn direction (default auto)
 	 */
-	void turnToAngle(double theta, double velocity, bool reversed = false, uint32_t timeout = UINT32_MAX,
+	void turnToAngle(double theta, double velocity, bool reversed = false, uint32_t timeout = 0, double tolerance = 0.0,
 					 control::motion::ETurnDirection direction = control::motion::ETurnDirection::AUTO);
 
 	/**
@@ -222,9 +227,10 @@ private:
 	 * @param y The target y-coordinate
 	 * @param reversed Whether or not to turn to face away from the point
 	 * @param timeout The milliseconds allowed before timing out
+	 * @param tolerance The allowed tolerance to end the motion early
 	 * @param direction The turn direction (default auto)
 	 */
-	void turnToPoint(double x, double y, double velocity, bool reversed = false, uint32_t timeout = UINT32_MAX,
+	void turnToPoint(double x, double y, double velocity, bool reversed = false, uint32_t timeout = 0, double tolerance = 0.0,
 					 control::motion::ETurnDirection direction = control::motion::ETurnDirection::AUTO);
 
 	/**

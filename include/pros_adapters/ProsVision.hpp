@@ -5,6 +5,7 @@
 #include <map>
 #include <memory>
 
+#include "pros/vision.h"
 #include "pros/vision.hpp"
 
 #include "wisco/io/IVisionSensor.hpp"
@@ -83,8 +84,9 @@ public:
      * @brief Construct a new Pros Vision object
      * 
      * @param sensor The sensor being adapted
+     * @param signatures The signatures for the vision sensor
      */
-    ProsVision(std::unique_ptr<pros::Vision>& sensor);
+    ProsVision(std::unique_ptr<pros::Vision>& sensor, std::vector<pros::vision_signature_s_t>& signatures);
 
     /**
      * @brief Initializes the sensor
