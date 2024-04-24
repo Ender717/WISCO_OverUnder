@@ -593,37 +593,37 @@ private:
 	 * @brief The first hang arm piston port
 	 * 
 	 */
-	static constexpr char HANG_ARM_PISTON_1_PORT{};
+	static constexpr char HANG_ARM_PISTON_1_PORT{'C'};
 
 	/**
 	 * @brief The first hang arm piston's extended state
 	 * 
 	 */
-	static constexpr bool HANG_ARM_PISTON_1_EXTENDED_STATE{};
+	static constexpr bool HANG_ARM_PISTON_1_EXTENDED_STATE{true};
 
 	/**
 	 * @brief The hang arm piston state when the arm is up
 	 * 
 	 */
-	static constexpr bool HANG_ARM_UP_STATE{};
+	static constexpr bool HANG_ARM_UP_STATE{true};
 
 	/**
 	 * @brief The first hang winch piston port
 	 * 
 	 */
-	static constexpr char HANG_WINCH_PISTON_1_PORT{};
+	static constexpr char HANG_WINCH_PISTON_1_PORT{'D'};
 
 	/**
 	 * @brief The first hang winch piston's extended state
 	 * 
 	 */
-	static constexpr bool HANG_WINCH_PISTON_1_EXTENDED_STATE{};
+	static constexpr bool HANG_WINCH_PISTON_1_EXTENDED_STATE{true};
 
 	/**
 	 * @brief The hang winch piston state when the winch is engaged
 	 * 
 	 */
-	static constexpr bool HANG_WINCH_ENGAGED_STATE{};
+	static constexpr bool HANG_WINCH_ENGAGED_STATE{true};
 
 		/**
 	 * @brief The KP for the loader PID
@@ -761,7 +761,7 @@ private:
 	 * @brief The first umbrella piston port
 	 * 
 	 */
-	static constexpr int8_t UMBRELLA_PISTON_1_PORT{'C'};
+	static constexpr int8_t UMBRELLA_PISTON_1_PORT{};
 
 	/**
 	 * @brief The first umbrella piston's extended state

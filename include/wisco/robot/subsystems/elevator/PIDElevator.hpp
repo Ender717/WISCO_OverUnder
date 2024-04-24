@@ -134,6 +134,12 @@ private:
     uint32_t calibrate_time{};
 
     /**
+     * @brief Whether or not it's in manual control mode
+     * 
+     */
+    bool manual{};
+
+    /**
      * @brief Runs all the object-specific updates in the task loop
      * 
      */
@@ -171,6 +177,13 @@ public:
      * @param position The position of the elevator
      */
     void setPosition(double position) override;
+
+    /**
+     * @brief Set the voltage of the elevator
+     * 
+     * @param voltage The voltage of the elevator
+     */
+    void setVoltage(double voltage) override;
 
     /**
      * @brief Calibrates the elevator position

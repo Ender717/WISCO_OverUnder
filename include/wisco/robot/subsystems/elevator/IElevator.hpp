@@ -74,6 +74,13 @@ public:
     virtual void setPosition(double position) = 0;
 
     /**
+     * @brief Set the voltage of the elevator
+     * 
+     * @param voltage The elevator voltage
+     */
+    virtual void setVoltage(double voltage) = 0;
+
+    /**
      * @brief Calibrates the elevator position
      * 
      */

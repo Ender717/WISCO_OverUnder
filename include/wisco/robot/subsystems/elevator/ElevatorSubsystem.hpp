@@ -60,6 +60,12 @@ private:
     static constexpr char SET_POSITION_COMMAND_NAME[]{"SET POSITION"};
 
     /**
+     * @brief The name of the set voltage command
+     * 
+     */
+    static constexpr char SET_VOLTAGE_COMMAND_NAME[]{"SET VOLTAGE"};
+
+    /**
      * @brief The name of the calibrate command
      * 
      */

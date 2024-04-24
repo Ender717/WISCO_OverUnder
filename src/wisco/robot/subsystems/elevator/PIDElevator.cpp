@@ -30,7 +30,7 @@ void PIDElevator::taskUpdate()
         m_motors.setPosition(0);
         calibrating = false;
     }
-    if (!calibrating)
+    if (!calibrating && !manual)
         updatePosition();
     if (m_mutex)
         m_mutex->give();
@@ -77,7 +77,20 @@ void PIDElevator::setPosition(double position)
     if (m_mutex)
         m_mutex->take();
     
+    manual = false;
     m_position = position;
+
+    if (m_mutex)
+        m_mutex->give();
+}
+
+void PIDElevator::setVoltage(double voltage)
+{
+    if (m_mutex)
+        m_mutex->take();
+
+    manual = true;
+    m_motors.setVoltage(voltage);
 
     if (m_mutex)
         m_mutex->give();

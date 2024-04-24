@@ -35,6 +35,11 @@ void ElevatorSubsystem::command(std::string command_name, va_list& args)
         double position{va_arg(args, double)};
         m_elevator->setPosition(position);
     }
+    else if (command_name == SET_VOLTAGE_COMMAND_NAME)
+    {
+        double voltage{va_arg(args, double)};
+        m_elevator->setVoltage(voltage);
+    }
     else if (command_name == CALIBRATE_COMMAND_NAME)
     {
         m_elevator->calibrate();

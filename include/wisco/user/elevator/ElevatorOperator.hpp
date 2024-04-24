@@ -129,13 +129,13 @@ private:
      * @brief The pole hang position for the elevator
      * 
      */
-    static constexpr double POLE_HANG_POSITION{16.0};
+    static constexpr double POLE_HANG_POSITION{12.0};
 
     /**
      * @brief The partner hang position for the elevator
      * 
      */
-    static constexpr double PARTNER_HANG_POSITION{18.0};
+    static constexpr double PARTNER_HANG_POSITION{16.0};
 
     /**
      * @brief The distance to the cap for a pole hang
@@ -178,6 +178,13 @@ private:
      * 
      */
     void calibrateElevator();
+
+    /**
+     * @brief Set the voltage of the elevator
+     * 
+     * @param voltage The voltage of the elevator
+     */
+    void setElevatorVoltage(double voltage);
 
     /**
      * @brief Gets the current elevator position

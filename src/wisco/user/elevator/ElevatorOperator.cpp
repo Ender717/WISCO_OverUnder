@@ -19,6 +19,12 @@ void ElevatorOperator::calibrateElevator()
         m_robot->sendCommand(ELEVATOR_SUBSYSTEM_NAME, CALIBRATE_COMMAND_NAME);
 }
 
+void ElevatorOperator::setElevatorVoltage(double voltage)
+{
+    if (m_robot)
+        m_robot->sendCommand(ELEVATOR_SUBSYSTEM_NAME, "SET VOLTAGE", voltage);
+}
+
 double ElevatorOperator::getElevatorPosition()
 {
     double position{};
@@ -320,12 +326,18 @@ void ElevatorOperator::setElevatorPosition(const std::unique_ptr<IProfile>& prof
     EControllerDigital out{profile->getDigitalControlMapping(EControl::ELEVATOR_OUT)};
     EControllerDigital toggle{profile->getDigitalControlMapping(EControl::ELEVATOR_TOGGLE)};
     EControllerDigital intake{profile->getDigitalControlMapping(EControl::INTAKE_IN)};
-    EControllerDigital outtake{profile->getDigitalControlMapping(EControl::INTAKE_OUT)};
+    EControllerDigital outtake{profile->getDigitalControlMapping(EControl::INTAKE_OUT)};   
 
-    if (m_controller->getNewDigital(calibrate))
-        calibrateElevator();    
-
-    if (!isCalibrating())
+    if (getHangWinchEngaged())
+    {
+        double voltage{m_controller->getAnalog(EControllerAnalog::JOYSTICK_LEFT_Y) * -12.0};
+        setElevatorVoltage(voltage);
+    }
+    else if (m_controller->getNewDigital(calibrate))
+    {
+        calibrateElevator(); 
+    }
+    else if (!isCalibrating())
     {
         switch (static_cast<EElevatorControlMode>(profile->getControlMode(EControlType::ELEVATOR)))
         {
