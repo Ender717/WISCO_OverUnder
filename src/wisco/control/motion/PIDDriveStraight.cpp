@@ -46,7 +46,7 @@ double PIDDriveStraight::getOdometryVelocity()
 void PIDDriveStraight::updateVelocity(double control_distance, double theta)
 {
     double linear_control{m_linear_pid.getControlValue(0, control_distance)};
-    double rotational_control{m_rotational_pid.getControlValue(theta, target_angle)};
+    double rotational_control{m_rotational_pid.getControlValue(0, bindRadians(target_angle - theta))};
     
     if (std::abs(linear_control) > motion_velocity)
         linear_control *= motion_velocity / std::abs(linear_control);
@@ -64,9 +64,14 @@ void PIDDriveStraight::taskUpdate()
         auto position{getOdometryPosition()};
         double start_distance{distance(start_x, start_y, position.x, position.y)};
         double start_angle{angle(start_x, start_y, position.x, position.y)};
-        double control_distance{target_distance - (start_distance * std::cos(start_angle))};
+        if (target_distance < 0)
+        {
+            start_distance *= -1;
+            start_angle = bindRadians(start_angle + M_PI);
+        }
+        double control_distance{target_distance - (start_distance * std::cos(bindRadians(start_angle - target_angle)))};
         double velocity{getOdometryVelocity()};
-        if (control_distance < m_target_tolerance && velocity < m_target_velocity)
+        if (std::abs(control_distance) < m_target_tolerance && velocity < m_target_velocity)
             target_reached = true;
         else
             updateVelocity(control_distance, position.theta);

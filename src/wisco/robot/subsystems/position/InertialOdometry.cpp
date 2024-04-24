@@ -74,9 +74,9 @@ void InertialOdometry::updatePosition()
     m_position.x += global_x;
     m_position.y += global_y;
     m_position.theta = current_heading;
-    //pros::screen::print(pros::E_TEXT_LARGE_CENTER, 1, "X: %7.2f", m_position.x);
-    //pros::screen::print(pros::E_TEXT_LARGE_CENTER, 3, "Y: %7.2f", m_position.y);
-    //pros::screen::print(pros::E_TEXT_LARGE_CENTER, 5, "T: %7.2f", m_position.theta);
+    pros::screen::print(pros::E_TEXT_LARGE_CENTER, 1, "X: %7.2f", m_position.x);
+    pros::screen::print(pros::E_TEXT_LARGE_CENTER, 3, "Y: %7.2f", m_position.y);
+    pros::screen::print(pros::E_TEXT_LARGE_CENTER, 5, "T: %7.2f", m_position.theta * 180 / M_PI);
 
     if (time_change)
     {

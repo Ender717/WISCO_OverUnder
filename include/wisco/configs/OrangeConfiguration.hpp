@@ -112,7 +112,7 @@ private:
 	 * @brief The port for the odometry linear distance tracking sensor
 	 * 
 	 */
-	static constexpr int8_t ODOMETRY_LINEAR_PORT{15};
+	static constexpr int8_t ODOMETRY_LINEAR_PORT{13};
 
 	/**
 	 * @brief The radius of the odometry linear distance tracking wheel
@@ -148,7 +148,7 @@ private:
 	 * @brief The port for the resetter distance sensor
 	 * 
 	 */
-	static constexpr int8_t RESETTER_DISTANCE_PORT{14};
+	static constexpr int8_t RESETTER_DISTANCE_PORT{16};
 
 	/**
 	 * @brief The tuning constant for the resetter distance sensor
@@ -172,13 +172,13 @@ private:
 	 * @brief The y-offset of the resetter
 	 * 
 	 */
-	static constexpr double RESETTER_OFFSET_Y{5.500};
+	static constexpr double RESETTER_OFFSET_Y{-5.500};
 
 	/**
 	 * @brief The angle-offset of the resetter
 	 * 
 	 */
-	static constexpr double RESETTER_OFFSET_THETA{M_PI / 2};
+	static constexpr double RESETTER_OFFSET_THETA{-M_PI / 2};
 
 	/**
 	 * @brief Whether to use the kinematic drive model or not
@@ -296,10 +296,10 @@ private:
 
 	/**
 	 * @brief The conversion from velocity to voltage on the drive
-	 * Current calculation = 12 volts to 16 inches per second
+	 * Current calculation = 12 volts to 58.707 inches per second
 	 * 
 	 */
-	static constexpr double DRIVE_VELOCITY_TO_VOLTAGE{12.0 / 60.0};
+	static constexpr double DRIVE_VELOCITY_TO_VOLTAGE{12.0 / 58.707};
 
 	/**
 	 * @brief The mass of the drive
@@ -323,7 +323,7 @@ private:
 	 * @brief The gear ratio of the drive
 	 * 
 	 */
-	static constexpr double DRIVE_GEAR_RATIO{600.0 / 331.4};
+	static constexpr double DRIVE_GEAR_RATIO{600.0 / 345.0};
 
 	/**
 	 * @brief The wheel radius of the drive
@@ -371,7 +371,7 @@ private:
 	 * @brief The port for the ball detector distance sensor
 	 * 
 	 */
-	static constexpr int8_t BALL_DETECTOR_DISTANCE_PORT{5};
+	static constexpr int8_t BALL_DETECTOR_DISTANCE_PORT{6};
 
 	/**
 	 * @brief The tuning constant for the ball detector distance sensor
@@ -389,13 +389,13 @@ private:
 	 * @brief The port for the ball detector vision sensor
 	 * 
 	 */
-	static constexpr int8_t BALL_DETECTOR_VISION_PORT{16};
+	static constexpr int8_t BALL_DETECTOR_VISION_PORT{14};
 
 	/**
 	 * @brief The proportional constant for the boomerang linear pid controller
 	 * 
 	 */
-	static constexpr double BOOMERANG_LINEAR_KP{11.0};
+	static constexpr double BOOMERANG_LINEAR_KP{14.0};
 
 	/**
 	 * @brief The integral constant for the boomerang linear pid controller
@@ -407,7 +407,7 @@ private:
 	 * @brief The derivative constant for the boomerang linear pid controller
 	 * 
 	 */
-	static constexpr double BOOMERANG_LINEAR_KD{640.0};
+	static constexpr double BOOMERANG_LINEAR_KD{1024.0};
 
 	/**
 	 * @brief The proportional constant for the boomerang rotational pid controller
@@ -419,7 +419,7 @@ private:
 	 * @brief The integral constant for the boomerang rotational pid controller
 	 * 
 	 */
-	static constexpr double BOOMERANG_ROTATIONAL_KI{};
+	static constexpr double BOOMERANG_ROTATIONAL_KI{0.0};
 
 	/**
 	 * @brief The derivative constant for the boomerang rotational pid controller
@@ -431,7 +431,13 @@ private:
 	 * @brief The lead ratio for the boomerang controller
 	 * 
 	 */
-	static constexpr double BOOMERANG_LEAD{0.12};
+	static constexpr double BOOMERANG_LEAD{0.15};
+
+	/**
+	 * @brief The distance where boomerang stops aiming at the target point
+	 * 
+	 */
+	static constexpr double BOOMERANG_AIM_DISTANCE{6.0};
 
 	/**
 	 * @brief The target tolerance for the boomerang controller
@@ -587,37 +593,37 @@ private:
 	 * @brief The first hang arm piston port
 	 * 
 	 */
-	static constexpr char HANG_ARM_PISTON_1_PORT{};
+	static constexpr char HANG_ARM_PISTON_1_PORT{'C'};
 
 	/**
 	 * @brief The first hang arm piston's extended state
 	 * 
 	 */
-	static constexpr bool HANG_ARM_PISTON_1_EXTENDED_STATE{};
+	static constexpr bool HANG_ARM_PISTON_1_EXTENDED_STATE{true};
 
 	/**
 	 * @brief The hang arm piston state when the arm is up
 	 * 
 	 */
-	static constexpr bool HANG_ARM_UP_STATE{};
+	static constexpr bool HANG_ARM_UP_STATE{true};
 
 	/**
 	 * @brief The first hang winch piston port
 	 * 
 	 */
-	static constexpr char HANG_WINCH_PISTON_1_PORT{};
+	static constexpr char HANG_WINCH_PISTON_1_PORT{'D'};
 
 	/**
 	 * @brief The first hang winch piston's extended state
 	 * 
 	 */
-	static constexpr bool HANG_WINCH_PISTON_1_EXTENDED_STATE{};
+	static constexpr bool HANG_WINCH_PISTON_1_EXTENDED_STATE{true};
 
 	/**
 	 * @brief The hang winch piston state when the winch is engaged
 	 * 
 	 */
-	static constexpr bool HANG_WINCH_ENGAGED_STATE{};
+	static constexpr bool HANG_WINCH_ENGAGED_STATE{true};
 
 		/**
 	 * @brief The KP for the loader PID
@@ -641,7 +647,7 @@ private:
 	 * @brief The first loader motor port
 	 * 
 	 */
-	static constexpr int8_t LOADER_MOTOR_1_PORT{6};
+	static constexpr int8_t LOADER_MOTOR_1_PORT{5};
 
 	/**
 	 * @brief The first loader motor gearset
@@ -653,13 +659,13 @@ private:
 	 * @brief The loader position when loaded
 	 * 
 	 */
-	static constexpr double LOADER_LOADED_POSITION{5 * M_PI / 6};
+	static constexpr double LOADER_LOADED_POSITION{10 * M_PI / 12};
 
 	/**
 	 * @brief The loader position when ready
 	 * 
 	 */
-	static constexpr double LOADER_READY_POSITION{-M_PI / 36};
+	static constexpr double LOADER_READY_POSITION{-M_PI / 72};
 
 	/**
 	 * @brief The loader position tolerance
@@ -773,7 +779,7 @@ private:
 	 * @brief The first left wing piston port
 	 * 
 	 */
-	static constexpr char LEFT_WING_PISTON_1_PORT{'A'};
+	static constexpr char LEFT_WING_PISTON_1_PORT{'B'};
 
 	/**
 	 * @brief The first left wing piston's extended state
@@ -785,7 +791,7 @@ private:
 	 * @brief The first right wing piston port
 	 * 
 	 */
-	static constexpr char RIGHT_WING_PISTON_1_PORT{'B'};
+	static constexpr char RIGHT_WING_PISTON_1_PORT{'A'};
 
 	/**
 	 * @brief The first right wing piston's extended state

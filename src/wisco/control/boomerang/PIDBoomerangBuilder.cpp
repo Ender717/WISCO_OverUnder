@@ -42,6 +42,12 @@ PIDBoomerangBuilder* PIDBoomerangBuilder::withLead(double lead)
     return this;
 }
 
+PIDBoomerangBuilder* PIDBoomerangBuilder::withAimDistance(double aim_distance)
+{
+    m_aim_distance = aim_distance;
+    return this;
+}
+
 PIDBoomerangBuilder* PIDBoomerangBuilder::withTargetTolerance(double target_tolerance)
 {
     m_target_tolerance = target_tolerance;
@@ -63,6 +69,7 @@ std::unique_ptr<IBoomerang> PIDBoomerangBuilder::build()
     pid_boomerang->setLinearPID(m_linear_pid);
     pid_boomerang->setRotationalPID(m_rotational_pid);
     pid_boomerang->setLead(m_lead);
+    pid_boomerang->setAimDistance(m_aim_distance);
     pid_boomerang->setTargetTolerance(m_target_tolerance);
     pid_boomerang->setTargetVelocity(m_target_velocity);
     return pid_boomerang;

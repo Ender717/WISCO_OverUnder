@@ -131,6 +131,35 @@ bool SentryMode::boomerangTargetReached()
     return target_reached;
 }
 
+void SentryMode::driveStraight(double distance, double velocity, double theta, uint32_t timeout)
+{
+	if (m_control_system && m_robot)
+	{
+		m_control_system->sendCommand("MOTION", "DRIVE STRAIGHT", &m_robot, distance, velocity, theta);
+		if (timeout != UINT32_MAX)
+		{
+			uint32_t start_time{m_clock->getTime()};
+			while (!driveStraightTargetReached() && m_clock->getTime() < start_time + timeout)
+				m_delayer->delay(10);
+		}
+	}
+}
+
+bool SentryMode::driveStraightTargetReached()
+{
+	bool target_reached{};
+	if (m_control_system)
+	{
+		bool* result{static_cast<bool*>(m_control_system->getState("MOTION", "DRIVE STRAIGHT TARGET REACHED"))};
+		if (result)
+		{
+			target_reached = *result;
+			delete result;
+		}
+	}
+	return target_reached;
+}
+
 void SentryMode::turnToAngle(double theta, double velocity, bool reversed, control::motion::ETurnDirection direction)
 {
     if (m_control_system)
@@ -176,7 +205,7 @@ bool SentryMode::isValid(control::path::Point point)
     else
     {
         valid = (point.getX() > 73.5 && point.getX() < 112.0) &&
-                (point.getY() > 25.5 && point.getY() < 85.0);
+                (point.getY() > 24.5 && point.getY() < 86.0);
     }
     
     return valid;
@@ -244,7 +273,11 @@ void SentryMode::updateTarget()
                 m_control_system->pause();
                 setElevatorPosition(ELEVATOR_OUT);
                 setIntakeVoltage(INTAKE_VOLTAGE);
-                boomerangGoToPoint(ball.getX(), ball.getY(), target_angle, BOOMERANG_VELOCITY);
+                double line_distance{(74.0 - position.y) / std::sin(position.theta)};
+                if (line_distance < 0)
+                    line_distance = DBL_MAX;
+                driveStraight(std::min(ball_distance, line_distance), 48.0, target_angle);
+                //boomerangGoToPoint(ball.getX(), ball.getY(), target_angle, BOOMERANG_VELOCITY);
                 state = EState::GRAB;
                 std::cout << "Grab Ball: " << ball.getX() << ", " << ball.getY() << std::endl;
             }

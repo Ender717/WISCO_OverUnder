@@ -112,7 +112,7 @@ private:
 	 * @brief The port for the odometry linear distance tracking sensor
 	 * 
 	 */
-	static constexpr int8_t ODOMETRY_LINEAR_PORT{15};
+	static constexpr int8_t ODOMETRY_LINEAR_PORT{13};
 
 	/**
 	 * @brief The radius of the odometry linear distance tracking wheel
@@ -296,10 +296,10 @@ private:
 
 	/**
 	 * @brief The conversion from velocity to voltage on the drive
-	 * Current calculation = 12 volts to 16 inches per second
+	 * Current calculation = 12 volts to 58.707 inches per second
 	 * 
 	 */
-	static constexpr double DRIVE_VELOCITY_TO_VOLTAGE{12.0 / 60.0};
+	static constexpr double DRIVE_VELOCITY_TO_VOLTAGE{12.0 / 58.707};
 
 	/**
 	 * @brief The mass of the drive
@@ -323,7 +323,7 @@ private:
 	 * @brief The gear ratio of the drive
 	 * 
 	 */
-	static constexpr double DRIVE_GEAR_RATIO{600.0 / 331.4};
+	static constexpr double DRIVE_GEAR_RATIO{600.0 / 345.0};
 
 	/**
 	 * @brief The wheel radius of the drive
@@ -371,7 +371,7 @@ private:
 	 * @brief The port for the ball detector distance sensor
 	 * 
 	 */
-	static constexpr int8_t BALL_DETECTOR_DISTANCE_PORT{5};
+	static constexpr int8_t BALL_DETECTOR_DISTANCE_PORT{16};
 
 	/**
 	 * @brief The tuning constant for the ball detector distance sensor
@@ -389,13 +389,13 @@ private:
 	 * @brief The port for the ball detector vision sensor
 	 * 
 	 */
-	static constexpr int8_t BALL_DETECTOR_VISION_PORT{16};
+	static constexpr int8_t BALL_DETECTOR_VISION_PORT{5};
 
 	/**
 	 * @brief The proportional constant for the boomerang linear pid controller
 	 * 
 	 */
-	static constexpr double BOOMERANG_LINEAR_KP{11.0};
+	static constexpr double BOOMERANG_LINEAR_KP{14.0};
 
 	/**
 	 * @brief The integral constant for the boomerang linear pid controller
@@ -407,7 +407,7 @@ private:
 	 * @brief The derivative constant for the boomerang linear pid controller
 	 * 
 	 */
-	static constexpr double BOOMERANG_LINEAR_KD{640.0};
+	static constexpr double BOOMERANG_LINEAR_KD{1024.0};
 
 	/**
 	 * @brief The proportional constant for the boomerang rotational pid controller
@@ -419,7 +419,7 @@ private:
 	 * @brief The integral constant for the boomerang rotational pid controller
 	 * 
 	 */
-	static constexpr double BOOMERANG_ROTATIONAL_KI{};
+	static constexpr double BOOMERANG_ROTATIONAL_KI{0.0};
 
 	/**
 	 * @brief The derivative constant for the boomerang rotational pid controller
@@ -431,7 +431,13 @@ private:
 	 * @brief The lead ratio for the boomerang controller
 	 * 
 	 */
-	static constexpr double BOOMERANG_LEAD{0.12};
+	static constexpr double BOOMERANG_LEAD{0.15};
+
+	/**
+	 * @brief The distance where boomerang stops aiming at the target point
+	 * 
+	 */
+	static constexpr double BOOMERANG_AIM_DISTANCE{6.0};
 
 	/**
 	 * @brief The target tolerance for the boomerang controller
@@ -653,13 +659,13 @@ private:
 	 * @brief The loader position when loaded
 	 * 
 	 */
-	static constexpr double LOADER_LOADED_POSITION{5 * M_PI / 6};
+	static constexpr double LOADER_LOADED_POSITION{11 * M_PI / 12};
 
 	/**
 	 * @brief The loader position when ready
 	 * 
 	 */
-	static constexpr double LOADER_READY_POSITION{-M_PI / 36};
+	static constexpr double LOADER_READY_POSITION{-M_PI / 72};
 
 	/**
 	 * @brief The loader position tolerance
@@ -773,7 +779,7 @@ private:
 	 * @brief The first left wing piston port
 	 * 
 	 */
-	static constexpr char LEFT_WING_PISTON_1_PORT{'A'};
+	static constexpr char LEFT_WING_PISTON_1_PORT{'B'};
 
 	/**
 	 * @brief The first left wing piston's extended state
@@ -785,7 +791,7 @@ private:
 	 * @brief The first right wing piston port
 	 * 
 	 */
-	static constexpr char RIGHT_WING_PISTON_1_PORT{'B'};
+	static constexpr char RIGHT_WING_PISTON_1_PORT{'A'};
 
 	/**
 	 * @brief The first right wing piston's extended state

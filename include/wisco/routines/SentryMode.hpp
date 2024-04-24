@@ -115,7 +115,7 @@ private:
      * @brief The minimum object size to be visually targetted
      * 
      */
-    static constexpr double MINIMUM_OBJECT_SIZE{0.09};
+    static constexpr double MINIMUM_OBJECT_SIZE{0.15};
 
     /**
      * @brief The distance to turn before resuming a search after skipping
@@ -317,6 +317,24 @@ private:
      * @return false The boomerang target has not been reached
      */
     bool boomerangTargetReached();
+
+    /**
+	 * @brief Drives straight with a specified angle
+	 * 
+	 * @param distance The distance to drive (negative = reverse)
+	 * @param velocity The velocity to move
+	 * @param theta The angle to keep pointed forward
+	 * @param timeout The milliseconds allowed before timing out
+	 */
+	void driveStraight(double distance, double velocity, double theta, uint32_t timeout = UINT32_MAX);
+
+    /**
+	 * @brief Checks if the drive straight target has been reached
+	 * 
+	 * @return true The drive straight target has been reached
+	 * @return false The drive straight target has not been reached
+	 */
+	bool driveStraightTargetReached();
 
     /**
      * @brief Turns to a target angle

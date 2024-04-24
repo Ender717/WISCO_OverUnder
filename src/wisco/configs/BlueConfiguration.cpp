@@ -30,6 +30,7 @@ std::shared_ptr<control::ControlSystem> BlueConfiguration::buildControlSystem()
         withLinearPID(boomerang_linear_pid)->
         withRotationalPID(boomerang_rotational_pid)->
         withLead(BOOMERANG_LEAD)->
+        withAimDistance(BOOMERANG_AIM_DISTANCE)->
         withTargetTolerance(BOOMERANG_TARGET_TOLERANCE)->
         withTargetVelocity(BOOMERANG_TARGET_VELOCITY)->
         build()

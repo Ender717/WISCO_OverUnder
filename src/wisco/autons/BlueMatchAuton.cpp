@@ -1,5 +1,8 @@
 #include "wisco/autons/BlueMatchAuton.hpp"
+#include "pros/screen.h"
+#include "pros/screen.hpp"
 #include "wisco/io/EVisionObjectID.hpp"
+#include <iostream>
 
 namespace wisco
 {
@@ -41,6 +44,7 @@ void BlueMatchAuton::goToPoint(double x, double y, double theta, double velocity
 			uint32_t start_time{getTime()};
 			while (!boomerangTargetReached() && getTime() < start_time + timeout)
 				delay(LOOP_DELAY);
+			pauseControlSystem();
 		}
 	}
 }
@@ -73,9 +77,11 @@ void BlueMatchAuton::driveStraight(double distance, double velocity, double thet
 		m_control_system->sendCommand("MOTION", "DRIVE STRAIGHT", &m_robot, distance, velocity, theta);
 		if (timeout != UINT32_MAX)
 		{
+			std::cout << "Timeout: " << timeout << std::endl;
 			uint32_t start_time{getTime()};
 			while (!driveStraightTargetReached() && getTime() < start_time + timeout)
 				delay(LOOP_DELAY);
+			pauseControlSystem();
 		}
 	}
 }
@@ -85,6 +91,11 @@ void BlueMatchAuton::driveStraightToPoint(double x, double y, double velocity, u
 	auto position{getOdometryPosition()};
 	double target_distance{distance(position.x, position.y, x, y)};
 	double target_angle{angle(position.x, position.y, x, y)};
+	if (std::abs(bindRadians(target_angle - position.theta)) > M_PI / 2)
+	{
+		target_distance *= -1;
+		target_angle = bindRadians(target_angle + M_PI);
+	}
 	driveStraight(target_distance, velocity, target_angle, timeout);
 }
 
@@ -120,6 +131,7 @@ void BlueMatchAuton::turnToAngle(double theta, double velocity, bool reversed, u
 			uint32_t start_time{getTime()};
 			while (!turnTargetReached() && getTime() < start_time + timeout)
 				delay(LOOP_DELAY);
+			pauseControlSystem();
 		}
 	}
 }
@@ -135,6 +147,7 @@ void BlueMatchAuton::turnToPoint(double x, double y, double velocity, bool rever
 			uint32_t start_time{getTime()};
 			while (!turnTargetReached() && getTime() < start_time + timeout)
 				delay(LOOP_DELAY);
+			pauseControlSystem();
 		}
 	}
 }
@@ -696,7 +709,7 @@ void BlueMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	m_control_system = control_system;
 	m_robot = robot;
 
-	// Set the starting position
+	uint32_t auton_start_time{getTime()};
 	double start_x{17.0}, start_y{17.0}, start_theta{-3 * M_PI / 4};
 	setOdometryPosition(start_x, start_y, start_theta);
 
@@ -735,13 +748,10 @@ void BlueMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	}
 	if (timeout)
 	{
-		// Turn to face the failed match load
-		double failed_triball_x{20.0}, failed_triball_y{4.0};
-		uint32_t failed_triball_timeout{1000};
-		turnToPoint(failed_triball_x, failed_triball_y, TURN_VELOCITY, false, failed_triball_timeout);
-
 		// Grab the failed match load
-		double failed_triball_offset{2.0};
+		double failed_triball_x{8.0}, failed_triball_y{8.0};
+		uint32_t failed_triball_timeout{1000};
+		double failed_triball_offset{4.0};
 		position = getOdometryPosition();
 		double triball_distance{distance(position.x, position.y, failed_triball_x, failed_triball_y)};
 		double elevator_position{triball_distance - ELEVATOR_OFFSET + failed_triball_offset};
@@ -759,7 +769,7 @@ void BlueMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 
 	// Turn to the start of the alley
 	setUmbrellaOut();
-	double alley_start_x{25.0}, alley_start_y{13.0};
+	double alley_start_x{26.0}, alley_start_y{11.0};
 	uint32_t alley_start_turn_timeout{1000};
 	turnToPoint(alley_start_x, alley_start_y, TURN_VELOCITY, true, alley_start_turn_timeout);
 
@@ -768,14 +778,15 @@ void BlueMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	setRightWing(true);
 
 	// Move to the start of the alley
+	double alley_theta{175 * M_PI / 180};
 	position = getOdometryPosition();
 	uint32_t alley_start_timeout{2000};
+	//goToPoint(alley_start_x, alley_start_y, alley_theta, MOTION_VELOCITY, alley_start_timeout);
 	driveStraightToPoint(alley_start_x, alley_start_y, MOTION_VELOCITY, alley_start_timeout);
 
 	// Turn to face down the alley
-	double alley_theta{5 * M_PI / 180};
 	uint32_t alley_turn_timeout{500};
-	turnToAngle(alley_theta, TURN_VELOCITY, alley_turn_timeout);
+	turnToAngle(alley_theta, TURN_VELOCITY, false, alley_turn_timeout);
 
 	/*
 	double alley_x{48.0}, alley_y{10.0};
@@ -785,9 +796,9 @@ void BlueMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	*/
 
 	// Follow the alley path
-	double alley_end_x{106.0};
-	double fast_alley_velocity{48.0}, slow_alley_velocity{24.0}, slow_alley_x{84.0};
-	double collision_detection{3.0};
+	double alley_end_x{104.0};
+	double fast_alley_velocity{48.0}, slow_alley_velocity{24.0}, slow_alley_x{76.0};
+	double collision_detection{3.0}, collision_end_x{alley_end_x - 4.0};
 	uint32_t collision_delay{1000}, collision_start_time{getTime()};
 	double alley_distance{(alley_end_x - alley_start_x) * std::cos(alley_theta)};
 	double alley_velocity{fast_alley_velocity};
@@ -798,13 +809,24 @@ void BlueMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	{
 		// If we have reached the slow section of the alley, slow down
 		if (position.x > slow_alley_x)
+		{
 			alley_velocity = slow_alley_velocity;
+
+			// Get rid of extra balls
+			if (timeout)
+			{
+				setElevatorPosition(0);
+				setIntakeVoltage(-MAX_VOLTAGE);
+			}
+		}
 		else
 			alley_velocity = fast_alley_velocity;
 		setDriveStraightVelocity(alley_velocity);
 
 		// Detect getting stuck
-		if (velocity < alley_velocity / collision_detection && getTime() > collision_start_time + collision_delay)
+		if (position.x < collision_end_x
+			&& velocity < alley_velocity / collision_detection 
+			&& getTime() > collision_start_time + collision_delay)
 		{
 			// Back up to get free
 			pauseControlSystem();
@@ -846,8 +868,17 @@ void BlueMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	pauseControlSystem();
 	*/
 
+	// Turn to face the start of the goal shove move
+	double goal_shove_start_x{alley_end_x + 5.0}, goal_shove_start_y{12.0};
+	uint32_t goal_shove_start_turn_timeout{500};
+	turnToPoint(goal_shove_start_x, goal_shove_start_y, TURN_VELOCITY, true, goal_shove_start_turn_timeout);
+
+	// Move to the start of the goal shove move
+	uint32_t goal_shove_start_timeout{500};
+	driveStraightToPoint(goal_shove_start_x, goal_shove_start_y, MOTION_VELOCITY, goal_shove_start_timeout);
+
 	// Turn to face the goal shove start point
-	double goal_shove_x{132.0}, goal_shove_y{28.0};
+	double goal_shove_x{130.0}, goal_shove_y{28.0};
 	uint32_t goal_shove_turn_timeout{500};
 	turnToPoint(goal_shove_x, goal_shove_y, TURN_VELOCITY, true, goal_shove_turn_timeout);
 
@@ -863,7 +894,7 @@ void BlueMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 
 	// Push the alley triballs into the goal
 	double push_velocity{60.0};
-	uint32_t push_timeout{1500};
+	uint32_t push_timeout{1000};
 	driveStraightToPoint(side_goal_x, side_goal_y, push_velocity, push_timeout);
 
 	// Turn to face the goal shove start point
@@ -900,9 +931,11 @@ void BlueMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	// Visually detect the alliance ball
 	double alliance_ball_angle{};
 	double largest_alliance_ball{};
-	for (auto object : getBallVisionObjects())
+	auto objects{getBallVisionObjects()};
+	auto object_ids{alliance->getVisionObjectIDs("TRIBALL")};
+	for (auto object : objects)
 	{
-		for (auto object_id : alliance->getVisionObjectIDs("TRIBALL"))
+		for (auto object_id : object_ids)
 		{
 			if (object.id == object_id && object.id != io::EVisionObjectID::GREEN_TRIBALL)
 			{
@@ -921,123 +954,99 @@ void BlueMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	uint32_t precise_alliance_turn_timeout{500};
 	turnToAngle(alliance_ball_angle, TURN_VELOCITY, false, precise_alliance_turn_timeout);
 
-	//------------------------------------------------------------------------------------------------------
-	// UPDATED TO HERE
-
 	// Grab the alliance triball
-	double alliance_ball_velocity{12.0}, alliance_ball_elevator{7.0}, grab_distance{14};
-	goToPoint(alliance_ball_x, alliance_ball_y, alliance_ball_theta, alliance_ball_velocity);
-	setElevatorPosition(alliance_ball_elevator);
+	double alliance_ball_grab_distance{6.0}, alliance_ball_velocity{12.0}, alliance_ball_elevator{8.0};
+	uint32_t alliance_ball_grab_timeout{1000}, alliance_ball_grab_delay{500};
+	driveStraight(alliance_ball_grab_distance, alliance_ball_velocity, alliance_ball_angle);
 	setIntakeVoltage(MAX_VOLTAGE);
-	while (distance(getOdometryPosition().x, getOdometryPosition().y, alliance_ball_x, alliance_ball_y) > grab_distance)
-		delay(LOOP_DELAY);
-	while (std::abs(getElevatorPosition() - alliance_ball_elevator) > ELEVATOR_TOLERANCE)
-		delay(LOOP_DELAY);
-	delay(500);
+	setElevatorPosition(alliance_ball_elevator, alliance_ball_grab_timeout);
+	delay(alliance_ball_grab_delay);
 	pauseControlSystem();
 
 	// Back away from the alliance triball
 	double load_bar_distance{-8.0};
-	driveStraight(load_bar_distance, MOTION_VELOCITY);
-	while (!boomerangTargetReached())
-		delay(LOOP_DELAY);
+	uint32_t load_bar_timeout{500};
+	driveStraight(load_bar_distance, MOTION_VELOCITY, load_bar_timeout);
 
 	// Suck in the alliance ball
 	double ball_elevator{3.25};
-	setElevatorPosition(ball_elevator);
-	while (std::abs(getElevatorPosition() - ball_elevator) > ELEVATOR_TOLERANCE)
-		delay(LOOP_DELAY);
+	uint32_t ball_elevator_timeout{500};
+	setElevatorPosition(ball_elevator, ball_elevator_timeout);
 
 	// Turn to face the goal shove start point
-	turnToPoint(goal_shove_x, goal_shove_y, TURN_VELOCITY);
-	while (!turnTargetReached())
-		delay(LOOP_DELAY);
+	double forward_x_offset{-5.0};
+	turnToPoint(goal_shove_x + forward_x_offset, goal_shove_y, TURN_VELOCITY, false, goal_shove_turn_timeout);
 
 	// Move to the goal shove start point
-	position = getOdometryPosition();
-	target_angle = angle(position.x, position.y, goal_shove_x, goal_shove_y);
-	goToPoint(goal_shove_x, goal_shove_y, target_angle, MOTION_VELOCITY);
-	while (!boomerangTargetReached() && (getOdometryPosition().y < 24.0 || getOdometryVelocity() > 4.0))
-		delay(LOOP_DELAY);
+	driveStraightToPoint(goal_shove_x + forward_x_offset, goal_shove_y, MOTION_VELOCITY, goal_shove_timeout);
 
 	// Turn to face the goal
-	double front_side_goal_x{side_goal_x - 4};
-	turnToPoint(front_side_goal_x, side_goal_y, TURN_VELOCITY);
-	while (!turnTargetReached())
-		delay(LOOP_DELAY);
+	turnToPoint(side_goal_x, side_goal_y, TURN_VELOCITY, false, side_goal_turn_timeout);
 
 	// Let go of the alliance triball
 	double triball_release_elevator{0};
-	setElevatorPosition(triball_release_elevator);
 	setIntakeVoltage(-MAX_VOLTAGE);
-	while (std::abs(getElevatorPosition() - triball_release_elevator) > ELEVATOR_TOLERANCE)
-		delay(LOOP_DELAY);
-	setIntakeVoltage(0);
+	setElevatorPosition(triball_release_elevator, ball_elevator_timeout);
 	
 	// Ram the goal with passion part 3
-	setDriveVoltage(MAX_VOLTAGE, MAX_VOLTAGE);
-	delay(300);
-	while (getOdometryVelocity() > STOP_VELOCITY)
-		delay(LOOP_DELAY);
-	setDriveVoltage(0, 0);	
+	driveStraightToPoint(side_goal_x, side_goal_y, push_velocity, push_timeout);
 
 	// Turn to face the midfield entrance
 	double entrance_x{104.0}, entrance_y{14.0};
-	turnToPoint(entrance_x, entrance_y, TURN_VELOCITY, true);
-	while (!turnTargetReached())
-		delay(LOOP_DELAY);
+	uint32_t entrance_turn_timeout{1500};
+	turnToPoint(entrance_x, entrance_y, TURN_VELOCITY, true, entrance_turn_timeout);
 
 	// Move to the goal shove start point
-	position = getOdometryPosition();
-	target_angle = angle(position.x, position.y, entrance_x, entrance_y);
-	goToPoint(entrance_x, entrance_y, target_angle, MOTION_VELOCITY);
-	while (!boomerangTargetReached())
-		delay(LOOP_DELAY);
+	uint32_t entrance_timeout{3000};
+	driveStraightToPoint(entrance_x, entrance_y, MOTION_VELOCITY, entrance_timeout);
 
 	// Turn to face the front of the goal
 	double sentry_x{104.0}, sentry_y{60.0};
-	turnToPoint(sentry_x, sentry_y, TURN_VELOCITY);
-	while (!turnTargetReached())
-		delay(LOOP_DELAY);
+	uint32_t sentry_turn_timeout{1500};
+	turnToPoint(sentry_x, sentry_y, TURN_VELOCITY, sentry_turn_timeout);
 
 	// Move to the front of the goal
 	double sweep_velocity{26.0};
-	position = getOdometryPosition();
-	target_angle = angle(position.x, position.y, sentry_x, sentry_y);
-	goToPoint(sentry_x, sentry_y, target_angle, sweep_velocity);
-	while (!boomerangTargetReached())
-		delay(LOOP_DELAY);
+	uint32_t sweep_timeout{4000};
+	driveStraightToPoint(sentry_x, sentry_y, sweep_velocity, sweep_timeout);
 
 	// Turn to face forward
-	turnToAngle(5 * M_PI / 12, TURN_VELOCITY);
-	while (!turnTargetReached())
-		delay(LOOP_DELAY);
+	uint32_t sentry_start_timeout{500};
+	turnToAngle(5 * M_PI / 12, TURN_VELOCITY, sentry_start_timeout);
 
-	// Start sentry mode
+	// Create the sentry mode routine
 	std::unique_ptr<rtos::IMutex> sentry_mutex{std::make_unique<pros_adapters::ProsMutex>()};
 	std::unique_ptr<rtos::ITask> sentry_task{std::make_unique<pros_adapters::ProsTask>()};
 	static routines::SentryMode sentry_mode{alliance, m_clock, m_delayer, sentry_mutex, sentry_task, m_control_system, m_robot};
 	sentry_mode.run();
 
+	// Run sentry mode
 	bool sentry{true};
 	position = getOdometryPosition();
 	control::path::Point last_ball{};
 	double sentry_goal_x{104.0}, sentry_goal_y{60.0};
-	while (sentry)
+	while (sentry && getTime() - auton_start_time < 40000)
 	{
+		// Try to grab the next ball
 		sentry_mode.doSentryMode(-5 * M_PI / 12, control::motion::ETurnDirection::COUNTERCLOCKWISE);
 		while (!sentry_mode.isFinished())
 			delay(LOOP_DELAY);
 		sentry = sentry_mode.ballFound();
-		if (sentry)
+
+		// If it got a ball, score it
+		if (sentry && getTime() - auton_start_time < 40000)
 		{
+			// Calculate the distance to return to the goal
 			position = getOdometryPosition();
 			last_ball = sentry_mode.getBall();
 			double target_distance{distance(position.x, position.y, sentry_goal_x, sentry_goal_y)};
+
+			// If the distance is large enough to warrant moving back, move back
 			if (target_distance > 3.0)
 			{
+				// Turn to face the front of the goal
+				// May be (probably is) unnecessary with drivestraight version
 				double target_angle{angle(position.x, position.y, sentry_goal_x, sentry_goal_y)};
-
 				bool reversed{std::abs(bindRadians(target_angle - position.theta)) > M_PI / 2};
 				turnToPoint(sentry_goal_x, sentry_goal_y, 2 * M_PI, reversed);
 				if (reversed)
@@ -1110,6 +1119,14 @@ void BlueMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 			control_system->pause();
 		}
 	}
+
+	turnToPoint(72.0, 24.0, TURN_VELOCITY, false, 2000);
+	setElevatorPosition(16.0);
+	position = getOdometryPosition();
+	double target_distance{distance(position.x, position.y, 72.0, 24.0)};
+	driveStraight(target_distance - 10, MOTION_VELOCITY, (uint32_t)2000);
+	setElevatorPosition(getElevatorPosition());
+	pros::screen::print(pros::E_TEXT_LARGE_CENTER, 7, "End Time: %5.2f", (getTime() - auton_start_time) / 1000.0);
 }
 }
 }

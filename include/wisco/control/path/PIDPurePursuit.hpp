@@ -73,6 +73,12 @@ private:
     static constexpr char DRIVE_SET_VELOCITY_COMMAND_NAME[]{"SET VELOCITY"};
 
     /**
+     * @brief The name of the drive get radius command
+     * 
+     */
+    static constexpr char DRIVE_GET_RADIUS_COMMAND_NAME[]{"GET RADIUS"};
+
+    /**
      * @brief The name of the odometry get position command
      * 
      */
@@ -181,6 +187,13 @@ private:
      * @param velocity The velocity for the drive
      */
     void setDriveVelocity(robot::subsystems::drive::Velocity velocity);
+
+    /**
+     * @brief Get the radius of the drive
+     * 
+     * @return double The radius of the drive
+     */
+    double getDriveRadius();
 
     /**
      * @brief Get the position from the odometry

@@ -71,6 +71,12 @@ class PIDBoomerangBuilder
     double m_lead{};
 
     /**
+     * @brief The distance to aim at the target
+     * 
+     */
+    double m_aim_distance{};    
+
+    /**
      * @brief The acceptable tolerance to reach the target
      * 
      */
@@ -130,6 +136,14 @@ public:
      * @return PIDBoomerangBuilder* This object for build chaining
      */
     PIDBoomerangBuilder* withLead(double lead);
+
+    /**
+     * @brief Adds an aim distance to the build
+     * 
+     * @param aim_distance The distance to aim at the point
+     * @return PIDBoomerangBuilder* This object for build chaining
+     */
+    PIDBoomerangBuilder* withAimDistance(double aim_distance);
 
     /**
      * @brief Adds a target tolerance to the build

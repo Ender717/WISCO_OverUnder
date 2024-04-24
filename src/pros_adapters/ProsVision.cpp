@@ -19,12 +19,12 @@ void ProsVision::initialize()
     static pros::vision_signature_s_t green_triball_signature
     {
         pros::c::vision_signature_from_utility
-        (GREEN_TRIBALL_SIGNATURE, -6045, -4615, -5330, -5541, -4135, -4838, 3.100, 0)
+        (GREEN_TRIBALL_SIGNATURE, -5845, -4809, -5328, -5495, -4151, -4822, 3.100, 0)
     };
     static pros::vision_signature_s_t red_triball_signature
     {
         pros::c::vision_signature_from_utility
-        (RED_TRIBALL_SIGNATURE, 7903, 10255, 9078, -975, -493, -734, 3.000, 0)
+        (RED_TRIBALL_SIGNATURE, 6481, 9637, 8060, -1387, -463, -924, 2.000, 0)
     };
     if (m_sensor)
     {

@@ -124,6 +124,12 @@ private:
     double m_lead{};
 
     /**
+     * @brief The distance at which aiming is enabled
+     * 
+     */
+    double m_aim_distance{};
+
+    /**
      * @brief The acceptable tolerance to reach the target
      * 
      */
@@ -306,6 +312,13 @@ public:
      * @param lead The lead ratio
      */
     void setLead(double lead);
+
+    /**
+     * @brief Sets the aim distance
+     * 
+     * @param aim_distance The aim distance
+     */
+    void setAimDistance(double aim_distance);
 
     /**
      * @brief Sets the target tolerance

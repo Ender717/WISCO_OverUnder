@@ -54,6 +54,21 @@ void PIDPurePursuit::setDriveVelocity(robot::subsystems::drive::Velocity velocit
         control_robot->sendCommand(DRIVE_SUBSYSTEM_NAME, DRIVE_SET_VELOCITY_COMMAND_NAME, velocity);
 }
 
+double PIDPurePursuit::getDriveRadius()
+{
+    double radius{};
+    if (control_robot)
+    {
+        double* result{static_cast<double*>(control_robot->getState(DRIVE_SUBSYSTEM_NAME, DRIVE_GET_RADIUS_COMMAND_NAME))};
+        if (result)
+        {
+            radius = *result;
+            delete result;
+        }
+    }
+    return radius;
+}
+
 robot::subsystems::position::Position PIDPurePursuit::getOdometryPosition()
 {
     robot::subsystems::position::Position position{};
@@ -178,18 +193,17 @@ void PIDPurePursuit::updateVelocity(robot::subsystems::position::Position positi
         rotational_error = bindRadians(rotational_error + M_PI);
 
     double linear_control{m_linear_pid.getControlValue(0, linear_error)};
-    double rotational_control{m_rotational_pid.getControlValue(0, rotational_error)};
-    if (std::abs(rotational_control) > std::abs(linear_control))
-        rotational_control *= std::abs(linear_control / rotational_control);
+    if (std::abs(linear_control) > motion_velocity)
+        linear_control *= motion_velocity / std::abs(linear_control);
 
-    double velocity_constant{std::abs(motion_velocity / linear_control)};
+    double rotational_control{};
+    if (std::abs(rotational_error) > M_PI / 4)
+        rotational_control = m_rotational_pid.getControlValue(0, rotational_error);
+    else
+        rotational_control = (2 * getDriveRadius() * std::sin(rotational_error) / m_follow_distance) * linear_control;
+
     double left_velocity{linear_control - rotational_control};
     double right_velocity{linear_control + rotational_control};
-    if (std::abs((left_velocity + right_velocity) / 2) > motion_velocity)
-    {
-        left_velocity *= velocity_constant;
-        right_velocity *= velocity_constant;
-    }
     robot::subsystems::drive::Velocity velocity{left_velocity, right_velocity};
     setDriveVelocity(velocity);
 }

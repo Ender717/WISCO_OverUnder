@@ -1,4 +1,6 @@
 #include "wisco/control/boomerang/PIDBoomerang.hpp"
+#include "pros/screen.h"
+#include "pros/screen.hpp"
 
 namespace wisco
 {
@@ -94,18 +96,14 @@ void PIDBoomerang::updateVelocity(robot::subsystems::position::Position position
         rotational_error = bindRadians(rotational_error + M_PI);
 
     double linear_control{m_linear_pid.getControlValue(0, linear_error)};
-    double rotational_control{m_rotational_pid.getControlValue(0, rotational_error)};
-    if (std::abs(rotational_control) > std::abs(linear_control))
-        rotational_control *= std::abs(linear_control / rotational_control);
+    if (std::abs(linear_control) > motion_velocity)
+        linear_control *= motion_velocity / std::abs(linear_control);
+    double rotational_control{};
+    if (distance(position.x, position.y, target_x, target_y) > m_aim_distance)
+        rotational_control = m_rotational_pid.getControlValue(0, rotational_error);
 
-    double velocity_constant{std::abs(motion_velocity / linear_control)};
     double left_velocity{linear_control - rotational_control};
     double right_velocity{linear_control + rotational_control};
-    if (std::abs((left_velocity + right_velocity) / 2) > motion_velocity)
-    {
-        left_velocity *= velocity_constant;
-        right_velocity *= velocity_constant;
-    }
     robot::subsystems::drive::Velocity velocity{left_velocity, right_velocity};
     setDriveVelocity(velocity);
 }
@@ -135,9 +133,7 @@ void PIDBoomerang::goToPosition(const std::shared_ptr<robot::Robot>& robot, doub
     target_reached = false;
 
     auto position{getOdometryPosition()};
-    double x_error{target_x - position.x};
-    double y_error{target_y - position.y};
-    double target_angle{std::atan2(y_error, x_error)};
+    double target_angle{angle(position.x, position.y, target_x, target_y)};
     double angle_error{bindRadians(target_angle - position.theta)};
     if (std::abs(angle_error) > M_PI / 2)
         target_theta = bindRadians(target_theta + M_PI);
@@ -203,6 +199,11 @@ void PIDBoomerang::setRotationalPID(PID rotational_pid)
 void PIDBoomerang::setLead(double lead)
 {
     m_lead = lead;
+}
+
+void PIDBoomerang::setAimDistance(double aim_distance)
+{
+    m_aim_distance = aim_distance;
 }
 
 void PIDBoomerang::setTargetTolerance(double target_tolerance)
