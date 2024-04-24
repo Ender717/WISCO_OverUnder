@@ -79,6 +79,21 @@ bool ElevatorOperator::getHangArmUp()
     return arm_up;
 }
 
+bool ElevatorOperator::getHangWinchEngaged()
+{
+    bool winch_engaged{};
+    if (m_robot)
+    {
+        bool* result{static_cast<bool*>(m_robot->getState(HANG_SUBSYSTEM_NAME, HANG_WINCH_ENGAGED_STATE_NAME))};
+        if (result)
+        {
+            winch_engaged = *result;
+            delete result;
+        }
+    }
+    return winch_engaged;
+}
+
 void ElevatorOperator::updateElevatorPosition(double position)
 {
     m_robot->sendCommand(ELEVATOR_SUBSYSTEM_NAME, SET_POSITION_COMMAND, position);

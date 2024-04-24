@@ -102,6 +102,12 @@ private:
     static constexpr char HANG_ARM_UP_STATE_NAME[]{"ARM UP"};
 
     /**
+     * @brief The name of the hang winch engaged state
+     * 
+     */
+    static constexpr char HANG_WINCH_ENGAGED_STATE_NAME[]{"WINCH ENGAGED"};
+
+    /**
      * @brief The in position for the elevator
      * 
      */
@@ -202,6 +208,14 @@ private:
      * @return false The hang arm is down
      */
     bool getHangArmUp();
+
+    /**
+     * @brief Get the hang winch engaged state
+     * 
+     * @return true The hang winch is engaged
+     * @return false The hang winch is not engaged
+     */
+    bool getHangWinchEngaged();
 
     /**
      * @brief Updates the position of the elevator subsystem

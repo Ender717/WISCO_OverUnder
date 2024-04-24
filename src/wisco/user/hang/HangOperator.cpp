@@ -186,7 +186,7 @@ void HangOperator::updatePresetReset(EControllerDigital toggle, EControllerDigit
     }
 }
 
-void HangOperator::setHangState(const std::unique_ptr<IProfile>& profile)
+void HangOperator::setHangState(std::unique_ptr<IProfile>& profile)
 {
     EControllerDigital grab{profile->getDigitalControlMapping(EControl::HANG_GRAB)};
     EControllerDigital hang{profile->getDigitalControlMapping(EControl::HANG_HANG)};
@@ -211,6 +211,11 @@ void HangOperator::setHangState(const std::unique_ptr<IProfile>& profile)
         case EHangControlMode::PRESET_TOGGLE_SINGLE:
             updatePresetToggle(toggle);
             break;
+    }
+
+    if (toggle_state == EToggleState::HUNG)
+    {
+        profile->setControlMode(EControlType::DRIVE, static_cast<int>(drive::EChassisControlMode::SPLIT_ARCADE_LEFT));
     }
 }
 } // namespace hang

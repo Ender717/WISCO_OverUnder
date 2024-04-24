@@ -7,6 +7,7 @@
 #include "wisco/user/IController.hpp"
 #include "wisco/IProfile.hpp"
 #include "EHangControlMode.hpp"
+#include "wisco/user/drive/EChassisControlMode.hpp"
 
 /**
  * @brief Namespace for all library code
@@ -220,7 +221,7 @@ public:
      * 
      * @param profile The driver profile
      */
-    void setHangState(const std::unique_ptr<IProfile>& profile);
+    void setHangState(std::unique_ptr<IProfile>& profile);
 };
 } // namespace hang
 } // namespace user
