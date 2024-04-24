@@ -34,18 +34,22 @@ void BlueMatchAuton::resumeControlSystem()
 		m_control_system->resume();
 }
 
-void BlueMatchAuton::goToPoint(double x, double y, double theta, double velocity, uint32_t timeout)
+void BlueMatchAuton::goToPoint(double x, double y, double theta, double velocity, uint32_t timeout, double tolerance)
 {
 	if (m_control_system && m_robot)
 	{
 		m_control_system->sendCommand("BOOMERANG", "GO TO POSITION", &m_robot, velocity, x, y, theta);
-		if (timeout != UINT32_MAX)
+		auto position{getOdometryPosition()};
+		uint32_t start_time{getTime()};
+		double target_distance{distance(position.x, position.y, x, y)};
+		while (!boomerangTargetReached() && getTime() < start_time + timeout && target_distance > tolerance)
 		{
-			uint32_t start_time{getTime()};
-			while (!boomerangTargetReached() && getTime() < start_time + timeout)
-				delay(LOOP_DELAY);
-			pauseControlSystem();
+			delay(LOOP_DELAY);
+			position = getOdometryPosition();
+			target_distance = distance(position.x, position.y, x, y);
 		}
+		if (timeout || tolerance != 0.0)
+			pauseControlSystem();
 	}
 }
 
@@ -64,29 +68,40 @@ bool BlueMatchAuton::boomerangTargetReached()
 	return target_reached;
 }
 
-void BlueMatchAuton::driveStraight(double distance, double velocity, uint32_t timeout)
+void BlueMatchAuton::driveStraight(double distance, double velocity, uint32_t timeout, double tolerance)
 {
 	auto position{getOdometryPosition()};
-	driveStraight(distance, velocity, position.theta, timeout);
+	driveStraight(distance, velocity, position.theta, timeout, tolerance);
 }
 
-void BlueMatchAuton::driveStraight(double distance, double velocity, double theta, uint32_t timeout)
+void BlueMatchAuton::driveStraight(double motion_distance, double velocity, double theta, uint32_t timeout, double tolerance)
 {
 	if (m_control_system && m_robot)
 	{
-		m_control_system->sendCommand("MOTION", "DRIVE STRAIGHT", &m_robot, distance, velocity, theta);
-		if (timeout != UINT32_MAX)
+		m_control_system->sendCommand("MOTION", "DRIVE STRAIGHT", &m_robot, motion_distance, velocity, theta);
+		uint32_t start_time{getTime()};
+		auto start_position{getOdometryPosition()};
+		auto position{start_position};
+		double moved_distance{};
+		while (!driveStraightTargetReached() && getTime() < start_time + timeout && std::abs(motion_distance - moved_distance) > tolerance)
 		{
-			std::cout << "Timeout: " << timeout << std::endl;
-			uint32_t start_time{getTime()};
-			while (!driveStraightTargetReached() && getTime() < start_time + timeout)
-				delay(LOOP_DELAY);
-			pauseControlSystem();
+			delay(LOOP_DELAY);
+			position = getOdometryPosition();
+			double start_distance{distance(start_position.x, start_position.y, position.x, position.y)};
+			double start_angle{angle(start_position.x, start_position.y, position.x, position.y)};
+			if (motion_distance < 0)
+			{
+				start_distance *= -1;
+				start_angle = bindRadians(start_angle + M_PI);
+			}
+			moved_distance = start_distance * std::cos(bindRadians(start_angle - theta));
 		}
+		if (timeout || tolerance != 0.0)
+			pauseControlSystem();
 	}
 }
 
-void BlueMatchAuton::driveStraightToPoint(double x, double y, double velocity, uint32_t timeout)
+void BlueMatchAuton::driveStraightToPoint(double x, double y, double velocity, uint32_t timeout, double tolerance)
 {
 	auto position{getOdometryPosition()};
 	double target_distance{distance(position.x, position.y, x, y)};
@@ -96,7 +111,7 @@ void BlueMatchAuton::driveStraightToPoint(double x, double y, double velocity, u
 		target_distance *= -1;
 		target_angle = bindRadians(target_angle + M_PI);
 	}
-	driveStraight(target_distance, velocity, target_angle, timeout);
+	driveStraight(target_distance, velocity, target_angle, timeout, tolerance);
 }
 
 void BlueMatchAuton::setDriveStraightVelocity(double velocity)
@@ -120,35 +135,41 @@ bool BlueMatchAuton::driveStraightTargetReached()
 	return target_reached;
 }
 
-void BlueMatchAuton::turnToAngle(double theta, double velocity, bool reversed, uint32_t timeout,
+void BlueMatchAuton::turnToAngle(double theta, double velocity, bool reversed, uint32_t timeout, double tolerance,
 								 control::motion::ETurnDirection direction)
 {
 	if (m_control_system && m_robot)
 	{
 		m_control_system->sendCommand("MOTION", "TURN TO ANGLE", &m_robot, velocity, theta, static_cast<int>(reversed), direction);
-		if (timeout != UINT32_MAX)
+		uint32_t start_time{getTime()};
+		auto position{getOdometryPosition()};
+		while (!turnTargetReached() && getTime() < start_time + timeout && std::abs(bindRadians(theta - position.theta)) > tolerance)
 		{
-			uint32_t start_time{getTime()};
-			while (!turnTargetReached() && getTime() < start_time + timeout)
-				delay(LOOP_DELAY);
-			pauseControlSystem();
+			delay(LOOP_DELAY);
+			position = getOdometryPosition();
 		}
+		if (timeout || tolerance != 0.0)
+			pauseControlSystem();
 	}
 }
 
-void BlueMatchAuton::turnToPoint(double x, double y, double velocity, bool reversed, uint32_t timeout,
+void BlueMatchAuton::turnToPoint(double x, double y, double velocity, bool reversed, uint32_t timeout, double tolerance,
 								 control::motion::ETurnDirection direction)
 {
 	if (m_control_system && m_robot)
 	{
 		m_control_system->sendCommand("MOTION", "TURN TO POINT", &m_robot, velocity, x, y, static_cast<int>(reversed), direction);
-		if (timeout != UINT32_MAX)
+		uint32_t start_time{getTime()};
+		auto position{getOdometryPosition()};
+		double target_angle{angle(position.x, position.y, x, y)};
+		while (!turnTargetReached() && getTime() < start_time + timeout && std::abs(bindRadians(target_angle - position.theta)) > tolerance)
 		{
-			uint32_t start_time{getTime()};
-			while (!turnTargetReached() && getTime() < start_time + timeout)
-				delay(LOOP_DELAY);
-			pauseControlSystem();
+			delay(LOOP_DELAY);
+			position = getOdometryPosition();
+			target_angle = angle(position.x, position.y, x, y);
 		}
+		if (timeout || tolerance != 0.0)
+			pauseControlSystem();
 	}
 }
 
@@ -193,6 +214,7 @@ bool BlueMatchAuton::pathFollowingTargetReached()
 	}
 	return target_reached;
 }
+
 
 void BlueMatchAuton::setDriveVelocity(double left, double right)
 {
@@ -1036,60 +1058,17 @@ void BlueMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 		// If it got a ball, score it
 		if (sentry && getTime() - auton_start_time < 40000)
 		{
-			// Calculate the distance to return to the goal
-			position = getOdometryPosition();
+			// Save the last ball location
 			last_ball = sentry_mode.getBall();
-			double target_distance{distance(position.x, position.y, sentry_goal_x, sentry_goal_y)};
 
-			// If the distance is large enough to warrant moving back, move back
-			if (target_distance > 3.0)
-			{
-				// Turn to face the front of the goal
-				// May be (probably is) unnecessary with drivestraight version
-				double target_angle{angle(position.x, position.y, sentry_goal_x, sentry_goal_y)};
-				bool reversed{std::abs(bindRadians(target_angle - position.theta)) > M_PI / 2};
-				turnToPoint(sentry_goal_x, sentry_goal_y, 2 * M_PI, reversed);
-				if (reversed)
-					target_angle = bindRadians(target_angle + M_PI);
-				while (!turnTargetReached() && std::abs(position.theta - target_angle) > M_PI / 36)
-				{
-					delay(LOOP_DELAY);
-					position = getOdometryPosition();
-					target_angle = angle(position.x, position.y, sentry_goal_x, sentry_goal_y);
-					if (reversed)
-						target_angle = bindRadians(target_angle + M_PI);
-				}
+			// Move in front of the goal
+			driveStraightToPoint(sentry_goal_x, sentry_goal_y, 48.0, 1000, 3.0);
+			
+			// Release the ball
+			turnToAngle(0, 2 * M_PI, false, 1000, 4.0 * M_PI / 180);
+			setIntakeVoltage(-MAX_VOLTAGE);
+			setElevatorPosition(0.0, 1000);
 
-				position = getOdometryPosition();
-				goToPoint(sentry_goal_x, sentry_goal_y, position.theta, 48.0);
-				target_distance = distance(position.x, position.y, sentry_goal_x, sentry_goal_y);
-				while (target_distance > 3.0)
-				{
-					delay(LOOP_DELAY);
-					position = getOdometryPosition();
-					target_distance = distance(position.x, position.y, sentry_goal_x, sentry_goal_y);
-				}
-				control_system->pause();
-			}
-
-			turnToAngle(0, 2 * M_PI);
-			position = getOdometryPosition();
-			while (std::abs(bindRadians(position.theta)) > M_PI / 36)
-			{
-				if (std::abs(bindRadians(position.theta)) < M_PI / 18)
-				{
-					robot->sendCommand("ELEVATOR", "SET POSITION", 0.0);
-					robot->sendCommand("INTAKE", "SET VOLTAGE", -12.0);
-				}
-				delay(LOOP_DELAY);
-				position = getOdometryPosition();
-			}
-			control_system->pause();
-
-			robot->sendCommand("ELEVATOR", "SET POSITION", 0.0);
-			robot->sendCommand("INTAKE", "SET VOLTAGE", -12.0);
-			while (getElevatorPosition() > 1.0)
-				delay(LOOP_DELAY);
 			robot->sendCommand("DIFFERENTIAL DRIVE", "SET VOLTAGE", 12.0, 12.0);
 			position = getOdometryPosition();
 			while (position.x < 110.0 || position.xV > 16.0)
