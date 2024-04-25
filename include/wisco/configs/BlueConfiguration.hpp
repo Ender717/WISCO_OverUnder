@@ -527,7 +527,7 @@ private:
 	 * @brief The first elevator motor gearset
 	 * 
 	 */
-	static constexpr pros::v5::MotorGears ELEVATOR_MOTOR_1_GEARSET{pros::E_MOTOR_GEARSET_18};
+	static constexpr pros::v5::MotorGears ELEVATOR_MOTOR_1_GEARSET{pros::E_MOTOR_GEARSET_36};
 
 	/**
 	 * @brief The second elevator motor port
@@ -539,7 +539,7 @@ private:
 	 * @brief The second elevator motor gearset
 	 * 
 	 */
-	static constexpr pros::v5::MotorGears ELEVATOR_MOTOR_2_GEARSET{pros::E_MOTOR_GEARSET_18};
+	static constexpr pros::v5::MotorGears ELEVATOR_MOTOR_2_GEARSET{pros::E_MOTOR_GEARSET_36};
 
 	/**
 	 * @brief The elevator rotation sensor port

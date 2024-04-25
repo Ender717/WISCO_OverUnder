@@ -41,7 +41,7 @@ double ProsHeading::getHeading()
     double heading{};
     if (m_sensor)
     {
-        heading = m_sensor->get_heading() / UNIT_CONVERTER;
+        heading = (m_sensor->get_heading() / UNIT_CONVERTER) * m_tuning_constant;
     }
     return heading;
 }
@@ -57,7 +57,7 @@ double ProsHeading::getRotation()
     double rotation{};
     if (m_sensor)
     {
-        rotation = m_sensor->get_rotation() / UNIT_CONVERTER;
+        rotation = (m_sensor->get_rotation() / UNIT_CONVERTER) * m_tuning_constant;
     }
     return rotation;
 }

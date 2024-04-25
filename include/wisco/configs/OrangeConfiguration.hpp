@@ -106,13 +106,13 @@ private:
 	 * @brief The tuning constant for the odometry heading sensor
 	 * 
 	 */
-	static constexpr double ODOMETRY_HEADING_TUNING_CONSTANT{1.014};
+	static constexpr double ODOMETRY_HEADING_TUNING_CONSTANT{1.014656};
 
 	/**
 	 * @brief The port for the odometry linear distance tracking sensor
 	 * 
 	 */
-	static constexpr int8_t ODOMETRY_LINEAR_PORT{13};
+	static constexpr int8_t ODOMETRY_LINEAR_PORT{14};
 
 	/**
 	 * @brief The radius of the odometry linear distance tracking wheel
@@ -389,7 +389,7 @@ private:
 	 * @brief The port for the ball detector vision sensor
 	 * 
 	 */
-	static constexpr int8_t BALL_DETECTOR_VISION_PORT{14};
+	static constexpr int8_t BALL_DETECTOR_VISION_PORT{13};
 
 	/**
 	 * @brief The proportional constant for the boomerang linear pid controller
@@ -527,7 +527,7 @@ private:
 	 * @brief The first elevator motor gearset
 	 * 
 	 */
-	static constexpr pros::v5::MotorGears ELEVATOR_MOTOR_1_GEARSET{pros::E_MOTOR_GEARSET_18};
+	static constexpr pros::v5::MotorGears ELEVATOR_MOTOR_1_GEARSET{pros::E_MOTOR_GEARSET_36};
 
 	/**
 	 * @brief The second elevator motor port
@@ -539,7 +539,7 @@ private:
 	 * @brief The second elevator motor gearset
 	 * 
 	 */
-	static constexpr pros::v5::MotorGears ELEVATOR_MOTOR_2_GEARSET{pros::E_MOTOR_GEARSET_18};
+	static constexpr pros::v5::MotorGears ELEVATOR_MOTOR_2_GEARSET{pros::E_MOTOR_GEARSET_36};
 
 	/**
 	 * @brief The elevator rotation sensor port

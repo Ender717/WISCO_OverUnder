@@ -1,4 +1,5 @@
 #include "main.h"
+#include "pros/misc.h"
 #include "pros/rotation.hpp"
 #include "pros/screen.h"
 #include "pros/screen.hpp"
@@ -18,7 +19,15 @@ void initialize()
 {
 	if (TESTING)
 	{
-
+		pros::Motor motor_1{-11};
+		pros::Motor motor_2{20};
+		pros::Controller controller{pros::E_CONTROLLER_MASTER};
+		while (true)
+		{
+			motor_1.move(controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y));
+			motor_2.move(controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y));
+			pros::delay(5);
+		}
 	}	
 	else
 	{

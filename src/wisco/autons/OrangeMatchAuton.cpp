@@ -766,7 +766,7 @@ void OrangeMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 
 	// Turn to sweep the back triball off the line
 	double rush_middle_turn_tolerance{3.0 * M_PI / 180};
-	double rush_middle_x{52.0}, rush_middle_y{58.0};
+	double rush_middle_x{50.0}, rush_middle_y{60.0};
 	uint32_t rush_middle_turn_timeout{500};
 	turnToPoint(rush_middle_x, rush_middle_y, TURN_VELOCITY, false, rush_middle_turn_timeout, rush_middle_turn_tolerance);
 
@@ -804,7 +804,7 @@ void OrangeMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 
 	// Extend the elevator
 	setIntakeVoltage(0);
-	double rush_far_elevator{16.0};
+	double rush_far_elevator{12.0};
 	uint32_t rush_far_elevator_timeout{1000};
 	setElevatorPosition(rush_middle_elevator, rush_middle_elevator_timeout);
 
@@ -814,7 +814,7 @@ void OrangeMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	turnToAngle(rush_far_end_angle, TURN_VELOCITY, false, rush_far_end_timeout, rush_far_end_tolerance);
 
 	// Turn to the sentry point
-	double sentry_x{38.0}, sentry_y{34.0}, sentry_turn_tolerance{2.0 * M_PI / 180};
+	double sentry_x{38.0}, sentry_y{36.0}, sentry_turn_tolerance{2.0 * M_PI / 180};
 	uint32_t sentry_turn_timeout{500};
 	setIntakeVoltage(MAX_VOLTAGE);
 	setElevatorPosition(ball_elevator);
@@ -826,7 +826,7 @@ void OrangeMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	driveStraightToPoint(sentry_x, sentry_y, sentry_velocity, sentry_timeout, sentry_tolerance);
 
 	// Turn to face the alley
-	double alley_outtake_x{38.0}, alley_outtake_y{26.0}, alley_outtake_theta{-70 * M_PI / 180};
+	double alley_outtake_x{38.0}, alley_outtake_y{26.0}, alley_outtake_theta{-80 * M_PI / 180};
 	double alley_outtake_turn_tolerance{3.0 * M_PI / 180};
 	uint32_t outtake_turn_timeout{1000};
 
@@ -860,7 +860,43 @@ void OrangeMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 
 	while (sentry)
 	{
-		sentry_mode.doSentryMode(-4 * M_PI / 12, control::motion::ETurnDirection::CLOCKWISE);
+		sentry_mode.doSentryMode(0, control::motion::ETurnDirection::CLOCKWISE);
+		while (!sentry_mode.isFinished())
+			delay(LOOP_DELAY);
+		sentry = sentry_mode.ballFound();
+
+		// If it got a ball, score it
+		if (sentry)
+		{
+			// Store the found ball coordinates
+			last_ball = sentry_mode.getBall();
+
+			// Move back to the starting point
+			driveStraightToPoint(sentry_x, sentry_y, sentry_velocity, sentry_timeout, sentry_tolerance);
+
+			// Turn to face into the alley
+			turnToAngle(alley_outtake_theta, TURN_VELOCITY, false, outtake_turn_timeout, alley_outtake_turn_tolerance);
+
+			// Outtake the triball
+			setIntakeVoltage(-MAX_VOLTAGE);
+			setElevatorPosition(0, outtake_timeout);
+
+			// Turn back to the last found triball
+			turnToPoint(last_ball.getX(), last_ball.getY(), TURN_VELOCITY, false, sentry_start_timeout, sentry_start_tolerance);
+		}
+	}
+
+	// Turn to the other sentry mode's starting angle
+	turnToAngle(-M_PI / 4, TURN_VELOCITY, false, 1000, 4 * M_PI / 180);
+
+	// Run sentry mode
+	sentry =true;
+	position = getOdometryPosition();
+	last_ball = control::path::Point{};
+
+	while (sentry)
+	{
+		sentry_mode.doSentryMode(0, control::motion::ETurnDirection::COUNTERCLOCKWISE);
 		while (!sentry_mode.isFinished())
 			delay(LOOP_DELAY);
 		sentry = sentry_mode.ballFound();
@@ -902,10 +938,12 @@ void OrangeMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	turnToAngle(0, TURN_VELOCITY, false, 2000, 2 * M_PI / 180);
 
 	// Reset the angle
+	/*
 	setDriveVoltage(-5.0, -5.0);
 	delay(1000);
 	setOdometryTheta(0);
 	setDriveVoltage(0, 0);
+	*/
 
 	// Reset the y-coordinate
 	resetOdometryY();
@@ -945,13 +983,10 @@ void OrangeMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	driveStraightToPoint(match_load_x, match_load_y, MOTION_VELOCITY, match_load_setup_timeout);
 
 	// Outtake any ball
-	if (getBallDistance() < 10.0)
-	{
-		uint32_t elevator_timeout{1000};
-		setIntakeVoltage(-MAX_VOLTAGE);
-		setElevatorPosition(0, elevator_timeout);
-		setIntakeVoltage(0);
-	}
+	uint32_t elevator_timeout{1000};
+	setIntakeVoltage(-MAX_VOLTAGE);
+	setElevatorPosition(0, elevator_timeout);
+	setIntakeVoltage(0);
 
 	// Turn to face the match loads
 	turnToPoint(0, 0, TURN_VELOCITY, false, match_load_turn_timeout);
@@ -962,8 +997,8 @@ void OrangeMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	driveStraight(match_load_drive_distance, match_load_drive_velocity, -3 * M_PI / 4, match_load_drive_timeout);
 
 	// Do match loads
-	uint8_t match_loads{3};
-	uint32_t match_load_delay{600};
+	uint8_t match_loads{4};
+	uint32_t match_load_delay{300};
 	uint32_t match_load_timeout{500};
 	bool timeout{false};
 	for (uint8_t i{}; i < match_loads && !timeout; ++i)
@@ -1032,7 +1067,7 @@ void OrangeMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	turnToAngle(alley_theta, TURN_VELOCITY, false, alley_turn_timeout);
 
 	// Follow the alley path
-	double alley_end_x{104.0};
+	double alley_end_x{108.0};
 	double fast_alley_velocity{48.0}, slow_alley_velocity{24.0}, slow_alley_x{76.0};
 	double collision_detection{3.0}, collision_end_x{alley_end_x - 4.0};
 	uint32_t collision_delay{1000}, collision_start_time{getTime()};
@@ -1115,6 +1150,7 @@ void OrangeMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	driveStraightToPoint(side_goal_x, side_goal_y, push_velocity, push_timeout);
 
 	// Turn to the start of win point
+	setRightWing(false);
 	double winpoint_start_x{96.0}, winpoint_start_y{12.0};
 	double winpoint_start_turn_tolerance{2 * M_PI / 180};
 	uint32_t winpoint_start_turn_timeout{1000};
@@ -1135,9 +1171,8 @@ void OrangeMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	driveStraightToPoint(winpoint_x, winpoint_y, MOTION_VELOCITY, winpoint_timeout, winpoint_tolerance);	
 
 	// Touch the bar for win point (remove for elims)
-	setElevatorPosition(12.0);
-	turnToPoint(72.0, 24.0, TURN_VELOCITY, false, 2000);
-	position = getOdometryPosition();
+	turnToPoint(72.0, 24.0, TURN_VELOCITY);
+	setElevatorPosition(10.0, 2000);
 	setElevatorPosition(getElevatorPosition());
 	pros::screen::print(pros::E_TEXT_LARGE_CENTER, 7, "End Time: %5.2f", (getTime() - auton_start_time) / 1000.0);
 }

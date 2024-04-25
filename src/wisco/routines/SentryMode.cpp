@@ -200,7 +200,7 @@ bool SentryMode::isValid(control::path::Point point)
     if (position.x < 72.0)
     {
         valid = (point.getX() > 27.0 && point.getX() < 69.0) &&
-                (point.getY() > 26.0 && point.getY() < 71.0);
+                (point.getY() > 27.0 && point.getY() < 71.0);
     }
     else
     {
@@ -227,12 +227,12 @@ void SentryMode::updateSearch()
         double triball_angle{m_direction == control::motion::ETurnDirection::CLOCKWISE ? -DBL_MAX : DBL_MAX};
         for (auto object : objects)
         {
+            double total_angle{bindRadians(position.theta + object.horizontal)};
+            bool in_range{(m_direction == control::motion::ETurnDirection::CLOCKWISE && bindRadians(m_end_angle - total_angle) < 0)
+                || (m_direction == control::motion::ETurnDirection::COUNTERCLOCKWISE && bindRadians(m_end_angle - total_angle) > 0)
+                || std::abs(bindRadians(m_end_angle - total_angle)) > M_PI / 2};
             for (auto object_id : m_alliance->getVisionObjectIDs("TRIBALL"))
             {
-                double total_angle{bindRadians(position.theta + object.horizontal)};
-                bool in_range{(sign(bindRadians(m_end_angle - total_angle))
-                    == sign(bindRadians(m_end_angle - position.theta)))
-                    || std::abs(bindRadians(m_end_angle - total_angle)) > M_PI / 2};
                 if (object.id == object_id && object.width > MINIMUM_OBJECT_SIZE && in_range
                     && ((object.horizontal > 0.0 && object.horizontal < triball_angle && m_direction == control::motion::ETurnDirection::COUNTERCLOCKWISE)
                     || (object.horizontal < 0.0 && object.horizontal > triball_angle && m_direction == control::motion::ETurnDirection::CLOCKWISE)))
@@ -306,6 +306,7 @@ void SentryMode::updateGrab()
         m_control_system->pause();
         setElevatorPosition(ELEVATOR_BALL);
         state = EState::HOLD;
+        finished = true; // Comment out if it doesn't grab properly
         std::cout << "Hold" << std::endl;
     }
 }
