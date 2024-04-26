@@ -149,7 +149,7 @@ private:
 	 * @param timeout The milliseconds allowed before timing out
 	 * @param tolerance The allowed tolerance to end the motion early
 	 */
-	void goToPoint(double x, double y, double theta, double velocity, uint32_t timeout = 0, double tolerance = 0.0);
+	void boomerangGoToPoint(double x, double y, double theta, double velocity, uint32_t timeout = 0, double tolerance = 0.0);
 
 	/**
 	 * @brief Checks if the boomerang target has been reached
@@ -205,6 +205,32 @@ private:
 	 * @return false The drive straight target has not been reached
 	 */
 	bool driveStraightTargetReached();
+
+		/**
+	 * @brief Calls the motion go to point command
+	 * 
+	 * @param x The target x-coordinate
+	 * @param y The target y-coordinate
+	 * @param velocity The motion velocity
+	 * @param timeout The milliseconds allowed before timing out
+	 * @param tolerance The allowed tolerance to end the motion
+	 */
+	void goToPoint(double x, double y, double velocity, uint32_t timeout = 0, double tolerance = 0.0);
+
+	/**
+	 * @brief Sets the velocity of the go to point motion
+	 * 
+	 * @param velocity The velocity for the go to point motion
+	 */
+	void setGoToPointVelocity(double velocity);
+
+	/**
+	 * @brief Checks if the go to point target has been reached
+	 * 
+	 * @return true The go to point target has been reached
+	 * @return false The go to point target has not been reached
+	 */
+	bool goToPointTargetReached();
 
 	/**
 	 * @brief Calls the motion turn to angle command

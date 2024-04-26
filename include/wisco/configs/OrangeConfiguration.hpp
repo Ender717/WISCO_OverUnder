@@ -58,6 +58,7 @@
 
 // motion includes
 #include "wisco/control/motion/PIDDriveStraightBuilder.hpp"
+#include "wisco/control/motion/PIDGoToPointBuilder.hpp"
 #include "wisco/control/motion/PIDTurnBuilder.hpp"
 #include "wisco/control/motion/MotionControl.hpp"
 
@@ -498,6 +499,54 @@ private:
 	 * 
 	 */
 	static constexpr double DRIVE_STRAIGHT_TARGET_VELOCITY{1.0};
+
+	/**
+	 * @brief The proportional constant for the go to point linear pid controller
+	 * 
+	 */
+	static constexpr double GO_TO_POINT_LINEAR_KP{4.8};
+
+	/**
+	 * @brief The integral constant for the go to point linear pid controller
+	 * 
+	 */
+	static constexpr double GO_TO_POINT_LINEAR_KI{};
+
+	/**
+	 * @brief The derivative constant for the go to point linear pid controller
+	 * 
+	 */
+	static constexpr double GO_TO_POINT_LINEAR_KD{300.0};
+
+	/**
+	 * @brief The proportional constant for the go to point rotational pid controller
+	 * 
+	 */
+	static constexpr double GO_TO_POINT_ROTATIONAL_KP{1.3};
+
+	/**
+	 * @brief The integral constant for the go to point rotational pid controller
+	 * 
+	 */
+	static constexpr double GO_TO_POINT_ROTATIONAL_KI{0.001};
+
+	/**
+	 * @brief The derivative constant for the go to point rotational pid controller
+	 * 
+	 */
+	static constexpr double GO_TO_POINT_ROTATIONAL_KD{120.0};
+
+	/**
+	 * @brief The target tolerance for the go to point controller
+	 * 
+	 */
+	static constexpr double GO_TO_POINT_TARGET_TOLERANCE{2.0};
+
+	/**
+	 * @brief The target velocity for the go to point controller
+	 * 
+	 */
+	static constexpr double GO_TO_POINT_TARGET_VELOCITY{4.0};
 
 	/**
 	 * @brief The KP for the elevator PID

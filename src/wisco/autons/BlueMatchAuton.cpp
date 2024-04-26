@@ -34,7 +34,7 @@ void BlueMatchAuton::resumeControlSystem()
 		m_control_system->resume();
 }
 
-void BlueMatchAuton::goToPoint(double x, double y, double theta, double velocity, uint32_t timeout, double tolerance)
+void BlueMatchAuton::boomerangGoToPoint(double x, double y, double theta, double velocity, uint32_t timeout, double tolerance)
 {
 	if (m_control_system && m_robot)
 	{
@@ -126,6 +126,46 @@ bool BlueMatchAuton::driveStraightTargetReached()
 	if (m_control_system)
 	{
 		bool* result{static_cast<bool*>(m_control_system->getState("MOTION", "DRIVE STRAIGHT TARGET REACHED"))};
+		if (result)
+		{
+			target_reached = *result;
+			delete result;
+		}
+	}
+	return target_reached;
+}
+
+void BlueMatchAuton::goToPoint(double x, double y, double velocity, uint32_t timeout, double tolerance)
+{
+	if (m_control_system && m_robot)
+	{
+		m_control_system->sendCommand("MOTION", "GO TO POINT", &m_robot, velocity, x, y);
+		auto position{getOdometryPosition()};
+		uint32_t start_time{getTime()};
+		double target_distance{distance(position.x, position.y, x, y)};
+		while (!goToPointTargetReached() && getTime() < start_time + timeout && target_distance > tolerance)
+		{
+			delay(LOOP_DELAY);
+			position = getOdometryPosition();
+			target_distance = distance(position.x, position.y, x, y);
+		}
+		if (timeout || tolerance != 0.0)
+			pauseControlSystem();
+	}
+}
+
+void BlueMatchAuton::setGoToPointVelocity(double velocity)
+{
+	if (m_control_system)
+		m_control_system->sendCommand("MOTION", "SET GO TO POINT VELOCITY", velocity);
+}
+
+bool BlueMatchAuton::goToPointTargetReached()
+{
+	bool target_reached{};
+	if (m_control_system)
+	{
+		bool* result{static_cast<bool*>(m_control_system->getState("MOTION", "GO TO POINT TARGET REACHED"))};
 		if (result)
 		{
 			target_reached = *result;
@@ -803,7 +843,7 @@ void BlueMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	double alley_theta{175 * M_PI / 180};
 	position = getOdometryPosition();
 	uint32_t alley_start_timeout{2000};
-	//goToPoint(alley_start_x, alley_start_y, alley_theta, MOTION_VELOCITY, alley_start_timeout);
+	//boomerangGoToPoint(alley_start_x, alley_start_y, alley_theta, MOTION_VELOCITY, alley_start_timeout);
 	driveStraightToPoint(alley_start_x, alley_start_y, MOTION_VELOCITY, alley_start_timeout);
 
 	// Turn to face down the alley
@@ -1080,7 +1120,7 @@ void BlueMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 			
 			position = getOdometryPosition();
 			double target_angle{angle(position.x, position.y, sentry_goal_x, sentry_goal_y)};
-			goToPoint(sentry_goal_x, sentry_goal_y, target_angle, 48.0);
+			boomerangGoToPoint(sentry_goal_x, sentry_goal_y, target_angle, 48.0);
 			while (position.x > sentry_goal_x + 1)
 			{
 				delay(LOOP_DELAY);

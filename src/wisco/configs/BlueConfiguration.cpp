@@ -55,6 +55,23 @@ std::shared_ptr<control::ControlSystem> BlueConfiguration::buildControlSystem()
         withTargetVelocity(DRIVE_STRAIGHT_TARGET_VELOCITY)->
         build()
     };
+    wisco::control::motion::PIDGoToPointBuilder pid_go_to_point_builder{};
+    std::unique_ptr<rtos::IMutex> go_to_point_pros_mutex{std::make_unique<pros_adapters::ProsMutex>()};
+    std::unique_ptr<rtos::ITask> go_to_point_pros_task{std::make_unique<pros_adapters::ProsTask>()};
+    wisco::control::PID go_to_point_linear_pid{pros_clock, GO_TO_POINT_LINEAR_KP, GO_TO_POINT_LINEAR_KI, GO_TO_POINT_LINEAR_KD};
+    wisco::control::PID go_to_point_rotational_pid{pros_clock, GO_TO_POINT_ROTATIONAL_KP, GO_TO_POINT_ROTATIONAL_KI, GO_TO_POINT_ROTATIONAL_KD};
+    std::unique_ptr<wisco::control::motion::IGoToPoint> pid_go_to_point
+    {
+        pid_go_to_point_builder.
+        withDelayer(pros_delayer)->
+        withMutex(go_to_point_pros_mutex)->
+        withTask(go_to_point_pros_task)->
+        withLinearPID(go_to_point_linear_pid)->
+        withRotationalPID(go_to_point_rotational_pid)->
+        withTargetTolerance(GO_TO_POINT_TARGET_TOLERANCE)->
+        withTargetVelocity(GO_TO_POINT_TARGET_VELOCITY)->
+        build()
+    };
     wisco::control::motion::PIDTurnBuilder pid_turn_builder{};
     std::unique_ptr<rtos::IMutex> turn_pros_mutex{std::make_unique<pros_adapters::ProsMutex>()};
     std::unique_ptr<rtos::ITask> turn_pros_task{std::make_unique<pros_adapters::ProsTask>()};
@@ -70,7 +87,7 @@ std::shared_ptr<control::ControlSystem> BlueConfiguration::buildControlSystem()
         withTargetVelocity(TURN_TARGET_VELOCITY)->
         build()
     };
-    std::unique_ptr<wisco::control::AControl> motion_control{std::make_unique<wisco::control::motion::MotionControl>(pid_drive_straight, pid_turn)};
+    std::unique_ptr<wisco::control::AControl> motion_control{std::make_unique<wisco::control::motion::MotionControl>(pid_drive_straight, pid_go_to_point, pid_turn)};
     control_system->addControl(motion_control);
 
     wisco::control::path::PIDPurePursuitBuilder pid_pure_pursuit_builder{};

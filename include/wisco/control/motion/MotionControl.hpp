@@ -3,6 +3,7 @@
 
 #include <memory>
 
+#include "IGoToPoint.hpp"
 #include "wisco/control/AControl.hpp"
 #include "IDriveStraight.hpp"
 #include "ITurn.hpp"
@@ -47,6 +48,7 @@ private:
     {
         NONE,
         DRIVE_STRAIGHT,
+        GO_TO_POINT,
         TURN
     };
 
@@ -69,6 +71,18 @@ private:
     static constexpr char SET_DRIVE_STRAIGHT_VELOCITY_COMMAND_NAME[]{"SET DRIVE STRAIGHT VELOCITY"};
 
     /**
+     * @brief The name of the go to point command name
+     * 
+     */
+    static constexpr char GO_TO_POINT_COMMAND_NAME[]{"GO TO POINT"};
+
+    /**
+     * @brief The name of the set go to point velocity command
+     * 
+     */
+    static constexpr char SET_GO_TO_POINT_VELOCITY_COMMAND_NAME[]{"SET GO TO POINT VELOCITY"};
+
+    /**
      * @brief The name of the turn to angle command
      * 
      */
@@ -87,6 +101,12 @@ private:
     static constexpr char DRIVE_STRAIGHT_TARGET_REACHED_STATE_NAME[]{"DRIVE STRAIGHT TARGET REACHED"};
 
     /**
+     * @brief The name of the go to point target reached state
+     * 
+     */
+    static constexpr char GO_TO_POINT_TARGET_REACHED_STATE_NAME[]{"GO TO POINT TARGET REACHED"};
+
+    /**
      * @brief The name of the turn target reached state
      * 
      */
@@ -96,7 +116,13 @@ private:
      * @brief The drive straight controller being adapted
      * 
      */
-    std::unique_ptr<IDriveStraight> m_drive_straight{};
+    std::unique_ptr<IDriveStraight> m_drive_straight{}; 
+
+    /**
+     * @brief The go to point controller being adapted
+     * 
+     */
+    std::unique_ptr<IGoToPoint> m_go_to_point{};
 
     /**
      * @brief The turn controller being adapted
@@ -115,9 +141,12 @@ public:
      * @brief Construct a new Motion Control object
      * 
      * @param drive_straight The drive straight controller being adapted
+     * @param go_to_point The go to point controller being adapted
      * @param turn The turn controller being adapted
      */
-    MotionControl(std::unique_ptr<IDriveStraight>& drive_straight, std::unique_ptr<ITurn>& turn);
+    MotionControl(std::unique_ptr<IDriveStraight>& drive_straight, 
+        std::unique_ptr<IGoToPoint>& go_to_point, 
+        std::unique_ptr<ITurn>& turn);
 
 	/**
 	 * @brief Initializes the control

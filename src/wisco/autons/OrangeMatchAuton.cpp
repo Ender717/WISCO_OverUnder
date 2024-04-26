@@ -34,7 +34,7 @@ void OrangeMatchAuton::resumeControlSystem()
 		m_control_system->resume();
 }
 
-void OrangeMatchAuton::goToPoint(double x, double y, double theta, double velocity, uint32_t timeout, double tolerance)
+void OrangeMatchAuton::boomerangGoToPoint(double x, double y, double theta, double velocity, uint32_t timeout, double tolerance)
 {
 	if (m_control_system && m_robot)
 	{
@@ -126,6 +126,46 @@ bool OrangeMatchAuton::driveStraightTargetReached()
 	if (m_control_system)
 	{
 		bool* result{static_cast<bool*>(m_control_system->getState("MOTION", "DRIVE STRAIGHT TARGET REACHED"))};
+		if (result)
+		{
+			target_reached = *result;
+			delete result;
+		}
+	}
+	return target_reached;
+}
+
+void OrangeMatchAuton::goToPoint(double x, double y, double velocity, uint32_t timeout, double tolerance)
+{
+	if (m_control_system && m_robot)
+	{
+		m_control_system->sendCommand("MOTION", "GO TO POINT", &m_robot, velocity, x, y);
+		auto position{getOdometryPosition()};
+		uint32_t start_time{getTime()};
+		double target_distance{distance(position.x, position.y, x, y)};
+		while (!goToPointTargetReached() && getTime() < start_time + timeout && target_distance > tolerance)
+		{
+			delay(LOOP_DELAY);
+			position = getOdometryPosition();
+			target_distance = distance(position.x, position.y, x, y);
+		}
+		if (timeout || tolerance != 0.0)
+			pauseControlSystem();
+	}
+}
+
+void OrangeMatchAuton::setGoToPointVelocity(double velocity)
+{
+	if (m_control_system)
+		m_control_system->sendCommand("MOTION", "SET GO TO POINT VELOCITY", velocity);
+}
+
+bool OrangeMatchAuton::goToPointTargetReached()
+{
+	bool target_reached{};
+	if (m_control_system)
+	{
+		bool* result{static_cast<bool*>(m_control_system->getState("MOTION", "GO TO POINT TARGET REACHED"))};
 		if (result)
 		{
 			target_reached = *result;
@@ -773,7 +813,7 @@ void OrangeMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	// Move next to the bar triballs
 	double rush_middle_tolerance{2.0};
 	uint32_t rush_middle_timeout{3000};
-	goToPoint(rush_middle_x, rush_middle_y, 0.0, MOTION_VELOCITY, rush_middle_timeout, rush_middle_tolerance);
+	boomerangGoToPoint(rush_middle_x, rush_middle_y, 0.0, MOTION_VELOCITY, rush_middle_timeout, rush_middle_tolerance);
 
 	// Turn in front of the bar triballs
 	double rush_middle_start_angle{5 * M_PI / 12}, rush_middle_start_tolerance{3.0 * M_PI / 180};
@@ -795,7 +835,7 @@ void OrangeMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	// Move next to the bar
 	double rush_far_tolerance{2.0};
 	uint32_t rush_far_timeout{3000};
-	goToPoint(rush_far_x, rush_far_y, 0.0, MOTION_VELOCITY, rush_far_timeout, rush_far_tolerance);
+	boomerangGoToPoint(rush_far_x, rush_far_y, 0.0, MOTION_VELOCITY, rush_far_timeout, rush_far_tolerance);
 
 	// Turn in front of the far triballs
 	double rush_far_start_angle{5 * M_PI / 12}, rush_far_start_tolerance{3.0 * M_PI / 180};

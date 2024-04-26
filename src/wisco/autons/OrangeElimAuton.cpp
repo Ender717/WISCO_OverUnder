@@ -34,7 +34,7 @@ void OrangeElimAuton::resumeControlSystem()
 		m_control_system->resume();
 }
 
-void OrangeElimAuton::goToPoint(double x, double y, double theta, double velocity, uint32_t timeout, double tolerance)
+void OrangeElimAuton::boomerangGoToPoint(double x, double y, double theta, double velocity, uint32_t timeout, double tolerance)
 {
 	if (m_control_system && m_robot)
 	{
@@ -126,6 +126,46 @@ bool OrangeElimAuton::driveStraightTargetReached()
 	if (m_control_system)
 	{
 		bool* result{static_cast<bool*>(m_control_system->getState("MOTION", "DRIVE STRAIGHT TARGET REACHED"))};
+		if (result)
+		{
+			target_reached = *result;
+			delete result;
+		}
+	}
+	return target_reached;
+}
+
+void OrangeElimAuton::goToPoint(double x, double y, double velocity, uint32_t timeout, double tolerance)
+{
+	if (m_control_system && m_robot)
+	{
+		m_control_system->sendCommand("MOTION", "GO TO POINT", &m_robot, velocity, x, y);
+		auto position{getOdometryPosition()};
+		uint32_t start_time{getTime()};
+		double target_distance{distance(position.x, position.y, x, y)};
+		while (!goToPointTargetReached() && getTime() < start_time + timeout && target_distance > tolerance)
+		{
+			delay(LOOP_DELAY);
+			position = getOdometryPosition();
+			target_distance = distance(position.x, position.y, x, y);
+		}
+		if (timeout || tolerance != 0.0)
+			pauseControlSystem();
+	}
+}
+
+void OrangeElimAuton::setGoToPointVelocity(double velocity)
+{
+	if (m_control_system)
+		m_control_system->sendCommand("MOTION", "SET GO TO POINT VELOCITY", velocity);
+}
+
+bool OrangeElimAuton::goToPointTargetReached()
+{
+	bool target_reached{};
+	if (m_control_system)
+	{
+		bool* result{static_cast<bool*>(m_control_system->getState("MOTION", "GO TO POINT TARGET REACHED"))};
 		if (result)
 		{
 			target_reached = *result;
@@ -709,11 +749,11 @@ void OrangeElimAuton::initialize(std::shared_ptr<control::ControlSystem> control
 		control::path::Point{60.0, 12.0},
 		control::path::Point{78.0, 12.0},
 		control::path::Point{88.0, 12.0},
-		control::path::Point{104.0, 12.0},
-		control::path::Point{119.0, 18.0},
-		control::path::Point{117.0, 25.0},
-		control::path::Point{108.0, 32.0},
-		control::path::Point{96.0, 48.0},
+		control::path::Point{100.0, 12.0},
+		control::path::Point{115.0, 18.0},
+		control::path::Point{113.0, 25.0},
+		control::path::Point{104.0, 32.0},
+		control::path::Point{92.0, 48.0},
 		control::path::Point{90.0, 54.0},
 		control::path::Point{75.0, 72.0},
 	};
@@ -751,7 +791,7 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	setIntakeVoltage(MAX_VOLTAGE);
 	setElevatorPosition(3.25);
 	followPath(rush_path, 48.0);
-	while (position.x < 90.0)
+	while (position.x < 96.0)
 	{
 		delay(LOOP_DELAY);
 		position = getOdometryPosition();
@@ -767,7 +807,6 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	}
 
 	// Outtake the alley ball
-	setPathFollowingVelocity(48.0);
 	setIntakeVoltage(-MAX_VOLTAGE);
 	setElevatorPosition(0);
 	position = getOdometryPosition();
@@ -897,17 +936,17 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 
 	// Back up off the goal
 	setIntakeVoltage(0);
-	driveStraight(-4.0, 36.0, uint32_t{500});
+	driveStraightToPoint(getOdometryPosition().x, 36.0, 36.0, uint32_t{500});
 
 	// Turn to face the bar
-	double bar_x{86.0}, bar_y{38.0};
+	double bar_x{86.0}, bar_y{36.0};
 	turnToPoint(bar_x, bar_y, TURN_VELOCITY, false, 1500, 3.0 * M_PI / 180);
 
 	// Drive up to the bar
 	driveStraightToPoint(bar_x, bar_y, 48.0, 2000, 4.0);
 
 	// Drive over the bar
-	driveStraight(48.0, 72.0, uint32_t{4000}, 3.0);
+	driveStraight(48.0, 72.0, M_PI, uint32_t{4000}, 3.0);
 
 	// Reset x
 	turnToAngle(-M_PI / 2, TURN_VELOCITY, false, 1000);
@@ -918,15 +957,21 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	resetOdometryY();
 
 	// Move to the front of the match load
-	double near_load_x{20.0}, near_load_y{20.0};
+	double near_load_x{24.0}, near_load_y{24.0};
 	turnToPoint(near_load_x, near_load_y, TURN_VELOCITY, false, 1000, 3.0 * M_PI / 180);
 	driveStraightToPoint(near_load_x, near_load_y, 36.0, 1500);
 
 	// Turn to face the match loads
 	turnToPoint(0, 0, TURN_VELOCITY, false, 500);
 
+	// Run a match load to clear the zone
+	loadLoader();
+	while (!isLoaderLoaded())
+		delay(LOOP_DELAY);
+	readyLoader();
+
 	// Move into match loading position
-	double match_load_drive_distance{5.0}, match_load_drive_velocity{12.0};
+	double match_load_drive_distance{12.0}, match_load_drive_velocity{16.0};
 	uint32_t match_load_drive_timeout{1000};
 	driveStraight(match_load_drive_distance, match_load_drive_velocity, -3 * M_PI / 4, match_load_drive_timeout);
 

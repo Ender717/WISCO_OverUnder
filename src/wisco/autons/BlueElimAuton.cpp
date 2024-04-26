@@ -34,7 +34,7 @@ void BlueElimAuton::resumeControlSystem()
 		m_control_system->resume();
 }
 
-void BlueElimAuton::goToPoint(double x, double y, double theta, double velocity, uint32_t timeout, double tolerance)
+void BlueElimAuton::boomerangGoToPoint(double x, double y, double theta, double velocity, uint32_t timeout, double tolerance)
 {
 	if (m_control_system && m_robot)
 	{
@@ -126,6 +126,46 @@ bool BlueElimAuton::driveStraightTargetReached()
 	if (m_control_system)
 	{
 		bool* result{static_cast<bool*>(m_control_system->getState("MOTION", "DRIVE STRAIGHT TARGET REACHED"))};
+		if (result)
+		{
+			target_reached = *result;
+			delete result;
+		}
+	}
+	return target_reached;
+}
+
+void BlueElimAuton::goToPoint(double x, double y, double velocity, uint32_t timeout, double tolerance)
+{
+	if (m_control_system && m_robot)
+	{
+		m_control_system->sendCommand("MOTION", "GO TO POINT", &m_robot, velocity, x, y);
+		auto position{getOdometryPosition()};
+		uint32_t start_time{getTime()};
+		double target_distance{distance(position.x, position.y, x, y)};
+		while (!goToPointTargetReached() && getTime() < start_time + timeout && target_distance > tolerance)
+		{
+			delay(LOOP_DELAY);
+			position = getOdometryPosition();
+			target_distance = distance(position.x, position.y, x, y);
+		}
+		if (timeout || tolerance != 0.0)
+			pauseControlSystem();
+	}
+}
+
+void BlueElimAuton::setGoToPointVelocity(double velocity)
+{
+	if (m_control_system)
+		m_control_system->sendCommand("MOTION", "SET GO TO POINT VELOCITY", velocity);
+}
+
+bool BlueElimAuton::goToPointTargetReached()
+{
+	bool target_reached{};
+	if (m_control_system)
+	{
+		bool* result{static_cast<bool*>(m_control_system->getState("MOTION", "GO TO POINT TARGET REACHED"))};
 		if (result)
 		{
 			target_reached = *result;
@@ -802,6 +842,7 @@ void BlueElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	setElevatorPosition(0.0, 1000);
 
 	// Turn to face the near wall
+	/*
 	double load_wall_x{16.0}, load_wall_y{36.0}, load_wall_turn_tolerance{3.0 * M_PI / 180};
 	uint32_t load_wall_turn_timeout{1500};
 	setIntakeVoltage(MAX_VOLTAGE);
@@ -812,18 +853,18 @@ void BlueElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	double load_wall_tolerance{2.0};
 	uint32_t load_wall_timeout{1500};
 	driveStraightToPoint(load_wall_x, load_wall_y, MOTION_VELOCITY, load_wall_timeout, load_wall_tolerance);
+	*/
 
 	// Reset the y-coordinate
+	turnToAngle(M_PI, TURN_VELOCITY, false, 1000);
 	resetOdometryY();
 
-	// Tuen to reset X
-	turnToAngle(M_PI / 2, TURN_VELOCITY, false, 1000, 2 * M_PI / 180);
-
 	// Reset the x-coordinate
+	turnToAngle(M_PI / 2, TURN_VELOCITY, false, 1000, 2 * M_PI / 180);
 	resetOdometryX();
 
 	// Turn towards the elim load zone
-	double elim_load_distance{25.0}, elim_load_angle{M_PI / 4};
+	double elim_load_distance{32.0}, elim_load_angle{M_PI / 4};
 	double elim_load_x{elim_load_distance * std::cos(elim_load_angle)};
 	double elim_load_y{elim_load_distance * std::sin(elim_load_angle)};
 	double elim_load_turn_tolerance{2.0 * M_PI / 180};
@@ -844,8 +885,14 @@ void BlueElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	// Turn to face the elim loads
 	turnToPoint(0, 0, TURN_VELOCITY, false, elim_load_turn_timeout);
 
+	// Run a match load to clear the zone
+	loadLoader();
+	while (!isLoaderLoaded())
+		delay(LOOP_DELAY);
+	readyLoader();
+
 	// Move into elim loading position
-	double elim_load_drive_distance{5.0}, elim_load_drive_velocity{12.0};
+	double elim_load_drive_distance{12.0}, elim_load_drive_velocity{16.0};
 	uint32_t elim_load_drive_timeout{1000};
 	driveStraight(elim_load_drive_distance, elim_load_drive_velocity, -3 * M_PI / 4, elim_load_drive_timeout);
 
@@ -900,7 +947,7 @@ void BlueElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	}
 
 	// Turn to the start of the alley
-	double alley_start_x{26.0}, alley_start_y{11.0};
+	double alley_start_x{26.0}, alley_start_y{10.0};
 	uint32_t alley_start_turn_timeout{1000};
 	turnToPoint(alley_start_x, alley_start_y, TURN_VELOCITY, true, alley_start_turn_timeout);
 
@@ -947,6 +994,9 @@ void BlueElimAuton::run(std::shared_ptr<IAlliance> alliance,
 			double alley_backup_distance{-6.0};
 			uint32_t alley_backup_timeout{500};
 			driveStraight(alley_backup_distance, MOTION_VELOCITY, alley_backup_timeout);
+
+			// Turn down the alley
+			turnToAngle(alley_theta, TURN_VELOCITY, false, alley_turn_timeout);
 
 			// Resume the alley push
 			position = getOdometryPosition();

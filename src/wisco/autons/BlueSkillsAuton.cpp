@@ -34,7 +34,7 @@ void BlueSkillsAuton::resumeControlSystem()
 		m_control_system->resume();
 }
 
-void BlueSkillsAuton::goToPoint(double x, double y, double theta, double velocity, uint32_t timeout, double tolerance)
+void BlueSkillsAuton::boomerangGoToPoint(double x, double y, double theta, double velocity, uint32_t timeout, double tolerance)
 {
 	if (m_control_system && m_robot)
 	{
@@ -126,6 +126,46 @@ bool BlueSkillsAuton::driveStraightTargetReached()
 	if (m_control_system)
 	{
 		bool* result{static_cast<bool*>(m_control_system->getState("MOTION", "DRIVE STRAIGHT TARGET REACHED"))};
+		if (result)
+		{
+			target_reached = *result;
+			delete result;
+		}
+	}
+	return target_reached;
+}
+
+void BlueSkillsAuton::goToPoint(double x, double y, double velocity, uint32_t timeout, double tolerance)
+{
+	if (m_control_system && m_robot)
+	{
+		m_control_system->sendCommand("MOTION", "GO TO POINT", &m_robot, velocity, x, y);
+		auto position{getOdometryPosition()};
+		uint32_t start_time{getTime()};
+		double target_distance{distance(position.x, position.y, x, y)};
+		while (!goToPointTargetReached() && getTime() < start_time + timeout && target_distance > tolerance)
+		{
+			delay(LOOP_DELAY);
+			position = getOdometryPosition();
+			target_distance = distance(position.x, position.y, x, y);
+		}
+		if (timeout || tolerance != 0.0)
+			pauseControlSystem();
+	}
+}
+
+void BlueSkillsAuton::setGoToPointVelocity(double velocity)
+{
+	if (m_control_system)
+		m_control_system->sendCommand("MOTION", "SET GO TO POINT VELOCITY", velocity);
+}
+
+bool BlueSkillsAuton::goToPointTargetReached()
+{
+	bool target_reached{};
+	if (m_control_system)
+	{
+		bool* result{static_cast<bool*>(m_control_system->getState("MOTION", "GO TO POINT TARGET REACHED"))};
 		if (result)
 		{
 			target_reached = *result;
