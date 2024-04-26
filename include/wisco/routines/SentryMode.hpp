@@ -121,7 +121,7 @@ private:
      * @brief The distance to turn before resuming a search after skipping
      * 
      */
-    static constexpr double SKIP_DISTANCE{M_PI / 18};
+    static constexpr double SKIP_DISTANCE{5 * M_PI / 180};
 
     /**
      * @brief The delay to wait for a distance sensor measurement

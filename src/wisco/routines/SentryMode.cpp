@@ -201,6 +201,7 @@ bool SentryMode::isValid(control::path::Point point)
     {
         valid = (point.getX() > 27.0 && point.getX() < 69.0) &&
                 (point.getY() > 27.0 && point.getY() < 71.0);
+        std::cout << (valid ? "" : "in") << "valid point: " << point.getX() << ", " << point.getY() << std::endl;
     }
     else
     {
@@ -256,7 +257,6 @@ void SentryMode::updateTarget()
 {
     auto position{getOdometryPosition()};
     double ball_distance{getBallDistance()};
-    std::cout << "Angle: " << position.theta << std::endl;
     if (std::abs(bindRadians(target_angle - position.theta)) < AIM_TOLERANCE || turnTargetReached())
     {
         if (distance_time == 0)
@@ -306,7 +306,6 @@ void SentryMode::updateGrab()
         m_control_system->pause();
         setElevatorPosition(ELEVATOR_BALL);
         state = EState::HOLD;
-        finished = true; // Comment out if it doesn't grab properly
         std::cout << "Hold" << std::endl;
     }
 }

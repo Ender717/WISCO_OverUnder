@@ -106,7 +106,7 @@ private:
 	 * @brief The tuning constant for the odometry heading sensor
 	 * 
 	 */
-	static constexpr double ODOMETRY_HEADING_TUNING_CONSTANT{1.014};
+	static constexpr double ODOMETRY_HEADING_TUNING_CONSTANT{0.996};
 
 	/**
 	 * @brief The port for the odometry linear distance tracking sensor
@@ -377,13 +377,13 @@ private:
 	 * @brief The tuning constant for the ball detector distance sensor
 	 * 
 	 */
-	static constexpr double BALL_DETECTOR_DISTANCE_CONSTANT{1.0};
+	static constexpr double BALL_DETECTOR_DISTANCE_CONSTANT{0.9769};
 
 	/**
 	 * @brief The tuning offset for the ball detector distance sensor
 	 * 
 	 */
-	static constexpr double BALL_DETECTOR_DISTANCE_OFFSET{3.5};
+	static constexpr double BALL_DETECTOR_DISTANCE_OFFSET{3.7505};
 
 	/**
 	 * @brief The port for the ball detector vision sensor

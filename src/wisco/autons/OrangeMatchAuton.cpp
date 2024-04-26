@@ -731,7 +731,7 @@ void OrangeMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	m_robot = robot;
 
 	uint32_t auton_start_time{getTime()};
-	double start_x{38.75}, start_y{15.5}, start_theta{95.0 * M_PI / 180.0};
+	double start_x{39.25}, start_y{15.5}, start_theta{95.0 * M_PI / 180.0};
 	setOdometryPosition(start_x, start_y, start_theta);
 
 	// Grab some basic variables for general use
@@ -857,6 +857,7 @@ void OrangeMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	bool sentry{true};
 	position = getOdometryPosition();
 	control::path::Point last_ball{};
+	double last_angle{};
 
 	while (sentry)
 	{
@@ -869,7 +870,9 @@ void OrangeMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 		if (sentry)
 		{
 			// Store the found ball coordinates
+			position = getOdometryPosition();
 			last_ball = sentry_mode.getBall();
+			last_angle = angle(position.x, position.y, last_ball.getX(), last_ball.getY());
 
 			// Move back to the starting point
 			driveStraightToPoint(sentry_x, sentry_y, sentry_velocity, sentry_timeout, sentry_tolerance);
@@ -882,7 +885,8 @@ void OrangeMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 			setElevatorPosition(0, outtake_timeout);
 
 			// Turn back to the last found triball
-			turnToPoint(last_ball.getX(), last_ball.getY(), TURN_VELOCITY, false, sentry_start_timeout, sentry_start_tolerance);
+			//turnToPoint(last_ball.getX(), last_ball.getY(), TURN_VELOCITY, false, sentry_start_timeout, sentry_start_tolerance);
+			turnToAngle(last_angle, TURN_VELOCITY, false, 1000);
 		}
 	}
 
@@ -893,6 +897,7 @@ void OrangeMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	sentry =true;
 	position = getOdometryPosition();
 	last_ball = control::path::Point{};
+	last_angle = 0.0;
 
 	while (sentry)
 	{
@@ -905,7 +910,9 @@ void OrangeMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 		if (sentry)
 		{
 			// Store the found ball coordinates
+			position = getOdometryPosition();
 			last_ball = sentry_mode.getBall();
+			last_angle = angle(position.x, position.y, last_ball.getX(), last_ball.getY());
 
 			// Move back to the starting point
 			driveStraightToPoint(sentry_x, sentry_y, sentry_velocity, sentry_timeout, sentry_tolerance);
@@ -918,7 +925,8 @@ void OrangeMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 			setElevatorPosition(0, outtake_timeout);
 
 			// Turn back to the last found triball
-			turnToPoint(last_ball.getX(), last_ball.getY(), TURN_VELOCITY, false, sentry_start_timeout, sentry_start_tolerance);
+			//turnToPoint(last_ball.getX(), last_ball.getY(), TURN_VELOCITY, false, sentry_start_timeout, sentry_start_tolerance);
+			turnToAngle(last_angle, TURN_VELOCITY, false, 1000);
 		}
 	}
 
@@ -1109,7 +1117,7 @@ void OrangeMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 	}
 
 	// Turn to face the start of the goal shove move
-	double goal_shove_start_x{alley_end_x + 5.0}, goal_shove_start_y{14.0};
+	double goal_shove_start_x{alley_end_x + 7.0}, goal_shove_start_y{15.0};
 	uint32_t goal_shove_start_turn_timeout{500};
 	turnToPoint(goal_shove_start_x, goal_shove_start_y, TURN_VELOCITY, true, goal_shove_start_turn_timeout);
 
@@ -1151,7 +1159,7 @@ void OrangeMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 
 	// Turn to the start of win point
 	setRightWing(false);
-	double winpoint_start_x{96.0}, winpoint_start_y{12.0};
+	double winpoint_start_x{90.0}, winpoint_start_y{12.0};
 	double winpoint_start_turn_tolerance{2 * M_PI / 180};
 	uint32_t winpoint_start_turn_timeout{1000};
 	turnToPoint(winpoint_start_x, winpoint_start_y, TURN_VELOCITY, false, winpoint_start_turn_timeout, winpoint_start_turn_tolerance);
@@ -1172,6 +1180,7 @@ void OrangeMatchAuton::run(std::shared_ptr<IAlliance> alliance,
 
 	// Touch the bar for win point (remove for elims)
 	turnToPoint(72.0, 24.0, TURN_VELOCITY);
+	delay(200);
 	setElevatorPosition(10.0, 2000);
 	setElevatorPosition(getElevatorPosition());
 	pros::screen::print(pros::E_TEXT_LARGE_CENTER, 7, "End Time: %5.2f", (getTime() - auton_start_time) / 1000.0);

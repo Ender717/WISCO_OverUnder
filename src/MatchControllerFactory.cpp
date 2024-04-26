@@ -10,10 +10,14 @@ wisco::MatchController MatchControllerFactory::createMatchController()
     lvgl_menu->addAlliance(red_alliance);
     std::shared_ptr<wisco::IAlliance> skills_alliance{std::make_shared<wisco::alliances::SkillsAlliance>()};
     lvgl_menu->addAlliance(skills_alliance);
+    std::unique_ptr<wisco::IAutonomous> blue_elim_autonomous{std::make_unique<wisco::autons::BlueElimAuton>()};
+    lvgl_menu->addAutonomous(blue_elim_autonomous);
     std::unique_ptr<wisco::IAutonomous> blue_match_autonomous{std::make_unique<wisco::autons::BlueMatchAuton>()};
     lvgl_menu->addAutonomous(blue_match_autonomous);
     std::unique_ptr<wisco::IAutonomous> blue_skills_autonomous{std::make_unique<wisco::autons::BlueSkillsAuton>()};
     lvgl_menu->addAutonomous(blue_skills_autonomous);
+    std::unique_ptr<wisco::IAutonomous> orange_elim_autonomous{std::make_unique<wisco::autons::OrangeElimAuton>()};
+    lvgl_menu->addAutonomous(orange_elim_autonomous);
     std::unique_ptr<wisco::IAutonomous> orange_match_autonomous{std::make_unique<wisco::autons::OrangeMatchAuton>()};
     lvgl_menu->addAutonomous(orange_match_autonomous);
     std::unique_ptr<wisco::IAutonomous> orange_skills_autonomous{std::make_unique<wisco::autons::OrangeSkillsAuton>()};
