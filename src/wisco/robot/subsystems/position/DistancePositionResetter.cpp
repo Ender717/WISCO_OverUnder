@@ -60,6 +60,14 @@ double DistancePositionResetter::getResetY(double theta)
     return getResetX(theta);
 }
 
+double DistancePositionResetter::getRawValue()
+{
+    double raw_value{};
+    if (m_distance_sensor)
+        raw_value = m_distance_sensor->getDistance();
+    return raw_value;
+}
+
 void DistancePositionResetter::setDistanceSensor(std::unique_ptr<io::IDistanceSensor>& distance_sensor)
 {
     if (distance_sensor)

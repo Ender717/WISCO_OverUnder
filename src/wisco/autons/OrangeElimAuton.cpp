@@ -649,6 +649,21 @@ double OrangeElimAuton::getOdometryVelocity()
 	return velocity;
 }
 
+double OrangeElimAuton::getOdometryResetterRawValue()
+{
+	double raw_value{};
+	if (m_robot)
+	{
+		double* result{static_cast<double*>(m_robot->getState("POSITION TRACKER", "GET RAW RESETTER VALUE"))};
+		if (result)
+		{
+			raw_value = *result;
+			delete result;
+		}
+	}
+	return raw_value;
+}
+
 void OrangeElimAuton::setUmbrellaIn()
 {
 	if (m_robot)
@@ -753,13 +768,25 @@ void OrangeElimAuton::initialize(std::shared_ptr<control::ControlSystem> control
 		control::path::Point{115.0, 18.0},
 		control::path::Point{113.0, 25.0},
 		control::path::Point{104.0, 32.0},
-		control::path::Point{92.0, 48.0},
-		control::path::Point{90.0, 54.0},
+		control::path::Point{92.0, 52.0},
+		control::path::Point{90.0, 57.0},
 		control::path::Point{75.0, 72.0},
 	};
 	rush_path = control::path::QuinticBezierSpline::calculate(rush_path_control_points);
 
 	far_load_path.push_back(control::path::Point{132.0, 48.0});
+
+	std::vector<control::path::Point> winpoint_path_control_points
+	{
+		control::path::Point{130.0, 36.0},
+		control::path::Point{120.0, 24.0},
+		control::path::Point{114.0, 18.0},
+		control::path::Point{96.0, 11.0},
+		control::path::Point{76.0, 11.0},
+		control::path::Point{68.0, 11.0},
+		control::path::Point{48.0, 11.0},
+	};
+	winpoint_path = control::path::QuinticBezierSpline::calculate(winpoint_path_control_points);
 }
 
 void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
@@ -791,7 +818,7 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	setIntakeVoltage(MAX_VOLTAGE);
 	setElevatorPosition(3.25);
 	followPath(rush_path, 48.0);
-	while (position.x < 96.0)
+	while (position.x < 94.0)
 	{
 		delay(LOOP_DELAY);
 		position = getOdometryPosition();
@@ -800,7 +827,7 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	// Slow down to take the corner
 	setPathFollowingVelocity(24.0);
 	position = getOdometryPosition();
-	while (position.theta < 10 * M_PI / 180)
+	while (position.theta < 5 * M_PI / 180)
 	{
 		delay(LOOP_DELAY);
 		position = getOdometryPosition();
@@ -808,9 +835,9 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 
 	// Outtake the alley ball
 	setIntakeVoltage(-MAX_VOLTAGE);
-	setElevatorPosition(0);
+	setElevatorPosition(0, 500);
 	position = getOdometryPosition();
-	while (position.x > 96.0)
+	while (position.x > 104.0)
 	{
 		delay(LOOP_DELAY);
 		position = getOdometryPosition();
@@ -823,7 +850,7 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	setElevatorPosition(3.25);
 	position = getOdometryPosition();
 	target_distance = distance(position.x, position.y, rush_ball_x, rush_ball_y);
-	while (target_distance > 20.0)
+	while (target_distance > 16.0)
 	{
 		delay(LOOP_DELAY);
 		position = getOdometryPosition();
@@ -834,18 +861,20 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	position = getOdometryPosition();
 	target_angle = angle(position.x, position.y, rush_ball_x, rush_ball_y);
 	target_distance = distance(position.x, position.y, rush_ball_x, rush_ball_y);
-	driveStraight(target_distance - 10.0, 42.0, target_angle, uint32_t{1000});
+	//driveStraight(target_distance - 10.0, 42.0, target_angle, uint32_t{1000});
+	goToPoint(rush_ball_x, rush_ball_y, 48.0, 1000, 11.0);
 
 	// Turn to face backwards into the goal
-	turnToPoint(120.0, 68.0, TURN_VELOCITY, true, 1000);
+	turnToPoint(120.0, 67.0, TURN_VELOCITY, true, 1000);
 
 	// Push back into the goal
 	setLeftWing(true);
 	setRightWing(true);
-	driveStraightToPoint(120.0, 68.0, 48.0, 1000);
+	//driveStraightToPoint(120.0, 67.0, 48.0, 1000);
+	goToPoint(120.0, 67.0, 48.0, 1000);
 
 	// Move forward slightly
-	driveStraight(3.0, 36.0, uint32_t{500});
+	driveStraight(4.0, 36.0, -175 * M_PI / 180, uint32_t{500});
 
 	// Turn around
 	start_time = getTime();
@@ -870,7 +899,8 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	turnToPoint(far_load_x, far_load_y, TURN_VELOCITY, false, 1000);
 
 	// Drive straight to the point for faster stopping
-	driveStraightToPoint(far_load_x, far_load_y, 36.0, 2000);
+	//driveStraightToPoint(far_load_x, far_load_y, 36.0, 2000);
+	goToPoint(far_load_x, far_load_y, 36.0, 2000);
 
 	// Visually detect the alliance ball
 	double alliance_ball_angle{};
@@ -939,7 +969,7 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	driveStraightToPoint(getOdometryPosition().x, 36.0, 36.0, uint32_t{500});
 
 	// Turn to face the bar
-	double bar_x{86.0}, bar_y{36.0};
+	double bar_x{86.0}, bar_y{38.0};
 	turnToPoint(bar_x, bar_y, TURN_VELOCITY, false, 1500, 3.0 * M_PI / 180);
 
 	// Drive up to the bar
@@ -949,20 +979,22 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	driveStraight(48.0, 72.0, M_PI, uint32_t{4000}, 3.0);
 
 	// Reset x
-	turnToAngle(-M_PI / 2, TURN_VELOCITY, false, 1000);
+	turnToAngle(-75 * M_PI / 180, TURN_VELOCITY, false, 1500);
 	resetOdometryX();
 
 	// Reset y
-	turnToAngle(0, TURN_VELOCITY, false, uint32_t{1000});
+	turnToAngle(0, TURN_VELOCITY, false, uint32_t{1500});
+	while (getOdometryResetterRawValue() < 24.0)
+		delay(LOOP_DELAY);
 	resetOdometryY();
 
 	// Move to the front of the match load
-	double near_load_x{24.0}, near_load_y{24.0};
+	double near_load_x{23.0}, near_load_y{23.0};
 	turnToPoint(near_load_x, near_load_y, TURN_VELOCITY, false, 1000, 3.0 * M_PI / 180);
 	driveStraightToPoint(near_load_x, near_load_y, 36.0, 1500);
 
 	// Turn to face the match loads
-	turnToPoint(0, 0, TURN_VELOCITY, false, 500);
+	turnToPoint(0, 0, TURN_VELOCITY, false, 1000);
 
 	// Run a match load to clear the zone
 	loadLoader();
@@ -971,14 +1003,15 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	readyLoader();
 
 	// Move into match loading position
-	double match_load_drive_distance{12.0}, match_load_drive_velocity{16.0};
-	uint32_t match_load_drive_timeout{1000};
+	double match_load_drive_distance{12.0}, match_load_drive_velocity{12.0};
+	uint32_t match_load_drive_timeout{2000};
 	driveStraight(match_load_drive_distance, match_load_drive_velocity, -3 * M_PI / 4, match_load_drive_timeout);
+	delay(500);
 
 	// Do match loads
 	uint8_t match_loads{6};
 	uint32_t match_load_delay{300};
-	uint32_t match_load_timeout{500};
+	uint32_t match_load_timeout{800};
 	bool timeout{false};
 	for (uint8_t i{}; i < match_loads && !timeout; ++i)
 	{
@@ -1070,11 +1103,18 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 		{
 			// Back up to get free
 			pauseControlSystem();
+			setLeftWing(false);
+			setRightWing(false);
 			double alley_backup_distance{-6.0};
-			uint32_t alley_backup_timeout{500};
+			uint32_t alley_backup_timeout{1000};
 			driveStraight(alley_backup_distance, MOTION_VELOCITY, alley_backup_timeout);
 
+			// Turn down the alley
+			turnToAngle(alley_theta, TURN_VELOCITY, false, alley_turn_timeout);
+
 			// Resume the alley push
+			setLeftWing(true);
+			setRightWing(true);
 			position = getOdometryPosition();
 			alley_distance = (alley_end_x - position.x) * std::cos(alley_theta);
 			driveStraight(alley_distance, alley_velocity);
@@ -1118,7 +1158,19 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	// Push the alley triballs into the goal
 	driveStraightToPoint(side_goal_x, side_goal_y, push_velocity, push_timeout);
 
+	// Follow the path for winpoint
+	followPath(winpoint_path, 36.0);
+	delay(800);
+	setLeftWing(false);
+	setRightWing(false);
+	position = getOdometryPosition();
+	while (position.x > 68.0)
+	{
+		delay(LOOP_DELAY);
+		position = getOdometryPosition();
+	}
 	// Turn to the start of win point
+	/*
 	setRightWing(false);
 	double winpoint_start_x{102.0}, winpoint_start_y{10.0};
 	double winpoint_start_turn_tolerance{2 * M_PI / 180};
@@ -1138,11 +1190,12 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 
 	// Move to the winpoint position
 	driveStraightToPoint(winpoint_x, winpoint_y, MOTION_VELOCITY, winpoint_timeout, winpoint_tolerance);	
+	*/
 
 	// Touch the bar for win point (remove for elims)
 	turnToPoint(72.0, 24.0, TURN_VELOCITY);
 	delay(200);
-	setElevatorPosition(10.0, 2000);
+	setElevatorPosition(16.0, 1500);
 	setElevatorPosition(getElevatorPosition());
 
 	pros::screen::print(pros::E_TEXT_LARGE_CENTER, 7, "End Time: %5.2f", (getTime() - auton_start_time) / 1000.0);

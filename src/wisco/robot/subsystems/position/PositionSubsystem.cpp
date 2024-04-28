@@ -94,6 +94,11 @@ void* PositionSubsystem::state(std::string state_name)
         Position* position{new Position{m_position_tracker->getPosition()}};
         result = position;
     }
+    else if (state_name == GET_RAW_RESETTER_VALUE_STATE_NAME)
+    {
+        double* raw_value{new double{m_position_resetter->getRawValue()}};
+        result = raw_value;
+    }
 
     return result;
 }

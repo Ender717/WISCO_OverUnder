@@ -55,7 +55,7 @@ void PIDGoToPoint::updateVelocity(double forward_distance, double target_angle, 
         error = ((-2 / M_PI) * std::abs(rotational_offset - (M_PI / 2))) + 1;
     else
         error = 0;
-    double rotational_control{m_rotational_pid.getControlValue(0, error)};
+    double rotational_control{m_rotational_pid.getControlValue(error, 0)};
 
     if (std::abs(linear_control) > motion_velocity)
         linear_control *= motion_velocity / std::abs(linear_control);

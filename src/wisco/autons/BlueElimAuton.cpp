@@ -648,6 +648,21 @@ double BlueElimAuton::getOdometryVelocity()
 	return velocity;
 }
 
+double BlueElimAuton::getOdometryResetterRawValue()
+{
+	double raw_value{};
+	if (m_robot)
+	{
+		double* result{static_cast<double*>(m_robot->getState("POSITION TRACKER", "GET RAW RESETTER VALUE"))};
+		if (result)
+		{
+			raw_value = *result;
+			delete result;
+		}
+	}
+	return raw_value;
+}
+
 void BlueElimAuton::setUmbrellaIn()
 {
 	if (m_robot)
@@ -780,16 +795,16 @@ void BlueElimAuton::run(std::shared_ptr<IAlliance> alliance,
 
 	// Move next to the first triball
 	double rush_velocity{48.0};
-	double rush_start_x{34.0}, rush_start_y{55.0};
+	double rush_start_x{35.0}, rush_start_y{52.0};
 	uint32_t rush_start_timeout{2000};
-	setElevatorPosition(5.0);
-	driveStraightToPoint(rush_start_x, rush_start_y, rush_velocity, rush_start_timeout);
+	setElevatorPosition(7.0);
+	driveStraightToPoint(rush_start_x, rush_start_y, rush_velocity, rush_start_timeout, 2.0);
 
 	// Turn to face the front triball
 	double front_triball_turn_tolerance{5.0 * M_PI / 180};
 	double front_triball_x{48.0}, front_triball_y{72.0};
 	uint32_t front_triball_turn_timeout{1000};
-	setElevatorPosition(8.0);
+	setElevatorPosition(10.0);
 	turnToPoint(front_triball_x, front_triball_y, TURN_VELOCITY, false, front_triball_turn_timeout, front_triball_turn_tolerance);
 
 	// Grab the front triball
@@ -800,17 +815,21 @@ void BlueElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	setIntakeVoltage(MAX_VOLTAGE);
 	setElevatorPosition(elevator_distance + rush_front_elevator_offset - ELEVATOR_OFFSET, rush_front_elevator_timeout);
 
-	// Pull the elevator in
-	double sweep_elevator{6.0};
-	setIntakeVoltage(MAX_VOLTAGE);
-	setElevatorPosition(sweep_elevator);
-
 	// Turn to sweep the back triball off the line
-	turnToAngle(-M_PI / 3, M_PI, false, 1500, 3.0 * M_PI / 180);
+	setElevatorPosition(12.0);
+	turnToAngle(-10 * M_PI / 180, M_PI, false, 1000);
+
+	// Drive slightly forward
+	setElevatorPosition(3.25);
+	driveStraight(8.0, 36.0, -10.0 * M_PI / 180, 1000, 2.0);
+
+	// Turn to a better release angle
+	turnToAngle(-M_PI / 2, TURN_VELOCITY, false, 1000, 3.0 * M_PI / 180);
 
 	// Let go of the triball
 	setIntakeVoltage(-MAX_VOLTAGE / 1.5);
-	setElevatorPosition(0.0, 1000);
+	setElevatorPosition(0.0);
+	driveStraight(6.0, 36.0, uint32_t{700});
 
 	// Turn to face the third ball
 	double rush_middle_turn_tolerance{3.0 * M_PI / 180};
@@ -821,16 +840,21 @@ void BlueElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	// Pick up the third triball
 	setIntakeVoltage(MAX_VOLTAGE);
 	setElevatorPosition(3.25);
-	driveStraightToPoint(rush_middle_x - 8, rush_middle_y, 48.0, 1000, 2.0);
+	//driveStraightToPoint(rush_middle_x - 8, rush_middle_y, 48.0, 1000, 2.0);
+	goToPoint(rush_middle_x, rush_middle_y, 36.0, 1000, 10.0);
+
+	// Back up slightly for a better push angle
+	//goToPoint(48.0, 60.0, 36.0, 1000);
 
 	// Turn to face the start of the alley
 	double return_x{36.0}, return_y{26.0};
-	turnToPoint(return_x, return_y, TURN_VELOCITY, true, 1000, 3.0 * M_PI / 180);
+	//turnToPoint(return_x, return_y, TURN_VELOCITY, true, 1000, 3.0 * M_PI / 180);
 
 	// Move to the start of the alley
 	setLeftWing(true);
 	setRightWing(true);
-	driveStraightToPoint(return_x, return_y, 48.0, 2000, 2.0);
+	//driveStraightToPoint(return_x, return_y, 48.0, 2000, 2.0);
+	goToPoint(return_x, return_y, 48.0, 2000, 2.0);
 
 	// Turn into the alley
 	setLeftWing(false);
@@ -857,14 +881,16 @@ void BlueElimAuton::run(std::shared_ptr<IAlliance> alliance,
 
 	// Reset the y-coordinate
 	turnToAngle(M_PI, TURN_VELOCITY, false, 1000);
-	resetOdometryY();
+	if (std::abs(bindRadians(M_PI - getOdometryPosition().theta)) < 20.0 * M_PI / 180)
+		resetOdometryY();
 
 	// Reset the x-coordinate
 	turnToAngle(M_PI / 2, TURN_VELOCITY, false, 1000, 2 * M_PI / 180);
-	resetOdometryX();
+	if (std::abs(bindRadians(M_PI / 2 - getOdometryPosition().theta)) < 20.0 * M_PI / 180)
+		resetOdometryX();
 
 	// Turn towards the elim load zone
-	double elim_load_distance{32.0}, elim_load_angle{M_PI / 4};
+	double elim_load_distance{34.0}, elim_load_angle{M_PI / 4};
 	double elim_load_x{elim_load_distance * std::cos(elim_load_angle)};
 	double elim_load_y{elim_load_distance * std::sin(elim_load_angle)};
 	double elim_load_turn_tolerance{2.0 * M_PI / 180};
@@ -887,19 +913,18 @@ void BlueElimAuton::run(std::shared_ptr<IAlliance> alliance,
 
 	// Run a match load to clear the zone
 	loadLoader();
-	while (!isLoaderLoaded())
-		delay(LOOP_DELAY);
+	delay(500);
 	readyLoader();
 
 	// Move into elim loading position
-	double elim_load_drive_distance{12.0}, elim_load_drive_velocity{16.0};
+	double elim_load_drive_distance{12.0}, elim_load_drive_velocity{12.0};
 	uint32_t elim_load_drive_timeout{1000};
 	driveStraight(elim_load_drive_distance, elim_load_drive_velocity, -3 * M_PI / 4, elim_load_drive_timeout);
 
 	// She wangle my jangle until I finish
 	uint8_t elim_loads{6};
 	uint32_t elim_load_delay{300};
-	uint32_t elim_load_timeout{500};
+	uint32_t elim_load_timeout{800};
 	bool timeout{false};
 	for (uint8_t i{}; i < elim_loads && !timeout; ++i)
 	{
@@ -947,7 +972,7 @@ void BlueElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	}
 
 	// Turn to the start of the alley
-	double alley_start_x{26.0}, alley_start_y{10.0};
+	double alley_start_x{26.0}, alley_start_y{12.0};
 	uint32_t alley_start_turn_timeout{1000};
 	turnToPoint(alley_start_x, alley_start_y, TURN_VELOCITY, true, alley_start_turn_timeout);
 
@@ -956,30 +981,38 @@ void BlueElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	setRightWing(true);
 
 	// Move to the start of the alley
-	double alley_theta{175 * M_PI / 180};
+	double alley_theta{173 * M_PI / 180};
 	position = getOdometryPosition();
 	uint32_t alley_start_timeout{2000};
 	driveStraightToPoint(alley_start_x, alley_start_y, MOTION_VELOCITY, alley_start_timeout);
 
 	// Turn to face down the alley
-	uint32_t alley_turn_timeout{500};
+	uint32_t alley_turn_timeout{1000};
 	turnToAngle(alley_theta, TURN_VELOCITY, false, alley_turn_timeout);
 
 	// Follow the alley path
-	double alley_end_x{109.0};
+	double alley_end_x{110.0};
 	double fast_alley_velocity{48.0}, slow_alley_velocity{24.0}, slow_alley_x{76.0};
-	double collision_detection{3.0}, collision_end_x{alley_end_x - 4.0};
+	double collision_detection{6.0}, collision_end_x{alley_end_x - 6.0};
 	uint32_t collision_delay{1000}, collision_start_time{getTime()};
 	double alley_distance{(alley_end_x - alley_start_x) * std::cos(alley_theta)};
 	double alley_velocity{fast_alley_velocity};
 	position = getOdometryPosition();
 	velocity = getOdometryVelocity();
-	driveStraight(alley_distance, alley_velocity);
+	driveStraight(alley_distance, alley_velocity, 174 * M_PI / 180);
 	while (!driveStraightTargetReached())
 	{
 		// If we have reached the slow section of the alley, slow down
 		if (position.x > slow_alley_x)
+		{
 			alley_velocity = slow_alley_velocity;
+			if (timeout)
+			{
+				timeout = false;
+				setElevatorPosition(0);
+				setIntakeVoltage(-MAX_VOLTAGE);
+			}
+		}
 		else
 			alley_velocity = fast_alley_velocity;
 		setDriveStraightVelocity(alley_velocity);
@@ -991,14 +1024,18 @@ void BlueElimAuton::run(std::shared_ptr<IAlliance> alliance,
 		{
 			// Back up to get free
 			pauseControlSystem();
+			setLeftWing(false);
+			setRightWing(false);
 			double alley_backup_distance{-6.0};
-			uint32_t alley_backup_timeout{500};
+			uint32_t alley_backup_timeout{1000};
 			driveStraight(alley_backup_distance, MOTION_VELOCITY, alley_backup_timeout);
 
 			// Turn down the alley
 			turnToAngle(alley_theta, TURN_VELOCITY, false, alley_turn_timeout);
 
 			// Resume the alley push
+			setLeftWing(true);
+			setRightWing(true);
 			position = getOdometryPosition();
 			alley_distance = (alley_end_x - position.x) * std::cos(alley_theta);
 			driveStraight(alley_distance, alley_velocity);
@@ -1009,6 +1046,13 @@ void BlueElimAuton::run(std::shared_ptr<IAlliance> alliance,
 		position = getOdometryPosition();
 		velocity = getOdometryVelocity();
 	}
+	setIntakeVoltage(0);
+
+	// Turn slightly
+	turnToAngle(-175 * M_PI / 180, TURN_VELOCITY, false, 500);
+
+	// Push back slightly
+	driveStraight(-4.0, 48.0, uint32_t{500});
 
 	// Turn to face the goal shove start point
 	double goal_shove_x{130.0}, goal_shove_y{28.0};
@@ -1017,7 +1061,7 @@ void BlueElimAuton::run(std::shared_ptr<IAlliance> alliance,
 
 	// Move to the goal shove start point
 	uint32_t goal_shove_timeout{2000};
-	driveStraightToPoint(goal_shove_x, goal_shove_y - 2, MOTION_VELOCITY, goal_shove_timeout);
+	driveStraightToPoint(goal_shove_x + 1, goal_shove_y - 2, MOTION_VELOCITY, goal_shove_timeout);
 
 	// Turn to face the goal
 	setLeftWing(false);
@@ -1048,13 +1092,13 @@ void BlueElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	turnToPoint(entrance_x, entrance_y, TURN_VELOCITY, true, entrance_turn_timeout);
 
 	// Move to the goal shove start point
-	uint32_t entrance_timeout{3000};
+	uint32_t entrance_timeout{2000};
 	driveStraightToPoint(entrance_x, entrance_y, MOTION_VELOCITY, entrance_timeout);
 
 	// Turn to face the front of the goal
 	double sentry_x{104.0}, sentry_y{60.0};
 	uint32_t sentry_turn_timeout{1500};
-	turnToPoint(sentry_x, sentry_y, TURN_VELOCITY, sentry_turn_timeout);
+	turnToPoint(sentry_x, sentry_y, TURN_VELOCITY, false, sentry_turn_timeout);
 
 	// Move to the front of the goal
 	double sweep_velocity{26.0};
@@ -1079,13 +1123,10 @@ void BlueElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	while (sentry && getTime() - auton_start_time < 40000)
 	{
 		// Try to grab the next ball
-		if (getBallDistance() > 4.0)
-		{
-			sentry_mode.doSentryMode(-5 * M_PI / 12, control::motion::ETurnDirection::COUNTERCLOCKWISE);
-			while (!sentry_mode.isFinished())
-				delay(LOOP_DELAY);
-			sentry = sentry_mode.ballFound();
-		}
+		sentry_mode.doSentryMode(-5 * M_PI / 12, control::motion::ETurnDirection::COUNTERCLOCKWISE);
+		while (!sentry_mode.isFinished())
+			delay(LOOP_DELAY);
+		sentry = sentry_mode.ballFound();
 
 		// If it got a ball, score it
 		if (sentry && getTime() - auton_start_time < 40000)
@@ -1099,11 +1140,13 @@ void BlueElimAuton::run(std::shared_ptr<IAlliance> alliance,
 			driveStraightToPoint(sentry_goal_x, sentry_goal_y, 48.0, 1000, 3.0);
 			
 			// Release the ball
+			setLeftWing(true);
+			setRightWing(true);
 			turnToAngle(0, 2 * M_PI, false, 1000, 4.0 * M_PI / 180);
 			setIntakeVoltage(-MAX_VOLTAGE);
 			setElevatorPosition(0.0, 1000);
 
-			robot->sendCommand("DIFFERENTIAL DRIVE", "SET VOLTAGE", 12.0, 12.0);
+			setDriveVoltage(MAX_VOLTAGE, MAX_VOLTAGE);
 			delay(800);
 			position = getOdometryPosition();
 			while (position.xV > 16.0)
@@ -1114,6 +1157,8 @@ void BlueElimAuton::run(std::shared_ptr<IAlliance> alliance,
 			
 			driveStraightToPoint(sentry_x, sentry_y, 48.0, 1000, 2.0);
 
+			setLeftWing(false);
+			setRightWing(false);
 			turnToAngle(last_angle, TURN_VELOCITY, false, 1000, 2.0 * M_PI / 180);
 		}
 	}

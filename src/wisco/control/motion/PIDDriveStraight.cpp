@@ -112,6 +112,8 @@ void PIDDriveStraight::resume()
         m_mutex->take();
 
     paused = false;
+    m_linear_pid.reset();
+    m_rotational_pid.reset();
 
     if (m_mutex)
         m_mutex->give();
@@ -123,6 +125,8 @@ void PIDDriveStraight::driveStraight(std::shared_ptr<robot::Robot> robot,
     if (m_mutex)
         m_mutex->take();
     
+    m_linear_pid.reset();
+    m_rotational_pid.reset();
     control_robot = robot;
     motion_velocity = velocity;
     auto position{getOdometryPosition()};

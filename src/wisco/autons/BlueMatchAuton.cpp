@@ -649,6 +649,21 @@ double BlueMatchAuton::getOdometryVelocity()
 	return velocity;
 }
 
+double BlueMatchAuton::getOdometryResetterRawValue()
+{
+	double raw_value{};
+	if (m_robot)
+	{
+		double* result{static_cast<double*>(m_robot->getState("POSITION TRACKER", "GET RAW RESETTER VALUE"))};
+		if (result)
+		{
+			raw_value = *result;
+			delete result;
+		}
+	}
+	return raw_value;
+}
+
 void BlueMatchAuton::setUmbrellaIn()
 {
 	if (m_robot)

@@ -5,6 +5,7 @@
 #include "wisco/alliances/BlueAlliance.hpp"
 #include "wisco/alliances/RedAlliance.hpp"
 #include "wisco/alliances/SkillsAlliance.hpp"
+#include "wisco/autons/BlockAuton.hpp"
 #include "wisco/autons/BlueElimAuton.hpp"
 #include "wisco/autons/BlueMatchAuton.hpp"
 #include "wisco/autons/BlueSkillsAuton.hpp"

@@ -560,6 +560,13 @@ private:
 	double getOdometryVelocity();
 
 	/**
+	 * @brief Get the odometry resetter raw value
+	 * 
+	 * @return double The odometry resetter raw value
+	 */
+	double getOdometryResetterRawValue();
+
+	/**
 	 * @brief Sets the umbrella to in
 	 * 
 	 */
@@ -628,6 +635,12 @@ private:
 	 * 
 	 */
 	std::vector<control::path::Point> far_load_path{};
+
+	/**
+	 * @brief The path for the win point bar touch
+	 * 
+	 */
+	std::vector<control::path::Point> winpoint_path{};
 
 public:
     /**

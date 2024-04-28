@@ -206,7 +206,7 @@ bool SentryMode::isValid(control::path::Point point)
     else
     {
         valid = (point.getX() > 73.5 && point.getX() < 112.0) &&
-                (point.getY() > 24.5 && point.getY() < 86.0);
+                (point.getY() > 24.5 && point.getY() < 84.0);
     }
     
     return valid;

@@ -560,6 +560,13 @@ private:
 	double getOdometryVelocity();
 
 	/**
+	 * @brief Get the odometry resetter raw value
+	 * 
+	 * @return double The odometry resetter raw value
+	 */
+	double getOdometryResetterRawValue();
+
+	/**
 	 * @brief Sets the umbrella to in
 	 * 
 	 */

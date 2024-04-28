@@ -122,6 +122,13 @@ public:
     double getResetY(double theta) override;
 
     /**
+     * @brief Get the raw value of the distance sensor
+     * 
+     * @return double The raw value of the distance sensor
+     */
+    double getRawValue() override;
+
+    /**
      * @brief Set the distance sensor
      * 
      * @param distance_sensor The distance sensor

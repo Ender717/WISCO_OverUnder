@@ -74,6 +74,13 @@ public:
      * @return double The Y reset position
      */
     virtual double getResetY(double theta) = 0;
+
+    /**
+     * @brief Get the raw value of the resetter
+     * 
+     * @return double The raw resetter value
+     */
+    virtual double getRawValue() = 0;
 };
 } // namespace position
 } // namespace subsystems

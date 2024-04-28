@@ -1,5 +1,5 @@
-#ifndef WISCO_AUTONS_BLUE_ELIM_AUTON_HPP
-#define WISCO_AUTONS_BLUE_ELIM_AUTON_HPP
+#ifndef WISCO_AUTONS_BLOCK_AUTON_HPP
+#define WISCO_AUTONS_BLOCK_AUTON_HPP
 
 #include <cmath>
 #include <cstdint>
@@ -34,18 +34,18 @@ namespace autons
 {
 
 /**
- * @brief The auton for the blue robot in elimes
+ * @brief The auton for the blocking routine
  * @author Nathan Sandvig
  * 
  */
-class BlueElimAuton : public IAutonomous
+class BlockAuton : public IAutonomous
 {
 private:
 	/**
 	 * @brief The name of the autonomous
 	 * 
 	 */
-	static constexpr char AUTONOMOUS_NAME[]{"E_BLUE"};
+	static constexpr char AUTONOMOUS_NAME[]{"BLOCK"};
 
 	/**
 	 * @brief The delay for loops
@@ -69,7 +69,7 @@ private:
 	 * @brief The elevator position tolerance
 	 * 
 	 */
-	static constexpr double ELEVATOR_TOLERANCE{0.5};
+	static constexpr double ELEVATOR_TOLERANCE{1.0};
 
 	/**
 	 * @brief The velocity for motions
@@ -206,7 +206,7 @@ private:
 	 */
 	bool driveStraightTargetReached();
 
-	/**
+		/**
 	 * @brief Calls the motion go to point command
 	 * 
 	 * @param x The target x-coordinate

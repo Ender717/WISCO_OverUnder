@@ -648,6 +648,21 @@ double OrangeMatchAuton::getOdometryVelocity()
 	return velocity;
 }
 
+double OrangeMatchAuton::getOdometryResetterRawValue()
+{
+	double raw_value{};
+	if (m_robot)
+	{
+		double* result{static_cast<double*>(m_robot->getState("POSITION TRACKER", "GET RAW RESETTER VALUE"))};
+		if (result)
+		{
+			raw_value = *result;
+			delete result;
+		}
+	}
+	return raw_value;
+}
+
 void OrangeMatchAuton::setUmbrellaIn()
 {
 	if (m_robot)

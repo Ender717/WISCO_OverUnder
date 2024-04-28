@@ -96,6 +96,12 @@ private:
     static constexpr char GET_POSITION_STATE_NAME[]{"GET POSITION"};
 
     /**
+     * @brief The name of the raw resetter value state
+     * 
+     */
+    static constexpr char GET_RAW_RESETTER_VALUE_STATE_NAME[]{"GET RAW RESETTER VALUE"};
+
+    /**
      * @brief The position tracker being adapted
      * 
      */
