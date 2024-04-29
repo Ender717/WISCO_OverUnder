@@ -350,6 +350,8 @@ std::shared_ptr<robot::Robot> OrangeConfiguration::buildRobot()
         withMotor(elevator_pros_motor_1_motor)->
         withMotor(elevator_pros_motor_2_motor)->
         withInchesPerRadian(ELEVATOR_INCHES_PER_RADIAN)->
+        withMinimumPosition(ELEVATOR_MINIMUM_POSITION)->
+        withMaximumPosition(ELEVATOR_MAXIMUM_POSITION)->
         build()
     };
     std::unique_ptr<pros::Distance> elevator_pros_distance{std::make_unique<pros::Distance>(ELEVATOR_DISTANCE_PORT)};

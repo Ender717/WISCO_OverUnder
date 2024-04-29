@@ -56,6 +56,18 @@ PIDElevatorBuilder* PIDElevatorBuilder::withInchesPerRadian(double inches_per_ra
     return this;
 }
 
+PIDElevatorBuilder* PIDElevatorBuilder::withMinimumPosition(double minimum_position)
+{
+    m_minimum_position = minimum_position;
+    return this;
+}
+
+PIDElevatorBuilder* PIDElevatorBuilder::withMaximumPosition(double maximum_position)
+{
+    m_maximum_position = maximum_position;
+    return this;
+}
+
 std::unique_ptr<IElevator> PIDElevatorBuilder::build()
 {
     std::unique_ptr<PIDElevator> pid_elevator{std::make_unique<PIDElevator>()};
@@ -68,6 +80,8 @@ std::unique_ptr<IElevator> PIDElevatorBuilder::build()
     if (m_rotation_sensor)
         pid_elevator->setRotationSensor(m_rotation_sensor);
     pid_elevator->setInchesPerRadian(m_inches_per_radian);
+    pid_elevator->setMinimumPosition(m_minimum_position);
+    pid_elevator->setMaximumPosition(m_maximum_position);
     return pid_elevator;
 }
 } // namespace intake

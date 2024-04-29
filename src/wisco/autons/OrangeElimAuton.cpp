@@ -780,8 +780,8 @@ void OrangeElimAuton::initialize(std::shared_ptr<control::ControlSystem> control
 	{
 		control::path::Point{130.0, 36.0},
 		control::path::Point{120.0, 24.0},
-		control::path::Point{114.0, 18.0},
-		control::path::Point{96.0, 11.0},
+		control::path::Point{114.0, 16.0},
+		control::path::Point{98.0, 11.0},
 		control::path::Point{76.0, 11.0},
 		control::path::Point{68.0, 11.0},
 		control::path::Point{48.0, 11.0},
@@ -989,7 +989,7 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	resetOdometryY();
 
 	// Move to the front of the match load
-	double near_load_x{23.0}, near_load_y{23.0};
+	double near_load_x{22.0}, near_load_y{22.0};
 	turnToPoint(near_load_x, near_load_y, TURN_VELOCITY, false, 1000, 3.0 * M_PI / 180);
 	driveStraightToPoint(near_load_x, near_load_y, 36.0, 1500);
 
@@ -998,15 +998,14 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 
 	// Run a match load to clear the zone
 	loadLoader();
-	while (!isLoaderLoaded())
-		delay(LOOP_DELAY);
+	delay(500);
 	readyLoader();
 
 	// Move into match loading position
-	double match_load_drive_distance{12.0}, match_load_drive_velocity{12.0};
-	uint32_t match_load_drive_timeout{2000};
+	double match_load_drive_distance{12.0}, match_load_drive_velocity{16.0};
+	uint32_t match_load_drive_timeout{1500};
 	driveStraight(match_load_drive_distance, match_load_drive_velocity, -3 * M_PI / 4, match_load_drive_timeout);
-	delay(500);
+	delay(300);
 
 	// Do match loads
 	uint8_t match_loads{6};
@@ -1074,19 +1073,20 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	driveStraightToPoint(alley_start_x, alley_start_y, MOTION_VELOCITY, alley_start_timeout);
 
 	// Turn to face down the alley
-	uint32_t alley_turn_timeout{500};
+	uint32_t alley_turn_timeout{700};
 	turnToAngle(alley_theta, TURN_VELOCITY, false, alley_turn_timeout);
 
 	// Follow the alley path
 	double alley_end_x{109.0};
 	double fast_alley_velocity{48.0}, slow_alley_velocity{24.0}, slow_alley_x{76.0};
-	double collision_detection{3.0}, collision_end_x{alley_end_x - 4.0};
+	double collision_detection{6.0}, collision_end_x{alley_end_x - 4.0};
 	uint32_t collision_delay{1000}, collision_start_time{getTime()};
 	double alley_distance{(alley_end_x - alley_start_x) * std::cos(alley_theta)};
 	double alley_velocity{fast_alley_velocity};
 	position = getOdometryPosition();
 	velocity = getOdometryVelocity();
 	driveStraight(alley_distance, alley_velocity);
+	delay(500);
 	while (!driveStraightTargetReached())
 	{
 		// If we have reached the slow section of the alley, slow down
@@ -1102,7 +1102,6 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 			&& getTime() > collision_start_time + collision_delay)
 		{
 			// Back up to get free
-			pauseControlSystem();
 			setLeftWing(false);
 			setRightWing(false);
 			double alley_backup_distance{-6.0};

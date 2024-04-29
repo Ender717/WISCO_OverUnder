@@ -93,6 +93,18 @@ private:
      */
     double m_inches_per_radian{};
 
+    /**
+     * @brief The minimum allowed position
+     * 
+     */
+    double m_minimum_position{-DBL_MAX};
+
+    /**
+     * @brief The maximum allowed position
+     * 
+     */
+    double m_maximum_position{DBL_MAX};
+
 public:
     /**
      * @brief Add an rtos clock to the build
@@ -157,6 +169,22 @@ public:
      * @return PIDElevatorBuilder* This object for build chaining
      */
     PIDElevatorBuilder* withInchesPerRadian(double inches_per_radian);
+
+    /**
+     * @brief Adds a minimum allowed position to the build
+     * 
+     * @param minimum_position The minimum allowed position of the elevator
+     * @return PIDElevatorBuilder* This object for build chaining
+     */
+    PIDElevatorBuilder* withMinimumPosition(double minimum_position);
+
+    /**
+     * @brief Adds a maximum allowed position to the build
+     * 
+     * @param maximum_position The maximum allowed position of the elevator
+     * @return PIDElevatorBuilder* This object for build chaining
+     */
+    PIDElevatorBuilder* withMaximumPosition(double maximum_position);
 
     /**
      * @brief Builds the elevator

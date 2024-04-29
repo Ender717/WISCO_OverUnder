@@ -116,6 +116,18 @@ private:
     double m_inches_per_radian{};
 
     /**
+     * @brief The minimum allowed position
+     * 
+     */
+    double m_minimum_position{-DBL_MAX};
+
+    /**
+     * @brief The maximum allowed position
+     * 
+     */
+    double m_maximum_position{DBL_MAX};
+
+    /**
      * @brief The position setting of the elevator
      * 
      */
@@ -254,6 +266,20 @@ public:
      * @param inches_per_radian The inches per radian of the elevator
      */
     void setInchesPerRadian(double inches_per_radian);
+
+    /**
+     * @brief Set the minimum allowed position of the elevator
+     * 
+     * @param minimum_position The minimum allowed position of the elevator
+     */
+    void setMinimumPosition(double minimum_position);
+
+    /**
+     * @brief Set the maximum allowed position of the elevator
+     * 
+     * @param maximum_position The maximum allowed position of the elevator
+     */
+    void setMaximumPosition(double maximum_position);
 };
 } // namespace elevator
 } // namespace subsystems

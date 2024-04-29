@@ -204,6 +204,7 @@ void ElevatorOperator::updatePresetLadder(EControllerDigital in, EControllerDigi
         switch (toggle_state)
         {
         case EToggleState::IN:
+            updateElevatorPosition(IN_POSITION);
             break;
         case EToggleState::FIELD:
             updateElevatorPosition(IN_POSITION);
@@ -243,6 +244,7 @@ void ElevatorOperator::updatePresetLadder(EControllerDigital in, EControllerDigi
             toggle_state = EToggleState::PARTNER_HANG;
             break;
         case EToggleState::PARTNER_HANG:
+            updateElevatorPosition(PARTNER_HANG_POSITION);
             break;
         }
     }

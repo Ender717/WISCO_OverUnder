@@ -77,8 +77,10 @@ void PIDElevator::setPosition(double position)
     if (m_mutex)
         m_mutex->take();
     
-    manual = false;
+    position = std::min(m_maximum_position, position);
+    position = std::max(m_minimum_position, position);
     m_position = position;
+    manual = false;
 
     if (m_mutex)
         m_mutex->give();
@@ -153,6 +155,16 @@ void PIDElevator::setRotationSensor(std::unique_ptr<io::IRotationSensor>& rotati
 void PIDElevator::setInchesPerRadian(double inches_per_radian)
 {
     m_inches_per_radian = inches_per_radian;
+}
+
+void PIDElevator::setMinimumPosition(double minimum_position)
+{
+    m_minimum_position = minimum_position;
+}
+
+void PIDElevator::setMaximumPosition(double maximum_position)
+{
+    m_maximum_position = maximum_position;
 }
 } // namespace elevator
 } // namespace subsystems

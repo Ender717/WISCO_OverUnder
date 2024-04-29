@@ -603,6 +603,18 @@ private:
 	static constexpr double ELEVATOR_INCHES_PER_RADIAN{2 * 0.625};
 
 	/**
+	 * @brief The minimum position of the elevator
+	 * 
+	 */
+	static constexpr double ELEVATOR_MINIMUM_POSITION{0};
+
+	/**
+	 * @brief The maximum position of the elevator
+	 * 
+	 */
+	static constexpr double ELEVATOR_MAXIMUM_POSITION{16.5};
+
+	/**
 	 * @brief The elevator distance sensor port
 	 * 
 	 */
