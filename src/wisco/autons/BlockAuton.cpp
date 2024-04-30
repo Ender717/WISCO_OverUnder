@@ -794,21 +794,21 @@ void BlockAuton::run(std::shared_ptr<IAlliance> alliance,
 	double velocity{getOdometryVelocity()};
 
 	// Move next to the goal
-	driveStraightToPoint(34.0, 62.0, 48.0, 3000);	
+	driveStraightToPoint(34.0, 62.0, 48.0, 2500);	
 
 	// Extend the elevator and turn to be even with the goal
-	setElevatorPosition(16.0);
-	turnToAngle(M_PI / 2, TURN_VELOCITY);
+	turnToAngle(M_PI / 2, M_PI, false, 500);
+	setElevatorPosition(17.0);
 
 	// Until winpoint happens, hold position
-	while (getTime() - auton_start_time < 38000)
+	while (true)
 	{
 		position = getOdometryPosition();
 		if (std::abs(bindRadians(M_PI / 2 - position.theta)) < 10.0 * M_PI / 180)
 		{
 			double error{62.0 - position.y};
 			pauseControlSystem();
-			setDriveVelocity(5 * error, 5 * error);
+			setDriveVelocity(12 * error, 12 * error);
 		}
 		else
 		{
@@ -817,16 +817,6 @@ void BlockAuton::run(std::shared_ptr<IAlliance> alliance,
 		delay(LOOP_DELAY);
 	}
 	pauseControlSystem();
-
-	// Go get winpoint
-	setElevatorPosition(3.25);
-	goToPoint(36.0, 12.0, 36.0, 2000, 2.0);
-	turnToPoint(60.0, 12.0, TURN_VELOCITY, false, 1000);
-	goToPoint(60.0, 12.0, 36.0, 1000, 2.0);
-	turnToPoint(72.0, 24.0, TURN_VELOCITY, false, 1000);
-	setElevatorPosition(12.0, 1000);
-	setElevatorPosition(getElevatorPosition());
-	pros::screen::print(pros::E_TEXT_LARGE_CENTER, 7, "End Time: %5.2f", (getTime() - auton_start_time) / 1000.0);
 }
 }
 }

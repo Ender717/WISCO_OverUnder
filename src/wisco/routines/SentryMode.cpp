@@ -277,7 +277,7 @@ void SentryMode::updateTarget()
                 m_control_system->pause();
                 setElevatorPosition(ELEVATOR_OUT);
                 setIntakeVoltage(INTAKE_VOLTAGE);
-                double line_location{position.x < 72.0 ? 62.0 : 74.0};
+                double line_location{position.x < 72.0 ? 58.0 : 70.0};
                 double line_distance{(line_location - position.y) / std::sin(position.theta)};
                 if (line_distance < 0)
                     line_distance = DBL_MAX;
@@ -301,7 +301,7 @@ void SentryMode::updateGrab()
     auto position{getOdometryPosition()};
     double ball_distance{distance(position.x, position.y, ball.getX(), ball.getY())};
     double elevator_position{getElevatorPosition()};
-    if (ball_distance + MOTION_OFFSET < elevator_position + ELEVATOR_OFFSET)
+    if (ball_distance + MOTION_OFFSET < elevator_position + ELEVATOR_OFFSET || (getElevatorPosition() > 17.0 && driveStraightTargetReached()))
     {
         m_control_system->pause();
         setElevatorPosition(ELEVATOR_BALL);

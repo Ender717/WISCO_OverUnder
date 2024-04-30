@@ -612,7 +612,7 @@ private:
 	 * @brief The maximum position of the elevator
 	 * 
 	 */
-	static constexpr double ELEVATOR_MAXIMUM_POSITION{16.5};
+	static constexpr double ELEVATOR_MAXIMUM_POSITION{18.0};
 
 	/**
 	 * @brief The elevator distance sensor port

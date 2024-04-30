@@ -330,7 +330,7 @@ void ElevatorOperator::setElevatorPosition(const std::unique_ptr<IProfile>& prof
     EControllerDigital intake{profile->getDigitalControlMapping(EControl::INTAKE_IN)};
     EControllerDigital outtake{profile->getDigitalControlMapping(EControl::INTAKE_OUT)};   
 
-    if (getHangWinchEngaged())
+    if (false)//(getHangWinchEngaged())
     {
         double voltage{m_controller->getAnalog(EControllerAnalog::JOYSTICK_LEFT_Y) * -12.0};
         setElevatorVoltage(voltage);

@@ -1,5 +1,5 @@
-#ifndef WISCO_AUTONS_Blue_ELIM_AUTON_HPP
-#define WISCO_AUTONS_Blue_ELIM_AUTON_HPP
+#ifndef WISCO_AUTONS_LOAD_AUTON_HPP
+#define WISCO_AUTONS_LOAD_AUTON_HPP
 
 #include <cmath>
 #include <cstdint>
@@ -34,18 +34,18 @@ namespace autons
 {
 
 /**
- * @brief The auton for the Blue robot in elimes
+ * @brief The auton for loading triballs
  * @author Nathan Sandvig
  * 
  */
-class BlueElimAuton : public IAutonomous
+class LoadAuton : public IAutonomous
 {
 private:
 	/**
 	 * @brief The name of the autonomous
 	 * 
 	 */
-	static constexpr char AUTONOMOUS_NAME[]{"E_BLUE"};
+	static constexpr char AUTONOMOUS_NAME[]{"LOAD"};
 
 	/**
 	 * @brief The delay for loops
@@ -69,7 +69,7 @@ private:
 	 * @brief The elevator position tolerance
 	 * 
 	 */
-	static constexpr double ELEVATOR_TOLERANCE{1.0};
+	static constexpr double ELEVATOR_TOLERANCE{0.5};
 
 	/**
 	 * @brief The velocity for motions
@@ -206,7 +206,7 @@ private:
 	 */
 	bool driveStraightTargetReached();
 
-		/**
+	/**
 	 * @brief Calls the motion go to point command
 	 * 
 	 * @param x The target x-coordinate
@@ -625,22 +625,10 @@ private:
 	bool isRightWingOut();
 
 	/**
-	 * @brief The path for the rush
+	 * @brief The path through the alley
 	 * 
 	 */
-	std::vector<control::path::Point> rush_path{};
-
-	/**
-	 * @brief The path for the far match load zone
-	 * 
-	 */
-	std::vector<control::path::Point> far_load_path{};
-
-	/**
-	 * @brief The path for the win point bar touch
-	 * 
-	 */
-	std::vector<control::path::Point> winpoint_path{};
+	std::vector<control::path::Point> alley_path{};
 
 public:
     /**

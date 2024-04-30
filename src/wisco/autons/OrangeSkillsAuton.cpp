@@ -941,22 +941,38 @@ void OrangeSkillsAuton::run(std::shared_ptr<IAlliance> alliance,
 	// Move to the hanging pole
 	double hang_x{72.0}, hang_y{144 - 24.0};
 	turnToPoint(hang_x + 24.0, hang_y, TURN_VELOCITY, true, 2000);
-	driveStraightToPoint(hang_x, hang_y, 36.0, 2000);
-
-	/*
-	setElevatorPosition(3.0, 300);
-	raiseArm();
-	delay(1000);
-	setElevatorPosition(10.0, 1000);
-	closeClaw();
+	driveStraightToPoint(hang_x + 24, hang_y, 36.0);
 	delay(500);
+	driveStraightToPoint(hang_x, hang_y, 36.0, 1500);
+
+	raiseArm();
+	driveStraightToPoint(hang_x, hang_y, 12.0, 500);
+	setElevatorPosition(17.5, 2000);
+	closeClaw();
+	// wiggle
+	setDriveVelocity(12.0, 12.0);
+	delay(50);
+	setDriveVelocity(-24.0, -24.0);
+	delay(100);
+	setDriveVelocity(0, 0);
+	/*
+	for (int i{}; i < 2; ++i)
+	{
+		driveStraight(1.0, 48.0, uint32_t{200});
+		driveStraight(-1.0, 48.0, uint32_t{200});
+		turnToAngle(10 * M_PI / 180, TURN_VELOCITY, false, 200);
+		turnToAngle(-10 * M_PI / 180, TURN_VELOCITY, false, 200);
+		turnToAngle(0, TURN_VELOCITY, false, 200);
+	}
+	driveStraightToPoint(hang_x, hang_y, 48.0, 200);
+	*/
 	engageWinch();
-	setElevatorPosition(0);
 	setDriveVoltage(MAX_VOLTAGE, MAX_VOLTAGE);
+	delay(2000);
+	setElevatorPosition(0);
 	while (getElevatorPosition() > 1.0)
 		delay(LOOP_DELAY);
 	setDriveVoltage(0, 0);
-	*/
 
 	pros::screen::print(pros::E_TEXT_LARGE_CENTER, 7, "End Time: %5.2f", (getTime() - auton_start_time) / 1000.0);
 }

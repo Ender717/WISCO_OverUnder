@@ -1,8 +1,5 @@
 #include "wisco/autons/OrangeElimAuton.hpp"
-#include "pros/screen.h"
 #include "pros/screen.hpp"
-#include "wisco/io/EVisionObjectID.hpp"
-#include <iostream>
 
 namespace wisco
 {
@@ -254,7 +251,6 @@ bool OrangeElimAuton::pathFollowingTargetReached()
 	}
 	return target_reached;
 }
-
 
 void OrangeElimAuton::setDriveVelocity(double left, double right)
 {
@@ -759,34 +755,20 @@ void OrangeElimAuton::initialize(std::shared_ptr<control::ControlSystem> control
 	m_control_system = control_system;
 	m_robot = robot;
 
-	std::vector<control::path::Point> rush_path_control_points
+	std::vector<control::path::Point> alley_path_control_points
 	{
-		control::path::Point{60.0, 12.0},
-		control::path::Point{78.0, 12.0},
-		control::path::Point{88.0, 12.0},
-		control::path::Point{100.0, 12.0},
-		control::path::Point{115.0, 18.0},
-		control::path::Point{113.0, 25.0},
-		control::path::Point{104.0, 32.0},
-		control::path::Point{92.0, 52.0},
-		control::path::Point{90.0, 57.0},
-		control::path::Point{75.0, 72.0},
+		control::path::Point{25.0, 13.0},
+		control::path::Point{32.0, 10.0},
+		control::path::Point{48.0, 9.0},
+		control::path::Point{62.0, 9.0},
+		control::path::Point{75.0, 9.0},
+		control::path::Point{82.0, 9.0},
+		control::path::Point{96.0, 9.0},
+		control::path::Point{110.0, 9.0},
+		control::path::Point{117.0, 12.0},
+		control::path::Point{120.0, 18.0},
 	};
-	rush_path = control::path::QuinticBezierSpline::calculate(rush_path_control_points);
-
-	far_load_path.push_back(control::path::Point{132.0, 48.0});
-
-	std::vector<control::path::Point> winpoint_path_control_points
-	{
-		control::path::Point{130.0, 36.0},
-		control::path::Point{120.0, 24.0},
-		control::path::Point{114.0, 16.0},
-		control::path::Point{98.0, 11.0},
-		control::path::Point{76.0, 11.0},
-		control::path::Point{68.0, 11.0},
-		control::path::Point{48.0, 11.0},
-	};
-	winpoint_path = control::path::QuinticBezierSpline::calculate(winpoint_path_control_points);
+	alley_path = control::path::QuinticBezierSpline::calculate(alley_path_control_points);
 }
 
 void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
@@ -801,214 +783,148 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	m_robot = robot;
 
 	uint32_t auton_start_time{getTime()};
-	double start_x{60.0}, start_y{12.0}, start_theta{0};
+	double start_x{39.25}, start_y{15.5}, start_theta{95.0 * M_PI / 180.0};
 	setOdometryPosition(start_x, start_y, start_theta);
 
 	// Grab some basic variables for general use
 	auto position{getOdometryPosition()};
 	double velocity{getOdometryVelocity()};
-	uint32_t start_time{getTime()};
 	double target_distance{};
 	double target_angle{};
+	uint32_t start_time{};
 
-	// Reset the Y to be more precise
-	resetOdometryY();
+	// Move next to the first triball
+	double rush_velocity{48.0};
+	double rush_start_x{35.0}, rush_start_y{52.0};
+	uint32_t rush_start_timeout{2000};
+	setElevatorPosition(3.0);
+	driveStraightToPoint(rush_start_x, rush_start_y, rush_velocity, rush_start_timeout, 2.0);
 
-	// Start the rush path
+	// Turn to face the front triball
+	double front_triball_turn_tolerance{5.0 * M_PI / 180};
+	double front_triball_x{48.0}, front_triball_y{72.0};
+	uint32_t front_triball_turn_timeout{1000};
+	setElevatorPosition(8.0);
+	turnToPoint(front_triball_x, front_triball_y, TURN_VELOCITY, false, front_triball_turn_timeout, front_triball_turn_tolerance);
+
+	// Grab the front triball
+	position = getOdometryPosition();
+	double elevator_distance{distance(position.x, position.y, front_triball_x, front_triball_y)};
+	double rush_front_elevator_offset{1.0};
+	uint32_t rush_front_elevator_timeout{800};
+	setIntakeVoltage(MAX_VOLTAGE);
+	setElevatorPosition(elevator_distance + rush_front_elevator_offset - ELEVATOR_OFFSET, rush_front_elevator_timeout);
+
+	// Turn to sweep the back triball off the line
+	setElevatorPosition(12.0);
+	turnToAngle(-20 * M_PI / 180, 1.25 * M_PI, false, 1000);
+
+	// Drive slightly forward
+	setElevatorPosition(3.25);
+	driveStraight(8.0, 36.0, -10.0 * M_PI / 180, 800, 2.0);
+
+	// Turn to a better release angle
+	turnToAngle(-110 * M_PI / 180, TURN_VELOCITY, false, 1000, 3.0 * M_PI / 180);
+
+	// Let go of the triball
+	driveStraight(8.0, 24.0, uint32_t{700});
+	setIntakeVoltage(-MAX_VOLTAGE / 1.5);
+	setElevatorPosition(0.0);
+	driveStraight(-5.0, 36.0, uint32_t{600});
+
+	// Turn to face the third ball
+	double rush_middle_turn_tolerance{3.0 * M_PI / 180};
+	double rush_middle_x{70.0}, rush_middle_y{60.0};
+	uint32_t rush_middle_turn_timeout{500};
+	turnToPoint(rush_middle_x, rush_middle_y, TURN_VELOCITY, false, rush_middle_turn_timeout, rush_middle_turn_tolerance);
+
+	// Pick up the third triball
 	setIntakeVoltage(MAX_VOLTAGE);
 	setElevatorPosition(3.25);
-	followPath(rush_path, 48.0);
-	while (position.x < 94.0)
-	{
-		delay(LOOP_DELAY);
-		position = getOdometryPosition();
-	}
+	//driveStraightToPoint(rush_middle_x - 8, rush_middle_y, 48.0, 1000, 2.0);
+	goToPoint(rush_middle_x, rush_middle_y, 36.0, 1000, 10.0);
 
-	// Slow down to take the corner
-	setPathFollowingVelocity(24.0);
-	position = getOdometryPosition();
-	while (position.theta < 5 * M_PI / 180)
-	{
-		delay(LOOP_DELAY);
-		position = getOdometryPosition();
-	}
+	// Back up slightly for a better push angle
+	//goToPoint(48.0, 60.0, 36.0, 1000);
 
-	// Outtake the alley ball
-	setIntakeVoltage(-MAX_VOLTAGE);
-	setElevatorPosition(0, 500);
-	position = getOdometryPosition();
-	while (position.x > 104.0)
-	{
-		delay(LOOP_DELAY);
-		position = getOdometryPosition();
-	}
-	
-	// Move towards the rush ball
-	double rush_ball_x{75.0}, rush_ball_y{72.0};
-	setPathFollowingVelocity(42.0);
-	setIntakeVoltage(MAX_VOLTAGE);
-	setElevatorPosition(3.25);
-	position = getOdometryPosition();
-	target_distance = distance(position.x, position.y, rush_ball_x, rush_ball_y);
-	while (target_distance > 16.0)
-	{
-		delay(LOOP_DELAY);
-		position = getOdometryPosition();
-		target_distance = distance(position.x, position.y, rush_ball_x, rush_ball_y);
-	}
+	// Turn to face the start of the alley
+	double return_x{36.0}, return_y{26.0};
+	//turnToPoint(return_x, return_y, TURN_VELOCITY, true, 1000, 3.0 * M_PI / 180);
 
-	// Switch to drive straight to grab the ball
-	position = getOdometryPosition();
-	target_angle = angle(position.x, position.y, rush_ball_x, rush_ball_y);
-	target_distance = distance(position.x, position.y, rush_ball_x, rush_ball_y);
-	//driveStraight(target_distance - 10.0, 42.0, target_angle, uint32_t{1000});
-	goToPoint(rush_ball_x, rush_ball_y, 48.0, 1000, 11.0);
-
-	// Turn to face backwards into the goal
-	turnToPoint(120.0, 67.0, TURN_VELOCITY, true, 1000);
-
-	// Push back into the goal
+	// Move to the start of the alley
 	setLeftWing(true);
 	setRightWing(true);
-	//driveStraightToPoint(120.0, 67.0, 48.0, 1000);
-	goToPoint(120.0, 67.0, 48.0, 1000);
+	//driveStraightToPoint(return_x, return_y, 48.0, 2000, 2.0);
+	goToPoint(return_x, return_y, 48.0, 2000, 2.0);
 
-	// Move forward slightly
-	driveStraight(4.0, 36.0, -175 * M_PI / 180, uint32_t{500});
-
-	// Turn around
-	start_time = getTime();
-	turnToAngle(0, TURN_VELOCITY, false, 1500, 5.0 * M_PI / 180, control::motion::ETurnDirection::CLOCKWISE);
-
-	// Let go of the ball
-	setIntakeVoltage(-MAX_VOLTAGE);
-	setElevatorPosition(0);
-	while (getElevatorPosition() > 1.0)
-		delay(LOOP_DELAY);
-
-	// Ram the ball into the goal
-	driveStraight(9.0, 48.0, uint32_t{700});
-
-	// Back up off the goal
-	driveStraight(-24.0, 36.0, 1000, 2.0);
-
-	// Turn to face the goal point
+	// Turn into the alley
 	setLeftWing(false);
 	setRightWing(false);
-	double far_load_x{124.0}, far_load_y{20.0};
-	turnToPoint(far_load_x, far_load_y, TURN_VELOCITY, false, 1000);
+	turnToPoint(48.0, 0.0, TURN_VELOCITY, false, 1000, 3.0 * M_PI / 180);
 
-	// Drive straight to the point for faster stopping
-	//driveStraightToPoint(far_load_x, far_load_y, 36.0, 2000);
-	goToPoint(far_load_x, far_load_y, 36.0, 2000);
-
-	// Visually detect the alliance ball
-	double alliance_ball_angle{};
-	double largest_alliance_ball{};
-	auto objects{getBallVisionObjects()};
-	auto object_ids{alliance->getVisionObjectIDs("TRIBALL")};
-	for (auto object : objects)
-	{
-		for (auto object_id : object_ids)
-		{
-			if (object.id == object_id && object.id != io::EVisionObjectID::GREEN_TRIBALL)
-			{
-				if (object.width > largest_alliance_ball)
-				{
-					largest_alliance_ball = object.width;
-					alliance_ball_angle = object.horizontal;
-				}
-			}
-		}
-	}
-	position = getOdometryPosition();
-	alliance_ball_angle += position.theta;
-
-	// Turn to exactly face the alliance triball
-	uint32_t precise_alliance_turn_timeout{500};
-	turnToAngle(alliance_ball_angle, TURN_VELOCITY, false, precise_alliance_turn_timeout);
-
-	// Grab the alliance triball
-	double alliance_ball_grab_distance{6.0}, alliance_ball_velocity{12.0}, alliance_ball_elevator{8.0};
-	uint32_t alliance_ball_grab_timeout{1000}, alliance_ball_grab_delay{500};
-	driveStraight(alliance_ball_grab_distance, alliance_ball_velocity, alliance_ball_angle);
-	setIntakeVoltage(MAX_VOLTAGE);
-	setElevatorPosition(alliance_ball_elevator, alliance_ball_grab_timeout);
-	delay(alliance_ball_grab_delay);
-	pauseControlSystem();
-
-	// Back away from the alliance triball
-	double load_bar_distance{-8.0};
-	uint32_t load_bar_timeout{500};
-	driveStraight(load_bar_distance, MOTION_VELOCITY, load_bar_timeout);
-
-	// Suck in the alliance ball
-	double ball_elevator{3.25};
-	uint32_t ball_elevator_timeout{500};
-	setElevatorPosition(ball_elevator, ball_elevator_timeout);
-
-	// Turn to face the goal
-	turnToAngle(50.0 * M_PI / 180, TURN_VELOCITY, false, 500);
-
-	// Shove into the goal
-	setElevatorPosition(0);
+	// Outtake into the alley
 	setIntakeVoltage(-MAX_VOLTAGE);
-	followPath(far_load_path, 36.0);
-	delay(500);
+	setElevatorPosition(0.0, 1000);
+
+	// Reset the y-coordinate
+	turnToAngle(0, TURN_VELOCITY, false, 1000);
+	if (std::abs(bindRadians(M_PI - getOdometryPosition().theta)) < 20.0 * M_PI / 180)
+		resetOdometryY();
+
+	// Reset the x-coordinate
+	turnToAngle(-M_PI / 2, TURN_VELOCITY, false, 1000, 2 * M_PI / 180);
+	if (std::abs(bindRadians(M_PI / 2 - getOdometryPosition().theta)) < 20.0 * M_PI / 180)
+		resetOdometryX();
+
+	// Turn towards the match load zone
+	double match_load_distance{34.0}, match_load_angle{M_PI / 4};
+	double match_load_x{match_load_distance * std::cos(match_load_angle)};
+	double match_load_y{match_load_distance * std::sin(match_load_angle)};
+	double match_load_turn_tolerance{2.0 * M_PI / 180};
+	uint32_t match_load_turn_timeout{1500};
+	turnToPoint(match_load_x, match_load_y, TURN_VELOCITY, false, match_load_turn_timeout, match_load_turn_tolerance);
+
+	// Move to the front of the match load zone
+	uint32_t match_load_setup_timeout{1000};
+	//driveStraightToPoint(match_load_x, match_load_y, MOTION_VELOCITY, match_load_setup_timeout);
+	goToPoint(match_load_x, match_load_y, MOTION_VELOCITY, match_load_setup_timeout);
+
+	// Turn to face the match loads
+	turnToPoint(0, 0, TURN_VELOCITY, false, match_load_turn_timeout);
+
+	// Move into match loading position
+	double match_load_bar_x{12.0}, match_load_bar_y{12.0};
+	//double match_load_drive_distance{12.0}, match_load_drive_velocity{12.0};
+	uint32_t match_load_drive_timeout{1000};
+	//driveStraight(match_load_drive_distance, match_load_drive_velocity, -3 * M_PI / 4, match_load_drive_timeout);
+	start_time = getTime();
 	position = getOdometryPosition();
-	while (position.yV > 12.0)
+	target_distance = distance(position.x, position.y, match_load_bar_x, match_load_bar_y);
+	loadLoader();
+	delay(300);
+	readyLoader();
+	delay(100);
+	setIntakeVoltage(0);
+	goToPoint(match_load_bar_x, match_load_bar_y, MOTION_VELOCITY);
+	while (target_distance > 14.0 && getTime() < start_time + match_load_drive_timeout)
 	{
 		delay(LOOP_DELAY);
 		position = getOdometryPosition();
+		target_distance = distance(position.x, position.y, match_load_bar_x, match_load_bar_y);
 	}
-	delay(500);
-	pauseControlSystem();
-
-	// Back up off the goal
-	setIntakeVoltage(0);
-	driveStraightToPoint(getOdometryPosition().x, 36.0, 36.0, uint32_t{500});
-
-	// Turn to face the bar
-	double bar_x{86.0}, bar_y{38.0};
-	turnToPoint(bar_x, bar_y, TURN_VELOCITY, false, 1500, 3.0 * M_PI / 180);
-
-	// Drive up to the bar
-	driveStraightToPoint(bar_x, bar_y, 48.0, 2000, 4.0);
-
-	// Drive over the bar
-	driveStraight(48.0, 72.0, M_PI, uint32_t{4000}, 3.0);
-
-	// Reset x
-	turnToAngle(-75 * M_PI / 180, TURN_VELOCITY, false, 1500);
-	resetOdometryX();
-
-	// Reset y
-	turnToAngle(0, TURN_VELOCITY, false, uint32_t{1500});
-	while (getOdometryResetterRawValue() < 24.0)
-		delay(LOOP_DELAY);
-	resetOdometryY();
-
-	// Move to the front of the match load
-	double near_load_x{22.0}, near_load_y{22.0};
-	turnToPoint(near_load_x, near_load_y, TURN_VELOCITY, false, 1000, 3.0 * M_PI / 180);
-	driveStraightToPoint(near_load_x, near_load_y, 36.0, 1500);
-
-	// Turn to face the match loads
-	turnToPoint(0, 0, TURN_VELOCITY, false, 1000);
+	readyLoader();
+	setGoToPointVelocity(14.0);
 
 	// Run a match load to clear the zone
-	loadLoader();
-	delay(500);
-	readyLoader();
 
-	// Move into match loading position
-	double match_load_drive_distance{12.0}, match_load_drive_velocity{16.0};
-	uint32_t match_load_drive_timeout{1500};
-	driveStraight(match_load_drive_distance, match_load_drive_velocity, -3 * M_PI / 4, match_load_drive_timeout);
-	delay(300);
+	// Finish moving
+	start_time = getTime();
+	while (getOdometryVelocity() > 4.0 && getTime() < start_time + 1000)
+		delay(LOOP_DELAY);
+	pauseControlSystem();
 
 	// Do match loads
-	uint8_t match_loads{6};
+	uint8_t match_loads{5};
 	uint32_t match_load_delay{300};
 	uint32_t match_load_timeout{800};
 	bool timeout{false};
@@ -1058,7 +974,7 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	}
 
 	// Turn to the start of the alley
-	double alley_start_x{26.0}, alley_start_y{11.0};
+	double alley_start_x{26.0}, alley_start_y{12.0};
 	uint32_t alley_start_turn_timeout{1000};
 	turnToPoint(alley_start_x, alley_start_y, TURN_VELOCITY, true, alley_start_turn_timeout);
 
@@ -1067,34 +983,43 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	setRightWing(true);
 
 	// Move to the start of the alley
-	double alley_theta{175 * M_PI / 180};
+	double alley_theta{173 * M_PI / 180};
 	position = getOdometryPosition();
 	uint32_t alley_start_timeout{2000};
 	driveStraightToPoint(alley_start_x, alley_start_y, MOTION_VELOCITY, alley_start_timeout);
 
 	// Turn to face down the alley
-	uint32_t alley_turn_timeout{700};
+	uint32_t alley_turn_timeout{1000};
 	turnToAngle(alley_theta, TURN_VELOCITY, false, alley_turn_timeout);
 
 	// Follow the alley path
-	double alley_end_x{109.0};
-	double fast_alley_velocity{48.0}, slow_alley_velocity{24.0}, slow_alley_x{76.0};
-	double collision_detection{6.0}, collision_end_x{alley_end_x - 4.0};
+	double alley_end_x{110.0};
+	double fast_alley_velocity{48.0}, slow_alley_velocity{30.0}, slow_alley_x{86.0};
+	double collision_detection{12.0}, collision_end_x{alley_end_x - 4.0};
 	uint32_t collision_delay{1000}, collision_start_time{getTime()};
 	double alley_distance{(alley_end_x - alley_start_x) * std::cos(alley_theta)};
 	double alley_velocity{fast_alley_velocity};
 	position = getOdometryPosition();
 	velocity = getOdometryVelocity();
-	driveStraight(alley_distance, alley_velocity);
-	delay(500);
-	while (!driveStraightTargetReached())
+	//driveStraight(alley_distance, alley_velocity, 174 * M_PI / 180);
+	goToPoint(alley_end_x, 10.0, 48.0);
+	while (!goToPointTargetReached())//(!driveStraightTargetReached())
 	{
 		// If we have reached the slow section of the alley, slow down
 		if (position.x > slow_alley_x)
+		{
 			alley_velocity = slow_alley_velocity;
+			if (timeout)
+			{
+				timeout = false;
+				setElevatorPosition(0);
+				setIntakeVoltage(-MAX_VOLTAGE);
+			}
+		}
 		else
 			alley_velocity = fast_alley_velocity;
-		setDriveStraightVelocity(alley_velocity);
+		//setDriveStraightVelocity(alley_velocity);
+		setGoToPointVelocity(alley_velocity);
 
 		// Detect getting stuck
 		if (position.x < collision_end_x
@@ -1102,6 +1027,7 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 			&& getTime() > collision_start_time + collision_delay)
 		{
 			// Back up to get free
+			pauseControlSystem();
 			setLeftWing(false);
 			setRightWing(false);
 			double alley_backup_distance{-6.0};
@@ -1116,7 +1042,8 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 			setRightWing(true);
 			position = getOdometryPosition();
 			alley_distance = (alley_end_x - position.x) * std::cos(alley_theta);
-			driveStraight(alley_distance, alley_velocity);
+			//driveStraight(alley_distance, alley_velocity);
+			goToPoint(alley_end_x, 11.0, alley_velocity);
 			collision_start_time = getTime();
 		}
 		
@@ -1124,6 +1051,13 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 		position = getOdometryPosition();
 		velocity = getOdometryVelocity();
 	}
+	setIntakeVoltage(0);
+
+	// Turn slightly
+	turnToAngle(-175 * M_PI / 180, TURN_VELOCITY, false, 500);
+
+	// Push back slightly
+	driveStraight(-4.0, 48.0, uint32_t{500});
 
 	// Turn to face the goal shove start point
 	double goal_shove_x{130.0}, goal_shove_y{28.0};
@@ -1132,7 +1066,7 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 
 	// Move to the goal shove start point
 	uint32_t goal_shove_timeout{2000};
-	driveStraightToPoint(goal_shove_x, goal_shove_y - 2, MOTION_VELOCITY, goal_shove_timeout);
+	driveStraightToPoint(goal_shove_x + 1, goal_shove_y - 2, MOTION_VELOCITY, goal_shove_timeout);
 
 	// Turn to face the goal
 	setLeftWing(false);
@@ -1157,45 +1091,82 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	// Push the alley triballs into the goal
 	driveStraightToPoint(side_goal_x, side_goal_y, push_velocity, push_timeout);
 
-	// Follow the path for winpoint
-	followPath(winpoint_path, 36.0);
-	delay(800);
-	setLeftWing(false);
-	setRightWing(false);
+	// Turn to face the midfield entrance
+	double entrance_x{104.0}, entrance_y{14.0};
+	uint32_t entrance_turn_timeout{1500};
+	turnToPoint(entrance_x, entrance_y, TURN_VELOCITY, true, entrance_turn_timeout);
+
+	// Move to the goal shove start point
+	uint32_t entrance_timeout{2000};
+	goToPoint(entrance_x, entrance_y, 48.0, entrance_timeout);
+
+	// Turn to face the front of the goal
+	double sentry_x{104.0}, sentry_y{60.0};
+	uint32_t sentry_turn_timeout{1500};
+	turnToPoint(sentry_x, sentry_y, TURN_VELOCITY, false, sentry_turn_timeout);
+
+	// Move to the front of the goal
+	double sweep_velocity{26.0};
+	uint32_t sweep_timeout{4000};
+	goToPoint(sentry_x, sentry_y, sweep_velocity, sweep_timeout);
+
+	// Turn to face forward
+	uint32_t sentry_start_timeout{500};
+	turnToAngle(5 * M_PI / 12, TURN_VELOCITY, sentry_start_timeout);
+
+	// Create the sentry mode routine
+	std::unique_ptr<rtos::IMutex> sentry_mutex{std::make_unique<pros_adapters::ProsMutex>()};
+	std::unique_ptr<rtos::ITask> sentry_task{std::make_unique<pros_adapters::ProsTask>()};
+	static routines::SentryMode sentry_mode{alliance, m_clock, m_delayer, sentry_mutex, sentry_task, m_control_system, m_robot};
+	sentry_mode.run();
+
+	// Run sentry mode
+	bool sentry{true};
 	position = getOdometryPosition();
-	while (position.x > 68.0)
+	control::path::Point last_ball{};
+	double sentry_goal_x{104.0}, sentry_goal_y{60.0};
+	while (sentry && getTime() - auton_start_time < 43000)
 	{
-		delay(LOOP_DELAY);
-		position = getOdometryPosition();
+		// Try to grab the next ball
+		sentry_mode.doSentryMode(-5 * M_PI / 12, control::motion::ETurnDirection::COUNTERCLOCKWISE);
+		while (!sentry_mode.isFinished())
+			delay(LOOP_DELAY);
+		sentry = sentry_mode.ballFound();
+
+		// If it got a ball, score it
+		if (sentry && getTime())
+		{
+			// Store the found ball coordinates
+			position = getOdometryPosition();
+			last_ball = sentry_mode.getBall();
+			double last_angle = angle(position.x, position.y, last_ball.getX(), last_ball.getY());
+
+			// Move in front of the goal
+			driveStraightToPoint(sentry_goal_x, sentry_goal_y, 48.0, 1000, 3.0);
+			
+			// Release the ball
+			setLeftWing(true);
+			setRightWing(true);
+			turnToAngle(0, 2 * M_PI, false, 1000, 4.0 * M_PI / 180);
+			setIntakeVoltage(-MAX_VOLTAGE);
+			setElevatorPosition(0.0, 1000);
+
+			setDriveVoltage(MAX_VOLTAGE, MAX_VOLTAGE);
+			delay(500);
+			position = getOdometryPosition();
+			while (position.xV > 8.0)
+			{
+				delay(LOOP_DELAY);
+				position = getOdometryPosition();
+			}
+			
+			driveStraightToPoint(sentry_x, sentry_y, 48.0, 1000, 2.0);
+
+			setLeftWing(false);
+			setRightWing(false);
+			turnToAngle(last_angle, TURN_VELOCITY, false, 1000, 2.0 * M_PI / 180);
+		}
 	}
-	// Turn to the start of win point
-	/*
-	setRightWing(false);
-	double winpoint_start_x{102.0}, winpoint_start_y{10.0};
-	double winpoint_start_turn_tolerance{2 * M_PI / 180};
-	uint32_t winpoint_start_turn_timeout{1000};
-	turnToPoint(winpoint_start_x, winpoint_start_y, TURN_VELOCITY, false, winpoint_start_turn_timeout, winpoint_start_turn_tolerance);
-
-	// Move to the start of win point
-	double winpoint_start_tolerance{2.0};
-	uint32_t winpoint_start_timeout{2000};
-	driveStraightToPoint(winpoint_start_x, winpoint_start_y, MOTION_VELOCITY, winpoint_start_timeout, winpoint_start_tolerance);
-
-	// Turn to the winpoint position
-	double winpoint_x{60.0}, winpoint_y{10.0};
-	double winpoint_turn_tolerance{2.0 * M_PI / 180}, winpoint_tolerance{2.0};
-	uint32_t winpoint_turn_timeout{1000}, winpoint_timeout{2000};
-	turnToPoint(winpoint_x, winpoint_y, TURN_VELOCITY, true, winpoint_turn_timeout, winpoint_turn_tolerance);
-
-	// Move to the winpoint position
-	driveStraightToPoint(winpoint_x, winpoint_y, MOTION_VELOCITY, winpoint_timeout, winpoint_tolerance);	
-	*/
-
-	// Touch the bar for win point (remove for elims)
-	turnToPoint(72.0, 24.0, TURN_VELOCITY);
-	delay(200);
-	setElevatorPosition(16.0, 1500);
-	setElevatorPosition(getElevatorPosition());
 
 	pros::screen::print(pros::E_TEXT_LARGE_CENTER, 7, "End Time: %5.2f", (getTime() - auton_start_time) / 1000.0);
 }

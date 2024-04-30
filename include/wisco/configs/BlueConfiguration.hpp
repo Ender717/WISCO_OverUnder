@@ -612,7 +612,7 @@ private:
 	 * @brief The maximum position of the elevator
 	 * 
 	 */
-	static constexpr double ELEVATOR_MAXIMUM_POSITION{16.5};
+	static constexpr double ELEVATOR_MAXIMUM_POSITION{18.0};
 
 	/**
 	 * @brief The elevator distance sensor port
@@ -636,19 +636,19 @@ private:
 	 * @brief The first hang claw piston port
 	 * 
 	 */
-	static constexpr char HANG_CLAW_PISTON_1_PORT{};
+	static constexpr char HANG_CLAW_PISTON_1_PORT{'E'};
 
 	/**
 	 * @brief The first hang claw piston's extended state
 	 * 
 	 */
-	static constexpr bool HANG_CLAW_PISTON_1_EXTENDED_STATE{};
+	static constexpr bool HANG_CLAW_PISTON_1_EXTENDED_STATE{true};
 
 	/**
 	 * @brief The hang claw piston state when the claw is closed
 	 * 
 	 */
-	static constexpr bool HANG_CLAW_CLOSED_STATE{};
+	static constexpr bool HANG_CLAW_CLOSED_STATE{true};
 
 	/**
 	 * @brief The first hang arm piston port
