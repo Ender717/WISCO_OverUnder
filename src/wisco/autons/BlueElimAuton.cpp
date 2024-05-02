@@ -981,6 +981,9 @@ void BlueElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	// Drive over the bar
 	driveStraight(48.0, 72.0, M_PI, uint32_t{4000}, 3.0);
 
+	turnToAngle(-3 * M_PI / 4, TURN_VELOCITY, false, 1000);
+	driveStraight(4.0, MOTION_VELOCITY, uint32_t{500});
+
 	// Reset x
 	turnToAngle(105 * M_PI / 180, TURN_VELOCITY, false, 1500);
 	resetOdometryX();
@@ -1007,6 +1010,7 @@ void BlueElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	start_time = getTime();
 	position = getOdometryPosition();
 	target_distance = distance(position.x, position.y, match_load_bar_x, match_load_bar_y);
+	setIntakeVoltage(-12.0);
 	loadLoader();
 	delay(300);
 	readyLoader();

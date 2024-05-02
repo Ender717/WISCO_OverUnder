@@ -900,6 +900,7 @@ void OrangeElimAuton::run(std::shared_ptr<IAlliance> alliance,
 	start_time = getTime();
 	position = getOdometryPosition();
 	target_distance = distance(position.x, position.y, match_load_bar_x, match_load_bar_y);
+	setIntakeVoltage(-12.0);
 	loadLoader();
 	delay(300);
 	readyLoader();

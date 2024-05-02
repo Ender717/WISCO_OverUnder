@@ -1,4 +1,5 @@
 #include "wisco/user/hang/HangOperator.hpp"
+#include "wisco/user/EControllerDigital.hpp"
 
 namespace wisco
 {
@@ -62,7 +63,7 @@ void HangOperator::setRaisedState()
 void HangOperator::setGrabbedState()
 {
     toggle_state = EToggleState::GRABBED;
-    closeClaw();
+    //closeClaw();
     raiseArm();
     disengageWinch();
 }
@@ -70,7 +71,7 @@ void HangOperator::setGrabbedState()
 void HangOperator::setHungState()
 {
     toggle_state = EToggleState::HUNG;
-    closeClaw();
+    //closeClaw();
     lowerArm();
     engageWinch();
 }
@@ -120,6 +121,9 @@ void HangOperator::updatePresetLadder(EControllerDigital next, EControllerDigita
 {
     bool set_next{m_controller->getNewDigital(next)};
     bool set_previous{m_controller->getNewDigital(previous)};
+
+    if (m_controller->getNewDigital(EControllerDigital::BUTTON_X))
+        closeClaw();
 
     if (set_next && !set_previous)
     {
@@ -213,10 +217,12 @@ void HangOperator::setHangState(std::unique_ptr<IProfile>& profile)
             break;
     }
 
+    /*
     if (toggle_state == EToggleState::HUNG)
     {
         profile->setControlMode(EControlType::DRIVE, static_cast<int>(drive::EChassisControlMode::SPLIT_ARCADE_LEFT));
     }
+    */
 }
 } // namespace hang
 } // namespace user
